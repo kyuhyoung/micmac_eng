@@ -49,11 +49,45 @@ RUN cd micmac/MMVII/bin && \
     cd src/DenseMatch && \
     /bin/bash install.sh
 
-# Additional tools installation
+# Install Claude Code and additional tools
 RUN apt-get update && apt-get install -y \
     curl \
-    ca-certificates
+    ca-certificates \
+    gnupg \
+    software-properties-common && \
+    curl -fsSL https://claude.ai/install.sh | bash || \
+    echo "⚠️ Claude Code installation failed, but continuing build..."
+
+# Add Claude Code to PATH if it was installed successfully
+RUN if [ -f "/usr/local/bin/claude" ]; then \
+        echo "✅ Claude Code installed successfully"; \
+        ln -sf /usr/local/bin/claude /usr/bin/claude; \
+    elif [ -f "$HOME/.local/bin/claude" ]; then \
+        echo "✅ Claude Code installed in user directory"; \
+        ln -sf $HOME/.local/bin/claude /usr/bin/claude; \
+    else \
+        echo "⚠️ Claude Code not found in expected locations"; \
+    fi
 
 #MicMac add environmental variable to executables
-ENV PATH=${foo}micmac/bin:${foo}micmac/MMVII/bin:${PATH}
-RUN echo ${foo}micmac/bin:${foo}micmac/MMVII/bin:${PATH}
+ENV PATH=${foo}micmac/bin:${foo}micmac/MMVII/bin:/usr/local/bin:${PATH}
+RUN echo "PATH set to: ${foo}micmac/bin:${foo}micmac/MMVII/bin:/usr/local/bin:${PATH}"
+
+# Create a startup script for the container
+RUN echo '#!/bin/bash\n\
+echo "🐳 MicMac English Fork Container Ready!"\n\
+echo "📁 MicMac binaries: ${foo}micmac/bin"\n\
+echo "📁 MMVII binaries: ${foo}micmac/MMVII/bin"\n\
+if command -v claude >/dev/null 2>&1; then\n\
+    echo "✅ Claude Code available: $(which claude)"\n\
+else\n\
+    echo "❌ Claude Code not available"\n\
+fi\n\
+echo "💡 Available MicMac commands: mm3d, MMVII_TestCpp, etc."\n\
+echo "💡 Type '\''mm3d -help'\'' to get started with MicMac"\n\
+/bin/bash\n' > /usr/local/bin/container-start.sh
+
+RUN chmod +x /usr/local/bin/container-start.sh
+
+# Set default command
+CMD ["/usr/local/bin/container-start.sh"]

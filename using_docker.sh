@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# MicMac PSMNet Docker Build and Run Script
+# MicMac PSMNet Docker Build and Run Script (with Claude Code)
 set -e
 
 # Configuration
@@ -27,7 +27,7 @@ if ! docker info >/dev/null 2>&1; then
     exit 1
 fi
 
-echo "🐳 Building MicMac PSMNet Docker image..."
+echo "🐳 Building MicMac PSMNet Docker image (with Claude Code)..."
 docker build -t $IMAGE_NAME -f $DOCKERFILE .
 
 echo "🚀 Running MicMac PSMNet container..."
