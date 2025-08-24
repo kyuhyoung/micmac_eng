@@ -222,7 +222,7 @@ void *vminit         /* create an empty vector/matrix list ...........*/
   list->naechst  = NULL;         /* no next element                  */
 
 
-  return (void *)liste;
+  return (void *)list;
 }
 
 
@@ -453,6 +453,7 @@ void *vmalloc        /* create a dynamic vector or matrix ............*/
 ***********************************************************************/
 
 {
+  vmltyp *list = (vmltyp *)vmblock;  /* cast vmblock to list pointer */
   vmltyp *element;                  /* pointer to new element in list */
 
 
@@ -568,6 +569,7 @@ void vmfree          /* free the memory for a vektor/matrix list .....*/
 ***********************************************************************/
 
 {
+  vmltyp *list = (vmltyp *)vmblock;  /* cast vmblock to list pointer */
   vmltyp *hilf;                  /* aux variable for value of pointer */
 
 

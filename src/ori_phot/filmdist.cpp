@@ -289,12 +289,12 @@ int ii ;
 fp = ElFopen ( FileName, "r" ) ;
 if ( fp != 0 )
 	{
-	VoidFscanf ( fp, "%s", line ) ;	/* Commentaires */
+	VoidFscanf ( fp, "%s", ligne ) ;	/* Commentaires */
 	for ( ii = 0 ; ii < 16 ; ii = ii+2 )
 		{
 		VoidFscanf ( fp, "%lf%lf", &(IdealMarks[ii]), &(IdealMarks[ii+1]) ) ;
 		}
-	VoidFscanf ( fp, "%s", line ) ;	/* Commentaires */
+	VoidFscanf ( fp, "%s", ligne ) ;	/* Commentaires */
 	for ( ii = 0 ; ii < 16 ; ii = ii+2 )
 		{
 		VoidFscanf ( fp, "%lf%lf", &(RealMarks[ii]), &(RealMarks[ii+1]) ) ;

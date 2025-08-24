@@ -230,11 +230,11 @@ void init_var()
   int i;
 
   MemMatr = NEW_TAB(1+Taille,int *);
-  Matrice = NEW_TAB(1+Taille,int *);
+  matrix = NEW_TAB(1+Taille,int *);
   EcGra   = NEW_TAB(1+Taille,int *);
   for (i = 0 ; i < 1 + Taille ; i++)
   {
-     Matrice[i] = NEW_TAB(1+Taille,int);
+     matrix[i] = NEW_TAB(1+Taille,int);
      EcGra[i] = NEW_TAB(1+Taille,int);
      MemMatr[i] = NEW_TAB(1+Taille,int);
   }
@@ -290,12 +290,12 @@ void free_var()
 
   for (i = 0 ; i < 1 + Taille ; i++)
   {
-      DELETE_TAB(Matrice[i]);
+      DELETE_TAB(matrix[i]);
       DELETE_TAB(EcGra[i]);
       DELETE_TAB(MemMatr[i]);
   }
    DELETE_TAB(MemMatr);
-   DELETE_TAB(Matrice);
+   DELETE_TAB(matrix);
    DELETE_TAB(EcGra);
 
    DELETE_TAB(Chemin);
@@ -383,21 +383,21 @@ void PIREMATR()
  VoidScanf("%d",&Choix);
 
  for(I=1 ;I<=Taille ;I++ ){
-    Matrice[I][1]=0;
-    Matrice[1][I]=0;
+    matrix[I][1]=0;
+    matrix[1][I]=0;
  }
 
  if( Choix==2 ){
     for(I=2 ;I<=Taille ;I++ ){                       /*    Algo2 */
        for(J=2 ;J<=Taille ;J++ ){
-          Matrice[I][J]=Taille;
+          matrix[I][J]=Taille;
        }
     }
-    Matrice[2][2]=1;
-    Matrice[Taille][2]=1;
+    matrix[2][2]=1;
+    matrix[Taille][2]=1;
     for(I=3 ;I<=Taille ;I++ ){
-       Matrice[I][I]=I-1;
-       Matrice[I-1][I]=I-1;
+       matrix[I][I]=I-1;
+       matrix[I-1][I]=I-1;
     }
  }
    
@@ -466,7 +466,7 @@ void ECRIBOOL()
   printf(" \n");
   for(I=1 ;I<=Taille ;I++ ){
      for(J=1 ;J<=Taille ;J++ ){
-     if( Matrice[I][J]==0 )
+     if( matrix[I][J]==0 )
         printf(" * ");
      else
         printf(" . ");
@@ -597,7 +597,7 @@ void LECTURE(Im2D_INT4 cost)
   for(I = 1 ; I <= Taille ; I++)
   {
      for ( J = 1; J<= Taille ; J++)
-         Matrice[I][J] =c[I-1][J-1];
+         matrix[I][J] =c[I-1][J-1];
      //  F_read(&(matrix[I][1]),sizeof(int),Taille,fp); 
   }
 
@@ -606,9 +606,9 @@ void LECTURE(Im2D_INT4 cost)
      /*   mise en memoire de la matrix de depart in MemMatr */
   for(I=1 ;I<=Taille ;I++ ){
      for(J=1 ;J<=Taille ;J++ ){
-        if( Matrice[I][J]>MaxAbso )
-           MaxAbso=Matrice[I][J];
-        MemMatr[I][J]=Matrice[I][J];
+        if( matrix[I][J]>MaxAbso )
+           MaxAbso=matrix[I][J];
+        MemMatr[I][J]=matrix[I][J];
      }
   }
 }
@@ -801,7 +801,7 @@ void VERIF()
   Exact1=1;
   for(J=1 ;J<=Taille ;J++ ){
      I=AffTache[J];
-     if( Matrice[I][J]!=0 )
+     if( matrix[I][J]!=0 )
         Exact1=0;
   }
   if( Exact1==0)
@@ -821,7 +821,7 @@ void VERIF()
   Exact2=1;
   for(I=1 ;I<=Taille ;I++ ){
       for(J=1 ;J<=Taille ;J++ ){
-         if( Matrice[I][J]<0 )
+         if( matrix[I][J]<0 )
             Exact2=0;
      } 
   }
@@ -842,27 +842,27 @@ void VERIF()
   Exact3=1;
   for(I=1 ;I<=Taille ;I++){                               /* on rentre MemMatr-matrix in matrix */
       for(J=1 ;J<=Taille ;J++ )
-         Matrice[I][J]=MemMatr[I][J]-Matrice[I][J];
+         matrix[I][J]=MemMatr[I][J]-matrix[I][J];
   }
   for(I=1 ;I<=Taille ;I++ ){                             /* on soustrait matrix[I][1] a toute  */
       Aux=matrix[I][1];                                 /* line I                             */
       for(J=1 ;J<=Taille ;J++ )
-        Matrice[I][J]=Matrice[I][J]-Aux;
+        matrix[I][J]=matrix[I][J]-Aux;
   }
   for(J=1 ;J<=Taille ;J++ ){                             /* on soustrait matrix[1][J] a toute */
      Aux=matrix[1][J];                                  /* colonne J                          */
      for(I=1 ;I<=Taille ;I++ )
-        Matrice[I][J]=Matrice[I][J]-Aux;
+        matrix[I][J]=matrix[I][J]-Aux;
   }
   for(I=1 ;I<=Taille ;I++ ){                            /* on verifie que le result obtenu est */
       for(J=1 ;J<=Taille ;J++ ){                        /* la matrix nulle                      */
 
-         if( Matrice[I][J]!=0 )
+         if( matrix[I][J]!=0 )
             Exact3=0;
       }
   }
   if( Exact3==0 ){
-     printf("\n (Matrice des cout) - (Matrice reduite) n'est pas une ");
+     printf("\n (matrix des cout) - (matrix reduite) n'est pas une ");
      printf("\n matrice ligne-colonne \n ");
   }
 
@@ -919,13 +919,13 @@ void INIMAT()    /* on va faire apparaitre autant de zeros que possible */
         /* on le soustrait a chaque element de la line */
 
   for(I=1 ;I<=Taille ;I++ ){
-     Min=Matrice[I][1];
+     Min=matrix[I][1];
      for(J=1 ;J<=Taille ;J++ ){
-        if( Matrice[I][J]<Min )
-           Min=Matrice[I][J];
+        if( matrix[I][J]<Min )
+           Min=matrix[I][J];
      }
      for(J=1 ;J<=Taille ;J++ )
-        Matrice[I][J]=Matrice[I][J]-Min;
+        matrix[I][J]=matrix[I][J]-Min;
   }
      
     
@@ -933,13 +933,13 @@ void INIMAT()    /* on va faire apparaitre autant de zeros que possible */
          /* on le soustrait a chaque element de la colonne */
 
   for(J=1 ;J<=Taille ;J++ ){
-     Min=Matrice[1][J];
+     Min=matrix[1][J];
      for(I=1 ;I<=Taille ;I++ ){
-        if( Matrice[I][J]<Min )
-           Min=Matrice[I][J];
+        if( matrix[I][J]<Min )
+           Min=matrix[I][J];
      }
      for(I=1 ;I<=Taille ;I++ )
-        Matrice[I][J]=Matrice[I][J]-Min;
+        matrix[I][J]=matrix[I][J]-Min;
   }
 
          /* initialistion de AffTache and AffMach  */
@@ -967,7 +967,7 @@ void LECMATRI()          /* lecture "a la main" de la matrix */
   for(I=1 ;I<=Taille ;I++ ){
      for(J=1 ;J<=Taille ;J++ ){
         printf("\n valeur de matrice( %d , %d )? \n" ,I,J);
-        VoidScanf("%d",&Matrice[I][J]);
+        VoidScanf("%d",&matrix[I][J]);
      }
   }
 }
@@ -994,13 +994,13 @@ void ECRIMAT()                    /* ecriture de la matrix des couts (matrix de 
   printf("\n 0=matrice de depart sinon matrice reduite \n ");
   VoidScanf("%d",&Choix);
 
-  printf("\n\n  Matrice  \n");
+  printf("\n\n  matrix  \n");
   for(I=1 ;I<=Taille ;I++ ){
      for(J=1 ;J<=Taille ;J++ ){
         if( Choix==0 )
            Aux=MemMatr[I][J];
         else
-           Aux=Matrice[I][J];
+           Aux=matrix[I][J];
         printf(" %2d",Aux);      
      }
      printf("\n");
@@ -1336,13 +1336,13 @@ void GENEAUTO()       /* generation automatique de matrix */
   }
   for(J=1 ;J<=Taille ;J++ ){
      for(I=1 ;I<=Taille ;I++ ){
-        Matrice[I][J]=J+Taille*(I-1);
+        matrix[I][J]=J+Taille*(I-1);
         for(K=1 ;K<=6 ;K++){
-           aux1=Matrice[I][J];
+           aux1=matrix[I][J];
            aux2=aux1+(aux1%para[1])+(aux1%para[2])*(aux1%para[3]);
            aux1=aux2%5000;
            aux1=(aux1+100+para[1]*para[2])%5000;
-           Matrice[I][J]=aux1;
+           matrix[I][J]=aux1;
            for(L=1 ;L<=3 ;L++ ){
                para[L]=(para[L]+14+2*L)%100;
                para[L]=para[L]+2;
@@ -1358,16 +1358,16 @@ void GENEAUTO()       /* generation automatique de matrix */
   VoidScanf("%d",&MatBool);
   for(I=1 ;I<=Taille ;I++ ){
      for(J=1 ;J<=Taille ;J++){
-        Matrice[I][J]=Matrice[I][J]%ValMaxim;
+        matrix[I][J]=matrix[I][J]%ValMaxim;
      }
   }
   for(I=1 ;I<=Taille ;I++ ){
      for(J=1 ;J<=Taille ;J++ ){
-        if( Matrice[I][J]<Densite )
-           Matrice[I][J]=0;
+        if( matrix[I][J]<Densite )
+           matrix[I][J]=0;
         else{
            if( MatBool==0 ){
-              Matrice[I][J]=1;
+              matrix[I][J]=1;
            }
         }
      }
@@ -1453,7 +1453,7 @@ void INIREC()         /* initialisation des donnees for l'algorithme de  */
       PartRec=0;
       for(I=GrInjMax[0][0]+1 ;I<=Taille ;I++ ){
           ComElEx2=ComElEx2+1;
-          if( Matrice[GrInjMax[1][I]][GrInjMax[0][J]]==0 )
+          if( matrix[GrInjMax[1][I]][GrInjMax[0][J]]==0 )
              PartRec=1;
        }
        if( PartRec==1 ){
@@ -1585,7 +1585,7 @@ void AUGRECOBL()             /* recherche de nouvelles rangees participant */
      for(I2=AdDeltGL ;I2<=RecLigne[0] ;I2++ ){
         ComElEx2=ComElEx2+1;
         J=AffMach[RecLigne[I2]];
-        if( Matrice[I][J]==0 )
+        if( matrix[I][J]==0 )
            PartRec=1;
      }
      if( PartRec==1){
@@ -1869,9 +1869,9 @@ void MAJMATRI()        /* mise a jour de matrix une fois que l'on a trouve */
   MaxLoc=0;
   for(I=1 ;I<=Taille ;I++ ){
      for(J=1 ;J<=Taille ;J++){
-        Matrice[I][J]=Matrice[I][J]+AddEns+AddLig[I]+AddCol[J];
-        if( Matrice[I][J]>MaxLoc ) 
-           MaxLoc=Matrice[I][J];
+        matrix[I][J]=matrix[I][J]+AddEns+AddLig[I]+AddCol[J];
+        if( matrix[I][J]>MaxLoc ) 
+           MaxLoc=matrix[I][J];
      }
   }
   if( MaxLoc>MaxAbso )
