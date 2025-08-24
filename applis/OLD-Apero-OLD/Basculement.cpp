@@ -353,7 +353,7 @@ void cAppliApero::BasculePoints
 
        cPackGlobAppuis  * aPtrPGA = PtrPackGlobApp(aBOA.NameRef(),true);
 
-       // Compat historique avec points appuis purs
+       // Compat historique with points appuis purs
        if (aPtrPGA)
        {
            cPackGlobAppuis  & aPGA = *aPtrPGA;
@@ -445,7 +445,7 @@ void cAppliApero::BasculePoints
    }
 
    //for (int aKPose=0 ; aKPose<int(mVecPose.size()) ; aKPose++)
-   // Pour conserver l'ordre alphabetique, + utile pour l'affichage on passe
+   // for conserver l'ordre alphabetique, + utile for l'affichage on passe
    // par le dico
    for 
    (
@@ -692,7 +692,7 @@ void cAppliApero::Bascule(const cBasculeOrientation & aBO)
 
 /****************************************************************/
 /*                                                              */
-/*                    ECHELLE ECHELLE ECHELLE ECHELLE           */
+/*                    scale scale scale scale           */
 /*                                                              */
 /****************************************************************/
 
@@ -750,7 +750,7 @@ void cAppliApero::FixeEchelle(const cFixeEchelle & aFE)
 
 /****************************************************************/
 /*                                                              */
-/*                    ROTATION PLANE                            */
+/*                    rotation PLANE                            */
 /*                                                              */
 /****************************************************************/
 
@@ -1147,7 +1147,7 @@ void cAppliApero::VerifAero(const cVerifAero & aVA)
 
 }
 
-  // Fait la verif pour une image
+  // Fait la verif for une image
 
 void cAppliApero::VerifAero
      (
@@ -1218,7 +1218,7 @@ double  BSurH(const std::vector<ElSeg3D> & aVS,const std::vector<double>  * aVPd
    aSomT = aSomT / aSP;
    aSomT2 = aSomT2 / aSP;
    aSomT2 = aSomT2 - Pcoord2(aSomT);
-      // Ce debiaisement est necessaire, par exemple si tous les poids sauf 1 sont
+      // Ce debiaisement est necessaire, par exemple if tous les poids sauf 1 sont
       // presque nuls
    double aDebias = 1 - aSP2/ElSquare(aSP);
    ELISE_ASSERT(aDebias>0,"Singularity in cManipPt3TerInc::CalcPTerInterFaisceauCams ");

@@ -59,19 +59,19 @@ inline float NORM(float a, float b, float c, float d) {
 
 
 // --------------------------------------------------------------------------------------
-// Classes permettant de convertir un fichier rtklib en format Micmac
+// Classes permettant de convertir un file rtklib en format Micmac
 // --------------------------------------------------------------------------------------
 class cAppli_YannConvertRTKlib2Micmac{
 
 	public :
 
 		cAppli_YannConvertRTKlib2Micmac(int argc, char ** argv);
-		std::string mposFile;					    // Fichier cinématique RTKlib
-		std::string moutFile;						// Fichier de sortie (xml)
+		std::string mposFile;					    // file cinématique RTKlib
+		std::string moutFile;						// file de sortie (xml)
 };
 
 // --------------------------------------------------------------------------------------
-// Classes permettant de compléter les images avec le champ de datation absolue
+// Classes permettant de compléter les images with le champ de datation absolue
 // --------------------------------------------------------------------------------------
 class cAppli_YannSetTimestamps{
 
@@ -80,20 +80,20 @@ class cAppli_YannSetTimestamps{
 		cAppli_YannSetTimestamps(int argc, char ** argv);
 
 		std::string ImPattern;                      // Images caméra
-		std::string mTimestamps;					// Fichier des timestamps
-		std::string mTimestampsFmt;					// Format du fichier des timestamps
-		std::string mDateIni;                       // Date initiale (si conversion)
+		std::string mTimestamps;					// file des timestamps
+		std::string mTimestampsFmt;					// Format du file des timestamps
+		std::string mDateIni;                       // Date initiale (if conversion)
 
-		cElemAppliSetFile mEASF;                    // Pour gerer un ensemble d'images
+		cElemAppliSetFile mEASF;                    // for gerer un ensemble d'images
 		std::string mDir;                           // Répertoire des données
 	 	cInterfChantierNameManipulateur * mICNM;    // Name manipulateur
 
 };
 
 // --------------------------------------------------------------------------------------
-// Classes permettant d'exclure les satellites d'un fichier d'observations rinex à
-// partir d'un ensemble de masque de ciel, d'une orientation externe (absolue) et d'un
-// fichier d'éphémérides (rinex .nav + éventuellement éphémérides précises sp3).
+// Classes permettant d'exclure les satellites d'un file d'observations rinex à
+// partir d'un ensemble de masque de ciel, d'une orientation externe (absolue) and d'un
+// file d'éphémérides (rinex .nav + éventuellement éphémérides précises sp3).
 // --------------------------------------------------------------------------------------
 class cAppli_YannExcludeSats{
 
@@ -102,30 +102,30 @@ class cAppli_YannExcludeSats{
 		cAppli_YannExcludeSats(int argc, char ** argv);
 
 		std::string ImPattern;                      // Images caméra
-		std::string mDirOri;                        // Fichier d'orientation
-		std::string mRinexObs;						// Fichier rinex d'observations GNSS
+		std::string mDirOri;                        // file d'orientation
+		std::string mRinexObs;						// file rinex d'observations GNSS
 		std::string mNavFile;						// Fichiers d'éphémérides rinex/sp3
 		std::string mSysCode;						// Code de l'orientation absolue
-		std::string mMasqKey;						// Clé des images de masque dans MMLCD
+		std::string mMasqKey;						// Clé des images de masque in MMLCD
 		std::string mGloNavFile;					// Glonass navigation file rinex/sp3
 		std::string mGalNavFile;					// Galileo navigation file rinex/sp3
 		std::string mTolerance;						// GNSS <-> image capture time tolerance
-		std::string mPlotFolder;					// Dossier pour tracer les satellites
-		std::string mOffset;						// Offset sur les coordonnées
+		std::string mPlotFolder;					// folder for tracer les satellites
+		std::string mOffset;						// Offset on les coordonnées
 		std::string mAddSat;						// Ajout de satellites à traiter
 		std::string mRemSat;						// Retrait de satellites à traiter
-		std::string mSlice;						    // Sous-échantillonnage du fichier rinex
-		std::string mAux;							// Fichier auxiliaire (optionnel)
+		std::string mSlice;						    // under-échantillonnage du file rinex
+		std::string mAux;							// file auxiliaire (optionnel)
 		std::string mOutRinex;						// Output rinex observation file
 
-		cElemAppliSetFile mEASF;                    // Pour gerer un ensemble d'images
+		cElemAppliSetFile mEASF;                    // for gerer un ensemble d'images
 		std::string mDir;                           // Répertoire des données
 	 	cInterfChantierNameManipulateur * mICNM;    // Name manipulateur
 
 };
 
 // --------------------------------------------------------------------------------------
-// Classes permettant de compléter les images avec le champ de datation absolue
+// Classes permettant de compléter les images with le champ de datation absolue
 // --------------------------------------------------------------------------------------
 class cAppli_YannSkyMask{
 
@@ -142,7 +142,7 @@ class cAppli_YannSkyMask{
 	    std::string mInstall;						// Installation lib python
 		std::string mUninstall;						// Desinstallation lib python
 
-		cElemAppliSetFile mEASF;                    // Pour gerer un ensemble d'images
+		cElemAppliSetFile mEASF;                    // for gerer un ensemble d'images
 		std::string mDir;                           // Répertoire des données
 	 	cInterfChantierNameManipulateur * mICNM;    // Name manipulateur
 
@@ -150,7 +150,7 @@ class cAppli_YannSkyMask{
 
 
 // --------------------------------------------------------------------------------------
-// Classes permettant d'exporter un dossier d'orientation en format Colmap
+// Classes permettant d'exporter un folder d'orientation en format Colmap
 // --------------------------------------------------------------------------------------
 class cAppli_YannExport2Colmap{
 
@@ -159,7 +159,7 @@ class cAppli_YannExport2Colmap{
 		cAppli_YannExport2Colmap(int argc, char ** argv);
 
 		std::string ImPattern;                      // Images caméra
-		std::string mDirOri;                        // Fichier d'orientation
+		std::string mDirOri;                        // file d'orientation
 		std::string mInv;							// Inverse mode
 
 	 	cInterfChantierNameManipulateur * mICNM;    // Name manipulateur
@@ -183,7 +183,7 @@ class cAppli_YannScript{
 };
 
 // --------------------------------------------------------------------------------------
-// Fonction de conversion d'un chaîne de caractères en GPSTime
+// function de conversion d'un chaîne de caractères en GPSTime
 // --------------------------------------------------------------------------------------
 GPSTime str2GPSTime(std::string time) {
 
@@ -202,7 +202,7 @@ GPSTime str2GPSTime(std::string time) {
 
 
 // --------------------------------------------------------------------------------------
-// Fonction d'appel system pour récupérer la sortie d'une commande
+// function d'appel system for récupérer la sortie d'une commande
 // --------------------------------------------------------------------------------------
 std::string execCmdOutput(const char* cmd) {
 
@@ -244,7 +244,7 @@ std::string execCmdOutput(const char* cmd) {
 
 
 // --------------------------------------------------------------------------------------
-// Rotation matrix to quaternion conversion
+// rotation matrix to quaternion conversion
 // --------------------------------------------------------------------------------------
 std::vector<double> rot2Quat(double r11, double r12, double r13, double r21, double r22, double r23, double r31, double r32, double r33) {
 
@@ -308,11 +308,11 @@ std::vector<double> rot2Quat(double r11, double r12, double r13, double r21, dou
 
 
 // --------------------------------------------------------------------------------------
-// Fonction de conversion d'un dossier d'orientation en format Colmap
+// function de conversion d'un folder d'orientation en format Colmap
 // --------------------------------------------------------------------------------------
 // Inputs :
 //   - string: Pattern des images
-//   - string: dossier d'orientation
+//   - string: folder d'orientation
 // --------------------------------------------------------------------------------------
 cAppli_YannExport2Colmap::cAppli_YannExport2Colmap(int argc, char ** argv){
 
@@ -322,7 +322,7 @@ cAppli_YannExport2Colmap::cAppli_YannExport2Colmap(int argc, char ** argv){
         LArgMain()  <<  EAM(mInv,"Bidon", "NONE", "Bidon"));
 
 
-	cElemAppliSetFile mEASF;                       // Pour gerer un ensemble d'images
+	cElemAppliSetFile mEASF;                       // for gerer un ensemble d'images
 	std::string aNameIn;					       // Nom d'image temporaire
 
 	// ---------------------------------------------------------------
@@ -396,11 +396,11 @@ cAppli_YannExport2Colmap::cAppli_YannExport2Colmap(int argc, char ** argv){
 
 
 // --------------------------------------------------------------------------------------
-// Fonction d'ajout des timestamps dans les images (champ exif Date/Time Original)
+// function d'ajout des timestamps in les images (champ exif Date/Time Original)
 // --------------------------------------------------------------------------------------
 // Inputs :
-//   - Fichier cinématique RTKlib
-//   - Fichier de sortie (xml)
+//   - file cinématique RTKlib
+//   - file de sortie (xml)
 // --------------------------------------------------------------------------------------
 cAppli_YannConvertRTKlib2Micmac::cAppli_YannConvertRTKlib2Micmac(int argc, char ** argv){
 
@@ -409,7 +409,7 @@ cAppli_YannConvertRTKlib2Micmac::cAppli_YannConvertRTKlib2Micmac(int argc, char 
         LArgMain()  <<  EAM(moutFile,"Out", "NONE", "Output file"));
 
         // ---------------------------------------------------------------
-		// Lecture du fichier GPS
+		// Lecture du file GPS
 		// ---------------------------------------------------------------
 		std::ifstream infile(mposFile);
 		std::string line = "";
@@ -482,13 +482,13 @@ cAppli_YannConvertRTKlib2Micmac::cAppli_YannConvertRTKlib2Micmac(int argc, char 
 
 
 // --------------------------------------------------------------------------------------
-// Fonction d'ajout des timestamps dans les images (champ exif Date/Time Original)
+// function d'ajout des timestamps in les images (champ exif Date/Time Original)
 // --------------------------------------------------------------------------------------
 // Inputs :
 //   - string: Pattern des images
-//   - string: Fichier contenant les timestamps
-//   - string: Format de fichier des timestamps (doit contenir N et T)
-//   - string: Date initiale pour la conversion secondes -> date absolue
+//   - string: file contenant les timestamps
+//   - string: Format de file des timestamps (doit contenir N and T)
+//   - string: Date initiale for la conversion secondes -> date absolue
 // --------------------------------------------------------------------------------------
 cAppli_YannSetTimestamps::cAppli_YannSetTimestamps(int argc, char ** argv){
 
@@ -538,7 +538,7 @@ cAppli_YannSetTimestamps::cAppli_YannSetTimestamps(int argc, char ** argv){
 
 
 	// ---------------------------------------------------------------
-	// Lecture du fichier de timestamps
+	// Lecture du file de timestamps
 	// ---------------------------------------------------------------
 	std::ifstream infile(mTimestamps);
 	std::string line = "";
@@ -554,7 +554,7 @@ cAppli_YannSetTimestamps::cAppli_YannSetTimestamps(int argc, char ** argv){
 		time = fields.at(time_position);
 		name = fields.at(name_position);
 
-		// Recherche dans les images
+		// Recherche in les images
 		bool found = false;
 
 		//"TestVincennes_1909121306_04_00829_0.tif"
@@ -565,18 +565,18 @@ cAppli_YannSetTimestamps::cAppli_YannSetTimestamps(int argc, char ** argv){
 		}
 
 		// -----------------------------------------------------------------------
-		// Impression de la date dans l'exif
+		// Impression de la date in l'exif
 		// -----------------------------------------------------------------------
 		if (found) {
 
 			// Modification de l'exif
 			std::string dateToPrint = "";
 
-			if (!EAMIsInit(&mDateIni)){ // Dates sous forme dd/mm/yyyy hh:mm:ss:msc
+			if (!EAMIsInit(&mDateIni)){ // Dates under forme dd/mm/yyyy hh:mm:ss:msc
 
 				dateToPrint = time;
 
-			}else{    // Date sous forme de secondes écoulées depuis mDateIni
+			}else{    // Date under forme de secondes écoulées depuis mDateIni
 
 				GPSTime start = str2GPSTime(mDateIni);
 
@@ -617,24 +617,24 @@ cAppli_YannSetTimestamps::cAppli_YannSetTimestamps(int argc, char ** argv){
 
 
 // --------------------------------------------------------------------------------------
-// Fonction principale d'exclusion des satellites à partir de masques de ciel
+// function principale d'exclusion des satellites à partir de masques de ciel
 // --------------------------------------------------------------------------------------
 // Inputs :
 //   - string: Pattern des images orientées par photogrammétrie
 //   - string: Répertoire d'orientation (orientation externe absolue)
-//   - string: Fichier rinex des observations GNSS (datées dans les exif des images)
-//   - string: Fichier(s) d'éphémérides GNSS rinex/sp3 (min 1 fichier)
-//   - string: Clé des images de masque de ciel dans MMLCD
-//   - string: Répertoire pour les images avec tracé des satellites (si besoin)
-//   - string: Fichier d'observation rinex de sortie (défaut excluded_sats.o)
+//   - string: file rinex des observations GNSS (datées in les exif des images)
+//   - string: file(s) d'éphémérides GNSS rinex/sp3 (min 1 file)
+//   - string: Clé des images de masque de ciel in MMLCD
+//   - string: Répertoire for les images with tracé des satellites (if besoin)
+//   - string: file d'observation rinex de sortie (défaut excluded_sats.o)
 // --------------------------------------------------------------------------------------
 // Outputs :
-//   - Un fichier rinex d'observations épurés des satellites non-visibles
-//   - Optionnel : les images d'entrée avec affichage des positions des satellites
+//   - Un file rinex d'observations épurés des satellites non-visibles
+//   - Optionnel : les images d'entrée with affichage des positions des satellites
 // --------------------------------------------------------------------------------------
-// Notes : la fonction nécessite que les images contiennent un exif Date/Time Original
-// éventuellement fixé avec la commande setTimetamps. Les champs de timestamps doivent
-// être dans le même système de temps que ceux des fichiers rinex d'obs et de nav.
+// Notes : la function nécessite que les images contiennent un exif Date/Time Original
+// éventuellement fixé with la commande setTimetamps. Les champs de timestamps doivent
+// être in le même système de temps que ceux des fichiers rinex d'obs and de nav.
 // --------------------------------------------------------------------------------------
 
 cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
@@ -679,7 +679,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 		TIME_TOLERANCE_IMCAPTURE_GPS = std::stod(mTolerance);
 	}
 
-	// Fichier auxiliaire
+	// file auxiliaire
 	std::ofstream aux;
 	bool aux_register = false;
 	if (EAMIsInit(&mAux)){
@@ -690,7 +690,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 	}
 
 	// ---------------------------------------------------------------
-	// Liste des satellites utilisables
+	// list des satellites utilisables
 	// ---------------------------------------------------------------
 	std::vector<std::string> SATS = Utils::getSupportedSatellites();
 
@@ -720,7 +720,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 	size_t N = mEASF.SetIm()->size();
 
 	// ---------------------------------------------------------------
-	// Dossier de sortie (optionnel)
+	// folder de sortie (optionnel)
 	// ---------------------------------------------------------------
 	if (EAMIsInit(&mPlotFolder)){
 		ELISE_fp::MkDir(mPlotFolder);
@@ -748,7 +748,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 	}
 
 	// ---------------------------------------------------------------
-	// Impression console pour confirmation des inputs
+	// Impression console for confirmation des inputs
 	// ---------------------------------------------------------------
 	printf ("Number of images:    %3d \n", (int)(IMAGES.size()));
 	printf ("Number of sky masks: %3d \n", (int)(SKY.size()));
@@ -766,7 +766,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 	std::cout << sep << std::endl;
 
 	// ---------------------------------------------------------------
-	// Ajout et retrait de satellites (optionnels)
+	// Ajout and retrait de satellites (optionnels)
 	// ---------------------------------------------------------------
 	std::vector<std::string> add_sats;
 	std::vector<std::string> rem_sats;
@@ -783,7 +783,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 	std::cout << std::endl;
 
 	// ---------------------------------------------------------------
-	// Chargement des fichiers d'obs. / nav. rinex et sp3
+	// Chargement des fichiers d'obs. / nav. rinex and sp3
 	// ---------------------------------------------------------------
 
 	// Observations GNSS
@@ -796,7 +796,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 	// Secondes intercalaires
 	int leap_seconds = obs.getLeapSeconds();
 
-	// Sous-échantillonnage
+	// under-échantillonnage
 	if (EAMIsInit(&mSlice)) {
 		obs.slice(std::stoi(mSlice));
 	}
@@ -843,7 +843,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 	cChSysCo * tfinv = cChSysCo::Alloc(code_inverse, "");
 
 	// ---------------------------------------------------------------
-	// Parcours des images et récupération des dates
+	// Parcours des images and récupération des dates
 	// ---------------------------------------------------------------
 	std::string exiv_cmd = "exiv2 -g Date";
 	for (unsigned i=0; i<N; i++){
@@ -856,7 +856,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 	}
 
 	// ---------------------------------------------------------------
-	// Préparation et récupération des centres
+	// Préparation and récupération des centres
 	// ---------------------------------------------------------------
 	std::vector<Pt3dr> centres2proj;
 	for (unsigned j=0; j<TIMESTAMPS.size(); j++){
@@ -951,7 +951,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 		signal_received = new_list;
 
 
-		// Pré-calcul éphémérides
+		// Pré-computation éphémérides
 		std::vector<ECEFCoords> SAT_POS;
 		for (unsigned k=0; k<signal_received.size(); k++){
 			std::string prn = signal_received.at(k);
@@ -1000,7 +1000,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 			}
 
 			// Conversion système véhicule
-			std::vector<int> sat_in_mask;  // [1=ciel, 0=bati et -1=inconnu]
+			std::vector<int> sat_in_mask;  // [1=ciel, 0=bati and -1=inconnu]
 			std::vector<Pt3dr> coords_projected = tfinv->Src2Cibl(coords2proj);
 			std::vector<Pt2dr> coords_on_image;
 
@@ -1036,16 +1036,16 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 					ECEFCoords sat_ecef(temp.x, temp.y, temp.z);
 					sat_ori.x -= offset_x; sat_ori.y -= offset_y;
 
-					// Test d'élévation et de visibilité image
+					// Test d'élévation and de visibilité image
 					if (camera_pos.elevationTo(sat_ecef) < 0) continue;
 					if (!aCam->PIsVisibleInImage(sat_ori)) continue;
 
 
-					// Projection dans l'image
+					// Projection in l'image
 					Pt2dr im_point = aCam->Ter2Capteur(sat_ori);
 					sat_vis_field ++;
 
-					// Test satellite dans le masque de ciel
+					// Test satellite in le masque de ciel
 					coords_on_image.push_back(im_point);
 					sat_in_mask.push_back((MASK_R[(int)im_point.y][(int)im_point.x] == 0)?0:1);
 
@@ -1055,7 +1055,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 						deleted_sats ++;
 					}
 
-					// Fichier auxiliaire
+					// file auxiliaire
 					if (aux_register){
 						aux << slot.getTimestamp() << " " << signal_received.at(k) << " " << IMAGES.at(j) << " ";
 						aux << Utils::formatNumber(coords_on_image.back().x,"%8.3f") << " ";
@@ -1080,17 +1080,17 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 					sat_ori.x -= offset_x; sat_ori.y -= offset_y;
 
 
-					// Test d'élévation et visibilité sur l'image
+					// Test d'élévation and visibilité on l'image
 					if (camera_pos.elevationTo(sat_ecef) < 0) continue;
 					if (!aCam->PIsVisibleInImage(sat_ori)) continue;
 
-					// Projection sur l'image
+					// Projection on l'image
 					Pt2dr im_point = aCam->Ter2Capteur(sat_ori);
 					coords_on_image.push_back(im_point);
 					sat_in_mask.push_back(-1);
 					sat_vis_field ++;
 
-					// Fichier auxiliaire
+					// file auxiliaire
 					if (aux_register){
 						aux << slot.getTimestamp() << " " << signal_received.at(k) << " " << IMAGES.at(j) << " ";
 						aux << Utils::formatNumber(coords_on_image.back().x,"%8.3f") << " ";
@@ -1191,7 +1191,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 	std::cout << "Number of processed epochs: " << avg_dt_error_cnt << " [" << Utils::formatNumber(percent, "%5.2f") << " %]" << std::endl;
 	std::cout << "Mean GNSS-camera synchronization error: " << Utils::formatNumber(avg_dt_error, "%6.3f") << " sec" << std::endl;
 
-	// Ecritude du fichier rinex de sortie
+	// Ecritude du file rinex de sortie
 	std::vector<std::string> split_name_rinex = Utils::tokenize(mRinexObs, ".");
 	std::string out_file_name = split_name_rinex.at(0) + "_sky_masked." + split_name_rinex.at(1);
 	if (EAMIsInit(&mOutRinex)){
@@ -1210,7 +1210,7 @@ cAppli_YannExcludeSats::cAppli_YannExcludeSats(int argc, char ** argv){
 // --------------------------------------------------------------------------------------
 // Script de détection de masque de ciel
 // Appel du code python de neural net (cf Imran Lokhat)
-// L'installeur ne fonctionne pour l'instant que sous Linux (problème avec appel cmd)
+// L'installeur ne fonctionne for l'instant que under Linux (problème with appel cmd)
 // --------------------------------------------------------------------------------------
 cAppli_YannSkyMask::cAppli_YannSkyMask(int argc, char ** argv){
 
@@ -1621,8 +1621,8 @@ cAppli_YannScript::cAppli_YannScript(int argc, char ** argv){
 
 
 // ----------------------------------------------------------------------------
-//  A chaque commande MicMac correspond une fonction ayant la signature du main
-//  Le lien se fait dans src/CBinaires/mm3d.cpp
+//  A chaque commande MicMac correspond une function ayant la signature du main
+//  Le lien se fait in src/CBinaires/mm3d.cpp
 // ----------------------------------------------------------------------------
 
 // (0) Conversion fichiers RTKlib

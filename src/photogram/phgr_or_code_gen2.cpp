@@ -146,7 +146,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "../../CodeGenere/photogram/cEqCoplanDRad5Id.cpp"   //
 
 
-       // Sans Distortion
+       // without Distortion
 #include "../../CodeGenere/photogram/cEqCoplanNoDistId.cpp"   // 
 #include "../../CodeGenere/photogram/cEqResiduIm1NoDistId.cpp"  // 
 #include "../../CodeGenere/photogram/cEqResiduIm2NoDistId.cpp" //

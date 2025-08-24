@@ -118,16 +118,16 @@ void cSwappablePairVPts::Swap_Create(const Swap_tArgCreate & anArg)
 }
 
 
-// NewOri.h:#define  TNbCaseP1  6  // Nombre de case sur lesquelle on discretise
-// Un certain  nombre de grandeur sont calcule en geometrie image avec des
-// densite, cette valeur fixe le nombre de cases
+// NewOri.h:#define  TNbCaseP1  6  // number de case on lesquelle on discretise
+// Un certain  number de grandeur sont compute en geometrie image with des
+// densite, cette value fixe le number de cases
 
-// Par efficacite (??) ceci est géré de manière linéaire, la fonction
-// ToIndex fait la corresponace entre ces indexes lineaire et les coordonnees images
+// Par efficacite (??) ceci est géré de manière linéaire, la function
+// ToIndex fait la corresponace between ces indexes lineaire and les coordinates images
 // initiale.
 
-// mNb => memorise le nombre de point par case
-// mDens est une densite, theoriquement dans [0,1], mais comme tout les tableaux sont entier, c'est 
+// mNb => memorise le number de point par case
+// mDens est une densite, theoriquement in [0,1], but comme tout les tableaux sont integer, c'est 
 // multiplie par TQuant
 
 
@@ -379,7 +379,7 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
 
       // std::cout << "initTriplet " << aNb << " " << aNb3 << " " << aNb33 << "\n";
 
-      // Pour qu'il y ait intersection
+      // for qu'il y ait intersection
       // Det(L C1C3 + C12,  R3U3, ,R2U) = 0
       std::vector<double> aVL13;
       std::vector<double> aVL23;
@@ -404,7 +404,7 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
 
       // Calul du centre
  
-      // Methode qui n'utilisent pas les points multiples, OK mais degeneree avec sommet alignes
+      // method qui n'utilisent pas les points multiples, OK but degeneree with sommet alignes
       //  C2  + L C3, U2 , U3 colineaire
      
 
@@ -434,8 +434,8 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
           Pt3dr aPInt12 = InterSeg(aC1,aC1+aU1,aC2,aC2+aU2,OkI);
           if (OkI)
           {
-              // La vrai C3 est a la fois sur la droite C1C3 et sur le rayon partant de l'intersection et porte
-              // par U3, on calcule
+              // La vrai C3 est a la fois on la droite C1C3 and on le rayon partant de l'intersection and porte
+              // par U3, on compute
               double p,q;
               CoordInterSeg(aC1,aC3,aPInt12,aPInt12+aU31,OkI,p,q);
               if (OkI)
@@ -463,7 +463,7 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
       mC3 = aC3I;
       mM3 =  NearestRotation((aR31.Mat() + aR31Bis.Mat())*0.5);
 
-      //  Cas ou In Ori est 
+      //  Cas or In Ori est 
       std::string & aInOri = mAppli->InOri();
       if (EAMIsInit(&aInOri))
       {
@@ -493,17 +493,17 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
       }
 
 
-     // Calcul gain et densite
+     // computation gain and densite
 
       int aGain1 = mAppli->GainBSurH( mAppli->CurS1(),aSom);
       int aGain2 = mAppli->GainBSurH( mAppli->CurS2(),aSom);
       int aGain = ElMin(aGain1,aGain2);
 
 
-      // Initialise en fonction des points triple de 1 et 2 et 3
-      // alors que NbGlob a ete initialise en fonction des points double
-      // !!!! [NB23]  Les points triples ne sont pas un sous ensemble des point 
-      // double  pt AB et pt BC  => triple ABC sans paire AC 
+      // Initialise en function des points triple de 1 and 2 and 3
+      // then que NbGlob a ete initialise en function des points double
+      // !!!! [NB23]  Les points triples ne sont pas un under ensemble des point 
+      // double  pt AB and pt BC  => triple ABC without paire AC 
       InitNb(aVP1);
       int aNbC = mAppli->NbCases();
       int * aNbGlob =  mAppli->CurS1()->attr().mNb;
@@ -514,7 +514,7 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
            // densite des 3 par rapport au 2
            double aDens = double(mNb[aK]) / double(ElMax(1,aNbGlob[aK]));
            aDens = ElMin(1.0,aDens); // voir NB23 , la densite peut etre > 1
-           aDens = (aDens * TAttenDens) / (aDens * TAttenDens +1) ; // ?? redondant avec prec
+           aDens = (aDens * TAttenDens) / (aDens * TAttenDens +1) ; // ?? redondant with prec
            mDens[aK] = round_ni( (TQuant * aDens * (TAttenDens+1)) / TAttenDens);
 
            mGain[aK] = mDens[aK] * TQuant * aGain;

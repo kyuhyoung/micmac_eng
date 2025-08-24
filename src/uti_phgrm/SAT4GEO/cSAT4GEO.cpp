@@ -114,16 +114,16 @@ cCommonAppliSat3D::cCommonAppliSat3D() :
 	*mArgMM1P
 			<< EAM(mZoom0,"Zoom0",true,"Image matching: Zoom Init (Def=64)")
 			<< EAM(mZoomF,"ZoomF",true,"Image matching: Zoom Final (Def=1)")
-//			<< EAM(mCMS,"CMS",true,"Image matching: Multi Scale Correl (Def=ByEpip)")
-//			<< EAM(mHasVeg,"HasVeg",true,"Image matching: Has vegetation, Def= false")
-//			<< EAM(mHasSBG,"HasSBG",true,"Image matching: Has Sky Background , Def= true")
+//			<< EAM(mCMS,"CMS",true,"image matching: Multi Scale Correl (Def=ByEpip)")
+//			<< EAM(mHasVeg,"HasVeg",true,"image matching: Has vegetation, Def= false")
+//			<< EAM(mHasSBG,"HasSBG",true,"image matching: Has Sky Background , Def= true")
 			<< EAM(mDoPly,"DoPly",true,"Image matching: Generate Ply")
 			<< EAM(mInc,"Inc",true,"Image matching: Sigma Pixel for coherence (Def=1.5)")
 			<< EAM(mRegul,"Regul",true,"Image matching: Regularisation factor (Def=0.2)")
 			<< EAM(mSzW,"SzW",true,"Image matching: matching window size (Def=3)")
-//			<< EAM(mDefCor,"DefCor",true,"Image matching: Def cor (Def=0.5)")
-//			<< EAM(mSzW0,"SzW0",true,"Image matching: Sz first Windows, def depend of NbS (1 MS, 2 no MS)")
-//			<< EAM(mCensusQ,"CensusQ",true,"Image matching: Use Census Quantitative")
+//			<< EAM(mDefCor,"DefCor",true,"image matching: Def cor (Def=0.5)")
+//			<< EAM(mSzW0,"SzW0",true,"image matching: Sz first Windows, def depend of NbS (1 MS, 2 no MS)")
+//			<< EAM(mCensusQ,"CensusQ",true,"image matching: Use Census Quantitative")
 			<< EAM(mMMVII,"MMVII",true,"Image matching: Use MMVII matching")
             << EAM(mMMVII_mode,"MMVII_mode",true,"Image matching: if MMVII==1, {MMV1,PSMNet,DeepPruner} Def=MMV1")
             << EAM(mMMVII_ModePad,"MMVII_ModePad",true,"Image matching: if MMVII==1, {NoPad PxPos PxNeg SzEq}")
@@ -675,8 +675,8 @@ cAppliMM1P::cAppliMM1P(int argc, char** argv)
             std::cout << "SUBCOM= " << iCmd << "\n";
     }
 
-  // ce serait plus propre si c'etait aussi une commande a part antiere, sinon on ne peut pas reproduire
-  // le traitement pas a pas pour isoler un bog
+  // ce serait plus propre if c'etait aussi une commande a part antiere, else on ne peut pas reproduire
+  // le traitement pas a pas for isoler un bog
     if (mCAS3D.mExe) {
     // create MMNuageLast.xml for deep-learning correlation
     if (mCAS3D.mMMVII && (mCAS3D.mMMVII_mode=="PSMNet"))

@@ -197,7 +197,7 @@ class cAppli_Ori_Txt2Xml_main
 
 
 
-         void AddArc(tSomVois*,tSomVois*,int aCoul,int aFlag);  // aFlag=-1 si unused
+         void AddArc(tSomVois*,tSomVois*,int aCoul,int aFlag);  // aFlag=-1 if unused
 
          void ParseFile();
          void TestRef();
@@ -1040,7 +1040,7 @@ void  cAppli_Ori_Txt2Xml_main::InitCamera(cTxtCam & aCam,Pt3dr  aC,Pt3dr  aWPK,P
        aCam.mC = aC;
     }
 
-    // Calcul de la rotation
+    // computation de la rotation
     if (mHasWPK)
     {
        // aCam.mOC->ConvOri().KnownConv().SetVal(eConvAngLPSDegre);

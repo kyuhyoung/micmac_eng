@@ -42,8 +42,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 #ifndef _ELISE_NUAGE_3D_MAILLE_  // general
 #define _ELISE_NUAGE_3D_MAILLE_
 
-// Classe d'interface, les classes "concretes" derivees sont definies dans
-// un ".cpp".  Pour creer un objet il faut passer
+// class d'interface, les classes "concretes" derivees sont definies in
+// un ".cpp".  for creer un object il faut passer
 // par les allocateurs static
 
 
@@ -141,15 +141,15 @@ class cRawNuage
 };
 
 
-// Ces parametres permettent de creer des meta donnees pour manipuler le
-// nuage a une resol differente de celle a laquelle il a ete cree sans
+// Ces parameters permettent de creer des meta donnees for manipuler le
+// nuage a une resol differente de celle a laquelle il a ete cree without
 // modifier les donnees maillees
 class cParamModifGeomMTDNuage
 {
      public :
         cParamModifGeomMTDNuage
         (
-            double aScale,  // Par ex= 2 si nuage cree a ss resol 2 et exploite a resol 2
+            double aScale,  // Par ex= 2 if nuage cree a ss resol 2 and exploite a resol 2
             Box2dr aBox,    // a la resolution d'exploitation
             bool   aDequant = false
         );
@@ -164,7 +164,7 @@ double DynProfInPixel(const cXML_ParamNuage3DMaille &);
 class cElNuage3DMaille : public cCapture3D
 {
      public :
-        // return 0 si pas de pb
+        // return 0 if pas de pb
         virtual double SeuilDistPbTopo() const;
 
         Pt2di    SzBasicCapt3D() const;
@@ -236,7 +236,7 @@ class cElNuage3DMaille : public cCapture3D
 
                  // NUAGE  =>  TERRAIN
 
-        // Si le nuage vient d'un appariement, a combien de pixel de
+        // if le nuage vient d'un appariement, a combien de pixel de
         // decalage est equivalent 1 offset de profondeur
         double DynProfInPixel() const;
 
@@ -260,14 +260,14 @@ class cElNuage3DMaille : public cCapture3D
          virtual double   ProfOfIndexInterpol(const Pt2dr  & aP)const ;
          virtual double   ProfOfIndexInterpolWithDef(const Pt2dr  & aP,double aDef)const =0 ;
 
-    // Si la profondeur n'est vraiment pas euclidienne (genre ZInv), la corrige
+    // if la profondeur n'est vraiment pas euclidienne (genre ZInv), la corrige
 
          virtual double  ProfEuclidOfIndex(const tIndex2D & aP) const ;
          virtual void    SetProfEuclidOfIndex(const tIndex2D & aP,double ) ;
 
 
-         // Renvoie en Z avec une dynamique telle que Dz de 1 corresponde a 1 Pixel,
-         // tape dans Im2D Gen
+         // Renvoie en Z with une dynamique telle que Dz de 1 corresponde a 1 Pixel,
+         // tape in Im2D Gen
          virtual double  ProfEnPixel(const tIndex2D & aP) const ;
          virtual double  ProfInterpEnPixel(const Pt2dr & aP) const ;
 
@@ -298,19 +298,19 @@ class cElNuage3DMaille : public cCapture3D
 
    //  Manipulation plus "elaboree"
 
-             // "Bascule" N2 dans la geometrie de this, par algo de ZBUfer
-// NewName pour retracer les appels....
+             // "Bascule" N2 in la geometrie de this, par algo de ZBUfer
+// NewName for retracer les appels....
         cElNuage3DMaille * BasculementNewName( const cElNuage3DMaille * N2,
                                         bool SupprTriInv,
                                         double aCoeffEtire = -1
                                       ) const;
         Im2D_U_INT1  ImEtirement();
-        // A ete modifier pour debut de dessin  en perspective, le premier
-        // cArgAuxBasc permet de memoriser le ZMAX (car ZBuf remet a 0) et le deuxieme
-        // permet de memoriser la deuxieme valeur pour eventuelle transparence
+        // A ete modifier for debut de dessin  en perspective, le premier
+        // cArgAuxBasc permet de memoriser le ZMAX (car ZBuf remet a 0) and le deuxieme
+        // permet de memoriser la deuxieme value for eventuelle transparence
 
-        // Nouvelle modif pour permettre de resize au + pres le resultat
-        // Si resize, se fait en renvoyant une nouvelle version
+        // Nouvelle modif for permettre de resize au + pres le result
+        // if resize, se fait en renvoyant une nouvelle version
 
         cElNuage3DMaille *   BasculeInThis
                (
@@ -343,12 +343,12 @@ class cElNuage3DMaille : public cCapture3D
 */
 
 
-        // A priori l'indexation est independante d'un espace geometrique sous jacent,
-        // cependant en general il y a une correlation forte entre les 2. Si c'est le
+        // A priori l'indexation est independante d'un espace geometrique under jacent,
+        // cependant en general il y a une correlation forte between les 2. if c'est le
         // cas, ces trois fonctions remplissent le role;
         //
-        // Typiquement les coordonnees plani seront l'espace image (ou terrain) du nuage
-        // et la transfo sera le clip-scale donne par l'orientation interne
+        // Typiquement les coordinates plani seront l'espace image (or terrain) du nuage
+        // and la transfo sera le clip-scale donne par l'orientation interne
         //
         virtual bool IndexIsPlani() const ;
         virtual Pt2dr  Index2Plani(const Pt2dr &) const ;
@@ -397,10 +397,10 @@ class cElNuage3DMaille : public cCapture3D
 
         // Partie commune
         //
-        //  Un ElCamera a deja la bonne interface pour definir la
-        //  geometrie d'acquisition du nuage. Si c'est un nuage en geometrie
-        // camera stenope c'est trivial. Si c'est un nuage en terrain, on
-        // le fera avec un camera de projection orthographique
+        //  Un ElCamera a deja la bonne interface for definir la
+        //  geometrie d'acquisition du nuage. if c'est un nuage en geometrie
+        // camera stenope c'est trivial. if c'est un nuage en terrain, on
+        // le fera with un camera de projection orthographique
 
         cElNuage3DMaille
         (
@@ -442,7 +442,7 @@ class cElNuage3DMaille : public cCapture3D
         const cXML_ParamNuage3DMaille&  Params() const;
 
 
-        // Juste pour fixer une fois pour toute les conventions
+        // Juste for fixer une fois for toute les conventions
         Fonc_Num   ReScaleAndClip(Fonc_Num aF,const Pt2dr & aP0,double aScale);
         const std::vector<cLayerNuage3DM *> &  Attrs() const;
 
@@ -559,8 +559,8 @@ class cElNuage3DMaille : public cCapture3D
         Im2D_U_INT1                  mImEtire;
 
 
-       // En general egale a mImDef, peut etre diff pour nuage en "peau de leopard"
-       // Utilise pour les fon de voisinage telle que Normale
+       // En general egale a mImDef, peut etre diff for nuage en "peau de leopard"
+       // Utilise for les fon de voisinage telle que Normale
 
         Im2D_Bits<1>                  mVoisImDef;
         TIm2DBits<1>                  mTVoisImDef;
@@ -592,16 +592,16 @@ typedef double tElZB;
 class cZBuffer
 {
     public :
-    // A Rajouter si necessaire, les Box de l'ancien ZBuffer quand
-    // la zone du MNT ne couvre qu'une partie du resultat (pour savoir
+    // A Rajouter if necessaire, les Box de l'ancien ZBuffer when
+    // la zone du MNT ne couvre qu'une partie du result (for savoir
     // rapidement quelles zones ne pas explorer)
 
         virtual ~cZBuffer();
 
         // OrigineIn, StepIn, ...  : parametrise la discretisation du terrain
         // Ne sert qu'a definir la grille, en aucune maniere une espace;
-        // on peut rajouter a OrigineIn (ou OrigineOut) n'importe quel multiple
-        // de StepIn  (vs StepOut) ca NE DEVRAIT RIEN CHANGER (a verifier quand meme
+        // on peut rajouter a OrigineIn (or OrigineOut) n'importe quel multiple
+        // de StepIn  (vs StepOut) ca NE DEVRAIT RIEN CHANGER (a verifier when meme
         // car commentaire a posteriori)
 
         cZBuffer
@@ -612,7 +612,7 @@ class cZBuffer
             Pt2dr StepOut
         );
 
-        // Fait le basculement "standard" ou l'interpolateur est
+        // Fait le basculement "standard" or l'interpolateur est
         // une triangulation
         Im2D_REAL4 Basculer
                    (
@@ -634,7 +634,7 @@ class cZBuffer
         Im2D_REAL4 ZCaches(Pt2di aP0In,Pt2di aP1In,float aDef);
 
         // Initialise d'abord un basculement "standard", ensuite utilise
-        // un schema iteratif, pour calculer le basculement d'un
+        // un schema iteratif, for compute le basculement d'un
         // interpolateur specifie par ZInterpofXY
         Im2D_REAL4 BasculerAndInterpoleInverse
                    (
@@ -646,24 +646,24 @@ class cZBuffer
                    );
 
         Im2D_Bits<1> ImOkTer() const;
-        // Image des triangles inverses. Au depart ces triangles ne faisaient pas partie
+        // image des triangles inverses. Au depart ces triangles ne faisaient pas partie
         // du ZBUF. Certaines applis en ont besoin, d'autres sont perturbees. Au final
-        // on memorise l'info, on la met a dispo et chacun se dem...
+        // on memorise l'info, on la met a dispo and chacun se dem...
         Im2D_Bits<1> ImTriInv() const;
         bool OkTer(const Pt2di &) const;
 
-       // Utilise le "MNT" pour trouver le Z, si il y a  un buff,
+       // Utilise le "MNT" for trouver le Z, if il y a  un buff,
        // fait une simple lecture
         Pt3dr ProjDisc(const Pt2di  &,double * aPtrValZofXY=0) const;
         Pt3dr ProjReelle(const Pt2dr  &,bool &OK) const;
 
 
-        // Taille de l'espace d'arrivee apres la p
+        // Taille de l'espace d'arrivee after la p
         Pt2di P0_Out() const;
         Pt2di SzOut() const;
 
-        // Projection discrete au sens ou elle tient compte des pas,
-        // mais tout peut etre reel
+        // Projection discrete au sens or elle tient compte des pas,
+        // but tout peut etre real
         Pt3dr ProjDisc(const Pt3dr &) const;
         void SetWithBufXYZ(bool);
 
@@ -692,16 +692,16 @@ class cZBuffer
         std::vector<Im2DGen *>  mImAttrIn;
         std::vector<Im2DGen *>  mImAttrOut;
 
-        // Projection native, sans tenir compte des pas
+        // Projection native, without tenir compte des pas
         virtual Pt3dr ProjTerrain(const Pt3dr &) const = 0;
         virtual double ZofXY(const Pt2di & aP)   const = 0; // En general le MNT
         // SelectP : espace terrain
         virtual bool SelectP(const Pt2di & aP)   const  ; // def return true
-        // SelectPBasc : espace "image", c.a.d apres basculement
+        // SelectPBasc : espace "image", c.a.d after basculement
         virtual bool SelectPBascul(const Pt2dr & aP)   const  ; // def return true
 
-                 // Par defaut erreur fatale pour ces 2 la, qui ne sont
-                 // utilises que pour raffiner
+                 // Par defaut error fatale for ces 2 la, qui ne sont
+                 // utilises que for raffiner
         virtual double ZInterpofXY(const Pt2dr & aP,bool & OK) const;
         virtual  Pt3dr InvProjTerrain(const Pt3dr &) const;
 
@@ -742,7 +742,7 @@ class cZBuffer
 
         double       mEpsIntInv;
 
-        //    (A B)  est l'inverse de la matrice qui envoie un pixel (1,0) (0,1) Z=Moyen vers l'espace d'arrivee
+        //    (A B)  est l'inverse de la matrix qui envoie un pixel (1,0) (0,1) Z=Moyen vers l'espace d'arrivee
         //    (C D)
         TIm2D<REAL8,REAL8>   mTImDef_00;
         TIm2D<REAL8,REAL8>   mTImDef_10;
@@ -820,7 +820,7 @@ class cMasqBin3D
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -836,17 +836,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

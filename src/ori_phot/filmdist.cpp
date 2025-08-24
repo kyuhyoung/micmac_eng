@@ -50,7 +50,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 void FDSupposedWidth ( 	double RealMarks[16], 
 						double *Larg, double *Haut )
 {
-/* si on a perdu le certif de calibration, on peut prendre la largeur moyenne
+/* if on a perdu le certif de calibration, on peut prendre la largeur moyenne
    de la chambre arrondie */
 double dx, dy ;
 double l1, l2, l3, l4 ;
@@ -143,7 +143,7 @@ for ( ii = 0 ; ii < 8 ; ii++ )
 void FDBilinearTransform ( 	double teta, double *XY1, double *XY2, int NPt,
 							double PolyCoefs[8] )
 {
-/* Calcule la transformation ax+by+cxy+d qui transforme les XY1 en XY2 */
+/* compute la transformation ax+by+cxy+d qui transforme les XY1 en XY2 */
 double xy ;
 double sx, sy, sxy, sx2, sy2, sx2y, sxy2, sx2y2 ;
 double sxz, syz , sxyz, sz ;
@@ -185,7 +185,7 @@ sx2y = sx2y / (double) NPt ;
 sxy2 = sxy2 / (double) NPt ;
 sx2y2 = sx2y2 / (double) NPt ;
 
-/* calcul des transfos X et Y */
+/* computation des transfos X and Y */
 coefs[0] = &(PolyCoefs[0]) ;
 coefs[1] = &(PolyCoefs[4]) ;
 for ( coord = 0 ; coord < 2 ; coord++ )
@@ -266,7 +266,7 @@ void FDTransformPoint ( double inXY[2], double teta, double Coefs[8], double out
 {
 double XY0[2], XY1[2] ;
 double cc, ss ;
-/* Pour memoire, histoire de ne pas se planter dans l'utilisation des polynomes */
+/* for memoire, histoire de ne pas se planter in l'utilisation des polynomes */
 cc = cos(teta) ;
 ss = sin(teta) ;
 XY0[0] =  cc * inXY[0] + ss * inXY[1] ;
@@ -289,12 +289,12 @@ int ii ;
 fp = ElFopen ( FileName, "r" ) ;
 if ( fp != 0 )
 	{
-	VoidFscanf ( fp, "%s", ligne ) ;	/* Commentaires */
+	VoidFscanf ( fp, "%s", line ) ;	/* Commentaires */
 	for ( ii = 0 ; ii < 16 ; ii = ii+2 )
 		{
 		VoidFscanf ( fp, "%lf%lf", &(IdealMarks[ii]), &(IdealMarks[ii+1]) ) ;
 		}
-	VoidFscanf ( fp, "%s", ligne ) ;	/* Commentaires */
+	VoidFscanf ( fp, "%s", line ) ;	/* Commentaires */
 	for ( ii = 0 ; ii < 16 ; ii = ii+2 )
 		{
 		VoidFscanf ( fp, "%lf%lf", &(RealMarks[ii]), &(RealMarks[ii+1]) ) ;
@@ -314,7 +314,7 @@ int ii ;
 fp = ElFopen ( FileName, "w" ) ;
 if ( fp != 0 )
 	{
-	fprintf ( fp, "%s\n", " //Marques-a-utiliser-pour-la-mise-en-place-(en-pixels)" ) ;	/* Commentaires */
+	fprintf ( fp, "%s\n", " //Marques-a-utiliser-for-la-mise-en-place-(en-pixels)" ) ;	/* Commentaires */
 	for ( ii = 0 ; ii < 16 ; ii = ii+2 )
 		{
 /* MPD-MODIF */

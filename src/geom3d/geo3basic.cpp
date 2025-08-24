@@ -121,24 +121,24 @@ void   ElSeg3D::AbscissesPseudoInter
     // (A+anAbsc1*u+anAbsc2*v)
 
 
-     // On calcule les terme quadratique  en 
+     // On compute les terme quadratique  en 
      REAL m11 = square_euclid(u);
      REAL  m12 = scal(u,v);
      REAL m22 = square_euclid(v);
 
-     // Et on inverse dans la foulee
+     // and on inverse in la foulee
      REAL det = m11 * m22 - m12*m12;
      m11 /= det;
      m22 /= det;
      ElSwap(m11,m22);
      m12 /= -det;
 
-     // on calcule les termes lineaires
+     // on compute les termes lineaires
 
      REAL l1 = - scal(A,u);
      REAL l2 = - scal(A,v);
 
-     // On multiplie les termes lineaire par la matrice invers
+     // On multiplie les termes lineaire par la matrix invers
      // des termes quadratiques
 
     anAbsc1  = m11 * l1 + m12 * l2;
@@ -318,7 +318,7 @@ cElPlan3D RobustePlan3D
          }
     }
     
-    double aDistMin=1e-10; // Juste anti plantage au cas ou seulement 3 pt
+    double aDistMin=1e-10; // Juste anti plantage au cas or seulement 3 pt
     double aDistMoy = ElMax(aDistMin,aBestDist);
     for (int aTime=0  ; aTime < aNbStepLin ; aTime++)
     {

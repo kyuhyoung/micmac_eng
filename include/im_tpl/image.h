@@ -270,7 +270,7 @@ template  <class Type,class Type_Base> class  TIm2D : public GTIm2D
           {
                 return getr(aPt,aDef,true);
           }
-/*   NON TESTEES , A Bencher avant usage
+/*   NON TESTEES , A Bencher before usage
 
 	  inline REAL DerX(Pt2dr aPt)
           {
@@ -361,8 +361,8 @@ template  <class Type,class Type_Base> class  TIm2D : public GTIm2D
 
 
 
-          // oset (et non set) car (bug STL ?) ce fait un clache avec
-          // les set de la STL (internal compiler error sur certaine
+          // oset (and non set) car (bug STL ?) ce fait un clache with
+          // les set de la STL (internal compiler error on certaine
           // version g++)
 	  inline void  oset(const Pt2di & p ,Type_Base val)
           {
@@ -762,7 +762,7 @@ template <class Type,class Type_Base,class PFixed>
      return getb2(im,pt) / (REAL) PFixed::Q2;
 }
 
-// Calcul rapide mais approches (nombre fixed sur 8 bits)
+// computation rapide but approches (number fixed on 8 bits)
 template <class Type,class TypeBase> REAL FixedSomSegDr(TIm2D<Type,TypeBase>& Tim,Pt2dr p1,Pt2dr p2,INT NBPts,REAL DefOut);
 
 

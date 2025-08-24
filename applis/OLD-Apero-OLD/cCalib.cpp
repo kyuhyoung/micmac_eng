@@ -329,7 +329,7 @@ void cCalibCam::SetContrainte(const cContraintesCamerasInc & aCCI)
 	        mPIF.SetFocFree(true);
 	    break;
 
-      //  PARAMETRES AFOCAUX
+      //  parameters AFOCAUX
             case eLiberte_AFocal0 :
                  mPIF.SetAF1Free(true);
             break;

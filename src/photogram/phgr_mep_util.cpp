@@ -400,17 +400,17 @@ void InitPackME
    }
 }
 
-//  Formule exacte et programmation simple et claire pour bench, c'est l'angle
+//  Formule exacte and programmation simple and claire for bench, c'est l'angle
 
 // tr + R * M  , tR * (M-tr)
 
-  //   Mesure d'erreur des intersections de faisceaux, "nouvelle" normalisation : c'est la  moyenne des distance de reproj en pixel
-  //  C2 => C1 pour tous
+  //   Mesure d'error des intersections de faisceaux, "nouvelle" normalisation : c'est la  moyenne des distance de reproj en pixel
+  //  C2 => C1 for tous
   //
   //    ProjCostMEP         => reprojection en pixel
-  //    DistDroiteCostMEP   => calcul des intersectio et angles en 3D
-  //    PVCostMEP           => calcul par la formule du produit vectoriel
-  //    LinearCostMEP       => calcul par le determinant, la moins precise mais la plus rapide
+  //    DistDroiteCostMEP   => computation des intersectio and angles en 3D
+  //    PVCostMEP           => computation par la formule du produit vectoriel
+  //    LinearCostMEP       => computation par le determinant, la moins precise but la plus rapide
 
 double ProjCostMEP(const ElRotation3D & aR2to1 ,const Pt2dr & aP1,const Pt2dr & aP2,double aTetaMax)
 {
@@ -502,7 +502,7 @@ double  LinearCostMEP(const ElRotation3D & aR2to1,const Pt2dr & aP1,const Pt2dr 
 }
 
    // =====================================
-    // Fonction sur une pack hom
+    // function on une pack hom
     // =====================================
 
 /*

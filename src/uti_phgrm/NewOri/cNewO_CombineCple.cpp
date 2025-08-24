@@ -40,7 +40,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "NewOri.h"
 
 
-/* Portion de code qui n'est plus utilisee actuellement, correspondait a des tentative pour  selectionner des points ...*/
+/* Portion de code qui n'est plus utilisee actuellement, correspondait a des tentative for  selectionner des points ...*/
 
 class cCdtCombTiep
 {
@@ -291,7 +291,7 @@ cNewO_CombineCple::cNewO_CombineCple(const  cStructMergeTieP< cFixedSizeMergeTie
     mW           (0)
 {
 
-    // REDONDANT AVEC FONCTION GLOBALES FAITE APRES ....  PackReduit
+    // REDONDANT with function GLOBALES FAITE after ....  PackReduit
 
     /******************************************************/
     /*                                                    */
@@ -300,7 +300,7 @@ cNewO_CombineCple::cNewO_CombineCple(const  cStructMergeTieP< cFixedSizeMergeTie
     /******************************************************/
 
     //------------------------------------------------------------------------
-    // A- 1- Preselrection purement aleatoire d'un nombre raisonnable depoints
+    // A- 1- Preselrection purement aleatoire d'un number raisonnable depoints
     //------------------------------------------------------------------------
 
     const std::list<tMerge *> & aLM  = aMap.ListMerged();
@@ -339,14 +339,14 @@ cNewO_CombineCple::cNewO_CombineCple(const  cStructMergeTieP< cFixedSizeMergeTie
     }
 
     //------------------------------------------------------------------------
-    // A-2   Calcul d'une fonction de deponderation  
+    // A-2   computation d'une function de deponderation  
     //------------------------------------------------------------------------
 
     for (int aKS1 = 0 ; aKS1 <aNbSomTot ; aKS1++)
     {
         for (int aKS2 = aKS1 ; aKS2 <aNbSomTot ; aKS2++)
         {
-           // sqrt pour attenuer la ponderation
+           // sqrt for attenuer la ponderation
            double aDist = sqrt(dist48( mVAllCdt[aKS1].mP1-mVAllCdt[aKS2].mP1) / 2.0);
 // aDist=1;
            // double aDist = (dist48( mVAllCdt[aKS1].mP1-mVAllCdt[aKS2].mP1) / 2.0);
@@ -369,7 +369,7 @@ cNewO_CombineCple::cNewO_CombineCple(const  cStructMergeTieP< cFixedSizeMergeTie
     int aNbSomSel = ElMin(aNbSomTot,NbTieP);
 
     //------------------------------------------------------------------------
-    // A-3  Calcul de aNbSomSel points biens repartis
+    // A-3  computation de aNbSomSel points biens repartis
     //------------------------------------------------------------------------
 
     ElTimer aChrono;
@@ -407,12 +407,12 @@ cNewO_CombineCple::cNewO_CombineCple(const  cStructMergeTieP< cFixedSizeMergeTie
 
     /******************************************************/
     /*                                                    */
-    /*  B- Calcul des arcs                                */
+    /*  B- computation des arcs                                */
     /*                                                    */
     /******************************************************/
  
 
-    // B-1  Au max le nombre d'arc  possible
+    // B-1  Au max le number d'arc  possible
     int aNbA = NbCple;
     while (aNbA >  ((aNbSomSel * (aNbSomSel-1)) /2)) aNbA--;
     
@@ -429,7 +429,7 @@ cNewO_CombineCple::cNewO_CombineCple(const  cStructMergeTieP< cFixedSizeMergeTie
     { 
         // Tous les sommets sont equi repartis, sauf a la fin on choisit a hasard
         bool aSelK = true;
-        if ( (aCptAMaj/aNbSomSel)== (aNbIter-1))  // Si derniere iter, test special
+        if ( (aCptAMaj/aNbSomSel)== (aNbIter-1))  // if derniere iter, test special
         {
            aSelK = aSelec.GetNext();
         }
@@ -449,7 +449,7 @@ cNewO_CombineCple::cNewO_CombineCple(const  cStructMergeTieP< cFixedSizeMergeTie
                     Pt2dr aV =  (mVCdtSel[aKP2]->mP1- mVCdtSel[aKP1]->mP1) / aDir;
                     Pt2dr aU = vunit(aV);
                     
-               // Favorise les llongs arc et homogeneise les directions
+               // Favorise les llongs arc and homogeneise les directions
                     double aSc = NRrandom3() * euclid(aV) * (1/(1+ElSquare(5.0*aU.y)));
                     if ((aSc>aBestSc) && (aKP2!=aKP1))
                     {

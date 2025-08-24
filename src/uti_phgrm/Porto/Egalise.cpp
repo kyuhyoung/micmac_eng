@@ -195,12 +195,12 @@ void cAppli_Ortho::ComputeMesureEgale()
 
 void cAppli_Ortho::RemplitOneStrEgal()
 {
-  //  Pour la boite courante chargee mCurBoxOut, on dalle avec une dalle de
-  //  taille aPer .  On tire au hasard un point dans  la dalle (aP0Glob
-  //  qui devient aP0 dans le systeme charge en memoire)
-  //  L'ordre dans lesquel est passe les image, est tire aleatoirement,
+  //  for la boite courante chargee mCurBoxOut, on dalle with une dalle de
+  //  taille aPer .  On tire au hasard un point in  la dalle (aP0Glob
+  //  qui devient aP0 in le system charge en memoire)
+  //  L'ordre in lesquel est passe les image, est tire aleatoirement,
   //  cela  permettra d'ecrire les equations d'observation par couple successif
-  //  sans biaiser 
+  //  without biaiser 
 
 if (mCO.TestDiff().Val())
 {

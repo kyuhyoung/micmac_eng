@@ -89,7 +89,7 @@ analytique calcule soit :
 
  1  Pt2dr aQ = mGeom2.CorrigeDist1(aP);   // Distorsion images 1
  2  aQ = CorrecDirecte(aQ);               // Modele complementaire (Hom+ ? Polynome)
- 3  aQ = mGeom2.InvCorrDist2(aQ);         // Homographie de base + Distosion Image 2
+ 3  aQ = mGeom2.InvCorrDist2(aQ);         // Homographie de base + Distosion image 2
 
 
 
@@ -271,7 +271,7 @@ void cMatrCorresp::Normalize
 
     bool isNuage3D = (aModele.TypeModele() == eTMA_Nuage3D);
 
-    // A voir, sans doute un peu severe pour eTMA_Nuage3D
+    // A voir, without doute un peu severe for eTMA_Nuage3D
     if (isNuage3D)
     {
          mImZ = Im2D_REAL4(mSz.x,mSz.y,0.0);
@@ -432,8 +432,8 @@ class cMA_AffineOrient
          const ElPackHomologue & PackHom() const;
          Pt3dr  CalcPtMoy(CamStenope &,CamStenope &);
 
-      // Calcul une image de px tranverse "ideale", c.a.d celle obenue
-      // si la realite etait l'ori 
+      // computation une image de px tranverse "ideale", c.a.d celle obenue
+      // if la realite etait l'ori 
          void MakeImagePxRef();
 
 
@@ -795,7 +795,7 @@ cMA_AffineOrient::cMA_AffineOrient
 	   && (mOC1!=0) && (mOC2!=0),
 	   "Incoherence in  XML export for cMA_AffineOrient"
        );
-       // Les points de verifs, si ils existent n'ont pas de raison d'etre transposables
+       // Les points de verifs, if ils existent n'ont pas de raison d'etre transposables
        mOC1->Verif().SetNoInit();
        mOC2->Verif().SetNoInit();
 
@@ -1062,7 +1062,7 @@ void cModeleAnalytiqueComp::SolveHomographie(const ElPackHomologue &  aPackHom)
    } 
    MakeInverseModele();
 
-   // Verification de la correction du calcul  de l'inverse
+   // Verification de la correction du computation  de l'inverse
     if (0)
    {
       int aNb=10;
@@ -1555,7 +1555,7 @@ cElRegex_Ptr & cModeleAnalytiqueComp::AutomExport()
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1571,17 +1571,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

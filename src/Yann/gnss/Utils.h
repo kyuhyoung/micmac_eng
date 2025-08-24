@@ -53,7 +53,7 @@
 
 
 // ---------------------------------------------------------------
-// Classe contenant les fonctions utilitaires
+// class contenant les fonctions utilitaires
 // - Constantes physiques
 // - Conversions géodésiques
 // - Systèmes de temps
@@ -64,7 +64,7 @@ class Utils {
 
 	public:
 
-		constexpr static double C = 2.99792458e8;                  // Vitesse de la lumière dans le vide (m/s)
+		constexpr static double C = 2.99792458e8;                  // Vitesse de la lumière in le vide (m/s)
 		constexpr static double Mue = 3.986005e14;                 // Constante fondamentale GMt (m^3/s^2)
 		constexpr static double dOMEGAe = 7.2921151467e-5;         // Vitesse de rotation de la Terre (rad/s)
 		constexpr static double Re = 6378137.0;				       // Demi-grand axe de la Terre (m)

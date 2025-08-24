@@ -250,7 +250,7 @@ cAppliConvertToNewFormatHom::cAppliConvertToNewFormatHom(int argc,char ** argv) 
    }
 
    mVNM = cVirtInterf_NewO_NameManager::StdAlloc(mSH,mEASF.mDir,"",true);
-   // Conserve les numeros initiaux des images ; Si on a fait NO_AllOri2Im avec GenOri=false => les ori sont default
+   // Conserve les numeros initiaux des images ; if on a fait NO_AllOri2Im with GenOri=false => les ori sont default
    const std::list<tMergeRat *> &  aLMR = CreatePMul  (mVNM,mFilesIm,!mDoNewOri);
    std::cout << "DONE PMUL " << aLMR.size() << " \n";
 
@@ -818,7 +818,7 @@ std::vector<Pt3d<double> > cSetPMul1ConfigTPM::IntersectBundle(std::map<int,CamS
     std::vector<CamStenope*> aVCam;
     std::vector<int> aVIdIm;
 
-    // loop on mVIdIm and determine if the Camera is provided in the Map of Cam
+    // loop on mVIdIm and determine if the camera is provided in the Map of Cam
     for (auto & IdIm: mVIdIm){
        //bool found (0); ER removed warnning
 
@@ -852,7 +852,7 @@ std::vector<Pt3d<double> > cSetPMul1ConfigTPM::IntersectBundle(std::map<int,CamS
     std::vector<int> aVIdIm;
     if (aVResid.size()>0) aVResid.clear();
 
-    // loop on mVIdIm and determine if the Camera is provided in the Map of Cam
+    // loop on mVIdIm and determine if the camera is provided in the Map of Cam
     for (auto & IdIm: mVIdIm){
         //bool found (0); ER removed warning 
 
@@ -985,7 +985,7 @@ void cGetionStdPackHomol::FillPMulConfigToHomolPack(cSetPMul1ConfigTPM * aPMConf
     {
         for (uint aKIm1=0; aKIm1<aVImId.size()-1; aKIm1++)
         {
-            // pour chaque couple de point, remplir le pack
+            // for chaque couple de point, remplir le pack
             int aImId1 = aVImId[aKIm1];
             Pt2dr aPt1 = aPMConfig->GetPtByImgId(aKPt, aImId1);
             for (uint aKIm2=aKIm1+1; aKIm2<aVImId.size(); aKIm2++)

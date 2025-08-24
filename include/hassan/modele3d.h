@@ -81,12 +81,12 @@ class Arete {
 
   ADRESSE num_face;  
 	
-  BOOLEAN fictive;						// signale si l'arete est reelle ou construction mentale
-  BOOLEAN contour;						// signale si l'arete est de contour
-  BOOLEAN nouvelle;						// signale si l'arete est nouvelle	
-  BOOLEAN visible;						// signale si l'arete est visible en mode filaire
+  BOOLEAN fictive;						// signale if l'arete est reelle or construction mentale
+  BOOLEAN contour;						// signale if l'arete est de contour
+  BOOLEAN nouvelle;						// signale if l'arete est nouvelle	
+  BOOLEAN visible;						// signale if l'arete est visible en mode filaire
   
-  TTableau1D <ADRESSE> num_sommets;	// n° des sommets de l'arete
+  TTableau1D <ADRESSE> num_sommets;	// n des sommets de l'arete
 	
   Arete() : num_sommets(2) {
     nouvelle = FALSE;
@@ -119,9 +119,9 @@ class Triangle {
 
  public:
 	
-  ADRESSE num_triangle;   			// n° general du triangle qui permet d'indexer la table d'appartenance aux faces et objets
+  ADRESSE num_triangle;   			// n general du triangle qui permet d'indexer la table d'appartenance aux faces and objets
 
-  TTableau1D <ADRESSE> num_sommets; 	// n° du sommet dans la liste de sommets interne a la face
+  TTableau1D <ADRESSE> num_sommets; 	// n du sommet in la list de sommets interne a la face
 
   Triangle() : num_sommets(3) {
     num_triangle = -1;
@@ -169,15 +169,15 @@ class Face {
 
   ADRESSE num_face;  
   
-  // a mettre dans infoFaces
+  // a mettre in infoFaces
   INT type_face;			// type de face
   INT matiere_face;  		// matiere de face
   INT code_face;			// code de face
   
-  // a mettre dans normales face
-  BOOLEAN existe_norm;	// boolen qui indique si la surface est orientee
-  BOOLEAN filtrage_norm;	// boolen qui indique si la face doit etre filtree avant affichage
-  BOOLEAN interpole_norm;	// boolen qui indique si la normale doit etre interpolee entre les normales aux sommets
+  // a mettre in normales face
+  BOOLEAN existe_norm;	// boolen qui indique if la surface est orientee
+  BOOLEAN filtrage_norm;	// boolen qui indique if la face doit etre filtree before affichage
+  BOOLEAN interpole_norm;	// boolen qui indique if la normale doit etre interpolee between les normales aux sommets
   TPoint3D < float > vect_norm;
   TPileBase < TPoint3D <float> > *vect_norm_sommet; // normales aux sommets de la face
   
@@ -221,8 +221,8 @@ class Sommet3D {
   /*
   friend ostream &operator <<(ostream &theStream,Sommet3D const &theSommet) {
     theStream << "xyz=" << theSommet.xyz << endl;
-    //		theStream << "Nb liens avec face=" << (theSommet->lien_faces).iGetTaille() << endl;
-    //		theStream << "liens avec face=" << theSommet->lien_faces << endl;
+    //		theStream << "Nb liens with face=" << (theSommet->lien_faces).iGetTaille() << endl;
+    //		theStream << "liens with face=" << theSommet->lien_faces << endl;
     return(theStream);
     }*/
   
@@ -300,20 +300,20 @@ class Objet3D {
 
  public:
 	
-  INT num_objet;      	 	  // numero d'identification de l'objet
-  INT num_sous_objet;			// numero d'identification de sous-objet
+  INT num_objet;      	 	  // numero d'identification de l'object
+  INT num_sous_objet;			// numero d'identification de under-object
   INT num_ilot_objet;			// numero d'identification de l'ilot
-  INT existence;				// etat physique-semantique de l'objet
+  INT existence;				// etat physique-semantique de l'object
   INT num_groupe;				
   INT type_objet;				
   INT classe_objet;			
   BOOLEAN is_facette;
   BOOLEAN is_graphe;	
 
-  Box3D box;					 		// boite englobante de l'objet
-  TPileBase <ADRESSE> *num_sommets;	// liste d'adresses de sommets
-  TPileBase <Arete> *arete;   		// liste d'aretes de l'objet
-  TPileBase <Face> *face;	 			// liste de faces de l'objet
+  Box3D box;					 		// boite englobante de l'object
+  TPileBase <ADRESSE> *num_sommets;	// list d'adresses de sommets
+  TPileBase <Arete> *arete;   		// list d'aretes de l'object
+  TPileBase <Face> *face;	 			// list de faces de l'object
 
   /*
   friend ostream &operator <<(ostream &theStream,Objet3D const &theObjet) {
@@ -375,7 +375,7 @@ class Modele3D {
   }
 
   // static Modele3D *Lit(P_CHAR nom,P_CHAR image,int minPoly=0 ,int maxPoly=-1);
-  /** valeurs DX_TRAPU_LAMBERT et DY_TRAPU_LAMBERT par defaut sur Amiens */
+  /** valeurs DX_TRAPU_LAMBERT and DY_TRAPU_LAMBERT par defaut on Amiens */
 
   static Modele3D *Lit(P_CHAR nom,P_CHAR nomOut, const double DX_TRAPU_LAMBERT=590000.0, const double DY_TRAPU_LAMBERT=240000.0, int minPoly=0, int maxPoly=-1);
 		

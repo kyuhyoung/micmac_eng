@@ -127,7 +127,7 @@ EpipolaireCoordinate::EpipolaireCoordinate
 
 EpipolaireCoordinate::~EpipolaireCoordinate()
 {
-   // Pb avec les copie sur mGridCor
+   // Pb with les copie on mGridCor
    // delete mGridCor;
 }
 
@@ -779,7 +779,7 @@ CpleEpipolaireCoord  * CpleEpipolaireCoord::PolynomialFromHomologue
    Polynome2dReal aPol1(aDegre,aStat.RMax1());
    Polynome2dReal aPol2(aDegre,aStat.RMax2());
 
-   // Sur Pol1 on ne retient pas les term en Y^k qui sont la fonction correspondant a X=0
+   // on Pol1 on ne retient pas les term en Y^k qui sont la function correspondant a X=0
    INT aNbInc =0;
    for (INT k=0; k<aPol1.NbMonome() ; k++)
    {

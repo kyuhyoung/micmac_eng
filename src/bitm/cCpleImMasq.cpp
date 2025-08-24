@@ -114,7 +114,7 @@ if ((aY%100)==0) cout << aY << "\n";
            if (aTMasqDil.get(aPInI,0)==0)
            {
                aTMasqOut.oset(aPOut,0);
-               // On donne quand meme une valeur
+               // On donne when meme une value
                aDout[aY][aX] = (typename TOut::tElem) aTImIn.getprojR(aPInR);
            }
            else

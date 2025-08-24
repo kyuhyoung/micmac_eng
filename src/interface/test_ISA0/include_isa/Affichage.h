@@ -27,7 +27,7 @@ class Affichage
 
 
 template <class DataIt> void Affichage::AffichePointsPaire(DataIt itBegin, DataIt itEnd, int img, int img2, string result1, string result2, bool segment) {
-//affiche les points retenus pour la paire d'image sur les photos
+//affiche les points retenus for la paire d'image on les photos
 	if (max(img,img2)-img0>signed((*lstImg).size())) return;
 	INT max_val;
 	INT mult;

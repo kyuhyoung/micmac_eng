@@ -200,7 +200,7 @@ cHypDetectCible::cHypDetectCible
    mDistShapeInit  (-1),
    mPosFromPointe  (false)
 {
-   // la valeur initiale de aDirU/aDirV devient inutile, calculees avec les
+   // la value initiale de aDirU/aDirV devient inutile, calculees with les
    // normale
    aDirU = vunit(OneDirOrtho(aCible.CC()->Normale()));
    aDirV = vunit(aCible.CC()->Normale() ^ aDirU);

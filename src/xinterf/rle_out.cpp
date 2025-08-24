@@ -74,7 +74,7 @@ Out_Ras_W_Comp::Out_Ras_W_Comp
 /*                                                               */
 /*****************************************************************/
 
-/****************** La classe des des fenetres X11, vue de l'interieur ****/
+/****************** La class des des fenetres X11, vue de l'interieur ****/
 
 class  RLE_Out_Ras_W_Comp : public  Out_Ras_W_Comp
 {

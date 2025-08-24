@@ -93,7 +93,7 @@ template <class  Tout,class Tin>
    return Im2D<Tin,tBaseIn>(Im2D_NoDataLin(),SzXBuf(),SzYBuf());
 }
 
-// Methode transferee dans include/general/users_op_buf.h
+// method transferee in include/general/users_op_buf.h
 /*
 template  <class  Tout,class Tin> void Simple_OPBuf1<Tout,Tin>::SetImageOnBufEntry
                                        (

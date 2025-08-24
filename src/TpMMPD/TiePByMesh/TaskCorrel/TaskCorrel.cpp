@@ -70,7 +70,7 @@ int TaskCorrel_main(int argc,char ** argv)
 
         cInterfChantierNameManipulateur * aICNM = cInterfChantierNameManipulateur::BasicAlloc(aDir);
 
-        //===========Modifier ou chercher l'image si l'image ne sont pas tif============//
+        //===========Modifier or chercher l'image if l'image ne sont pas tif============//
            std::size_t found = aFullPattern.find_last_of(".");
            string ext = aFullPattern.substr(found+1);
            cout<<"Ext : "<<ext<<endl;
@@ -185,7 +185,7 @@ int TaskCorrelWithPts_main(int argc,char ** argv)
         vector<cOneImgMesure*> aVImgMesure;
         ReadXMLMesurePts(aMesureXML, aVImgMesure);
 
-        //===========Modifier ou chercher l'image si l'image ne sont pas tif============//
+        //===========Modifier or chercher l'image if l'image ne sont pas tif============//
            std::size_t found = aFullPattern.find_last_of(".");
            string ext = aFullPattern.substr(found+1);
            cout<<"Ext : "<<ext<<endl;

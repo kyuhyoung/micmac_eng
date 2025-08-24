@@ -70,24 +70,24 @@ class Ori3D_Std : public Ori3D_Gen
 
       public :
 
-   // Renvoie un polygone contenant la partie de Ori2 visible sur this ,
-   // si true aZP est une altitude, sinon une profondeur de champs;
+   // Renvoie un polygone contenant la partie de Ori2 visible on this ,
+   // if true aZP est une altitude, else une profondeur de champs;
    //
-   // liste vide si 
+   // list vide if 
    //
          std::vector<Pt2dr> Emprise2InVue1(Ori3D_Std Ori2,double aZP,bool ByAlti);
 
          std::vector<Pt2dr> Inter(Ori3D_Std Ori2,double aZP,bool ByAlti);
-         std::vector<Pt2dr> Inter(Ori3D_Std Ori2); // Avec altisol
-         double    PropInter(Ori3D_Std Ori2); // entre 0 et 1
-         double    PropInter(Ori3D_Std Ori2,double aZP,bool ByAlti); // entre 0 et 1
+         std::vector<Pt2dr> Inter(Ori3D_Std Ori2); // with altisol
+         double    PropInter(Ori3D_Std Ori2); // between 0 and 1
+         double    PropInter(Ori3D_Std Ori2,double aZP,bool ByAlti); // between 0 and 1
 
          static Box2dr TheNoBox;
          Ori3D_Std(const char *,bool inv_y = false,bool binarie = false,bool QuikGrid=false);
          Ori3D_Std(or_orientation    * _ori);
 
-         // Pour creer une orientation correspondand a une image homthetique facteur zoom
-         // zoom = 0.5 pour une orientation correspondant a une image plus petite
+         // for creer une orientation correspondand a une image homthetique facteur zoom
+         // zoom = 0.5 for une orientation correspondant a une image plus petite
          Ori3D_Std(Ori3D_Std ,REAL zoom,Box2dr = TheNoBox);
 
          Fonc_Num  to_photo(Fonc_Num);
@@ -169,8 +169,8 @@ class cOriMntCarto
 {
     public :
 
-       // Dans les fichier ori, les grandeurs sont exprimes en unites
-       // milimetrique, pour eviter tout erreur d'arrondi ulterieur
+       // in les file ori, les grandeurs sont exprimes en unites
+       // milimetrique, for eviter tout error d'arrondi ulterieur
        // on peut avoir interet a ce que les grandeur tel que resol
        // soit des multiples exacts de ces unites
 

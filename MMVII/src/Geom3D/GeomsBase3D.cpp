@@ -671,7 +671,7 @@ template<class T> cPtxd<T,3>  VOrthog(const cPtxd<T,3> & aP)
 {
    // we make a vect product with any vector, just avoid one too colinear  to P
    // test I and J, as P cannot be colinear to both, its sufficient 
-   // (i.e : we are sur to maintain the biggest of x, y and z)
+   // (i.e : we are on to maintain the biggest of x, y and z)
    if (std::abs(aP.x()) > std::abs(aP.y()))
       return cPtxd<T,3>( aP.z(), 0, -aP.x());
 
@@ -714,7 +714,7 @@ template<class Type>  cTriangle<Type,3> RandomTriangRegul(Type aRegulMin,Type aA
 	if (aT.Regularity()> aRegulMin)
            return aT;
     }
-    return RandomTriang(static_cast<Type>(0.0)); // Not sur its mandatory to have a return here
+    return RandomTriang(static_cast<Type>(0.0)); // Not on its mandatory to have a return here
 }
 
 template<class Type>  cTriangle<Type,3> RandomTetraTriangRegul(Type aRegulMin,Type aAmpl)
@@ -725,7 +725,7 @@ template<class Type>  cTriangle<Type,3> RandomTetraTriangRegul(Type aRegulMin,Ty
 	if (TetraReg(aT.Pt(0),aT.Pt(1),aT.Pt(2)) > aRegulMin)
            return aT;
     }
-    return RandomTriang(static_cast<Type>(0.0)); // Not sur its mandatory to have a return here
+    return RandomTriang(static_cast<Type>(0.0)); // Not on its mandatory to have a return here
 }
 
 

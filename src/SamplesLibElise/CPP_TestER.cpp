@@ -844,8 +844,8 @@ class cTmpPileER
 {
     public :
         cTmpPileER(int aK,float aZ,float aPds);
-        // Caclul entre deux cellule successive le poids exponentiel 
-       // qui sera utilise pour le filtrage recursif
+        // Caclul between deux cellule successive le poids exponentiel 
+       // qui sera utilise for le filtrage recursif
         void SetPPrec(cTmpPileER &,float aExpFact);
         // double Pds() {return mPds0 / mNb0;}
         double ZMoy() {return mPds0 ? (mZP0/mPds0) : 0 ;}
@@ -857,15 +857,15 @@ class cTmpPileER
          double mPInit;
          double mZP0;   // Z Pondere par le poids
          double mPds0;  // Poids 
-         double mNb0;   // si le PdsInit=1, alors mNb0==mPds0, compte le nombre de pt de chaque cluste
+         double mNb0;   // if le PdsInit=1, then mNb0==mPds0, compte le number de pt de chaque cluste
                         // (a une constante globale pres)
 
-        // Variale pour le filtrage recursif "plus"
+        // Variale for le filtrage recursif "plus"
          double mNewZPp;
          double mNewPdsp;
          double mNewNbp;
 
-        // Variale pour le filtrage recursif "moins"
+        // Variale for le filtrage recursif "moins"
          double mNewZPm;
          double mNewPdsm;
          double mNewNbm;
@@ -940,7 +940,7 @@ void FiltrageAllerEtRetourER(std::vector<cTmpPileER> & aVTmp)
                   << "N=" << aVTmp[aK].mNb0 << " " << aVTmp[aK].mNewNbm << "\n\n";
     }
 
-     // Memorisation dans mZP0 etc.. du resultat (droite + gauche - VCentrale) , VCentrale a ete compte deux fois
+     // Memorisation in mZP0 etc.. du result (droite + gauche - VCentrale) , VCentrale a ete compte deux fois
      for (int aK=0 ; aK<int(aVTmp.size()) ; aK++)
      {
           aVTmp[aK].mZP0  = (aVTmp[aK].mNewZPp  + aVTmp[aK].mNewZPm  - aVTmp[aK].mZP0) / aVTmp.size();
@@ -1427,7 +1427,7 @@ void cBAL2OriMicMac::SaveMicMac()
         /* Autres */
         
 
-        /* Camera calibration */
+        /* camera calibration */
         cCalibrationInternConique aInCal;
         aInCal.KnownConv() = eConvApero_DistM2C;
         aInCal.F()    = aCal[6];
@@ -1582,7 +1582,7 @@ bool cBAL2OriMicMac::ReadBAL()
     ShiftHomol(mPP,false);
         
 
-    /* Camera parameters */
+    /* camera parameters */
     for (int aCam=0; aCam<mNumCam; aCam++)
     {
         mPoses[aCam] = new double[9];
@@ -1599,7 +1599,7 @@ bool cBAL2OriMicMac::ReadBAL()
 
     
 
-    /* 3D points en s'en fout pour l'instant ? */
+    /* 3D points en s'en fout for l'instant ? */
     Pt3dr  aSom;
     double aVal;
     for (int aP=0; aP<mNumPts; aP++)
@@ -2102,7 +2102,7 @@ int  FictiveObstest_main(int argc,char ** argv)
     }
 
 
-    /*  (0) add all points to an ellipse classe cXml_Elips3D 
+    /*  (0) add all points to an ellipse class cXml_Elips3D 
         (1) normalise the ellipse
         (2) initalize the cGenGaus3D with the ellipse (+calcul valp/vecp)
         (3) generate artif points (aVP vec) that follow the distribution 

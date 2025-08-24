@@ -125,7 +125,7 @@ cV1PCConverter *  cV1PCConverter::AllocV1Converter
      cExportV1StenopeCalInterne  aExp(true,aFullName,30,2,aDS,aNameCalIn);
      cIsometry3D<tREAL8>   aPose0 = cIsometry3D<tREAL8>::Identity();
 
-     // [2] ============  in mode test perturbate internal et external parameters =================
+     // [2] ============  in mode test perturbate internal and external parameters =================
      if (isForTest)
      {
          aExp.mFoc *=  (1.0 + 0.05*RandUnif_C());

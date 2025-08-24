@@ -129,7 +129,7 @@ cSimulImage::cSimulImage(int argc,char ** argv) :
         mNameOut = StdPrefix(mName) + "_Out.tif";
     }
 
-    //   ====== CHARGEMENT DE L'IMAGE =================
+    //   ====== CHARGEMENT DE L'image =================
 
 
     Tiff_Im aTifIn = Tiff_Im::StdConvGen(mFullName.c_str(),3,false);
@@ -189,7 +189,7 @@ cSimulImage::cSimulImage(int argc,char ** argv) :
        }
     }
 
-    //   ====== INVERSION OU SYMETRIE =================
+    //   ====== INVERSION or SYMETRIE =================
 
     {
         std::vector<Im2D_U_INT1> aDup;
@@ -285,7 +285,7 @@ cSimulImage::cSimulImage(int argc,char ** argv) :
     std::string aCom = "convert " + mDir+mNameOut + " -quality 95 " + mDir+aNameJpg;
     VoidSystem(aCom.c_str());
 
-    //   ====== INVERSION OU SYMETRIE =================
+    //   ====== INVERSION or SYMETRIE =================
 
     cMesureAppuiFlottant1Im aNewPointe;
     aNewPointe.NameIm() = aNameJpg;

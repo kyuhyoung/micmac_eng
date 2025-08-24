@@ -45,7 +45,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 	I generate File of potential homologous images with GrapheHom but I want to filter these images pairs in order to remove some pai
 */
 
-// classes declaration    Filtre du fichier ds Homologues
+// classes declaration    Filtre du file ds Homologues
 class cFFH_Appli;
 
 
@@ -99,7 +99,7 @@ cFFH_Appli::cFFH_Appli(int argc,char ** argv) :
     mLFile1 =  mICNM->StdGetListOfFile(mPat1,1);
 	mLFile2 =  mICNM->StdGetListOfFile(mPat2,1);
 	
-	// voir comment mm3d mmbyPair ouvre le fichier de paire pour l'exemple
+	// voir comment mm3d mmbyPair ouvre le file de paire for l'exemple
 	 cSauvegardeNamedRel aSNR = StdGetFromPCP(mFileHom,SauvegardeNamedRel);
 	 cSauvegardeNamedRel aRel;
 	 int aNb1(0);
@@ -114,7 +114,7 @@ cFFH_Appli::cFFH_Appli(int argc,char ** argv) :
      {
         aNb1++;
         
-        // si la paire est du type "PAT1"  "PAT2" on la met de coté, on en veut pas.
+        // if la paire est du type "PAT1"  "PAT2" on la met de coté, on en veut pas.
         	if (std::find(std::begin(mLFile1), std::end(mLFile1), itC->N1()) != std::end(mLFile1)) {
 				if (std::find(std::begin(mLFile2), std::end(mLFile2), itC->N2()) != std::end(mLFile2)) {
 				aNb2++;

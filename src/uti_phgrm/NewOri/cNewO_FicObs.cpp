@@ -406,7 +406,7 @@ std::cout << " ElPackHomologue  dddddddhhhhhhhhhhhhhhhhhhhhhh " << aN << " " << 
 
 		    if (aResid < MaxReprojErr)
 			{
-				//	calc b sur h
+				//	calc b on h
 				double aBsH = BsurH(aVSeg.at(0),aVSeg.at(1));
                 
                 
@@ -554,7 +554,7 @@ bool cAppliFictObs::CalculateEllipseParam3(cXml_Elips3D& anEl,std::vector<const 
 			    //if reprojection bigger than this don't consider	
 		        if (aResid < MaxReprojErr)
 				{	
- 	   				//	calc b sur h
+ 	   				//	calc b on h
  	   				double aBsH = ElMax( BsurH(aVSeg.at(0),aVSeg.at(1)),
  	   							  ElMax( BsurH(aVSeg.at(0),aVSeg.at(2)), 
  	   							         BsurH(aVSeg.at(1),aVSeg.at(2)) ));
@@ -910,7 +910,7 @@ void cAppliFictObs::GenerateFicticiousObs()
     int aNPtNum=0;
 
 
-    /********** Pour chaque triplet/cple recouper son elipse3d et genere les obs fict ************/
+    /********** for chaque triplet/cple recouper son elipse3d and genere les obs fict ************/
 
     for (auto aT : mTriMap)
     {
@@ -1240,7 +1240,7 @@ void cAppliFictObs::SaveHomolOne(std::vector<int>& aId,std::vector<Pt2dr>& aPImV
                     if (DicBoolFind(mHomRed,aNameH))
                     {   
 
-                        ElCplePtsHomologues aP(aPImV.at(aK1),aPImV.at(aK2),aAttr.at(0));//a priori peut importe lequel K pour l'attribute comme il sera homogene par track ie par ellipse
+                        ElCplePtsHomologues aP(aPImV.at(aK1),aPImV.at(aK2),aAttr.at(0));//a priori peut importe lequel K for l'attribute comme il sera homogene par track ie par ellipse
                         mHomRed[aNameH]->Cple_Add(aP);
 						
 
@@ -2320,7 +2320,7 @@ ElRotation3D cAppliMinim::TestOriConvention(std::string & aNameOri, const std::s
     // aCam2->Orient() : M =>C2  ;  aCam1->Orient().inv() :  C1=>M
     // Donc la aRot = C1=>C2
     ElRotation3D aRot = (aCam2->Orient() *aCam1->Orient().inv());
-    //   Maintenat Rot C2 =>C1; donc Rot( P(0,0,0)) donne le vecteur de Base
+    //   Maintenat Rot C2 =>C1; donc Rot( P(0,0,0)) donne le vector de Base
     aRot = aRot.inv();
     aRot.tr() = vunit(aRot.tr());
 

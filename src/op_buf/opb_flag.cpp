@@ -238,7 +238,7 @@ Fonc_Num  flag_vois (Fonc_Num  f,Box2di side)
 class Tab_UINT1_Opb3_Flag : public Post_trait_Opb_flag
 {
      public :
-         // Probleme avec le 4-voisinage a revoir
+         // Probleme with le 4-voisinage a revoir
          // static Tab_Bits_PT_Opb_flag eros_4_hom;
          void post_proc(INT * v,INT nb)
          {
@@ -289,7 +289,7 @@ Fonc_Num  flag_front8 (Fonc_Num  f)
 class Tab_Bits_PT_Opb_flag : public Post_trait_Opb_flag
 {
      public :
-         // Probleme avec le 4-voisinage a revoir
+         // Probleme with le 4-voisinage a revoir
          // static Tab_Bits_PT_Opb_flag eros_4_hom;
          static Tab_Bits_PT_Opb_flag eros_8_hom;
   virtual ~Tab_Bits_PT_Opb_flag() {}

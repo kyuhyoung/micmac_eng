@@ -21,10 +21,10 @@ namespace MMVII
 #define  The_MMVII_DebugLevel_Unresoved     7  
 //  New level added for tracking memory leak, relatively costly in memory
 #define  The_MMVII_DebugLevel_InternalError_micro    6
-// Ce ne sont pas de petite erreurs, mais des erruer couteuse a checker
+// Ce ne sont pas de petite erreurs, but des erruer couteuse a checker
 #define  The_MMVII_DebugLevel_InternalError_tiny     5  
 #define  The_MMVII_DebugLevel_InternalError_medium   4
-// Ce ne sont pas de petite erreurs, mais des erruer couteuse a checker
+// Ce ne sont pas de petite erreurs, but des erruer couteuse a checker
 #define  The_MMVII_DebugLevel_InternalError_strong   3
 #define  The_MMVII_DebugLevel_UserError              2
 #define  The_MMVII_DebugLevel_BenchError             1

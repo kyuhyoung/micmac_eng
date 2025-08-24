@@ -117,7 +117,7 @@ template <class Type> cRotation3D<Type>::cRotation3D(const cDenseMatrix<Type> & 
        */
 #endif
    }
-   // MMVII_INTERNAL_ASSERT_always((! RefineIt),"Refine to write in Rotation ...");
+   // MMVII_INTERNAL_ASSERT_always((! RefineIt),"Refine to write in rotation ...");
 }
 
 template <class Type> cRotation3D<Type>::cRotation3D(const tPt &aI,const tPt & aJ,const tPt & aK,bool RefineIt) :

@@ -438,7 +438,7 @@ class Im2DGen : public GenIm,
                     bool  *                FreelyOpt = 0
               )  ;
 
-      // DEF = erreur fatale, mais necessaire pou creer des Im2DGen
+      // DEF = error fatale, but necessaire pou creer des Im2DGen
       virtual INT     tx() const ;
       virtual INT     ty() const ;
       Pt2di sz() const {return Pt2di(tx(),ty());}
@@ -464,7 +464,7 @@ class Im2DGen : public GenIm,
       bool  Inside(const Pt2di &) const;
       INT     GetI(const Pt2di&,int ) const ;
       double  GetR(const Pt2di&,double ) const ;
-      // Pas def pour les ImBits
+      // Pas def for les ImBits
       virtual void PutData(FILE * aFP,const Pt2di & anI,bool aModeBin) const;
 
       virtual Im2DGen * ImOfSameType(const Pt2di & aSz) const;
@@ -473,7 +473,7 @@ class Im2DGen : public GenIm,
 
        Box2di BoxDef() const ;
        double Val(const int & x,const int & y) const;
-      virtual  void Resize(Pt2di aSz);  // Pas definie pour ImBits
+      virtual  void Resize(Pt2di aSz);  // Pas definie for ImBits
 
     protected :
       Im2DGen(DataGenIm *);
@@ -547,7 +547,7 @@ template <class Type,class TyBase> class Im2D : public Im2DGen
       static Im2D<Type,TyBase> FromFileOrFonc
                                (const std::string &,Pt2di aSz,Fonc_Num);
 
-      Im2D(); //  !! Dangereux, mais necessaire vs xml generation
+      Im2D(); //  !! Dangereux, but necessaire vs xml generation
       Im2D(INT tx, INT ty);
       Im2D(INT tx, INT ty,TyBase v_init);
       Im2D(INT tx, INT ty,const char * v_inits);
@@ -607,11 +607,11 @@ template <class Type,class TyBase> class Im2D : public Im2DGen
 
           // Eventuellement renvoie l'image elle meme, conserve les donnees
           // ne cherche pas a presever le champs data lin, ne modifie pas
-          // le contenue de l'image et OK pour ceux qui pointaient sur elle
+          // le contenue de l'image and OK for ceux qui pointaient on elle
       Im2D<Type,TyBase> AugmentSizeTo(Pt2di aSz,Type aValCompl = 0);
 
           //  Toujours en place, modifie eventuellement le contenu de l'image,
-          // peur avoir des effets desagreables pour ceux qui la referencaient (si
+          // peur avoir des effets desagreables for ceux qui la referencaient (if
           // ils ne sont pas au courant du changement)
           void Resize(Pt2di aSz);
 
@@ -649,7 +649,7 @@ template <class Type,class Type_Base> Im2D<Type,Type_Base> ImMediane
                                       (
                                            const std::vector<Im2D<Type,Type_Base> > &,
                                            Type_Base VaUnused ,
-                                           Type      ValDef,   // Si tous unused
+                                           Type      ValDef,   // if tous unused
                                            double    aTol
                                       );
 
@@ -707,7 +707,7 @@ template <const int nbb> class Im2D_Bits : public Im2DGen
 };
 
 Im2D_Bits<1> MasqFromFile(const std::string &);
-Im2D_Bits<1> MasqFromFile(const std::string &,const Pt2di & aSz); // Renvoie un maque de 1 si pas exist
+Im2D_Bits<1> MasqFromFile(const std::string &,const Pt2di & aSz); // Renvoie un maque de 1 if pas exist
 
 
 template  <const int nbb> Im2D_Bits<nbb>::Im2D_Bits(INT tx,INT ty) :
@@ -761,8 +761,8 @@ template <class Type,class TyBase> class Im1D : public GenIm
       void Resize(INT aTx);
 
       // friend GenIm alloc_im1d(GenIm::type_el type_el,int tx,void * data);
-      // premier parametre bidon, mais permet d'eviter des ambiguite
-      // avec les syntaxes "standard"
+      // premier parameter bidon, but permet d'eviter des ambiguite
+      // with les syntaxes "standard"
       Im1D(Im1D<Type,TyBase> *,INT tx,void * );
       Im1D<Type,TyBase>  AugmentSizeTo(INT aTx,Type aValCompl = 0);
 };
@@ -928,7 +928,7 @@ extern GenIm alloc_im2d(GenIm::type_el type_el,int tx,int ty, void * DataLin);
 
 
 extern Im2DGen D2alloc_im2d(GenIm::type_el type_el,int tx,int ty);
-// La copie d'une Im2DGen perd la virtualite, d'ou ....
+// La copie d'une Im2DGen perd la virtualite, d'or ....
 extern Im2DGen * Ptr_D2alloc_im2d(GenIm::type_el type_el,int tx,int ty);
 
 extern bool  type_im_integral(GenIm::type_el type_el);
@@ -966,7 +966,7 @@ template <class Type>  ElMatrix<Type> gaussj(const ElMatrix<Type>  & m);
 template <class Type>  void self_gaussj(ElMatrix<Type>  & m);
 template <class Type>  bool self_gaussj_svp(ElMatrix<Type>  & m);
 
-// Renvoie la liste des indices croissants de valeurs propres
+// Renvoie la list des indices croissants de valeurs propres
 
 std::vector<int> jacobi(const ElMatrix<REAL>& aMatSym,ElMatrix<REAL>& aValP,
             ElMatrix<REAL>& aVecP);
@@ -989,24 +989,24 @@ void svdcmp_diag ( const ElMatrix<REAL> & aMat, ElMatrix<REAL> & anU,
 // L'"habituelle" decomposition QR,
 std::pair<ElMatrix<double>, ElMatrix<double> > QRDecomp(const ElMatrix<double> & aM0);
 
-// La RQ decomposition (sans doute + utile pour l'equation au 12 param)
+// La RQ decomposition (without doute + utile for l'equation au 12 param)
 std::pair<ElMatrix<double>, ElMatrix<double> > RQDecomp(const ElMatrix<double> & aM0);
 
 
-// Renvoie la rotation la + proche, selon un algo trouve dans Golub et base sur
+// Renvoie la rotation la + proche, selon un algo trouve in Golub and base on
 // la SVD
 ElMatrix<REAL>  NearestRotation(const ElMatrix<REAL> &);
-// Matrice de produit vectoriel
+// matrix de produit vectoriel
 ElMatrix<REAL>  MatProVect(const Pt3dr &);
 
 
 //  Probleme de conditionnement
 void InspectPbCD(ElMatrix<REAL>);
 
-// Calcule une rotation R tq R Antk = Imk;
-//   - algo : norme les vecteur
+// compute une rotation R tq R Antk = Imk;
+//   - algo : norme les vector
 //            les rend orthogonaux
-//            calcul exact
+//            computation exact
 
 
 
@@ -1018,15 +1018,15 @@ ElMatrix<REAL> ComplemRotation
                     const Pt3dr & anIm2
                );
 
-// V1 et V2 sont initialise mais pas specialement unitaire ou ortho en entree => !! V1 V2 fortement modifies
+// V1 and V2 sont initialise but pas specialement unitaire or ortho en entree => !! V1 V2 fortement modifies
 Pt3dr MakeOrthon(Pt3dr & aV1,Pt3dr & aV2);
-// Methode du complement d'orthogonalisatio de schmit, peu modifie si deja ortho ....
+// method du complement d'orthogonalisatio de schmit, peu modifie if deja ortho ....
 Pt3dr SchmitComplMakeOrthon(Pt3dr & aV1,Pt3dr & aV2);
 
 ElMatrix<double>  MakeMatON(Pt3dr aV1,Pt3dr aV2);
 
-// Seul V1 est initialise, sa norme est modifiee, V2 et V3 sont plus ou moins au hasard
-// mais le resultat est RON
+// Seul V1 est initialise, sa norme est modifiee, V2 and V3 sont plus or moins au hasard
+// but le result est RON
 void MakeRONWith1Vect(Pt3dr & aV1,Pt3dr & aV2,Pt3dr & aV3);
 
 // template <class Type>  ElMatrix<Type> operator * (const Type &,const ElMatrix<Type>&);
@@ -1058,7 +1058,7 @@ template <class Type>  class ElMatrix
           void set_to_size(const ElMatrix<Type> & m2);
 
 
-          // fait de la matrice une matrice de permutation de type
+          // fait de la matrix une matrix de permutation de type
           // shift
           void set_shift_mat_permut(INT ShiftPremierCol);
           static  ElMatrix<Type>  transposition(INT aN,INT aK1,INT aK2);
@@ -1067,7 +1067,7 @@ template <class Type>  class ElMatrix
 
         // Utilitaires
 
-          Type ** data();  // Plutot pour comm avec vielle lib (genre NR)
+          Type ** data();  // Plutot for comm with vielle lib (genre NR)
           bool same_size (const ElMatrix<Type> &) const;
           Type & operator() (int x,int y)
           {
@@ -1135,7 +1135,7 @@ template <class Type>  class ElMatrix
 
           void transpose(const ElMatrix<Type>  &);
           void self_transpose();
-    // Recopie dans la demi matric inferieure, le contenu de la demi matrice superieure
+    // Recopie in la demi matric inferieure, le contenu de la demi matrix superieure
           void  SymetriseParleBas();
           ElMatrix<Type> transpose() const;
 
@@ -1184,21 +1184,21 @@ template <class Type>  class ElMatrix
           int     _ty;
           Type ** _data;
 
-    // Rajoute pour que la meme matrice puisse etre resizee inside
+    // Rajoute for que la meme matrix puisse etre resizee inside
           int     mTMx;
           int     mTMy;
 
 };
 
 
-// Suppose les N ligne du haut OK, complete avec les lignes
-// du bas pour que forme au mieux une famille de vecteur libre,
+// Suppose les N line du haut OK, complete with les lignes
+// du bas for que forme au mieux une famille de vector libre,
 // (la moins singuliere possible)
-// n'utilise pour ce faire que des vecteur de la base canonique
+// n'utilise for ce faire que des vector de la base canonique
 
 void ComplBaseParLeHaut(ElMatrix<REAL> &,INT NbLigneOk);
 
-// FONCTION specifiques au M22, M33
+// function specifiques au M22, M33
 
 ElMatrix<REAL> DiffRotEn1Pt(REAL teta01,REAL teta02,REAL teta12,Pt3dr pt);
 
@@ -1293,7 +1293,7 @@ bool BadValue(const ElRotation3D &);
    class cRepereCartesien;
 
 
-// Chgt de coord cartesien (et non euclidien, ca marche aussi si pas orthornormee)
+// Chgt de coord cartesien (and non euclidien, ca marche aussi if pas orthornormee)
 class cChCoCart
 {
      public :
@@ -1311,7 +1311,7 @@ class cChCoCart
         Pt3dr mOz;
 };
 
-// La rotation etant exprimee dans un systeme 1, on la transforme en systeme 2:
+// La rotation etant exprimee in un system 1, on la transforme en system 2:
 ElRotation3D  ChangementSysC(const Pt3dr aP,const ElRotation3D&,const cSysCoord & aSource,const cSysCoord & aCible);
 
 ElMatrix<REAL>  VectRotationArroundAxe(const Pt3dr &,double aTeta);
@@ -1325,7 +1325,7 @@ double TetaOfAxeRot(const ElMatrix<REAL> & aMat, Pt3dr & aP1);
 
 
 double LongBase(const ElRotation3D &);
-ElRotation3D ScaleBase(const ElRotation3D &,const double & aScale); // Passer 1/LongBase pour faire base unit
+ElRotation3D ScaleBase(const ElRotation3D &,const double & aScale); // Passer 1/LongBase for faire base unit
 
 
 double ProfFromCam(const ElRotation3D & anOr,const Pt3dr & aP);  // anOr M->C
@@ -1366,8 +1366,8 @@ template <class Type>  class ElPolynome
           INT degre() const {return (int) _coeff.size()-1;}
 
           ElPolynome();
-          ElPolynome(char *,INT degre);  // Arg 1 : bidon, pour eviter
-                                         // confusion avec ElPolynome(INT)
+          ElPolynome(char *,INT degre);  // Arg 1 : bidon, for eviter
+                                         // confusion with ElPolynome(INT)
           ElPolynome(const Type &);
           ElPolynome(const Type &,const Type &);
           ElPolynome(const Type &,const Type &,const Type &);
@@ -1457,7 +1457,7 @@ class Polynome2dReal
             static Polynome2dReal FromVect(const std::vector<double>&,double anAmp);
 
 
-            Polynome2dReal(INT aD0,REAL anAmpl); // Contient tous les monomes, avec un coeff 1.0
+            Polynome2dReal(INT aD0,REAL anAmpl); // Contient tous les monomes, with un coeff 1.0
             void SetDegre1(REAL aV0,REAL aVX, REAL aVY,bool AnnulOthers = true);
 
             REAL operator () (Pt2dr aP) const;
@@ -1551,16 +1551,16 @@ void  ElFFT
 
       // Correlation ni normalisee, ni centree
       // images circulaires
-      // Remplit la correlation dans Im1
+      // Remplit la correlation in Im1
 void  ElFFTCorrelCirc
       (
            Im2D_REAL8 aReIm1,
        Im2D_REAL8 aReIm2
       );
 
-     // meme chose  mais images
-     // paddee avec suffisament de 0
-     // pour ne pas avoir d'effets de bord
+     // meme chose  but images
+     // paddee with suffisament de 0
+     // for ne pas avoir d'effets de bord
 Im2D_REAL8   ElFFTCorrelPadded
              (
                   Im2D_REAL8 aReIm1,
@@ -1568,19 +1568,19 @@ Im2D_REAL8   ElFFTCorrelPadded
              );
 
 
-     // idem, mais normalisee centree;
-     // anEpsilon est utilisee pour les divisions
+     // idem, but normalisee centree;
+     // anEpsilon est utilisee for les divisions
 
 Im2D_REAL8   ElFFTCorrelNCPadded
              (Im2D_REAL8 aReIm1,Im2D_REAL8 aReIm2,REAL anEps,REAL aSurfMin=-1) ;
 
-           // Quand aSurfMin est >0, et que la surface  S
-           // (ou Ponderation pour ElFFTPonderedCorrelNCPadded)
+           // when aSurfMin est >0, and que la surface  S
+           // (or Ponderation for ElFFTPonderedCorrelNCPadded)
            // est < a aSurfMin , le coeff de correlation C est reetalonne
-           // entre -1 et C, proportionellement a S/aSurfMin
+           // between -1 and C, proportionellement a S/aSurfMin
 
 
-      // Avec Ponderation
+      // with Ponderation
 Im2D_REAL8   ElFFTPonderedCorrelNCPadded
              (
                 Fonc_Num   aF1,
@@ -1603,7 +1603,7 @@ Im2D_REAL8   ElFFTPonderedCorrelNCPadded
 
 REAL ImCorrFromNrFFT(Im2D_REAL8 anIm,Pt2di aDecIm1);
 
-// Les Images donnees pour effectuer le calcul
+// Les Images donnees for effectuer le computation
 // sont des images FFT
 Pt2di DecIm2DecFFT(Im2D_REAL8 anImFFT,Pt2di aDecIm1);
 Pt2di DecFFT2DecIm(Im2D_REAL8 anImFFT,Pt2di aP);
@@ -1621,7 +1621,7 @@ class RImGrid
        );
        RImGrid
        (
-          bool  AdaptStep,  // Si true, le pas est calcule pour
+          bool  AdaptStep,  // if true, le pas est compute for
                         // diviser exactement l'intervalle P0 P1
           Pt2dr aP0,
           Pt2dr aP1,
@@ -1641,11 +1641,11 @@ class RImGrid
        REAL ValueAndDer(Pt2dr aRealP,Pt2dr & aDer);
        void SetValueGrid(Pt2di aP,REAL aV);
        void ExtDef(); // Fait une extension "genre" ppv des pixels
-                      // initialisee sur les pixels valant Def
+                      // initialisee on les pixels valant Def
 
 
         // aPt -> Value (aPt / aChSacle)
-        // aPt -> aChSacle * Value (aPt / aChSacle)  (si ModeMapping = true)
+        // aPt -> aChSacle * Value (aPt / aChSacle)  (if ModeMapping = true)
 
         RImGrid *  NewChScale(double aChSacle ,bool ModeMapping);
 
@@ -1655,9 +1655,9 @@ class RImGrid
     Pt2dr Origine() const;
         Im2D_REAL8           DataGrid();
 
-        // Les conventions sont compatible avec le
-        // le cas ou aChScale est une focale et Tr une
-        //  coordonnees de point principal, en sortie : (X *aChScale + aTr)
+        // Les conventions sont compatible with le
+        // le cas or aChScale est une focale and Tr une
+        //  coordinates de point principal, en sortie : (X *aChScale + aTr)
         void SetTrChScaleOut(REAL aChScale,REAL aTr);
         void SetTrChScaleIn(REAL aChScale,Pt2dr aTr);
 
@@ -1685,14 +1685,14 @@ class PtImGrid
 {
     public :
        PtImGrid (bool AdaptStep, Pt2dr aP0, Pt2dr aP1, Pt2dr  aStepGr,const std::string & = "PtImGrid");
-       // ToGrid et ToReal : transfo lineaire, conversion
-       // entre le monde reel et les coordonnes d'entree de la grille
+       // ToGrid and ToReal : transfo lineaire, conversion
+       // between le monde real and les coordonnes d'entree de la grille
        Pt2dr ToGrid(Pt2dr aP) const;
        Pt2dr ToReal(Pt2dr aP) const;
        Pt2di SzGrid() const;
 
        Pt2dr  Value(Pt2dr aRealP);
-      // aGradX : grad de la valeur en X / a x ET y
+      // aGradX : grad de la value en X / a x and y
        Pt2dr ValueAndDer(Pt2dr aRealP,Pt2dr & aGradX,Pt2dr & aGradY);
        void SetValueGrid(Pt2di aP,Pt2dr  aV);
 
@@ -1750,9 +1750,9 @@ void ShowMatr(const char * mes, ElMatrix<REAL> aMatr)  ;
 class cKernelInterpol1D
 {
       public :
-       //  Interpolateur "standard" de changement  de coordonnees, un bicubique
-       // dilate  et tabule, le parametre du bicub est calcule selon la regle du
-       // ChScale ( 0 si > 1.5, -0.5  si < 1.0, interpole entre les 2)
+       //  Interpolateur "standard" de changement  de coordinates, un bicubique
+       // dilate  and tabule, le parameter du bicub est compute selon la regle du
+       // ChScale ( 0 if > 1.5, -0.5  if < 1.0, interpole between les 2)
         static cKernelInterpol1D  * StdInterpCHC(double aScale,int aNbTab=100);
 
         double Interpole(const cFoncI2D &,const double & x,const double & y);
@@ -1779,16 +1779,16 @@ class cCubicInterpKernel : public cKernelInterpol1D
          // double  SzKernel() const;
          REAL Derivee(REAL x) const;
          void ValAndDerivee(REAL x,REAL &V,REAL &D) const;
-         // aA = valeur de la derivee en 0
-         // si vaut -0.5, reconstitue parfaitement une droite
-         // doit etre comprise en 0 et -3
+         // aA = value de la derivee en 0
+         // if vaut -0.5, reconstitue parfaitement une droite
+         // doit etre comprise en 0 and -3
          cCubicInterpKernel(REAL aA);
      private :
          REAL mA;
 };
 
-// Sinus Cardinal appodise avec fentre de Tukey  = Diriclet au debut
-// et cosinus qui assure le raccord derivale en 0
+// Sinus Cardinal appodise with fentre de Tukey  = Diriclet au debut
+// and cosinus qui assure le raccord derivale en 0
 class cSinCardApodInterpol1D : public cKernelInterpol1D
 {
       public :
@@ -1861,15 +1861,15 @@ class cInterpolateurIm2D
      public :
          virtual double GetVal(TypeEl ** aTab,const Pt2dr &  aP) const = 0;
 
-//   version qui calcule le gradient par simple diff
+//   version qui compute le gradient par simple diff
 
           Pt3dr GetValAndQuickGrad(TypeEl ** aTab,const Pt2dr &  aP) const;
          virtual Pt3dr GetValDer(TypeEl ** aTab,const Pt2dr &  aP) const ;
 
          virtual void  GetVals(TypeEl ** aTab,const Pt2dr *  aP,double *,int Nb) const;
          // SzKernel, a partir de l'arrondi inferieur, de combien
-         // faut il dilater x, typiquement 1 pour bilin, 2 pour bicub
-         //  1 pour PPV (car fait a partir de round_ni)
+         // faut il dilater x, typiquement 1 for bilin, 2 for bicub
+         //  1 for PPV (car fait a partir de round_ni)
          virtual int  SzKernel() const=0;
          virtual ~cInterpolateurIm2D();
    private :
@@ -1882,8 +1882,8 @@ template <class TypeEl> class cTabIM2D_FromIm2D : public cInterpolateurIm2D<Type
          virtual double GetVal(TypeEl ** aTab,const Pt2dr &  aP) const ;
          virtual Pt3dr GetValDer(TypeEl ** aTab,const Pt2dr &  aP) const ;
          // SzKernel, a partir de l'arrondi inferieur, de combien
-         // faut il dilater x, typiquement 1 pour bilin, 2 pour bicub
-         //  1 pour PPV (car fait a partir de round_ni)
+         // faut il dilater x, typiquement 1 for bilin, 2 for bicub
+         //  1 for PPV (car fait a partir de round_ni)
          virtual int  SzKernel() const;
          virtual ~cTabIM2D_FromIm2D();
 
@@ -1909,8 +1909,8 @@ class cGenTabulatedInterpolateur
          virtual double GetVal(TypeEl ** aTab,const Pt2dr &  aP) const = 0;
          virtual void  GetVals(TypeEl ** aTab,const Pt2dr *  aP,double *,int Nb) const;
          // SzKernel, a partir de l'arrondi inferieur, de combien
-         // faut il dilater x, typiquement 1 pour bilin, 2 pour bicub
-         //  1 pour PPV (car fait a partir de round_ni)
+         // faut il dilater x, typiquement 1 for bilin, 2 for bicub
+         //  1 for PPV (car fait a partir de round_ni)
          virtual int  SzKernel() const=0;
          virtual ~cGenTabulatedInterpolateur();
    private :
@@ -1946,7 +1946,7 @@ class cInterpolBilineaire : public cInterpolateurIm2D<TypeEl>
 
 
 // Variante "pure" de l'interpolateur bicubique, c.a.d
-// sans approximation permettant de gagner du temps (genre
+// without approximation permettant de gagner du temps (genre
 // arrondis)
 template <class TypeEl>
 class cInterpolBicubique : public cInterpolateurIm2D<TypeEl>
@@ -2000,7 +2000,7 @@ class  cTplCIKTabul  : public cInterpolateurIm2D<TypeEl>
 {
        public :
            // typedef typename El_CTypeTraits<TypeEl>::tBase tTabulCIK;
-           // Nombre de bits pour le codage des valeurs et de la resol
+           // number de bits for le codage des valeurs and de la resol
 
 
           cTplCIKTabul(INT aNBBVal,INT aNBBResol,REAL aVal,eModeInterTabul = eTabulBicub);
@@ -2087,7 +2087,7 @@ class cIm2DInter
 };
 
 
-// Calcul robuste d'un element moyen comme etant celui qui minimise la somme des distance
+// computation robuste d'un element moyen comme etant celui qui minimise la somme des distance
 class cComputecKernelGraph
 {
     public :
@@ -2193,7 +2193,7 @@ template <class TCont> TCont &  SortedAngleFlux2StdCont(TCont &aCont,Flux_Pts aF
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -2209,17 +2209,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

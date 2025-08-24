@@ -100,7 +100,7 @@ void cPMulTiepRed::CompleteArc(cAppliTiepRed & anAppli)
     std::vector<int>  &  aBufSucc = anAppli.BufICam2();
  
     // int aNbIn = aVP.size();
-    // Calcul compteur et successeur
+    // computation compteur and successeur
 
     for (int aKCple=0 ; aKCple<int(aVP.size()) ; aKCple++)
     {

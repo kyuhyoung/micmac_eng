@@ -121,16 +121,16 @@ template <class Obj,class Prim,class FPrim>
                 REAL          SzMin
             );
 
-                // insert : renvoie true si l'objet est effectivement inclu
-                // la box du QT, cepdendant si svp vaut false  et 
-                // que l'objet est hors box une erreur  est lancee
+                // insert : renvoie true if l'object est effectivement inclu
+                // la box du QT, cepdendant if svp vaut false  and 
+                // que l'object est hors box une error  est lancee
 
             bool insert(const Obj &,bool svp = false);
 
             std::list<Obj> KPPVois(Pt2dr,int aNb,double aDistInit,double aFact=2.0,int aNbMax=10);
 
 
-            Obj  NearestObj(Pt2dr,double aDistInit,double aDistMax); // Erreur si vide
+            Obj  NearestObj(Pt2dr,double aDistInit,double aDistMax); // error if vide
             cTplValGesInit<Obj>  NearestObjSvp(Pt2dr,double aDistInit,double aDistMax); // peut etre vide
 
             void RVoisins(ElSTDNS set<Obj> &,Pt2dr   pt,REAL d);

@@ -418,7 +418,7 @@ VT_AppSelTieP::VT_AppSelTieP(int argc, char** argv):    // cAppliWithSetImage is
 			  itS1!=mLFile.end();
 			  itS1++
 		)
-	 {			// Parcours liste d'image
+	 {			// Parcours list d'image
 		VT_Img * mImg1 = new  VT_Img(*this,*itS1,mOri);
 		
 		for (
@@ -1010,8 +1010,8 @@ int NLD_main(int argc, char** argv)
 			if (l == 4)
 			{
 				p++;
-				std::ostringstream myS;		// magouille pour différencier les clés associées au map
-				myS << p;					// (pour prendre en compte des configurations différentes 
+				std::ostringstream myS;		// magouille for différencier les clés associées au map
+				myS << p;					// (for prendre en compte des configurations différentes 
 				aR+= "000" + myS.str();		// donnant des résultats identiques)
 				tmp = aList[i];
 				
@@ -1102,7 +1102,7 @@ bool IsInVector(std::string id, vector <std::string> aVec)
 
 int ResToTxt_main(int argc, char** argv)
 {
-/* Transforme résidus de GCPBascule (utiliser GCPBasc ... | tee myFile.txt) en un fichier "NamePt dX dY dZ sigmaX sY sZ eMoyPixel eMaxPixel")*/
+/* Transforme résidus de GCPBascule (utiliser GCPBasc ... | tee myFile.txt) en un file "NamePt dX dY dZ sigmaX sY sZ eMoyPixel eMaxPixel")*/
 	string aNameIn, aNameOut(""), aGCP(""), aMesIm("");
 	
 	ElInitArgMain
@@ -1438,7 +1438,7 @@ int Idem_main(int argc, char** argv)
 	);
 	ELISE_ASSERT(aImSize>100,"Probable confusion with Final Size argument");
 
-// Charger les GCP, calculer leur projection dans l'ortho et le MNT
+// Charger les GCP, compute leur projection in l'ortho and le MNT
 	cDicoAppuisFlottant cDico=  StdGetFromPCP(aGCP,DicoAppuisFlottant);
 	std::cout << "Nb Pts " <<  cDico.OneAppuisDAF().size() << "\n\n";
 	std::list<cOneAppuisDAF> & aLGCP =  cDico.OneAppuisDAF();
@@ -1499,7 +1499,7 @@ int Idem_main(int argc, char** argv)
 	aListOfApp.clear();
 	
 	
-// Récupération du dernier fichier Z_Num.xml
+// Récupération du dernier file Z_Num.xml
 	std::string aDir2,aPat2,aZ_Num;
 	SplitDirAndFile(aDir2,aPat2,aMNT);
 	vector<std::string> aListOfFileInMEC;
@@ -1551,7 +1551,7 @@ int Idem_main(int argc, char** argv)
 		}
 	}
 	
-// Différence entre appuis et contrôle	
+// Différence between appuis and contrôle	
 	vector <pair <std::string,float> > ListOfDiffAppuis, ListOfDiffControl;
 	for
 	(
@@ -1645,7 +1645,7 @@ int Idem_main(int argc, char** argv)
 		}
 	}
 
-// Ecriture des résultats sur l'orthophoto (option)
+// Ecriture des résultats on l'orthophoto (option)
 	if (aOrthoName != " ")
 	{		
 		SplitDirAndFile(aDir,aPat,aOrthoName);
@@ -1656,7 +1656,7 @@ int Idem_main(int argc, char** argv)
 		Pt2dr aOrgOrt = aDico.OriginePlani();
 		Pt2dr aResOrt = aDico.ResolutionPlani();
 
-	// Calculer facteur d'échelle, lancer ScaleIm
+	// compute facteur d'échelle, lancer ScaleIm
 		if ((aNbPixel.x > aImSize) | (aNbPixel.y > aImSize))
 		{
 			cout << "Rescaling the orthophoto..." << endl;
@@ -1681,7 +1681,7 @@ int Idem_main(int argc, char** argv)
 			aResOrt.y *= aScFactor;
 			aOrthoName = aOrthoName.substr(0,aOrthoName.size()-4)+"_Scaled.tif";
 		}
-	// Projection des GCP dans l'ortho
+	// Projection des GCP in l'ortho
 		vector <pair <std::string,Pt3dr> > aGCPground;
 		vector <pair <std::string,Pt2di> > aGCPortho; 
 		pair <std::string,Pt2di> toPushGCP;
@@ -1708,12 +1708,12 @@ int Idem_main(int argc, char** argv)
 				toPushGCP.first = iT->NamePt();
 				toPushGCP.second.x = aXproj;
 				toPushGCP.second.y = aYproj;
-				aGCPortho.push_back(toPushGCP);			//Liste des points visibles sur l'ortho (dans la box)
+				aGCPortho.push_back(toPushGCP);			//list des points visibles on l'ortho (in la box)
 			}
 		}
 		
 		
-	// Tracer des cercles sur les GCP dans l'ortho (réduite ou non)
+	// Tracer des cercles on les GCP in l'ortho (réduite or non)
 		Tiff_Im  aImOrtho = Tiff_Im::StdConv(aOrthoName);
 		std::string aNameOut = "MyQualityTime.tif";
 		Im2D_U_INT1 I(aNbPixel.x,aNbPixel.y);

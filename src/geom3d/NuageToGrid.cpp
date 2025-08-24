@@ -110,7 +110,7 @@ class cLoadImDist
                 }
 
 
-		// Pour Rectification
+		// for Rectification
 
 	       Pt3dr P3dOfPix(Pt2di anIndTetaPhi) ;
 	       Pt3dr DirMailleOfPix(Pt2di anIndTetaPhi) ;
@@ -406,7 +406,7 @@ void cLoadImDist::Load(int argc,char ** argv)
 
     /*******************************************/
     /*                                         */
-    /*   Calcul du pas en Phi et Teta          */
+    /*   computation du pas en Phi and Teta          */
     /*                                         */
     /*******************************************/
 
@@ -471,7 +471,7 @@ void cLoadImDist::Load(int argc,char ** argv)
 
     /*******************************************/
     /*                                         */
-    /*   Calcul de X,Y,Z en geomtrie Teta-Phi  */
+    /*   computation de X,Y,Z en geomtrie Teta-Phi  */
     /*                                         */
     /*******************************************/
      mImCpt.Resize(mSzIm);
@@ -592,7 +592,7 @@ void cLoadImDist::Load(int argc,char ** argv)
 
     /*******************************************/
     /*                                         */
-    /*   Image d'eclairage                     */
+    /*   image d'eclairage                     */
     /*                                         */
     /*******************************************/
 

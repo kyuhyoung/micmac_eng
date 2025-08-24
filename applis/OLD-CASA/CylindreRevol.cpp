@@ -95,7 +95,7 @@ void cAppli_Casa::TestCylindreRevolution
                                   aProj + aDir * aSD1
                               );
 */
-          // Valeur au hasard pour le premier argument
+          // value au hasard for le premier argument
           cCylindreRevolution  aCyl = cCylindreRevolution::WithRayFixed(true,aGen,aSD1,aPMoy);
                                     
 

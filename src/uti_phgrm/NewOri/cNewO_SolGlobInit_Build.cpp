@@ -78,7 +78,7 @@ void cAppli_NewSolGolInit::NumeroteCC()
             std::vector<cNOSolIn_Triplet*> * aCC3 = &(aNewCC3S->mTri); // Quick acces to vec of tri in the CC
             std::vector<tSomNSI *> * aCCS = &(aNewCC3S->mSoms); // Quick accessto som
 
-            // Calcul des triplets 
+            // computation des triplets 
             aCC3->push_back(aTri0);  // Add triplet T0
             aTri0->Flag().set_kth_true(mFlag3CC);// Mark it as explored
             aTri0->NumCC() = aNumCC;  // Put  right num to T0
@@ -210,7 +210,7 @@ double cAppli_NewSolGolInit::ReMoyOneTriplet(cNOSolIn_Triplet * aTri)
      std::vector<Pt3dr> aVCTri;
      std::vector<Pt3dr> aVCCur;
 
-     ///calcul de la rotation du passage (local->global)
+     ///computation de la rotation du passage (local->global)
      for (int aKS=0 ; aKS<3 ; aKS++)
      {
          tSomNSI * aSom =  aTri->KSom(aKS);
@@ -228,19 +228,19 @@ double cAppli_NewSolGolInit::ReMoyOneTriplet(cNOSolIn_Triplet * aTri)
      double aSomDCur=0;
      double aSomDTri=0;
 
-     ///som de translations entre des images voisin dans repere local (aSomDTri) et globale (aSomDCur) 
+     ///som de translations between des images voisin in repere local (aSomDTri) and globale (aSomDCur) 
      for (int aKS=0 ; aKS<3 ; aKS++)
      {
           aSomDCur += euclid(aVCCur[aKS]-aVCCur[(aKS+1)%3]);
           aSomDTri += euclid(aVCTri[aKS]-aVCTri[(aKS+1)%3]);
      }
-     ///facteur d'echelle entre le modele local et global
+     ///facteur d'scale between le modele local and global
      double aLambda = aSomDCur / aSomDTri;
 
 
 
 
-     ///calcul de la translation => aOffsTr + aMTri2Cur * PTri * aLambda = PCur
+     ///computation de la translation => aOffsTr + aMTri2Cur * PTri * aLambda = PCur
      Pt3dr aOffsTr(0,0,0);
      for (int aKS=0 ; aKS<3 ; aKS++)
      {
@@ -290,7 +290,7 @@ double cAppli_NewSolGolInit::ReMoyOneTriplet(cNOSolIn_Triplet * aTri)
 
             // ElMatrix<double> aMKTri2Cur = aRCur.Mat() * aRTri.Mat().transpose();
 
-             //repartitin d'erreur; les valuers global change ici
+             //repartitin d'error; les valuers global change ici
              aSom->attr().SomPdsReMoy() += aPds;
              aSom->attr().SomTrReMoy () = aSom->attr().SomTrReMoy () + aTrK * aPds;
              aSom->attr().SomMatReMoy() = aSom->attr().SomMatReMoy() + aMK * aPds;
@@ -345,9 +345,9 @@ void cAppli_NewSolGolInit::ReMoyByTriplet()
     {
         tSomNSI * aSom = mVSOrCur[aKS];
         aSom->attr().SomPdsReMoy() = 0;              // Weigthing
-        aSom->attr().SomTrReMoy () = Pt3dr(0,0,0);   // Translation
+        aSom->attr().SomTrReMoy () = Pt3dr(0,0,0);   // translation
         aSom->attr().SomPMedReM () = Pt3dr(0,0,0);   // P3D Med ?
-        aSom->attr().SomMatReMoy() = ElMatrix<double>(3,3,0.0);  // Rotation
+        aSom->attr().SomMatReMoy() = ElMatrix<double>(3,3,0.0);  // rotation
     }
 
     for (int aK3=0 ; aK3<int(mV3Use4Ori.size()) ; aK3++)
@@ -374,7 +374,7 @@ std::cout << "--------- END  MED \n";
     for (int aKS=0 ; aKS <  int(mVSOrCur.size()) ; aKS++)
     {
         tSomNSI * aSom = mVSOrCur[aKS];
-        // A faire avant modif du poid
+        // A faire before modif du poid
         aSom->attr().SomPMedReM() = aSom->attr().SomPMedReM() / aSom->attr().SomPdsReMoy();
         double aPdsThis = ElMax(0.01, aSom->attr().SomPdsReMoy() * 0.1);
         aSom->attr().SomPdsReMoy() += aPdsThis;
@@ -452,7 +452,7 @@ ElRotation3D cNOSolIn_AttrSom::EstimRot(tSomNSI * aSom)
      std::vector<cNO_SolEstimRot> aVS;
      std::vector<double> aVProf;
      
-     // Calcul pour chaque triplet de la rotation initiale
+     // computation for chaque triplet de la rotation initiale
 
      for (int aKL=0 ; aKL<int(mLnk3.size()) ; aKL++)
      {

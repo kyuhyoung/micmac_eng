@@ -39,7 +39,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 #include "StdAfx.h"
 
-//definir une structure qui contient (le coefficient, le temps, une liste des coordonnées X Y Z et l'indice du premier élement de la liste dans la liste principale)
+//definir une structure qui contient (le coefficient, le temps, une list des coordonnées X Y Z and l'indice du premier élement de la list in la list principale)
 struct aSolution
 {
     std::vector<Pt3dr> Liste;
@@ -48,7 +48,7 @@ struct aSolution
     int t;
 };
 
-//la declaration des variables et des fonction de la classe S_Appli
+//la declaration des variables and des function de la class S_Appli
 class S_Appli
 {
 public :
@@ -137,31 +137,31 @@ S_Appli::S_Appli(int argc, char ** argv )
     int nbr_i=0;
     nbr_i=int (nbr);
     
-    if (nbr==nbr_i)   //tester si le nbr (si entré) par l'utilisateur est un entier
+    if (nbr==nbr_i)   //tester if le nbr (if entré) par l'utilisateur est un integer
     {
 
         nbr_sol=nbr_i;        
-        if(aGpsFile.compare(aGpsFile.size()-3,3,"xml") == 0)        	//test si l'extension du fichier GPS est .xml?
+        if(aGpsFile.compare(aGpsFile.size()-3,3,"xml") == 0)        	//test if l'extension du file GPS est .xml?
         {
 
-            ShowGPS();		   //creation de la listes des points GPS à partir du fichier Xml en argument
+            ShowGPS();		   //creation de la listes des points GPS à partir du file Xml en argument
         }
         
-        else                    //test si l'extension du fichier GPS est .xml?
+        else                    //test if l'extension du file GPS est .xml?
         {
             ShowGPS_RTK();      //creation de la listes des points GPS à partir du fichierRTKLib en argument
         }
 
 
-         ShowSommet();      //creation de la listes des points Sommets à partir du dossier Ori en argument
-							//(une liste des coord et une autre qui contient les noms
+         ShowSommet();      //creation de la listes des points Sommets à partir du folder Ori en argument
+							//(une list des coord and une autre qui contient les noms
 
 
-        test_successiv();   //test la successivité des images et prend en compte s'il ya un decalage entre les images
+        test_successiv();   //test la successivité des images and prend en compte s'il ya un decalage between les images
 
 
         coefficient();      //fournie deux vecteurs de type aSolution: 1/[all_Solution]:cherche toute les combinaisons possibles,leurs coef,l'indice de premier element ainsi que son dt
-																	// 2/ [solution]:contient la combinaison optimale pour tout les dt possibles(le dt,indice,liste et le coefficient(max))
+																	// 2/ [solution]:contient la combinaison optimale for tout les dt possibles(le dt,indice,list and le coefficient(max))
 
     if(nbr_sol<1)
     {
@@ -171,16 +171,16 @@ S_Appli::S_Appli(int argc, char ** argv )
 
     else
     {
-        std::vector<aSolution> combinaisons=Trie(nbr_sol);     //affiche les n premières solutions optimales dans un ordre décroissant (n est nbr_sol un nombre entier entré par l'utilisateur)
+        std::vector<aSolution> combinaisons=Trie(nbr_sol);     //affiche les n premières solutions optimales in un ordre décroissant (n est nbr_sol un number integer entré par l'utilisateur)
         affiche_max(combinaisons ,  nbr_sol);
     }
 
 
-    sauvegarde();       //Parmis les meilleurs solutions trouvés de chaque dt dans la fonction coefficient(sauvegardés dans le vecteur solution),
-                        //on sauvegarde la meilleur dans un fichier (resultat.txt)
+    sauvegarde();       //Parmis les meilleurs solutions trouvés de chaque dt in la function coefficient(sauvegardés in le vector solution),
+                        //on sauvegarde la meilleur in un file (result.txt)
 
-    //test_exif();  //teste si les données exif existent sinon les génère
-                    //et affiche si le dt entre les images est compatible avec le resultat trouvé sinon il affiche un warning
+    //test_exif();  //teste if les données exif existent else les génère
+                    //and affiche if le dt between les images est compatible with le result trouvé else il affiche un warning
     }
     else
     {
@@ -193,7 +193,7 @@ S_Appli::S_Appli(int argc, char ** argv )
 
 
 
-//ShowGPS() retourne aGPSListe (la liste des coordonnées des points GPS à partir du fichier xml)
+//ShowGPS() retourne aGPSListe (la list des coordonnées des points GPS à partir du file xml)
 void S_Appli::ShowGPS()  
 {
     cDicoGpsFlottant aDico =  StdGetFromPCP(aGpsFile,DicoGpsFlottant);
@@ -207,15 +207,15 @@ void S_Appli::ShowGPS()
 
 
 
-//ShowGPS_RTK() retourne aGPSListe (la liste des coordonnées des points GPS à partir du fichier RTKLib)
+//ShowGPS_RTK() retourne aGPSListe (la list des coordonnées des points GPS à partir du file RTKLib)
 void S_Appli::ShowGPS_RTK()  
 {
-    ifstream fichier(aGpsFile.c_str());  		//déclaration du flux et ouverture du fichier
+    ifstream fichier(aGpsFile.c_str());  		//déclaration du flux and ouverture du file
 
-            if(fichier)  						// si l'ouverture a réussi
+            if(fichier)  						// if l'ouverture a réussi
             {
 
-                std::string ligne; 				//Une variable pour stocker les lignes lues
+                std::string ligne; 				//Une variable for stocker les lignes lues
                 while(!fichier.eof())
                  {
                     getline(fichier,ligne);
@@ -223,17 +223,17 @@ void S_Appli::ShowGPS_RTK()
 
 
 
-                    if (ligne.compare(0,1,"%") == 0)		//pour sauter l'entête (toute les lignes qui commencent par "%")
+                    if (ligne.compare(0,1,"%") == 0)		//for sauter l'entête (toute les lignes qui commencent par "%")
                     {
                         std::cout<<"%%%%%%"<<'\n';
                     }
-                    else if(ligne.size()>10)       //if(ligne.size()>10) --> pour résoudre le problème du dernière ligne du fihier
+                    else if(ligne.size()>10)       //if(line.size()>10) --> for résoudre le problème du dernière line du fihier
                     {
                       std::string s = ligne;
                       std::vector<string> coord;                 
                       int lowmark=-1;
                       int uppermark=-1;
-                      for(unsigned int i=0;i<s.size()+1;i++)     // parser chaque ligne par l'espace
+                      for(unsigned int i=0;i<s.size()+1;i++)     // parser chaque line par l'espace
                       {
                           if(std::isspace(s[i]) && (lowmark!=-1))
                           {                             
@@ -273,7 +273,7 @@ void S_Appli::ShowGPS_RTK()
                       aGPSList.push_back(pt);                      
                     }
                  }
-                  fichier.close();  // on referme le fichier
+                  fichier.close();  // on referme le file
             }
             else
                     std::cout<< "Erreur à l'ouverture !" << '\n';
@@ -281,7 +281,7 @@ void S_Appli::ShowGPS_RTK()
 }
 
 
-//ShowSommet() retourne 2 listes: 'aSomList'(la liste des coordonnées des points sommets) et 'aNameListe'(la liste des noms des images)
+//ShowSommet() retourne 2 listes: 'aSomList'(la list des coordonnées des points sommets) and 'aNameListe'(la list des noms des images)
 void S_Appli::ShowSommet()       
 {    
     string new_mFullName="Orientation-*.*xml";
@@ -300,7 +300,7 @@ void S_Appli::ShowSommet()
 
 
 //test_successiv(): retourne	duree (la durée de prise des photos en unité de temps) 
-				//				et aDecalList(une liste qui contient le decalage en unité de temps de chaque image avec la suivante)
+				//				and aDecalList(une list qui contient le decalage en unité de temps de chaque image with la suivante)
 void S_Appli::test_successiv()      
 {
     duree=1;
@@ -324,7 +324,7 @@ void S_Appli::test_successiv()
 }
 
 
-//la fonction distance calcule la distance entre 2 points
+//la function distance compute la distance between 2 points
 double S_Appli::distance(Pt3dr a,Pt3dr b)    
 {
       double carr1x=((a.x-b.x)*(a.x-b.x));
@@ -334,7 +334,7 @@ double S_Appli::distance(Pt3dr a,Pt3dr b)
       return(dist1);
 }
 
-//la fonction calc_Ratios calcule les ratios de distances d'une liste de points
+//la function calc_Ratios compute les ratios de distances d'une list de points
 std::vector<double> S_Appli::calc_Ratios(std::vector<Pt3dr> aList)  
 {
     std::vector<double> ratio;
@@ -350,7 +350,7 @@ std::vector<double> S_Appli::calc_Ratios(std::vector<Pt3dr> aList)
 }
 
 
-//la fonction somme calcule la somme de tous les élements d'une liste des ratios
+//la function somme compute la somme de tous les élements d'une list des ratios
 double S_Appli::Somme(std::vector<double> Ratio)  
 {
     double somme=0;
@@ -360,7 +360,7 @@ double S_Appli::Somme(std::vector<double> Ratio)
 }
 
 
-//la fonction calc_coef calcule le coefficient de corrélation entre deux vecteurs
+//la function calc_coef compute le coefficient de corrélation between deux vecteurs
 double S_Appli::calc_coef(std::vector<double> Ratio_S,std::vector<double> Ratio_G) 
 {
     double Som_ratio_Som=Somme(Ratio_S);  //somme des ratios des points sommets
@@ -386,7 +386,7 @@ double S_Appli::calc_coef(std::vector<double> Ratio_S,std::vector<double> Ratio_
 
 
 //fournie deux vecteurs de type aSolution: 1/[all_Solution]:toute les combinaisons possibles,leurs coef,l'indice de premier élément ainsi que son dt
-                                        // 2/ [solution]:contient la combinaison optimale pour tout les dt possibles(le dt,indice,liste et le coefficient(max))
+                                        // 2/ [solution]:contient la combinaison optimale for tout les dt possibles(le dt,indice,list and le coefficient(max))
 void S_Appli::coefficient()
 {
     std::vector<double> Ratio_Som=calc_Ratios(aSomList);
@@ -421,7 +421,7 @@ void S_Appli::coefficient()
 
 
 
-// la fonction affiche_max permet l'affichage d'une liste sur le terminale
+// la function affiche_max permet l'affichage d'une list on le terminale
 void S_Appli::affiche_max(std::vector<aSolution> solution , int dt_max)
 {
     for(int k=0;k<dt_max;k++)
@@ -431,9 +431,9 @@ void S_Appli::affiche_max(std::vector<aSolution> solution , int dt_max)
         std::cout<<"Best Corr Coeff = "<<solution.at(k).coefficient<<'\n';
         std::cout<<"First position = "<< solution.at(k).indice<<'\n';
         //std::cout<<"la solution est"<<'\n';
-        //for(unsigned int i=0;i<solution.at(k).Liste.size();i++)
+        //for(unsigned int i=0;i<solution.at(k).list.size();i++)
         //{
-        //   printf("%.4f  %.4f  %.4f\n", solution.at(k).Liste[i].x, solution.at(k).Liste[i].y, solution.at(k).Liste[i].z);
+        //   printf("%.4f  %.4f  %.4f\n", solution.at(k).list[i].x, solution.at(k).list[i].y, solution.at(k).list[i].z);
         //}
         std::cout<< "*************************************************"<<'\n';
 
@@ -441,8 +441,8 @@ void S_Appli::affiche_max(std::vector<aSolution> solution , int dt_max)
 }
 
 
-//la fonction cherche_max fournit la solution optimale pour un dt donnée:
-//en trouvant le coefficient le plus proche de 1 et la liste des points GPS qui correspond à ce coefficient ainsi que l'indice du 1er elélément
+//la function cherche_max fournit la solution optimale for un dt donnée:
+//en trouvant le coefficient le plus proche de 1 and la list des points GPS qui correspond à ce coefficient ainsi que l'indice du 1er elélément
 aSolution S_Appli::cherche_max(std::vector<aSolution> all_Solutions,int dt) 
 {
 
@@ -467,7 +467,7 @@ aSolution S_Appli::cherche_max(std::vector<aSolution> all_Solutions,int dt)
 }
 
 
-//la fonction sauvegarde() permet le sauvegarde de la solution optimale dans un fichier txt 
+//la function sauvegarde() permet le sauvegarde de la solution optimale in un file txt 
 void S_Appli::sauvegarde()           
 {
     int m=0;
@@ -496,7 +496,7 @@ void S_Appli::sauvegarde()
 }
 
 
-//la fonction Trie retourne les n(n entrée par l'utilisateurs) meilleurs solutions par ordre décroissant
+//la function Trie retourne les n(n entrée par l'utilisateurs) meilleurs solutions par ordre décroissant
 std::vector<aSolution> S_Appli::Trie( int nbr_sol)
 {
     std::vector<aSolution> combinaisons=all_Solutions;
@@ -524,7 +524,7 @@ std::vector<aSolution> S_Appli::Trie( int nbr_sol)
 
 }
 
-//la fonction test_dt compare le dt des images en données exif et le dt calculé par le programme
+//la function test_dt compare le dt des images en données exif and le dt calculé par le programme
 void S_Appli::test_dt(int best_dt)         
 {
     std::vector<double> T;
@@ -534,7 +534,7 @@ void S_Appli::test_dt(int best_dt)
     std::list<std::string> Img_xif=ManC->StdGetListOfFile(".*xml");
     bool exist=true;
 
-    for(std::list<std::string>::iterator I=Img_xif.begin();I!=Img_xif.end();I++)  //tester si les données exif contiennet date!!
+    for(std::list<std::string>::iterator I=Img_xif.begin();I!=Img_xif.end();I++)  //tester if les données exif contiennet date!!
     {
         cXmlXifInfo aXmlXifInfo=StdGetFromPCP(dossier+"/"+*I,XmlXifInfo);
         if(aXmlXifInfo.Date().IsInit())
@@ -549,7 +549,7 @@ void S_Appli::test_dt(int best_dt)
         }
     }
 
-    if(exist)     //si la date existe dans les données exif de tous les images 
+    if(exist)     //if la date existe in les données exif de tous les images 
     {
         for(unsigned int i=0;i<aDateList.size();i++)
         {
@@ -570,7 +570,7 @@ void S_Appli::test_dt(int best_dt)
                  break;
               }
         }
-        if(test_unit_tmp)    //si le decalage entre les images en unité de temps est le même
+        if(test_unit_tmp)    //if le decalage between les images en unité de temps est le même
         {
             if(best_dt==t)
             {
@@ -585,11 +585,11 @@ void S_Appli::test_dt(int best_dt)
 }
 
 
-//la fonction test_exif() génère le dossier Tmp-MM-Dir s'il n'exixte pas
+//la function test_exif() génère le folder Tmp-MM-Dir s'il n'exixte pas
 void S_Appli::test_exif()
 {
     string dossier="Tmp-MM-Dir";
-    if(ELISE_fp::IsDirectory(dossier))        //test si Tmp-MM-Dir existe
+    if(ELISE_fp::IsDirectory(dossier))        //test if Tmp-MM-Dir existe
     {
         test_dt(best.t);
     }

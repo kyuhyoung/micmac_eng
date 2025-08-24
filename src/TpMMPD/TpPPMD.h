@@ -58,8 +58,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 ==================================================*/
 
 
-//     Pt2dr  classe definissant les points 2D
-//     Pt3dr  classe definissant les points 3D
+//     Pt2dr  class definissant les points 2D
+//     Pt3dr  class definissant les points 3D
 //
 
 class cTD_Prof;
@@ -68,16 +68,16 @@ class cTD_Camera
 {
      public :
 
-        // Constructeur a partir d'un fichier XML , peut etre une calibration interne ou externe
+        // Constructeur a partir d'un file XML , peut etre une calibration interne or externe
         cTD_Camera(const std::string &);
 
-        // Sauvegarde dans un fichier
+        // Sauvegarde in un file
         void Save(const std::string &) const;
 
-        // Fonction de projection  Terrain  -> Image
+        // function de projection  Terrain  -> image
         Pt2dr Ter2Image(const Pt3dr &) const;
 
-        // Relevement dans l'espace
+        // Relevement in l'espace
         std::vector<cTD_Camera> RelvtEspace
                                 (
                                     const Pt3dr & aPTer1, const Pt2dr & aPIm1,
@@ -85,7 +85,7 @@ class cTD_Camera
                                     const Pt3dr & aPTer3, const Pt2dr & aPIm3
                                 );
 
-        // Focale et coeff en R3
+        // Focale and coeff en R3
 
             double  Focale () const;
             double  R3 () const;
@@ -109,7 +109,7 @@ class cTD_Camera
         CamStenope *               mCS;
 };
 
-int TD_EntierAleatoire(int aN);  // Renvoie un entier au hasrd entre 1 et N
+int TD_EntierAleatoire(int aN);  // Renvoie un integer au hasrd between 1 and N
 
 class cTD_SetAppuis
 {
@@ -162,7 +162,7 @@ class cTD_Im
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -178,17 +178,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

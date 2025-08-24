@@ -161,7 +161,7 @@ void cAppli_Casa::AddNuage2Surf
     
 
  // {
- // Calcule tous les germe de composante connexe dans aLGerm
+ // compute tous les germe de composante connexe in aLGerm
  // aTmp sert de marqueur, a la fin il estr remis a zero
  // le parcourt est limite a DistSep
     Pt2di aP0;
@@ -183,9 +183,9 @@ void cAppli_Casa::AddNuage2Surf
 
 
     // Parcourt 2 fois les germes, reexplore les meme composantes connexes que + haut
-    //   - la premiere fois calcul une image Cpt permettant de savoir pour chaque point
+    //   - la premiere fois computation une image Cpt permettant de savoir for chaque point
     //   da combien de zone il appartient
-    //   - la deuxieme fois  accumule chaque point dans le facetton
+    //   - la deuxieme fois  accumule chaque point in le facetton
     std::vector<cFaceton> & aVF = aSurf.mVF;
 
     Im2D_U_INT1 aImCpt(aSz.x,aSz.y,0);

@@ -346,12 +346,12 @@ Pt3dr cTriangle::meanTexture(CamStenope *aCam, Tiff_Im &aImg)
                     {
                         Pt2dr AP = Pt2dr(ax + aP0.x, ay + aP0.y)-A2;
 
-                        // Coordonnees barycentriques de P(x,y)
+                        // coordinates barycentriques de P(x,y)
                         REAL aPdsB = (AP^AC) / aDet;
                         REAL aPdsC = (AB^AP) / aDet;
                         REAL aPdsA = 1 - aPdsB - aPdsC;
 
-                        if ((aPdsA>-Eps) && (aPdsB>-Eps) && (aPdsC>-Eps)) // on est a l'intérieur du triangle
+                        if ((aPdsA>-Eps) && (aPdsB>-Eps) && (aPdsC>-Eps)) // on est a l'intrieur du triangle
                         {
                             /* unsigned char red   = aDataR[ay][ax];
                             unsigned char green = aDataG[ay][ax];
@@ -612,12 +612,12 @@ void cMesh::removeTriangle(cTriangle &aTri, bool doAdjacence)
     {
         vector <int> *edges = aTri.getEdgesIndex();
 
-       /* cout << "triangle à retirer= " << triIndex << endl;
-        cout << "nombre d'edges à retirer =  " << edges.size() << endl;*/
+       /* cout << "triangle  retirer= " << triIndex << endl;
+        cout << "number d'edges  retirer =  " << edges.size() << endl;*/
 
        /* for (unsigned int aK=0; aK< edges.size(); aK++)
         {
-            cout << "index des edges à retirer = " << edges[aK] << endl;
+            cout << "index des edges  retirer = " << edges[aK] << endl;
             cout << " entre " << mEdges[edges[aK]].n1() << " et " << mEdges[edges[aK]].n2() <<endl;
         }*/
 
@@ -749,7 +749,7 @@ void cMesh::clean()
 
     //cout << "Removing isolated vertex" << endl;
 
-    //suppression des points n'appartenant à aucun triangle
+    //suppression des points n'appartenant  aucun triangle
     const int nbFaces = getFacesNumber();
     for(int aK=0; aK < getVertexNumber();++aK)
     {
@@ -1139,7 +1139,7 @@ void cZBuf::BasculerUnMaillage(cMesh &aMesh, const CamStenope &aCam)
                 Pt2di B2i = round_down(B2);
                 Pt2di C2i = round_down(C2);
 
-                 //On verifie que le triangle se projete entierement dans l'image
+                 //On verifie que le triangle se projete entierement in l'image
                  //TODO: gerer les triangles de bord
                 if (A2i.x >= 0 && B2i.x >= 0 && C2i.x >= 0 && A2i.y >= 0 && B2i.y >= 0 && C2i.y >= 0 && A2i.x < SzRes.x && B2i.x < SzRes.x && C2i.x < SzRes.x && A2i.y < SzRes.y  && B2i.y < SzRes.y  && C2i.y < SzRes.y)
                 {
@@ -1158,7 +1158,7 @@ void cZBuf::BasculerUnMaillage(cMesh &aMesh, const CamStenope &aCam)
                         {
                             Pt2dr AP = Pt2dr(x,y)-A2;
 
-                            // Coordonnees barycentriques de P(x,y)
+                            // coordinates barycentriques de P(x,y)
                             REAL aPdsB = (AP^AC) / aDet;
                             REAL aPdsC = (AB^AP) / aDet;
                             REAL aPdsA = 1 - aPdsB - aPdsC;
@@ -1207,7 +1207,7 @@ void cZBuf::BasculerUnTriangle(cTriangle &aTri, bool doMask)
         Pt2di B2i = round_down(B2);
         Pt2di C2i = round_down(C2);
 
-         //On verifie que le triangle se projete entierement dans l'image
+         //On verifie que le triangle se projete entierement in l'image
          //TODO: gerer les triangles de bord
         if (A2i.x < 0 || B2i.x < 0 || C2i.x < 0 || A2i.y < 0 || B2i.y < 0 || C2i.y < 0 || A2i.x >= mSzRes.x || B2i.x >= mSzRes.x || C2i.x >= mSzRes.x || A2i.y >= mSzRes.y  || B2i.y >= mSzRes.y  || C2i.y >= mSzRes.y)
              return;
@@ -1228,7 +1228,7 @@ void cZBuf::BasculerUnTriangle(cTriangle &aTri, bool doMask)
                 {
                     Pt2dr AP = Pt2dr(x,y)-A2;
 
-                    // Coordonnees barycentriques de P(x,y)
+                    // coordinates barycentriques de P(x,y)
                     REAL aPdsB = (AP^AC) / aDet;
                     REAL aPdsC = (AB^AP) / aDet;
                     REAL aPdsA = 1 - aPdsB - aPdsC;
@@ -1245,7 +1245,7 @@ void cZBuf::BasculerUnTriangle(cTriangle &aTri, bool doMask)
                 {
                     Pt2dr AP = Pt2dr(x,y)-A2;
 
-                    // Coordonnees barycentriques de P(x,y)
+                    // coordinates barycentriques de P(x,y)
                     REAL aPdsB = (AP^AC) / aDet;
                     REAL aPdsC = (AB^AP) / aDet;
                     REAL aPdsA = 1 - aPdsB - aPdsC;

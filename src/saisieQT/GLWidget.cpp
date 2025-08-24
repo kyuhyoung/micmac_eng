@@ -381,7 +381,7 @@ void GLWidget::checkTiles()
     {
         float rescaleFactor = getGLData()->glImageMasked().getLoadedImageRescaleFactor();
 
-        if (rescaleFactor < 1.f) //est-on en mode sous-ech ?
+        if (rescaleFactor < 1.f) //est-on en mode under-ech ?
         {
             float zoom = getZoom();
 
@@ -509,7 +509,7 @@ void GLWidget::checkTiles()
 	//                    }
 	//                    else //il y a eu une saisie: il faut utiliser _m_rescaled_mask, car c'est lui qui stocke toutes les modifications (� changer ?)
 	//                    {
-	//                        //application du facteur d'�chelle au QRect puis crop dans _m_rescaled_mask
+	//                        //application du facteur d'�chelle au QRect puis crop in _m_rescaled_mask
 	//                        float scaleFactor = getGLData()->glImage().getLoadedImageRescaleFactor();
 
 	//                        QTransform trans = QTransform::fromScale(scaleFactor,scaleFactor);
@@ -683,7 +683,7 @@ void GLWidget::Select(int mode, bool saveInfos)
         if (mode <= ADD_OUTSIDE) m_bFirstAction = false;
         m_bMaskEdited = true;
 
-        if (saveInfos) //  TODO ne marche pas avec le switch y/z
+        if (saveInfos) //  TODO ne marche pas with le switch y/z
         {
             selectInfos info(polygone->getVector(),mode);
 
@@ -814,7 +814,7 @@ void GLWidget::mousePressEvent(QMouseEvent *event)
             if (m_bDisplayMode2D || (m_interactionMode == SELECTION))
             {
 
-                if(!currentPolygon()->isClosed())             // ADD POINT
+                if(!currentPolygon()->isClosed())             // ADD point
                 {
 
                     cPoint* lock = NULL;
@@ -825,11 +825,11 @@ void GLWidget::mousePressEvent(QMouseEvent *event)
 
                     currentPolygon()->addPoint(m_lastPosImage,lock);
                 }
-                else if (currentPolygon()->isLinear() && (event->modifiers() & Qt::ShiftModifier)) // INSERT POINT
+                else if (currentPolygon()->isLinear() && (event->modifiers() & Qt::ShiftModifier)) // INSERT point
 
                     currentPolygon()->insertPoint();
 
-                else if (currentPolygon()->getSelectedPointIndex() != -1) // SELECT POINT
+                else if (currentPolygon()->getSelectedPointIndex() != -1) // SELECT point
 
                     currentPolygon()->setPointSelected();
 
@@ -993,7 +993,7 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
             {
                 QVector3D r(0,0,0);
 
-                if (event->buttons() == Qt::LeftButton)               // ROTATION X et Y
+                if (event->buttons() == Qt::LeftButton)               // rotation X and Y
                 {
                     r.setX(dPWin.y() / vpWidth());
                     r.setY(dPWin.x() / vpHeight());
@@ -1009,7 +1009,7 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 
                         setZoom(_vp_Params.changeZoom(dPWin.y()));
 
-                    else                                                // TRANSLATION VIEW
+                    else                                                // translation VIEW
                     {
                         //QPointF dp = m_bDisplayMode2D ? pos - m_lastPosImage : QPointF(dPWin .x(),-dPWin .y())/vpWidth()*getGLData()->getBBoxMaxSize()*_vp_Params.m_zoom/2.f;
 
@@ -1017,14 +1017,14 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
                         _matrixManager.translate(dp.x(),dp.y(),0.0);
                     }
                 }
-                else if (event->buttons() == Qt::RightButton && _matrixManager.isBallNavigation())          // ROTATION Z
+                else if (event->buttons() == Qt::RightButton && _matrixManager.isBallNavigation())          // rotation Z
                     r.setZ(angleZ(mPos));
 
                 _matrixManager.rotateArcBall(r.y(), r.x(), r.z(), _vp_Params.m_speed * 2.f);
             }
         }
 
-        if (event->buttons() != Qt::MiddleButton)  //pour eviter le changement de label_ImagePosition_2 en mode translation
+        if (event->buttons() != Qt::MiddleButton)  //for eviter le changement de label_ImagePosition_2 en mode translation
             emit newImagePosition( m_lastMoveImage );
 
 
@@ -1086,7 +1086,7 @@ void GLWidget::contextMenuEvent(QContextMenuEvent * event)
 
 void GLWidget::enterEvent(QEvent *event)
 {
-    // pour avoir le focus lorsque le curseur entre dans la fen�tre (par ex. movePointWithArrows)
+    // for avoir le focus lorsque le curseur between in la fen�tre (par ex. movePointWithArrows)
     // TODO a verifier -> peut etre gerer aussi deplacement en dehors de la fenetre
     setFocus(Qt::ActiveWindowFocusReason);
     setFocusPolicy(Qt::StrongFocus);

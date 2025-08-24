@@ -40,14 +40,14 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "StdAfx.h"
 #include "ConvertRtk.h"
 
-//lire le fichier de TimeMark
+//lire le file de TimeMark
 //lire le pattern
-//checker le nombre ; si nombre different que faire ?
-//lire les exifs des images si elles existent
-//convertir en MJD les datations d'images si elles existent
-//calculer les différences de temps données par les exifs & le TimeMark
-//calculer la corrélation entre les deux
-//problème quand aTMPDir existe mais est vide ... ça plante
+//checker le number ; if number different que faire ?
+//lire les exifs des images if elles existent
+//convertir en MJD les datations d'images if elles existent
+//compute les différences de temps données par les exifs & le TimeMark
+//compute la corrélation between les deux
+//problème when aTMPDir existe but est vide ... ça plante
 
 const std::string aTMPDir = "Tmp-MM-Dir";
 

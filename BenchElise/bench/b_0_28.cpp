@@ -111,7 +111,7 @@ void bench_red_op_ass ()
 
 
 
-//------- avec fonction et voisinage constant
+//------- with function and voisinage constant
     ELISE_COPY
     (
           select(rectangle(Pt2di(0,0),Pt2di(20,30)),1),
@@ -122,7 +122,7 @@ void bench_red_op_ass ()
 
 
 
-//------- avec fonction variable
+//------- with function variable
     ELISE_COPY
     (
           select(rectangle(Pt2di(0,0),Pt2di(20,15)),1),
@@ -133,7 +133,7 @@ void bench_red_op_ass ()
 
 
 
-//------- avec voisinage variable
+//------- with voisinage variable
     ELISE_COPY
     (
           select(rectangle(Pt2di(0,0),Pt2di(20,40)),1),
@@ -142,7 +142,7 @@ void bench_red_op_ass ()
     );
     BENCH_ASSERT(dif==0);
 
-//------- avec voisinage et fonction variable
+//------- with voisinage and function variable
     ELISE_COPY
     (
           select(rectangle(Pt2di(0,0),Pt2di(20,15)),1),
@@ -151,7 +151,7 @@ void bench_red_op_ass ()
     );
     BENCH_ASSERT(dif==0);
 
-//------- avec voisinage et fonction variable et flux reelement selectionne
+//------- with voisinage and function variable and flux reelement selectionne
     ELISE_COPY
     (
           select(rectangle(Pt2di(0,0),Pt2di(20,20)),(FX+FY)%2),
@@ -160,7 +160,7 @@ void bench_red_op_ass ()
     );
     BENCH_ASSERT(dif==0);
 
-//------- avec flux/RLE
+//------- with flux/RLE
     ELISE_COPY
     (
           //disc(Pt2di(10,10),30),
@@ -170,7 +170,7 @@ void bench_red_op_ass ()
     );
     BENCH_ASSERT(dif==0);
 
-//------- avec flux/RLE; oper max et min
+//------- with flux/RLE; oper max and min
 
     ELISE_COPY
     (

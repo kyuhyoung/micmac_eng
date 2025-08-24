@@ -1,11 +1,11 @@
-/* readwrite.h et readwrite.cpp regroupent les fonctions de lecture et d'écriture des différents fichiers xml utilisés */
+/* readwrite.h and readwrite.cpp regroupent les fonctions de lecture and d'écriture des différents fichiers xml utilisés */
 
 #ifndef READWRITE_H
 #define READWRITE_H
 
 #include "all.h"
 
-/* lecture et écriture des différents fichiers xml utilisés */
+/* lecture and écriture des différents fichiers xml utilisés */
 
 
 class XmlTag
@@ -89,7 +89,7 @@ class XmlTree
 
 
 class ParamCalcul
-	//enregistrement du calcul
+	//enregistrement du computation
 {
 	public:
 		static bool ecrire(const ParamMain& paramMain, const QString& fichier);
@@ -97,11 +97,11 @@ class ParamCalcul
 };
 
 ///////////////////////////////////////////////////////////////////////////////////
-//fichiers pour Pastis
+//fichiers for Pastis
 
 
 class BDCamera
-	//liste des caméras (décomposition du nom des images)
+	//list des caméras (décomposition du nom des images)
 {
 	public :
 		BDCamera();
@@ -114,7 +114,7 @@ class BDCamera
 };
 
 class DicoCameraMM
-	//liste des caméras (décomposition du nom des images)
+	//list des caméras (décomposition du nom des images)
 {
 	public :
 		DicoCameraMM(const ParamMain* pMain);
@@ -137,7 +137,7 @@ class FichierCalibCam
 };
 
 class FichierParamImage
-	//liste des images
+	//list des images
 {
 	public:
 		FichierParamImage();
@@ -170,7 +170,7 @@ class FichierAssocCalib
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-//fichiers pour Apero
+//fichiers for Apero
 
 
 class FichierFiltrage
@@ -196,7 +196,7 @@ class FichierMaitresse
 };
 
 class FichierExportPly
-	//export des points homologues 3D et des caméras dans un fichier ply
+	//export des points homologues 3D and des caméras in un file ply
 {
 	public :
 		FichierExportPly();
@@ -205,7 +205,7 @@ class FichierExportPly
 };
 
 class FichierImgToOri
-	//liste des images à orienter
+	//list des images à orienter
 {
 	public :
 		FichierImgToOri();
@@ -241,7 +241,7 @@ class FichierContraintes
 		static bool ecrire (const QString& fichier, bool classique, bool fisheye);
 };
 
-//fichiers pour le géoréferencement///////////////////////////////////////////////
+//fichiers for le géoréferencement///////////////////////////////////////////////
 
 class FichierBasculOri
 	//basculement de l'orientation absolue
@@ -254,7 +254,7 @@ class FichierBasculOri
 };
 
 class FichierAppuiGPS
-	//fichier de points d'appui terrain
+	//file de points d'appui terrain
 {
 	public :
 		FichierAppuiGPS();
@@ -266,7 +266,7 @@ class FichierAppuiGPS
 };
 
 class FichierAppuiImage
-	//fichier de points d'appui avec leurs coordonnées dans les images
+	//file de points d'appui with leurs coordonnées in les images
 {
 	public :
 		FichierAppuiImage();
@@ -279,7 +279,7 @@ class FichierAppuiImage
 };
 
 class FichierObsGPS
-	//fichier pointant vers le fichier des mesures image des points GPS
+	//file pointant vers le file des mesures image des points GPS
 {
 	public :
 		FichierObsGPS();
@@ -288,7 +288,7 @@ class FichierObsGPS
 };
 
 class FichierIncGPS
-	//fichier pointant vers le fichier des points GPS
+	//file pointant vers le file des points GPS
 {
 	public :
 		FichierIncGPS();
@@ -297,7 +297,7 @@ class FichierIncGPS
 };
 
 class FichierPondGPS
-	//fichier pour la pondération des points GPS
+	//file for la pondération des points GPS
 {
 	public :
 		FichierPondGPS();
@@ -306,7 +306,7 @@ class FichierPondGPS
 };
 
 class FichierSommetsGPS
-	//fichier de coordonnées GPS de sommets
+	//file de coordonnées GPS de sommets
 {
 	public :
 		FichierSommetsGPS();
@@ -315,7 +315,7 @@ class FichierSommetsGPS
 };
 
 class FichierOriInit
-	//fichier pointant vers le fichier des mesures image des points GPS
+	//file pointant vers le file des mesures image des points GPS
 {
 	public :
 		FichierOriInit();
@@ -323,7 +323,7 @@ class FichierOriInit
 		static bool ecrire (const QString& fichier);
 };
 
-//fichiers pour le multi-échelle///////////////////////////////////////////////
+//fichiers for le multi-échelle///////////////////////////////////////////////
 class FichierPosesFigees
 	//étape 2 : écriture des poses figées (courtes focales)
 	//étape 3 : écriture des poses non dissociées
@@ -336,11 +336,11 @@ class FichierPosesFigees
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-//fichiers pour Micmac
+//fichiers for Micmac
 
 
 class FichierCartes
-	//liste des images utilisées pour créer les cartes de profondeur
+	//list des images utilisées for créer les cartes de profondeur
 {
 	public :
 		FichierCartes ();
@@ -349,7 +349,7 @@ class FichierCartes
 };
 
 class FichierMasque
-	//fichier xml de référencement du masque saisi pour MicMac
+	//file xml de référencement du masque saisi for MicMac
 {
 	public :
 		FichierMasque ();
@@ -358,7 +358,7 @@ class FichierMasque
 };
 
 class FichierDefMasque
-	//définition du masque et de son fichier de référencement
+	//définition du masque and de son file de référencement
 {
 	public :
 		FichierDefMasque ();
@@ -371,24 +371,24 @@ class FichierRepere
 {
 	public :
 		FichierRepere ();
-		static bool ecrire(const QString& fichier, double profondeur);	//repère par défaut, sinon Bascule est utilisé
+		static bool ecrire(const QString& fichier, double profondeur);	//repère par défaut, else Bascule est utilisé
 		static QString lire (const QString& fichier);
 };
 
 class FichierIntervalle
-	//intervalle de recherche pour la corrélation
+	//intervalle de recherche for la corrélation
 {
 	public :
 		FichierIntervalle ();
-		static bool ecrire(const QString& fichier, float pmin, float pmax);	//pour le TA, voir MicmacThread
+		static bool ecrire(const QString& fichier, float pmin, float pmax);	//for le TA, voir MicmacThread
 };
 
 class FichierDiscontinuites
-	//filtrage des discontinuités et fortes pentes
+	//filtrage des discontinuités and fortes pentes
 {
 	public :
 		FichierDiscontinuites ();
-		static bool ecrire(const QString& fichier, float seuil, float coeff);	//pour le TA, voir MicmacThread
+		static bool ecrire(const QString& fichier, float seuil, float coeff);	//for le TA, voir MicmacThread
 };
 
 class FichierNomCarte
@@ -396,7 +396,7 @@ class FichierNomCarte
 {
 	public :
 		FichierNomCarte ();
-		static bool ecrire(const QString& fichier, const QString& numCarte, bool TA, bool repereImg);	//pour le TA, voir MicmacThread
+		static bool ecrire(const QString& fichier, const QString& numCarte, bool TA, bool repereImg);	//for le TA, voir MicmacThread
 };
 
 class FichierOrtho
@@ -408,10 +408,10 @@ class FichierOrtho
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//fichiers pour Porto
+//fichiers for Porto
 
 class FichierPorto
-	//fichier xml de référencement du masque saisi pour MicMac
+	//file xml de référencement du masque saisi for MicMac
 {
 	public :
 		FichierPorto ();
@@ -421,7 +421,7 @@ class FichierPorto
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 class FichierGeorefMNT
-//fichier de géoréférencement des cartes, MNT, TA et orthoimages
+//file de géoréférencement des cartes, MNT, TA and orthoimages
 {
 	public :
 		FichierGeorefMNT ();
@@ -441,11 +441,11 @@ struct MetaDataRaw {
 	float feq35;
 	QSize imgSize;
 };
-QString focaleRaw(const QString& image, const ParamMain& paramMain, MetaDataRaw& metaDataRaw);	//métadonnées d'une image raw ; renvoie false si pb
-bool focaleTif(const QString& image, const QString& micmacDir, int* focale, QSize* taille);	//focale en mm d'une image tif ; renvoie 0 si pb
+QString focaleRaw(const QString& image, const ParamMain& paramMain, MetaDataRaw& metaDataRaw);	//métadonnées d'une image raw ; renvoie false if pb
+bool focaleTif(const QString& image, const QString& micmacDir, int* focale, QSize* taille);	//focale en mm d'une image tif ; renvoie 0 if pb
 // get focal and image size for non-TIFF, non-raw images
 // returns if values have been found
 bool focaleOther( const string &i_directory, const string &i_image, int &o_focal, QSize &o_size );
-bool createEmptyFile(const QString& fichier);	//crée un fichier vide
+bool createEmptyFile(const QString& fichier);	//crée un file vide
 
 #endif

@@ -80,7 +80,7 @@ class cOneImMEff2MP;
 class cMemoryEffToMultiplePoint;
 class cCstrMulP ;
 
-typedef std::pair<int,int>  tIP;  // Type Image point
+typedef std::pair<int,int>  tIP;  // Type image point
 static int Im(const tIP & aPair) {return aPair.first;}
 static int Pt(const tIP & aPair) {return aPair.second;}
 
@@ -108,7 +108,7 @@ class cCstrMulP : public cMemCheck
 	void Add(const tIP&,const tIP&);
 	void Add(const cCstrMulP & aT2);
 
-        std::vector<tIP>  mVIP; ///< Vector Image(x) Point-Indexe(y)
+        std::vector<tIP>  mVIP; ///< Vector image(x) point-Indexe(y)
         bool  mOk;    ///< used to store the result of correctness (is each point represent by only one image)
         bool  mDone;  ///< marker used to parse points only once
 

@@ -89,9 +89,9 @@ cCollecSpecArg2007 & cAppliDensifyRefMatch::ArgOpt(cCollecSpecArg2007 & anArgOpt
     // double aNoisePx =  1.0;
     // double aThreshGrad =  0.4;
           // << AOpt2007(mSzTile, "TileSz","Size of tile for spliting computation",{eTA2007::HDV})
-          // << AOpt2007(mSaveImFilter,"SIF","Save Image Filter",{eTA2007::HDV,eTA2007::Tuning})
+          // << AOpt2007(mSaveImFilter,"SIF","Save image Filter",{eTA2007::HDV,eTA2007::Tuning})
           // << AOpt2007(mCutsParam,"CutParam","Interval Pax + Line of cuts[PxMin,PxMax,Y0,Y1,....]",{{eTA2007::ISizeV,"[3,10000]"}})
-          // << AOpt2007(mSaveImFilter,"SIF","Save Image Filter",{eTA2007::HDV})
+          // << AOpt2007(mSaveImFilter,"SIF","Save image Filter",{eTA2007::HDV})
    ;
 }
 

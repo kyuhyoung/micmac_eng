@@ -46,7 +46,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 //
 //
 //    NOUVELLE SYNTAXE   
-//       arg3 est soit fichier soit une cle de calcul a partir de arg
+//       arg3 est soit file soit une cle de computation a partir de arg
 //
 //    bin/ImProfAndL2App  Dir Key-Set-Hom  Key-Or-Nuage 
 //
@@ -82,7 +82,7 @@ cAppliConvIP2L::cAppliConvIP2L(int argc,char ** argv) :
    (
         argc,argv,
         4,   // Trois argument obligatoires
-	1,   // 1 Argument est un fichier
+	1,   // 1 Argument est un file
 	""
    ) , 
    mAppHIsP1 (1),

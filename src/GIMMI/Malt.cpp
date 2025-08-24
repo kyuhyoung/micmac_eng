@@ -516,7 +516,7 @@ void Malt::mm3d(){
 
 
 //************************************************************************************************************************************
-// CODE POUR ENVOYER UN LE CONTENU DU COMPTE RENDU  TRAITEMENT IMAGE
+// CODE for ENVOYER UN LE CONTENU DU COMPTE RENDU  TRAITEMENT image
 
 QString Malt::getTxt(){
 
@@ -530,7 +530,7 @@ QString Malt::getTxt(){
 
 
 //************************************************************************************************************************************
-// CODE POUR ENVOYER UNE BOX APRES TRAITEMENT IMAGE FINI
+// CODE for ENVOYER UNE BOX after TRAITEMENT image FINI
 void Malt::msg(){
     qDi.setWindowTitle("Malt state");
 

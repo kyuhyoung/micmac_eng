@@ -7,7 +7,7 @@
 
 
 
-/* ** PlyFile.h est maintenante inclus dans StdAfx.f du MicMac, dans include/general */
+/* ** PlyFile.h est maintenante inclus in StdAfx.f du MicMac, in include/general */
 /*
  * *IL FAULT MISE INCLUDE DU OPENCV AVANT INCLUDE DU StdAfx.h
  * IL FAULT DESACTIVE L'OPTION WITH_HEADER_PRECOMP DANS MICMAC CMAKE

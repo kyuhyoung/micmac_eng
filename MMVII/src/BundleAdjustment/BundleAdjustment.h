@@ -171,7 +171,7 @@ class cClinoWithUK :  public cObjWithUnkowns<tREAL8>, public cMemCheck
 	
      private :
          const std::string    mNameClino;    // Name of the clino
-         tRotR          mRot;                // Rotation between one camera and the clinometer. It is also the initial solution
+         tRotR          mRot;                // rotation between one camera and the clinometer. It is also the initial solution
          cPt3dr         mOmega;              // Vector axiator, the unknowns of the least squares
 };
 
@@ -530,7 +530,7 @@ class cMMVII_BundleAdj
 
           std::vector<cBA_LidarPhotogra*>  mVBA_Lidar;
 
-	         // - - - - - - -   Reference poses- - - - - - - -
+	         // - - - - - - -   reference poses- - - - - - - -
           std::vector<cSensorCamPC *>        mVCamRefPoses;      ///< vector of reference  poses if they exist
 	  std::string                        mFolderRefCam;
 	  tREAL8                             mSigmaTrRefCam;

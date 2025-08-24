@@ -77,16 +77,16 @@ void MAJREC() ;
 
    /*         NOTATIONS :                                                                              */
    /*         ----------                                                                               */
-   /*                    Un certain nombre de caracteres utlises dans le document n' existant pas sur  */
-   /*        clavier utilise pour creer ce fichier il a fallu modifier dans les commentaires les       */
+   /*                    Un certain number de caracteres utlises in le document n' existant pas on  */
+   /*        clavier utilise for creer ce file il a fallu modifier in les commentaires les       */
    /*        notations correspondantes,ainsi:                                                          */
-   /*                       -si E designe un ensemble d'elements d'une matrice A alors @[E] designera  */
-   /*           l'ensemble des elements de A qui se trouvent a la fois sur la meme ligne et la meme    */  
+   /*                       -if E designe un ensemble d'elements d'une matrix A then @[E] designera  */
+   /*           l'ensemble des elements de A qui se trouvent a la fois on la meme line and la meme    */  
    /*           colonne que deux elements de E.                                                        */
-   /*                       -#[E] designera l'ensemble des elements de A qui se trouvent sur la meme   */
-   /*           ligne ou la meme colonne qu'un element de E ( "ou" non exclusif).                      */
-   /*                       -A^B designe l'intersection de A et B.                                     */
-   /*                       -A~B designe l'union de A et B.                                            */
+   /*                       -#[E] designera l'ensemble des elements de A qui se trouvent on la meme   */
+   /*           line or la meme colonne qu'un element de E ( "or" non exclusif).                      */
+   /*                       -A^B designe l'intersection de A and B.                                     */
+   /*                       -A~B designe l'union de A and B.                                            */
 
 
  
@@ -112,32 +112,32 @@ extern int ftime (struct timeb *);
 
 
 
-static double temps;             /* temps de calcul pour algo1,algo2,algo3 */
+static double temps;             /* temps de computation for algo1,algo2,algo3 */
                                        
 static int Taille;                                 /*taille effective des matrices*/
 
-static int NbSom;                                  /*nombre effectif de sommets*/
+static int NbSom;                                  /*number effectif de sommets*/
 
-static int ** Matrice;              /*matrice des couts*/
+static int ** matrix;              /*matrix des couts*/
 
-static int ** EcGra;      /*        graphe "d'ecart"; pour I appartient a   */
+static int ** EcGra;      /*        graphe "d'ecart"; for I appartient a   */
                                    /*  [ 1 , EcGra[0][J] ] :EcGra[I][J] contient les */  
-                                   /*  machine telles que Matrice[I][J]=0            */   
+                                   /*  machine telles que matrix[I][J]=0            */   
 
 
 static int * Chemin;                       /*contient le chemin de S a P*/
 
 
-static int Existe;                                 /*=1 si existe chemin de S a P */ 
+static int Existe;                                 /*=1 if existe chemin de S a P */ 
 
 
 static int * AffTache;                 /* contient eventuellement la machine */
                                        /*    a laquelle est affecte la tache; */
-                                       /* =0 si aucune affectation           */                        
+                                       /* =0 if aucune affectation           */                        
 
 static int * AffMach;                  /* contient eventuellement la tache   */
                                        /* a laquelle est affectee la machine; */
-                                       /* =0 si aucune affectation           */
+                                       /* =0 if aucune affectation           */
 
 static int  *GrInjMax[2];           /* graphe injectif maximal issu de */     
                                     /*            l'affectation simple */ 
@@ -149,25 +149,25 @@ static int * RecLigne;           /* contient les colonnes qui participent */
 static int * RecColon;               /* conttient les lignes qui participent */
                                      /*  a un recouvrement                   */
 
-static int AdrG2;                        /* adresse dans GrInjMax de du premier */
+static int AdrG2;                        /* adresse in GrInjMax de du premier */
                                   /*           element de G2             */
 
-static int AdDeltGL;                     /* adresse dans RecLigne de la premiere */
-                                  /*        ligne recouvrant Delta-GRAPHE */
+static int AdDeltGL;                     /* adresse in RecLigne de la premiere */
+                                  /*        line recouvrant Delta-GRAPHE */
 
-static int AdDeltGC;                     /* adresse dans RecColon de la premiere */
+static int AdDeltGC;                     /* adresse in RecColon de la premiere */
                                   /*    colonnne recouvrant Delta-GRAPHE  */
 
-static int * MemAdGIM;                 /* memorise les adresses dans GrInjMax */
+static int * MemAdGIM;                 /* memorise les adresses in GrInjMax */
                                   /* des elements qui appartiennent a une */
                                   /* rangee de recouvrement */
 
-static int FinRecObl;                    /* =1 si fin du recouvrement obligatoire */
+static int FinRecObl;                    /* =1 if fin du recouvrement obligatoire */
 
-static int NbProLig;                     /* Nb provisoire de ligne recouvrantes */
+static int NbProLig;                     /* Nb provisoire de line recouvrantes */
                                   /* (compte tenu des lignes facultatives) */
 
-static int * MinDeCol;            /* contient pour Chaque colonne non */
+static int * MinDeCol;            /* contient for Chaque colonne non */
                                   /* couvrante le minimum de ces elements */
                                   /* non couverts */
 
@@ -176,53 +176,53 @@ static int MinGlob;                      /* = minimum de MinDeCol */
 
 static int * AddCol;              /* Quantite a additionner a chaque colonne */
  
-static int * AddLig;              /* Quantite a additionner a chaque ligne   */
+static int * AddLig;              /* Quantite a additionner a chaque line   */
 
 static int AddEns;                       /* Quantite a additionner a chaque element */
 
-static int NouvZero;                     /* =1 si le nombre de zeros independants a augmente */
-                                  /* =0 sinon                                         */
+static int NouvZero;                     /* =1 if le number de zeros independants a augmente */
+                                  /* =0 else                                         */
 
-static int NbNvCoOb;                     /* = nombre de nouvelles colonnes obligatoires */
+static int NbNvCoOb;                     /* = number de nouvelles colonnes obligatoires */
 
-static int NbIter;                       /* nombre d'iterations */
+static int NbIter;                       /* number d'iterations */
 
-static int ** MemMatr;    /* memorise la matrice de depart */
+static int ** MemMatr;    /* memorise la matrix de depart */
 
 static int MaxAbso;                      /* = Max des elements rencontres au cour de */
                                   /* l'algorithme                             */
 
-static int CompHon1;                     /* compte le nombre d'appel a Algo1 */
+static int CompHon1;                     /* compte le number d'appel a Algo1 */
 
-static int CompArEx;                     /* compte le nombre d'arcs explores */
+static int CompArEx;                     /* compte le number d'arcs explores */
 
-static int ComElEx2;                     /* compte le nombre d'elements explores dans Algo2 */
+static int ComElEx2;                     /* compte le number d'elements explores in Algo2 */
 
-static int ComElEx3;                     /* compte le nombre d'elements explores dans Algo3 */
+static int ComElEx3;                     /* compte le number d'elements explores in Algo3 */
 
 
 static  int * Affecte;
 
 static  int * AdrPere;
               
-static  int * PasEncMa;              /* PasEncMa[I]=1 si la machine I n'a pas encore ete exploree */
+static  int * PasEncMa;              /* PasEncMa[I]=1 if la machine I n'a pas encore ete exploree */
 
-static  int * PasEncTa;              /* PasEncTa[J]=1 si la tache J n'a pas encore ete exploree  */
+static  int * PasEncTa;              /* PasEncTa[J]=1 if la tache J n'a pas encore ete exploree  */
   
-static  int * MemAdLig;    /* memorise les adresses dans RecLigne des lignes */
+static  int * MemAdLig;    /* memorise les adresses in RecLigne des lignes */
                            /* qui ne sont plus obligatoires      */
 
 static  int * TabProvL;
 
 static  int * TabProvC;
 
-static  int * MemAdCol;    /* memorise les adresses dans RecColonne des */
+static  int * MemAdCol;    /* memorise les adresses in RecColonne des */
                            /* colonnes qui deviennent obligatoires */
 
-static  int * Arbre;           /* contient la liste des sommmets explores ,cette liste est ordonnee */
-                                /* suivant l'ordre dans lequel on a rencontre les sommets ; ce qui    */
-                                /* implique que si K>K' le plus court Chemin de S a Arbre[K] est     */
-                                /* plus long ou egal au plus court chemin de S a Arbre[K']           */
+static  int * Arbre;           /* contient la list des sommmets explores ,cette list est ordonnee */
+                                /* suivant l'ordre in lequel on a rencontre les sommets ; ce qui    */
+                                /* implique que if K>K' le plus court Chemin de S a Arbre[K] est     */
+                                /* plus long or egal au plus court chemin de S a Arbre[K']           */
 
 
 void init_var()
@@ -359,7 +359,7 @@ void free_var()
      /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
              
    
-            /*  generation des "pires matrices" pour Algo1,Algo2,Algo3 */
+            /*  generation des "pires matrices" for Algo1,Algo2,Algo3 */
 
       /*     Algo1              Algo2              Algo3               */
    
@@ -405,9 +405,9 @@ void PIREMATR()
      for(I=2 ;I<=Taille ;I++ ){
          for(J=2 ;J<=Taille ;J++ ){                                    
             if( Choix==3 )
-               Matrice[I][J]=(I-1)*(J-1);        /*   Algo3  */
+               matrix[I][J]=(I-1)*(J-1);        /*   Algo3  */
             else
-               Matrice[I][J]=I-1;                /*   Algo1  */
+               matrix[I][J]=I-1;                /*   Algo1  */
          }
       }
   }
@@ -445,9 +445,9 @@ void ECRICOMP()
          /*                         */
          /*$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
-      /* ecriture de la matrice sous forme "booleenne"   */
+      /* ecriture de la matrix under forme "booleenne"   */
       /* c'est a dire que  l'on remplace les zeros par   */
-      /* des " * " et les aures elements par des " . "   */
+      /* des " * " and les aures elements par des " . "   */
 
       /*  44 0 777 0                 .   *   .   *       ,*/
       /*                                                 ,*/
@@ -508,7 +508,7 @@ void ECRICHEM()
 
 
 void ALGOHONGR(Im2D_INT4 cost,Im1D_INT4 res)  /* algorithme "hongrois": */
-                                /* "assemble" tous les sous-programmes */
+                                /* "assemble" tous les under-programmes */
                         
 
 {
@@ -530,7 +530,7 @@ void ALGOHONGR(Im2D_INT4 cost,Im1D_INT4 res)  /* algorithme "hongrois": */
     
 
            
-  LECTURE(cost);                          /* lecture de la matrice */
+  LECTURE(cost);                          /* lecture de la matrix */
    
   t2 =  quelle_heure_est_il();
 
@@ -543,7 +543,7 @@ void ALGOHONGR(Im2D_INT4 cost,Im1D_INT4 res)  /* algorithme "hongrois": */
                                        /*                                                */
        ALGO2();                        /*    %   -chercher les rangees obligatoires      */
                                        /*    %                                           */
-       ALGO3();                        /*    %   -effectuer additions et soustractions   */   
+       ALGO3();                        /*    %   -effectuer additions and soustractions   */   
                                        /*    %                                           */
        ALGO1();                        /*    %   -augmenter la taille de l'affectation    */
 
@@ -569,10 +569,10 @@ void ALGOHONGR(Im2D_INT4 cost,Im1D_INT4 res)  /* algorithme "hongrois": */
       /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
                  
 
-      /*  lecture de la matrice ,on choisit  entre:        */
+      /*  lecture de la matrix ,on choisit  between:        */
       /*         -LECMATRI <=> lecture element par element */
       /*         -PIREMATR <=> generation d'une des pires matrices */
-      /*         -GENAUTO <=> geneartion d'une matrice "aleatoire" */
+      /*         -GENAUTO <=> geneartion d'une matrix "aleatoire" */
 
 
 
@@ -598,12 +598,12 @@ void LECTURE(Im2D_INT4 cost)
   {
      for ( J = 1; J<= Taille ; J++)
          Matrice[I][J] =c[I-1][J-1];
-     //  F_read(&(Matrice[I][1]),sizeof(int),Taille,fp); 
+     //  F_read(&(matrix[I][1]),sizeof(int),Taille,fp); 
   }
 
   MaxAbso=0;
 
-     /*   mise en memoire de la matrice de depart dans MemMatr */
+     /*   mise en memoire de la matrix de depart in MemMatr */
   for(I=1 ;I<=Taille ;I++ ){
      for(J=1 ;J<=Taille ;J++ ){
         if( Matrice[I][J]>MaxAbso )
@@ -621,9 +621,9 @@ void LECTURE(Im2D_INT4 cost)
 
 
 void ALGO1()       /* algorithme d'affectation simple en considerant que la machine I peut realiser la  */
-              /*  tache J si Matrice[I][J]=0   ;    Algo1 est utilise:                    */
-              /*        -soit tout seul dans l'affectation simple                                  */
-              /*        -soit en tant que sous-programme de ALGOHONGR dans l'affectation optimisee */
+              /*  tache J if matrix[I][J]=0   ;    Algo1 est utilise:                    */
+              /*        -soit tout seul in l'affectation simple                                  */
+              /*        -soit en tant que under-programme de ALGOHONGR in l'affectation optimisee */
 
 
 {
@@ -648,7 +648,7 @@ void ALGO1()       /* algorithme d'affectation simple en considerant que la mach
 
   }
 
-  AFFECOPT1();                  /*  en fonction de l'affectation simple optimale on  recree            */
+  AFFECOPT1();                  /*  en function de l'affectation simple optimale on  recree            */
                                 /*  GrInjMax                                                            */
  
 
@@ -678,21 +678,21 @@ void ALGO2()
        
 
   INIREC();       /*  on recherche une premiere serie de rangees obligatoires:    */
-                  /*     celles qui contiennent un element de G(=GrInjMax) et un  */
-                  /*     zero ne se trouvant pas sur @[G]                         */
+                  /*     celles qui contiennent un element de G(=GrInjMax) and un  */
+                  /*     zero ne se trouvant pas on @[G]                         */
 
                            
 
   while( FinRecObl==0 ){       /* tant qu'on trouve de nouvelles rangees obligatoires :         */
                                /*                                                               */
      AUGRECOBL();              /*       -rechercher les zeros de ( #[delta-g] )^( #[g2] ); les */
-                               /* rangees qui couvrent ces zeros et qui coupent g2 sont des     */
+                               /* rangees qui couvrent ces zeros and qui coupent g2 sont des     */
                                /* rangees obligatoires                                          */
   }
                                                                                                                 
       
 
-  COMPLREC();                 /* on complete le recouvrement avec des lignes */
+  COMPLREC();                 /* on complete le recouvrement with des lignes */
 
 
   RANGNONCOU();               /* on reoordonne les rangees non couvrantes   */
@@ -711,13 +711,13 @@ void ALGO2()
 
 void ALGO3()     
                  /* on va soustraire le minimum des elements non couverts a tous   */
-                 /* les elements et le rajouter sur les rangees couvrantes,puis    */
+                 /* les elements and le rajouter on les rangees couvrantes,puis    */
                  /* modifier le recouvrement ( afin de tenir compte des nouveau    */
-                 /* zeros ) jusqu'a ce que le nombre de zeros independants ait     */
-                 /* augmente; tant que ceci n'est pas fait les additions et        */
-                 /* soustractions ne sont pas reellement effectuees sur la matrice */
-                 /* mais on memorise ce qu'il convient d'additonner sur chaque     */
-                 /* ligne,chaque colonne et a l'ensemble des elements              */
+                 /* zeros ) jusqu'a ce que le number de zeros independants ait     */
+                 /* augmente; tant que ceci n'est pas fait les additions and        */
+                 /* soustractions ne sont pas reellement effectuees on la matrix */
+                 /* but on memorise ce qu'il convient d'additonner on chaque     */
+                 /* line,chaque colonne and a l'ensemble des elements              */
 
 
 {
@@ -725,35 +725,35 @@ void ALGO3()
 
 
 
-  MINICOL();          /* recherche pour chaque colonne non couvrante du minimum des elements */
-                      /* ne se trouvant pas sur une ligne couvrante                          */
+  MINICOL();          /* recherche for chaque colonne non couvrante du minimum des elements */
+                      /* ne se trouvant pas on une line couvrante                          */
 
 
   INIADD();           /* mise a zero des quantites a additionner */     
 
 
-  MINIGLOB();         /* -recherche (a partir de MinDeCol )du minimum des elements non couverts de Matrice */
-                      /* -soustraction de ce minimum au tableau MinDeCol                                   */
+  MINIGLOB();         /* -recherche (a partir de MinDeCol )du minimum des elements non couverts de matrix */
+                      /* -soustraction de ce minimum au array MinDeCol                                   */
                       /* -mise a jour des quantites a additionner ( AddEns,AddCol,AddLig )                 */
 
 
-  NOUVZERIND();       /* on regarde si le nombre de zeros independants a augmente */
+  NOUVZERIND();       /* on regarde if le number de zeros independants a augmente */
 
 
 
-  while( NouvZero==0 ){     /*  tant que le nombre de zeros independant n'augmente pas :        */
+  while( NouvZero==0 ){     /*  tant que le number de zeros independant n'augmente pas :        */
                             /*                                                                  */
        MAJREC();            /*   %    -mise a jour du recouvrement , modification de MinDeCol   */
-                            /*   %   pour tenir compte des lignes qui ne sont plus couvrantes   */
+                            /*   %   for tenir compte des lignes qui ne sont plus couvrantes   */
                             /*   %                                                              */
        MINIGLOB();          /*   %    -recherche du minimum global etc...(voir juste au dessus) */
                             /*   %                                                              */   
-       NOUVZERIND();        /*   %    -on regarde si le nombre de zeros independants a augmente */
+       NOUVZERIND();        /*   %    -on regarde if le number de zeros independants a augmente */
   }    
                      
 
-       MAJMATRI();           /* a ce niveau le nombre de zeros independants a augmente donc on */
-                             /* on met a jour Matrice a partir de AddEns,AddLig,AddCol         */
+       MAJMATRI();           /* a ce niveau le number de zeros independants a augmente donc on */
+                             /* on met a jour matrix a partir de AddEns,AddLig,AddCol         */
                 
 
 
@@ -770,11 +770,11 @@ void ALGO3()
 
 
 void VERIF()            
-                        /*   verification du resultat annonce on va regarder si :               */
-                        /*       -les affectation correspondent a des zeros de Matrice (Exact1) */
+                        /*   verification du result annonce on va regarder if :               */
+                        /*       -les affectation correspondent a des zeros de matrix (Exact1) */
                         /*       -les elements de matrices sont positifs (Exact2)               */
-                        /*       -on passe de la matrice de depart a la matrice reduite en      */
-                        /*      ajoutant des termes contants sur les lignes et les colonnes (Exact3) */
+                        /*       -on passe de la matrix de depart a la matrix reduite en      */
+                        /*      ajoutant des termes contants on les lignes and les colonnes (Exact3) */
                         /*       -toutes les machines sont bien affectees                       */
 
 
@@ -796,7 +796,7 @@ void VERIF()
 
 
          /* on verifie que les affectaion donnees correspondent bien */
-         /*           a des zeros de la matrice reduite              */
+         /*           a des zeros de la matrix reduite              */
                                
   Exact1=1;
   for(J=1 ;J<=Taille ;J++ ){
@@ -814,7 +814,7 @@ void VERIF()
 
 
 
-       /* on verifie que la matrice reduite  ne contient que */
+       /* on verifie que la matrix reduite  ne contient que */
        /* des elements positifs                              */
 
  
@@ -835,27 +835,27 @@ void VERIF()
                                                              
 
 
-    /* on verifie qu'il existe deux suite de reel Lig[K] et Col[K] */
-    /* telles que  :  MemMatr[I][J]-Matrice[I][J]=Lig[I]+Col[J] */
+    /* on verifie qu'il existe deux suite de real Lig[K] and Col[K] */
+    /* telles que  :  MemMatr[I][J]-matrix[I][J]=Lig[I]+Col[J] */
 
 
   Exact3=1;
-  for(I=1 ;I<=Taille ;I++){                               /* on rentre MemMatr-Matrice dans Matrice */
+  for(I=1 ;I<=Taille ;I++){                               /* on rentre MemMatr-matrix in matrix */
       for(J=1 ;J<=Taille ;J++ )
          Matrice[I][J]=MemMatr[I][J]-Matrice[I][J];
   }
-  for(I=1 ;I<=Taille ;I++ ){                             /* on soustrait Matrice[I][1] a toute  */
-      Aux=Matrice[I][1];                                 /* ligne I                             */
+  for(I=1 ;I<=Taille ;I++ ){                             /* on soustrait matrix[I][1] a toute  */
+      Aux=matrix[I][1];                                 /* line I                             */
       for(J=1 ;J<=Taille ;J++ )
         Matrice[I][J]=Matrice[I][J]-Aux;
   }
-  for(J=1 ;J<=Taille ;J++ ){                             /* on soustrait Matrice[1][J] a toute */
-     Aux=Matrice[1][J];                                  /* colonne J                          */
+  for(J=1 ;J<=Taille ;J++ ){                             /* on soustrait matrix[1][J] a toute */
+     Aux=matrix[1][J];                                  /* colonne J                          */
      for(I=1 ;I<=Taille ;I++ )
         Matrice[I][J]=Matrice[I][J]-Aux;
   }
-  for(I=1 ;I<=Taille ;I++ ){                            /* on verifie que le resultat obtenu est */
-      for(J=1 ;J<=Taille ;J++ ){                        /* la matrice nulle                      */
+  for(I=1 ;I<=Taille ;I++ ){                            /* on verifie que le result obtenu est */
+      for(J=1 ;J<=Taille ;J++ ){                        /* la matrix nulle                      */
 
          if( Matrice[I][J]!=0 )
             Exact3=0;
@@ -872,7 +872,7 @@ void VERIF()
 
 
       
-  /* on verifie que toutes les machines sont contenues dans AffTache   */
+  /* on verifie que toutes les machines sont contenues in AffTache   */
 
 
   Exact4=1;
@@ -908,15 +908,15 @@ void VERIF()
 
 
 void INIMAT()    /* on va faire apparaitre autant de zeros que possible */
-            /* et on initialise les tableaux Afftache et affMach   */  
+            /* and on initialise les tableaux Afftache and affMach   */  
 
-{int Min;     /* minimum de ligne ou de colonne */
+{int Min;     /* minimum de line or de colonne */
   
  int I,J;
 
 
-        /* pour chaque ligne on recherche le minimum et */
-        /* on le soustrait a chaque element de la ligne */
+        /* for chaque line on recherche le minimum and */
+        /* on le soustrait a chaque element de la line */
 
   for(I=1 ;I<=Taille ;I++ ){
      Min=Matrice[I][1];
@@ -929,7 +929,7 @@ void INIMAT()    /* on va faire apparaitre autant de zeros que possible */
   }
      
     
-         /* pour chaque colonne on recherche le minimum et */
+         /* for chaque colonne on recherche le minimum and */
          /* on le soustrait a chaque element de la colonne */
 
   for(J=1 ;J<=Taille ;J++ ){
@@ -942,7 +942,7 @@ void INIMAT()    /* on va faire apparaitre autant de zeros que possible */
         Matrice[I][J]=Matrice[I][J]-Min;
   }
 
-         /* initialistion de AffTache et AffMach  */
+         /* initialistion de AffTache and AffMach  */
 
   for(I=0 ;I<=Taille ;I++ ){
      AffTache[I]=0;
@@ -960,7 +960,7 @@ void INIMAT()    /* on va faire apparaitre autant de zeros que possible */
           /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
 
-void LECMATRI()          /* lecture "a la main" de la matrice */
+void LECMATRI()          /* lecture "a la main" de la matrix */
 
 {int I,J;
 
@@ -981,8 +981,8 @@ void LECMATRI()          /* lecture "a la main" de la matrice */
 
 
 
-void ECRIMAT()                    /* ecriture de la matrice des couts (matrice de */
-                             /* depart ou matrice reduite)                   */
+void ECRIMAT()                    /* ecriture de la matrix des couts (matrix de */
+                             /* depart or matrix reduite)                   */
 
 {int I,J;
 
@@ -1023,19 +1023,19 @@ void INITECGRA()      /* initialisation du graphe d'ecart  */
 
 {int I,J;
 
- int Compteur;              /* compte le nombre de successeur d'un sommet */
+ int Compteur;              /* compte le number de successeur d'un sommet */
 
 
 
- for(J=1 ;J<=Taille ;J++ ){         /*   pour les colonnes de 1 a Taille faire :                 */
-    Compteur=0;                     /*    %  initialiser le nombre de successeur de Tache J      */
-    for(I=1 ;I<=Taille ;I++ ){      /*    %  pour les lignes de 1 a Taille faire:                */
-       if( Matrice[I][J]==0 ){      /*    %   % si Matrice[I][J]=0 alors:                        */
+ for(J=1 ;J<=Taille ;J++ ){         /*   for les colonnes de 1 a Taille faire :                 */
+    Compteur=0;                     /*    %  initialiser le number de successeur de Tache J      */
+    for(I=1 ;I<=Taille ;I++ ){      /*    %  for les lignes de 1 a Taille faire:                */
+       if( matrix[I][J]==0 ){      /*    %   % if matrix[I][J]=0 then:                        */
           Compteur=Compteur+1;      /*    %   %   % Tache J a un succeseur de plus               */
           EcGra[Compteur][J]=I;     /*    %   %   % ce successeur est Machine I                  */
        }                            /*    %                                                      */  
     }                               /*    %                                                      */
-    EcGra[0][J]=Compteur;           /*    %  enregistrer le nombre de succeseur de Tache J       */
+    EcGra[0][J]=Compteur;           /*    %  enregistrer le number de succeseur de Tache J       */
  }
 }
 
@@ -1059,10 +1059,10 @@ void CHEMOPT()                  /* recherche du plus court chemin de S a P */
 
 
 
- int AdrDeb,AdrFin;               /* adresse dans Arbre de debut et fin de */
+ int AdrDeb,AdrFin;               /* adresse in Arbre de debut and fin de */
                                   /*                            generation */
 
- int NbDesc;                     /* nombre de descandants d'une generation */
+ int NbDesc;                     /* number de descandants d'une generation */
 
  int NumGen;                        /* numero de la generation */
 
@@ -1075,7 +1075,7 @@ void CHEMOPT()                  /* recherche du plus court chemin de S a P */
  int ContRech;                  /* =1 s'il faut continuer la recherche d'un */ 
                                 /*                          chemin de S a P */
 
- int GenrObj;                  /* =0 sila generation est une generation de tache ,1 sinon */
+ int GenrObj;                  /* =0 sila generation est une generation de tache ,1 else */
 
 
          /* initialisation des variables  */
@@ -1114,21 +1114,21 @@ void CHEMOPT()                  /* recherche du plus court chemin de S a P */
 
   while( ContRech==1 ){                         /*   tant qu'il faut continuer la recheche faire :         */             
      NumGen=NumGen+1;                           /*    1  -il y a une generation de plus (generation N)     */
-     NbDesc=0;                                  /*    1  -qui est vide pour l'instant                      */
+     NbDesc=0;                                  /*    1  -qui est vide for l'instant                      */
      GenrObj=(GenrObj+1)%2;                     /*    1  -dont le genre est inverse de generation N-1      */   
-     for(K=AdrDeb ;K<=AdrFin ;K++ ){            /*    1  -pour chaque sommet de generation N-1 faire:      */
-        if( GenrObj==1 ){                       /*    1  2  si generation N=generation de machine          */
+     for(K=AdrDeb ;K<=AdrFin ;K++ ){            /*    1  -for chaque sommet de generation N-1 faire:      */
+        if( GenrObj==1 ){                       /*    1  2  if generation N=generation de machine          */
            J=Arbre[K];                          /*    1  2  3  -J=sommet dont on cherche les fils          */
-           for(I1=1 ;I1<=EcGra[0][J] ;I1++ ){   /*    1  2  3  -pour tout les successeurs I de J a         */
+           for(I1=1 ;I1<=EcGra[0][J] ;I1++ ){   /*    1  2  3  -for tout les successeurs I de J a         */
               CompArEx=CompArEx+1;
               I=EcGra[I1][J];                   /*    1  2  3   travers EcGra faire :                      */
-              if( PasEncMa[I]==1 ){             /*    1  2  3  4  -si la machine I n'a pas ete exploree et */
+              if( PasEncMa[I]==1 ){             /*    1  2  3  4  -if la machine I n'a pas ete exploree and */
                  if( AffTache[J]!=I ){          /*    1  2  3  4   que mach I n'est pas affecte a tacheJ : */
                     NbDesc=NbDesc+1;            /*    1  2  3  4  5  -la generation s'aggrandit            */
                     Arbre[AdrFin+NbDesc]=I;     /*    1  2  3  4  5  -I appartient a generation N          */
-                    AdrPere[AdrFin+NbDesc]=K;   /*    1  2  3  4  5  -J(adresse K dans Arbre)=pere de I    */
+                    AdrPere[AdrFin+NbDesc]=K;   /*    1  2  3  4  5  -J(adresse K in Arbre)=pere de I    */
                     PasEncMa[I]=0;              /*    1  2  3  4  5  -machine I vient d'etre rencontree    */
-                    if( AffMach[I]==0 ){        /*    1  2  3  4  5  -si machine I non affectee alors      */
+                    if( AffMach[I]==0 ){        /*    1  2  3  4  5  -if machine I non affectee then      */
                        Existe=1;                /*    1  2  3  4  5  6  -il existe un chemin de S a P      */
                        ContRech=0;              /*    1  2  3  4  5  6  -arreter la recherche              */
                        AdrMac1=AdrFin+NbDesc;   /*    1  2  3  4  5  6  -memoriser l'adresse de I          */
@@ -1137,32 +1137,32 @@ void CHEMOPT()                  /* recherche du plus court chemin de S a P */
               }                                 /*    1  2                                                 */
            }                                    /*    1  2                                                 */
         }                                       /*    1  2                                                 */
-        else{                                   /*    1  2  sinon:      (generation de tache )             */
+        else{                                   /*    1  2  else:      (generation de tache )             */
            I=Arbre[K];                          /*    1  2  3  -soit I la machine exploree                 */ 
            J=AffMach[I];                        /*    1  2  3  -soit J la tache que realise I              */
-           if( PasEncTa[J]==1 ){                /*    1  2  3  si la tache J n'a pas encore ete exploree:  */
+           if( PasEncTa[J]==1 ){                /*    1  2  3  if la tache J n'a pas encore ete exploree:  */
               NbDesc=NbDesc+1;                  /*    1  2  3  4 -la generation s'aggrandit                */
               Arbre[AdrFin+NbDesc]=J;           /*    1  2  3  4 -J appartient a la generation N           */
-              AdrPere[AdrFin+NbDesc]=K;         /*    1  2  3  4 -I(adresse K dans Arbre ) est  pere de J  */
+              AdrPere[AdrFin+NbDesc]=K;         /*    1  2  3  4 -I(adresse K in Arbre ) est  pere de J  */
               PasEncTa[J]=0;                    /*    1  2  3  4-la machine J vient d'etre rencontree      */
            }                                    /*    1                                                    */
         }                                       /*    1                                                    */
      }                                          /*    1                                                    */
-     if( NbDesc==0 )                            /*    1  si generation N est vide :                        */
+     if( NbDesc==0 )                            /*    1  if generation N est vide :                        */
         ContRech=0;                             /*       2-abandonner la recherche                         */
-     AdrDeb=AdrFin+1;                           /*    1 -debut de generation N:apres fin de generation N-1 */
+     AdrDeb=AdrFin+1;                           /*    1 -debut de generation N:after fin de generation N-1 */
      AdrFin=AdrFin+NbDesc;                      /*    1 -fin  generation decalee de taille de  generation  */
   }
 
 
 
-         /* remontee dans l'arbre */
+         /* remontee in l'arbre */
 
 
-  if( Existe==1 ){                  /*   si le chemin existe                  */
+  if( Existe==1 ){                  /*   if le chemin existe                  */
      Chemin[0]=NumGen;              /*    1-stocker la longueur du chemin     */
      Auxil=AdrMac1;                 /*    1-Auxiliaire=Adresse de Mac 1       */
-     for(K=NumGen ;K>=1 ;K-- ){     /*    1-Pour les generation de N a 1:     */
+     for(K=NumGen ;K>=1 ;K-- ){     /*    1-for les generation de N a 1:     */
         Chemin[K]=Arbre[Auxil];     /*    1  2-le chemin passe par Arbre[aux] */
         Auxil=AdrPere[Auxil];       /*    1  2-Aux=Adresse du pere de Aux     */
      }
@@ -1180,7 +1180,7 @@ void CHEMOPT()                  /* recherche du plus court chemin de S a P */
 
 
 void MODIAFFE()   /* modification de l'affectation provisoire */       
-             /* en fonction du chemin de S a P           */           
+             /* en function du chemin de S a P           */           
                                                                       
 
 {int I,J,K;
@@ -1193,11 +1193,11 @@ void MODIAFFE()   /* modification de l'affectation provisoire */
   else{
     
      /* le Chemin est de la forme T1 M1 T2 M2 .... Tq Mq */
-     /* avec Chemin[0]=2*q                               */
+     /* with Chemin[0]=2*q                               */
      /* on va affecter T1 a M1; T2 a M2;..... ;Tq a Mq   */
 
      Auxi=Chemin[0]/2;                
-     for(K=1 ;K<=Auxi ;K++ ){    /*  pour K de 1 a q           */
+     for(K=1 ;K<=Auxi ;K++ ){    /*  for K de 1 a q           */
         Prov=2*K;                /*   1-                       */
         I=Chemin[Prov];          /*   1-I=Machine K            */
         Prov=Prov-1;             /*   1-                       */
@@ -1217,7 +1217,7 @@ void MODIAFFE()   /* modification de l'affectation provisoire */
 
 
 void AFFECOPT1()    /*  creation de GrInjMax a partir des tableaux */              
-               /*  AffTache et AffMach                        */
+               /*  AffTache and AffMach                        */
 
 
 
@@ -1226,22 +1226,22 @@ void AFFECOPT1()    /*  creation de GrInjMax a partir des tableaux */
 
 
  
-  /* on va d'abord rentrer dans GrInjMax les taches et les machines  */
+  /* on va d'abord rentrer in GrInjMax les taches and les machines  */
   /* de l'affectation provisoire :GrInjMax[0][K] designera une tache */
-  /* de cette affectation et GrInjMax[1][K] sera la machine qui la   */   
+  /* de cette affectation and GrInjMax[1][K] sera la machine qui la   */   
   /* realise; GrInjMax[0][0] contiendra la taille de l'affectation   */
   /* provisoire                                                      */
 
      Compteur=0;
-     for(J=1 ;J<=Taille ;J++ ){                 /*  pour les tache de 1 a N:             */
-        if( AffTache[J]!=0 ){                   /*   1-si la tache J set affectee        */
+     for(J=1 ;J<=Taille ;J++ ){                 /*  for les tache de 1 a N:             */
+        if( AffTache[J]!=0 ){                   /*   1-if la tache J set affectee        */
            Compteur=Compteur+1;                 /*   1  2-GrInjMax s'agrandit            */
            GrInjMax[0][Compteur]=J;             /*   1  2-Tache J appartient a GrInjMax  */
            GrInjMax[1][Compteur]=AffTache[J];   /*   1  2-la machine qui realise J aussi */
         }
      }
 
-     /* on va completer GrInjMax[0][] avec les taches non affectees */
+     /* on va completer GrInjMax[0][] with les taches non affectees */
 
 
      GrInjMax[0][0]=Compteur;
@@ -1255,7 +1255,7 @@ void AFFECOPT1()    /*  creation de GrInjMax a partir des tableaux */
      }
  
 
-  /* on va completer GrInjMax[1][] avec les machines non affectees */
+  /* on va completer GrInjMax[1][] with les machines non affectees */
 
      Compteur=GrInjMax[0][0];  
      for(J=1 ;J<=Taille ;J++ ){
@@ -1314,7 +1314,7 @@ void LECAFFPRO(Im1D_INT4 res)  /* lecture d'une affectation provisoiremnt optima
      /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
 
-void GENEAUTO()       /* generation automatique de matrice */
+void GENEAUTO()       /* generation automatique de matrix */
  
 
 {int I,J,K,L,Densite;
@@ -1384,10 +1384,10 @@ void GENEAUTO()       /* generation automatique de matrice */
 
 
 
-void INIREC()         /* initialisation des donnees pour l'algorithme de  */
+void INIREC()         /* initialisation des donnees for l'algorithme de  */
                  /* recherche d'un recouvrement obligatoire maximal  */
                  /* ce qui revient a chercher les zeros de #[G]-@[G] */
-                 /* et les rangees qui contiennent ces zeros tout en */
+                 /* and les rangees qui contiennent ces zeros tout en */
                  /* coupant @[G]                                     */
 
 
@@ -1397,9 +1397,9 @@ void INIREC()         /* initialisation des donnees pour l'algorithme de  */
 
  int Aux;             /* variable auxiliaire */
 
- int Prov;            /* variable provisoire utilisee pour intervertion */
+ int Prov;            /* variable provisoire utilisee for intervertion */
 
- int PartRec;          /* =0 si une rangee ne participe pas au recouvrement */
+ int PartRec;          /* =0 if une rangee ne participe pas au recouvrement */
   
  int K,K1;
 
@@ -1410,33 +1410,33 @@ void INIREC()         /* initialisation des donnees pour l'algorithme de  */
            /* recherche des lignes participant obligatoirement au */
            /*     recouvrement (1  niveau )                      */
 
-  for(I=1 ;I<=GrInjMax[0][0] ;I++ ){                       /* pour toutes les lignes coupant GrInjMax         */
-     PartRec=0;                                            /*  1-a priori la ligne n'est pas obligatoire      */
-     for(J=GrInjMax[0][0]+1 ;J<=Taille ;J++ ){             /*  1-pour les colonnes ne coupant pas GrInjMax    */
+  for(I=1 ;I<=GrInjMax[0][0] ;I++ ){                       /* for toutes les lignes coupant GrInjMax         */
+     PartRec=0;                                            /*  1-a priori la line n'est pas obligatoire      */
+     for(J=GrInjMax[0][0]+1 ;J<=Taille ;J++ ){             /*  1-for les colonnes ne coupant pas GrInjMax    */
         ComElEx2=ComElEx2+1;                               /*  1  2- (mise a jour compteur ComElEx2 )         */
-        if( Matrice[GrInjMax[1][I]][GrInjMax[0][J]]==0 ){  /*  1  2-si l'element est nul                      */
-           PartRec=1;                                      /*  1  2  3-la ligne est obligatoire               */
+        if( matrix[GrInjMax[1][I]][GrInjMax[0][J]]==0 ){  /*  1  2-if l'element est nul                      */
+           PartRec=1;                                      /*  1  2  3-la line est obligatoire               */
         }                                                  /*  1                                              */
      }                                                     /*  1                                              */
-     if( PartRec==1 ){                                     /*  1-si la ligne est obligatoire                  */
-        Compteur=Compteur+1;                               /*  1  2-il y a une ligne obligatoire de plus      */
+     if( PartRec==1 ){                                     /*  1-if la line est obligatoire                  */
+        Compteur=Compteur+1;                               /*  1  2-il y a une line obligatoire de plus      */
         RecLigne[Compteur]=GrInjMax[1][I];                 /*  1  2-on la range a la fin de RecLigne          */  
-        MemAdGIM[Compteur]=I;                              /*  1  2-on stocke l'adresse correspondante dans   */
+        MemAdGIM[Compteur]=I;                              /*  1  2-on stocke l'adresse correspondante in   */
      }                                                     /*  1  2   GrInjMax                                */
   }
-  RecLigne[0]=Compteur;       /* on stocke le nombre de ligne obligatoires */
+  RecLigne[0]=Compteur;       /* on stocke le number de line obligatoires */
 
 
     
        /*   on reordonne G de telle maniere que les element de g (c'est a dire */
-       /*   ceux qui se trouvent sur une ligne obligatoire ) soit au debut et  */
+       /*   ceux qui se trouvent on une line obligatoire ) soit au debut and  */
        /*   ceux de g2 a la fin                                                */
 
 
-  for(K=1 ;K<=RecLigne[0] ;K++ ){                /* pour toutes les lignes obligatoires:        */
-     Aux=MemAdGIM[K];                            /*  1-soit Aux l'adresse correspondante dans G */
-     for(K1=0 ;K1<=1 ;K1++ ){                    /*  1-pour K1 =0 et K1 =1:                     */
-        Prov=GrInjMax[K1][Aux];                  /*  1  2-intervertir GrInjMax[K1][Aux] avec    */
+  for(K=1 ;K<=RecLigne[0] ;K++ ){                /* for toutes les lignes obligatoires:        */
+     Aux=MemAdGIM[K];                            /*  1-soit Aux l'adresse correspondante in G */
+     for(K1=0 ;K1<=1 ;K1++ ){                    /*  1-for K1 =0 and K1 =1:                     */
+        Prov=GrInjMax[K1][Aux];                  /*  1  2-intervertir GrInjMax[K1][Aux] with    */
         GrInjMax[K1][Aux]=GrInjMax[K1][AdrG2];   /*  1  2 GrInjMax[K1][Adrg2](qui correspond    */
         GrInjMax[K1][AdrG2]=Prov;                /*  1  2 au premier element de G2)             */
      }                                           /*  1                                          */
@@ -1444,7 +1444,7 @@ void INIREC()         /* initialisation des donnees pour l'algorithme de  */
   }
 
         
-       /* on effectue exatement la meme operation mais avec les colonnes */
+       /* on effectue exatement la meme operation but with les colonnes */
 
                /*recherche des colonnes obligatoires */  
 
@@ -1486,7 +1486,7 @@ void INIREC()         /* initialisation des donnees pour l'algorithme de  */
 
 
                                    
-   /* a ce stade delta-g=g et donc : */
+   /* a ce stade delta-g=g and donc : */
 
 
   AdDeltGL=1;
@@ -1511,9 +1511,9 @@ void AUGRECOBL()             /* recherche de nouvelles rangees participant */
  int PartRec;
 
  
- int Aux;           /* auxiliaire de calcul */
+ int Aux;           /* auxiliaire de computation */
 
- int Prov;          /* variable utilisee pour intervertir deux variables */
+ int Prov;          /* variable utilisee for intervertir deux variables */
 
  int I1,J1;
 
@@ -1521,9 +1521,9 @@ void AUGRECOBL()             /* recherche de nouvelles rangees participant */
 
  int I2,J2;
 
- int CompNelC;     /* compte le nombre de nouvelles colonnes */
+ int CompNelC;     /* compte le number de nouvelles colonnes */
 
- int CompNelL;     /* compte le nombre de nouvelles lignes */
+ int CompNelL;     /* compte le number de nouvelles lignes */
 
 
 
@@ -1531,36 +1531,36 @@ void AUGRECOBL()             /* recherche de nouvelles rangees participant */
         /* recherche des zeros non couverts de #[delta-g]^#[g2] en deux etapes : */
                                                               
 
-       /* ETAPE 1 les zeros non couverts qui coupent delta-g  selon une ligne et */
+       /* ETAPE 1 les zeros non couverts qui coupent delta-g  selon une line and */
        /* g2 selon une colonne                                                   */
 
 
 
   CompNelC=0;                                      /* au depart il n'y a aucune nouvelle colonne    */
-  for(J1=AdrG2 ;J1<=GrInjMax[0][0] ;J1++ ){        /* pour tout les element de g2 :                 */
+  for(J1=AdrG2 ;J1<=GrInjMax[0][0] ;J1++ ){        /* for tout les element de g2 :                 */
      J=GrInjMax[0][J1];                            /*  1-soit J la colonne de l'element             */
      PartRec=0;                                    /*  1-a priori J n'est pas obligatoire           */
-     for(J2=AdDeltGC ;J2<=RecColon[0] ;J2++ ){     /*  1-pour les colonnes R[J2] couvrant delta-g   */      
+     for(J2=AdDeltGC ;J2<=RecColon[0] ;J2++ ){     /*  1-for les colonnes R[J2] couvrant delta-g   */      
         ComElEx2=ComElEx2+1;                       /*  1  2-(mise a jour compteur )                 */
-        I=AffTache[RecColon[J2]];                  /*  1  2-soit I la ligne coupant R[J2] en G      */
-        if( Matrice[I][J]==0 )                     /*  1  2-si Matrice[I][J]=0:                     */
+        I=AffTache[RecColon[J2]];                  /*  1  2-soit I la line coupant R[J2] en G      */
+        if( matrix[I][J]==0 )                     /*  1  2-if matrix[I][J]=0:                     */
            PartRec=1;                              /*  1  2   3-J devient obligatoire               */
       }                                            /*  1                                            */
-      if( PartRec==1 ){                            /*  1-si J est obligatoire :                     */
+      if( PartRec==1 ){                            /*  1-if J est obligatoire :                     */
          CompNelC=CompNelC+1;                      /*  1  2-il y a une colonne obligatoire en plus  */
-         Aux=RecColon[0]+CompNelC;                 /*  1  2-soit aux l'adresse ou il faut la ranger */
+         Aux=RecColon[0]+CompNelC;                 /*  1  2-soit aux l'adresse or il faut la ranger */
          RecColon[Aux]=J;                          /*  1  2-on la range                             */
          MemAdGIM[CompNelC]=J1;                    /*  1  2-on memorise l'adresse correspondante    */
       }                                            /*  1  2     GrInjMax                            */
   }                                                                                                           
   
-     /* on reordonne G pour tenir compte des nouvelles colonne obligatoire */
+     /* on reordonne G for tenir compte des nouvelles colonne obligatoire */
     
  
-  for(K=1 ;K<=CompNelC ;K++ ){                  /* pour toute les nouvelles colonnes :                */
-     Aux=MemAdGIM[K];                           /*  1-soit aux l'adresse correspondante dans GrInjMax */
-     for(K1=0 ;K1<=1 ;K1++ ){                   /*  1-pour K1=0 et K1=1 :                             */
-        Prov=GrInjMax[K1][Aux];                 /*  1  2-intervertir GrInjMax[K1][aux] avec           */
+  for(K=1 ;K<=CompNelC ;K++ ){                  /* for toute les nouvelles colonnes :                */
+     Aux=MemAdGIM[K];                           /*  1-soit aux l'adresse correspondante in GrInjMax */
+     for(K1=0 ;K1<=1 ;K1++ ){                   /*  1-for K1=0 and K1=1 :                             */
+        Prov=GrInjMax[K1][Aux];                 /*  1  2-intervertir GrInjMax[K1][aux] with           */
         GrInjMax[K1][Aux]=GrInjMax[K1][AdrG2];  /*  1  2 GrInjMax[K1][AdrG2](qui corespond au         */
         GrInjMax[K1][AdrG2]=Prov;               /*  1  2 premier element de G2)                       */
      }                                          /*  1                                                 */
@@ -1575,7 +1575,7 @@ void AUGRECOBL()             /* recherche de nouvelles rangees participant */
 
 
    /* ETAPE 2 les zeros non couverts qui coupent delta-g selon une colonne */  
-   /* et g2 selon une ligne                                                */
+   /* and g2 selon une line                                                */
 
 
   CompNelL=0;
@@ -1616,7 +1616,7 @@ void AUGRECOBL()             /* recherche de nouvelles rangees participant */
 
 
        /* mise a jour des donnes permettant d'acceder a */
-       /* Delta-GRAPHE et de RecLigne et RecColon */
+       /* Delta-GRAPHE and de RecLigne and RecColon */
    
   AdDeltGL=RecLigne[0]+1;              /* -delta-g commence a la fin */
   AdDeltGC=RecColon[0]+1;              /* g precedent                */
@@ -1625,8 +1625,8 @@ void AUGRECOBL()             /* recherche de nouvelles rangees participant */
 
 
 
-   /* si le nombre de nouvelles rangees obligatoires est   */
-   /* egal a zero alors il va falloir arreter la recherche */
+   /* if le number de nouvelles rangees obligatoires est   */
+   /* egal a zero then il va falloir arreter la recherche */
 
   Aux=CompNelL+CompNelC;
   if (Aux==0 )
@@ -1650,13 +1650,13 @@ void COMPLREC()    /* une fois selectionnees les rangees qui doivent */
 {int I,I1;
 
 
-  NbProLig=RecLigne[0];                     /* pour l'instant le nombre provisoire de ligne est */    
-                                            /* egal au nombre de ligne obligatoire              */
+  NbProLig=RecLigne[0];                     /* for l'instant le number provisoire de line est */    
+                                            /* egal au number de line obligatoire              */
 
-  for(I1=AdrG2 ;I1<=GrInjMax[0][0] ;I1++ ){  /*  pour tous les elements de g2 :             */
-     I=GrInjMax[1][I1];                      /*    1-soit I la ligne de cet element         */
-     NbProLig=NbProLig+1;                    /*    1-le nombre provisoire de ligne augmente */
-     RecLigne[NbProLig]=I;                   /*    1-la ligne I est une ligne provisoire    */
+  for(I1=AdrG2 ;I1<=GrInjMax[0][0] ;I1++ ){  /*  for tous les elements de g2 :             */
+     I=GrInjMax[1][I1];                      /*    1-soit I la line de cet element         */
+     NbProLig=NbProLig+1;                    /*    1-le number provisoire de line augmente */
+     RecLigne[NbProLig]=I;                   /*    1-la line I est une line provisoire    */
   }
 }
 
@@ -1668,8 +1668,8 @@ void COMPLREC()    /* une fois selectionnees les rangees qui doivent */
         /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
 
-void RANGNONCOU()    /* on va classer les lignes et les colonnes non */
-                /* couvrantes a la fin de RecLigne et RecColon  */
+void RANGNONCOU()    /* on va classer les lignes and les colonnes non */
+                /* couvrantes a la fin de RecLigne and RecColon  */
 
 
 
@@ -1685,10 +1685,10 @@ void RANGNONCOU()    /* on va classer les lignes et les colonnes non */
          /* recherche des lignes non couvrantes coupant GrInjMax */
 
   Compteur=NbProLig;
-  for(J1=1 ;J1<=RecColon[0] ;J1++ ){    /* pour toute les colonne couvrantes         */
+  for(J1=1 ;J1<=RecColon[0] ;J1++ ){    /* for toute les colonne couvrantes         */
      J=RecColon[J1];                    /*  1-soit J le numero de colonne            */
-     I=AffTache[J];                     /*  1-soit I la ligne coupant J sur G        */
-     Compteur=Compteur+1;               /*  1-il y a une ligne non couvrante de plus */
+     I=AffTache[J];                     /*  1-soit I la line coupant J on G        */
+     Compteur=Compteur+1;               /*  1-il y a une line non couvrante de plus */
      RecLigne[Compteur]=I;              /*  1-la ranger a la fin de RecLigne         */
   }
   
@@ -1705,9 +1705,9 @@ void RANGNONCOU()    /* on va classer les lignes et les colonnes non */
   
           /* recherche des rangees ne coupant pas GrInjMax */
     
-  for(K=GrInjMax[0][0]+1 ;K<=Taille ;K++ ){  /* pour tous les element de GrInjMax en dehors de G */
+  for(K=GrInjMax[0][0]+1 ;K<=Taille ;K++ ){  /* for tous les element de GrInjMax en dehors de G */
       J=GrInjMax[0][K];                      /*  1-soit J la colonne                             */
-      I=GrInjMax[1][K];                      /*  1-soit I la ligne                               */
+      I=GrInjMax[1][K];                      /*  1-soit I la line                               */
       RecColon[K]=J;                         /*  1-ranger J a la fin de RecColon                 */
       RecLigne[K]=I;                         /*  1-ranger I a la fin de RecLigne                 */
   }
@@ -1731,17 +1731,17 @@ void MINICOL()       /* recherche des elements minimum non couverts de */
  int Min;
 
  
-  for(J1=RecColon[0]+1 ;J1<=Taille ;J1++ ){     /* pour toute les colonnes non couvrantes :  */
+  for(J1=RecColon[0]+1 ;J1<=Taille ;J1++ ){     /* for toute les colonnes non couvrantes :  */
      J=RecColon[J1];                            /*  1-soit J la colonne                      */
-     I=RecLigne[NbProLig+1];                    /*  1-soit I la premiere ligne non couvrante */
-     Min=Matrice[I][J];                         /*  1-soit Min=Matrice[I][J]                 */
-     for(I1=NbProLig+1 ;I1<=Taille ;I1++ ){     /*  1-pour toutes les lignes non couuvrantes */
+     I=RecLigne[NbProLig+1];                    /*  1-soit I la premiere line non couvrante */
+     Min=matrix[I][J];                         /*  1-soit Min=matrix[I][J]                 */
+     for(I1=NbProLig+1 ;I1<=Taille ;I1++ ){     /*  1-for toutes les lignes non couuvrantes */
         ComElEx3=ComElEx3+1;                    /*  1  2- ( mise a jour compteur )           */          
-        I=RecLigne[I1];                         /*  1  2-soit I la ligne                     */
-        if( Matrice[I][J]<Min )                 /*  1  2-si Matrice[I][J] > Min              */
-           Min=Matrice[I][J];                   /*  1  2  3-Min = Matrice[I][J]              */   
+        I=RecLigne[I1];                         /*  1  2-soit I la line                     */
+        if( matrix[I][J]<Min )                 /*  1  2-if matrix[I][J] > Min              */
+           Min=matrix[I][J];                   /*  1  2  3-Min = matrix[I][J]              */   
      }                                          /*  1                                        */
-     MinDeCol[J1]=Min;                          /*  1-enregistrer Min dans MinDeCol          */
+     MinDeCol[J1]=Min;                          /*  1-enregistrer Min in MinDeCol          */
   }
 }
 
@@ -1754,7 +1754,7 @@ void MINICOL()       /* recherche des elements minimum non couverts de */
 
 
 
-void INIADD()          /* intialisation de AddCol,AddLig et AddEns */
+void INIADD()          /* intialisation de AddCol,AddLig and AddEns */
 
 {int K;     
 
@@ -1777,8 +1777,8 @@ void INIADD()          /* intialisation de AddCol,AddLig et AddEns */
 
 
 void MINIGLOB()          /* recherche de l'element non couvert   */
-                    /* globalement minimal et actualisation */
-                    /* de AddEns,AddCol et AddLig           */
+                    /* globalement minimal and actualisation */
+                    /* de AddEns,AddCol and AddLig           */
 
 
 {int J1,I1;
@@ -1787,7 +1787,7 @@ void MINIGLOB()          /* recherche de l'element non couvert   */
 
 
 
-   /* Calcul de MinGlob ; MinGlob est egal au minimum de MinDeCol */
+   /* computation de MinGlob ; MinGlob est egal au minimum de MinDeCol */
 
   MinGlob=MinDeCol[RecColon[0]+1];
   for(J1=RecColon[0]+1 ;J1<=Taille ;J1++ ){
@@ -1833,7 +1833,7 @@ void NOUVZERIND()        /* recherche s'il y a de nouveaux zeros independants */
   
 
 
-   /* recheche sur les colonnes coupant G sur des lignes obligatoires */
+   /* recheche on les colonnes coupant G on des lignes obligatoires */
 
   NouvZero=0;
   for(J1=RecColon[0]+1 ;J1<=RecColon[0]+RecLigne[0] ;J1++ ){
@@ -1842,7 +1842,7 @@ void NOUVZERIND()        /* recherche s'il y a de nouveaux zeros independants */
   }
  
     
-  /* recherche sur les colonnes ne coupant pas G */
+  /* recherche on les colonnes ne coupant pas G */
 
   for(J1=GrInjMax[0][0]+1 ;J1<=Taille ;J1++ ){
       if(MinDeCol[J1]==0)
@@ -1857,7 +1857,7 @@ void NOUVZERIND()        /* recherche s'il y a de nouveaux zeros independants */
          /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
 
-void MAJMATRI()        /* mise a jour de matrice une fois que l'on a trouve */
+void MAJMATRI()        /* mise a jour de matrix une fois que l'on a trouve */
                   /*      un zero independant supplementaire           */
 
 
@@ -1886,9 +1886,9 @@ void MAJMATRI()        /* mise a jour de matrice une fois que l'on a trouve */
          /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
  
-void MAJREC()         /* mise a jour des parametres de recouvrement et des minimum de coloonnes pour tenir */
-                      /* compte des nouvelles lignes non couvrantes dans le cas ou tout les zeros se       */
-                      /* trouvent sur des colonnes coupant g2                                              */
+void MAJREC()         /* mise a jour des parameters de recouvrement and des minimum de coloonnes for tenir */
+                      /* compte des nouvelles lignes non couvrantes in le cas or tout les zeros se       */
+                      /* trouvent on des colonnes coupant g2                                              */
 
 
 
@@ -1910,21 +1910,21 @@ void MAJREC()         /* mise a jour des parametres de recouvrement et des minim
 
 
 
-    /* recherche des colonnes devenant obligatoires et des lignes qui */
+    /* recherche des colonnes devenant obligatoires and des lignes qui */
     /* les coupent en GrInjMax ,stockage de leurs adresses */
 
 
 
  NbNvCoOb=0;
- for(J1=RecLigne[0]+RecColon[0]+1 ;J1<=GrInjMax[0][0] ;J1++ ){ /* pour toutes les colonnes coupant g2  :   */
-    if( MinDeCol[J1]==0 ){                                     /*  1-si la colonne contient un zero        */
+ for(J1=RecLigne[0]+RecColon[0]+1 ;J1<=GrInjMax[0][0] ;J1++ ){ /* for toutes les colonnes coupant g2  :   */
+    if( MinDeCol[J1]==0 ){                                     /*  1-if la colonne contient un zero        */
        NbNvCoOb=NbNvCoOb+1;                                    /*  1-il y a une colonne obligatoire en +   */
        J=RecColon[J1];                                         /*  1-soit J cette colonne                  */ 
-       I=AffTache[J];                                          /*  1-soit I la ligne coupant J sur G       */  
-       MemAdCol[NbNvCoOb]=J1;                                  /*  1-memoriser l'adresse de J dans RecCol  */
-       for(I1=1 ;I1<=GrInjMax[0][0] ;I1++){                    /*  1-pour toutes les lignes coupant G      */
-           if( RecLigne[I1]==I ){                              /*  1  2-si la ligne est la ligne I         */
-              MemAdLig[NbNvCoOb]=I1;                           /*  1  2  3-memoriser adresse dans GrInjMax */
+       I=AffTache[J];                                          /*  1-soit I la line coupant J on G       */  
+       MemAdCol[NbNvCoOb]=J1;                                  /*  1-memoriser l'adresse de J in RecCol  */
+       for(I1=1 ;I1<=GrInjMax[0][0] ;I1++){                    /*  1-for toutes les lignes coupant G      */
+           if( RecLigne[I1]==I ){                              /*  1  2-if la line est la line I         */
+              MemAdLig[NbNvCoOb]=I1;                           /*  1  2  3-memoriser adresse in GrInjMax */
           }
       }
     }
@@ -1934,69 +1934,69 @@ void MAJREC()         /* mise a jour des parametres de recouvrement et des minim
     /* mise a jour des minimum */
    
 
-  for(J1=RecColon[0]+1 ;J1<=Taille ;J1++ ){                /* pour toutes les colonnes non couvrantes       */
+  for(J1=RecColon[0]+1 ;J1<=Taille ;J1++ ){                /* for toutes les colonnes non couvrantes       */
      J=RecColon[J1];                                       /*  1-soit J la colonne                          */
      Min=MinDeCol[J1];                                     /*  1-soit Min=MinDeCol                          */
-     for(I2=1 ;I2<=NbNvCoOb ;I2++ ){                       /*  1-pour toutes les lignes qui ne sont plus    */
+     for(I2=1 ;I2<=NbNvCoOb ;I2++ ){                       /*  1-for toutes les lignes qui ne sont plus    */
         ComElEx3=ComElEx3+1;                               /*  1          couvrantes                        */
-        I1=MemAdLig[I2];                                   /*  1  2-soit I1 l'adresse dans MemAdLig         */
-        I=RecLigne[I1];                                    /*  1  2-soit I la ligne                         */
-        Aux=Matrice[I][J]+AddEns+AddLig[I]+AddCol[J];      /*  1  2-soit Aux la valeur "reelle" de Matrice  */
-        if( Aux<Min )                                      /*  1  2-si Aux plus petit que Min               */
-           Min=Aux;                                        /*  1  2  3-alors Min vaut Aux                   */
+        I1=MemAdLig[I2];                                   /*  1  2-soit I1 l'adresse in MemAdLig         */
+        I=RecLigne[I1];                                    /*  1  2-soit I la line                         */
+        Aux=matrix[I][J]+AddEns+AddLig[I]+AddCol[J];      /*  1  2-soit Aux la value "reelle" de matrix  */
+        if( Aux<Min )                                      /*  1  2-if Aux plus petit que Min               */
+           Min=Aux;                                        /*  1  2  3-then Min vaut Aux                   */
      }                                                     /*  1                                            */
      MinDeCol[J1]=Min;                                     /*  1-stocker la vleur du minimum                */ 
    }
 
 
-     /* mise a jour de RecLigne et RecColon ; rapellons la facon dont il doivent etre ordonnes                    */
+     /* mise a jour de RecLigne and RecColon ; rapellons la facon dont il doivent etre ordonnes                    */
      /*                                                                                                           */
      /*                                                                                                           */
      /*               RecLigne[0]             NbProlig                        GrInjMax[0][0]                      */
      /*                         |                    |                             |                              */
      /*   RECLIGNE  ----------------------------------------------------------------------------------------      */
-     /*         lignes          |    lignes          |  lignes coupant colonne     |    ligne ne                  */
-     /*       obligatoires      |    provisoires     |     obligatoire sur G       |   coupant pas G              */
+     /*         lignes          |    lignes          |  lignes coupant colonne     |    line ne                  */
+     /*       obligatoires      |    provisoires     |     obligatoire on G       |   coupant pas G              */
      /*                                                                                                           */
      /*                                                                                                           */
      /*               RecColon[0]       RecColon[0]+RecLigne[0]                GrInjMax[0][0]                     */
      /*                         |                            |                        |                           */
      /*  RECCOLON   -----------------------------------------------------------------------------------------     */
      /*        colonnes         |    colonnes coupant lignes | colonne coupant lignes |     colonnes ne coupant   */
-     /*      obligatoires       |       obligatoires sur G   |  provisoires sur G     |              pas G        */
+     /*      obligatoires       |       obligatoires on G   |  provisoires on G     |              pas G        */
               
 
 
 
 
-  for(K=1 ;K<=NbNvCoOb ;K++ ){            /* pour les ligne et les colonnes qui changent d'etat */
-     TabProvL[K]=RecLigne[MemAdLig[K]];   /*  1-memoriser la ligne                              */
+  for(K=1 ;K<=NbNvCoOb ;K++ ){            /* for les line and les colonnes qui changent d'etat */
+     TabProvL[K]=RecLigne[MemAdLig[K]];   /*  1-memoriser la line                              */
      TabProvC[K]=RecColon[MemAdCol[K]];   /*  1-memoriser la colonne                            */
   }
 
 
 
-  for(K=1 ;K<=NbNvCoOb ;K++ ){     /* pour les lignes et les colonnes qui changent d'etat */
+  for(K=1 ;K<=NbNvCoOb ;K++ ){     /* for les lignes and les colonnes qui changent d'etat */
       RecLigne[MemAdLig[K]]=0;     /*  1-marquer les lignes                               */
       RecColon[MemAdCol[K]]=0;     /*  1-marquer les colonnes                             */ 
   }
 
   Compteur=0;                                                     
 
-  for(K=RecLigne[0]+1 ;K<=NbProLig-NbNvCoOb ;K++ ){   /*  on va reordonner Recligne comme sur l'exemple suivant */
+  for(K=RecLigne[0]+1 ;K<=NbProLig-NbNvCoOb ;K++ ){   /*  on va reordonner Recligne comme on l'exemple suivant */
       while( RecLigne[K+Compteur]==0 )                /*  au depart: $15  9  0  3  7  8  0  2  0  6             */
          Compteur=Compteur+1;                         /*  puis     :  15  9  3  7  8$ 8  0  2  0  6             */
       RecLigne[K]=RecLigne[K+Compteur];               /*  puis     :  15  9  3  7  8  2  6$ 2  0  6             */ 
   }                                                   /*    $ indique le dernier element modifie                */
                                                       /*  sens de deplacement de $:  -->                        */
 
-  for(K=1 ;K<=NbNvCoOb ;K++ )                         /* les ligne qui ne sont plus couvrantes sont rangees a la fin */
+  for(K=1 ;K<=NbNvCoOb ;K++ )                         /* les line qui ne sont plus couvrantes sont rangees a la fin */
      RecLigne[K+NbProLig-NbNvCoOb]=TabProvL[K];       /*   par exemple    15  9  3  7  8  2  6     4  5  13          */
 
 
 
   Compteur=0;
-  for(K=GrInjMax[0][0] ;K>=RecColon[0]+NbNvCoOb+1 ;K-- ){    /* on va reordonner RecColon et MinDeCol comme ceci:      */
+  for(K=GrInjMax[0][0] ;K>=RecColon[0]+NbNvCoOb+1 ;K-- ){    /* on va reordonner RecColon and MinDeCol comme ceci:      */
      while( RecColon[K-Compteur]==0 )                        /* au depart: 15  6  0  24  0  7  0  8  9  3 $            */ 
         Compteur=Compteur+1;                                 /* puis     : 15  6  0  24  0  7 $7  8  9  3              */
      RecColon[K]=RecColon[K-Compteur];                       /* puis     : 15  6  0 $15  6 24  7  8  9  3              */

@@ -86,8 +86,8 @@ void cNappe2DGen::Resize
 	                  + mDataYMax[x-1]-mDataYMin[x-1];
     }
  
-    // On presoustrait ZMin a Offset, pour gagner
-    // un peu de temps dans OffsetPt
+    // On presoustrait ZMin a Offset, for gagner
+    // un peu de temps in OffsetPt
     ELISE_COPY
     (
        mIOffset.all_pts(),
@@ -155,8 +155,8 @@ void cNappe3DGen::Resize
 	                  + mLineZMax[xy-1]-mLineZMin[xy-1];
     }
  
-    // On presoustrait ZMin a Offset, pour gagner
-    // un peu de temps dans OffsetPt
+    // On presoustrait ZMin a Offset, for gagner
+    // un peu de temps in OffsetPt
     ELISE_COPY
     (
        mIOffset.all_pts(),

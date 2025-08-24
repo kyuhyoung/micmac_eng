@@ -69,7 +69,7 @@ class cCarLookUpTable
 
 
 // Indicate if all "word" of list are in KeyList, use aSpace to separate word
-// Si aMes=="SVP"=> No Error just return false, else aMes is error message
+// if aMes=="SVP"=> No Error just return false, else aMes is error message
 bool  CheckIntersect(const std::string & aMes,const std::string & aKeyList,const std::string & aList,const std::string & aSpace);
 std::string  Quote(const std::string &);  ///<  Assure a string is between quote, do nothing when begins by "
 ///   Transformate a string to make it a standard identifier (+- a C++ accpetable symbol) , rather conservative & basic
@@ -81,7 +81,7 @@ std::string  ToStandardStringIdent(const std::string &);
             // Just an interface that use cMMVII_Appli::TheAppli()
 std::vector<std::string> SplitString(const std::string & aStr,const std::string & aSpace);
 
-// Si PrivPref  "a" => (aaa,)  (a.b.c)  => (a.b,c)
+// if PrivPref  "a" => (aaa,)  (a.b.c)  => (a.b,c)
 void  SplitStringArround(std::string & aBefore,std::string & aAfter,const std::string & aStr,char aSep,bool SVP=false,bool PrivPref=true);
 bool IsPrefixed(const std::string & aStr,char aSep='.');
 std::string Prefix(const std::string & aStr,char aSep='.',bool SVP=false,bool PrivPref=true);

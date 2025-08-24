@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "im_tpl/image.h"
 
 #ifdef MAC
-// Modif Greg pour avoir le nom de la machine dans les log
+// Modif Greg for avoir le nom de la machine in les log
 #include <sys/utsname.h>
 #endif
 
@@ -541,7 +541,7 @@ void cAppliMICMAC::MakeDefImMasq()
           // aP1.SetInf(aSzClip);
 	  //
 
-	  //  On ne fait pas confiance aux calcul inverse
+	  //  On ne fait pas confiance aux computation inverse
 	     Pt2di aP0 = Pt2di(0,0);
 	     Pt2di aP1 = aSzClip;
 
@@ -671,7 +671,7 @@ cFileOriMnt cAppliMICMAC::OrientFromParams(int aDz,REAL aStepZ)
    // Je ne comprend pas pourquoi j'avais mis cette verif
    //  Apparament, elle n'a pas gene car c'est surtout Bati3D qui utilisait
    //  les masque terrains, toujours en DimPx 1 (il est vrai que , en
-   //  geom image, le maque terrain peut etre confondu avec le masque im1 !)
+   //  geom image, le maque terrain peut etre confondu with le masque im1 !)
    // ELISE_ASSERT(mDimPx==1,"cAppliMICMAC::OrientFromParams, dim!=1");
 
    cEtapeMecComp & anEt0 = **(mEtapesMecComp.begin());
@@ -694,7 +694,7 @@ cFileOriMnt cAppliMICMAC::OrientFromParams(int aDz,REAL aStepZ)
 
 cFileOriMnt cAppliMICMAC::GetOri(const std::string & aNameOri) const
 {
-   // MODIF MPD , utilisation de la fonction normale,
+   // MODIF MPD , utilisation de la function normale,
    // SVP ne pas modifier en cas de pb (au - ne pas commiter les modifs).
    // venir me voir ....
    return StdGetObjFromFile<cFileOriMnt>
@@ -712,10 +712,10 @@ cFileOriMnt cAppliMICMAC::GetOri(const std::string & aNameOri) const
        aTree.TopVerifMatch(&aTreeSpec,"FileOriMnt");
     }
 
-    // Modif de Greg: si on donne directement la racine
+    // Modif de Greg: if on donne directement la racine
     // le xml_init ne fonctionne pas (il cherche des noeuds a la profondeur 1 au lieu de 2)
     // plutot que modidier le xml_init, on cherche le FileOriMnt
-    // A voir avec MPD
+    // A voir with MPD
     cElXMLTree* brancheFileOriMnt=aTree.Get("FileOriMnt",1);
 
     cFileOriMnt  aOriInit;

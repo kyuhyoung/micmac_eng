@@ -51,7 +51,7 @@ class cBenchAppuiGridVue
       private :
 
 
-    // Dans le sens Cam->Monde
+    // in le sens Cam->Monde
          
          ElRotation3D         mRotReelle;
          ElRotation3D         mRotEstimee;
@@ -92,7 +92,7 @@ class cChantierBAG
           cTriangulFormelle *        mTriF;
 	  REAL                       mRanTeta;
 	  REAL                       mRanCopt;
-	  // Se sont focale et PP qui joue le role de la dist
+	  // Se sont focale and PP qui joue le role de la dist
 	  REAL                       mF;
 	  Pt2dr                      mPP;
 	  std::list<cBenchAppuiGridVue *> mLVues;

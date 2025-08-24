@@ -283,7 +283,7 @@ class cTabulatedInterpolator : public cInterpolator1D
           bool               mInterpolTab;  ///< Are value interpolated
           int                mNbTabul;      ///< number of value / unity
           int                mSzTot;        ///< Total number of values
-          cIm1D<double>      mIm;           ///< Image tabulating
+          cIm1D<double>      mIm;           ///< image tabulating
           cDataIm1D<double>* mDIm;          ///< Data image
 
 };

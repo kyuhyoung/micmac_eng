@@ -148,7 +148,7 @@ Elise_File_Im Elise_File_Im::pnm
           INT  mode_pnm
 )
 {
-/*  Par homogeneite avec le reste on ecrase les fichiers.
+/*  Par homogeneite with le reste on ecrase les fichiers.
     if (ELISE_fp::exist_file(name))
        return Elise_File_Im::pnm(name);
 */
@@ -717,7 +717,7 @@ ThomParam::ThomParam(const char * name_file)
      mCAMERA = -1;
      EXPOTIME = -1;
  
-     // Nouvellement mis en option pour les cameras tete-queue
+     // Nouvellement mis en option for les cameras tete-queue
      FOCALE = -1;
      DIAPHRAGME = -1;
      TDI=0;

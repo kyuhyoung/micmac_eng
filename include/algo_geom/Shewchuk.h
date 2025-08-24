@@ -348,8 +348,8 @@ template <class AttrSom,class AttrArc> class  ShewShuckTriangul
                     bool                            env_conv = true,
                     bool                            voronoi = false
               );
-          // FactRandomize : Shewschuck plante sur 3 point alignes.
-          // Donc on randomize les coord (sauf si FactRandomize <=0)
+          // FactRandomize : Shewschuck plante on 3 point alignes.
+          // Donc on randomize les coord (sauf if FactRandomize <=0)
 
      private :
 
@@ -420,7 +420,7 @@ template <class AttrSom,class AttrArc>
   /* Conversion des sommets                        */
   /*************************************************/
 
-    // Pour la numerotation Shewshuck
+    // for la numerotation Shewshuck
 
     while (_gr.maj_num() >= _num_shew.nb())
           _num_shew.pushlast(-1);
@@ -526,7 +526,7 @@ template <class AttrSom,class AttrArc>
 
 #if (0)
 
-  /* Formatage des resultat pour CLISP */
+  /* Formatage des result for CLISP */
 
      /* sommet de steiner */
 
@@ -1308,7 +1308,7 @@ void  trmain FONC_2 (VALEUR Ptr,gr,VALEUR Ptr,cl_arg)
 
 
 
-  /* Formatage des resultat pour CLISP */
+  /* Formatage des result for CLISP */
 
 
      /* sommet de steiner */

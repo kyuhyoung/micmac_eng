@@ -41,11 +41,11 @@ typedef cParamIntrinsequeFormel tDRF;
 class cSC_Chantier;
 typedef enum
 {
-    eCamDist,   // Camera faite pour une calibration de la dist initiale
-    eCamGen    // Camera generique
+    eCamDist,   // camera faite for une calibration de la dist initiale
+    eCamGen    // camera generique
 } eTyCam;
 
-// Le mur est dans le plan  Oxy
+// Le mur est in le plan  Oxy
 //
 //
 //
@@ -150,7 +150,7 @@ class cSC_ParamOriCam
 	  cRotationFormelle * mTriRotF;
 
 
-          // Specifique a la gestion de equations d'appuis sur grille
+          // Specifique a la gestion de equations d'appuis on grille
           cAppuiGridEq      * mGrEqAp;
           void InitEqGrid(cSC_Chantier & aCH);
           std::list<Appar23>  mListApGrid;
@@ -1109,7 +1109,7 @@ void bench_mep_relative()
                     );
 
 	//
-	// CALCUL DE LA DISTORTION RADIALE initiale
+	// computation DE LA DISTORTION RADIALE initiale
 	//
 
 	cCameraSec aCDRG
@@ -1142,7 +1142,7 @@ void bench_mep_relative()
 		   );
 	aChantier.CalcInitDist();
 
-	//  CALCUL DES POSITION  DE CAMERA
+	//  computation DES POSITION  DE camera
 	aChantier.WClear();
 
 	// RANZ = true;
@@ -1162,7 +1162,7 @@ void bench_mep_relative()
 		       eCamGen
 		   );
 
-	 // Avec deplacement vertical
+	 // with deplacement vertical
 	/*
 	cCameraSec aC3
 		   (
@@ -1182,7 +1182,7 @@ void bench_mep_relative()
 		    */
 		    
 
-        // Avec deplacement horizonatl
+        // with deplacement horizonatl
 	
 	while(0)
 	{

@@ -39,7 +39,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 #include "StdAfx.h"
 
-//classe d'application
+//class d'application
 class cPI_Appli;
 
 //structure d'un couple (camera,coord 2d)
@@ -49,7 +49,7 @@ struct CamCoord {
 	Pt2dr coord2d;
 };
 
-//structure d'un couple [ nom Pt, vecteur (camera,coord 2d) ]
+//structure d'un couple [ nom Pt, vector (camera,coord 2d) ]
 struct PtAllInfos {
 	std::string nom;
 	std::vector<CamCoord> CAC;
@@ -69,11 +69,11 @@ class cPI_Appli
      private :
           std::list<std::string> mLFile;
           std::string mFullName;
-          std::string mDir; 			//dossier courant
+          std::string mDir; 			//folder courant
           std::string mPat; 			//pattern des images
-          std::string aOriIn;			//dossier qui contient les orientations des images
-		  std::string a2dPtsFile;		//fichier .xml qui contient les pointes des images (avec SaisieAppuisInit)
-		  std::string aOut;				//nom fichier de sortie
+          std::string aOriIn;			//folder qui contient les orientations des images
+		  std::string a2dPtsFile;		//file .xml qui contient les pointes des images (with SaisieAppuisInit)
+		  std::string aOut;				//nom file de sortie
           cInterfChantierNameManipulateur * mICNM;
         
 };
@@ -119,10 +119,10 @@ cPI_Appli::cPI_Appli(int argc,char ** argv)
 	}
     
     /*
-    //vecteur de noms de cameras
+    //vector de noms de cameras
     std::vector<string> OriFiles(mLFile.size());
     
-    //vecteur de cameras
+    //vector de cameras
     std::vector<CamStenope *> aCamRep(mLFile.size());
     
     //initialisation du compteur
@@ -131,7 +131,7 @@ cPI_Appli::cPI_Appli(int argc,char ** argv)
     std::cout<<"Reading cameras..."<<std::flush;
     for (std::list<std::string>::iterator itS=mLFile.begin(); itS != mLFile.end(); itS ++)
     {
-		//remplissage avec les noms des fichiers orientations
+		//remplissage with les noms des fichiers orientations
 		OriFiles.at(cmpt1) = aOriIn+"Orientation-"+*itS+".xml";
 		
         if (!ELISE_fp::exist_file(OriFiles.at(cmpt1)))
@@ -153,7 +153,7 @@ cPI_Appli::cPI_Appli(int argc,char ** argv)
     
     std::vector<PtAllInfos> vPtsAI;
     
-    //contient la liste des points a transformer en 3d
+    //contient la list des points a transformer en 3d
     std::vector<string> vNamePts;		
     
     std::cout<<"Reading points..."<<std::flush;
@@ -184,7 +184,7 @@ cPI_Appli::cPI_Appli(int argc,char ** argv)
     std::cout<<"done! "<<vNamePts.size()<<" points found."<<std::endl;
 
     std::cout<<"Making bundles groups..."<<std::flush;
-	//boucle sur le nombre de points à projeter en 3D
+	//boucle on le number de points à projeter en 3D
     for (unsigned int aKNP=0; aKNP<vNamePts.size(); aKNP++)
 	{
 		PtAllInfos aPtsAL;
@@ -195,7 +195,7 @@ cPI_Appli::cPI_Appli(int argc,char ** argv)
 		
 		aPtsAL.nom = namePt;
         //std::cout<<"Recherche du point "<<namePt<<"\n";
-		//boucle sur les images
+		//boucle on les images
 		for (std::list<cMesureAppuiFlottant1Im>::iterator iT1 = aLMAF.begin() ; iT1 != aLMAF.end() ; iT1++)
 		{
 
@@ -205,13 +205,13 @@ cPI_Appli::cPI_Appli(int argc,char ** argv)
             {
 
 				std::list<cOneMesureAF1I> & aMes = iT1->OneMesureAF1I();
-                //std::cout<<" Image "<<iT1->NameIm()<<":\n";
-				//boucle sur tous les points saisis sur l'image courante
+                //std::cout<<" image "<<iT1->NameIm()<<":\n";
+				//boucle on tous les points saisis on l'image courante
 				for (std::list<cOneMesureAF1I>::iterator iT2 = aMes.begin() ; iT2 != aMes.end() ; iT2++)
 				{
 					
                     //std::cout<<"  - pt "<<iT2->NamePt()<<": ";
-                    //si je tombe sur le point courant je dois ajouter la camera + coord dans cette camera
+                    //if je tombe on le point courant je dois ajouter la camera + coord in cette camera
                     if(namePt == iT2->NamePt())
 					{
 						std::string oriNameFile;
@@ -247,23 +247,23 @@ cPI_Appli::cPI_Appli(int argc,char ** argv)
     }
     std::cout<<"done!"<<std::endl;
 	
-    //le vecteur des points 3d a exporter
+    //le vector des points 3d a exporter
 	std::vector<Pt3dr> Pts3d;
 
 	//les residuus
 	std::vector<double> aVRes;
 
-	//le nombre d'observations
+	//le number d'observations
 	std::vector<int>    aVObs;
 
-    //boucle sur le nombre de points a projeter en 3d
+    //boucle on le number de points a projeter en 3d
 	for(unsigned int aHG=0 ; aHG<vPtsAI.size() ; aHG++)
 	{
-        //vecteur de cameras
+        //vector de cameras
 //		std::vector<CamStenope *> vCSPt;
 		std::vector<cBasicGeomCap3D*> vCSPt;
 		
-        //vecteur de coordonnees 2d
+        //vector de coordinates 2d
 		std::vector<Pt2dr> vC2d;
 		
 		for(unsigned int aHF=0 ; aHF<vPtsAI.at(aHG).CAC.size() ; aHF++)
@@ -329,7 +329,7 @@ cPI_Appli::cPI_Appli(int argc,char ** argv)
         std::cout<<aOut<<".ply written."<<std::endl;
     }
 	
-	//export en .xml pour utiliser comme fichier de GCPs
+	//export en .xml for utiliser comme file de GCPs
 	if(aXmlExport)
 	{
 		std::string aOutXml = StdPrefixGen(aOut) + ".xml";
@@ -382,7 +382,7 @@ Pt3dr cPI_Appli::IntersectionFaisceaux
 
 	int aNb = int(aVCS.size());
 
-	//vecteur d'éléments segments 3d
+	//vector d'éléments segments 3d
 	std::vector<ElSeg3D> aVSeg;
 	
 	for (int aKR=0 ; aKR < aNb ; aKR++)

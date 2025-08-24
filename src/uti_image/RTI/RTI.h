@@ -84,10 +84,10 @@ class cOneIm_RTI
       std::string    mName;
       bool           mMaster;
       bool           mWithRecal;
-      std::string    mNameIS;  // Name Image Superpose
-      std::string    mNameISPan;  // Name Image Superpose Panchro ?
+      std::string    mNameIS;  // Name image Superpose
+      std::string    mNameISPan;  // Name image Superpose Panchro ?
       std::string    mNameISR; // IS Reduced
-      std::string    mNameMasq;  // Name Image Superpose
+      std::string    mNameMasq;  // Name image Superpose
       std::string    mNameMasqR; // IS Reduced
       string         mNameDif;
       cXml_RTI_Im*   mXml;

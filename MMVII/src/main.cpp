@@ -55,7 +55,7 @@ int main(int argc, char ** argv)
       // Recherche la specif correspondant au nom de commande
       cSpecMMVII_Appli*  aSpec = cSpecMMVII_Appli::SpecOfName(aNameCom,true);
 
-      // Execute si match
+      // Execute if match
       if (aSpec)
       {
          std::vector<std::string> aVArgs;

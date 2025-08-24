@@ -174,9 +174,9 @@ class cColStrAOpt
 };
 
 
-// Ces separation en classe cMMVII_Ap_NameManip etc ... a pour unique but 
-// de classer les fonctionnalite et rendre plus lisible (?) une classe qui 
-// risque de devenir la classe mamouth ...
+// Ces separation en class cMMVII_Ap_NameManip etc ... a for unique but 
+// de classer les fonctionnalite and rendre plus lisible (?) une class qui 
+// risque de devenir la class mamouth ...
  
      // ========================== cMMVII_Ap_NameManip  ==================
 
@@ -186,7 +186,7 @@ class cColStrAOpt
 class cMMVII_Ap_NameManip
 {
     public  :
-        // Meme fonction, parfois + pratique return value, sinon + economique par ref
+        // Meme function, parfois + pratique return value, else + economique par ref
         void SplitString(std::vector<std::string > & aRes,const std::string & aStr,const std::string & aSpace);
         std::vector<std::string >  SplitString(const std::string & aStr,const std::string & aSpace);
 
@@ -197,7 +197,7 @@ class cMMVII_Ap_NameManip
 
     protected :
     private :
-        // Avance jusqu'au premier char !=0 et Lut[cahr] !=0
+        // Avance jusqu'au premier char !=0 and Lut[cahr] !=0
         const char * SkipLut(const cCarLookUpTable * aLut,const char *,int aVal);
 };
 
@@ -616,7 +616,7 @@ class cMMVII_Appli : public cMMVII_Ap_NameManip,
         cMMVII_Appli(const cMMVII_Appli&) = delete ; ///< New C++11 feature , forbid copy 
         cMMVII_Appli & operator = (const cMMVII_Appli&) = delete ; ///< New C++11 feature , forbid copy 
         // Subst  (aNameOpt,aVal)
-        // aNameOpt :  si existe substitue, si "+" ajoute a mandatory, si "3"  => sub 3 mandatory, si MMVII_NONE
+        // aNameOpt :  if existe substitue, if "+" ajoute a mandatory, if "3"  => sub 3 mandatory, if MMVII_NONE
         cParamCallSys  StrCallMMVII (  int   aKthCall, // sometime when called in // it's necessary to know the order
 			              const cSpecMMVII_Appli & aCom, const cColStrAObl&, const cColStrAOpt&,
                                       const cColStrAOpt &  aLSubst  = cColStrAOpt::Empty,

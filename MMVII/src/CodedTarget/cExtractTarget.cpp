@@ -111,7 +111,7 @@ class cAppliExtractCodeTarget : public cMMVII_Appli,
 
 
         // ---------------------------------------------------------------------------------
-        // Fonctions à déplacer dans un autre fichier
+        // Fonctions à déplacer in un autre file
         // ---------------------------------------------------------------------------------
         void printMatrix(MatrixXd);
         bool plotSafeRectangle(cRGBImage, cPt2di, double, cPt3di, int, int, double);
@@ -598,7 +598,7 @@ void  cAppliExtractCodeTarget::DoExtract(){
     for (auto aPtrDCT : mVDCT){
 
         // -------------------------------------------
-        // TEST CENTRAGE SUR UNE CIBLE
+        // TEST CENTRAGE on UNE CIBLE
         // -------------------------------------------
         if (mTestCenter.x() != -1){
             if (abs(aPtrDCT->Pix().x() - mTestCenter.x()) > 2) continue;
@@ -842,7 +842,7 @@ bool cAppliExtractCodeTarget::analyzeDCT(cDCT* aDCT, const cDataIm2D<float> & aD
     if (!printDebug("Target center coincidence", 5.0, dxy)) return false;
 
     // ======================================================================
-    // Image generation
+    // image generation
     // ======================================================================
 
     tImTarget aImT = generateRectifiedImage(aDCT, aDIm);
@@ -1630,7 +1630,7 @@ void cAppliExtractCodeTarget::translateEllipse(double* parameters, cPt2dr transl
 	double E =  parameters[4];
 	double F =  parameters[5];
 
-	// Translation
+	// translation
     parameters[0] = A;
     parameters[1] = B;
     parameters[2] = C;

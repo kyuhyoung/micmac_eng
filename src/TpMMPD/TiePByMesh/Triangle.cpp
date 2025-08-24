@@ -10,7 +10,7 @@ PlyProperty face_props[2] =
 };
 
 
-/*=====get pixel correspondant by Affine Transformation===*/
+/*=====get pixel correspondant by Affine transformation===*/
 Pt2dr ApplyAffine (Pt2dr &Pts_Origin, matAffine &matrixAffine)
 {
     Pt2dr result;
@@ -103,7 +103,7 @@ void triangle::reproject(pic *aPic, bool &reprOK, Tri2d &result, int ind=-1)
     result.insidePic = reprOK;
 }
 
-/*=====Calcule affine transformation b/w 2 triangle 2D on 2 image========
+/*=====compute affine transformation b/w 2 triangle 2D on 2 image========
 */
 matAffine triangle::CalAffine(pic* pic1 , pic* pic2, bool & affineResolu)
 {
@@ -194,7 +194,7 @@ cCorrelImage* triangle::create_Imagette_autour_triangle_i(pic * PicMaitre,
     && PicMaitre->checkInSide(Pt2dr(centre_geo.x-szWindows, centre_geo.y+szWindows))
     && PicMaitre->checkInSide(Pt2dr(centre_geo.x+szWindows, centre_geo.y-szWindows))
     && PicMaitre->checkInSide(Pt2dr(centre_geo.x+szWindows, centre_geo.y+szWindows));
-    //creat imagette autour triangle (imagette avec centre_geo et szWindows)
+    //creat imagette autour triangle (imagette with centre_geo and szWindows)
     if (ok_in)
     {
         /*
@@ -247,7 +247,7 @@ ImgetOfTri triangle::create_Imagette_autour_triangle (pic* aPic)
              && aPic->checkInSide(Pt2dr(centre_geo.x-szWindows, centre_geo.y+szWindows))
              && aPic->checkInSide(Pt2dr(centre_geo.x+szWindows, centre_geo.y-szWindows))
              && aPic->checkInSide(Pt2dr(centre_geo.x+szWindows, centre_geo.y+szWindows));
-    //creat imagette autour triangle (imagette avec centre_geo et szWindows)
+    //creat imagette autour triangle (imagette with centre_geo and szWindows)
     if (ok_in)
     {
         cout<<" -imaget inside pic"<<endl;
@@ -357,7 +357,7 @@ ImgetOfTri triangle::create_Imagette_autour_triangle_A2016 (pic* aPic)
              && P2in
              && P3in
              && P4in;
-    //creat imagette autour triangle (imagette avec centre_geo et szWindows)
+    //creat imagette autour triangle (imagette with centre_geo and szWindows)
     if (ok_in)
     {
         cout<<" -imaget inside pic"<<endl;
@@ -401,7 +401,7 @@ cCorrelImage* triangle::create_Imagette_adapt_triangle(pic * PicMaitre,
     && PicMaitre->checkInSide(Pt2dr(centre_geo.x-szWindows, centre_geo.y+szWindows))
     && PicMaitre->checkInSide(Pt2dr(centre_geo.x+szWindows, centre_geo.y-szWindows))
     && PicMaitre->checkInSide(Pt2dr(centre_geo.x+szWindows, centre_geo.y+szWindows));
-    //creat imagette autour triangle (imagette avec centre_geo et szWindows)
+    //creat imagette autour triangle (imagette with centre_geo and szWindows)
     if (ok_in)
     {
         ImgetteMaitre->getFromIm(PicMaitre->mPic_Im2D, int(centre_geo.x), int(centre_geo.y));
@@ -410,7 +410,7 @@ cCorrelImage* triangle::create_Imagette_adapt_triangle(pic * PicMaitre,
     return ImgetteMaitre;
 }
 
-/*=====Calcul Vector Normal de la triangle 3D sur mesh======
+/*=====computation Vector Normal de la triangle 3D on mesh======
  * 1. Vector nomal tracer de la centre-geo 3D
  * 2. Vector Normal = crossProduct( Vector(sommet1,centre-geo) , Vector(sommet2,centre-geo) )
  * 3. Direction du vector normal ?
@@ -438,7 +438,7 @@ Pt3dr triangle::CalVecNormal(Pt3dr & returnPtOrg, double mulFactor)
     return (VecOrg);
 }
 
-/*=====Chercher image maitraisse et image viewable======
+/*=====Chercher image maitraisse and image viewable======
  * 1. PtrListPic = list d'image pour chercher
  * 2. VecNormal = result de calcul vector normal du triangle
  * 3. PtsOrg = centre-geo du triangle 3D
@@ -508,7 +508,7 @@ pic* triangle::getPicPlusProche(vector<pic*>PtrListPic,
 }
 */
 
-/*=====Calcul Angle entre 2 vector======
+/*=====computation Angle between 2 vector======
  * Calcul angle b/w 2 vector in 3D space.
 */
 double triangle::calAngle(Pt3dr Vec1, Pt3dr Vec2)
@@ -526,7 +526,7 @@ double triangle::calAngle(Pt3dr Vec1, Pt3dr Vec2)
     return cos_angle_pow2;
 }
 
-/*=====Prendre imagette sur 2eme image grace a imagette maitre et Affine transform======
+/*=====Prendre imagette on 2eme image grace a imagette maitre and Affine transform======
  * TriReprMaitre :
  * matrixAffine : Affine transformation entre 2 imagette
  * centre_geo_master : centre-geo de la triangle sur image master
@@ -543,7 +543,7 @@ cCorrelImage* triangle::get_Imagette_by_affine(Tri2d &TriReprMaitre,
                                                bool & getImgetteFalse)
 {
     double SzW = ((Imgette_Maitre->getmSz().x-1)/2);
-    //Pour imagette de triangle dans image master, get imagette correspondance dans Img2nd par affine Transforme
+    //for imagette de triangle in image master, get imagette correspondance in Img2nd par affine Transforme
     TIm2D<U_INT1,INT4> Imgette_2nd(Pt2di(SzW*2+1, SzW*2+1));
     for (int i=-SzW; i<=SzW; i++)
     {
@@ -591,7 +591,7 @@ ImgetOfTri triangle::get_Imagette_by_affine_n( ImgetOfTri &ImgetMaitre,
 //    //-------------------
 
 
-    //Pour imagette de triangle dans image master, get imagette correspondance dans Img2nd par affine Transforme
+    //for imagette de triangle in image master, get imagette correspondance in Img2nd par affine Transforme
     TIm2D<U_INT1,INT4> Imgette_2nd(Pt2di(SzW*2+1, SzW*2+1));
     for (int i=-SzW; i<=SzW; i++)
     {
@@ -631,7 +631,7 @@ ImgetOfTri triangle::get_Imagette_by_affine_n( ImgetOfTri &ImgetMaitre,
     return imget2nd;
 }
 
-/*=====Calcul coor 3D d'un point dans la triangle 2D======
+/*=====computation coor 3D d'un point in la triangle 2D======
  * pts2DinTri : pts 2D dans la triangle
  * img : image qu'on va utiliser pour calcul coor 3D
  *
@@ -651,7 +651,7 @@ vector<Pt3dr> triangle::ptsInTri2Dto3D(vector<Pt2dr> pts2DinTri, pic *img)
     {
         Pt3dr vec_I=this->getSommet(1) - this->getSommet(0);
         Pt3dr vec_J=this->getSommet(2) - this->getSommet(0);
-        //get triange 2D i sur img j
+        //get triange 2D i on img j
         Tri2d * trionImg = this->getReprSurImg()[img->mIndex];
         Pt2dr vec_i = trionImg->sommet1[1] - trionImg->sommet1[0];
         Pt2dr vec_j = trionImg->sommet1[2] - trionImg->sommet1[0];
@@ -689,11 +689,11 @@ bool triangle::check_inside_triangle_A2016 (Pt2dr aPt, Tri2d & aTri)
 }
 //========================================================
 
-//*=====Sauvgarder un pts dans la triangle======
-// * aPoint : pts2D interet dans la triangle
-// * img : image ou on se trouve la point et la triangle
+//*=====Sauvgarder un pts in la triangle======
+// * aPoint : pts2D interet in la triangle
+// * img : image or on se trouve la point and la triangle
 // *
-// * => on peut savoir: coor des pts d'interet dans ce triangle sur certain image
+// * => on peut savoir: coor des pts d'interet in ce triangle on certain image
 //*/
 //void triangle::savePtInteret2D(Pt2dr aPoint, pic*img)
 //{
@@ -743,7 +743,7 @@ double triangle::det(Pt2dr u, Pt2dr v)
 //=============================================================//
 
 
-// ============   Calcul angle entre direction visee du camera avec vector normal du triangle - Aout 2016========
+// ============   computation angle between direction visee du camera with vector normal du triangle - Aout 2016========
 //angle retoune en degree
 double triangle::angleToVecNormalImg(pic* aPic)
 {

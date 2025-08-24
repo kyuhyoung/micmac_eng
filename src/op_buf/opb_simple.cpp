@@ -284,7 +284,7 @@ void  calc_courb_tgt ( REAL ** out, REAL *** in, const Simple_OPBuf_Gen & arg)
           EEM0 << "courb tgt requires dim out = 1 for func"
     );
 
-    REAL** i0 = in[0]; // Image
+    REAL** i0 = in[0]; // image
     REAL** p0 = in[1]; // power
     REAL*  o0 = out[0];
 
@@ -950,7 +950,7 @@ Fonc_Num rle_som_masq_binaire
 
 /*********************************************************************/
 /*                                                                   */
-/*         Reduction sur voisinage   flague                          */
+/*         Reduction on voisinage   flague                          */
 /*                                                                   */
 /*********************************************************************/
 
@@ -1224,7 +1224,7 @@ Fonc_Num MedianBySort(Fonc_Num f,INT NbMed)
 /*                                                                   */
 /*********************************************************************/
 
-// Normalement valent false, mais pour tester le mecanisme ~ et dup ...
+// Normalement valent false, but for tester le mecanisme ~ and dup ...
 #define DupcOmbrageKL  0
 #define TestDupAndKill 0
 
@@ -1398,7 +1398,7 @@ Fonc_Num NFoncDilatCond(Fonc_Num f2Dil,Fonc_Num fCond,bool aV4,int aNb)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1414,17 +1414,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

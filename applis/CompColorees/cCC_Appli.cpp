@@ -125,7 +125,7 @@ void cCC_Appli::DoCalc()
         mVAllsInit.push_back(mVSecInit.back());
     }
 
-    // Calcul de la boite de  l'espace de fusion et de calcul
+    // computation de la boite de  l'espace de fusion and de computation
 
     if (mCCC.EnglobImMaitre().IsInit())
     {
@@ -184,8 +184,8 @@ void cCC_Appli::DoCalc()
 
   if (mCCC.TailleBloc().IsInit())
   {
-   // On genere des process si ByProcess et qu'on n'est pas justement en train de se
-   // faire rappeler par process (ie si KBoxParal est init)
+   // On genere des process if ByProcess and qu'on n'est pas justement en train de se
+   // faire rappeler par process (ie if KBoxParal est init)
       cEl_GPAO * aGPAO = (mCCC.ByProcess().IsInit() && (! mCCC.KBoxParal().IsInit()))  ?
                          new cEl_GPAO :
                          0;
@@ -208,8 +208,8 @@ void cCC_Appli::DoCalc()
           {
               OK= (mKBox== mCCC.KBoxParal().Val());
           }
-          // La premiere dalle  la lance classique pour etre sur que les fichiers soient
-          // crees une fois pour toutes
+          // La premiere dalle  la lance classique for etre on que les fichiers soient
+          // crees une fois for toutes
           if (aGPAO)
               OK = (mKBox==0);
 
@@ -289,7 +289,7 @@ Fonc_Num cCC_Appli::KF(int aK)
    return KCanOut(aK).Im()->in();
 }
 
-//  CALCUL
+//  computation
 
 void cCC_Appli::DoOneBoxOut(const Box2di & aBoxOut,const Box2di & aBoxSauvOut)
 {
@@ -499,7 +499,7 @@ void cCC_Appli::SauvImg(const Box2di & aBoxOut,const Box2di & aBoxSauvOut,const 
                      aFMOY = rect_som(aFHF,aSzF)/ElSquare(1.0+2*aSzF);
             }
       }
-      // La c'est un mode ou on utilise une ponderation avec masque
+      // La c'est un mode or on utilise une ponderation with masque
       else
       {
          Pt2di aSzM = aICn.SzF().Val();

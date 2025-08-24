@@ -199,14 +199,14 @@ template <class Type> class cImplem_ExportAimeTiep : public cInterf_ExportAimeTi
           typedef cCutAutoCorrelDir<tTImV1>  tCACD;
           typedef std::unique_ptr<cFastCriterCompute> tFCC;
  
-          cPt2di          mSzIm0; ///< Sz of Image at full resolution
+          cPt2di          mSzIm0; ///< Sz of image at full resolution
           cXml2007SetPtOneType  mMMV1_XmlPts; ///< Result
           std::vector<cProtoAimeTieP<Type> > mVecProtoPts;
           // std::vmector<cAimePCar >            mVecAPC;
           cSetAimePCAR       mSetAPC;
           // cIm2D<Type>     mImStdV2;  ///<  Imagge Std eq Lapl, Corner ...
-          // tImV1           mImStdV1;  ///<  Image Std V2
-          // tTImV1          mTImStdV1;  /// T Image Std V2
+          // tImV1           mImStdV1;  ///<  image Std V2
+          // tTImV1          mTImStdV1;  /// T image Std V2
           // tFCC                   mFCC;  ///< For computing fast
           bool                   mForInspect;  ///< When inspect, save all points to inspect rejection
           cTplBoxOfPts<tREAL8,2> mBox;
@@ -319,7 +319,7 @@ template <class Type> void cImplem_ExportAimeTiep<Type>::AddAimeTieP(cProtoAimeT
     static double aLastFact = aFact;
     
     cIm2D<Type>     aIm0V2 = aPATP.mGPI->ImOriHom()-> ImG();
-    tImV1  aIm0V1 = cMMV1_Conv<Type>::ImToMMV1(aIm0V2.DIm());  ///<  Image "init", MMV1 Version
+    tImV1  aIm0V1 = cMMV1_Conv<Type>::ImToMMV1(aIm0V2.DIm());  ///<  image "init", MMV1 Version
     tTImV1 aTIm0V1(aIm0V1);
     // Heuristic way to avoid creating multiple 
     static tCACD  aCACD(aTIm0V1,Pt2di(0,0),aRho,aSzW);
@@ -415,12 +415,12 @@ template <class Type> void cImplem_ExportAimeTiep<Type>::Export(const std::strin
 }
 
 
-     // ================= Fitlrage spatial , point "bons" et bien repartis ===============
+     // ================= Fitlrage spatial , point "bons" and bien repartis ===============
 
          //  ------ Qt stuff ---------------
 template <class Type> class cFuncPtOfXml2007
 {   // argument du qauad tri
-    // comment à partir un objet, je recuper sa pt2D
+    // comment à partir un object, je recuper sa pt2D
       public :
          Pt2dr operator () (cProtoAimeTieP<Type> *  aXP) {return ToMMV1(aXP->mPFileInit);}
 };
@@ -449,7 +449,7 @@ template <class Type> class cAimeFS_HeapCmp
         {
               return aPP1->mScoreRel > aPP2->mScoreRel;   // compare score correl global
         }
-        // est ce que objet 1 est meuilleur que 2
+        // est ce que object 1 est meuilleur que 2
 };
 // typedef ElHeap<tP2007Ptr,cAimeFS_HeapCmp,cAimeFS_HeapIndex> tHeapXml2007;
 

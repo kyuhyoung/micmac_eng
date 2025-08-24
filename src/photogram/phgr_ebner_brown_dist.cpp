@@ -372,7 +372,7 @@ template <class Type>
    Type y2N = y * y - B2N;
 
 
-   V--; // Pour avoir les indices de l'article initial
+   V--; // for avoir les indices de l'article initial
 
    Type aXOut =  (1+ V[ 1]) * x
                  + V[ 2] * y
@@ -414,7 +414,7 @@ template <class Type>
    Type x2_P_y2 = x2+y2;
 
 
-   V--; // Pour avoir les indices de l'article initial
+   V--; // for avoir les indices de l'article initial
 
    Type aXOut =  (1+V[ 1]) * x
                 + V[ 2] * y
@@ -939,7 +939,7 @@ template <class TDistR,class TDistF,const int NbVar,const int NbState>
            }
 
 
-          // Version generique pour manipulation par CamStenope
+          // Version generique for manipulation par CamStenope
            ElDistortion22_Gen   &  Dist() {return *mDist;}
            const ElDistortion22_Gen   &  Dist() const {return *mDist;}
 
@@ -2337,7 +2337,7 @@ ElDistortion22_Gen   *  cDistGen_FishEye_Generator<TPreC,NbRad,NbDec,NbPolyn,NBV
 }
 
 
- // GESTION DES DEGRES POUR VAR LIBRE
+ // GESTION DES DEGRES for VAR LIBRE
 template <class TPreC,const int NbRad,const int NbDec,const int NbPolyn,const int NBV> 
          int  cDistGen_FishEye_Generator<TPreC,NbRad,NbDec,NbPolyn,NBV>::DegreOfPolyn(const int * ,int aK,eModeControleVarDGen aMode)
 {
@@ -2437,7 +2437,7 @@ template <class TPreC,const int NbRad,const int NbDec,const int NbPolyn,const in
    aXc = aXc * aMul;
    aYc = aYc * aMul;
 
-//  Coordonnees normalisees
+//  coordinates normalisees
 
    tVal aResX = aXc;
    tVal aResY = aYc;
@@ -2453,7 +2453,7 @@ template <class TPreC,const int NbRad,const int NbDec,const int NbPolyn,const in
    int aInd = D0Rad();
 
 // ==============================================
-// Calcul de la partie radiale
+// computation de la partie radiale
 // ==============================================
    tVal aRN = aR2c;
    tVal aDistRad = 0.0;
@@ -2480,7 +2480,7 @@ template <class TPreC,const int NbRad,const int NbDec,const int NbPolyn,const in
 
 
 // ==============================================
-// Calcul de la partie decentrique
+// computation de la partie decentrique
 // ==============================================
    if (ShowIndex)
    {
@@ -2507,8 +2507,8 @@ template <class TPreC,const int NbRad,const int NbDec,const int NbPolyn,const in
       ELISE_ASSERT(aInd==D0Polyn(),"Inc(0) in cDistGen_FishEye_Generator");
    }
 
-   // Calcul de la partie polynomiale de degre 1, 
-   // Sont deja modelise par la focale et les rotation pure sans
+   // computation de la partie polynomiale de degre 1, 
+   // Sont deja modelise par la focale and les rotation pure without
    // basculemment les similtude
    //
    //              aCoef1   aCoef2
@@ -2527,10 +2527,10 @@ template <class TPreC,const int NbRad,const int NbDec,const int NbPolyn,const in
    aResY = aResY + aCoef2 * aXc;
 
 // ==============================================
-// Calcul de la partie polynomiale
+// computation de la partie polynomiale
 // ==============================================
 
-   // Vecteur des monomes
+   // vector des monomes
    static std::vector<tVal> aVXY;
    aVXY.clear();
    aVXY.push_back( aXc * aXc);
@@ -2551,14 +2551,14 @@ template <class TPreC,const int NbRad,const int NbDec,const int NbPolyn,const in
         
         for (int aK=0 ; aK<=aD ; aK++)
         {
-             // Dans tous les cas on supprime de terme en XN de X qui peut
-             // etre pris en compte par radial et decentrique
+             // in tous les cas on supprime de terme en XN de X qui peut
+             // etre pris en compte par radial and decentrique
              if (aK!=0)
              {
                 mDegrePolyn[aInd] = aD;
                 aResX = aResX +   V[aInd++] * aVXY[aK];
              }
-             // Dans les cas pair, on supprime le terme en YN de Y
+             // in les cas pair, on supprime le terme en YN de Y
              if ((aD%2) || (aK!=aD))
              {
                 mDegrePolyn[aInd] = aD;
@@ -2580,7 +2580,7 @@ template <class TPreC,const int NbRad,const int NbDec,const int NbPolyn,const in
    if (ShowIndex)
    {
        std::cout << "INT LAST POLY " << aInd << "\n";
-       StdEXIT(-1); // Rien de spec a faire, dans ce mode de mise au point
+       StdEXIT(-1); // Rien de spec a faire, in ce mode de mise au point
    }
    // Show(States,V,2,D0Dec());
 
@@ -2714,7 +2714,7 @@ template <class Type,const int NbRad,const int NbDec,const int NbPolyn,const int
    Type  aYc =  (aP.y-aCY) / States[0];
 
 
-//  Coordonnees normalisees
+//  coordinates normalisees
    Type  aXNorm = aP.x / States[0];
    Type  aYNorm = aP.y / States[0];
 
@@ -2736,7 +2736,7 @@ template <class Type,const int NbRad,const int NbDec,const int NbPolyn,const int
    int aInd = D0Rad();
 
 // ==============================================
-// Calcul de la partie radiale
+// computation de la partie radiale
 // ==============================================
    Type aRN = aR2c;
    Type aDistRad = 0.0;
@@ -2758,7 +2758,7 @@ template <class Type,const int NbRad,const int NbDec,const int NbPolyn,const int
 
 
 // ==============================================
-// Calcul de la partie decentrique
+// computation de la partie decentrique
 // ==============================================
    aRN = 1;
    for (int aK=0 ; aK<NbDec ; aK++)
@@ -2781,8 +2781,8 @@ template <class Type,const int NbRad,const int NbDec,const int NbPolyn,const int
       ELISE_ASSERT(aInd==D0Polyn(),"Inc(0) in cDistGen_FishEye_Generator");
    }
 
-   // Calcul de la partie polynomiale de degre 1, 
-   // Sont deja modelise par la focale et les rotation pure sans
+   // computation de la partie polynomiale de degre 1, 
+   // Sont deja modelise par la focale and les rotation pure without
    // basculemment les similtude
    //
    //              aCoef1   aCoef2
@@ -2797,10 +2797,10 @@ template <class Type,const int NbRad,const int NbDec,const int NbPolyn,const int
    aResY = aResY + aCoef2 * aXNorm;
 
 // ==============================================
-// Calcul de la partie polynomiale
+// computation de la partie polynomiale
 // ==============================================
 
-   // Vecteur des monomes
+   // vector des monomes
    static std::vector<Type> aVXY;
    aVXY.clear();
    aVXY.push_back( aXNorm * aXNorm);
@@ -2817,14 +2817,14 @@ template <class Type,const int NbRad,const int NbDec,const int NbPolyn,const int
         
         for (int aK=0 ; aK<=aD ; aK++)
         {
-             // Dans tous les cas on supprime de terme en XN de X qui peut
-             // etre pris en compte par radial et decentrique
+             // in tous les cas on supprime de terme en XN de X qui peut
+             // etre pris en compte par radial and decentrique
              if (aK!=0)
              {
                 mDegrePolyn[aInd] = aD;
                 aResX = aResX +   V[aInd++] * aVXY[aK];
              }
-             // Dans les cas pair, on supprime le terme en YN de Y
+             // in les cas pair, on supprime le terme en YN de Y
              if ((aD%2) || (aK!=aD))
              {
                 mDegrePolyn[aInd] = aD;

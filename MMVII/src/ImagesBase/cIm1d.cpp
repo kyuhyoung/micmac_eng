@@ -5,7 +5,7 @@
 namespace MMVII
 {
 
-/** Class for "tabulating" a 1D fonction in a given interval.
+/** Class for "tabulating" a 1D function in a given interval.
     The value are memorized in a tab, and returned when needed
 */
 

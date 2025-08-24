@@ -165,7 +165,7 @@ class cOneIm
        // =========== Data ========
        cAppli &      mAppli; ///< Ref to global application
        bool                            mIsIm1; ///< Is it first image
-       std::string                     mNameIm;  ///< Name of full initial Image
+       std::string                     mNameIm;  ///< Name of full initial image
        std::string                     mNameMasq; ///<  Name of full initial Masq
        cDataFileIm2D                   mPFileImFull; ///< Data for File of name mNameIm1
        std::vector<tPtrLev>            mLevels;  ///< Vector of different scale
@@ -737,7 +737,7 @@ void cAppli::MakePyramid()
           std::list<cParamCallSys> aLComReduce;
           for (auto aIm : mIms)
           {
-              aLComReduce.push_back(aIm->LevAt(aLev).StrComReduce(true));  // Image
+              aLComReduce.push_back(aIm->LevAt(aLev).StrComReduce(true));  // image
               aLComReduce.push_back(aIm->LevAt(aLev).StrComReduce(false)); // Masq
           }
           ExeComParal(aLComReduce);

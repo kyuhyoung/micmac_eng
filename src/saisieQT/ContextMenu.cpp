@@ -22,7 +22,7 @@ void ContextMenu::createContextMenuActions()
 
     connect (_switchSignalMapper, SIGNAL(mapped(int)), this, SLOT(changeImages(int)));
 
-    // Point (state, HL, name)
+    // point (state, HL, name)
 
 	//QString IconFolder = QString(MMDir().c_str()) + "data/ico/";
 

@@ -68,7 +68,7 @@ std::string Dir2Write(const std::string  DirChantier = "./" );
 
 void ElExit(int aLine,const char * aFile,int aCode,const std::string & aMessage);
 #define ElEXIT(aCode,aMessage) ElExit(__LINE__,__FILE__,aCode,aMessage)
-//  Il existe des exit qui n'ont pas besoin d'etres traces, par exemple sur les help
+//  Il existe des exit qui n'ont pas besoin d'etres traces, par exemple on les help
 #define StdEXIT(aCode)  exit(aCode)
 
 void AddMessErrContext(const std::string & aMes);
@@ -146,7 +146,7 @@ class FBool
 template <class Type> class Pt2d;
 
 
-// Pour contourner le warning  [-Werror=unused-but-set-variable] de Gcc 4.6  FakeUseIt
+// for contourner le warning  [-Werror=unused-but-set-variable] de Gcc 4.6  FakeUseIt
 template <class Type> void GccUse(const Type & ) {}
 
 
@@ -543,8 +543,8 @@ std::vector<int> RandPermut(int aN);
 extern void NRrandom3InitOfTime();
 extern int  NRrandom3 (int aN);  // 0 <= X < N
 extern REAL NRrandom3 ();
-extern REAL NRrandC();  // entre -1 et 1
-extern REAL NRrandInterv(double aV0,double aV1);  // entre -1 et 1
+extern REAL NRrandC();  // between -1 and 1
+extern REAL NRrandInterv(double aV0,double aV1);  // between -1 and 1
 void ResetNRrand();
 void rationnal_approx(REAL,INT &,INT&);
 
@@ -604,7 +604,7 @@ void CmpByEnd(const char * aName1,const char * aName2,INT & aK1,INT &aK2);
 bool N2IsEndN1(const char * aName1,const char * aName2);
 
 
-// Pour avoir un nom utilisable dans les commandes meme s'il
+// for avoir un nom utilisable in les commandes meme s'il
 // contient des blancs
 std::string ToStrBlkCorr(const std::string &);
 
@@ -635,8 +635,8 @@ bool SplitIn2ArroundCar
          char                  aSpliCar,
          std::string  &  aBefore,
          std::string  &  aAfter,
-         bool            AcceptNoCar  // Est on OK pour ne pas trouver aSpliCar
-                                     // dans ce cas  aAfter est vide
+         bool            AcceptNoCar  // Est on OK for ne pas trouver aSpliCar
+                                     // in ce cas  aAfter est vide
      );
 
 void  SplitInNArroundCar
@@ -667,7 +667,7 @@ std::vector<char *> ToArgMain(const std::string & aStr);
 
 
 
-// Ajoute apres la dir et avant le .
+// Ajoute after la dir and before le .
 std::string AddPrePost(const std::string & aName,const std::string & aPref,const std::string & aPost);
 
 std::string DirOfFile(const std::string & aStr);
@@ -685,7 +685,7 @@ bool GetOneModifLC
          std::string &       aVal
      );
 
-// RAJPOUTE DES /\ si necessaire
+// RAJPOUTE DES /\ if necessaire
 void MakeFileDirCompl(std::string &);
 
 
@@ -738,7 +738,7 @@ class cElStatErreur
          cElStatErreur(INT NbValInit);
      void AddErreur(REAL);
      void Reset();
-     REAL Erreur(REAL Pos) ; // Pos en 0.0 et 1.0,  Exemple :
+     REAL Erreur(REAL Pos) ; // Pos en 0.0 and 1.0,  Exemple :
                              // 0.0 = Vmin, 1.0=Vmax, 0.5 = Median etc..
      double  Avg() const;
      double  Ect() const;
@@ -783,7 +783,7 @@ class cDecoupageInterv1D
         );
     int NbInterv() const;
     cInterv1D<int> KthIntervOut(int aK) const;
-    // Avec Bord par defaut
+    // with Bord par defaut
     cInterv1D<int> KthIntervIn(int aK) const;
     cInterv1D<int> KthIntervIn(int aK,const cInterv1D<int>  & aSzBord) const;
     const cInterv1D<int> & IGlob() const;
@@ -976,8 +976,8 @@ class tFileOffset
               return mLLO.IsInit();
          }
 
-// Deux interface bas niveaus, "tres sales", poiur assurer la communication avec le stockage
-// en int des offset dans les tiffs qui est necessaire pour utiliser le service de tag generiques
+// Deux interface bas niveaus, "tres sales", poiur assurer la communication with le stockage
+// en int des offset in les tiffs qui est necessaire for utiliser le service de tag generiques
          static  tFileOffset CKK_FromReinterpretInt(int anI)
          {
                tByte4AbsFileOffset anUI;
@@ -1022,9 +1022,9 @@ tFileOffset RelToAbs(tRelFileOffset anOff);
 /*                                                   */
 /*****************************************************/
 
-// Classe pour gerer rapidement les "classe equiv 1D"
+// class for gerer rapidement les "class equiv 1D"
 // c'est a dire les intervalles classes d'equivalences
-// d'une application croissante  de Z dans Z
+// d'une application croissante  de Z in Z
 
 class cFonc1D
 {
@@ -1087,7 +1087,7 @@ class cEquiv1D
           {
                return mNumOfClasse[aV-mV0];
           }
-          // La fonction "inverse" renvoie un intervalle
+          // La function "inverse" renvoie un intervalle
           void ClasseOfNum(int & aV0,int & aV1,const int & aNCL) const
           {
                 aV0 = mDebOfClasse[aNCL];
@@ -1096,8 +1096,8 @@ class cEquiv1D
           int SzMaxClasses() const;
      private:
           void Reset(int aV0,int aV1);
-          std::vector<int> mNumOfClasse; // Pour un entier, son numero de classe
-          std::vector<int> mDebOfClasse; // Pour un numero de classe, sont entier de debut
+          std::vector<int> mNumOfClasse; // for un integer, son numero de class
+          std::vector<int> mDebOfClasse; // for un numero de class, sont integer de debut
 
           int mV0;
           int mV1;
@@ -1105,11 +1105,11 @@ class cEquiv1D
 };
 
 // GPAO : Gestion de Production assistee par ordinateur. C'est
-// un peu presenptueux pour l'instant il s'agit juste d'avoir des
-// classes permettant de gerer du calcul distribue avec des regles
+// un peu presenptueux for l'instant il s'agit juste d'avoir des
+// classes permettant de gerer du computation distribue with des regles
 // gerable par des DAG (directed acyclique graphe)
 //
-//  cEl_GPAO  est la classe "manager"
+//  cEl_GPAO  est la class "manager"
 //
 
 class cEl_GPAO;
@@ -1158,7 +1158,7 @@ class cElTask
 class cEl_GPAO
 {
      public :
-          // Interface simplifiee quand il n'y a pas de dependance entre les commandes
+          // Interface simplifiee when il n'y a pas de dependance between les commandes
           static void DoComInParal(const std::list<std::string> &,std::string  FileMk = "", int   aNbProc = 0 ,bool Exe=true, bool MoinsK=false);
           static void DoComInSerie(const std::list<std::string> &);
 
@@ -1203,8 +1203,8 @@ class cEl_GPAO
 };
 
 
-//  Pour executer une commande en // sur +sieur fichier, pour l'instant on fait
-// basique, on ajoutera eventuellement apres des cles avec cInterfChantierNameManipulateur
+//  for executer une commande en // on +sieur file, for l'instant on fait
+// basique, on ajoutera eventuellement after des cles with cInterfChantierNameManipulateur
 /*
 void MkFMapCmd
      (
@@ -1228,9 +1228,9 @@ class cInterfChantierNameManipulateur;
 
 void RequireBin
      (
-         const std::string & ThisBin,  // Le prog appelant pour evt
+         const std::string & ThisBin,  // Le prog appelant for evt
          const std::string & BinRequired,
-     const std::string & LeMake = "Makefile"  // Si
+     const std::string & LeMake = "Makefile"  // if
      );
 
 // For top call like Tapas, Malt , .. want to duplicate args in @
@@ -1270,8 +1270,8 @@ class cAppliBatch
        cEl_GPAO &  GPAO ();
        bool        ByMKf() const;  // By Make file
        const std::string & MKf() const;
-       // Parfois le plus simple est que le programme se rappelle lui - meme avec
-       // des option legerement differente dans ce cas on doit etre au courant
+       // Parfois le plus simple est que le programme se rappelle lui - meme with
+       // des option legerement differente in ce cas on doit etre au courant
        bool        IsRelancedByThis() const;
 
     protected :
@@ -1319,7 +1319,7 @@ class cAppliBatch
 
     // Les args non consommes
 
-     // Partie de la ligne de commande qui revient a chaque fois
+     // Partie de la line de commande qui revient a chaque fois
 
 
     // private :
@@ -1514,8 +1514,8 @@ class cINT8ImplemSetInt
        cINT8ImplemSetInt();
        void Add(int anInt);
        bool IsIn (int anInt) const;
-       int  NumOrdre(int aI) const;  // Nombre d'Entier < a aI
-       int  NumOrdre(int aI,bool svp) const;  // Nombre d'Entier < a aI
+       int  NumOrdre(int aI) const;  // number d'integer < a aI
+       int  NumOrdre(int aI,bool svp) const;  // number d'integer < a aI
        static int  Capacite();
 
        bool operator < (const cINT8ImplemSetInt &) const;
@@ -1529,12 +1529,12 @@ template <const int NbI> class cSetIntMultiple
        cSetIntMultiple();
        void Add(int anInt);
        bool IsIn (int anInt) const;
-       int  NumOrdre(int aI) const;  // Nombre d'Entier < a aI
+       int  NumOrdre(int aI) const;  // number d'integer < a aI
        static int  Capacite();
 
        bool operator < (const cSetIntMultiple<NbI> &) const;
     private :
-        Pt2d<INT>  NumSub(const int & anI) const; // x le set, y le I dans le set
+        Pt2d<INT>  NumSub(const int & anI) const; // x le set, y le I in le set
        cINT8ImplemSetInt  mSets[NbI];
 };
 
@@ -1544,12 +1544,12 @@ class cVarSetIntMultiple
        cVarSetIntMultiple();
        void Add(int anInt);
        bool IsIn (int anInt) const;
-       int  NumOrdre(int aI) const;  // Nombre d'Entier < a aI
+       int  NumOrdre(int aI) const;  // number d'integer < a aI
 
        bool operator < (const cVarSetIntMultiple &) const;
        int  Capacite() const;
     private :
-        Pt2d<INT>  NumSub(const int & anI) const; // x le set, y le I dans le set
+        Pt2d<INT>  NumSub(const int & anI) const; // x le set, y le I in le set
         mutable std::vector<cINT8ImplemSetInt>  mSets;
 };
 
@@ -1560,12 +1560,12 @@ class cElXMLTree;
 extern bool TransFormArgKey
      (
          std::string & aName ,
-         bool AMMNoArg,  // Accept mismatch si DirExt vide
+         bool AMMNoArg,  // Accept mismatch if DirExt vide
          const std::vector<std::string> & aDirExt
      );
 
-// Class sepeciale pour gerer les objets autre que string qui peuvent etre initialise par des #1 #2 ..
-// dans les xml pour les cles parametrees, par exemple le <DeltaMin> de <ByAdjacence>
+// Class sepeciale for gerer les objets autre que string qui peuvent etre initialise par des #1 #2 ..
+// in les xml for les cles parametrees, par exemple le <DeltaMin> de <ByAdjacence>
 
 template <class Type> class TypeSubst
 {
@@ -1596,9 +1596,9 @@ template <class T> T* VData(std::vector<T> & aV)  {return aV.data();}
 template <class T> const T* VData(const std::vector<T> & aV)  {return aV.data();}
 #endif
 
-///  Ajoute des regles speciales pour que chaque pixle ait au moins un 
-//  precedcesseur et un antecedant
-//   Z est dans l'intervalle ouvert I1 [aZ1Min,aZ1Max[,
+///  Ajoute des regles speciales for que chaque pixle ait au moins un 
+//  precedcesseur and un antecedant
+//   Z est in l'intervalle ouvert I1 [aZ1Min,aZ1Max[,
 
 void ComputeIntervaleDelta
               (

@@ -182,7 +182,7 @@ void cAppli_Ortho::InitBoucheTrou(const Pt2di & aP,const cBoucheTrou  & aBT)
    Liste_Pts_INT2 aLFront(2);
    Neighbourhood V4 = Neighbourhood::v4();
            // On dilate 3 fois de suite , a partir des point valant 2,
-           // sur les points valante 1, on les colorie en 3
+           // on les points valante 1, on les colorie en 3
    ELISE_COPY
    (
         conc

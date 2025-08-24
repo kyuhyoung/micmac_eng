@@ -1002,7 +1002,7 @@ int Tapioca_main(int argc,char ** argv)
 
     int ARGC0 = argc;
 
-    //  APRES AVOIR SAUVEGARDER L'ARGUMENT DE TYPE ON LE SUPPRIME
+    //  after AVOIR SAUVEGARDER L'ARGUMENT DE TYPE ON LE SUPPRIME
     if (argc>=2)
     {
         argv[1] = argv[0];

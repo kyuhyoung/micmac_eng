@@ -37,7 +37,7 @@ cSpecMMVII_Appli::cSpecMMVII_Appli
 int cSpecMMVII_Appli::AllocExecuteDestruct(const std::vector<std::string> & aVArgs) const
 {
 
-   // A conserver, on le mettra dans les sauvegarde
+   // A conserver, on le mettra in les sauvegarde
 #if 0
    {
       StdOut() << "===Com==[";
@@ -108,7 +108,7 @@ const cSpecMMVII_Appli::tVaDT &  cSpecMMVII_Appli::VInputs() const {return mVInp
 const cSpecMMVII_Appli::tVaDT &  cSpecMMVII_Appli::VOutputs() const {return mVOutputs;}
 
 
-// Si aMes=="SVP"=> No Error
+// if aMes=="SVP"=> No Error
 bool  CheckIntersect
       (
             const std::string & aMes,

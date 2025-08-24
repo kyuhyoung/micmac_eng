@@ -94,7 +94,7 @@ template <class Iterator,class Fpt,class Act,class Type>  void
 
     for (I = 0 ; I < nb ; I++)
     {
-        /* calcul des coordonnees du point A */
+        /* computation des coordinates du point A */
         Pt2dr pi = fpt(*vals[I]);
         A_x = pi.x;
         A_y = pi.y;
@@ -107,7 +107,7 @@ template <class Iterator,class Fpt,class Act,class Type>  void
             Pt2dr pj = fpt(*vals[J]);
             if (euclid(pi,pj) < dist)
             {
-               /* calcul des coordonnees et de la norme du vecteur AB */
+               /* computation des coordinates and de la norme du vector AB */
                AB_x = pj.x - A_x;
                AB_y = pj.y - A_y;
                norme_AB = AB_x * AB_x + AB_y * AB_y;
@@ -127,34 +127,34 @@ template <class Iterator,class Fpt,class Act,class Type>  void
                   if (MARQUEUR_K[K] != J)
                   {
                      MARQUEUR_K[K] = J;
-                     /* calcul des coordonnees du vecteur AC */
+                     /* computation des coordinates du vector AC */
                      Pt2dr pk = fpt(*vals[K]);
                      AC_x = pk.x - A_x; 
                      AC_y = pk.y - A_y;
-                     /* calcul des produits scalaires et vectoriels de AB et AC */
+                     /* computation des produits scalaires and vectoriels de AB and AC */
                      det_AB_AC = AB_x * AC_y - AB_y * AC_x;	
                      scal_AB_AC = AB_x * AC_x + AC_y * AB_y;	
-                     /* si A,B,C aligne */
+                     /* if A,B,C aligne */
                      if (det_AB_AC == 0)  
                      {
-                        /* si C appartient au segment [A,B] */
+                        /* if C appartient au segment [A,B] */
                         if ( (scal_AB_AC > 0) && (scal_AB_AC < norme_AB))
                         {
-                           /* alors AB ne sera pas un arc de la triangulation */
+                           /* then AB ne sera pas un arc de la triangulation */
                            alpha = 1;
                            beta = -1;
                         }
-                           /* sinon C ne refute aucune partie de la mediatrice de AB
+                           /* else C ne refute aucune partie de la mediatrice de AB
                               donc on ne fait rien */
                      }
                      else
                      {
                          norme_AC = AC_x * AC_x + AC_y * AC_y;
-                         /* si C est a "gauche" du vecteur AB on va
+                         /* if C est a "gauche" du vector AB on va
                           eventuellement modifier beta */
                         if (det_AB_AC > 0)
                         {
-                           /* calcul de l'abscisse de l'intersection des mediatrices */
+                           /* computation de l'abscisse de l'intersection des mediatrices */
                            nouv_val = (norme_AC - scal_AB_AC) /det_AB_AC;
                            /* beta = min (beta,nouv_val) */
                            if (1 == CmpRat(beta,nouv_val))
@@ -162,11 +162,11 @@ template <class Iterator,class Fpt,class Act,class Type>  void
                               beta = nouv_val;
                            }
                         }
-                         /* si C est a "droite" du vecteur AB on va
+                         /* if C est a "droite" du vector AB on va
                           eventuellement modifier alpha */
                         else
                         {
-                           /* calcul de l'abscisse de l'intersection des mediatrices */
+                           /* computation de l'abscisse de l'intersection des mediatrices */
                            nouv_val = (- norme_AC + scal_AB_AC)
                                         / ( - det_AB_AC);
                            /* alpha = max (alpha,nouv_val) */
@@ -176,23 +176,23 @@ template <class Iterator,class Fpt,class Act,class Type>  void
                            }
                         }
                      }
-                     /* si alpha > beta il est inutile de continuer */
+                     /* if alpha > beta il est inutile de continuer */
                     if ( 1 == CmpRat(alpha,beta))
                         continuer_K = 0;
                   }	
-                  /* on memorise le prochain K pour dans 2 etapes */
+                  /* on memorise le prochain K for in 2 etapes */
                   valeur_K[etat] += dec_etat[etat];
-                  /* si on atteint les bords il vaudrait mieux s'arreter la */
+                  /* if on atteint les bords il vaudrait mieux s'arreter la */
                   if ((valeur_K[etat] < 0) || (valeur_K[etat] == nb))
                   {
                      valeur_K[etat] -= dec_etat[etat];
                      dec_etat[etat] = 0;
                   }
-                  /* si on explorait K dans les x croissants alors on va explorer dans les x decroissants
-                     et lycee de Versailles */
+                  /* if on explorait K in les x croissants then on va explorer in les x decroissants
+                     and lycee de Versailles */
                   etat = (etat + 1) % 2;
                }
-               /* si alpha > beta IJ est un arc de la triangulation */
+               /* if alpha > beta IJ est un arc de la triangulation */
                INT cmp = CmpRat (alpha,beta);
                if ( cmp <=0)
                   act(*vals[I],*vals[J],cmp==0);

@@ -265,7 +265,7 @@ cGPU_LoadedImGeom::cGPU_LoadedImGeom
 //    ELISE_ASSERT
 //    (
 //        aPDV->NumEquiv()==0,
-//    "Ne gere pas les classe d'equiv image en GPU"
+//    "Ne gere pas les class d'equiv image en GPU"
 //    );
 
     if (! Top)
@@ -650,7 +650,7 @@ bool   cGPU_LoadedImGeom::CorreCensus(double & aCorrel,int anX,int anY,const  cG
       anEcGlob += aScSomEc * aPds;
       aSomPds += aPds;
    }
-   // Min pour meme interv que correl
+   // Min for meme interv que correl
    anEcGlob =  ElMin(2.0,(anEcGlob/aSomPds) * mAppli.CC()->Dyn().Val());
    aCorrel =  1-anEcGlob;
 {
@@ -720,30 +720,30 @@ if (0)
 
 
     //
-    //    Fonction de correlation preparant une version GPU. Pour l'instant on se
-    //    reduit a la version qui fonctionne pixel par pixel (sans redressement global),
-    //    de toute facon il faudra l'ecrire et elle est plus simple.
+    //    function de correlation preparant une version GPU. for l'instant on se
+    //    reduit a la version qui fonctionne pixel par pixel (without redressement global),
+    //    de toute facon il faudra l'ecrire and elle est plus simple.
     //
-    //    Une fois les parametres d'environnement decode et traduits en donnees
-    //    de bas niveau  ( des tableau bi-dim  de valeur numerique : entier, flottant et bits)
-    //    les communications, dans le corps de la boucle, avec l'environnement MicMac sont reduites
+    //    Une fois les parameters d'environnement decode and traduits en donnees
+    //    de bas niveau  ( des array bi-dim  de value numerique : integer, flottant and bits)
+    //    les communications, in le corps de la boucle, with l'environnement MicMac sont reduites
     //    a trois appels :
     //
     //       [1]   Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);
     //
-    //             Appelle la fonction virtuelle de projection associee a chaque
+    //             Appelle la function virtuelle de projection associee a chaque
     //             descripteur de geometrie de l'image.
     //
     //       [2]    mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,aDefCost);
     //
-    //             Appelle la fonction virtuelle de remplissage de cout
+    //             Appelle la function virtuelle de remplissage de cout
     //             de l'optimiseur actuellement utilise
     //
     //
     //       [3]    double aVal =  mInterpolTabule.GetVal(aDataIm,aPIm);
     //
-    //               Utilise l'interpolateur courant. Pour l'instant l'interpolateur
-    //               est en dur quand on fonctionne en GPU
+    //               Utilise l'interpolateur courant. for l'instant l'interpolateur
+    //               est en dur when on fonctionne en GPU
     //
 
 
@@ -878,13 +878,13 @@ void cAppliMICMAC::DoInitAdHoc(const Box2di & aBox)
                     ushort2* hClassEqui = IMmGg.Data().HostClassEqui();
 					const ushort2 rayonVignette = make_ushort2(toUi2(mCurSzV0));
 
-                    // Parcourt de toutes les images pour les classes
+                    // Parcourt de toutes les images for les classes
                     for (int aKIm=0 ; aKIm<mNbIm ; aKIm++)
                     {
-                        // image et orientation
+                        // image and orientation
                         cGPU_LoadedImGeom&	aGLI	= *(mVLI[aKIm]);
 
-                        // classe d'équivalence
+                        // class d'quivalence
                         hClassEqui[aKIm].x = aGLI.PDV()->NumEquiv();
 
                         if(aKIm && hClassEqui[aKIm-1].x != hClassEqui[aKIm].x)
@@ -904,7 +904,7 @@ void cAppliMICMAC::DoInitAdHoc(const Box2di & aBox)
 
 					IMmGg.Data().SyncConstData();
 
-                    // Pour chaque image nous copions les valeurs dans une structure preparatoire pour les envoyés au GPU
+                    // for chaque image nous copions les valeurs in une structure preparatoire for les envoys au GPU
                     for (int aKIm=0 ; aKIm<mNbIm ; aKIm++)
                     {
                         // Obtention de l'image courante
@@ -918,7 +918,7 @@ void cAppliMICMAC::DoInitAdHoc(const Box2di & aBox)
                         if(fdataImg1D == NULL)
                             fdataImg1D	= new float[ size(dimImgMax) * mNbIm ];
 
-                        // Copie du tableau 2d des valeurs de l'image Ameliorer encore la copy de texture, copier les images une à  une dans le device!!!!
+                        // Copie du array 2d des valeurs de l'image Ameliorer encore la copy de texture, copier les images une   une in le device!!!!
                         if (aEq(dimImgMax,dimImg))
                             memcpy(  fdataImg1D + size(dimImgMax)* aKIm , data,  size(dimImg) * sizeof(float));
                         else
@@ -963,7 +963,7 @@ void cAppliMICMAC::DoInitAdHoc(const Box2di & aBox)
                     // Delete buffer image temporaire
                     if (fdataImg1D != NULL) delete[] fdataImg1D;
 
-                    // Initialisation des paramètres
+                    // Initialisation des paramtres
 					IMmGg.SetParameter(mNbIm,rayonVignette , dimImgMax, (float)mAhEpsilon, SAMPLETERR, INTDEFAULT,nbCLass);
 
                 }
@@ -976,7 +976,7 @@ void cAppliMICMAC::DoInitAdHoc(const Box2di & aBox)
             }
 
             //
-            // Génération de volumes, où le calcul est nécessaire.
+            // Gnration de volumes, o le computation est ncessaire.
 
             IMmGg.MaskVolumeBlock().clear();
 
@@ -1020,7 +1020,7 @@ void cAppliMICMAC::DoInitAdHoc(const Box2di & aBox)
                             ElSetMin(mZMinGlob,mZ.x);
                             ElSetMax(mZMaxGlob,mZ.y);
 
-                            // Pour chaque Z du volume, nous determinons le rectangle minimum
+                            // for chaque Z du volume, nous determinons le rectangle minimum
                             for (int i = 0; i < dZ; ++i)
                             {
                                 Rect &box = vCellules[i + abs(mZ.x - mZMinGlob)];
@@ -1040,7 +1040,7 @@ void cAppliMICMAC::DoInitAdHoc(const Box2di & aBox)
 
                 uint Dz = abs(mZMaxGlob-mZMinGlob);
 
-                // Pour chaque intervalle Z INTERZ, nous constituons une box
+                // for chaque intervalle Z INTERZ, nous constituons une box
                 if(vCellules.size() > 0)
                 {
                     uint cellZmaskVol = iDivUp((int)vCellules.size(), INTERZ);
@@ -1250,7 +1250,7 @@ bool  cAppliMICMAC::InitZ(int aZ,eModeInitZ aMode)
              Pt2di aSzV0 =   aGLI_K.SzV0();
              Pt2di aSzErod = mCurSzVMax;
 
-             // Calcul de l'ortho image et de l'image OK Ortho
+             // computation de l'ortho image and de l'image OK Ortho
              double aStep = 1.0/ElMax(1,mGpuSzD); // Histoire de ne pas diviser par 0
              double anIndX = 0.0;
              for (int anX = mX0UtiDilTer ; anX <  mX1UtiDilTer ; anX++)
@@ -1275,7 +1275,7 @@ bool  cAppliMICMAC::InitZ(int aZ,eModeInitZ aMode)
                            }
 
 
-                           // Peu importe aGLI_0 ou aGLI_K
+                           // Peu importe aGLI_0 or aGLI_K
                            if (aGLI_0.IsOk(aPIm.x,aPIm.y))
                            {
                                aDOrtho[anY][anX] = (tGpuF)anInt->GetVal(aDataIm,aPIm);
@@ -1659,7 +1659,7 @@ void cAppliMICMAC::DoOneCorrelIm1Maitre(int anX,int anY,const cMultiCorrelPonctu
 
 void cAppliMICMAC::DoOneCorrelMaxMinIm1Maitre(int anX,int anY,bool aModeMax,int aNbScaleIm)
 {
-        if (mEBI) // Etiq Best Image
+        if (mEBI) // Etiq Best image
         {
             if (mNbIm>1)
             {
@@ -1804,10 +1804,10 @@ void cAppliMICMAC::DoGPU_Correl
 #ifdef  CUDA_ENABLED
 
 ///
-/// \brief cAppliMICMAC::Tabul_Projection Pré-calcul des projections des points terrains dans chaque images
+/// \brief cAppliMICMAC::Tabul_Projection Pr-computation des projections des points terrains in chaque images
 /// \param Z        Z initiale
-/// \param interZ   interval de Z à pré-calculé
-/// \param idBuf    id buffer de pré-calcul
+/// \param interZ   interval de Z  pr-computation
+/// \param idBuf    id buffer de pr-computation
 ///
 	void cAppliMICMAC::Tabul_Projection(short Z, ushort &interZ, ushort idBuf)
     {
@@ -1816,36 +1816,36 @@ void cAppliMICMAC::DoGPU_Correl
 #endif
         IMmGg.Data().MemsetHostVolumeProj(IMmGg.Param(idBuf).invPC.IntDefault);
 
-		float2*		pTabProj	=	IMmGg.Data().HostVolumeProj();      // Pointeur sur le buffer des projections
-		const Rect  zone        =	IMmGg.Param(idBuf).RDTer();         // Zone Terrain dilaté
+		float2*		pTabProj	=	IMmGg.Data().HostVolumeProj();      // Pointeur on le buffer des projections
+		const Rect  zone        =	IMmGg.Param(idBuf).RDTer();         // Zone Terrain dilat
 		const uint  sample      =	IMmGg.Param(idBuf).invPC.sampProj;  // Sample
 		const uint2	dimTabProj	=	zone.dimension();					// Dimension de la zone terrain
-		const uint2	dimSTabProj	=	iDivUp(dimTabProj,sample)+1;		// Dimension de la zone terrain sous-echantilloné
+		const uint2	dimSTabProj	=	iDivUp(dimTabProj,sample)+1;		// Dimension de la zone terrain under-echantillon
 		const int2	anB			=	zone.pt0 +  dimSTabProj * sample;
 
 		const Pt2dr stepPlaniSa(mStepPlani.x*sample,mStepPlani.y*sample);
 		const Pt2dr cpTerDequan(mOriPlani.x + mStepPlani.x*zone.pt0.x,mOriPlani.y + mStepPlani.y*zone.pt0.y);
 
-		float2* buf_proj		= pTabProj ;//+ (rZ  + aKIm )* sizSTabProj;	// Buffer des projections pre-calculées
+		float2* buf_proj		= pTabProj ;//+ (rZ  + aKIm )* sizSTabProj;	// Buffer des projections pre-calcules
 		OMP_NT1
 		for (short anZ = Z; anZ < (Z + interZ); ++anZ)
 		{
 			const double aZReel	= DequantZ(anZ);                                                    // Dequantification Z
 			OMP_NT2
-			for (ushort aKIm = 0 ; aKIm < mNbIm ; ++aKIm)        // Mise en calque des projections pour chaque image
+			for (ushort aKIm = 0 ; aKIm < mNbIm ; ++aKIm)        // Mise en calque des projections for chaque image
             {
 				const cGeomImage* aGeom = ((cGPU_LoadedImGeom*)mVLI[aKIm])->Geom();	// geom image
-				int2  pTer;                                 // Debut de la zone de pré-calcul
+				int2  pTer;                                 // Debut de la zone de pr-computation
 				Pt2dr pTerDequan;
 
 				for ( pTer.y = zone.pt0.y, pTerDequan.y = cpTerDequan.y; pTer.y < anB.y; pTer.y += sample, pTerDequan.y +=  stepPlaniSa.y)							// Ballayage du terrain
 				{
 					for (pTer.x = zone.pt0.x, pTerDequan.x = cpTerDequan.x; pTer.x < anB.x ; pTer.x += sample,++buf_proj, pTerDequan.x +=  stepPlaniSa.x)
 					{
-						const Pt2dr aPIm  = aGeom->CurObj2Im(pTerDequan,&aZReel);		// Calcul de la projection dans l'image aKIm
+						const Pt2dr aPIm  = aGeom->CurObj2Im(pTerDequan,&aZReel);		// computation de la projection in l'image aKIm
 
 						//if (aGLI.IsOk( aPIm.x, aPIm.y )) // Le masque image !!
-						*buf_proj		= make_float2((float)aPIm.x,(float)aPIm.y);		// affectation dans le
+						*buf_proj		= make_float2((float)aPIm.x,(float)aPIm.y);		// affectation in le
 
 					}
 				}
@@ -1862,12 +1862,12 @@ void cAppliMICMAC::DoGPU_Correl
 
         CuHostData3D<float> hoValuesImages;
 
-        Rect    zone        = IMmGg.Param(idBuf).RTer();           // Zone Terrain dilaté
+        Rect    zone        = IMmGg.Param(idBuf).RTer();           // Zone Terrain dilat
         zone.out();
         cout << endl;
 
         uint2	dimTabProj	= zone.dimension();						// Dimension de la zone terrain
-        uint	sizSTabProj	= size(dimTabProj);					// Taille de la zone terrain sous-echantilloné
+        uint	sizSTabProj	= size(dimTabProj);					// Taille de la zone terrain under-echantillon
 
         int2	anB			= zone.pt0 +  dimTabProj;
 
@@ -1881,7 +1881,7 @@ void cAppliMICMAC::DoGPU_Correl
                 cout << endl;
 
         hoValuesImages.Malloc(dimTabProj,IMmGg.Param(idBuf).invPC.nbImages*interZ);
-        float  *pBufVimg   = hoValuesImages.pData();        // Pointeur sur le buffer des projections
+        float  *pBufVimg   = hoValuesImages.pData();        // Pointeur on le buffer des projections
 
         cInterpolateurIm2D<float> * anInt = CurEtape()->InterpFloat();
 
@@ -1889,16 +1889,16 @@ void cAppliMICMAC::DoGPU_Correl
         {
             int rZ = abs(Z - anZ) * mNbIm;
 
-            for (int aKIm = 0 ; aKIm < mNbIm ; aKIm++ )                     // Mise en calque des projections pour chaque image
+            for (int aKIm = 0 ; aKIm < mNbIm ; aKIm++ )                     // Mise en calque des projections for chaque image
             {
 
-                float* buf_ValImages     = pBufVimg + (rZ  + aKIm )* sizSTabProj;// Buffer des projections pre-calculées
+                float* buf_ValImages     = pBufVimg + (rZ  + aKIm )* sizSTabProj;// Buffer des projections pre-calcules
 
                 cGPU_LoadedImGeom&	aGLI	= *(mVLI[aKIm]);                // Obtention de l'image aKIm
                 const cGeomImage*	aGeom	= aGLI.Geom();
 
-                int2 pTer       = zone.pt0;                                 // Debut de la zone de pré-calcul
-                int2 sampTer    = make_int2(0,0);                           // Point retenu
+                int2 pTer       = zone.pt0;                                 // Debut de la zone de pr-computation
+                int2 sampTer    = make_int2(0,0);                           // point retenu
                 const double aZReel	= DequantZ(anZ);                                                    // Dequantification Z
 
                 for (pTer.y = zone.pt0.y; pTer.y < anB.y; pTer.y ++, sampTer.y++, sampTer.x = 0)	// Ballayage du terrain
@@ -1907,10 +1907,10 @@ void cAppliMICMAC::DoGPU_Correl
                     {
 
                         Pt2dr aPTer	= DequantPlani(pTer.x,pTer.y);          // Dequantification  de X, Y
-                        Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);      // Calcul de la projection dans l'image aKIm
+                        Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);      // computation de la projection in l'image aKIm
 
                         if (aGLI.IsOk( aPIm.x, aPIm.y ))
-                            buf_ValImages[to1D(sampTer,dimTabProj)]		= anInt->GetVal(aGLI.DataIm0(),aPIm); // affectation dans le
+                            buf_ValImages[to1D(sampTer,dimTabProj)]		= anInt->GetVal(aGLI.DataIm0(),aPIm); // affectation in le
                         else
                             buf_ValImages[to1D(sampTer,dimTabProj)]		= -1;
                     }
@@ -1950,7 +1950,7 @@ void cAppliMICMAC::DoGPU_Correl
 
 					const double cost = (double)(*tCost);
 
-                    // TODO WARNING les couts init sont stockés dans un ushort mais des couts semblent sup à ushortmax!!!!
+                    // TODO WARNING les couts init sont stocks in un ushort but des couts semblent sup  ushortmax!!!!
 					mSurfOpt->SetCout(Pt2di(anX,anY),&anZ, cost != valdefault ? cost : mAhDefCost);
                 }
             }
@@ -1972,10 +1972,10 @@ void cAppliMICMAC::DoGPU_Correl
 
 #ifdef  CUDA_ENABLED
 
-        // Si le terrain est masque ou aucune image : Aucun calcul
+        // if le terrain est masque or aucune image : Aucun computation
         if (mNbIm == 0 || IMmGg.MaskVolumeBlock().size() == 0) return;
 
-        // Initiation du calcul
+        // Initiation du computation
         uint interZ = IMmGg.InitCorrelJob(mZMinGlob,mZMaxGlob);
 
 		short anZProjection = mZMinGlob, anZComputed= mZMinGlob;//, ZtoCopy = 0;
@@ -1986,7 +1986,7 @@ void cAppliMICMAC::DoGPU_Correl
 
         int nbCellZ = IMmGg.MaskVolumeBlock().size();
 
-		// Parcourt de l'intervalle de Z compris dans la nappe globale
+		// Parcourt de l'intervalle de Z compris in la nappe globale
 		if (IMmGg.UseMultiThreading())
 		{
 			//while( anZComputed < mZMaxGlob )
@@ -1995,7 +1995,7 @@ void cAppliMICMAC::DoGPU_Correl
 			while( aKCellZ < nbCellZ )
             {
 
-                // Tabulation des projections si la demande est faite
+                // Tabulation des projections if la demande est faite
 
                 //if ( IMmGg.GetPreComp() && anZProjection <= anZComputed + (int)interZ && anZProjection < mZMaxGlob)
                 if( aKPreCellZ <= aKCellZ + 1 && aKPreCellZ < nbCellZ &&  IMmGg.GetPreComp() )
@@ -2018,7 +2018,7 @@ void cAppliMICMAC::DoGPU_Correl
                     aKPreCellZ++;
                     idPreBuf = !idPreBuf;
                 }
-                // Affectation des couts si des nouveaux ont ete calcule!
+                // Affectation des couts if des nouveaux ont ete compute!
 
                 if (IMmGg.GetDataToCopy())
                 {
@@ -2040,7 +2040,7 @@ void cAppliMICMAC::DoGPU_Correl
 
                 IMmGg.ReallocHostData(Mask.Dz,idPreBuf);
 
-                // calcul des projections
+                // computation des projections
                 Tabul_Projection( anZComputed,Mask.Dz,0);
 
                 // Kernel Correlation
@@ -2253,7 +2253,7 @@ void cAppliMICMAC::DoCorrelAdHoc
              }
 	}
 
-        // On peut avoir a la fois MCP et mCC (par ex)
+        // On peut avoir a la fois MCP and mCC (par ex)
         if (aTC.MultiCorrelPonctuel().IsInit())
         {
             const cMultiCorrelPonctuel * aMCP = aTC.MultiCorrelPonctuel().PtrVal();
@@ -2317,7 +2317,7 @@ void cAppliMICMAC::GlobDoCorrelAdHoc
         ResetCalRad();
 
         int aSzDecoupe = mCorrelAdHoc->SzBlocAH().Val();
-        // Pour eventuellement changer si existe algo qui impose une taille
+        // for eventuellement changer if existe algo qui impose une taille
         mCurSzV0   = mPtSzWFixe;
         mCurSzVMax = mCurSzV0;
         if (mCMS)
@@ -2361,7 +2361,7 @@ void cAppliMICMAC::GlobDoCorrelAdHoc
                   mVBufC.push_back(mBufCensusIm2.back().data());
             }
             mDataBufC = &(mVBufC[0]);
-            // Pour census, afin de faciliter et (marginalement ?) accelerer l'exe, on ne fait qu'une seule boite
+            // for census, afin de faciliter and (marginalement ?) accelerer l'exe, on ne fait qu'une seule boite
             aSzDecoupe = 1000000;
         }
 
@@ -2418,33 +2418,33 @@ void cAppliMICMAC::GlobDoCorrelAdHoc
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant à  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
-Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
+Ce logiciel est rgi par la licence CeCILL-B soumise au droit franais et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
-de la licence CeCILL-B telle que diffusée par le CEA, le CNRS et l'INRIA
+de la licence CeCILL-B telle que diffuse par le CEA, le CNRS et l'INRIA
 sur le site "http://www.cecill.info".
 
-En contrepartie de l'accessibilité au code source et des droits de copie,
-de modification et de redistribution accordés par cette licence, il n'est
-offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
-seule une responsabilité restreinte pèse sur l'auteur du programme,  le
-titulaire des droits patrimoniaux et les concédants successifs.
+En contrepartie de l'accessibilit au code source et des droits de copie,
+de modification et de redistribution accords par cette licence, il n'est
+offert aux utilisateurs qu'une garantie limite.  Pour les mmes raisons,
+seule une responsabilit restreinte pse sur l'auteur du programme,  le
+titulaire des droits patrimoniaux et les concdants successifs.
 
-A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  à  l'utilisation,  à  la modification et/ou au
-développement et à  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe à
-manipuler et qui le réserve donc à  des développeurs et des professionnels
-avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités à  charger  et  tester  l'adéquation  du
-logiciel à  leurs besoins dans des conditions permettant d'assurer la
-sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-à  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+A cet gard  l'attention de l'utilisateur est attire sur les risques
+associs au chargement,    l'utilisation,    la modification et/ou au
+dveloppement et   la reproduction du logiciel par l'utilisateur tant
+donn sa spcificit de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le rserve donc   des dveloppeurs et des professionnels
+avertis possdant  des  connaissances  informatiques approfondies.  Les
+utilisateurs sont donc invits   charger  et  tester  l'adquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
+scurit de leurs systmes et ou de leurs donnes et, plus gnralement,
+  l'utiliser et l'exploiter dans les mmes conditions de scurit.
 
-Le fait que vous puissiez accéder à  cet en-tête signifie que vous avez
-pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
+Le fait que vous puissiez accder   cet en-tte signifie que vous avez
+pris connaissance de la licence CeCILL-B, et que vous en avez accept les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

@@ -60,8 +60,8 @@ class cAppliEpipDMEval : public cMMVII_Appli,
         double          mPropIntervPx; ///< 
            // --- Variable ----
         tImAPBI       mIm2Rect;   ///< Rectified im2, superposable to Im1
-        tImPx         mImPx1;     ///<  Image of px im1 -> im2
-        tImMasq       mImMasq1;   ///<  Image of masq of image 1
+        tImPx         mImPx1;     ///<  image of px im1 -> im2
+        tImMasq       mImMasq1;   ///<  image of masq of image 1
         tImMasq       mMasq2Redr; ///< masq of image rectified to image1
         int           mNbDecimPx; ///< Decimation for fast paralx statistic
         int           mSzW;       ///< Size of windows

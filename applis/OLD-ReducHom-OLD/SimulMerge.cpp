@@ -235,7 +235,7 @@ class cTestIntParamMerge
                      int aNewNum
                );
 
-       // Typiquement pour creer les Attibuts
+       // Typiquement for creer les Attibuts
        void OnNewLeaf(tNodTestInt * aSingle);
        void OnNewCandidate(tNodTestInt * aN1);
        void OnNewMerge(tNodTestInt * aN1);
@@ -327,7 +327,7 @@ class cParamMerge
                      int aNewNum
                );
 
-       // Typiquement pour creer les Attibuts
+       // Typiquement for creer les Attibuts
        void OnNewLeaf(tNodIm * aSingle);
        void OnNewCandidate(tNodIm * aN1);
        void OnNewMerge(tNodIm * aN1);

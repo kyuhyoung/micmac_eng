@@ -101,9 +101,9 @@ void AddAqCohHom2Sys
 }
 
 
-// H1on2 permet d'inverser les roles de H1 et H2 ("ou" se fait la comparaison) pour tester la dissymetrie
+// H1on2 permet d'inverser les roles de H1 and H2 ("or" se fait la comparaison) for tester la dissymetrie
 
-// TestDiff si active permet de verifier les equation en refaisant le calcul a la main
+// TestDiff if active permet de verifier les equation en refaisant le computation a la main
 
 double TestCohHomogr(const cTestPlIm & aPL1,const cTestPlIm & aPL2,bool H1On2,bool TestDiff = false)
 {
@@ -258,7 +258,7 @@ void cImagH::TestCplePlan(int aKIm1,int aKIm2)
 std::string cImagH::EstimatePlan()
 {
 
-    // On regarde si on est en mode focus sur une une image (mise au point);
+    // On regarde if on est en mode focus on une une image (mise au point);
      mPlanEst = false;
      double aAltiCible = mAppli.AltiCible();
 /*
@@ -646,8 +646,8 @@ std::string cImagH::EstimatePlan()
        ElRotation3D aRCam12P = mRMCP.Plan().CoordPlan2Euclid().inv();
 
        Pt3dr aCentre0 = aRCam12P.ImAff(Pt3dr(0,0,0));
-       double aMulXZ =  aAltiCible / aCentre0.z; // Si <0 remet les camera par dessus
-       double aMulY  =  ElAbs(aMulXZ);           // Pour que la transfo soit directe
+       double aMulXZ =  aAltiCible / aCentre0.z; // if <0 remet les camera par dessus
+       double aMulY  =  ElAbs(aMulXZ);           // for que la transfo soit directe
 
        std::string aDir = mAppli.Dir();
 
@@ -822,33 +822,33 @@ NS_RHH_END
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant à la mise en
+Ce logiciel est un programme informatique servant  la mise en
 correspondances d'images pour la reconstruction du relief.
 
-Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
+Ce logiciel est rgi par la licence CeCILL-B soumise au droit franais et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
-de la licence CeCILL-B telle que diffusée par le CEA, le CNRS et l'INRIA
+de la licence CeCILL-B telle que diffuse par le CEA, le CNRS et l'INRIA
 sur le site "http://www.cecill.info".
 
-En contrepartie de l'accessibilité au code source et des droits de copie,
-de modification et de redistribution accordés par cette licence, il n'est
-offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
-seule une responsabilité restreinte pèse sur l'auteur du programme,  le
-titulaire des droits patrimoniaux et les concédants successifs.
+En contrepartie de l'accessibilit au code source et des droits de copie,
+de modification et de redistribution accords par cette licence, il n'est
+offert aux utilisateurs qu'une garantie limite.  Pour les mmes raisons,
+seule une responsabilit restreinte pse sur l'auteur du programme,  le
+titulaire des droits patrimoniaux et les concdants successifs.
 
-A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  à l'utilisation,  à la modification et/ou au
-développement et à la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe à
-manipuler et qui le réserve donc à des développeurs et des professionnels
-avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
-logiciel à leurs besoins dans des conditions permettant d'assurer la
-sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+A cet gard  l'attention de l'utilisateur est attire sur les risques
+associs au chargement,   l'utilisation,   la modification et/ou au
+dveloppement et  la reproduction du logiciel par l'utilisateur tant
+donn sa spcificit de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le rserve donc  des dveloppeurs et des professionnels
+avertis possdant  des  connaissances  informatiques approfondies.  Les
+utilisateurs sont donc invits  charger  et  tester  l'adquation  du
+logiciel  leurs besoins dans des conditions permettant d'assurer la
+scurit de leurs systmes et ou de leurs donnes et, plus gnralement,
+ l'utiliser et l'exploiter dans les mmes conditions de scurit.
 
-Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
-pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
+Le fait que vous puissiez accder  cet en-tte signifie que vous avez
+pris connaissance de la licence CeCILL-B, et que vous en avez accept les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

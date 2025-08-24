@@ -106,7 +106,7 @@ void cGeomDiscR2::SetDeZoom(REAL aDz)
    mSzDz = round_ni((mP1-mP0)/mResolDz);
    SetClipInit();
 
-   // Cette formule genere des erreurd d'arrondi qui, sur le calcul final de la boite
+   // Cette formule genere des erreurd d'arrondi qui, on le computation final de la boite
    // peuvent avoir une consequence non negligeable
    //  mDerX = RDiscToR2(Pt2dr(1,0))-RDiscToR2(Pt2dr(0,0));
    //  mDerY = RDiscToR2(Pt2dr(0,1))-RDiscToR2(Pt2dr(0,0));
@@ -221,9 +221,9 @@ cGeomDiscFPx::cGeomDiscFPx
 
 
 /*************************************************************************/
-/*       Initialise les parametres  definissant la geometrie terrain     */
-/*   a partir des parametre de  <Section_Terrain> , voir ParamMICMAC.xml */
-/*   pour d'autres commentaires                                          */
+/*       Initialise les parameters  definissant la geometrie terrain     */
+/*   a partir des parameter de  <Section_Terrain> , voir ParamMICMAC.xml */
+/*   for d'autres commentaires                                          */
 /*************************************************************************/
 typedef std::list<cListePointsInclus> tLPI;
 typedef std::list<Pt2dr> tLPt;
@@ -317,7 +317,7 @@ void cGeomDiscFPx::PostInit()
       //aFileEx
   }
 
-  //  Calcul de la resolution terrain et, si possible,
+  //  computation de la resolution terrain and, if possible,
   //  de la paralaxe moyenne a partir des geometrie de
   //  prise de vue
   mDimPx = mAp->DimPx();
@@ -383,7 +383,7 @@ void cGeomDiscFPx::PostInit()
          if ((*itFI)->Geom().HasCentre())
          {
               aNbCentreGot ++;
-            // Par exemple si cylindre, c'est en coordonnees cylindriques
+            // Par exemple if cylindre, c'est en coordinates cylindriques
               Pt3dr aC =  (*itFI)->Geom().CentreRestit();
               aCentre = aCentre + aC;
          }
@@ -420,7 +420,7 @@ void cGeomDiscFPx::PostInit()
   if (aFileExt)
   {
        SetUnroundResol(ElAbs(aFileExt->ResolutionPlani().x));
-       //  Attention -(-x) != x  avec les flottant 
+       //  Attention -(-x) != x  with les flottant 
        ELISE_ASSERT
        (
             ElAbs(mResol- ElAbs(aFileExt->ResolutionPlani().y)) < (1e-8 * mResol),
@@ -443,10 +443,10 @@ void cGeomDiscFPx::PostInit()
   mRCoordIsInit =  mAp->GeoRefAutoRoundBox().ValWithDef(true);
 
 
-  //  Calcul des intervalles de paralaxe
+  //  computation des intervalles de paralaxe
   if (mAp->ModeGeomMEC() == eGeomMECIm1)
   {
-     //ELISE_ASSERT(aNbPxMoyGot==0,"Redondance dans PxInit eGeomMECIm1");
+     //ELISE_ASSERT(aNbPxMoyGot==0,"Redondance in PxInit eGeomMECIm1");
      ELISE_ASSERT
      (
           !mAp->IntervAltimetrie().IsInit(),
@@ -639,15 +639,15 @@ if ( 0 )
 
 
   // Les boites terrain sont definie en prenant les seconde
-  // plus petite (resp. plus grande) valeur, puisque de toute facon
-  // on ne peut pas correler avec une seule image
+  // plus petite (resp. plus grande) value, puisque de toute facon
+  // on ne peut pas correler with une seule image
   cGetSec<double> cSecXMin;
   cGetSec<double> cSecXMax;
   cGetSec<double> cSecYMin;
   cGetSec<double> cSecYMax;
 
 
-// Ne tient pas compte du Full Im1, au cas ou la boite est vide
+// Ne tient pas compte du Full Im1, au cas or la boite est vide
 
   cGetSec<double> cVraiSecXMin;
   cGetSec<double> cVraiSecXMax;
@@ -723,7 +723,7 @@ if ( 0 )
              );
 
   // La boite terrain est definie soit explicitement par l'utilisateur
-  // soit comme la boite englobante de la zone objet contenant au - 2 images
+  // soit comme la boite englobante de la zone object contenant au - 2 images
  
   bool isBoxInit = false;
   Box2dr aBox;
@@ -846,7 +846,7 @@ if ( 0 )
   aBox._p1 = arrondi_ni(aBox._p1,mResol*mAp->DeZoomMin());
   mP0 = aBox._p0;
   mP1 = aBox._p1;
-  mBoxEngl  = aBox;  // A priori redondance entre les 2
+  mBoxEngl  = aBox;  // A priori redondance between les 2
   if (mAp->ModeGeomMEC()==eGeomMECIm1)
   {
       mP0 = Pt2dr(round_ni(mP0));
@@ -1124,9 +1124,9 @@ void cGeomDiscFPx::RemplitOri(cFileOriMnt & aFOM,bool DoZAbs) const
 /*                                       */
 /*****************************************/
 
-// On a privilegie la simplicite et la fiabilite sur la
+// On a privilegie la simplicite and la fiabilite on la
 // rapidite (il est possible de ne faire que 3 evaluation
-// de la proj image et une seule de la proj terrain)
+// de la proj image and une seule de la proj terrain)
 
 
 void cLineariseProj::InitLP
@@ -1144,10 +1144,10 @@ void cLineariseProj::InitLP
 {
    mDecalRedr =  aDecalRedr;
    mUseDer = anEtape.UseGeomDerivable() ;
-   // Avant 
+   // before 
    // mUseDer = anEtape.UseGeomDerivable() || (aSurEchW!=1);
-   //  JE vois pas pourquoi, mais c'est pas non + utilise souvent
-   //  je met un garde fou, a voir si on passe par la
+   //  JE vois pas pourquoi, but c'est pas non + utilise souvent
+   //  je met un garde fou, a voir if on passe par la
    if ((! anEtape.UseGeomDerivable()) && (aSurEchW!=1))
    {
        ELISE_ASSERT
@@ -1262,7 +1262,7 @@ void cLineariseProj::NexStep()
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1278,17 +1278,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

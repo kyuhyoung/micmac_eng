@@ -44,7 +44,7 @@ namespace NS_ParamMICMAC
 
 int cAppliMICMAC::MemSizePixelImage() const
 {
-    // Nombre d'octet par pixel et par image,
+    // number d'octet par pixel and par image,
     // compte tenu d'un rab de recouvrement
     return   12;
 }
@@ -133,7 +133,7 @@ double Old_FromSzW2FactExp(double aSzW,double mCurNbIterFenSpec)
    return (2*aSzW+1)/(2*aSzW+5);
 }
 
-/* Formule nouvelle, egalise les ecart type avec une somme integrale,
+/* Formule nouvelle, egalise les ecart type with une somme integrale,
  * sans approximation
  */
 
@@ -299,14 +299,14 @@ std::string cAppliMICMAC::PrefixGenerikRecalEtapeMicmMac(cEtapeMecComp & anEtape
 {
     int aNumEt = anEtape.Num();
     //mNameExe + std::string(" ")
-    //  Modif MPD, reordonne pour mettre Arg d'etape a la fin
-    //  Modif Greg: probleme de '"' pour condor
+    //  Modif MPD, reordonne for mettre Arg d'etape a la fin
+    //  Modif Greg: probleme de '"' for condor
     //std::string aNameProcess = std::string("\"")+mNameXML+std::string("\"")
    std::string aNameProcess = mNameXML 
                                + std::string(" CalledByProcess=1 ")
                                + std::string(" ByProcess=0 ");
 
-    // MODIF MPD mise entre " des parametre pour etre completement reentrant
+    // MODIF MPD mise between " des parameter for etre completement reentrant
     for (int aKArg=0; aKArg<mNbArgAux ; aKArg++)
         aNameProcess =   aNameProcess
                        + std::string(" \"")
@@ -442,8 +442,8 @@ std::cout << "CCMMM = " << aBoxClip._p0 << " " << aBoxClip._p1 << "\n"; getchar(
 /*
                    int aNumEt = anEtape.Num();
                    //mNameExe + std::string(" ")
-		   //  Modif MPD, reordonne pour mettre Arg d'etape a la fin
-                   //  Modif Greg: probleme de '"' pour condor
+		   //  Modif MPD, reordonne for mettre Arg d'etape a la fin
+                   //  Modif Greg: probleme de '"' for condor
                    //std::string aNameProcess = std::string("\"")+mNameXML+std::string("\"")
 		   std::string aNameProcess = mNameXML 
                                + std::string(" CalledByProcess=1 ")
@@ -552,7 +552,7 @@ void cAppliMICMAC::DoOneBloc
 
 
 
-   mGeomDFPx = mCurEtape->GeomTer();  // actualisation en fonction du LoadNappes
+   mGeomDFPx = mCurEtape->GeomTer();  // actualisation en function du LoadNappes
 
    cEquiv1D anEqX;
    anEqX.InitByClipAndTr(mCurCarDZ->EqX(),mBoxIn._p0.x,0,mBoxIn.sz().x);
@@ -618,9 +618,9 @@ void cAppliMICMAC::DoOneBloc
    if (mShowMes)
       mCout << "       Images Loaded\n";
 
-   // Initialisation de mTabV1 et aVPtInEc
-   //  mTabV1 : zone memoire pour stocker les valeurs de Im1 (acceleration "speciale")
-   // aVPtInEc : au cas ou fenetre de correl != fenetre de normalisation
+   // Initialisation de mTabV1 and aVPtInEc
+   //  mTabV1 : zone memoire for stocker les valeurs de Im1 (acceleration "speciale")
+   // aVPtInEc : au cas or fenetre de correl != fenetre de normalisation
    std::vector<int> aVPtInEc;
    std::vector<int> aVPtIndOK;
    std::vector<Pt2di> aVPtOK;
@@ -701,12 +701,12 @@ void cAppliMICMAC::DoOneBloc
 
 
 // for (int aK=0; aK<=aNiv; aK++)  std::cout <<"---|";
-// std::cout << "AVANT SN " << "\n";
+// std::cout << "before SN " << "\n";
 
     mCurEtape->SauvNappes(*mLTer,aBoxOut,aBoxIn);
 
 // for (int aK=0; aK<=aNiv; aK++)  std::cout <<"---|";
-// std::cout << "APRES SN  " << "\n";
+// std::cout << "after SN  " << "\n";
 
 
     double aTimeOptim = aChrono.ValAndInit();
@@ -745,7 +745,7 @@ void cAppliMICMAC::InitBlocInterne( const Box2di & aBox)
    int aPxMin[theDimPxMax],aPxMax[theDimPxMax];   
    mLTer->CalculBornesPax(aBox,aPxMin,aPxMax);
 
-   // On calcule les images qui "voient" au - une petite partie du terrain
+   // On compute les images qui "voient" au - une petite partie du terrain
    mPDVBoxInterneAct.clear();
    mNb_PDVBoxInterne=0;
    for (tCsteIterPDV itFI=mPDVBoxGlobAct.begin(); itFI!=mPDVBoxGlobAct.end(); itFI++)
@@ -779,7 +779,7 @@ void cAppliMICMAC::DoOneBlocInterne
    int aPxMin[theDimPxMax],aPxMax[theDimPxMax];   
    mLTer->CalculBornesPax(aBox,aPxMin,aPxMax);
 
-   // On calcule les images qui "voient" au - une petite partie du terrain
+   // On compute les images qui "voient" au - une petite partie du terrain
    mPDVBoxInterneAct.clear();
    mNb_PDVBoxInterne=0;
    for (tCsteIterPDV itFI=mPDVBoxGlobAct.begin(); itFI!=mPDVBoxGlobAct.end(); itFI++)
@@ -832,16 +832,16 @@ void cAppliMICMAC::DoOneBlocInterne
            {
                mCurBoxW._p0 = mCurPterI-mPtSzWFixe;
                mCurBoxW._p1 = mCurPterI+mPtSzWFixe;
-               // Pour traiter de maniere generique 1 ou 2 dimension
-               // de paralaxe, on va toujours faire comme si il y en 
-               // avait deux, on s'arrange pour que la dimension inutile ne
-               // rajoute qu'un imbrication dans une boucle vide
+               // for traiter de maniere generique 1 or 2 dimension
+               // de paralaxe, on va toujours faire comme if il y en 
+               // avait deux, on s'arrange for que la dimension inutile ne
+               // rajoute qu'un imbrication in une boucle vide
 
 
    
-               // IsFirst evite de faire des PrepareAccelIm1 quand ce ne sera utile
-               // pour aucune paralaxe, ce qui est le cas avec des tres grande fenetre
-               // ou tout a deja ete fait par algo rapide
+               // IsFirst evite de faire des PrepareAccelIm1 when ce ne sera utile
+               // for aucune paralaxe, ce qui est le cas with des tres grande fenetre
+               // or tout a deja ete fait par algo rapide
                bool isFirst = true;
                for (mCurPxI[1] = aPxMin[1] ; mCurPxI[1]<aPxMax[1] ; mCurPxI[1]++)
                {

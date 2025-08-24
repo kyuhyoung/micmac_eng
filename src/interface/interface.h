@@ -22,7 +22,7 @@ void deleteFile(const QString& file, bool dir=false);
 QString dirBin(const QString& micmacdir);
 bool checkPath(const QString& path);
 int execute(QString commande);
-QString applicationPath();	//sans le "/"
+QString applicationPath();	//without le "/"
 QString systemeNumerique(QString& virgule);
 QString systemeNumerique(QString& virgule, QString& point);
 
@@ -71,7 +71,7 @@ class ParamImage {
 		void setTaille(const QSize& size);
 		bool calcNumero(const ParamMain& paramMain);
 
-		static std::pair<int,int> numPos;	//pos 1ier char changeant à partir du début et pos 1ier char changeant compté à partir de la fin
+		static std::pair<int,int> numPos;	//pos 1ier char changeant à partir du début and pos 1ier char changeant compté à partir de la fin
 
 	private :
 		void copie(const ParamImage& paramImage);
@@ -84,7 +84,7 @@ class ParamImage {
 };
 
 class ParamMain
-//paramètres principaux du calcul
+//paramètres principaux du computation
 {
 	public :
 		enum Mode { BeginMode, ImageMode, PointsEnCours, PointsMode, PoseEnCours, PoseMode, CarteEnCours, EndMode };
@@ -105,7 +105,7 @@ class ParamMain
 		bool calcImgsId();
 		QString getNumImage(const QString& image, bool* ok=0, bool TA=false) const;
 		int findImg(const QString& image, int type, bool strict=true) const;	//0 : imageRaw, 1 : imageTif
-		QString saveImgsSize();	//récupération des tailles des images et enregistrement dans getCorrespImgCalib
+		QString saveImgsSize();	//récupération des tailles des images and enregistrement in getCorrespImgCalib
 		int nbCartesACalculer() const ;
 
 		bool isFrench() const;
@@ -192,43 +192,43 @@ class ParamMain
 
 		bool french;
 		static QStringList formatsImg;
-		QVector<std::pair<Mode,QString> > tradMode;	//en Français seulement ; le fichier de sauvegarde ne peut pas dépendre de la langue (elle peut être changée lors de la reprise du calcul)
-		QVector<std::pair<Mode,QString> > tradModeInternational;	//traduction de tradModeInternational en fonction de la langue, permet la représentation dans la MainWindow
+		QVector<std::pair<Mode,QString> > tradMode;	//en Français seulement ; le file de sauvegarde ne peut pas dépendre de la langue (elle peut être changée lors de la reprise du computation)
+		QVector<std::pair<Mode,QString> > tradModeInternational;	//traduction de tradModeInternational en function de la langue, permet la représentation in la MainWindow
 		QString micmacDir;
 
-		QString calculXML;	//avec dossier
-		Mode currentMode;	//avancement du calcul
+		QString calculXML;	//with folder
+		Mode currentMode;	//avancement du computation
 		int avancement;
-		int etape;	//pour les calculs récursifs (points 3D de AperoThread, cartes de MicmacThread)
+		int etape;	//for les calculs récursifs (points 3D de AperoThread, cartes de MicmacThread)
 
 		//ImageMode
 		QString dossier;
-		QVector<ParamImage> correspImgCalib;	//sans le dossier
+		QVector<ParamImage> correspImgCalib;	//without le folder
 
 		//PointsMode
 		ParamPastis* paramPastis;
 		static QString postfixTifCouleur;
 		static QString chantierXML;	//param du chantier
-		static QString imageXML;	//sans le dossier
-		static QString coupleXML;	//sans le dossier
-		static QString assocCalibXML;	//sans le dossier
-		QString makeFile;	//makefile utilisé pour pastisThread si non terminé (soit pour MapCmd, soit pour Pastis)
+		static QString imageXML;	//without le folder
+		static QString coupleXML;	//without le folder
+		static QString assocCalibXML;	//without le folder
+		QString makeFile;	//makefile utilisé for pastisThread if non terminé (soit for MapCmd, soit for Pastis)
 
 		//PoseMode
 		ParamApero* paramApero;
-		static QString aperoXML;	//param pour apero
-		static QString maitresseXML;	//fichier xml de définition de l'image maîtresse
-		static QString exportPlyXML;	//export des points homologues 3D et des caméras au format ply
-			//fichiers supplémentaires pour distinguer fish-eye et calib classique
+		static QString aperoXML;	//param for apero
+		static QString maitresseXML;	//file xml de définition de l'image maîtresse
+		static QString exportPlyXML;	//export des points homologues 3D and des caméras au format ply
+			//fichiers supplémentaires for distinguer fish-eye and calib classique
 			static QString cleCalibFishEyeXML;
 			static QString cleCalibClassiqXML;
 			static QString contraintesXML;
 			//auto-calibration
 			static QString imgOriAutoCalibXML;
 			//cas mono-échelle
-			static QString imgOriXML;	//fichier xml de la liste des images à orienter
+			static QString imgOriXML;	//file xml de la list des images à orienter
 			static QString calibDefXML;
-			//fichiers supplémentaires pour le cas multi-échelle
+			//fichiers supplémentaires for le cas multi-échelle
 			static QString cleCalibCourtXML;
 			static QString cleCalibCourtFishEyeXML;
 			static QString cleCalibCourtClassiqXML;
@@ -240,19 +240,19 @@ class ParamMain
 			static QString imgsCourtOriXML;
 			static QString posesFigeesXML;
 			static QString posesLibresXML;
-			//fichiers supplémentaires pour le cas des calibrations dissociées
+			//fichiers supplémentaires for le cas des calibrations dissociées
 			static QString defCalibTtInitXML;
 			static QString imgsOriTtInitXML;
 			static QString posesNonDissocXML;
 			static QString cleCalibLiberFishEyeXML;
 			static QString cleCalibLiberClassiqXML;
-			//fichiers supplémentaires pour le cas d'une orientation absolue (plan + direction ou image référence ou points d'appui)
+			//fichiers supplémentaires for le cas d'une orientation absolue (plan + direction or image référence or points d'appui)
 			static QString orientationAbsolueXML;
-			//fichiers supplémentaires pour le cas d'un géoréférencement avec points GPS
+			//fichiers supplémentaires for le cas d'un géoréférencement with points GPS
 			static QString defObsGPSXML;
 			static QString defIncGPSXML;
 			static QString ponderationGPSXML;
-			//fichiers supplémentaires pour le cas d'un géoréférencement avec sommets GPS
+			//fichiers supplémentaires for le cas d'un géoréférencement with sommets GPS
 			static QString orientationGPSXML;
 			//orientation initiale
 			static QString oriInitXML;
@@ -261,13 +261,13 @@ class ParamMain
 		QVector<CarteDeProfondeur> paramMicmac;
 				
 		//EndMode
-		static QString micmacXML;		//param pour micmac (géom image)
-		static QString micmacTerXML;	//param pour micmac (géom terrain)
-		static QString micmacMMOrthoXML;//param pour micmac (orthoimages seules)
+		static QString micmacXML;		//param for micmac (géom image)
+		static QString micmacTerXML;	//param for micmac (géom terrain)
+		static QString micmacMMOrthoXML;//param for micmac (orthoimages seules)
 		static QString intervalleXML;
 		static QString discontinuteXML;
 		static QString defMasqueXML;
-		static QString cartesXML;		//liste des images utilisées pour la corrélation pour la carte courante
+		static QString cartesXML;		//list des images utilisées for la corrélation for la carte courante
 		static QString repereXML;		//repère du MNT
 		static QString nomCartesXML;	//nom des cartes en sortie
 		static QString nomTAXML;		//nom du TA en sortie
@@ -275,7 +275,7 @@ class ParamMain
 
 		static QString paramPortoXML;	//paramètres du mosaïcage (Porto)
 		static QString portoXML;		//nom des orthoimages simples en entrée du mosaïcage
-		static QString pathMntXML;		//mnt de la carte de profondeur pour l'orthoimage mosaïquée
+		static QString pathMntXML;		//mnt de la carte de profondeur for l'orthoimage mosaïquée
 };
 
 
@@ -291,7 +291,7 @@ class Timer : public QTime
 
 
 class Interface : public QMainWindow
-//fenêtre principale : importation des images, ouverture d'un calcul en cours, accès aux autres fenêtres, transfert de leurs paramètres pour écriture et enregistrement du calcul en cours
+//fenêtre principale : importation des images, ouverture d'un computation en cours, accès aux autres fenêtres, transfert de leurs paramètres for écriture and enregistrement du computation en cours
 {
    Q_OBJECT
 
@@ -303,7 +303,7 @@ class Interface : public QMainWindow
 		void displayErreur();
 		void setStdOutFile(const QString& fichier);
 		ParamMain& modifParamMain();
-		static int dispMsgBox(const QString& info, const QString& question, QVector<int> reponses, int defaut=2);	//réponses : boutons oui, non et annuler ; 0=accept (oui), 1=reject (non), 2=destruction (annuler), -1=pas de bouton
+		static int dispMsgBox(const QString& info, const QString& question, QVector<int> reponses, int defaut=2);	//réponses : boutons oui, non and annuler ; 0=accept (oui), 1=reject (non), 2=destruction (annuler), -1=pas de bouton
 
 	public slots:
 		void openCalc(const QString& fichier=QString());
@@ -386,7 +386,7 @@ class Interface : public QMainWindow
     		QLabel *aperoLabel;	
     		QLabel *micmacLabel;	
     		QLabel *infoLabel;
-    		QTreeWidget *imagesList;	//affichage de la liste des images
+    		QTreeWidget *imagesList;	//affichage de la list des images
 		QProgressDialog* progress;
 		Progression* progressBar;
 		QTimer* timer;
@@ -394,22 +394,22 @@ class Interface : public QMainWindow
 		QSettings* settings;
 		QString defaultDir;
 		ParamMain paramMain;
-		bool saved;	//si le calcul est modifié et non enregistré
-		static int cpu_count;	//nombre de processeurs de l'ordinateur (cpu_count >= maxcpu)
-		int maxcpu;	//nombre de processeurs à utiliser
-		InterfPastis* interfPastis;	//interface pour saisir les paramètres de Pastis
-		InterfApero* interfApero;	//interface pour saisir les paramètres de Apero
-		InterfMicmac* interfMicmac;	//interface pour saisir les paramètres de Mcimac
-		VueHomologues* vueHomologues;	//interface pour visualiser les points homologues
-		VueChantier* vueChantier;	//interface pour visualiser les paramètres du chantier
-		VueChantier* vueCartes;		//interface pour visualiser les nuages de points
-		InterfCartes8B* interfCartes8B;		//interface pour saisir les paramètres de GrShade
-		InterfModele3D* interfModele3D;		//interface pour saisir les paramètres de Nuage2Ply
-		InterfOrtho* interfOrtho;		//interface pour saisir les paramètres de l'orthoimage
-		InterfOptions* interfOptions;		//interface pour changer les paramètres globaux de l'interface
-		InterfVerifMicmac* interfVerifMicmac;	//interface pour vérifier le bon déroulement du calcul Micmac
+		bool saved;	//if le computation est modifié and non enregistré
+		static int cpu_count;	//number de processeurs de l'ordinateur (cpu_count >= maxcpu)
+		int maxcpu;	//number de processeurs à utiliser
+		InterfPastis* interfPastis;	//interface for saisir les paramètres de Pastis
+		InterfApero* interfApero;	//interface for saisir les paramètres de Apero
+		InterfMicmac* interfMicmac;	//interface for saisir les paramètres de Mcimac
+		VueHomologues* vueHomologues;	//interface for visualiser les points homologues
+		VueChantier* vueChantier;	//interface for visualiser les paramètres du chantier
+		VueChantier* vueCartes;		//interface for visualiser les nuages de points
+		InterfCartes8B* interfCartes8B;		//interface for saisir les paramètres de GrShade
+		InterfModele3D* interfModele3D;		//interface for saisir les paramètres de Nuage2Ply
+		InterfOrtho* interfOrtho;		//interface for saisir les paramètres de l'orthoimage
+		InterfOptions* interfOptions;		//interface for changer les paramètres globaux de l'interface
+		InterfVerifMicmac* interfVerifMicmac;	//interface for vérifier le bon déroulement du computation Micmac
 		AppliThread* appliThread;	//calculs par thread
-		bool annulation;	//true si la QProgressDialog a été annulée
+		bool annulation;	//true if la QProgressDialog a été annulée
 		QString stdoutfilename;
 		//fpos_t* posReadError;
 		long int posReadError;

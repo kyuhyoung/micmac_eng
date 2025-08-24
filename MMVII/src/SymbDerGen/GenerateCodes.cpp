@@ -693,7 +693,7 @@ template <typename tFormula,typename tCompute> void cAppliGenCode::GenCodesFormu
    std::string aNF =  NameFormula(aFormula,WithDerive);
 
    NS_SymbolicDerivative::cCoordinatorF<tCompute> 
-   aCEq(aNF,aSzBuf,aFormula.VNamesUnknowns(),aFormula.VNamesObs()); // Gives the liste of names
+   aCEq(aNF,aSzBuf,aFormula.VNamesUnknowns(),aFormula.VNamesObs()); // Gives the list of names
 
    // Set header in a place to compilation path of MMVII
    aCEq.SetHeaderIncludeSymbDer("SymbDer/SymbDer_Common.h");

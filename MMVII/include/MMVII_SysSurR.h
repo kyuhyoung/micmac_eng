@@ -528,7 +528,7 @@ template <class Type> class cSetIORSNL_SameTmp
 };
 
 
-/** Virtual base classe for solving an over resolved system of linear equation;
+/** Virtual base class for solving an over resolved system of linear equation;
     Typical derived classes can be :
         * l1 sys using barodale methods
         * least square using covariance system
@@ -598,7 +598,7 @@ template <class Type> class cLinearOverCstrSys  : public cMemCheck
        /// Accessor
        int NbVar() const;
 
-      /// Normal Matrix defined 4 now only in cLeasSqtAA, maybe later defined in other classe, else error
+      /// Normal Matrix defined 4 now only in cLeasSqtAA, maybe later defined in other class, else error
       virtual cDenseMatrix<Type>  V_tAA() const;
       /// Idem  "normal" vector
       virtual cDenseVect<Type>    V_tARhs() const;  
@@ -675,7 +675,7 @@ class cParamSparseNormalLstSq
 	   */
 	  size_t mIndMaxRangeDense;
 
-	  /** Def=13 the systeme can maintain a certain number of non dense variable in temporary  dense mode, def is purely arbitrary ...*/
+	  /** Def=13 the system can maintain a certain number of non dense variable in temporary  dense mode, def is purely arbitrary ...*/
 	  size_t mNbBufDense;
 };
 

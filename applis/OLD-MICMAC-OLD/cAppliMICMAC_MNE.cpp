@@ -90,7 +90,7 @@ void cAppliMICMAC::Correl_MNE_ZPredic
 {
    static  cStatMNE aStat;
 
-   // Buffer pour pointer sur l'ensmble des vignettes OK
+   // Buffer for pointer on l'ensmble des vignettes OK
    std::vector<double *> aVecVals(mNbIm);
    double ** aVVals = &(aVecVals[0]);
 
@@ -109,7 +109,7 @@ void cAppliMICMAC::Correl_MNE_ZPredic
 
 // bool ToTest = PtIsToTest(Pt2di(anX,anY));
 
-           // est-on dans le masque des points terrains valide
+           // est-on in le masque des points terrains valide
            if ( IsInTer(anX,anY))
            {
 
@@ -119,11 +119,11 @@ void cAppliMICMAC::Correl_MNE_ZPredic
                int aY0v = anY-mPtSzWFixe.y;
                int aY1v = anY+mPtSzWFixe.y;
 
-               // on parcourt l'intervalle de Z compris dans la nappe au point courant
+               // on parcourt l'intervalle de Z compris in la nappe au point courant
                for (int aZInt=aZMin ;  aZInt< aZMax ; aZInt++)
                {
 
-                   // Pointera sur la derniere imagette OK
+                   // Pointera on la derniere imagette OK
                    double ** aVVCur = aVVals;
                    // Statistique MICMAC
                    mNbPointsIsole++;
@@ -131,7 +131,7 @@ void cAppliMICMAC::Correl_MNE_ZPredic
                    // On dequantifie le Z 
                    double aZReel  = DequantZ(aZInt); // anOrigineZ+ aZInt*aStepZ;
 
-                   //  CALCUL DES IMAGES VISIBLES 
+                   //  computation DES IMAGES VISIBLES 
                    std::vector<cGPU_LoadedImGeom * > aSelLI;
                    Pt3dr aPt3C(aPt2C.x,aPt2C.y,aZReel);
                    for (int aKIm=0 ; aKIm<mNbIm ; aKIm++)
@@ -149,27 +149,27 @@ void cAppliMICMAC::Correl_MNE_ZPredic
                    int aNbSelIm = aSelLI.size();
                    aStat.Add(aNbSelIm);
 
-                   // On balaye les images  pour lire les valeur et stocker, par image,
-                   // un vecteur des valeurs voisine normalisees en moyenne et ecart type
+                   // On balaye les images  for lire les value and stocker, par image,
+                   // un vector des valeurs voisine normalisees en moyenne and ecart type
                    for (int aKIm=0 ; aKIm<aNbSelIm ; aKIm++)
                    {
                        cGPU_LoadedImGeom & aGLI = *(aSelLI[aKIm]);
                        const cGeomImage * aGeom=aGLI.Geom();
                        float ** aDataIm =  aGLI.DataIm();
        
-                       // Pour empiler les valeurs
+                       // for empiler les valeurs
                        double * mValsIm = aGLI.Vals();
                        double * mCurVals = mValsIm;
 
-                       // Pour stocker les moment d'ordre 1 et 2
+                       // for stocker les moment d'ordre 1 and 2
                        double  aSV = 0;
                        double  aSVV = 0;
                        
                        // En cas de gestion parties cachees, un masque terrain 
-                       // de visibilite a ete calcule par image
+                       // de visibilite a ete compute par image
                        if (aGLI.IsVisible(anX,anY))
                        {
-                           // memorise le fait que tout est OK pour le pixel et l'image consideres
+                           // memorise le fait que tout est OK for le pixel and l'image consideres
                            bool IsOk = true;
 
                            // Balaye le voisinage
@@ -179,14 +179,14 @@ void cAppliMICMAC::Correl_MNE_ZPredic
                                {
                                    // On dequantifie la plani 
                                      Pt2dr aPTer  = DequantPlani(aXVois,aYVois);
-                                   // On projette dans l'image 
+                                   // On projette in l'image 
                                      Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);
 
                                      if (aGLI.IsOk(aPIm.x,aPIm.y))
                                      {
-                                        // On utilise l'interpolateur pour lire la valeur image
+                                        // On utilise l'interpolateur for lire la value image
                                         double aVal =  mInterpolTabule.GetVal(aDataIm,aPIm);
-                                        // On "push" la nouvelle valeur de l'image
+                                        // On "push" la nouvelle value de l'image
                                         *(mCurVals++) = aVal;
                                         aSV += aVal;
                                         aSVV += QSquare(aVal) ;
@@ -195,7 +195,7 @@ void cAppliMICMAC::Correl_MNE_ZPredic
                                      }
                                      else
                                      {
-                                        // Si un  seul des voisin n'est pas lisible , on annule tout
+                                        // if un  seul des voisin n'est pas lisible , on annule tout
                                         IsOk =false;
                                      }
                                }
@@ -203,11 +203,11 @@ void cAppliMICMAC::Correl_MNE_ZPredic
                            if (IsOk)
                            {
 
-                             // On normalise en moyenne et ecart type
+                             // On normalise en moyenne and ecart type
                               aSV /= mNbPtsWFixe;
                               aSVV /= mNbPtsWFixe;
                               aSVV -=  QSquare(aSV) ;
-                              if (aSVV >mAhEpsilon) // Test pour eviter / 0 et sqrt(<0) 
+                              if (aSVV >mAhEpsilon) // Test for eviter / 0 and sqrt(<0) 
                               {
                                   *(aVVCur++) = mValsIm;
                                    aSVV = sqrt(aSVV);
@@ -228,16 +228,16 @@ void cAppliMICMAC::Correl_MNE_ZPredic
                        }
                    }
 
-                   // Calcul "rapide"  de la multi-correlation en utilisant la formule
+                   // computation "rapide"  de la multi-correlation en utilisant la formule
                    // de Huygens comme decrit en 3.5 de la Doc MicMac
                    if (aNbImOk>=2)
                    {
                       double anEC2 = 0;
-                      // Pour chaque pixel
+                      // for chaque pixel
                       for (int aKV=0 ; aKV<mNbPtsWFixe; aKV++)
                       {
                           double aSV=0,aSVV=0;
-                          // Pour chaque image, maj des stat 1 et 2
+                          // for chaque image, maj des stat 1 and 2
                           for (int aKIm=0 ; aKIm<aNbImOk ; aKIm++)
                           {
                                 double aV = aVVals[aKIm][aKV];
@@ -248,16 +248,16 @@ void cAppliMICMAC::Correl_MNE_ZPredic
                           anEC2 += (aSVV-QSquare(aSV)/aNbImOk);
                       }
 
-                     // Normalisation pour le ramener a un equivalent de 1-Correl 
+                     // Normalisation for le ramener a un equivalent de 1-Correl 
                      double aCost = anEC2 / (( aNbImOk-1) *mNbPtsWFixe);
-                     // On envoie le resultat a l'optimiseur pour valoir  ce que de droit
+                     // On envoie le result a l'optimiseur for valoir  ce que de droit
                      mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,aCost);
 // if (Debug) std::cout << "Z " << aZInt << " Cost " << aCost << "\n";
                    }
                    else
                    {
 // if (Debug) std::cout << "Z " << aZInt << " DEF " << aDefCost << "\n";
-                       // Si pas assez d'image, il faut quand meme remplir la case avec qq chose
+                       // if pas assez d'image, il faut when meme remplir la case with qq chose
                        mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,mAhDefCost);
                    }
                }

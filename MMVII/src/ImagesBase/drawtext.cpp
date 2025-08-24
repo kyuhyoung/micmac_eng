@@ -212,7 +212,7 @@ cIm2D<tU_INT1> cBitmFont::MultiLineImageString(const std::string & aStrInit,cons
         aLB.push_back(anIm);
     }
     aSomY += aSpace.y()*(int)(aLStr.size()-1);
-    if (aRab.x()<0)  // Alors Rab est une taille totale
+    if (aRab.x()<0)  // then Rab est une taille totale
     {
         aRab = - aRab;
         aRab = (aRab- cPt2di(aXMax,aSomY))/2;

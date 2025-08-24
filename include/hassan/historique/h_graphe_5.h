@@ -78,7 +78,7 @@ class H_Graphe : public Camera_V
 
 
       H_Graphe(  Video_Win W, INT nb_color, ElFilo<Facette_3d> & f_f, REAL element_petit = .00001 );     //.1 metre
-      H_Graphe(  H_Graphe& graphe,  ElFilo<INT>& sous_ensemble );    //sans traiter la continuite 
+      H_Graphe(  H_Graphe& graphe,  ElFilo<INT>& sous_ensemble );    //without traiter la continuite 
 
 
       ~H_Graphe();
@@ -108,7 +108,7 @@ class H_Graphe : public Camera_V
       void facette_en(ElFilo<INT>& f_facet);
       void facette_valide(INT n_f);
       Facette_3d facette(INT n_f);
-      Facette_3d contour(ElFilo<Pt3dr>& f_p);    //si le graphe est planair
+      Facette_3d contour(ElFilo<Pt3dr>& f_p);    //if le graphe est planair
       void to_facette_3d(ElFilo<Facette_3d>& f_f);
 
       void arrange_facette();
@@ -155,7 +155,7 @@ class H_Graphe : public Camera_V
 
       void up_date();
 
-                                            //methode d'affichage
+                                            //method d'affichage
 
       virtual void zoom_adjuster();
       virtual void reperer();

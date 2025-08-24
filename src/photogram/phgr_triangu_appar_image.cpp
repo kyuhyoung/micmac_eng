@@ -142,7 +142,7 @@ void cEqTrianguApparImage::Add
 
 void  cEqTrianguApparImage::SetDer(REAL & aCste,REAL * aDer,INT aKN)
 {
-   REAL aVJC = mVJ[aKN]-mSJ1; // Valeur de J centrale
+   REAL aVJC = mVJ[aKN]-mSJ1; // value de J centrale
    aCste = aVJC/mSigmaJ - (mVI[aKN]-mSI1)/mSigmaI;
 
    REAL * aDerJ = mDerJk[aKN];

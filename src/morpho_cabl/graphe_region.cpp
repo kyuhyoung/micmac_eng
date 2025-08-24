@@ -304,7 +304,7 @@ template <class TypeIm,class TypeBase> Im2D_Bits<1> CreateGr(tGRGraf & mGr,Im2D<
     }
 
     //std::cout << "BGIN FLAG MONT-DESC\n"; getchar();
-    // Calcul des flag montant et descandant 
+    // computation des flag montant and descandant 
     int aFlagArcMont = mGr.alloc_flag_arc();
     int aFlagArcDesc = mGr.alloc_flag_arc();
     ElSubGraphe<cGR_AttrSom,cGR_AttrArc> aSubAll;

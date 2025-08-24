@@ -108,7 +108,7 @@ template <class Type> class cIdTransformator : public cTransformator<Type>
           Type  Transfo(const Type &) const override;
 };
 
-/**  Transformation by pattern of regular expression */
+/**  transformation by pattern of regular expression */
 class  cPatternTransfo : public cTransformator<std::string>
 {
       public :

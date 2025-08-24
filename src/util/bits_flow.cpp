@@ -237,7 +237,7 @@ BitsPacked_PFOB::BitsPacked_PFOB
             Packed_Flux_Of_Byte  (1),
            _pfob                 (pfob),
            _tbb                  (Tabul_Bits_Gen::tbb(nbb,msbf)),
-           _nb_el                (nb_el)  // Nombre de cannaux ?
+           _nb_el                (nb_el)  // number de cannaux ?
 {
     ASSERT_INTERNAL
     ( 
@@ -375,12 +375,12 @@ INT BitsPacked_PFOB::_Rseek(INT nb_el)
 */
 
 //
-// MODIF MPD 23/11/07 pour pb _Rseek negatifs
+// MODIF MPD 23/11/07 for pb _Rseek negatifs
 //
-//   Si on imagine que _i_buf varie en dehors de [0 _nb_pp[
-//   alors l'octet courant doit etre Div(_i_buf-1,_nb_pp) ,
+//   if on imagine que _i_buf varie en dehors de [0 _nb_pp[
+//   then l'octet courant doit etre Div(_i_buf-1,_nb_pp) ,
 //   en effet lorsque _i_buf=0 mod _nb_pp, la premier
-//   chose que l'on fait dans fread est de lire un octet
+//   chose que l'on fait in fread est de lire un octet
 
 /*
 tRelFileOffset BitsPacked_PFOB::_Rseek(tRelFileOffset nb_elo) 
@@ -390,8 +390,8 @@ tRelFileOffset BitsPacked_PFOB::_Rseek(tRelFileOffset nb_elo)
       int aNbSeek = Elise_div(_i_buf+nb_el-1,_nb_pb)-Elise_div(_i_buf-1,_nb_pb);
      _i_buf = mod(_i_buf+nb_el,_nb_pb);
 
-      // Il faut si _i_buf !=0 que l'octet de bufferisation soit remplis, donc
-      // on avance de 1 de moins et read ensuite
+      // Il faut if _i_buf !=0 que l'octet de bufferisation soit remplis, donc
+      // on avance de 1 de moins and read ensuite
      if ( _i_buf !=0)
          aNbSeek--;
      _pfob->Rseek(aNbSeek);
@@ -405,26 +405,26 @@ tRelFileOffset BitsPacked_PFOB::_Rseek(tRelFileOffset nb_elo)
 
 // bool DebugRseek = false;
 
-// MODIF MPD 28/01/21 pour overflow dans CKK_IntBasicLLO()
+// MODIF MPD 28/01/21 for overflow in CKK_IntBasicLLO()
 
 tRelFileOffset BitsPacked_PFOB::_Rseek(tRelFileOffset nb_rfo) 
 {
      // On va parcourir par paquet, de taille sz buf
      tLowLevelFileOffset SzBuf = 1<<30;
      tLowLevelFileOffset nb_elo =  nb_rfo.BasicLLO() ;
-     tLowLevelFileOffset aSign = (nb_elo >=0) ? 1 : - 1;  // on va decouper la valeur absolue
+     tLowLevelFileOffset aSign = (nb_elo >=0) ? 1 : - 1;  // on va decouper la value absolue
      tLowLevelFileOffset nb_abs_elo =  nb_elo * aSign;
 
      for (tLowLevelFileOffset aOffset = 0 ; aOffset<nb_abs_elo ; aOffset+=SzBuf)
      {
-          // ensuite une fois qu'on a decoupe en paquet suffisement petit on le gere comme avant en int
+          // ensuite une fois qu'on a decoupe en paquet suffisement petit on le gere comme before en int
           int nb_el = ElMin(nb_abs_elo-aOffset,SzBuf) * aSign;
           // _i_buf += nb_el;
           int aNbSeek = Elise_div(_i_buf+nb_el-1,_nb_pb)-Elise_div(_i_buf-1,_nb_pb);
          _i_buf = mod(_i_buf+nb_el,_nb_pb);
 
-          // Il faut si _i_buf !=0 que l'octet de bufferisation soit remplis, donc
-          // on avance de 1 de moins et read ensuite
+          // Il faut if _i_buf !=0 que l'octet de bufferisation soit remplis, donc
+          // on avance de 1 de moins and read ensuite
          if ( _i_buf !=0)
              aNbSeek--;
          _pfob->Rseek(aNbSeek);

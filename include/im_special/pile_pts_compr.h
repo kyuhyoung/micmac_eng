@@ -43,7 +43,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #define _ELISE_IM_SPECIAL_PILE_PTS_COMPR_
 
 
-// Permet de stocker une liste de point, freeman voisins de maniere
+// Permet de stocker une list de point, freeman voisins de maniere
 // (relativement) economique
 
 class ElPilePtsCompr

@@ -92,7 +92,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #define GPP3etPlus             1
 #define Compiler_Visual_7_0    0
 
-// A cause de  qq pb sur bleriot
+// A cause de  qq pb on bleriot
 #define MACHINE_BLERIOT        0
 
 
@@ -102,7 +102,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 
-// Pour l'instant : Unix=>X11, Win => pas de visu
+// for l'instant : Unix=>X11, Win => pas de visu
 
 #ifndef NO_X11
     #ifndef ELISE_X11
@@ -206,7 +206,7 @@ template <class Type> bool BadNumber(const Type & aVal) {return (std_isnan(aVal)
 
 #define ElTemplateInstantiation 1
 
-// Apparemment MSW est assez restrictif sur l'emploi du typename
+// Apparemment MSW est assez restrictif on l'emploi du typename
 #if ( ELISE_windows & !ELISE_MinGW )
     #define ElTypeName_NotMSW
     #define  ClassFriend
@@ -459,7 +459,7 @@ typedef REAL8  tSysCho ;
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -475,17 +475,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

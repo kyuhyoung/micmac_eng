@@ -281,7 +281,7 @@ void cElXMLTree::GenEnum
 	aName.c_str()
     );
 
-    // A cause d'ambiguite avec les ToString<int> , on change le nom
+    // A cause d'ambiguite with les ToString<int> , on change le nom
     fprintf
     (
         aFileH,
@@ -1038,8 +1038,8 @@ void cElXMLTree::GenCppClass
 
    fprintf(aFileCpp,"void xml_init(%s & anObj,cElXMLTree * aTree)\n",aNOC.c_str());
    fprintf(aFileCpp,"{\n");
-// Modif MPD, intervertion des deux ligne precedente, ne buggait pas immediatement (comme devrait !)
-// mais la correction semble resoudre un bug differe dans la lecture des xml ????
+// Modif MPD, intervertion des deux line precedente, ne buggait pas immediatement (comme devrait !)
+// but la correction semble resoudre un bug differe in la lecture des xml ????
    fprintf(aFileCpp,"   if (aTree==0) return;\n");
    fprintf(aFileCpp,"   anObj.mGXml = aTree->mGXml;\n");
 
@@ -1137,7 +1137,7 @@ void cElXMLTree::GenAccessor
           cElXMLTree * anAnc,
           int aProf,
           FILE* aFile,
-          std::list<cElXMLTree *> & aList,  // Empile les fils pour imbrication
+          std::list<cElXMLTree *> & aList,  // Empile les fils for imbrication
           bool isH
      )
 {

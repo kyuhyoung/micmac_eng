@@ -3,18 +3,18 @@
 using namespace std;
 
 
-Progression::Progression() : QThread() {}//problème de modification du paramMain et de progressDialog (erreur de segmentation)
+Progression::Progression() : QThread() {}//problème de modification du paramMain and de progressDialog (error de segmentation)
 Progression::~Progression() {}
 
 void Progression::updatePercent(const ParamMain& paramMain, QProgressDialog* progressdialog, const QString& stdoutfile) const {
-//met le bon pourcentage à la progressDialog en fonction du thread traitée
+//met le bon pourcentage à la progressDialog en function du thread traitée
 	int n = dispatch(paramMain, progressdialog->value(), stdoutfile);
 	int n0 = lastComplete(paramMain);
 	if (progressdialog->value()<n+n0) progressdialog->setValue(n+n0);
 }
 
 int Progression::dispatch(const ParamMain& paramMain, int pDialogVal, const QString& stdoutfile) const {
-//recherche le pourcentage d'avancement de la commande en cours ; pour cela, lance une fonction différente en fonction du thread et de la commande traitée
+//recherche le pourcentage d'avancement de la commande en cours ; for cela, lance une function différente en function du thread and de la commande traitée
 	switch (paramMain.getCurrentMode()) {
 		case ParamMain::PointsEnCours : 
 			switch (paramMain.getAvancement()) {
@@ -144,8 +144,8 @@ int Progression::maxComplete(const ParamMain& paramMain) const {
 int Progression::maxComplete(const ParamConvert8B& paramConvert8B) const { return paramConvert8B.getImages().count() * 40; }	//en fait count * 2 * NbDir;
 
 int Progression::whichDcraw(const ParamMain& paramMain, int pDialogVal) const {
-//renvoie le pourcentage d'avancement de conversion ; pour cela, recherche si les fichiers correspondants ont été créés
-//1 fichier = 1%
+//renvoie le pourcentage d'avancement de conversion ; for cela, recherche if les fichiers correspondants ont été créés
+//1 file = 1%
 //on ne considère pas le images couleurs car les images tif->tif sont créées après (par lien)
 	int i = max(pDialogVal - lastComplete(paramMain), 0);
 	int n = 0;
@@ -161,13 +161,13 @@ int Progression::whichDcraw(const ParamMain& paramMain, int pDialogVal) const {
 }
 
 int Progression::whichPastis(const ParamMain& paramMain) const {
-//renvoie le pourcentage d'avancement de la commande Pastis ; pour cela, recherche si les fichiers correspondants ont été créés
-//1 fichier = 0.1%
+//renvoie le pourcentage d'avancement de la commande Pastis ; for cela, recherche if les fichiers correspondants ont été créés
+//1 file = 0.1%
 /*	cTplValGesInit<string>  aTpl;
 	char** argv = new char*[1];
 	argv[0] = "rthsrth";
 	cInterfChantierNameManipulateur* mICNM = cInterfChantierNameManipulateur::StdAlloc(1, argv, paramMain.getDossier().toStdString(), aTpl );
-	const vector<string>* aVN = mICNM->Get("Key-Set-HomolPastisBin");	//compte le nombre de fichiers
+	const vector<string>* aVN = mICNM->Get("Key-Set-HomolPastisBin");	//compte le number de fichiers
 	delete [] argv;
 	delete mICNM;
 	return aVN->size();*/
@@ -182,7 +182,7 @@ int Progression::whichPastis(const ParamMain& paramMain) const {
 }
 
 int Progression::whichApero(const QString& stdoutfile) const {
-//renvoie le pourcentage d'avancement de la commande Apero ; pour cela, recherche l'étape courante dans l'outstream
+//renvoie le pourcentage d'avancement de la commande Apero ; for cela, recherche l'étape courante in l'outstream
 //1 étape = 1%
 	QFile file(stdoutfile);
 	if (!file.open(QIODevice::ReadOnly))
@@ -200,7 +200,7 @@ int Progression::whichHomol3D(const ParamMain& paramMain) const {
 }
 
 int Progression::whichMicmac(const QString& stdoutfile) const {
-//renvoie le pourcentage d'avancement de la commande MICMAC ; pour cela, recherche l'étape courante dans l'outstream
+//renvoie le pourcentage d'avancement de la commande MICMAC ; for cela, recherche l'étape courante in l'outstream
 	QFile file(stdoutfile);
 	if (!file.open(QIODevice::ReadOnly))
 		return 0;
@@ -220,7 +220,7 @@ bool Progression::doOrthoCurrentCarte(const ParamMain& paramMain) const {
 }
 
 int Progression::whichGrShade(const QString& stdoutfile) const {
-//renvoie le pourcentage d'avancement de la commande MICMAC ; pour cela, recherche l'étape courante dans l'outstream
+//renvoie le pourcentage d'avancement de la commande MICMAC ; for cela, recherche l'étape courante in l'outstream
 	QFile file(stdoutfile);
 	if (!file.open(QIODevice::ReadOnly))
 		return 0;

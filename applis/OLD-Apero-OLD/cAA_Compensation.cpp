@@ -98,7 +98,7 @@ void cAppliApero::AddObservationsRigidGrp
 
 void cAppliApero::AddObservationsAppuis(const std::list<cObsAppuis> & aL,bool IsLastIter,cStatObs & aSO)
 {
-   // La templatisation complique le passage a la "sous-traitance", donc on
+   // La templatisation complique le passage a la "under-traitance", donc on
    // gere a la main les iterations
    for (std::list<cObsAppuis>::const_iterator itOA= aL.begin(); itOA!=aL.end() ; itOA++)
    {
@@ -222,13 +222,13 @@ void cAppliApero::AddObservationsAppuisFlottants(const std::list<cObsAppuisFlott
 
 void cAppliApero::ActiveContraintes(bool Stricte)
 {
-    // Contraintes sur les calibrations
+    // Contraintes on les calibrations
     for (tDiCal::iterator itD=mDicoCalib.begin() ; itD!=mDicoCalib.end(); itD++)
     {
         itD->second->ActiveContrainte(Stricte);
     }
 
-    // Contraintes sur les poses
+    // Contraintes on les poses
     for (tDiPo::iterator itD=mDicoPose.begin() ; itD!=mDicoPose.end(); itD++)
     {
         itD->second->ActiveContrainte(Stricte);
@@ -457,7 +457,7 @@ void  cAppliApero::MAJContraintes(const cSectionContraintes & aSC)
     // ----------------------------------
 
 
-    // Contraintes sur les calibrations
+    // Contraintes on les calibrations
     {
        const tLCCI aLC=aSC.ContraintesCamerasInc();
        for (tLCCI::const_iterator anIC=aLC.begin(); anIC!=aLC.end() ; anIC++)
@@ -465,7 +465,7 @@ void  cAppliApero::MAJContraintes(const cSectionContraintes & aSC)
             MAJContrainteCamera(*anIC);
        }
     }
-    // Contraintes sur les poses
+    // Contraintes on les poses
     {
        const tLCCP aLCP=aSC.ContraintesPoses();
        for (tLCCP::const_iterator anICP=aLCP.begin(); anICP!=aLCP.end() ; anICP++)
@@ -576,7 +576,7 @@ void cAppliApero::DoOneContraintesAndCompens
            }
        }
       ELISE_ASSERT(got,"No Cam found in SetRayMaxUtileCalib");
-  //ELISE_ASSERT(false,"FAIRE MODIF RMAX UTIL POUR CALIB / POSE ");
+  //ELISE_ASSERT(false,"FAIRE MODIF RMAX UTIL for CALIB / POSE ");
        // CalibFromName(itS->Name())->SetRMaxU(itS->Ray());
    }
 

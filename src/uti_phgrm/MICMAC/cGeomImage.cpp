@@ -526,7 +526,7 @@ Box2dr cGeomImage::BoxImageOfVPts
     Pt2dr aPMax;
     Pt2dr aPMin;
 
-    // Pour explorer les 2^(2+mDimPx) coins de cubes on
+    // for explorer les 2^(2+mDimPx) coins de cubes on
     // passe par un flag de bits
     for (int aKP=0 ; aKP<int(aVPts.size()) ; aKP++)
     {
@@ -663,7 +663,7 @@ void cGeomImage::SetClip
          double aRabInterp
      )
 {
-   // Pour ?? eviter des pb de singularite dans les rayons
+   // for ?? eviter des pb de singularite in les rayons
 
    Box2dr aBoxTer =  BoxImageOfVPts
                   (
@@ -988,7 +988,7 @@ double cGeomImage::BSurH
      return aRes;
 }
 
-// Pour l'instant, la version Eulid ne fait que rappeler la version NonEuclid
+// for l'instant, la version Eulid ne fait que rappeler la version NonEuclid
 
 Pt3dr   cGeomImage::CentreRestit() const
 {
@@ -1165,7 +1165,7 @@ Pt2dr cGeomImage::P1P2ToPx(Pt2dr aP1,Pt2dr aP2) const
 }
 
 
-// Voir en fin de fichier pour les allocateur
+// Voir en fin de file for les allocateur
 
 /*****************************************/
 /*                                       */
@@ -1173,8 +1173,8 @@ Pt2dr cGeomImage::P1P2ToPx(Pt2dr aP1,Pt2dr aP2) const
 /*                                       */
 /*****************************************/
 
-//  En appariement image/image, les coordonnees objet
-//  sont confondues avec les coordonnees de la premiere image.
+//  En appariement image/image, les coordinates object
+//  sont confondues with les coordinates de la premiere image.
 //  Il s'agit donc d'une geometrie "Identite".
 
 class cGeomImage_Id : public cGeomImage
@@ -1257,30 +1257,30 @@ class cGeomImage_NoGeom : public cGeomImage
 /*                                       */
 /*****************************************/
 
-//    Le modele DHD_Px correspond au cas ou apres
+//    Le modele DHD_Px correspond au cas or after
 // correction d'une eventuelle distorsion, le modele
 // de correspondance a priori est celui d'une homographie
 // 
-// Cela inclut l'autocalibration sur le mur (scene quasi-plane)
+// Cela inclut l'autocalibration on le mur (scene quasi-plane)
 // la mise en correspondance des cannaux de la camera
-// numerique (centre optique quasi confondus) ou la 
-// photogrammetrie elementaire montre que pour une camera
-// parfaite (donc apres correction de la distortion) la 
+// numerique (centre optique quasi confondus) or la 
+// photogrammetrie elementaire montre que for une camera
+// parfaite (donc after correction de la distortion) la 
 // correspondance est une homographie.
 //
-//    Cela inclut aussi des modeles plus elementaire, avec
-// Dist=Identite, et homographie eventuellement reduite
+//    Cela inclut aussi des modeles plus elementaire, with
+// Dist=Identite, and homographie eventuellement reduite
 // a une application lineaire, voire une homotetie rotation,
 // voir  une translation, voir l'identite. Par exemple
-// la mise en correspondance d'image satellite pour
-// un couple le long de la trace ou en l'absence de 
+// la mise en correspondance d'image satellite for
+// un couple le long de la trace or en l'absence de 
 // modele physique un modele approche peut etre trouve
 // par simple translation.
 //
-//    On passe en parametre les deux distorsion sous forme
-// de pointeur sur des Grille, si c'est le pointeur null
+//    On passe en parameter les deux distorsion under forme
+// de pointeur on des Grille, if c'est le pointeur null
 // on utilisera une correction identite.
-//    L'Homographie est passee sous forme de couples homologues,
+//    L'Homographie est passee under forme de couples homologues,
 // qui seront corrige des eventuelles distorsion, ensuite l'homographie
 // est estimee selon les conventions "habituelles" :
 //    - 0 couple       : identite
@@ -1750,7 +1750,7 @@ double cGeomImage_Terrain_Ori::CalcIncidTerrain(Pt3dr aP3A)
 
 void cGeomImage_Terrain_Ori::Init0MasqAnamSA()
 {
-  double DynVisu=0.0000002;  // Purement heuristique pour ce param de debugage, flemme de trouver une valeur rationnelle
+  double DynVisu=0.0000002;  // Purement heuristique for ce param de debugage, flemme de trouver une value rationnelle
   TIm2D<U_INT1,INT> aTImInit(Pt2di(1,1));
   TIm2D<U_INT1,INT> aTImOrtho(Pt2di(1,1));
   
@@ -1792,7 +1792,7 @@ if (0 && MPD_MM())
 
 
 
-      // 1- On calcul en geometrie image la masque des points ayant une incidence
+      // 1- On computation en geometrie image la masque des points ayant une incidence
       // inferieur a AnamLimAngleVisib
       Pt2di aP;
       int aNbTot = 0;
@@ -1877,16 +1877,16 @@ if (0 && MPD_MM())
           getchar();
       }
 
-      // Precaution anti inifini, pour eviter que sur des interection razante la boite soit 
-      // trop grande, on refait un calcul en prenant le cone epsilon du milieue de l'image que l'on 
+      // Precaution anti inifini, for eviter que on des interection razante la boite soit 
+      // trop grande, on refait un computation en prenant le cone epsilon du milieue de l'image que l'on 
       // dilatera de 3/epsilon
       //
-      //  En fait, avec le milieu on ne trouve pas toujours d'intersection, donc on modifie le code 
+      //  En fait, with le milieu on ne trouve pas toujours d'intersection, donc on modifie le code 
       // en testant plusieur points
-      //  On espere que c'est devenu inutile avec le produit scalaire fait dans le 2 sens, mais on maintient quand meme avec une valeur de seuil
-      // tres forte sur aMulRay
+      //  On espere que c'est devenu inutile with le produit scalaire fait in le 2 sens, but on maintient when meme with une value de seuil
+      // tres forte on aMulRay
 
-      if (0)  // JE COMPRENDS PLUS TROP A QUOI CA SERT ET CA CREE DES PBS .....
+      if (0)  // JE COMPRENDS PLUS TROP A QUOI CA SERT and CA CREE DES PBS .....
       {
            Pt2dr  aPExtr0Glob (1e20,1e20);
            Pt2dr  aPExtr1Glob (-1e20,-1e20);
@@ -2228,7 +2228,7 @@ class cGeomFaisZTerMaitre : public cGeomImage_Id
     
     
     
-    // Par defaut erreur fatale si pas mode Image_Nuage
+    // Par defaut error fatale if pas mode Image_Nuage
     protected :
       bool GetPxMoyenne_NonEuclid(double * aPxMoy,bool MakeInvIfNeeded) const
       {
@@ -2542,7 +2542,7 @@ class cGeomImage_Id_Ori : public cGeomImage_Id
       bool GetPxMoyenne_NonEuclid(double * aPxMoy,bool MakeInvIfNeeded) const
       {
 
-           // Calcul d'un point "central"
+           // computation d'un point "central"
 	   //
 	   // OO double aProf = mOriRef.profondeur();
 	   // OO double aZ = mOriRef.altisol();
@@ -2640,7 +2640,7 @@ class cGeomImage_Faisceau : public cGeomImage_Id_Ori
     public :
        std::string Name() const {return "cGeomImage_Faisceau::" + mGITO.Name() ;}
 
-      // interface pour cGeomBasculement3D, envoie de image vers terrain
+      // interface for cGeomBasculement3D, envoie de image vers terrain
       Pt3dr Bascule(const Pt3dr & aP3) const
       {
           //  return mOriRef.ImEtProf_To_Terrain(Pt2dr(aP3.x,aP3.y),1/aP3.z);
@@ -2686,7 +2686,7 @@ class cGeomImage_Faisceau : public cGeomImage_Id_Ori
       }
 
        
-       // Precaution anti singularite ou +infini devient - infini
+       // Precaution anti singularite or +infini devient - infini
       double Px2Prof(double aPax) const
       {
          return 1.0 / ElMax(aPax,1e-5);
@@ -2960,7 +2960,7 @@ class cGeomImage_Module : public cGeomImage
     
     
     
-    // Par defaut erreur fatale si pas mode Image_Nuage
+    // Par defaut error fatale if pas mode Image_Nuage
     void RemplitOriXMLNuage(bool CFM,const cMTD_Nuage_Maille & mtd,const cGeomDiscFPx & aGT,cXML_ParamNuage3DMaille &aNuage ,eModeExportNuage mode) const
     {
 

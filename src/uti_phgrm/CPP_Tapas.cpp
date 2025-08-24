@@ -42,8 +42,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "TapasCampari.h"
 
 
-// CODE TAPAS mis and OLD-Tapas au cas ou
-// J'en ai marre de me planter et de faire des modifs dans Tapas qui ne servent a rien !!!!
+// CODE TAPAS mis and OLD-Tapas au cas or
+// J'en ai marre de me planter and de faire des modifs in Tapas qui ne servent a rien !!!!
 
 int Tapas_main(int argc,char ** argv)
 {

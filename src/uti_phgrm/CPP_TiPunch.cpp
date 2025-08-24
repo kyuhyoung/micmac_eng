@@ -78,7 +78,7 @@ REAL SqrDistSum(vector <Pt3dr> const & Sommets, cElNuage3DMaille* nuage)
                 Pt2dr Pt(x,y);
                 Pt2dr AP = Pt-A;
 
-                // Coordonnees barycentriques de P(x,y)
+                // coordinates barycentriques de P(x,y)
                 REAL aPdsB = (AP^AC) / aDet;
                 REAL aPdsC = (AB^AP) / aDet;
                 REAL aPdsA = 1 - aPdsB - aPdsC;
@@ -322,7 +322,7 @@ int TiPunch_main(int argc,char ** argv)
                                 {
                                     Pt2dr AP = Pt2dr(x,y)-A2;
 
-                                    // Coordonnees barycentriques de P(x,y)
+                                    // coordinates barycentriques de P(x,y)
                                     REAL aPdsB = (AP^AC) / aDet;
                                     REAL aPdsC = (AB^AP) / aDet;
                                     REAL aPdsA = 1 - aPdsB - aPdsC;
@@ -353,7 +353,7 @@ int TiPunch_main(int argc,char ** argv)
         }
 
         /*
-        //TODO devrait suffire mais reste un bug (rotation des masques ?)
+        //TODO devrait suffire but reste un bug (rotation des masques ?)
 
         set < int > stri;
         const int nbTriangles = myMesh.getFacesNumber();

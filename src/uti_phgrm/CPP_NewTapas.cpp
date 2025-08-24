@@ -301,7 +301,7 @@ void cAppli_Tapas_Campari::InitVerifModele(const std::string & aMod,cInterfChant
               LocLibCD = false;
               LocDegGen =  (aKModele-19);
               TheModelAdd = "eModelePolyDeg" +  ToString(LocDegGen);
-              LocDegAdd=(aKModele-19);// dans tapas le param degAdd de campari n'existe pas et est "confondu/interchangeable" avec DegGen?
+              LocDegAdd=(aKModele-19);// in tapas le param degAdd de campari n'existe pas and est "confondu/interchangeable" with DegGen?
 
         }
         eModAutom = "eCalibAutomNone";
@@ -500,7 +500,7 @@ int Tapas_main_new(int argc,char ** argv)
            SeuilFEAutom = 16.5;
 
         if (IsForCalib<0)
-            IsForCalib=(CalibIn==NoInit); // A Changer avec cle de calib
+            IsForCalib=(CalibIn==NoInit); // A Changer with cle de calib
 
         double TetaLVM = IsForCalib ?     0.1 : 1.5;
         double CentreLVM = IsForCalib ?   1.0 : 10.0;
@@ -630,7 +630,7 @@ int Tapas_main_new(int argc,char ** argv)
        if (DBF)
          aCom  = aCom + " DebugPbCondFaisceau=true";
 
-/* => Dans Common
+/* => in Common
 
        if (mSauvAutom!="")
        {
@@ -736,7 +736,7 @@ int Tapas_main_new(int argc,char ** argv)
               const std::vector<std::string> & aVTime = anATP.BlocTimeStamps();
               std::map<std::string,int> & aCptTime =  anATP.BlocCptTime();
 
-              // Recupere l'image la plus proche du milieu et dont le bloc est plein
+              // Recupere l'image la plus proche du milieu and dont le bloc est plein
               int aDistMax = -1;
               int aKMax = -1;
               for (int aK=0 ; aK<int(aVImage.size()) ; aK++)
@@ -839,7 +839,7 @@ int Tapas_main_new(int argc,char ** argv)
 
 
 
-               sleep(1); // Pour faciliter l'arret
+               sleep(1); // for faciliter l'arret
             }
 
        }

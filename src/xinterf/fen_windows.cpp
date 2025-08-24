@@ -170,12 +170,12 @@ class DVV   // Data_Video_Window
 	DWORD		_dwstyle;
 	HWND		_hWnd;	 // La Fenetre proprement dite
 	HDC   _hdc;			// Le Device Cont associe a _hWnd
-// image de 1 ligne
-	BITMAPINFO * _bmi;	// L'info sur la DIB + les data (= _im)
-	HBITMAP _hbm;		// un handle sur _bmi
-	void flush_buf_b1(); // vide le buffer de 1 ligne dans le MemDC
+// image de 1 line
+	BITMAPINFO * _bmi;	// L'info on la DIB + les data (= _im)
+	HBITMAP _hbm;		// un handle on _bmi
+	void flush_buf_b1(); // vide le buffer de 1 line in le MemDC
 	void flush_buf_b1(HDC); 
-// garde memoire de l'ecriture courante dans le tampon de 1 ligne
+// garde memoire de l'ecriture courante in le tampon de 1 line
 	int _last_x;
 	int _last_y;
 	int _last_x0;
@@ -192,15 +192,15 @@ class DVV   // Data_Video_Window
 
 	int   _txF;    // taille utilisateur des fenetre
 	int   _tyF;
-	int   _txB;    // taille des bitmaps, eventuellement diff pour
-	int   _tyB;    // pour probleme d'alignement
+	int   _txB;    // taille des bitmaps, eventuellement diff for
+	int   _tyB;    // for probleme d'alignement
 
-	int   _nb_oct; // nombre d'octet par pixel (1,2 ou 3)
+	int   _nb_oct; // number d'octet par pixel (1,2 or 3)
 
 	
 	typedef enum
 	{
-		NB_COLOUR = 256  // Avant de gerer les palettes
+		NB_COLOUR = 256  // before de gerer les palettes
 	};
 
 public :
@@ -221,11 +221,11 @@ public :
 	}
 
 
-// Raffraichit la fenetre avec le rectangle du bitmap
+// Raffraichit la fenetre with le rectangle du bitmap
 	void show_rect(int x1,int y1,int x2,int y2);
 	void show_rect_glob();
 
-// juste pour test/mise au point; sans doute tres lent
+// juste for test/mise au point; without doute tres lent
 	void bitm_set_rgb(int x,int y,int r,int g,int b);
 
 
@@ -263,7 +263,7 @@ const char * DVD::_Elise_Name = "Fenetre Elise";
 /******************************************************/
 /******************************************************/
 
-//    Ou du moins de ce qui en tient lieu, apres  
+//    or du moins de ce qui en tient lieu, after  
 //     tout c'est WINDOWS.                 
 //                                                 
 
@@ -395,8 +395,8 @@ DVV::DVV
 		r.right = _txF;
 		r.bottom = _tyF;
 
-			// renvoie les coordonnees de la Fenetre, y compris
-			// enjolivures dans le systeme de coordonnees utilisateur
+			// renvoie les coordinates de la Fenetre, y compris
+			// enjolivures in le system de coordinates utilisateur
 		AdjustWindowRect(&r,_dwstyle,FALSE);
 
 		_hWnd = CreateWindow
@@ -426,7 +426,7 @@ DVV::DVV
    _nb_oct = dvd->_nb_oct_pp;
 
 //===============================
-//   CREATION DU BITMAP DE 1 LIGNE
+//   CREATION DU BITMAP DE 1 line
 //================================
 
    _last_y = -1;
@@ -450,9 +450,9 @@ DVV::DVV
 	_bmi->bmiHeader.biClrUsed = (LONG) NB_COLOUR ;
 	_bmi->bmiHeader.biClrImportant = (LONG) NB_COLOUR ;
 	
-	// sans doute inutile avant de gerer les palettes, 
-	// surement a modifier avec gestion des palettes,
-	// surement inutile en mode 16 ou 24 bits
+	// without doute inutile before de gerer les palettes, 
+	// surement a modifier with gestion des palettes,
+	// surement inutile en mode 16 or 24 bits
 	/*
 		{
 			int x;
@@ -486,8 +486,8 @@ DVV::DVV
 
 //================================================
 //   CREATION DU DC/BITMAP          
-// Copie betement dans le "Richard Simon"
-// Absolument pas bite une seule ligne de ce
+// Copie betement in le "Richard Simon"
+// Absolument pas bite une seule line de ce
 // charabia. Apparament ca marche.
 //================================================
 
@@ -549,9 +549,9 @@ void DVV::flush_buf_b1(HDC hdc)
 	SetDIBitsToDevice
 	(
 		hdc, 
-		_last_x0,_last_y, // x,y dans cible
+		_last_x0,_last_y, // x,y in cible
 		(DWORD)(_last_x-_last_x0),(DWORD) (1), // larg-haut 
-		_last_x0,0,          // dans src
+		_last_x0,0,          // in src
 		0, (UINT)_tyB, 
 		_im, _bmi, 
 		(UINT) DIB_RGB_COLORS

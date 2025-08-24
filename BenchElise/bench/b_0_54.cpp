@@ -28,7 +28,7 @@ eLiSe06/05/99*/
 #include "bench.h"
 
 
-// Point aleatoire dans l'intervalle [-1,1] en xy [-1,-2] en z,
+// point aleatoire in l'intervalle [-1,1] en xy [-1,-2] en z,
 // on peut plaser de maniere robuste des camera en (0,0)
 
 static Pt3dr P3Rand()
@@ -346,7 +346,7 @@ void BenchEpipole0
 
 
     // On verifie qu'un point 3D se projette en deux
-    // point correspondant a la meme ligne epipolaire
+    // point correspondant a la meme line epipolaire
     for (INT k= 0 ; k< 10 ; k++)
     {
         Pt3dr  aP3 = P3Rand();
@@ -362,7 +362,7 @@ void BenchEpipole0
     }
 
 
-    // On verifie que les fonction Direct et Inverse,
+    // On verifie que les function Direct and Inverse,
     // sont bien reciproques l'une de l'autre
 	{
     for (INT k= 0 ; k< 10 ; k++)
@@ -381,8 +381,8 @@ void BenchEpipole0
 
 
 
-    // On verifie que pour un point d'une image,
-    // un homologue qq sur l'autre image, les rayons 
+    // On verifie que for un point d'une image,
+    // un homologue qq on l'autre image, les rayons 
     // s'intersectent 
 	{
     for (INT k= 0 ; k< 10 ; k++)
@@ -398,7 +398,7 @@ void BenchEpipole0
         Pt2dr aH2 = (k&1) ? aCple.Hom12(aP1,aParX) : aCple.Hom21(aP1,aParX);
 
         // La Propriete doit etre invariante par translation
-        // sur une epipolaire
+        // on une epipolaire
 
         aP1 = E.TransOnLineEpip(aP1,NRrandC()/6.0);
 
@@ -484,7 +484,7 @@ void BenchCalcEpipoleAutom()
 
 void BenchEpipole0()
 {
-    //  Cameras cavaliere avec Dist en X et Y
+    //  Cameras cavaliere with Dist en X and Y
 
     {
           Pt2dr aCDist = Pt2dr(NRrandC(),NRrandC()) / 10.0;
@@ -527,7 +527,7 @@ void BenchEpipole0()
           BenchEpipole0(aCam1,aCam2,false,4,1000,true,1e-2,"AAA");
     }
 
-    // Camera sans distortion, cavaliere pure
+    // camera without distortion, cavaliere pure
     {
         BenchCamCav aCam1(Pt2dr(0,0));
         BenchCamCav aCam2(Pt2dr(1,0));
@@ -536,7 +536,7 @@ void BenchEpipole0()
         BenchEpipole0(aCam1,aCam2,true,2,1000,false,epsilon,"CCC");
     }
 
-    //  Cameras cavaliere avec Dist en Y
+    //  Cameras cavaliere with Dist en Y
     {
          INT aDeg = 2;
 
@@ -550,7 +550,7 @@ void BenchEpipole0()
          BenchEpipole0(aCam1,aCam2,false,4,1000,true,1e-4,"DDD");
     }
 
-    //  Cameras cavaliere avec Dist en X et Y
+    //  Cameras cavaliere with Dist en X and Y
     {
          INT aDeg = 2;
 

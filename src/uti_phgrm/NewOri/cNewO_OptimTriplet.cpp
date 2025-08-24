@@ -197,7 +197,7 @@ class cAppliOptimTriplet : public cCommonMartiniAppli
           tMultiplePF      mTK_H123;
           double           mFoc;
           cResIPR          mSel3;
-          cResIPR          mTKSel3;  // Hyper resuit pour Tomasi Kanade init
+          cResIPR          mTKSel3;  // Hyper resuit for Tomasi Kanade init
           Pt2dr            mSzShow;
           int              mNbMaxSel;
           int              mTKNbMaxSel;
@@ -702,10 +702,10 @@ void cAppliOptimTriplet::Execute()
        mInOriOk =    (mNM->CamOriOfNameSVP(mNoIm1->Name(),mInOri) !=0)
                   && (mNM->CamOriOfNameSVP(mNoIm2->Name(),mInOri) !=0)
                   && (mNM->CamOriOfNameSVP(mNoIm3->Name(),mInOri) !=0) ;
-       // Si mInOriOk, apres NO_GenTripl, aXml3Ori contient les resultats de
-       // InOri. Ensuite les rotation sont initialisees avec aXml3Ori.
-       // Il suffit donc de bloquer la restimation (init et bundle) pour avoir
-       // dans les "best sol" le resultat de InOri
+       // if mInOriOk, after NO_GenTripl, aXml3Ori contient les resultats de
+       // InOri. Ensuite les rotation sont initialisees with aXml3Ori.
+       // Il suffit donc de bloquer la restimation (init and bundle) for avoir
+       // in les "best sol" le result de InOri
    }
 
    
@@ -873,7 +873,7 @@ void cAppliOptimTriplet::Execute()
    std::vector<Pt2df> & aVP2 = *(mRedH123[1]);
    std::vector<Pt2df> & aVP3 = *(mRedH123[2]);
 
-   //calcul d'ellipse par triplet
+   //computation d'ellipse par triplet
    cXml_Elips3D anElips3D;
    RazEllips(anElips3D);
 
@@ -1038,8 +1038,8 @@ int CPP_AllOptimTriplet_main(int argc,char ** argv)
 
 
 /*
-    //  VERSION AVEC TRIPLETS - A CONSERVER AU CAS OU
-    // REMPLACEE PAR UNE VERSION AVEC 1/Image par couple
+    //  VERSION with TRIPLETS - A CONSERVER AU CAS or
+    // REMPLACEE PAR UNE VERSION with 1/image par couple
 int CPP _AllOptimTriplet_main(int argc,char ** argv)
 {
    ElTimer aChrono;

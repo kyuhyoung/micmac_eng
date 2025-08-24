@@ -91,7 +91,7 @@ cVirtInterf_NewO_NameManager * cVirtInterf_NewO_NameManager::StdAlloc(const std:
 
 //=============== Surcharge method
 //           "cVirtInterf_NewO_NameManager * cVirtInterf_NewO_NameManager::StdAlloc"
-//                 pour adapter avec Suffix homol
+//                 for adapter with Suffix homol
 
 cVirtInterf_NewO_NameManager * cVirtInterf_NewO_NameManager::StdAlloc(const std::string  & aPrefHom, const std::string & aDir,const std::string  & anOri,bool  Quick)
 {

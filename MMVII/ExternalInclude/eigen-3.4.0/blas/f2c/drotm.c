@@ -38,7 +38,7 @@
 /*  Purpose */
 /*  ======= */
 
-/*     APPLY THE MODIFIED GIVENS TRANSFORMATION, H, TO THE 2 BY N MATRIX */
+/*     APPLY THE MODIFIED GIVENS transformation, H, TO THE 2 BY N MATRIX */
 
 /*     (DX**T) , WHERE **T INDICATES TRANSPOSE. THE ELEMENTS OF DX ARE IN */
 /*     (DY**T) */

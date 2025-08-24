@@ -65,19 +65,19 @@ template <class Type> class ElFifo;
 	#include <strstream>
 
 
-/*** VERSION SANS LE NOYAU (mais perd les messages d'erreur...) ****/
+/*** VERSION without LE NOYAU (but perd les messages d'error...) ****/
 
 	#include <cstdio>
 	#include <memory>
 	#include <malloc.h>
 	#include <iostream>
 
-	// Noyeau Mini (pour concerver les Sortie Message dans la fenetre du noyau : ncout())
+	// Noyeau Mini (for concerver les Sortie Message in la fenetre du noyau : ncout())
 	#if (USE_NOYAU_MINI)
 		#include "noyau_base/handler_sortiemessage.h"
 		#include "noyau_base/nostream.h"
 	#else
-		// Pas de sortie message dans la fenetre du noyau
+		// Pas de sortie message in la fenetre du noyau
 		#define ncout() cerr
 	#endif
 

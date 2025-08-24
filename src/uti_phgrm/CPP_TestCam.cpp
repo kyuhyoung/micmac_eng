@@ -303,13 +303,13 @@ int TestDistM2C_main(int argc,char ** argv)
 
 
 // -------------------------------------------------------------------------------
-// Code d'export des faisceaux Micmac vers un fichier (code 12) de Comp
+// Code d'export des faisceaux Micmac vers un file (code 12) de Comp
 // -------------------------------------------------------------------------------
 // Inputs:
-//      - Fichier de calibration interne de la caméra
-//      - Fichier xml de mesures images (e.g. mesures-S2D.xml)
+//      - file de calibration interne de la caméra
+//      - file xml de mesures images (e.g. mesures-S2D.xml)
 // Outputs:
-//      - 1 fichier .xyz d'obs Comp (code 12) par image
+//      - 1 file .xyz d'obs Comp (code 12) par image
 // -------------------------------------------------------------------------------
 int Bundles2Comp_main(int argc,char ** argv){
     
@@ -395,7 +395,7 @@ int Bundles2Comp_main(int argc,char ** argv){
     std::cout << "Focale " << aCam->Focale() << "   PP " << aCam->PP() << "\n";
     
     // ---------------------------------------------------------------
-    // Récupération des points dans le repère image (2D)
+    // Récupération des points in le repère image (2D)
     // ---------------------------------------------------------------
     mDAF2D = StdGetFromPCP(mName2D, SetOfMesureAppuisFlottants);
     std::cout << "Number of images in measurement file [" << mName2D;
@@ -410,7 +410,7 @@ int Bundles2Comp_main(int argc,char ** argv){
     
     
     // ---------------------------------------------------------------
-    // Calcul des angles
+    // computation des angles
     // ---------------------------------------------------------------   
     std::string sep  = "-------------------------------------------------------------------------------\n";
     std::string sep2 = "===============================================================================\n";
@@ -526,11 +526,11 @@ int TestDistortion_main(int argc,char ** argv)
 
     CamStenope * aCam =  CamOrientGenFromFile(aNameCalib,anEASF.mICNM);
 
-    std::cout << "//   R3 : \"reel\" coordonnee initiale\n";
-    std::cout << "//   L3 : \"Locale\", apres rotation\n";
-    std::cout << "//   C2 :  camera, avant distortion\n";
-    std::cout << "//   F2 : finale apres Distortion\n";
-    std::cout << "//   M2 : coordonnees scannees \n";
+    std::cout << "//   R3 : \"real\" coordonnee initiale\n";
+    std::cout << "//   L3 : \"Locale\", after rotation\n";
+    std::cout << "//   C2 :  camera, before distortion\n";
+    std::cout << "//   F2 : finale after Distortion\n";
+    std::cout << "//   M2 : coordinates scannees \n";
     std::cout << "//\n";
     std::cout << "//       Orientation      Projection      Distortion      Interne mm\n";
     std::cout << "//   R3 -------------> L3------------>C2------------->F2------------>M2\n";

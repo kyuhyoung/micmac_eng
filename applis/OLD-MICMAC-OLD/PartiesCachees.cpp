@@ -92,7 +92,7 @@ class cMicMacZbuf : public cZBuffer
                const  cAppliMICMAC &,
                bool                  aDoDequant,
                const cEtapeMecComp * aCurEtape,
-               const Pt2di &         aTrGT,   // Translation entre la BOX GT et ImZ,ImMasq
+               const Pt2di &         aTrGT,   // translation between la BOX GT and ImZ,ImMasq
                const cGeomDiscFPx&,
                cPriseDeVue & aPdv,
                Im2D_INT2  aImZInit,
@@ -125,7 +125,7 @@ class cMicMacZbuf : public cZBuffer
 
 Pt3dr cMicMacZbuf::ProjTerrain(const Pt3dr & aPTer) const
 {
-   // On n'utilise pas la methode BasculeInv, qui devrait a peu pres
+   // On n'utilise pas la method BasculeInv, qui devrait a peu pres
    // le faire car elle est redefinie
 
     double aPax[theDimPxMax] = {0,0};
@@ -401,7 +401,7 @@ void cAppliMICMAC::MakePartiesCachees
 
    double aZMoy;
 
-   // On reduit l'intervalle de Z en l'adaptant sur la Box deja calculee (en theorie on peu iterer)
+   // On reduit l'intervalle de Z en l'adaptant on la Box deja calculee (en theorie on peu iterer)
    if (! aGPC.ZMoy().IsInit())
    {
       Box2di aB  = BoxTer2Disc(aGT,aBoxTer,Pt2di(0,0));
@@ -438,9 +438,9 @@ void cAppliMICMAC::MakePartiesCachees
    }
 
 
-    // On va calculer le masque des points terrain qui sont dans le masque terrain
-    // initial et dont la projection au Z calcule est dans l'image 
-    // Eventuellement on adpate la boite pour la reduire
+    // On va compute le masque des points terrain qui sont in le masque terrain
+    // initial and dont la projection au Z compute est in l'image 
+    // Eventuellement on adpate la boite for la reduire
    
 
    if  ((aP0.x<aP1.x) && (aP0.y <aP1.y))
@@ -471,7 +471,7 @@ void cAppliMICMAC::MakePartiesCachees
       cLineariseProj aLP;
       int aSzBloc = 7;
 
-      // Calcul le masque en geometrie image
+      // computation le masque en geometrie image
       for (int aY0=0; aY0<aSzIm.y ; aY0+=aSzBloc)
       {
           int aY1 = ElMin(aSzIm.y,aY0+aSzBloc);
@@ -741,7 +741,7 @@ void cAppliMICMAC::MakePartiesCachees
           }
 
            
-           /// Geometrie Masq Ter / Image PC
+           /// Geometrie Masq Ter / image PC
 
            MakeOrtho
            (
@@ -1107,7 +1107,7 @@ void cAppliMICMAC::GetIntervZ(const Box2di & aBox,double & aZMin,double & aZMax,
   Symb_FNum  aCFM (1-aFM);
   // double aZMin,aZMax;
 
-  // Pour que les hors masques (CFM=Complementaire Fonction Masque)
+  // for que les hors masques (CFM=Complementaire function Masque)
   // n'aient pas d'influence on leurs donne des valeurs hors borne
 
   Pt2di aP0 = Sup(Pt2di(0,0),aBox._p0);
@@ -1187,7 +1187,7 @@ void cAppliMICMAC::MakePartiesCachees()
 
    if (aVI_PC.Val().ByMkF().Val() && (! Paral_Pc_IdProcess().IsInit()))
    {
-       // Si on demande une mise en // il faut etre logique !
+       // if on demande une mise en // il faut etre logique !
        int aNbP = ElMax(2,ByProcess().Val());
        std::list<std::string> aLP;
        for (int aKP=0 ; aKP < aNbP ; aKP++)

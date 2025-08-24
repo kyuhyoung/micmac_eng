@@ -315,7 +315,7 @@ Pt3dr IntersectionFaisceaux
             const std::vector<Pt2dr> & aNPts2D
         )
 {
-    //vecteur d'éléments segments 3d
+    //vector d'éléments segments 3d
     std::vector<ElSeg3D> aVSeg;
 
     for (int aKR=0 ; aKR < int(aVCS.size()) ; aKR++)
@@ -448,18 +448,18 @@ int IntersectHomol_main(int argc, char ** argv)
             cout << "Intersection for group 2" << endl;
         }
 
-        //le vecteur des points 3d a exporter
+        //le vector des points 3d a exporter
         std::vector<Pt3dr> Pts3d;
 
-        //boucle sur le nombre de points a projeter en 3d
+        //boucle on le number de points a projeter en 3d
         for(uint aHG=0 ; aHG < aVAllPts.size() ; aHG++)
         {
             AllPts aaAllPts = aVAllPts.at(aHG);
 
-            //vecteur de cameras
+            //vector de cameras
             std::vector<CamStenope *> vCSPt;
 
-            //vecteur de coordonnees 2d
+            //vector de coordinates 2d
             std::vector<Pt2dr> vC2d;
 
 
@@ -521,7 +521,7 @@ int IntersectHomol_main(int argc, char ** argv)
             std::cout<<aOutput<<".ply written."<<std::endl;
         }
 
-        //export en .xml pour utiliser comme fichier de GCPs
+        //export en .xml for utiliser comme file de GCPs
         if(aXmlExport)
         {
             std::string aOutXml = StdPrefixGen(aOutput) + ".xml";

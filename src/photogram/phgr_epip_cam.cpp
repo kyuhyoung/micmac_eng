@@ -55,14 +55,14 @@ class cEpipOrientCam : public  ElDistortion22_Gen
            );
 
            virtual bool OwnInverse(Pt2dr &) const ;    //  Epi vers Phot
-           virtual Pt2dr Direct(Pt2dr) const  ;    // Photo vers Epi
+           virtual Pt2dr Direct(Pt2dr) const  ;    // photo vers Epi
            cEpipOrientCam MapingChScale(REAL aChSacle) const;
 
 
     private :
        virtual ~cEpipOrientCam();
            virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; //
-           void  Diff(ElMatrix<REAL> &,Pt2dr) const ;  //  Erreur Fatale
+           void  Diff(ElMatrix<REAL> &,Pt2dr) const ;  //  error Fatale
 
        bool               m2Del;
        REAL               mZoom;
@@ -71,7 +71,7 @@ class cEpipOrientCam : public  ElDistortion22_Gen
 
 };
 
-// Orientation monde->Cam, pour l'entree et la sortie
+// Orientation monde->Cam, for l'entree and la sortie
 ElMatrix<REAL>  OrientationEpipolaire(ElRotation3D R1,ElRotation3D R2);
 
 /********************************************************/
@@ -904,7 +904,7 @@ std::string cCpleEpip::LocNameImEpi(bool Im1,int aDeZoom,bool Pyram)
        if (! Pyram)
        {
           // aDir = LocDirMatch(Im1);
-          aDir = LocDirMatch(true);  // Normalement tjs sur une seul dir;
+          aDir = LocDirMatch(true);  // Normalement tjs on une seul dir;
        }
        aRes = aDir + aRes + "DeZoom" + ToString(aDeZoom) + ".tif";
     }

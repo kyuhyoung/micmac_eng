@@ -286,7 +286,7 @@ void cASAMG::TestImCoher()
             eQualCloud aQual = eQC_Coh1;
             if (aNbRec==2) aQual = eQC_Coh2;
             if (aNbRec==3) aQual = eQC_Coh3;
-            // Pour ceux qui ont ete valide (aNbRec> 0.75) et non bord ou autre chose ont leur met la bonne valeur
+            // for ceux qui ont ete valide (aNbRec> 0.75) and non bord or autre chose ont leur met la bonne value
             ELISE_COPY
             (
                  select(mImQuality.all_pts(),aFInside && (mImQuality.in()==eQC_NonAff)),

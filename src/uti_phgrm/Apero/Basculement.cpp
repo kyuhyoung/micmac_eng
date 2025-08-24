@@ -367,7 +367,7 @@ class cPtBNL
       const cCompBascNonLin * mCBNL;
       int  mK;
       Pt3dr  mPLine;
-      Pt3dr  mErLine;  // Erreur en coord line
+      Pt3dr  mErLine;  // error en coord line
 
 };
 
@@ -541,7 +541,7 @@ cCompBascNonLin::cCompBascNonLin
    mMQZ  (mShow,"Z",anADLN.FlagZ().Val()),
    mSelEstim (anADLN.PattEstim().Val(),10)
 {
-   // Calcul du segment
+   // computation du segment
    RMat_Inertie aMat;
    for (int aK=0 ; aK<mNb ; aK++)
    {
@@ -550,14 +550,14 @@ cCompBascNonLin::cCompBascNonLin
    }
    mSegLine = seg_mean_square(aMat,1.0);
 
-   // Calcul du vecteur de points
+   // computation du vector de points
    for (int aK=0 ; aK<mNb ; aK++)
    {
        mVPt.push_back(cPtBNL(*this,aK));
    }
    std::sort(mVPt.begin(),mVPt.end());
 
-   // Calcul de l'estimateur
+   // computation de l'estimateur
    for (int aK=0 ; aK<mNb ; aK++)
    {
        const cPtBNL & aPt = mVPt[aK];
@@ -576,7 +576,7 @@ cCompBascNonLin::cCompBascNonLin
    mMQY.Solve();
    mMQZ.Solve();
 
-   // Calcul du vecteur de points
+   // computation du vector de points
    if (mShow)
    {
        for (int aK=0 ; aK<mNb ; aK++)
@@ -766,7 +766,7 @@ std::cout << "ForceVertForceVertForceVert " << ForceVert << "\n";
 
        cPackGlobAppuis  * aPtrPGA = PtrPackGlobApp(aBOA.NameRef(),true);
 
-       // Compat historique avec points appuis purs
+       // Compat historique with points appuis purs
        if (aPtrPGA)
        {
            cPackGlobAppuis  & aPGA = *aPtrPGA;
@@ -885,7 +885,7 @@ std::cout << "ForceVertForceVertForceVert " << ForceVert << "\n";
    }
 
    //for (int aKPose=0 ; aKPose<int(mVecPose.size()) ; aKPose++)
-   // Pour conserver l'ordre alphabetique, + utile pour l'affichage on passe
+   // for conserver l'ordre alphabetique, + utile for l'affichage on passe
    // par le dico
    for
    (
@@ -919,7 +919,7 @@ std::cout << "ForceVertForceVertForceVert " << ForceVert << "\n";
                }
                else
                {
-                  // Si mode non ortho, on ne pourra plus faire de compensation
+                  // if mode non ortho, on ne pourra plus faire de compensation
                   SetSqueezeDOCOAC();
                   aPC->SetCamNonOrtho(aCS);
                }
@@ -1144,7 +1144,7 @@ Pt3dr  cAppliApero::PointeStereo2Pt(const cAperoPointeStereo & aPS)
 void AjustNormalSortante(bool Sortante,Pt3dr & aNorm, const ElCamera * aCS1,const Pt2dr &aPIm)
 {
 // std::cout << "AjustNormalSortante " << Sortante << " " << aNorm << " " << aCS1->F2toDirRayonR3(aPIm) << " " << scal(aNorm,aCS1->F2toDirRayonR3(aPIm)) << "\n";
-    // Si Sortante, le produit scal Norm/DirVisee  doit etre <0, donc ((>0) == Sortante) => chg sign
+    // if Sortante, le produit scal Norm/DirVisee  doit etre <0, donc ((>0) == Sortante) => chg sign
     if (   (scal(aNorm,aCS1->F2toDirRayonR3(aPIm)) >0 ) == Sortante)
          aNorm = - aNorm;
 // std::cout << "AjustNormalSortante "  << aNorm  << "\n";
@@ -1169,8 +1169,8 @@ void cAppliApero::BasculePlan
    cElPlan3D * aPlanFromNamedPt=0;
 
 
-   // On regarde si le plan peut etre defini par les points 3D de nom "Plan*"
-   if (1) // ( AVANT MPD MM() mais utile a tout le monde ?)
+   // On regarde if le plan peut etre defini par les points 3D de nom "Plan*"
+   if (1) // ( before MPD MM() but utile a tout le monde ?)
    {
        std::map<std::string,int> aCptName;
        std::list<std::string>    aLName;
@@ -1370,7 +1370,7 @@ void cAppliApero::Bascule(const cBasculeOrientation & aBO)
 
 /****************************************************************/
 /*                                                              */
-/*                    ECHELLE ECHELLE ECHELLE ECHELLE           */
+/*                    scale scale scale scale           */
 /*                                                              */
 /****************************************************************/
 
@@ -1428,7 +1428,7 @@ void cAppliApero::FixeEchelle(const cFixeEchelle & aFE)
 
 /****************************************************************/
 /*                                                              */
-/*                    ROTATION PLANE                            */
+/*                    rotation PLANE                            */
 /*                                                              */
 /****************************************************************/
 
@@ -1496,7 +1496,7 @@ Pt3dr cAppliApero::CreatePtFromPointeMonoOrStereo
       )
 {
    Pt3dr aRes(0,0,0);
-   std::vector<cOneMesureAF1I>  aV = GetMesureOfPts(aMAF,aNamePt);  // !!! LES IMAGES SONT DANS NamePt
+   std::vector<cOneMesureAF1I>  aV = GetMesureOfPts(aMAF,aNamePt);  // !!! LES IMAGES SONT in NamePt
 
    if (aV.size()==0)
    {
@@ -1888,7 +1888,7 @@ void cAppliApero::VerifAero(const cVerifAero & aVA)
 
 }
 
-  // Fait la verif pour une image
+  // Fait la verif for une image
 
 void cAppliApero::VerifAero
      (
@@ -1959,7 +1959,7 @@ double  BSurH(const std::vector<ElSeg3D> & aVS,const std::vector<double>  * aVPd
    aSomT = aSomT / aSP;
    aSomT2 = aSomT2 / aSP;
    aSomT2 = aSomT2 - Pcoord2(aSomT);
-      // Ce debiaisement est necessaire, par exemple si tous les poids sauf 1 sont
+      // Ce debiaisement est necessaire, par exemple if tous les poids sauf 1 sont
       // presque nuls
    double aDebias = 1 - aSP2/ElSquare(aSP);
    ELISE_ASSERT(aDebias>0,"Singularity in cManipPt3TerInc::CalcPTerInterFaisceauCams ");

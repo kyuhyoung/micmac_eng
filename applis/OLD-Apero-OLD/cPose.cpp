@@ -95,7 +95,7 @@ void cPoseCam::SetOrInt(const cTplValGesInit<cSetOrientationInterne> & aTplSI)
    else
       mOrIntM2C= anAffM2C;
 
-   //  Si on le fait avec les marques fiduciaires ca ecrase le reste
+   //  if on le fait with les marques fiduciaires ca ecrase le reste
 
    mOrIntC2M = mOrIntM2C.inv();
 }
@@ -848,7 +848,7 @@ else
        if (ELISE_fp::exist_file(aTestNameFile))
        {
             ELISE_ASSERT(false,"Obsolet Init Form repere plan");
-            // Onsolete, pas cohrent avec orient interen
+            // Onsolete, pas cohrent with orient interen
             // aPack = ElPackHomologue::- FromFile(aTestNameFile);
        }
        else 
@@ -863,8 +863,8 @@ else
        cResMepRelCoplan aRMRC = aPack.MepRelCoplan(1.0,aPP.L2EstimPlan().Val());
        cElemMepRelCoplan & aSP = aRMRC.BestSol();
 
-       // aM1 aM2 aM3 -> coordonnees monde, specifiees par l'utilisateur
-       // aC1 aC2 aC3 -> coordonnees monde
+       // aM1 aM2 aM3 -> coordinates monde, specifiees par l'utilisateur
+       // aC1 aC2 aC3 -> coordinates monde
 
        Pt3dr aM1,aM2,aM3;
        Pt2dr aIm1,aIm2,aIm3;
@@ -1121,10 +1121,10 @@ else
 		  }
 		  else
 		  {
-		       // Sinon il faudra, une fois connu le multiplicateur donne
+		       // else il faudra, une fois connu le multiplicateur donne
 		       // par les autres liaisons mettre a jour le plan
 		       aDZPl = aSP.DPlan() ;
-		       // Et eventuellement initialiser Plan2
+		       // and eventuellement initialiser Plan2
 		       if (! DicBoolFind(aCam2->mDZP,aNZPl))
 		       {
 		           aDZPl2 = aSP.DPlan2();
@@ -1178,7 +1178,7 @@ else
 	 }
          delete aRAB;
 
-         // Calcul de l'alti et de la prof
+         // computation de l'alti and de la prof
          if (aRPure)
          {
          }

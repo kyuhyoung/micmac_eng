@@ -155,14 +155,14 @@ cEqObsRotVect::cEqObsRotVect
         "Set incoherence in cEqObsRotVect::cEqObsRotVect"
     );
 
-   // En mode utilisation,  assurele lien les numeros d'inconnu de mRotCalc et 
+   // En mode utilisation,  assurele lien les numeros d'inconnu de mRotCalc and 
    // la numerotation interne; en mode generation de code cree l'intervale de ref
      mRotCalc->IncInterv().SetName("Orient");
      mLInterv.AddInterv(mRotCalc->IncInterv());
 
-    // Cette etape va creer  un objet de type "cEqObsRotVect_CodGen",
-    // tant que le code n'a pas ete genere et linke, il n'y a aucune
-    // raison pour que cet objet puisse etre cree, la valeur 0 sera alors
+    // Cette etape va creer  un object de type "cEqObsRotVect_CodGen",
+    // tant que le code n'a pas ete genere and linke, il n'y a aucune
+    // raison for que cet object puisse etre cree, la value 0 sera then
     // retournee
     mFoncEqResidu = cElCompiledFonc::AllocFromName(mNameType);
 
@@ -174,11 +174,11 @@ cEqObsRotVect::cEqObsRotVect
         return;
     }
 
-    // En theorie le mecanisme permet de fonctionner meme sans generation
-    // de code par un mode degrade "interprete" ou toute les evaluation sont
+    // En theorie le mecanisme permet de fonctionner meme without generation
+    // de code par un mode degrade "interprete" or toute les evaluation sont
     // faite directement a partir des Fonc_Num ;  cette fonctionnalite n'est
     // pas vraiment maintenue (par exemple elle ne gere par les contraintes
-    // multiple);  on conserve l'architecture de code  "au cas ou "mais 
+    // multiple);  on conserve l'architecture de code  "au cas or "but 
     // on en interdit l'usage
 
     if (mFoncEqResidu==0)
@@ -187,23 +187,23 @@ cEqObsRotVect::cEqObsRotVect
        mFoncEqResidu = cElCompiledFonc::DynamicAlloc(mLInterv,Fonc_Num(0));
     }
 
-    // Cree dans l'objet la lut vers les numero d'inconnues
+    // Cree in l'object la lut vers les numero d'inconnues
     // reduits (ici [0,3[)
     mFoncEqResidu->SetMappingCur(mLInterv,&mSet);
 
 
-    // Le code genere fait reference au valeur de P1 et P2;
-    // pour pouvoir repidement faire l'initialisation on memorise
+    // Le code genere fait reference au value de P1 and P2;
+    // for pouvoir repidement faire l'initialisation on memorise
     // leur adresse (on envoie un nom, on recupere une adresse)
-    // ceci est encapsule dans cP3d_Etat_PhgrF qui gere les variables
+    // ceci est encapsule in cP3d_Etat_PhgrF qui gere les variables
     // d'etat triple correspondant des points 3D
     mN1.InitAdr(*mFoncEqResidu);
     mN2.InitAdr(*mFoncEqResidu);
 
 
     // Il est necessaire que  mSet connaisse l'ensemble de ses "foncteur"
-    // pour  :
-    //    1- assurer la mise a jour des inconnues dans le cas d'un processus iteratif
+    // for  :
+    //    1- assurer la mise a jour des inconnues in le cas d'un processus iteratif
     //    2- assurer la destruction
 
     mSet.AddFonct(mFoncEqResidu);
@@ -211,8 +211,8 @@ cEqObsRotVect::cEqObsRotVect
 
 void cEqObsRotVect::GenCode()
 {
-    // Un objet de type equation peux gerer plusieurs equation;
-    // il faut passer par un vecteur
+    // Un object de type equation peux gerer plusieurs equation;
+    // il faut passer par un vector
     std::vector<Fonc_Num> aV;
     aV.push_back(mResidu.x);
     aV.push_back(mResidu.y);
@@ -220,8 +220,8 @@ void cEqObsRotVect::GenCode()
 
     cElCompileFN::DoEverything
     (
-        "CodeGenere/photogram/",  // Directory ou est localise le code genere
-        mNameType,  // donne les noms de fichier .cpp et .h ainsi que les nom de classe
+        "CodeGenere/photogram/",  // Directory or est localise le code genere
+        mNameType,  // donne les noms de file .cpp and .h ainsi que les nom de class
         aV,  // expressions formelles 
         mLInterv  // intervalle de reference
     );
@@ -280,8 +280,8 @@ cRotationFormelle & cEqObsRotVect::RotF()
 
 void cEqCalibCroisee::GenCode()
 {
-    // Un objet de type equation peux gerer plusieurs equation;
-    // il faut passer par un vecteur
+    // Un object de type equation peux gerer plusieurs equation;
+    // il faut passer par un vector
     std::vector<Fonc_Num> aV;
     aV.push_back(mResidu.x);
     aV.push_back(mResidu.y);
@@ -289,8 +289,8 @@ void cEqCalibCroisee::GenCode()
 
     cElCompileFN::DoEverything
     (
-        "CodeGenere/photogram/",  // Directory ou est localise le code genere
-        mNameType,  // donne les noms de fichier .cpp et .h ainsi que les nom de classe
+        "CodeGenere/photogram/",  // Directory or est localise le code genere
+        mNameType,  // donne les noms de file .cpp and .h ainsi que les nom de class
         aV,  // expressions formelles 
         mLInterv  // intervalle de reference
     );
@@ -327,23 +327,23 @@ cEqCalibCroisee::cEqCalibCroisee
    mNameType  ("cEqCalibCroisee_" +  mPIF.NameType() +"_CodGen" + std::string(SensC2M ? "C2M" : "M2C"))
 {
 
-    // Test de coherence, si rotation vient de l'exterieur
+    // Test de coherence, if rotation vient de l'exterieur
     ELISE_ASSERT
     (
         (&mSet==mRotCalc->Set()),
         "Set incoherence in cEqObsRotVect::cEqObsRotVect"
     );
 
-   // En mode utilisation,  assurele lien les numeros d'inconnu de mRotCalc et 
+   // En mode utilisation,  assurele lien les numeros d'inconnu de mRotCalc and 
    // la numerotation interne; en mode generation de code cree l'intervale de ref
      mRotCalc->IncInterv().SetName("Orient");
      mPIF.IncInterv().SetName("Calib");
      mLInterv.AddInterv(mRotCalc->IncInterv());
      mLInterv.AddInterv(mPIF.IncInterv());
 
-    // Cette etape va creer  un objet de type "cEqCalibCroisee_Calib_CodeGen",
-    // tant que le code n'a pas ete genere et linke, il n'y a aucune
-    // raison pour que cet objet puisse etre cree, la valeur 0 sera alors
+    // Cette etape va creer  un object de type "cEqCalibCroisee_Calib_CodeGen",
+    // tant que le code n'a pas ete genere and linke, il n'y a aucune
+    // raison for que cet object puisse etre cree, la value 0 sera then
     // retournee
     mFoncEqResidu = cElCompiledFonc::AllocFromName(mNameType);
 
@@ -355,11 +355,11 @@ cEqCalibCroisee::cEqCalibCroisee
         return;
     }
 
-    // En theorie le mecanisme permet de fonctionner meme sans generation
-    // de code par un mode degrade "interprete" ou toute les evaluation sont
+    // En theorie le mecanisme permet de fonctionner meme without generation
+    // de code par un mode degrade "interprete" or toute les evaluation sont
     // faite directement a partir des Fonc_Num ;  cette fonctionnalite n'est
     // pas vraiment maintenue (par exemple elle ne gere par les contraintes
-    // multiple);  on conserve l'architecture de code  "au cas ou "mais 
+    // multiple);  on conserve l'architecture de code  "au cas or "but 
     // on en interdit l'usage
 
     if (mFoncEqResidu==0)
@@ -369,14 +369,14 @@ cEqCalibCroisee::cEqCalibCroisee
        mFoncEqResidu = cElCompiledFonc::DynamicAlloc(mLInterv,Fonc_Num(0));
     }
 
-    // Cree dans l'objet la lut vers les numero d'inconnues
+    // Cree in l'object la lut vers les numero d'inconnues
     mFoncEqResidu->SetMappingCur(mLInterv,&mSet);
 
 
-    // Le code genere fait reference au valeur de P1 et P2;
-    // pour pouvoir repidement faire l'initialisation on memorise
+    // Le code genere fait reference au value de P1 and P2;
+    // for pouvoir repidement faire l'initialisation on memorise
     // leur adresse (on envoie un nom, on recupere une adresse)
-    // ceci est encapsule dans cP3d_Etat_PhgrF qui gere les variables
+    // ceci est encapsule in cP3d_Etat_PhgrF qui gere les variables
     // d'etat triple correspondant des points 3D
     mP1.InitAdr(*mFoncEqResidu);
     mN2.InitAdr(*mFoncEqResidu);
@@ -384,8 +384,8 @@ cEqCalibCroisee::cEqCalibCroisee
     aPIF.InitStateOfFoncteur(mFoncEqResidu,0);
 
     // Il est necessaire que  mSet connaisse l'ensemble de ses "foncteur"
-    // pour  :
-    //    1- assurer la mise a jour des inconnues dans le cas d'un processus iteratif
+    // for  :
+    //    1- assurer la mise a jour des inconnues in le cas d'un processus iteratif
     //    2- assurer la destruction
 
     mSet.AddFonct(mFoncEqResidu);
@@ -519,16 +519,16 @@ ElDistortion22_Gen * cEqDirecteDistorsion::Dist(Pt2dr aTr0)
 
 void cEqDirecteDistorsion::GenCode()
 {
-    // Un objet de type equation peux gerer plusieurs equation;
-    // il faut passer par un vecteur
+    // Un object de type equation peux gerer plusieurs equation;
+    // il faut passer par un vector
     std::vector<Fonc_Num> aV;
     aV.push_back(mResidu.x);
     aV.push_back(mResidu.y);
 
     cElCompileFN::DoEverything
     (
-        "CodeGenere/photogram/",  // Directory ou est localise le code genere
-        mNameType,  // donne les noms de fichier .cpp et .h ainsi que les nom de classe
+        "CodeGenere/photogram/",  // Directory or est localise le code genere
+        mNameType,  // donne les noms de file .cpp and .h ainsi que les nom de class
         aV,  // expressions formelles 
         mLInterv  // intervalle de reference
     );
@@ -654,7 +654,7 @@ cEqObsRotVect * cSetEqFormelles::NewEqObsRotVect
                 )
 {
    cEqObsRotVect * aRes  = new cEqObsRotVect(*this,aRot,Code2Gen);
-   //pour les cElemEqFormelle qui alloue des variables, par pour une equation
+   //for les cElemEqFormelle qui alloue des variables, par for une equation
    // aRes->CloseEEF(); 
    AddObj2Kill(aRes);
    return aRes;
@@ -670,7 +670,7 @@ cEqCalibCroisee * cSetEqFormelles::NewEqCalibCroisee
                   )
 {
    cEqCalibCroisee * aRes  = new cEqCalibCroisee(C2M,aPIF,aRot,Code2Gen);
-   //pour les cElemEqFormelle qui alloue des variables, par pour une equation
+   //for les cElemEqFormelle qui alloue des variables, par for une equation
    // aRes->CloseEEF(); 
    AddObj2Kill(aRes);
    return aRes;
@@ -684,7 +684,7 @@ cEqDirecteDistorsion * cSetEqFormelles::NewEqDirecteDistorsion
                   )
 {
    cEqDirecteDistorsion * aRes  = new cEqDirecteDistorsion(aPIF,Usage,Code2Gen);
-   //pour les cElemEqFormelle qui alloue des variables, par pour une equation
+   //for les cElemEqFormelle qui alloue des variables, par for une equation
    // aRes->CloseEEF(); 
    AddObj2Kill(aRes);
    return aRes;
@@ -920,8 +920,8 @@ void cEqPlanInconnuFormel::GenCode(const cMatr_Etat_PhgrF & aME)
 
     cElCompileFN::DoEverything
     (
-        "CodeGenere/photogram/",  // Directory ou est localise le code genere
-        mNameType,  // donne les noms de fichier .cpp et .h ainsi que les nom de classe
+        "CodeGenere/photogram/",  // Directory or est localise le code genere
+        mNameType,  // donne les noms de file .cpp and .h ainsi que les nom de class
         aVEcart,  // expressions formelles 
         mLInterv  // intervalle de reference
   );

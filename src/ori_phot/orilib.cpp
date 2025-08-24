@@ -41,10 +41,10 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "../uti_phgrm/MICMAC/cCameraModuleOrientation.h"
 
 
-/* define ENSEA pour enlever les routines inutiles pour l'ENSEA
+/* define ENSEA for enlever les routines inutiles for l'ENSEA
 #define ENSEA
 */
-/* define UNIX pour enlever les specificites VMS/MATIS
+/* define UNIX for enlever les specificites VMS/MATIS
 #ifndef UNIX
 #define UNIX
 #endif
@@ -227,7 +227,7 @@ return status ;
 }
 /*----------------------------------------------------------------------------*/
  int orvecteur_solaire ( void* *phot, double soleil[3] )
-/* vecteur soleil-terre dans le repere terrain */
+/* vector soleil-terre in le repere terrain */
 {
 or_orientation		*ori ;
 double			latitude, longitude ;
@@ -253,7 +253,7 @@ return status ;
 }
 /*----------------------------------------------------------------------------*/
  int orpoint_fuite_soleil ( void* *phot, double fuite[2] )
-/* point de fuite des directions objets->ombre portees dans l'image */
+/* point de fuite des directions objets->ombre portees in l'image */
 {
 double			soleil[3] ;
 int			status ;
@@ -274,7 +274,7 @@ return status ;
 }
 /*----------------------------------------------------------------------------*/
  int orpoint_fuite_verticale ( void* *phot, double fuite[2] )
-/* point de fuite des directions objets->ombre portees dans l'image */
+/* point de fuite des directions objets->ombre portees in l'image */
 {
 or_orientation		*ori ;
 double			vert[3] ;
@@ -288,11 +288,11 @@ if ( *phot != 0 )
   vert[0] = 0.0 ;
   vert[1] = 0.0 ;
   vert[2] = -_RayT ;
-  /* verticale sur le sommet de prise de vue */
+  /* verticale on le sommet de prise de vue */
   vert[0] = vert[0] - (*ori).sommet[0] ;
   vert[1] = vert[1] - (*ori).sommet[1] ;
   vert[2] = vert[2] - (*ori).sommet[2] ;
-  /* on retablit une norme de vecteur raisonnable */
+  /* on retablit une norme de vector raisonnable */
   _vecdiv ( vert , _RayT ) ;
   /* point de fuite photo */
   orinters_SM_photo ( phot, vert, &fuite[0], &fuite[1] ) ;
@@ -305,10 +305,10 @@ return status ;
 }
 /*----------------------------------------------------------------------------*/
  int orlit_orientation (const  char *fichier, void* *phot )
-/* La meme chose que image_orientation, mais sans gestion via la structure
+/* La meme chose que image_orientation, but without gestion via la structure
     image ; cette routine est donc principalement a usage externe au labo ;
     Elle effectue une lecture in extenso (i.e. sans gestion de fenetrage)
-    du fichier passe en parametre (nom complet avec extension) */
+    du file passe en parameter (nom complet with extension) */
 {
  int			status ;
  or_orientation 	*ori ;
@@ -318,7 +318,7 @@ return status ;
      {
      status = 1 ;
      *phot = ori ;
-    /* lecture du fichier d'orientation */
+    /* lecture du file d'orientation */
      status = NEW_orlit_fic_orientation ( fichier, ori ) ;
     }
  else
@@ -330,10 +330,10 @@ return status ;
 }
 /*----------------------------------------------------------------------------*/
  int orlit_orientation_texte (const char *fichier, void* *phot ,bool QuickGrid)
-/* La meme chose que image_orientation, mais sans gestion via la structure
+/* La meme chose que image_orientation, but without gestion via la structure
     image ; cette routine est donc principalement a usage externe au labo ;
     Elle effectue une lecture in extenso (i.e. sans gestion de fenetrage)
-    du fichier passe en parametre (nom complet avec extension) */
+    du file passe en parameter (nom complet with extension) */
 {
  int			status ;
  or_orientation 	*ori ;
@@ -343,7 +343,7 @@ return status ;
      {
      status = 1 ;
      *phot = (void*) ori ;
-    /* lecture du fichier d'orientation */
+    /* lecture du file d'orientation */
      status = orlit_fictexte_orientation ( fichier, ori,QuickGrid ) ;
      }
  else
@@ -397,7 +397,7 @@ return status ;
                 double *right, double *bottom,
                 double *hstep, double *vstep,
                 void* *photout )
- /* gestion d'un fenetrage pour ajustement des parametres photogrammetriques */
+ /* gestion d'un fenetrage for ajustement des parameters photogrammetriques */
  /* convention == (0,0) est le premier pixel */
 {
  int			status ;
@@ -410,7 +410,7 @@ return status ;
  if ( ((*phot)==0) || ((*photout)==0) ) return 0 ;
 
     /* transformations liees au fenetrage de l'image :
-    seuls la position du point principal,le pas et les grilles changent */
+    seuls la position du point principal,le pas and les grilles changent */
  status = oralloc_orientation ( &phot_s ) ;
  if ( status != 1 ) return status ;
  ori0 = (or_orientation *) *phot ;
@@ -473,7 +473,7 @@ if ( (*gr1).pas > 0 )
     (*gr2).ns = 1 + (*ins - 1 + (*gr2).pas - 1)/ (*gr2).pas ;
     (*gr2).nl = 1 + (*inl - 1 + (*gr2).pas - 1)/ (*gr2).pas ;
 
-    /* re-echantillonnage (calcul en coordonnees images) */
+    /* re-echantillonnage (computation en coordinates images) */
     x0 = *left ;
     y0 = *top ;
     dx = (double)(*gr2).pas * (*hstep) ;
@@ -557,7 +557,7 @@ double xx,yy,xx1,yy1,dd,ddmax,emq ;
 double dx, dy ;
 double mdx, mdy ;
 
-/* Calcul de la grille t->p */
+/* computation de la grille t->p */
 teta = FDRotCorrection ( IdealMarks ) ;
 FDBilinearTransform ( teta, IdealMarks, RealMarks, *NMarks, Coefs ) ;
 ig = 0 ;
@@ -583,7 +583,7 @@ for ( il = 0 ; il < (*gr).pas*(*gr).nl ; il = il + (*gr).pas )
 
 
 
-/* Calcul de la grille p->t */
+/* computation de la grille p->t */
 FDBilinearTransform ( teta, RealMarks, IdealMarks, *NMarks, Coefs ) ;
 ig = 0 ;
 for ( il = 0 ; il < (*igr).pas*(*igr).nl ; il = il + (*igr).pas )
@@ -682,7 +682,7 @@ if ( (*gr).pas <= 0.0 ) return ;
  */
 HH = (*ori).sommet[2] - (*ori).altisol ;
 pp = (*ori).focale ;
-coef = _refra1*HH*pp*(1.0 - _refra2*HH) ;		/* pour un resultat
+coef = _refra1*HH*pp*(1.0 - _refra2*HH) ;		/* for un result
                                en m */
 
 ig = 0 ;
@@ -789,12 +789,12 @@ if ( *refrac != 0 ) orgrille_refraction ( ori, gr ) ;
 
     /* ensuite on ajoute les deformations dues a la chambre */
 
-    /* on calcule la grille inverse */
+    /* on compute la grille inverse */
 orinverse_grille ( gr, igr ) ;
 
-    /* ensuite on ajoute les deformations Film (sur les deux grilles :
+    /* ensuite on ajoute les deformations Film (on les deux grilles :
         on ne passe pas par inverse_grille pour les deformations film sur gp2t
-        dans la mesure ou la formulation inverse est calculable  */
+        in la mesure or la formulation inverse est calculable  */
 if ( (IdealMarks != 0) && (RealMarks != 0) )
     {
 #ifndef ENSEA
@@ -807,8 +807,8 @@ return 1 ;
 }
 /*----------------------------------------------------------------------------*/
 void orinit_grille_0 ( void* *phot )
-/* initialise une grille sans distortions
-   ( utilie pour les grilles d'epipolaires) */
+/* initialise une grille without distortions
+   ( utilie for les grilles d'epipolaires) */
 {
 or_orientation 		*ori ;
 or_grille		*gr, *igr ;
@@ -861,16 +861,16 @@ for ( ipg = 0 ; ipg < _NS_GRILLE*_NS_GRILLE ; ipg++ )
  double			m1[3], m2[3], S1S2[3] ;
  double			aa,bb,cc,dd,ee,det ;
  double 		lambda1, lambda2 ;
- double			status ;	/*on retourne l'erreur d'intersection*/
+ double			status ;	/*on retourne l'error d'intersection*/
 
  status = 1 ;
  ori1 = (or_orientation *) *phot1 ;
  ori2 = (or_orientation *) *phot2 ;
 
     /* on resoud : lambda1 * m1S1 + S1S2 + lambda2 * S2m2 orthogonal
-       aux deux vecteurs S1m1 et S2m2 */
+       aux deux vecteurs S1m1 and S2m2 */
 
- /* Coordonnees des points image dans le repere terrain */
+ /* coordinates des points image in le repere terrain */
  orSM ( phot1, col1, lig1, m1 ) ;			/* S1m1 */
  orSM ( phot2, col2, lig2, m2 ) ;			/* S2m2 */
 
@@ -878,7 +878,7 @@ for ( ipg = 0 ; ipg < _NS_GRILLE*_NS_GRILLE ; ipg++ )
  S1S2[1] = (*ori2).sommet[1] - (*ori1).sommet[1] ;
  S1S2[2] = (*ori2).sommet[2] - (*ori1).sommet[2] ;
 
- /* resolution du systeme :
+ /* resolution du system :
     aa lambda1 + bb lambda2 = dd
     bb lambda1 + cc lambda2 = ee 		*/
  aa = _pscalaire( m1 , m1 ) ;
@@ -895,7 +895,7 @@ for ( ipg = 0 ; ipg < _NS_GRILLE*_NS_GRILLE ; ipg++ )
  lambda1 = ( (cc * dd) - (bb * ee) ) / det ;
  lambda2 = ( (aa * ee) - (bb * dd) ) / det ;
 
- /* coordonnes en metres dans le repere terrestre */
+ /* coordonnes en metres in le repere terrestre */
  m1[0] = (*ori1).sommet[0] + lambda1 * m1[0] ;
  m1[1] = (*ori1).sommet[1] + lambda1 * m1[1] ;
  m1[2] = (*ori1).sommet[2] + lambda1 * m1[2] ;
@@ -909,7 +909,7 @@ for ( ipg = 0 ; ipg < _NS_GRILLE*_NS_GRILLE ; ipg++ )
  *yy = ( m1[1] + m2[1] ) / 2.0 ;
  *zz = ( m1[2] + m2[2] ) / 2.0 ;
 
- /* vecteur m1m2 */
+ /* vector m1m2 */
  m2[0] = m2[0] - m1[0] ;
  m2[1] = m2[1] - m1[1] ;
  m2[2] = m2[2] - m1[2] ;
@@ -932,7 +932,7 @@ for ( ipg = 0 ; ipg < _NS_GRILLE*_NS_GRILLE ; ipg++ )
  int orcarte_to_terrain ( void* *phot,
                 double *cx, double *cy, double *cz,
                double *tx, double *ty, double *tz )
-/* D'apres les formules des routines de P.Julien (SUBPHOT) */
+/* D'after les formules des routines de P.Julien (SUBPHOT) */
 {
  or_orientation		*ori ;
  double 		origine[2] ;
@@ -958,7 +958,7 @@ for ( ipg = 0 ; ipg < _NS_GRILLE*_NS_GRILLE ; ipg++ )
  int orterrain_to_carte ( void* *phot,
                double *tx, double *ty, double *tz,
                 double *cx, double *cy, double *cz )
-/* D'apres les formules des routines de P.Julien (SUBPHOT) */
+/* D'after les formules des routines de P.Julien (SUBPHOT) */
 {
  or_orientation		*ori ;
  double 		origine[2] ;
@@ -1781,7 +1781,7 @@ void orSetDirK ( void* *phot, double *x, double *y,double * z)
  or_orientation		*ori ;
  int			status  ; GccUse(status);
 
- /* Coordonnees des points image dans le repere terrain */
+ /* coordinates des points image in le repere terrain */
  ori = (or_orientation *) *phot ;
 
 
@@ -1810,7 +1810,7 @@ void orSetDirK ( void* *phot, double *x, double *y,double * z)
  or_orientation		*ori ;
  int			status  ; GccUse(status);
 
- /* Coordonnees des points image dans le repere terrain */
+ /* coordinates des points image in le repere terrain */
  ori = (or_orientation *) *phot ;
 
 
@@ -1842,12 +1842,12 @@ int			status ; GccUse(status);
 
 ori = (or_orientation *) *phot ;
 
- /* coordonnees en metres du vecteur point principal -> inters rayon dans
+ /* coordinates en metres du vector point principal -> inters rayon in
     le plan image */
 
 facty = (*ori).focale / _pscalaire ( SM , (*ori).vk ) ;
 
-//  Si facty <0 on est dans un cas de singularite ou le rayon est passe par
+//  if facty <0 on est in un cas de singularite or le rayon est passe par
 //  l'infini, a priori il faut faire facty = beaucoup,  a voir
 
 if (facty<=0)
@@ -1873,7 +1873,7 @@ facty = facty / (*ori).pix[1] ;
     /* prise en compte des distortions */
 if ( (*ori).distor != 0 )
     {
-    // status = orcorrige_distortion( colonne, ligne, &((*ori).gt2p) ) ;
+    // status = orcorrige_distortion( colonne, line, &((*ori).gt2p) ) ;
     status = ori->CorrigeDist_T2P(colonne, ligne);
     }
 }
@@ -1887,7 +1887,7 @@ int			status ; GccUse(status);
 
 ori = (or_orientation *) *phot ;
 
- /* coordonnees en metres du vecteur point principal -> inters rayon dans
+ /* coordinates en metres du vector point principal -> inters rayon in
     le plan image */
 facty = (*ori).focale /SM[2];
 factx = facty / (*ori).pix[0] ;
@@ -1900,7 +1900,7 @@ facty = facty / (*ori).pix[1] ;
     /* prise en compte des distortions */
 if ( (*ori).distor != 0 )
     {
-    // status = orcorrige_distortion( colonne, ligne, &((*ori).gt2p) ) ;
+    // status = orcorrige_distortion( colonne, line, &((*ori).gt2p) ) ;
     status = ori->CorrigeDist_T2P(colonne, ligne);
     }
 }
@@ -2042,7 +2042,7 @@ double			xt, yt, zt ;
 if ( *phot == 0 ) { return 0 ; }
 ori = (or_orientation *) *phot ;
 
-/* "vecteur" SM en cooord carte */
+/* "vector" SM en cooord carte */
 orSM ( phot, col0, lig0, SM ) ;
 xt = (*ori).sommet[0] + SM[0] ;
 yt = (*ori).sommet[1] + SM[1] ;
@@ -2074,10 +2074,10 @@ return 1 ;
                 double *zmin, double *zmax,
                 double *paralmin, double *paralmax )
 {
-/* renvoie les valeurs de paralaxes min et max en fonction de zmin et zmax ;
-    valable uniquement pour les images epipolaires */
+/* renvoie les valeurs de paralaxes min and max en function de zmin and zmax ;
+    valable uniquement for les images epipolaires */
 
-/* on cherche les quatre coins de epi1 et on regarde la paralaxe */
+/* on cherche les quatre coins de epi1 and on regarde la paralaxe */
 or_orientation 		*or1 ;
 double			x0, y0, x1, y1 ;
 double			MM[3] ;
@@ -2091,7 +2091,7 @@ y0 = 0.0 ;
 x1 = (double) ((*or1).ins-1) ;
 y1 = (double) ((*or1).inl-1) ;
 
-        /* paralmax sur zmin */
+        /* paralmax on zmin */
 orphoto_et_zCarte_to_terrain ( epi1, &x0, &y0, zmin, &MM[0], &MM[1], &MM[2] ) ;
 istat = orterrain_to_photo ( epi2, &MM[0], &MM[1], &MM[2], &cc, &ll ) ;
 *paralmax = cc-x0 ;
@@ -2109,7 +2109,7 @@ istat = orterrain_to_photo ( epi2, &MM[0], &MM[1], &MM[2], &cc, &ll ) ;
 *paralmax = _max( *paralmax , cc-x0 ) ;
 
 
-        /* paralmin sur zmax */
+        /* paralmin on zmax */
 orphoto_et_zCarte_to_terrain ( epi1, &x0, &y0, zmax, &MM[0], &MM[1], &MM[2] ) ;
 istat = orterrain_to_photo ( epi2, &MM[0], &MM[1], &MM[2], &cc, &ll ) ;
 *paralmin = cc-x0 ;
@@ -2131,7 +2131,7 @@ return 1 ;
 /*----------------------------------------------------------------------------*/
  int orepipolaire ( void* *epi1, void* *epi2 )
 {
-/* 1 si les deux photos sont epipolaires ; 0 sinon */
+/* 1 if les deux photos sont epipolaires ; 0 else */
 /*
    le critere de precision est la coplanarite entre la ligne 0 et S1S2 a
    ns pixels de distance de l'origine (taille moyenne des couples) ;
@@ -2154,7 +2154,7 @@ y0 = 0.0 ;
 x1 = (double) ( _min ( (*ori1).ins , (*ori2).ins ) -1) ;
 y1 = (double) ( _min ( (*ori1).inl , (*ori2).inl ) -1) ;
 
-/* verification du plan de la premiere ligne */
+/* verification du plan de la premiere line */
 orSM ( epi1, &x0, &y0, SM1 ) ;
 orSM ( epi2, &x0, &y0, SM2 ) ;
 ortho[0] = SM1[1]*SM2[2] - SM1[2]*SM2[1] ;
@@ -2186,7 +2186,7 @@ erreur = _pscalaire ( SM2 , ortho ) ;
 erreur = _abs ( erreur ) ;
 if ( erreur > (*ori2).pix[1]/10.0 ) { return 0 ; }
 
-/* verification du plan de la ligne nl */
+/* verification du plan de la line nl */
 orSM ( epi1, &x0, &y1, SM1 ) ;
 orSM ( epi2, &x0, &y1, SM2 ) ;
 ortho[0] = SM1[1]*SM2[2] - SM1[2]*SM2[1] ;
@@ -2208,7 +2208,7 @@ erreur = _pscalaire ( SM2 , ortho ) ;
 erreur = _abs ( erreur ) ;
 if ( erreur > (*ori2).pix[1]/10.0 ) { return 0 ; }
 
-/* resolution en x : erreur inferieure au 1/10 pixel au bout de ns pixels */
+/* resolution en x : error inferieure au 1/10 pixel au bout de ns pixels */
 erreur = (*ori1).pix[0] - (*ori2).pix[0]*(*ori1).pix[1]/(*ori2).pix[1] ;
 erreur = _abs(erreur) ;
 if ( x1 * erreur > (*ori1).pix[0]/10.0 ) { return 0 ; }
@@ -2315,7 +2315,7 @@ epi = (or_orientation *) *epipo ;
 if ( (*ins > (*ph).ins) || (*inl > (*ph).inl) ||
      (*ons > (*epi).ins) || (*onl > (*epi).inl) ) return istat ;
 
-/* Coordonnees terrain de l'origine de l'image epipolaire */
+/* coordinates terrain de l'origine de l'image epipolaire */
 istat = orrepere_3D_image ( epipo, xyz0, dcol, dlig ) ;
 xx0 = xyz0[0] ;
 yy0 = xyz0[1] ;
@@ -2351,7 +2351,7 @@ return istat ;
                 double *zmin, double *zmax,
                 void* *epiphot1, void* *epiphot2,
                 int *ns, int *nl )
-/* > on positionne le plan epipolaire a l'altitude (zmin+zmax)/2 pour le point
+/* > on positionne le plan epipolaire a l'altitude (zmin+zmax)/2 for le point
   central de la zone designee sur l'image gauche
    > remplit_orient_epipolaire definit le plan epipolaire (focale, orientation)
    > emprise_epipo definit l'image sur le plan epipolaire
@@ -2587,7 +2587,7 @@ SM[2] = MM[2] - (*epi).sommet[2] ;
 (*epi).pix[0] = *pas ;
 (*epi).pix[1] = *pas ;
 
-/* temporairement, on situe l'origine du plan au Point principal */
+/* temporairement, on situe l'origine du plan au point principal */
 (*epi).ipp[0] = 0.0 ;
 (*epi).ipp[1] = 0.0 ;
 
@@ -2595,9 +2595,9 @@ SM[2] = MM[2] - (*epi).sommet[2] ;
 }
 /*----------------------------------------------------------------------------*/
 void oremprise_epipo_droite ( void* *epiphot1, void* *epiphot2 )
-/* dans le plan epipolaire choisi, les deux images sont superposables
+/* in le plan epipolaire choisi, les deux images sont superposables
    Comme S1S2 est parallele a l'axe des x, ipp[1] a la meme valeur pour
-   les deux images; ne reste qu'a calculer ipp[0] */
+   les deux images; ne reste qu'a compute ipp[0] */
 {
 or_orientation		*epi1 ;
 or_orientation		*epi2 ;
@@ -2607,7 +2607,7 @@ double			xx ;
 epi1 = (or_orientation *) *epiphot1 ;
 epi2 = (or_orientation *) *epiphot2 ;
 
-/* projection de S2 dans le repere de epiphot1 */
+/* projection de S2 in le repere de epiphot1 */
 S1S2[0] = (*epi2).sommet[0] - (*epi1).sommet[0] ;
 S1S2[1] = (*epi2).sommet[1] - (*epi1).sommet[1] ;
 S1S2[2] = (*epi2).sommet[2] - (*epi1).sommet[2] ;
@@ -3713,7 +3713,7 @@ cDistFromCIC::cDistFromCIC
             if (aVE.empty())
             {
                // Chez Ebner le param B est la base en repere image, on lui donne
-               // pour valeur par defaut ce qu'elle vaut en rec 60%
+               // for value par defaut ce qu'elle vaut en rec 60%
                aVE.push_back(0.4 *ElMin(aCIC.SzIm().x,aCIC.SzIm().y));
             }
                     mCamEb = new cCam_Ebner
@@ -4107,9 +4107,9 @@ if (0)
 
 
 
-//  Calcule la rotation affine qui transforme un point de coordonnee
-//  camera en point de coordonnee monde, les colonnes de la matrice
-//  sont directement injectable dans orilib
+//  compute la rotation affine qui transforme un point de coordonnee
+//  camera en point de coordonnee monde, les colonnes de la matrix
+//  sont directement injectable in orilib
 
 ElMatrix<double>   Std_RAff_C2M
                    (
@@ -4132,7 +4132,7 @@ ElMatrix<double>   Std_RAff_C2M
 
        TrueRot = aRVect.CodageMatr().Val().TrueRot().ValWithDef(true);
 
-       if ((!TrueRot) && (false)) // false : valeur de ForceTrueRot avant supression
+       if ((!TrueRot) && (false)) // false : value de ForceTrueRot before supression
        {
            TrueRot = true;
            cElWarning::TrueRot.AddWarn("Force True Rot",__LINE__,__FILE__);
@@ -4233,7 +4233,7 @@ int XML_orlit_fictexte_orientation (const char *fic, or_orientation *ori,bool Qu
        ori->pix[0] = 1.0;
        ori->pix[1] = 1.0;
 
-       // Origine du repere tangent local et zone lambert,
+       // Origine du repere tangent local and zone lambert,
        // inutilise : on donne des valeurs "absurdes"
        ori->origine[0] = 0;
        ori->origine[1] = 0;
@@ -4275,7 +4275,7 @@ int XML_orlit_fictexte_orientation (const char *fic, or_orientation *ori,bool Qu
    const cCalibrationInternConique  & anOI =  anOC.Interne().Val();
    cDistFromCIC  aDF(anOI,&aConvOri,false);
    CamStenope * aCam = aDF.Cam();
-   aCam->SetOrientation(aRot.inv()); // Pour la verif !
+   aCam->SetOrientation(aRot.inv()); // for la verif !
    bool  CanDelete = true;
    {
 
@@ -4291,8 +4291,8 @@ int XML_orlit_fictexte_orientation (const char *fic, or_orientation *ori,bool Qu
      if (aCam->CanExportDistAsGrid())
      {
 
-    //  Je suis pas sur que ca serve encore, je le laisse la ou
-    //  il etait avant
+    //  Je suis pas on que ca serve encore, je le laisse la or
+    //  il etait before
           InitGrilleFromCam(ori,&((*ori).gt2p),*aCam,true); //true=M2C
           InitGrilleFromCam(ori,&((*ori).gp2t),*aCam,false);
           ori->distor = 1;
@@ -4925,8 +4925,8 @@ cOrientationExterneRigide From_Std_RAff_C2M
    if (aModeMatr)
    {
       cTypeCodageMatr  aCM;
-/*    NE MARCHE PLUS AVEC MATRICE POSSIBLEMENT NON ORTHO
-      // L1 L2 .. sont des ligne, donc transpose, donc image reciproques ...
+/*    NE MARCHE PLUS with matrix POSSIBLEMENT NON ORTHO
+      // L1 L2 .. sont des line, donc transpose, donc image reciproques ...
       aCM.L1() = aRC2M.IRecVect(Pt3dr(1,0,0));
       aCM.L2() = aRC2M.IRecVect(Pt3dr(0,1,0));
       aCM.L3() = aRC2M.IRecVect(Pt3dr(0,0,1));
@@ -5018,7 +5018,7 @@ cConvExplicite GlobMakeExplicite(const cConvOri & aConv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -5034,17 +5034,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

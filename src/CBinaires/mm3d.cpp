@@ -47,7 +47,7 @@ int XLib_Main(int argc, char ** argv);
 
 const cArgLogCom cArgLogCom::NoLog(-1);
 
-// MPD : suspecte un problème d'écrasement mutuel entre processus dans le logfile, inhibe temporairement pour
+// MPD : suspecte un problème d'écrasement mutuel between processus in le logfile, inhibe temporairement for
 // valider / invalider le diagnostic
 static bool DOLOG_MM3d = true;
 
@@ -97,7 +97,7 @@ void LogIn(int  argc, char **  argv, const std::string & aDir, int aNumArgDir)
 	fprintf(aFp, "=================================================================\n");
 	for (int aK = 0; aK< argc; aK++)
 	{
-		// MPD : je l'avais deja fait il y a 15 jours, ai pas du commite !!!!  Ca facilite copier-coller sur commande
+		// MPD : je l'avais deja fait il y a 15 jours, ai pas du commite !!!!  Ca facilite copier-coller on commande
 		fprintf(aFp, "\"%s\" ", argv[aK]);
 	}
 	fprintf(aFp, "\n");
@@ -1596,8 +1596,8 @@ int GenMain(int argc, char ** argv, const std::vector<cMMCom> & aVComs)
 		argv[1]++;
 	}
     
-	// MPD : deplace sinon core dump qd argc==1
-	// Pour l'analyse de la ligne de commande, on ne peut pas desactiver le bloquage de l'exe via l'option ExitOnBrkp
+	// MPD : deplace else core dump qd argc==1
+	// for l'analyse de la line de commande, on ne peut pas desactiver le bloquage de l'exe via l'option ExitOnBrkp
 	// puisqu le XML n'a pas encore ete analyse, on change donc provisoirement le comportement par defaut
 	// bool aValInit_TheExitOnBrkp=TheExitOnBrkp;
 	// TheExitOnBrkp=true;
@@ -1612,7 +1612,7 @@ int GenMain(int argc, char ** argv, const std::vector<cMMCom> & aVComs)
 
 	std::string aCom = argv[1];
 	// std::string aLowCom = current_program_subcommand();
-	std::string aLowCom = StrToLower(aCom);  // MPD modif, sinon suggestions de marche pas en TestLib
+	std::string aLowCom = StrToLower(aCom);  // MPD modif, else suggestions de marche pas en TestLib
 
 	std::vector<cSuggest *> mSugg;
 
@@ -1703,8 +1703,8 @@ if (0)
    for (int ak=0 ; ak<argc ; ak++)
     std::cout << "MMM [" << argv[ak] << "]\n";
 }
-	//  Genere un warning si la ligne de commande contient des caratere non ASCII, car ceux ci
-	// peuvent être invisible et genere des erreurs peu comprehensibles
+	//  Genere un warning if la line de commande contient des caratere non ASCII, car ceux ci
+	// peuvent être invisible and genere des erreurs peu comprehensibles
 
 	{
 		bool NonAsciiGot = false;
@@ -1734,7 +1734,7 @@ if (0)
 	ElTimer aT0;
 	bool showDuration = false;
 	if ((strcmp(argv[0], "mm3d") == 0) && J4M()) //show nothing if called by makefile  
-												 // MPD @  Jean Michael, mets a jour la fonction J4M en te basant sur MPD_MM , ER_MM .....
+												 // MPD @  Jean Michael, mets a jour la function J4M en te basant on MPD_MM , ER_MM .....
 	{
 		showDuration = true;
 		std::cout << "Command: ";
@@ -1745,7 +1745,7 @@ if (0)
 		std::cout << std::endl;
 	}
 
-	// transforme --AA en AA , pour la completion sur les options
+	// transforme --AA en AA , for la completion on les options
 	for (int aK = 0; aK<argc; aK++)
 	{
 		if ((argv[aK][0] == '-') && (argv[aK][1] == '-'))
@@ -1985,8 +1985,8 @@ public:
 		mLMMC = StdGetFromPCP(mFileXmlCmd, Xml_SpecifAllMMCmd);
 
 		tDicMMCom & aDicC = DicAllCom();
-		// On verifie que ttes les commandes XML correspondent a du C++ et on initialise la lib/group si necessaire
-		// la lib/group est initialisee  dans AllCom et donc DicAllCom
+		// On verifie que ttes les commandes XML correspondent a du C++ and on initialise la lib/group if necessaire
+		// la lib/group est initialisee  in AllCom and donc DicAllCom
 		for (auto aL = mLMMC.OneCmd().begin(); aL != mLMMC.OneCmd().end(); aL++)
 		{
 			cMMCom* aCom = aDicC[aL->Name()];
@@ -2009,7 +2009,7 @@ public:
 		}
 
 
-		// Sans doute provisoire genere toute les commande en indiquant si elle sont XML-documentee
+		// without doute provisoire genere toute les commande en indiquant if elle sont XML-documentee
 		if (EAMIsInit(&mShowAllCom))
 		{
 			FILE * aFSAC = FopenNN(mShowAllCom, "w", "cAppli_MMHelp ShowAllCom");

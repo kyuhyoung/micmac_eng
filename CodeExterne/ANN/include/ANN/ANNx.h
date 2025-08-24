@@ -82,7 +82,7 @@ void annPrintPt(				// print a point
 //	allocate new point storage. The destructor deallocates this
 //	storage.
 //
-//	BEWARE: Orthogonal rectangles should be passed ONLY BY REFERENCE.
+//	BEWARE: Orthogonal rectangles should be passed ONLY BY reference.
 //	(C++'s default copy constructor will not allocate new point
 //	storage, then on return the destructor free's storage, and then
 //	you get into big trouble in the calling procedure.)

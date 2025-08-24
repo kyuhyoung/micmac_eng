@@ -233,7 +233,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 */
 
 
-class cNOSolIn_Triplet;  // Triplet +ou- ensembliste
+class cNOSolIn_Triplet;  // Triplet +or- ensembliste
 class cLinkTripl;  //  Un cLinkTripl est un cNOSolIn_Triplet  ordonne, fait d'un cNOSolIn_Triplet + un permutation
 
 
@@ -315,7 +315,7 @@ class cNOSolIn_AttrSom
          std::vector<cLinkTripl >         mLnk3;
          double                           mCurCostMin;
          ElRotation3D                     mCurRot;
-         ElRotation3D                     mTestRot;  // Utilisee soit en simulation soit avec verite externe
+         ElRotation3D                     mTestRot;  // Utilisee soit en simulation soit with verite externe
 
          double                           mSomGainByTriplet;
          int                              mNbGainByTriplet;
@@ -361,8 +361,8 @@ class cNOSolIn_AttrASym
          cNOSolIn_AttrASym();
          void PostInit(bool Show);
      private :
-         std::vector<cLinkTripl> mLnk3; // Liste des triplets partageant cet arc
-         ElRotation3D            mEstimC2toC1;  // Rotation estime par aggregat "robuste" sur les triplets
+         std::vector<cLinkTripl> mLnk3; // list des triplets partageant cet arc
+         ElRotation3D            mEstimC2toC1;  // rotation estime par aggregat "robuste" on les triplets
          double                  mBOnH;
 
 };
@@ -547,7 +547,7 @@ class cAppli_NewSolGolInit : public cCommonMartiniAppli
         void   FilterTripletValide();
  
 
-        // Calcule une rotation robuste a partir des differentes solution des triplets
+        // compute une rotation robuste a partir des differentes solution des triplets
         void    InitRotOfArc(tArcNSI * anArc,bool Test);
 
 
@@ -565,9 +565,9 @@ class cAppli_NewSolGolInit : public cCommonMartiniAppli
         tGrNSI               mGr;
         tSubGrNSI            mSubAll;
         std::map<std::string,tSomNSI *> mMapS;
-        cComputecKernelGraph             mCompKG;  // Defini dans include/general/bitm.h
+        cComputecKernelGraph             mCompKG;  // Defini in include/general/bitm.h
 
-// Variables temporaires pour charger un triplet 
+// Variables temporaires for charger un triplet 
         std::vector<tSomNSI *>  mVCur3;  // Tripelt courrant
         std::vector<tSomNSI *>  mVCur2;  // Adjcent au triplet courant
         std::vector<cNOSolIn_Triplet*> mV3;
@@ -618,12 +618,12 @@ void AssertArcOriented(tArcNSI *);
 //  Return la rotation qui va des coordonnes de  A.s2() vers A.s1()
 ElRotation3D RotationC2toC1(tArcNSI * anArc,cNOSolIn_Triplet * aTri);
 
-// anArc doit etre l'arc commun aux 2 triplets (et oriente, sait pas si necessaire ?)
-//  calcule la coherence entre les deux valeurs de RotationC2toC1
+// anArc doit etre l'arc commun aux 2 triplets (and oriente, sait pas if necessaire ?)
+//  compute la coherence between les deux valeurs de RotationC2toC1
 
 double DistCoherence1to2 (tArcNSI * anArc,cNOSolIn_Triplet * aTriA,cNOSolIn_Triplet * aTriB);
 
-//  Calcule la coherence en faisant deux fois le calcule qui va du triplet A vers le triplet B
+//  compute la coherence en faisant deux fois le compute qui va du triplet A vers le triplet B
 //  anArc must be adjacent to aTriA and aTriB, then the orientation of the submit are
 
 double DistCoherenceAtoB(tArcNSI * anArc,cNOSolIn_Triplet * aTriA,cNOSolIn_Triplet * aTriB);

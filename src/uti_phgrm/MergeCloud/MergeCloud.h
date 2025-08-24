@@ -59,7 +59,7 @@ typedef enum
   eLFMaster,
   eLFMasked,
   eLFBorder
-  // Warn si on change le nb de label : stocke pour l'instant sur des 2 bits
+  // Warn if on change le nb de label : stocke for l'instant on des 2 bits
   //  eLFTmp
 } eLabelFinaux;
 
@@ -69,7 +69,7 @@ typedef enum
 
 class cAppliMergeCloud;
 class cASAMG; // Attribut Sommet cAppliMergeCloud
-class cResumNuage; // Classe pour representer un nuage rapidement
+class cResumNuage; // class for representer un nuage rapidement
 
 class c3AMG; // Attribut ARC cAppliMergeCloud
 class c3AMGS; // c3AMG sym
@@ -147,7 +147,7 @@ class cASAMG
       inline void SuppressPix(const Pt2di &, const int & aLab);
 
 
-      // Valeur >0 si dedans,  <0 dehors, quantifie l'interiorite
+      // value >0 if dedans,  <0 dehors, quantifie l'interiorite
       double  InterioriteEnvlop(const Pt2di & aP,double aProfTest,double & aDeltaProf) const;
 
       std::string ExportMiseAuPoint();
@@ -238,7 +238,7 @@ class cASAMG
 
      std::vector<cASAMG *>  mCloseNeigh;
 
-     cResumNuage            mLowRN;  // Basse resolution pour la topologie
+     cResumNuage            mLowRN;  // Basse resolution for la topologie
      cImSecOfMaster         mISOM;
      int                    mNivSelected;
      bool                   mIsMAP;

@@ -9,7 +9,7 @@
 #include "ENUCoords.h"
 
 // ---------------------------------------------------------------
-// Classe contenant les coordonnées dans le repère ECEF
+// class contenant les coordonnées in le repère ECEF
 // ---------------------------------------------------------------
 
 class GeoCoords;
@@ -52,7 +52,7 @@ class ECEFCoords {
 
         ENUCoords toENUSpeed(ECEFCoords);
 
-		// Vecteur entre points
+		// vector between points
 		ECEFCoords operator- (ECEFCoords p){
 			ECEFCoords output;
 			output.X = this->X - p.X;

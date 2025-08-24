@@ -116,7 +116,7 @@ class cParamMap2DRobustInit
          int                 mNbTirRans;
          int                 mNbMaxPtsRansac;
          int                 mNbTestFor1P;
-         double              mPropRan;  // Percentile (entre 0 et 1) pour estimer l'erreur lors du Ransac
+         double              mPropRan;  // Percentile (between 0 and 1) for estimer l'error lors du Ransac
          int                 mNbIterL2;
          cElMap2D*           mRes;
          std::vector<std::string>  mVAux;
@@ -248,8 +248,8 @@ class cMapPol2d : public  cElMap2D
       void  InitFromParams(const std::vector<double> &aSol);
       std::vector<double> Params() const;
       virtual bool Compatible(const cElMap2D *) const;
-      cElMap2D * Duplicate() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
-      cElMap2D * Identity() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
+      cElMap2D * Duplicate() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
+      cElMap2D * Identity() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
       cElMap2D * Map2DInverse() const;
 
       cXml_Map2D    ToXmlGen() ; // Peuvent renvoyer 0
@@ -1023,7 +1023,7 @@ class cElHomotPure : public cElMap2D
         virtual int   NbUnknown() const;
         virtual void  AddEq(Pt2dr & aCste,std::vector<double> & anEqX,std::vector<double> & anEqY,const Pt2dr & aP1,const Pt2dr & aP2 ) const;
         virtual void  InitFromParams(const std::vector<double> &aSol);
-        virtual bool Compatible(const cElMap2D *) const; // Pour l'affectation, peut faire un down cast 
+        virtual bool Compatible(const cElMap2D *) const; // for l'affectation, peut faire un down cast 
 
    private :
         Pt2dr   mPInv;
@@ -1079,7 +1079,7 @@ cElTrans::cElTrans(const cXml_Trans  & aXml) :
    mTrans (aXml.Tr())
 {
 }
-// Appel pour operer sur un point
+// Appel for operer on un point
 Pt2dr cElHomotPure::operator () (const Pt2dr & p) const
 {
    return mPInv  + (p-mPInv) * mScale;
@@ -1142,7 +1142,7 @@ cXml_Map2D    cElTrans::ToXmlGen()
    return MapFromElem(anElem);
 }
 
-//  Systeme d'equation 
+//  system d'equation 
 int   cElTrans::NbUnknown() const { return 2; }
 int   cElHomotPure::NbUnknown() const { return 1; }
 
@@ -2040,7 +2040,7 @@ class cAppli_CPP_DenseMapToHom
     Im2D_REAL8  mImX2;
     Im2D_REAL8  mImY2;
     Im2D_REAL8  mImP;
-    double      mOverlap; // Si 1 les dalles se recouvrent juste
+    double      mOverlap; // if 1 les dalles se recouvrent juste
 
     cAppli_CPP_DenseMapToHom(int argc,char** argv);
 };
@@ -2118,8 +2118,8 @@ cAppli_CPP_DenseMapToHom::cAppli_CPP_DenseMapToHom(int argc,char** argv) :
        for (aP.y=0 ; aP.y< mSzRed.y ; aP.y++)
        {
            Pt2dr aPC = Pt2dr(aP) + Pt2dr(0.5,0.5); // au cente de la dalle reduite
-           aPC = aPC.dcbyc(Pt2dr(mSzRed)); // Entre 0 et 1
-           aPC = aPC.mcbyc(Pt2dr(mSz));    // au centre des coordonnees pleines
+           aPC = aPC.dcbyc(Pt2dr(mSzRed)); // between 0 and 1
+           aPC = aPC.mcbyc(Pt2dr(mSz));    // au centre des coordinates pleines
 
            Pt2di aPIm0 = Sup(Pt2di(0,0),round_down(aPC-mDemiTile));
            Pt2di aPIm1 = Inf(mSz,round_down(aPC+mDemiTile));
@@ -2344,7 +2344,7 @@ void  Map2DRobustInit(const ElPackHomologue & aPackFull,cParamMap2DRobustInit & 
    }
    int aNbPRan = aVRansac.size();
 
-   // Calcul du Ransac
+   // computation du Ransac
    cElMap2D * aTestMap = cElMap2D::IdentFromType(aParam.mType,&aParam.mVAux);
    cElMap2D * aBestSol = cElMap2D::IdentFromType(aParam.mType,&aParam.mVAux);
    double aBestScRan = 1e60;
@@ -2444,7 +2444,7 @@ double TestMap2D(cElMap2D & aMapInit,const ElPackHomologue & aPackInit,bool With
     } 
     bool IsPolyn =  (aMapInit.Type() == eTM2_Polyn);
 
-    // On test aussi la fonction d'affectation
+    // On test aussi la function d'affectation
     cElMap2D * aMap = IsPolyn                                          ?
                       L2EstimMapHom(aMapInit.Identity(),aPack)                   :
                       L2EstimMapHom(eTypeMap2D(aMapInit.Type()),aPack) ;
@@ -2467,7 +2467,7 @@ double TestMap2D(cElMap2D & aMapInit,const ElPackHomologue & aPackInit,bool With
        int aCpt = 0;
        for (ElPackHomologue::iterator itCpl=aPack.begin();itCpl!=aPack.end() ; itCpl++)
        {
-           if ((aCpt%8)==0) // 12.5 % d'erreur
+           if ((aCpt%8)==0) // 12.5 % d'error
                itCpl->P2() =  itCpl->P2() +  PRanCInSquare(100.0);
             else 
                itCpl->P2() =  itCpl->P2() +  PRanCInSquare(0.5);
@@ -2559,7 +2559,7 @@ void TestMap2D()
 // cXYMapPol2d
 // P(T,x,y) =  Sum ( T^k P_k(x,y)) = 
 
-     //   Calcul map evol
+     //   computation map evol
 
 class cMapPolXYT
 {

@@ -65,15 +65,15 @@ class cLinkImTT;
 #define TT_DefCorrel -2.0
 #define TT_MaxCorrel 1.0
 
-//======= Point d'interet & Other Seuil ============//
+//======= point d'interet & Other Seuil ============//
 #define TT_DIST_RECH_HOM 12.0  // Seuil de recherche des homologues lors de la premiere iteration (par les etiquettes)
 #define TT_DIST_EXTREMA  3.0   // Taille du voisinage sur lequel un extrema local doit etre max
 #define TT_SEUIL_SURF_TRI_PIXEL   100 //  Supprime les triangles trop petits
 
 //======= Filtrage Spatial Seuil ============//
 #define TT_DefSeuilDensiteResul   50   // conserve 1 point / disque de rayon TT_DefSeuilDensiteResul
-// Rayon de filtrage spatial du point apres l'appariement
-// Dans FiltrageSpatialRMIRC()
+// Rayon de filtrage spatial du point after l'appariement
+// in FiltrageSpatialRMIRC()
 
 #define TT_RatioFastFiltrSpatial     8    // Ratio par rapport a TT_DefSeuilDensiteResul, pour point I Fast
 #define TT_RatioCorrEntFiltrSpatial  4    // Ratio par rapport a TT_DefSeuilDensiteResul, pour point apres Corr Ent
@@ -87,8 +87,8 @@ class cLinkImTT;
 
 
 //(TT_DefSeuilDensiteResul/TT_RatioFastFiltrSpatial).^2 = rayon de filtrage spatial du point d'interet.
-// Cet seuil est appliquer pour filtrer les point d'interet juste apres la detection de point d'interet
-// Appliquer sur image maitraisse seulement
+// Cet seuil est appliquer for filtrer les point d'interet juste after la detection de point d'interet
+// Appliquer on image maitraisse seulement
 // Priorité par FAST quality
 
 //======= AutoCorrel Critere Seuil ============//
@@ -100,19 +100,19 @@ class cLinkImTT;
 //======= Correlation Seuil ============//
 #define TT_SEUIL_CORREL_1PIXSUR2  0.7   // seuil d'acceptation pour correl 1px/2
 #define TT_SEUIl_DIST_Extrema_Entier  1.5  // Distance entre l'extrema init et le max de correl trouve.
-                                           //seuil d'acceptation point pour correl 1px/2 & pixel entier.
+                                           //seuil d'acceptation point for correl 1px/2 & pixel integer.
 #define TT_DemiFenetreCorrel 6
 //  Correlation 1PIX/2 => aSzW = TT_DemiFenetreCorrel/2
-//  Correlation entier => aSzW = TT_DemiFenetreCorrel
+//  Correlation integer => aSzW = TT_DemiFenetreCorrel
 
 //======= FAST Critere Seuil ============//
 #define TT_DIST_FAST  4.0   // Critere type Fast calcul des extrema locaux
 
-// 75% de point Non consecutive ecarte point noyeau un valeur d'intensité min = 5
+// 75% de point Non consecutive ecarte point noyeau un value d'intensité min = 5
 #define TT_PropFastStd 0.75
 #define TT_SeuilFastStd  5
 
-// 60% de point consecutive ecarte point noyeau un valeur d'intensité min = 3
+// 60% de point consecutive ecarte point noyeau un value d'intensité min = 3
 #define TT_PropFastConsec 0.6
 #define TT_SeuilFastCons 3
 
@@ -142,7 +142,7 @@ extern void TestcAutoCorrelDir(TIm2D<double,double> aTIm,const Pt2di & aP0);
 #define ETAPE_CORREL_DENSE  2
 #define ETAPE_FINALE        3
 
-// Pour initialiser les parametres avec EAM en ayant un constructeur trivial
+// for initialiser les parameters with EAM en ayant un constructeur trivial
 class cParamAppliTieTri
 {
     public :
@@ -257,10 +257,10 @@ class cAppliTieTri : public cParamAppliTieTri
          double                            mDisExtrema;
          double                            mDistRechHom;
 
-         // Les voisins pour savoir si un point est un extrema local, ne contient
+         // Les voisins for savoir if un point est un extrema local, ne contient
          // pas le point central (0,0)
          std::vector<Pt2di>                mVoisExtr;
-         // Les voisins pour rechercher les homologues une certaine distance
+         // Les voisins for rechercher les homologues une certaine distance
          std::vector<Pt2di>                mVoisHom;
          bool                              mDebug;
          // Le plan du triangle courant
@@ -287,7 +287,7 @@ class cAppliTieTri : public cParamAppliTieTri
          std::vector<int>   mNumSelectImage;
          std::string        mKeyMasqIm;
 
-         bool               mPIsInImRedr;  // Savoir si les points de correlation sont points redresses ou non
+         bool               mPIsInImRedr;  // Savoir if les points de correlation sont points redresses or non
          int                mCurEtape;
 
          Pt2dr          mMoyDifAffHomo;
@@ -346,7 +346,7 @@ class cImTieTri
            cImTieTri(cAppliTieTri & ,const std::string& aNameIm,int aNum);
            Video_Win *        W();
            virtual bool IsMaster() const = 0;
-           virtual tTImTiepTri & ImRedr() = 0; // C'est l'image init pour Mastre et Redr sinon
+           virtual tTImTiepTri & ImRedr() = 0; // C'est l'image init for Mastre and Redr else
 
            const Pt2di  &   Decal() const;
            const int & Num() const;
@@ -581,7 +581,7 @@ class cResulMultiImRechCorrel
          bool                                   mAllInit;
          std::vector<cResulRechCorrel > mVRRC;
          std::vector<int>                       mVIndex;
-         std::vector<bool>                      mVSelec; // Utilise dans le filtrage spatial pour savoir si ce point a deja ete selec
+         std::vector<bool>                      mVSelec; // Utilise in le filtrage spatial for savoir if ce point a deja ete selec
          int                                    mHeapIndexe;
          int                                    mNbSel;
 };

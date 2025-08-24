@@ -454,7 +454,7 @@ template <class Type> REAL Box2d<Type>::SquareDist(const Pt2dr & pt) const
 {
 
      //  return (this->*_Tab_FreemSquareDist[freeman_pos(pt)])(pt);
-     // genere un warning bizzare sur WSC5 :
+     // genere un warning bizzare on WSC5 :
      // Warning (Anachronism): Pointer to non-const member function used with const object.
 
      return ((const_cast<Box2d<Type> *>(this))->*_Tab_FreemSquareDist[freeman_pos(pt)])(pt);
@@ -514,23 +514,23 @@ template <class Type> class BoxFreemanCompil
 
        enum
        {
-             INTER_TOUJ,      /* un en 8 ou 0-4 ou 2-6 */
-                              /* positions, sans jamais d'intersection */
+             INTER_TOUJ,      /* un en 8 or 0-4 or 2-6 */
+                              /* positions, without jamais d'intersection */
              CFF_00,
              CFF_11,
              CFF_13,
              CFF_01,
-                              /* positions, avec parfois des intersection */
+                              /* positions, with parfois des intersection */
              CFF_02,
              CFF_03,
              CFF_15
        };
 
        INT TAB_CONF_CPLE_FREEM[9][9];
-       INT TAB_IND_QX[9][9];  /* tableau des indices x des "Q-Vois" dans Freem */
-       INT TAB_IND_QY[9][9];  /* tableau des indices y des "Q-Vois" dans Freem */
-       INT TAB_IND_Q2X[9][9];  /* idem, quand y'a deux points */
-       INT TAB_IND_Q2Y[9][9];  /* idem, quand y'a deux points */
+       INT TAB_IND_QX[9][9];  /* array des indices x des "Q-Vois" in Freem */
+       INT TAB_IND_QY[9][9];  /* array des indices y des "Q-Vois" in Freem */
+       INT TAB_IND_Q2X[9][9];  /* idem, when y'a deux points */
+       INT TAB_IND_Q2Y[9][9];  /* idem, when y'a deux points */
        INT TAB_TRIGO_CF[8][8];
 
        BoxFreemanCompil(int);
@@ -609,7 +609,7 @@ template <class Type> BoxFreemanCompil<Type>::BoxFreemanCompil(int)
         }
     }
 
-    /* init a une valeur bidon */
+    /* init a une value bidon */
     init_tab_cfr(TAB_CONF_CPLE_FREEM);
     init_tab_cfr(TAB_IND_QX);
     init_tab_cfr(TAB_IND_QY);
@@ -624,12 +624,12 @@ template <class Type> BoxFreemanCompil<Type>::BoxFreemanCompil(int)
         TAB_CONF_CPLE_FREEM[i][i+4] = INTER_TOUJ;
 
 
-    /* 4- voisins dans la meme case */
+    /* 4- voisins in la meme case */
     for (i = 0 ; i < 8 ; i+= 2)
         TAB_CONF_CPLE_FREEM[i][i] = CFF_00;
 
 
-    /* 8- voisins dans la meme case */
+    /* 8- voisins in la meme case */
     for (i = 1 ; i < 8 ; i+= 2)
     {
         TAB_IND_QX[i][i] = IND_X_COIN[i/2];
@@ -648,7 +648,7 @@ template <class Type> BoxFreemanCompil<Type>::BoxFreemanCompil(int)
         TAB_IND_Q2Y[i][(i+2)%8] = IND_Y_COIN[(i/2+1)%4];
     }
 
-    /*   4 et 8-voisins a une case d'ecart */
+    /*   4 and 8-voisins a une case d'ecart */
     for (i = 0 ; i < 8 ; i++)
     {
         TAB_CONF_CPLE_FREEM[i][(i+1)%8] = CFF_01;
@@ -811,7 +811,7 @@ template <class Type>
 std::vector<Pt2dr> Box2d<Type>::ClipConpMax(const std::vector<Pt2dr> & aCont)
 {
     cElPolygone aP1 ;
-    Box2dr aB(_p0,_p1);  // Pour forcer le type reel
+    Box2dr aB(_p0,_p1);  // for forcer le type real
     aP1.AddContour(aB.Contour(),false);
 
 
@@ -868,7 +868,7 @@ std::vector<Pt2d<Type> >    Box2d<Type>::Contour() const
 /*************************************************************/
 /*************************************************************/
 /**                                                         **/
-/**   "Transformation" de box                               **/
+/**   "transformation" de box                               **/
 /**                                                         **/
 /*************************************************************/
 /*************************************************************/

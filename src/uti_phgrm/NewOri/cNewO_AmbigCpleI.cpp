@@ -42,7 +42,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 void  cNewO_OrInit2Im::CalcSegAmbig()
 {
-    mDirAmbig =  vunit(mIA ^ mBestSol.tr());  // Le vecteur |_ au plan (0 , Base, Inter)
+    mDirAmbig =  vunit(mIA ^ mBestSol.tr());  // Le vector |_ au plan (0 , Base, Inter)
     mSegAmbig = ElSeg3D(mIA,mIA+mDirAmbig);
 }
 

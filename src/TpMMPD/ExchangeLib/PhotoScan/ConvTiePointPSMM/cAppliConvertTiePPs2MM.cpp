@@ -14,7 +14,7 @@ cHomolPS::cHomolPS(	std::string aImgName,
 
 cOneImg::cOneImg(string aImgName):
     mImgName(aImgName),
-    mVIsIdExist (1000000, false), //initializer avec 2 milion items ? trop con
+    mVIsIdExist (1000000, false), //initializer with 2 milion items ? trop con
     mVCoor (1000000, Pt2dr(0,0)),
     mIdMax (0)
 {}
@@ -57,7 +57,7 @@ bool cAppliConvertTiePPs2MM::readPSTxtFile(string aPSHomol, vector<cHomolPS*> & 
 //                                                   aC
 //                                                 );
 //                VHomolPS.push_back(aItemPS);
-                //Get name Im Unique (uniquement pour fichier trie par name Im)
+                //Get name Im Unique (uniquement for file trie par name Im)
                 if (strcmp(aImCurrent.c_str() , aName.c_str()))
                 {
                     aImCurrent = aName;

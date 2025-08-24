@@ -10,7 +10,7 @@ using namespace std;
 	fonctions globales
 */
 bool rm(const QString& directory) {
-//supprime le dossier ; il faut avoir les droits du répertoire parent
+//supprime le folder ; il faut avoir les droits du répertoire parent
 	if (!QDir(directory).exists()) return true;
 	QString repertoire = directory;
 	if (repertoire.right(1)!=QString("/")) repertoire += QString("/");
@@ -37,7 +37,7 @@ void deleteFile(const QString& file, bool dir) {
 }
 
 bool checkPath(const QString& path) {
-//vérifie les accents et caratères spéciaux du chemin donné
+//vérifie les accents and caratères spéciaux du chemin donné
 	//if (!QDir(path).exists() && !QFile(path).exists()) return false;
 	for (int i=0; i<path.count();i++) {
 		QString ss = path.left(i+1).right(1);
@@ -51,7 +51,7 @@ bool checkPath(const QString& path) {
 	return true;
 }
 
-int execute(QString commande) {	//équivaut à system(ch(commande)) ; mais il y a un pb de buffer : la commande est coupée et l'exécution plante (pas toujours de pb avec la fct execute)
+int execute(QString commande) {	//équivaut à system(ch(commande)) ; but il y a un pb de buffer : la commande est coupée and l'exécution plante (pas toujours de pb with la fct execute)
 	QByteArray ba;
 	ba.append(commande);
 	return system_call(ba.constData());
@@ -61,7 +61,7 @@ int execute(QString commande) {	//équivaut à system(ch(commande)) ; mais il y 
 	variable globales
 */
 QString applicationPath() {
-//chemin de l'application ou du paquet pour MAC
+//chemin de l'application or du paquet for MAC
 	QString s = QApplication::applicationDirPath();
 	#if defined Q_WS_MAC
 		s = s.section("/",0,-4);
@@ -70,7 +70,7 @@ QString applicationPath() {
 }
 QString dirBin(const QString& micmacdir) {
 	#if defined Q_WS_WIN
-		//chemin pour la commande make
+		//chemin for la commande make
 		return noBlank(micmacdir) + QString("bin/");
 	#else
 		return QString();
@@ -80,7 +80,7 @@ QString dirBin(const QString& micmacdir) {
 QString systemeNumerique(QString& virgule) {
 //format du séparateur de décimales
 	float a,b;
-	int n = sscanf("2.5 2.6", "%f %f", &a, &b);	//fonction utilisée par elise pour parser les Pt2dr dans les xml
+	int n = sscanf("2.5 2.6", "%f %f", &a, &b);	//function utilisée par elise for parser les Pt2dr in les xml
 	if (n==2) virgule = QString(".");
 	else {
 		n = sscanf("2,5 2,6", "%f %f", &a, &b);
@@ -104,10 +104,10 @@ QString systemeNumerique(QString& virgule, QString& point) {
 		- pour restituer les accents dans les widgets (QMessageBox, QLabel, QMenu...), utiliser QApplication::translate = conv
 		- traduction + accents dans les widgets : conv(tr(char*))
 */
-const char* ch(const QString& s) { return s.toStdString().c_str(); }	//QString -> char* (pour les cout)
-QString conv(const QString& s) { return QApplication::translate("Dialog", s.toStdString().c_str(), 0, QApplication::CodecForTr); }	//restitution des accents (peut s'utiliser avec un QObject::tr)
-QString conv(const char* c) { return QApplication::translate("Dialog", c, 0, QApplication::CodecForTr); }	//restitution des accents (peut s'utiliser avec un QObject::tr)
-//void qMessageBox(QWidget* w, QString title, QString msg) { QMessageBox::about(w, conv(title), conv(msg)); }	//QMessageBox avec restitution des accents
+const char* ch(const QString& s) { return s.toStdString().c_str(); }	//QString -> char* (for les cout)
+QString conv(const QString& s) { return QApplication::translate("Dialog", s.toStdString().c_str(), 0, QApplication::CodecForTr); }	//restitution des accents (peut s'utiliser with un QObject::tr)
+QString conv(const char* c) { return QApplication::translate("Dialog", c, 0, QApplication::CodecForTr); }	//restitution des accents (peut s'utiliser with un QObject::tr)
+//void qMessageBox(QWidget* w, QString title, QString msg) { QMessageBox::about(w, conv(title), conv(msg)); }	//QMessageBox with restitution des accents
 void qMessageBox(QWidget* w, QString title, QString msg) { QMessageBox::about(w, title, msg); }	//QMessageBox
 ostream& ecr(const QString& s) {	//cout << s
 	cout << s.toStdString() << endl;
@@ -119,7 +119,7 @@ QString remplace(const QString& s, const QString& before, const QString& after) 
 }
 QString comm(const QString& s) {
 	#if defined Q_WS_WIN
-		//chemin avec "\" pour la commande cd
+		//chemin with "\" for la commande cd
 		return remplace(s,"/","\\");
 	#else
 		return s;
@@ -251,7 +251,7 @@ Interface::Interface(QSettings& globParam):
 	
 	widget->setLayout(layout);
 
-	//titres et logos
+	//titres and logos
 	QWidget* topWidget = new QWidget(this);
 	QGridLayout *topLayout = new QGridLayout;
 	topWidget->setLayout(topLayout);
@@ -432,7 +432,7 @@ void Interface::initialisation() {
 }
 
 bool Interface::checkMicmac() {
-	//Vérification des droits du dossier parent (problème ../TMP pour MyRename)
+	//Vérification des droits du folder parent (problème ../TMP for MyRename)
 	QDir parentDir = QDir::current();
 	if (!parentDir.cdUp()) {
 		qMessageBox(this, tr("Directory error") ,conv(tr("The parent directory of terminal directory %1 is uneditable.")).arg(QDir::currentPath()));
@@ -452,7 +452,7 @@ bool Interface::checkMicmac() {
 		return false;
 	}
 
-	//récupération du nombre de processeurs	de la machine	
+	//récupération du number de processeurs	de la machine	
 		//Windows
 	#if defined Q_WS_WIN 
 		SYSTEM_INFO si;
@@ -467,7 +467,7 @@ bool Interface::checkMicmac() {
 		if (fichier != NULL) {
 			while (fgets(chaine, 100, fichier) != NULL) {
 				QString qs(chaine);
-				if (qs.contains(QString("cpu cores"))) {	//et pour les dual cores ?
+				if (qs.contains(QString("cpu cores"))) {	//and for les dual cores ?
 					qs = qs.simplified().section("cpu cores",-1,-1);
 					for (int i=0; i<qs.size(); i++) {
 						if (qs.at(i).isDigit()) {
@@ -496,16 +496,16 @@ bool Interface::checkMicmac() {
 
 	//répertoire micmac
 	QString micmacPath( MMDir().c_str() );
-	paramMain.setMicmacDir(micmacPath);	//NB : s'il existe, le dossier micmac est validé même s'il n'y a pas tous les binaires ou la bonne configuration
+	paramMain.setMicmacDir(micmacPath);	//NB : s'il existe, le folder micmac est validé même s'il n'y a pas tous les binaires or la bonne configuration
 	cout << tr("Micmac directory : ").toStdString(); cout << micmacPath.toStdString() << endl;
 
 	//configuration de micmac
-	bool b2 = true;	//si false, il faut réécrire le fichier MicMacConfig.xml
+	bool b2 = true;	//if false, il faut réécrire le file MicMacConfig.xml
 	int cpuLu;
 	
-	if (!Options::readMicMacInstall(micmacPath, cpuLu)) b2 = false;	//pas de fichier MicMacConfig.xml reconnu ou fichier erronné (chemin micmac)
+	if (!Options::readMicMacInstall(micmacPath, cpuLu)) b2 = false;	//pas de file MicMacConfig.xml reconnu or file erronné (chemin micmac)
 	if (b2 && settings->value("cpu").toString().isEmpty() && cpuLu<=cpu_count) maxcpu = cpuLu;	//pas de cpu initial -> on prend celui de micmac
-	else if (b2 && maxcpu!=cpuLu) b2 = false;	//il y a un cpu initial ou bien le cpu de micmac n'est pas possible -> on corrige le cpu de micmac
+	else if (b2 && maxcpu!=cpuLu) b2 = false;	//il y a un cpu initial or bien le cpu de micmac n'est pas possible -> on corrige le cpu de micmac
 	if (!b2) Options::writeMicMacInstall(micmacPath, maxcpu);
 	cout << tr("Number of usable processors : ").toStdString(); cout << maxcpu << endl;
 
@@ -532,10 +532,10 @@ QString Interface::pathToMicMac (QString currentPath, const QStringList& l, QStr
 		QString micmacDir = currentPath + l.at(i) + QString("/");
 		if ( QFile(micmacDir+QString("bin")).exists() )
 			return micmacDir;
-		//y en a-t-il d'autres dans la liste ?
+		//y en a-t-il d'autres in la list ?
 		i = l.indexOf("micmac",i+1);
 	}
-	//on regarde les sous-répertoires
+	//on regarde les under-répertoires
 	for (int j=0; j<l.count(); j++) {
 		if (l.at(j)==QString(".") || l.at(j)==QString("..")) continue;
 		QString dir = currentPath + l.at(j) + QString("/");
@@ -605,7 +605,7 @@ void Interface::openCalc(const QString& fichier)
 			}
 			else if (reponse == 0) {	//oui
 				saveCalc();
-			}	//sinon non
+			}	//else non
 		}
 
 		//boîte de dialogue
@@ -635,7 +635,7 @@ void Interface::openCalc(const QString& fichier)
 	QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem(QStringList(paramMain.getDossier())<<QString());
 	imagesList->addTopLevelItem(treeWidgetItem);
 
-	//affichage de la liste d'images
+	//affichage de la list d'images
 	if (paramMain.getCurrentMode()!=ParamMain::BeginMode) {
 		QVector<ParamImage>* correspImgCalib = &(paramMain.modifCorrespImgCalib());
 		if (paramMain.getCurrentMode()!=ParamMain::ImageMode) {
@@ -674,7 +674,7 @@ void Interface::openCalc(const QString& fichier)
 			}
 
 			if (paramMain.getCurrentMode()!=ParamMain::PointsEnCours && paramMain.getCurrentMode()!=ParamMain::PointsMode) {
-				QString err = paramMain.saveImgsSize();	//pour pouvoir utiliser convert
+				QString err = paramMain.saveImgsSize();	//for pouvoir utiliser convert
 				if (!err.isEmpty()) {
 					qMessageBox(this, tr("Read error."), err);
 					return;
@@ -722,7 +722,7 @@ void Interface::openCalc(const QString& fichier)
 			else
 				treeWidgetItem = new QTreeWidgetItem(QStringList(it->getImageTif())<<it->getCalibration());
 			imagesList->topLevelItem(0)->addChild(treeWidgetItem);
-		}	//NB : le fichier de calcul a forcément un dossier (pas d'enregistrement dans BeginMode)
+		}	//NB : le file de computation a forcément un folder (pas d'enregistrement in BeginMode)
 		imagesList->expandAll();
 		imagesList->adjustSize();
 		adjustSize();
@@ -737,7 +737,7 @@ void Interface::openCalc(const QString& fichier)
 				qMessageBox(this, tr("Read error"), conv(tr("Image %1 number is uncorrect.")).arg(carte->getImageDeReference()));				
 				return;
 			}
-			//vérification du fichier de référencement
+			//vérification du file de référencement
 			if (!QFile(carte->getReferencementMasque(paramMain)).exists()) {
 				qMessageBox(this, tr("Read error"), conv(tr("Mask referencing file %1 not found.")).arg(carte->getReferencementMasque(paramMain)));			
 				return;
@@ -762,7 +762,7 @@ void Interface::openImg()
 		}
 		else if (reponse == 0) {	//oui
 			saveCalc();
-		}	//sinon non
+		}	//else non
 		paramMain.setDossier(QString());
 	}
 	if ((paramMain.getCurrentMode()!=ParamMain::BeginMode) && (paramMain.getCurrentMode()!=ParamMain::ImageMode)) initialisation();
@@ -787,23 +787,23 @@ void Interface::openImg()
 	if (imagesList->topLevelItemCount()!=0)
 		n = imagesList->topLevelItem(0)->childCount();
 
-	//on vérifie que le nom du dossier est lisible (à cause des accents)
+	//on vérifie que le nom du folder est lisible (à cause des accents)
 	if (!checkPath(fileNames.at(0))) {
 		qMessageBox(this, tr("Read error"), conv(tr("Fail to read directory.\nCheck there are no accents in path.")));	
 		return;
 	}
 
-	//lecture et affichage des images
+	//lecture and affichage des images
 	for (QStringList::const_iterator it=fileNames.begin(); it!=fileNames.end(); it++) {
 		QString s = *it;
 
-		//on vérifie que le nom du fichier est lisible (à cause des accents)
+		//on vérifie que le nom du file est lisible (à cause des accents)
 		if (!checkPath(s)) {
 			qMessageBox(this, tr("Read error"), conv(tr("Fail to read file %1.\nCheck there are no accents in path.")).arg(s));	
 			return;
 		}
 
-		//extraction du dossier et du nom de l'image
+		//extraction du folder and du nom de l'image
 		if (it==fileNames.begin()) {
 			QString s2 = s.section("/",0,-2);
 
@@ -819,14 +819,14 @@ void Interface::openImg()
 				}
 			}
 			paramMain.setDossier(s2);
-			if (imagesList->topLevelItemCount()==0) {	//nouveau dossier, nouvelle liste
+			if (imagesList->topLevelItemCount()==0) {	//nouveau folder, nouvelle list
 				QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem(QStringList(paramMain.getDossier())<<QString());
 				imagesList->addTopLevelItem(treeWidgetItem);
 			}
 		}
 		QString img = s.section('/', -1, -1);
 
-		//si c'est une image tif couleur, on prend l'image N&B
+		//if c'est une image tif couleur, on prend l'image N&B
 		if (img.right(12)==QString("_couleur.tif") && QFile(paramMain.getDossier()+img.left(img.count()-12)+QString(".tif")).exists()) img = img.left(img.count()-12)+QString(".tif");
 
 		//on vérifie que l'image n'a pas déjà été ajoutée
@@ -837,7 +837,7 @@ void Interface::openImg()
 		}
 		if (i<n) continue;
 
-		//enregistrement et affichage
+		//enregistrement and affichage
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem(QStringList(img)<<QString());
 		imagesList->topLevelItem(0)->addChild(treeWidgetItem);
 		n++;
@@ -845,7 +845,7 @@ void Interface::openImg()
 			array.setImageRAW(img);
 			array.setImageTif(QString());
 		QString extension = img.section(".",-1,-1);
-	/*	if (img.section(".",-1,-1).toUpper()==QString("tiff").toUpper() || img.section(".",-1,-1).toUpper()==QString("tif").toUpper()) {	//on renomme les .tiff en .tif et en minuscules
+	/*	if (img.section(".",-1,-1).toUpper()==QString("tiff").toUpper() || img.section(".",-1,-1).toUpper()==QString("tif").toUpper()) {	//on renomme les .tiff en .tif and en minuscules
 			QFile(paramMain.getDossier()+img).rename(paramMain.getDossier()+img.section(".",0,-2)+QString(".tif"));
 			img = img.section(".",0,-2)+QString(".tif");
 		}*/
@@ -901,7 +901,7 @@ void Interface::saveCalcAs()
 bool Interface::closeAppli()
 {
 	static int closetime = 0;
-	if (closetime!=0) return true;	//sinon appelle closeEvent qui appelle closeAppli
+	if (closetime!=0) return true;	//else appelle closeEvent qui appelle closeAppli
 	if (!saved) {
 		int reponse = dispMsgBox(conv(tr("Project has been modified.")), conv(tr("Do you want to save its parameters ?")), QVector<int>(3)<<0<<1<<2, 0);
 		if (reponse == 2) {	//annuler
@@ -909,10 +909,10 @@ bool Interface::closeAppli()
 		}
 		else if (reponse == 0) {	//oui
 			saveCalc();
-		}	//sinon non
+		}	//else non
 	}
 	closetime++;
-	close();	//appelle au closeEvent mais le "close" courant est traité avant et supprime la liste des événements
+	close();	//appelle au closeEvent but le "close" courant est traité before and supprime la list des événements
 	return true;
 }
 void Interface::closeEvent(QCloseEvent* event) {
@@ -928,8 +928,8 @@ void Interface::calcPastis(bool continuer)
 			int reponse = dispMsgBox(conv(tr("Tie points were already found.")), conv(tr("Do you want to remove them from the calculation ?")), QVector<int>()<<0<<-1<<1, 2);
 			if (reponse == 1) {	//annuler
 				return;
-			}	//sinon oui
-			//-- refaire = true;	//des paramètres ont déjà été saisis (dans cette session ou ouverture d'un calcul)
+			}	//else oui
+			//-- refaire = true;	//des paramètres ont déjà été saisis (in cette session or ouverture d'un computation)
 		}
 		if (imagesList->topLevelItem(0)->childCount()<2) {	
 			qMessageBox(this, conv(tr("Parameter error.")), conv(tr("Not enough images.")));
@@ -939,7 +939,7 @@ void Interface::calcPastis(bool continuer)
 		updateInterface(ParamMain::ImageMode);
 
 		//ouverture de la fenêtre des paramètres
-		if (interfPastis==0) {	//la fenêtre n'a pas encore été ouverte dans cette session
+		if (interfPastis==0) {	//la fenêtre n'a pas encore été ouverte in cette session
 			interfPastis = new InterfPastis(this, assistant, &paramMain);
 			if (!interfPastis->isDone()) {
 				interfPastis = 0;
@@ -951,9 +951,9 @@ void Interface::calcPastis(bool continuer)
 		if (rep != QDialog::Accepted)
 			return;
 		
-		//enregistrement des paramètres (hors du calcul par thread, les cpls ne sont pas enregistrés autrement, on ne peut pas reprendre cette partie)
+		//enregistrement des paramètres (hors du computation par thread, les cpls ne sont pas enregistrés autrement, on ne peut pas reprendre cette partie)
 		paramMain.setParamPastis(interfPastis->getParamPastis());
-			//écriture de la liste des couples d'images
+			//écriture de la list des couples d'images
 		if (!FichierCouples::ecrire (paramMain.getDossier()+paramMain.getCoupleXML(), interfPastis->getParamPastis().getCouples())) {
 			qMessageBox(this, conv(tr("Write error")), conv(tr("Fail to save images pairs.")));
 			return;
@@ -995,8 +995,8 @@ void Interface::calcApero(bool continuer)
 		updateInterface(ParamMain::PointsMode);
 
 		//ouverture de la fenêtre des paramètres
-		if (interfApero==0) {	//la fenêtre n'a pas encore été ouverte dans cette session
-			QString err = paramMain.saveImgsSize();	//pour pouvoir utiliser convert
+		if (interfApero==0) {	//la fenêtre n'a pas encore été ouverte in cette session
+			QString err = paramMain.saveImgsSize();	//for pouvoir utiliser convert
 			if (!err.isEmpty()) {
 				qMessageBox(this, conv(tr("Read error.")), err);
 				return;
@@ -1035,17 +1035,17 @@ void Interface::calcMicmac(bool continuer)
 	//-- bool refaire = false;
 	if (!continuer) {
 		//-- if (paramMain.getCurrentMode()!=ParamMain::PoseMode)
-		//--	refaire = true;	//des paramètres ont déjà été saisis (dans cette session ou ouverture d'un calcul)
+		//--	refaire = true;	//des paramètres ont déjà été saisis (in cette session or ouverture d'un computation)
 		paramMain.setAvancement(MicmacThread::Calcul);
 		paramMain.setAvancement(MicmacThread::Enregistrement);
 		updateInterface(ParamMain::PoseMode);
 
 		//ouverture de la fenêtre des paramètres
-		if (interfMicmac==0) {	//la fenêtre n'a pas encore été ouverte dans cette session
+		if (interfMicmac==0) {	//la fenêtre n'a pas encore été ouverte in cette session
 			int i=paramMain.getParamPastis().getTypeChantier();
 			interfMicmac = new InterfMicmac(this, &paramMain, i, vueChantier, assistant);
 		}
-		paramMain.setCurrentMode(ParamMain::CarteEnCours);	//pour pouvoir sauvegarder les paramètres avant le lancement du calcul
+		paramMain.setCurrentMode(ParamMain::CarteEnCours);	//for pouvoir sauvegarder les paramètres before le lancement du computation
 		interfMicmac->show();
 		int rep = interfMicmac->exec();
 		if (rep != QDialog::Accepted) {
@@ -1080,7 +1080,7 @@ void Interface::setUpCalc() {
 	progress->setLabelText(conv(tr("User data saving")));
 	connect(progress, SIGNAL(canceled()), this, SLOT(progressCanceled()));
 
-	//calcul par thread
+	//computation par thread
 	annulation = false;
 	connect(appliThread, SIGNAL(finished()), this, SLOT(threadFinished()));
 	connect(appliThread, SIGNAL(saveCalcul()), this, SLOT(saveCalcSsMsg()));
@@ -1102,7 +1102,7 @@ void Interface::updateProgressDialog () {
 	if (progress==0) return;
 	if (progress->wasCanceled()) return;
 
-	//incrémentation en fonction des fichiers créés
+	//incrémentation en function des fichiers créés
 	progress->setLabelText(appliThread->getProgressLabel());
 	if (progress->maximum()==1)
 		progress->setValue(-1);	//progressBar "ping-pong"
@@ -1114,7 +1114,7 @@ void Interface::updateProgressDialog () {
 }
 
 void Interface::progressCanceled() {	//annuler
-//le calcul est interrompu
+//le computation est interrompu
 	annulation = true;
 	disconnect(progress, SIGNAL(canceled()), this, SLOT(progressCanceled()));
 	disconnect(appliThread, SIGNAL(finished()), this, SLOT(threadFinished()));
@@ -1123,7 +1123,7 @@ void Interface::progressCanceled() {	//annuler
 }
 
 void Interface::threadFinished() {	//value=maxValue
-//le calcul est terminé (erreur détectée ou le calcul a abouti)
+//le computation est terminé (error détectée or le computation a abouti)
 	if (progress!=0) {
 		disconnect(progress, SIGNAL(canceled()), this, SLOT(progressCanceled()));
 		delete progress;
@@ -1133,15 +1133,15 @@ void Interface::threadFinished() {	//value=maxValue
 	const QVector<ParamImage>* correspImgCalib = &(paramMain.getCorrespImgCalib());
 	switch (paramMain.getCurrentMode()) {
 		case ParamMain::PointsEnCours :
-			if (paramMain.getAvancement()<0) {	//une erreur est survenue
+			if (paramMain.getAvancement()<0) {	//une error est survenue
 				displayErreur();
 				updateInterface(ParamMain::PointsEnCours);
-				paramMain.setAvancement(0);	//on ne sait pas d'où vient vraiment l'erreur
+				paramMain.setAvancement(0);	//on ne sait pas d'où vient vraiment l'error
 				delete appliThread;
 				delete timer;
 				return;
 			}
-			//affichage des images et des calibrations internes correspondantes
+			//affichage des images and des calibrations internes correspondantes
 			if (paramMain.getAvancement()==PastisThread::Enregistrement) {
 				for (int i=0; i<correspImgCalib->size(); i++)
 					imagesList->topLevelItem(0)->child(i)->setText(0,correspImgCalib->at(i).getImageRAW());
@@ -1155,53 +1155,53 @@ void Interface::threadFinished() {	//value=maxValue
 			}
 			imagesList->expandAll();
 			imagesList->adjustSize();
-			if (paramMain.getAvancement()<appliThread->getEndResult()) {	//le calcul a été stoppé en dehors d'un processus
+			if (paramMain.getAvancement()<appliThread->getEndResult()) {	//le computation a été stoppé en dehors d'un processus
 				updateInterface(ParamMain::PointsEnCours);
 				delete appliThread;
 				delete timer;
 				return;
-			} else {	//le calcul a abouti
+			} else {	//le computation a abouti
 				updateInterface(ParamMain::PointsMode);
 			}
 			break;
 		case ParamMain::PoseEnCours :
-			if (paramMain.getAvancement()<0) {	//une erreur est survenue
+			if (paramMain.getAvancement()<0) {	//une error est survenue
 				displayErreur();
 				updateInterface(ParamMain::PoseEnCours);
-				paramMain.setAvancement(0);	//on ne sait pas d'où vient vraiment l'erreur
+				paramMain.setAvancement(0);	//on ne sait pas d'où vient vraiment l'error
 				delete appliThread;
 				delete timer;
 				return;
 			}
-			if (paramMain.getAvancement()<appliThread->getEndResult()) {	//le calcul a été stoppé en dehors d'un processus
+			if (paramMain.getAvancement()<appliThread->getEndResult()) {	//le computation a été stoppé en dehors d'un processus
 				updateInterface(ParamMain::PoseEnCours);
 				delete appliThread;
 				delete timer;
 				return;
 			}
-			updateInterface(ParamMain::PoseMode);	//le calcul a abouti
+			updateInterface(ParamMain::PoseMode);	//le computation a abouti
 			break;
 		case ParamMain::CarteEnCours :
-			if (paramMain.getAvancement()<0) {	//une erreur est survenue
+			if (paramMain.getAvancement()<0) {	//une error est survenue
 				displayErreur();
 				updateInterface(ParamMain::CarteEnCours);
-				paramMain.setAvancement(0);	//on ne sait pas d'où vient vraiment l'erreur
+				paramMain.setAvancement(0);	//on ne sait pas d'où vient vraiment l'error
 				delete appliThread;
 				delete timer;
 				return;
 			}
-			if (paramMain.getAvancement()<appliThread->getEndResult()) {	//le calcul a été stoppé en dehors d'un processus
+			if (paramMain.getAvancement()<appliThread->getEndResult()) {	//le computation a été stoppé en dehors d'un processus
 				updateInterface(ParamMain::CarteEnCours);
 				delete appliThread;
 				delete timer;
 				return;
 			}
-			updateInterface(ParamMain::EndMode);	//le calcul a abouti
+			updateInterface(ParamMain::EndMode);	//le computation a abouti
 			break;
 		case ParamMain::EndMode :
-			if (paramMain.getAvancement()<0) {	//une erreur est survenue
+			if (paramMain.getAvancement()<0) {	//une error est survenue
 				displayErreur();
-				paramMain.setAvancement(0);	//on ne sait pas d'où vient vraiment l'erreur
+				paramMain.setAvancement(0);	//on ne sait pas d'où vient vraiment l'error
 				delete appliThread;
 				delete timer;
 				return;
@@ -1210,7 +1210,7 @@ void Interface::threadFinished() {	//value=maxValue
 			break;
 		default : return;
 	}	
-	paramMain.setAvancement(0);	//cas où le calcul a abouti
+	paramMain.setAvancement(0);	//cas où le computation a abouti
 	saveCalc(paramMain.getDossier()+QString("sauvegarde.xml"));
 	delete appliThread;
 	delete timer;
@@ -1478,7 +1478,7 @@ void Interface::vueHomol()
 
 void Interface::vue()
 {
-//visualisation 3D du chantier (centre des caméras et points de liaison) avec openGL
+//visualisation 3D du chantier (centre des caméras and points de liaison) with openGL
 	QApplication::setOverrideCursor( Qt::WaitCursor );
 	if (vueChantier==0) vueChantier = new VueChantier(&paramMain, this, assistant);
 	if (!vueChantier->isDone()) {
@@ -1492,7 +1492,7 @@ void Interface::vue()
 
 void Interface::vueNuages()
 {
-//visualisation 3D du chantier et des nuages avec openGL
+//visualisation 3D du chantier and des nuages with openGL
 	QApplication::setOverrideCursor( Qt::WaitCursor );
 	if (vueCartes==0) {
 		if (vueCartes==0) vueCartes = new VueChantier(&paramMain, this, assistant);
@@ -1502,7 +1502,7 @@ void Interface::vueNuages()
 		}
 		GLParams* glParam = &(vueCartes->modifParams());
 
-		//calcul des points du nuage
+		//computation des points du nuage
 		glParam->modifNuages().resize(paramMain.getParamMicmac().count());
 		QVector<QString> imgRef(paramMain.getParamMicmac().count());
 		QVector<Model3DThread> model3DThread(paramMain.getParamMicmac().count(),Model3DThread(&paramMain, glParam));
@@ -1556,12 +1556,12 @@ void Interface::cartesProf8B()
 		else if (paramMain.getParamMicmac().at(i).getOrthoCalculee() && QFile(paramMain.getDossier()+QString("ORTHO%1/Ortho-NonEg-Test-Redr.tif").arg(numRef)).exists()) imgTexture = QString("ORTHO%1/Ortho-NonEg-Test-Redr.tif").arg(numRef);
 		else  imgTexture = paramMain.getParamMicmac().at(i).getImageSaisie(paramMain);	//TA n&b
 
-		int dezoom = 32;   //se trouve à <EtapeMEC><DeZoom > dans param-GeoIm/Terrain.xml (ou param utilisateur ? -> à récupérer dans interfMicmac)
+		int dezoom = 32;   //se trouve à <EtapeMEC><DeZoom > in param-GeoIm/Terrain.xml (or param utilisateur ? -> à récupérer in interfMicmac)
 		int j = 1;
 		while (dezoom>0.5) {
 			QString carte16B =  QString("Geo%1%2/Z_Num%3_DeZoom%4_Geom-Im-%5.tif").arg(paramMain.getParamMicmac().at(i).getRepere()? QString("I") : QString("Ter")).arg(numRef).arg(j).arg(dezoom).arg(numRef);
 
-			//on vérifie que ce fichier existe toujours
+			//on vérifie que ce file existe toujours
 			if(!QFile(paramMain.getDossier() + carte16B).exists()) {
 				qMessageBox(this, tr("Read error"), conv(tr("Depth map %1 not found.")).arg(carte16B));
 				j++;
@@ -1591,7 +1591,7 @@ void Interface::cartesProf8B()
 }
 
 void Interface::orthoimage() {
-//calcul des orthoimages mosaïquées
+//computation des orthoimages mosaïquées
 	if (interfOrtho==0) {
 		interfOrtho = new InterfOrtho(this, assistant, paramMain, &paramMain.modifParamMicmac());
 	}
@@ -1639,7 +1639,7 @@ void Interface::modeles3D()
 {
 	QVector<ParamNuages> nuages(7*paramMain.getParamMicmac().count(), ParamNuages());
 	if (interfModele3D==0) {
-		//liste des fichiers
+		//list des fichiers
 		for (int i=0; i<paramMain.getParamMicmac().count(); i++) {
 			int dezoom = 1;
 			QString carte = paramMain.getParamMicmac().at(i).getImageDeReference();
@@ -1941,7 +1941,7 @@ void Interface::updateInterface(ParamMain::Mode mode)
 			aperoLabel->clear();
 			micmacLabel->clear();
 			infoLabel->clear();
-			infoLabel->setFrameStyle(QFrame::NoFrame);	//a priori c'est un changement de chantier ou un import d'images, paramMain est réinitialisé
+			infoLabel->setFrameStyle(QFrame::NoFrame);	//a priori c'est un changement de chantier or un import d'images, paramMain est réinitialisé
 			break;
 
 		case ParamMain::ImageMode:	//les images sont importées
@@ -2010,7 +2010,7 @@ void Interface::updateInterface(ParamMain::Mode mode)
 			}
 			 break;
 
-		case ParamMain::PointsEnCours:	//calcul non fini _ calcul pastis
+		case ParamMain::PointsEnCours:	//computation non fini _ computation pastis
 			(*calcAperoAct).setEnabled(false);
 			(*saveCalcAct).setEnabled(true);
 			(*saveCalcAsAct).setEnabled(true);
@@ -2098,7 +2098,7 @@ void Interface::updateInterface(ParamMain::Mode mode)
 			infoLabel->setFrameStyle(QFrame::NoFrame);
 			break;
 
-		case ParamMain::PoseEnCours:	//calcul non fini _ calcul apero
+		case ParamMain::PoseEnCours:	//computation non fini _ computation apero
 			(*calcAperoAct).setEnabled(true);
 			(*saveCalcAct).setEnabled(true);
 			(*saveCalcAsAct).setEnabled(true);
@@ -2182,7 +2182,7 @@ void Interface::updateInterface(ParamMain::Mode mode)
 			infoLabel->setFrameStyle(QFrame::NoFrame);
 			break;
 
-		case ParamMain::CarteEnCours:	//calcul non fini _ calcul micmac
+		case ParamMain::CarteEnCours:	//computation non fini _ computation micmac
 			(*calcAperoAct).setEnabled(true);
 			(*saveCalcAct).setEnabled(true);
 			(*saveCalcAsAct).setEnabled(true);
@@ -2285,7 +2285,7 @@ Timer::Timer(QString dossier) : QTime() {
 	dir = dossier;
 }
 void Timer::displayTemps(QString label) {
-	//calcul du temps écoulé
+	//computation du temps écoulé
 	double tps = double(restart())/1000.0;
 	int minutes = int(floor(tps))/60;
 	double secondes = tps - 60 * minutes;
@@ -2367,7 +2367,7 @@ bool ParamImage::calcNumero(const ParamMain& paramMain) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//paramètres du calcul
+//paramètres du computation
 QStringList ParamMain::formatsImg = QStringList("cr2")<<"3fr"<<"arw"<<"crw"<<"dng"<<"kdc"<<"mrw"<<"nef"<<"orf"<<"pef"<<"ptx"<<"raf"<<"x3f"<<"rw2"<<"jpg";
 QString ParamMain::imageXML("Liste_images.xml");
 QString ParamMain::coupleXML("Liste_couples.xml");
@@ -2494,7 +2494,7 @@ void ParamMain::init() {
 }
 
 bool ParamMain::isValideFormat(const QString& extension) {
-//tous les formats raw et le jpg
+//tous les formats raw and le jpg
 	bool valide = false;
 	for (int j=0; j<formatsImg.count(); j++) {
 		if (extension.toUpper()==formatsImg.at(j).toUpper()) {
@@ -2506,7 +2506,7 @@ bool ParamMain::isValideFormat(const QString& extension) {
 }
 
 QString ParamMain::getNumImage(const QString& image, bool* ok, bool TA) const {
-//extrait le numéro d'une image du type : préfixe + n° + postfixe + _.tif ; si TA=true, l'image est un TA de type TA + n° + /TA_Geom-Im- + n° + .tif ou TA + n° + /TA_LeChantier.tif
+//extrait le numéro d'une image du type : préfixe + n° + postfixe + _.tif ; if TA=true, l'image est un TA de type TA + n° + /TA_Geom-Im- + n° + .tif or TA + n° + /TA_LeChantier.tif
 	if (!TA) {
 		if (ParamImage::numPos.first==-1 || ParamImage::numPos.second==-1) {
 			if (ok!=0) *ok = false;
@@ -2516,7 +2516,7 @@ QString ParamMain::getNumImage(const QString& image, bool* ok, bool TA) const {
 		image1 = image1.left(image1.count()-ParamImage::numPos.second);
 		QString res = image1.right(image1.count()-ParamImage::numPos.first);
 		//res.toInt(ok);
-		//if (!*ok) return QString();	//pas forcément un nombre si les noms des images ont une décomposition différente
+		//if (!*ok) return QString();	//pas forcément un number if les noms des images ont une décomposition différente
 		if (ok!=0) *ok = true;
 		return res;
 	} else {
@@ -2534,7 +2534,7 @@ QString ParamMain::getNumImage(const QString& image, bool* ok, bool TA) const {
 }
 
 bool ParamMain::calcImgsId() {
-	//recherche de la chaîne minimale pour désigner les images (plus simple pour l'utilisateur que de donner un numéro aléatoire)
+	//recherche de la chaîne minimale for désigner les images (plus simple for l'utilisateur que de donner un numéro aléatoire)
 	int pos0, posN;
 	pos0 = posN = -1;
 	QString img1 = correspImgCalib.at(0).getImageTif().section(".",0,-2);
@@ -2576,7 +2576,7 @@ bool ParamMain::calcImgsId() {
 
 	ParamImage::numPos = pair<int,int>(pos0, posN);
 
-	//calcul de l'identifiant pour chaque image
+	//computation de l'identifiant for chaque image
 	for (int i=0; i<correspImgCalib.count(); i++)
 		if (!correspImgCalib[i].calcNumero(*this)) return false;
 	return true;
@@ -2596,9 +2596,9 @@ int ParamMain::findImg(const QString& image, int type, bool strict) const {
 	return -1;
 }
 
-QString ParamMain::saveImgsSize() {	//à n'utiliser que après PastisThread::Ecriture et PtsInteret si ouverture d'un calcul
-	//récupération des tailles des images et enregistrement dans getCorrespImgCalib
-	QVector<QSize> V(getParamPastis().getCalibFiles().count(), QSize(0,0));	//en fait on ne lit la taille qu'une fois par calibration (c'est trop long de la calculer pour chaque image)
+QString ParamMain::saveImgsSize() {	//à n'utiliser que après PastisThread::Ecriture and PtsInteret if ouverture d'un computation
+	//récupération des tailles des images and enregistrement in getCorrespImgCalib
+	QVector<QSize> V(getParamPastis().getCalibFiles().count(), QSize(0,0));	//en fait on ne lit la taille qu'une fois par calibration (c'est trop long de la compute for chaque image)
 	for (int i=0; i<getCorrespImgCalib().count(); i++) {
 		if (getCorrespImgCalib().at(i).getTaille()!=QSize(0,0)) {
 			continue;	//déjà fait

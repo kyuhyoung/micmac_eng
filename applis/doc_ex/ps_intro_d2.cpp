@@ -356,7 +356,7 @@ int  main(int,char **)
        }
     
 
-// Pour generer l'arc en ciel
+// for generer l'arc en ciel
        W =  PS("arc_en_ciel",false);
        Fonc_Num f = polar(Virgule(FX-128,FY-128),0);
        ELISE_COPY

@@ -280,7 +280,7 @@ for (int aK=0 ; aK<20 ; aK++)
           int aDPx =  aVBox[0].P0().x() - aVBox[1].P0().x();
           for (int aKIm=0; aKIm<2 ; aKIm++)
           {
-//   X1-------         :  DPx >0 et hom X0 >0 donc S=1
+//   X1-------         :  DPx >0 and hom X0 >0 donc S=1
 //          X0
               int aSDPx = ((aKIm==0) ? aDPx : -aDPx) * 1;
               std::string  aStrBox =  "Box=" + ToStrComMMV1(aVBox[aKIm]);

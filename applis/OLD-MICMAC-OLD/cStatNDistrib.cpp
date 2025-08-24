@@ -105,9 +105,9 @@ REAL cStat1Distrib::CoeffCorrel2Dist(const cStat1Distrib & aD2,REAL anEps) const
   return aMat.correlation(anEps);
 }
 
-// Pour, eventuellement gagner du temps, verifier
-// les equivalences entre les formules de correlation
-// et (surtout) leur implementation
+// for, eventuellement gagner du temps, verifier
+// les equivalences between les formules de correlation
+// and (surtout) leur implementation
 
 REAL cStat1Distrib::CoeffCorrel3Dist
      (
@@ -214,13 +214,13 @@ cStatOneClassEquiv::cStatOneClassEquiv
    for (int aK=0 ; aK<mNbV ; aK++)
        mNbVIn += (mPtInEc[aK] !=0);
    mRatioIn =  mNbVIn/ double(mNbV);
-   // JE COMPREND PAS TROP POURQUOI ... MAIS APPAREMMENT ...
+   // JE COMPREND PAS TROP POURQUOI ... but APPAREMMENT ...
    mRatioIn = pow(mRatioIn,1.5);
 
    // std::cout << "RATIO IN " << mRatioIn << "\n";
 
-   // Adaptation 100% empirique pour essayer de tenir compte d'effet bizare de
-   // sur la dynamique des coeff de correl , a voir 
+   // Adaptation 100% empirique for essayer de tenir compte d'effet bizare de
+   // on la dynamique des coeff de correl , a voir 
    if (anAppli.AdapteDynCov().IsInit())
    {
      const cAdapteDynCov & anADC = anAppli.AdapteDynCov().Val();
@@ -306,7 +306,7 @@ REAL cStatOneClassEquiv::Cov() const
   }
 */
 
-// Ne pas supprimer, a activer pour stat
+// Ne pas supprimer, a activer for stat
 if (0)
 {
     static double aST=0,aNbS=0;
@@ -345,8 +345,8 @@ int cStatOneClassEquiv::NbCurDist() const
 REAL cStatOneClassEquiv::CoeffInfoMut() const
 {
   // cout<<"cStatOneClassEquiv::CoeffInfoMut() \n" ;
-  // trouver le nb de bin pertinent : pour l'instant en dur = 9 * 9 
-  //(val pour 2 images 8bits)
+  // trouver le nb de bin pertinent : for l'instant en dur = 9 * 9 
+  //(val for 2 images 8bits)
 
   int nb_bins=9;
   int nb_niv=256;
@@ -369,25 +369,25 @@ REAL cStatOneClassEquiv::CoeffInfoMut() const
 //     for(int j=0;j<nb_bins; j++)
 //       cout<<"histo2d["<<i<<"]["<<j<<"] "<<histo2d[i][j]<<"\n";
 
-  // calculer histo_2d : matrice 9 * 9 dont la somme des coeff est égale
-  // au nb de pixels dans la fenêtre : (2N+1)*(2N+1) (N = taille de la 1/2 fenetre)
+  // compute histo_2d : matrix 9 * 9 dont la somme des coeff est gale
+  // au nb de pixels in la fentre : (2N+1)*(2N+1) (N = taille de la 1/2 fenetre)
   
-  // matrice de double hist2d_norm = histo_2d/(2N+1)*(2N+1)
+  // matrix de double hist2d_norm = histo_2d/(2N+1)*(2N+1)
   std::vector<std::vector<double> > histo2d_norm(nb_bins,std::vector<double>(nb_bins,0.));
   for(int i=0; i<9; i++)
     for(int j=0; j<9; j++)
       histo2d_norm[i][j]=histo2d[i][j]/double(mNbV);
 
   std::vector<double> pim1(nb_bins,0.),pim2(nb_bins,0.);
-  // vecteur de double pim1 et pim2 de taille n_bins
-  // calculer les densites de proba marginales
+  // vector de double pim1 and pim2 de taille n_bins
+  // compute les densites de proba marginales
   for(int i=0; i<nb_bins; i++) 
     for(int j=0 ; j<nb_bins; j++)
       {
 	pim1[i]+=histo2d_norm[i][j];
 	pim2[j]+=histo2d_norm[i][j];
       }
-  // calculer la formule finale
+  // compute la formule finale
   double num=0., denom=0.;
   for(int i=0; i<nb_bins; i++)
     for(int j=0; j<nb_bins; j++)
@@ -482,7 +482,7 @@ REAL cStatOneClassEquiv::CoeffCorrelation() const
 
       case eAggregInfoMut : 
       {
-           // cout<<"Choix Info Mut dans CoeffCorrelation()\n";
+           // cout<<"Choix Info Mut in CoeffCorrelation()\n";
            return CoeffInfoMut();
       }
       break;

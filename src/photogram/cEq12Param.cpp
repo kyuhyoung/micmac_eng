@@ -224,7 +224,7 @@ std::pair<ElMatrix<double>,Pt3dr> cEq12Parametre::ComputeNonOrtho()
 {
     mSys.GSSR_Reset(false);
 
-    // Pour limiter les erreurs numériques, on se remet sur des coordonnees centrees
+    // for limiter les erreurs numériques, on se remet on des coordinates centrees
     Pt3dr aMoyP(0,0,0);
     double aSomPds = 0;
     for (int aK=0 ; aK <int(mVPG.size()) ; aK++)
@@ -248,8 +248,8 @@ std::pair<ElMatrix<double>,Pt3dr> cEq12Parametre::ComputeNonOrtho()
     Im1D_REAL8  aISol = mSys.GSSR_Solve(&aOk);
     double * aDS = aISol.data();
 
-    // Tout est a un facteur pres, on normalise pour que la matrice 3x3 soit de norme L2
-    // (a permis de tester pour les rotations pure si OK ...)
+    // Tout est a un facteur pres, on normalise for que la matrix 3x3 soit de norme L2
+    // (a permis de tester for les rotations pure if OK ...)
     double aSomL2=0;
     for (int aK=0 ; aK<12 ; aK+=4)
     {
@@ -289,7 +289,7 @@ std::pair<ElMatrix<double>,Pt3dr> cEq12Parametre::ComputeNonOrtho()
                    (     (p8  p9  p10 )  (z)     (p11) )
 */
 
-    // Le centre est le point ou les trois terme sont nul (et les deux ratio indetermines)
+    // Le centre est le point or les trois terme sont nul (and les deux ratio indetermines)
 
     Pt3dr aPInc(-aDS[3],-aDS[7],-aDS[11]);
     for (int aKy=0 ; aKy<3 ; aKy++)

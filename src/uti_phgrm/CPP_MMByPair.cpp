@@ -130,8 +130,8 @@ class cAppliMMByPair : public cAppliWithSetImage
       bool mParalMMIndiv;
       std::string mFilePair;
       bool mDelaunay;
-      // Avant mAddMMImSec  ; maintenant on separe l'execution de AperoImSec (mRunAperoImSec) de l'ajout des arc ; car parfois
-      // meme si on ne veut pas rajouter les arcs (par ex parce que controle explicite des paires par FilePair) on a besoin
+      // before mAddMMImSec  ; maintenant on separe l'execution de AperoImSec (mRunAperoImSec) de l'ajout des arc ; car parfois
+      // meme if on ne veut pas rajouter les arcs (par ex parce que controle explicite des paires par FilePair) on a besoin
       // des autres donnees generees
       bool mRunAperoImSec;
       bool mAddCpleImSec;
@@ -156,7 +156,7 @@ class cAppliMMByPair : public cAppliWithSetImage
       bool         mHasVeget;
       bool         mSkyBackGround;
       bool         mDoOMF;
-      bool         mRIEInParal;  // Pour debuguer en l'inhibant,
+      bool         mRIEInParal;  // for debuguer en l'inhibant,
       bool         mRIE2Do;      // Do Reech Inv Epip
       bool         mExeRIE;      // Do Reech Inv Epip
       bool         mDoTiePM0;      // Do model initial wih MMTieP ..
@@ -827,7 +827,7 @@ void cAppliWithSetImage::AddCoupleMMImSec(bool ExApero,bool SupressImInNoMasq,bo
       }
 
 
-      FilterImageIsolated(false); // MPD 10/06/2015 => Sinon avec les points hors masque cela bugue a l'etape suivante
+      FilterImageIsolated(false); // MPD 10/06/2015 => else with les points hors masque cela bugue a l'etape suivante
       if (AddCple)
       {
 
@@ -1175,7 +1175,7 @@ cAppliClipChantier::cAppliClipChantier(int argc,char ** argv) :
                           ElAffin2D aM2C0 = Xml2EL(aCO.OrIntImaM2C());
                           ElAffin2D  aM2CCliped = ElAffin2D::trans(-Pt2dr(aDec))   * aM2C0;
                           aCO.OrIntImaM2C().SetVal(El2Xml(aM2CCliped));
-                      // Sinon ca ne marche pas pour le match
+                      // else ca ne marche pas for le match
                           aCO.Interne().Val().PixelSzIm().SetVal(Pt2dr(aSZ));
                 // aCO.Interne().Val().SzIm() = aSZ;
                     }
@@ -1200,7 +1200,7 @@ cAppliClipChantier::cAppliClipChantier(int argc,char ** argv) :
                 else
                 {
                    std::cout << "CLIP ORIENT TO DO 4 Bundle Gen \n";
-                   // ELISE_ASSERT(false,"Unfinished ClipChantier pour pushbroom");
+                   // ELISE_ASSERT(false,"Unfinished ClipChantier for pushbroom");
                 }
 */
               }
@@ -1393,8 +1393,8 @@ cAppliMMByPair::cAppliMMByPair(int argc,char ** argv) :
         mStrQualOr = "High";
         // do not add the segondary images computed by apero, but do the computation of pair because some data are required anyway (for mask computation based on tie points for e.g)
         // mAddCpleImSec = false;
-        // Modif MPD  16/10/2017 car sinon ca plante quand forest est utilise sans FilePair
-        // vu lors du stage terrain a Murol (arbre sur muraille), suite demande Antoine Pinte
+        // Modif MPD  16/10/2017 car else ca plante when forest est utilise without FilePair
+        // vu lors du stage terrain a Murol (arbre on muraille), suite demande Antoine Pinte
         mAddCpleImSec = true;
         // do the computation whitout adding the pairs
         mRunAperoImSec= true;
@@ -1541,7 +1541,7 @@ cAppliMMByPair::cAppliMMByPair(int argc,char ** argv) :
       SaveCAWSI(TheMMByPairNameCAWSI);
 
       // Paral_Tiff_Dev(mEASF.mDir,mVNameFinal,1,true);
-      // Paral_Tiff_Dev(mEASF.mDir,mVNameFinal,3,false); // On en aura sans doute besoin tot ou tard
+      // Paral_Tiff_Dev(mEASF.mDir,mVNameFinal,3,false); // On en aura without doute besoin tot or tard
 
   }
 }
@@ -1907,7 +1907,7 @@ void cAppliMMByPair::DoFusionEpip()
    }
 
 
-   // Calcul d'une enveloppe qui tienne compte de merge depth map
+   // computation d'une enveloppe qui tienne compte de merge depth map
    {
        std::list<std::string> aLCom;
        for (tItSAWSI anITS=mGrIm.begin(mSubGrAll); anITS.go_on() ; anITS++)
@@ -1925,7 +1925,7 @@ void cAppliMMByPair::DoFusionEpip()
 
 if (0)
 {
-   // C'est ce qui concerne la reduction des nuage et images de qualite, pour l'instant pas maintenu ....
+   // C'est ce qui concerne la reduction des nuage and images de qualite, for l'instant pas maintenu ....
     /*
    double aFactRed = 2.0;
    {

@@ -631,7 +631,7 @@ std::pair<tREAL8,cPt2dr>  cCdEllipse::Length2CodingPart(tREAL8 aWeighWhite,const
     tREAL8 aRhoMaxRel = mSpec->Rho_2_EndCode() * 1.5;
     std::pair<tREAL8,cPt2dr>  aNoValue(-1,cPt2dr(0,0));
 
-    // Not sur meaningful with other mode
+    // Not on meaningful with other mode
     MMVII_INTERNAL_ASSERT_tiny(mSpec->Type()==eTyCodeTarget::eIGNIndoor,"Bad code in Length2CodingPart");
 
 

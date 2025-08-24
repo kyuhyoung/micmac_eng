@@ -191,30 +191,30 @@ bool   cGPU_LoadedImGeom::Correl(double & aCorrel,int anX,int anY,const  cGPU_Lo
 
 
 //
-//    Fonction de correlation preparant une version GPU. Pour l'instant on se
-//    reduit a la version qui fonctionne pixel par pixel (sans redressement global),
-//    de toute facon il faudra l'ecrire et elle est plus simple. 
+//    function de correlation preparant une version GPU. for l'instant on se
+//    reduit a la version qui fonctionne pixel par pixel (without redressement global),
+//    de toute facon il faudra l'ecrire and elle est plus simple. 
 //
-//    Une fois les parametres d'environnement decode et traduits en donnees
-//    de bas niveau  ( des tableau bi-dim  de valeur numerique : entier, flottant et bits)
-//    les communications, dans le corps de la boucle, avec l'environnement MicMac sont reduites
+//    Une fois les parameters d'environnement decode and traduits en donnees
+//    de bas niveau  ( des array bi-dim  de value numerique : integer, flottant and bits)
+//    les communications, in le corps de la boucle, with l'environnement MicMac sont reduites
 //    a trois appels :
 //
 //       [1]   Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);
 //
-//             Appelle la fonction virtuelle de projection associee a chaque
+//             Appelle la function virtuelle de projection associee a chaque
 //             descripteur de geometrie de l'image.
 //
 //       [2]    mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,aDefCost);
 //
-//             Appelle la fonction virtuelle de remplissage de cout
+//             Appelle la function virtuelle de remplissage de cout
 //             de l'optimiseur actuellement utilise
 //
 //
 //       [3]    double aVal =  mInterpolTabule.GetVal(aDataIm,aPIm);
 //
-//               Utilise l'interpolateur courant. Pour l'instant l'interpolateur
-//               est en dur quand on fonctionne en GPU
+//               Utilise l'interpolateur courant. for l'instant l'interpolateur
+//               est en dur when on fonctionne en GPU
 //
 
 
@@ -612,7 +612,7 @@ void cAppliMICMAC::DoOneCorrelIm1Maitre(int anX,int anY,const cMultiCorrelPonctu
 
 void cAppliMICMAC::DoOneCorrelMaxIm1Maitre(int anX,int anY)
 {
-     if (mEBI) // Etiq Best Image
+     if (mEBI) // Etiq Best image
      {
         if (mNbIm>1)
         {
@@ -731,19 +731,19 @@ void cAppliMICMAC::DoGPU_Correl_Basik
 {
 
 
-   //  Lecture des parametre d'environnement MicMac : nappes, images, quantification etc ...
+   //  Lecture des parameter d'environnement MicMac : nappes, images, quantification etc ...
 
 
    //   Masque des points terrains valides
    // U_INT1 **  aTabMasqTER = mLTer->GPULowLevel_MasqTer();
 
-   //   Deux constantes : cout lorque la correlation ne peut etre calculee et
+   //   Deux constantes : cout lorque la correlation ne peut etre calculee and
    //   ecart type minmal
    // double aAhDefCost =  mStatGlob->CorrelToCout(mDefCorr);
    // double anAhEpsilon = EpsilonCorrelation().Val();
 
 
-   // Buffer pour pointer sur l'ensmble des vignettes OK
+   // Buffer for pointer on l'ensmble des vignettes OK
    std::vector<double *> aVecVals(mNbIm);
    double ** aVVals = &(aVecVals[0]);
 
@@ -757,7 +757,7 @@ void cAppliMICMAC::DoGPU_Correl_Basik
            int aZMin = mTabZMin[anY][anX];
            int aZMax = mTabZMax[anY][anX];
 
-           // est-on dans le masque des points terrains valide
+           // est-on in le masque des points terrains valide
            if ( IsInTer(anX,anY))
            {
 
@@ -767,11 +767,11 @@ void cAppliMICMAC::DoGPU_Correl_Basik
                int aY0v = anY-mPtSzWFixe.y;
                int aY1v = anY+mPtSzWFixe.y;
 
-               // on parcourt l'intervalle de Z compris dans la nappe au point courant
+               // on parcourt l'intervalle de Z compris in la nappe au point courant
                for (int aZInt=aZMin ;  aZInt< aZMax ; aZInt++)
                {
 
-                   // Pointera sur la derniere imagette OK
+                   // Pointera on la derniere imagette OK
                    double ** aVVCur = aVVals;
                    // Statistique MICMAC
                    mNbPointsIsole++;
@@ -782,27 +782,27 @@ void cAppliMICMAC::DoGPU_Correl_Basik
 
                    int aNbImOk = 0;
 
-                   // On balaye les images  pour lire les valeur et stocker, par image,
-                   // un vecteur des valeurs voisine normalisees en moyenne et ecart type
+                   // On balaye les images  for lire les value and stocker, par image,
+                   // un vector des valeurs voisine normalisees en moyenne and ecart type
                    for (int aKIm=0 ; aKIm<mNbIm ; aKIm++)
                    {
                        cGPU_LoadedImGeom & aGLI = *(mVLI[aKIm]);
                        const cGeomImage * aGeom=aGLI.Geom();
                        float ** aDataIm =  aGLI.DataIm();
        
-                       // Pour empiler les valeurs
+                       // for empiler les valeurs
                        double * mValsIm = aGLI.Vals();
                        double * mCurVals = mValsIm;
 
-                       // Pour stocker les moment d'ordre 1 et 2
+                       // for stocker les moment d'ordre 1 and 2
                        double  aSV = 0;
                        double  aSVV = 0;
                        
                        // En cas de gestion parties cachees, un masque terrain 
-                       // de visibilite a ete calcule par image
+                       // de visibilite a ete compute par image
                        if (aGLI.IsVisible(anX,anY))
                        {
-                           // memorise le fait que tout est OK pour le pixel et l'image consideres
+                           // memorise le fait que tout est OK for le pixel and l'image consideres
                            bool IsOk = true;
 
                            // Balaye le voisinage
@@ -812,7 +812,7 @@ void cAppliMICMAC::DoGPU_Correl_Basik
                                {
                                    // On dequantifie la plani 
                                      Pt2dr aPTer  = DequantPlani(aXVois,aYVois);
-                                   // On projette dans l'image 
+                                   // On projette in l'image 
                                      Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);
 /*
 if (MPD_MM())
@@ -825,9 +825,9 @@ if (MPD_MM())
 
                                      if (aGLI.IsOk(aPIm.x,aPIm.y))
                                      {
-                                        // On utilise l'interpolateur pour lire la valeur image
+                                        // On utilise l'interpolateur for lire la value image
                                         double aVal =  mInterpolTabule.GetVal(aDataIm,aPIm);
-                                        // On "push" la nouvelle valeur de l'image
+                                        // On "push" la nouvelle value de l'image
                                         *(mCurVals++) = aVal;
                                         aSV += aVal;
                                         aSVV += QSquare(aVal) ;
@@ -836,7 +836,7 @@ if (MPD_MM())
                                      }
                                      else
                                      {
-                                        // Si un  seul des voisin n'est pas lisible , on annule tout
+                                        // if un  seul des voisin n'est pas lisible , on annule tout
                                         IsOk =false;
                                      }
                                }
@@ -844,11 +844,11 @@ if (MPD_MM())
                            if (IsOk)
                            {
 
-                             // On normalise en moyenne et ecart type
+                             // On normalise en moyenne and ecart type
                               aSV /= mNbPtsWFixe;
                               aSVV /= mNbPtsWFixe;
                               aSVV -=  QSquare(aSV) ;
-                              if (aSVV >mAhEpsilon) // Test pour eviter / 0 et sqrt(<0) 
+                              if (aSVV >mAhEpsilon) // Test for eviter / 0 and sqrt(<0) 
                               {
                                   *(aVVCur++) = mValsIm;
                                    aSVV = sqrt(aSVV);
@@ -869,16 +869,16 @@ if (MPD_MM())
                        }
                    }
 
-                   // Calcul "rapide"  de la multi-correlation en utilisant la formule
+                   // computation "rapide"  de la multi-correlation en utilisant la formule
                    // de Huygens comme decrit en 3.5 de la Doc MicMac
                    if (aNbImOk>=2)
                    {
                       double anEC2 = 0;
-                      // Pour chaque pixel
+                      // for chaque pixel
                       for (int aKV=0 ; aKV<mNbPtsWFixe; aKV++)
                       {
                           double aSV=0,aSVV=0;
-                          // Pour chaque image, maj des stat 1 et 2
+                          // for chaque image, maj des stat 1 and 2
                           for (int aKIm=0 ; aKIm<aNbImOk ; aKIm++)
                           {
                                 double aV = aVVals[aKIm][aKV];
@@ -889,17 +889,17 @@ if (MPD_MM())
                           anEC2 += (aSVV-QSquare(aSV)/aNbImOk);
                       }
 
-                     // Normalisation pour le ramener a un equivalent de 1-Correl 
+                     // Normalisation for le ramener a un equivalent de 1-Correl 
                      double aCost = anEC2 / (( aNbImOk-1) *mNbPtsWFixe);
                      aCost =  mStatGlob->CorrelToCout(1-aCost);
-                     // On envoie le resultat a l'optimiseur pour valoir  ce que de droit
+                     // On envoie le result a l'optimiseur for valoir  ce que de droit
                      mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,aCost);
 // if (Debug) std::cout << "Z " << aZInt << " Cost " << aCost << "\n";
                    }
                    else
                    {
 // if (Debug) std::cout << "Z " << aZInt << " DEF " << aDefCost << "\n";
-                       // Si pas assez d'image, il faut quand meme remplir la case avec qq chose
+                       // if pas assez d'image, il faut when meme remplir la case with qq chose
                        mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,mAhDefCost);
                    }
                }
@@ -936,7 +936,7 @@ void cAppliMICMAC::DoCorrelAdHoc
 
 
 
-   // Pour eventuellement changer si existe algo qui impose une taille
+   // for eventuellement changer if existe algo qui impose une taille
    Pt2di aSzV = mPtSzWFixe;
 
    DoInitAdHoc(aBox,aSzV);

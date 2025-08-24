@@ -8,7 +8,7 @@
 #include "NavigationSlot.h"
 
 // ---------------------------------------------------------------
-// Classe contenant les données de navigation GPS
+// class contenant les données de navigation GPS
 // ---------------------------------------------------------------
 class NavigationData {
 

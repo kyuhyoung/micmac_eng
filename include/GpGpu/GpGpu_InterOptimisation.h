@@ -10,16 +10,16 @@ extern "C" void Gpu_OptimisationOneDirection(DEVC_Data2Opti  &d2O);
 template <class T>
 ///
 /// \brief The CuHostDaPo3D struct
-/// Structure 1D des couts de corélation
+/// Structure 1D des couts de corlation
 struct sMatrixCellCost
 {
 	///
 	/// \brief _CostInit1D
-	/// les couts intrinséques des cellules
+	/// les couts intrinsques des cellules
 	CuHostData3D<T>         _CostInit1D;
 	///
 	/// \brief _ptZ
-	/// Coordonnées Z de la nappe d'une position terrain
+	/// Coordonnes Z de la nappe d'une position terrain
 	CuHostData3D<short3>    _ptZ;
 	///
 	/// \brief _dZ
@@ -27,7 +27,7 @@ struct sMatrixCellCost
     CuHostData3D<ushort>    _dZ;
 	///
 	/// \brief _pit
-	/// Decallage pour acceder au début d'une  ligne
+	/// Decallage for acceder au dbut d'une  line
     CuHostData3D<uint>      _pit;
 
 	///
@@ -48,7 +48,7 @@ struct sMatrixCellCost
 	}
 
 	///
-	/// \brief ReallocPt Reallocation de la mémoire conditionelle
+	/// \brief ReallocPt Reallocation de la mmoire conditionelle
 	/// \param dim
 	///
     void                    ReallocPt(uint2 dim)
@@ -60,7 +60,7 @@ struct sMatrixCellCost
     }
 
 	///
-	/// \brief ReallocData Reallocation de la mémoire conditionelle
+	/// \brief ReallocData Reallocation de la mmoire conditionelle
 	///
     void                    ReallocData()
     {
@@ -71,14 +71,14 @@ struct sMatrixCellCost
 	///
 	/// \brief fillCostInit
 	/// \param val
-	/// Remplir la strucutre par la donnée val
+	/// Remplir la strucutre par la donne val
     void                    fillCostInit(ushort val)
     {
         _CostInit1D.Fill(val);
     }
 
 	///
-	/// \brief Dealloc Désalocation de la mémoire
+	/// \brief Dealloc Dsalocation de la mmoire
 	///
     void                    Dealloc()
     {
@@ -110,7 +110,7 @@ struct sMatrixCellCost
 		}
 
         // NAPPEMAX
-        if(_maxDz < dZ) // Calcul de la taille de la Nappe Max pour le calcul Gpu
+        if(_maxDz < dZ) // computation de la taille de la Nappe Max for le computation Gpu
 			_maxDz = sgpu::__multipleSup<WARPSIZE>(dZ);
 
         _pit[pt]    = _size;
@@ -125,7 +125,7 @@ struct sMatrixCellCost
     }
 
 	///
-	/// \brief setDefCor Définir la valeur par défaut de corrélation
+	/// \brief setDefCor Dfinir la value par dfaut de corrlation
 	/// \param pt
 	/// \param defCor
 	///
@@ -137,7 +137,7 @@ struct sMatrixCellCost
 	///
 	/// \brief Pit
 	/// \param pt
-	/// \return le décalage pour un point pt
+	/// \return le dcalage for un point pt
 	///
     uint                    Pit(uint2 pt)
     {
@@ -147,7 +147,7 @@ struct sMatrixCellCost
 	///
 	/// \brief Pit
 	/// \param pt
-	/// \return  le décalage pour un point pt
+	/// \return  le dcalage for un point pt
 	///
     uint                    Pit(Pt2di pt)
     {
@@ -157,7 +157,7 @@ struct sMatrixCellCost
 	///
 	/// \brief PtZ
 	/// \param pt
-	/// \return Les coordonnées Zmin et Zmax
+	/// \return Les coordonnes Zmin and Zmax
 	///
     short3                  PtZ(uint2 pt)
     {
@@ -167,7 +167,7 @@ struct sMatrixCellCost
 	///
 	/// \brief PtZ
 	/// \param pt
-	/// \return  Les coordonnées Zmin et Zmax
+	/// \return  Les coordonnes Zmin and Zmax
 	///
     short3                  PtZ(Pt2di pt)
     {
@@ -217,7 +217,7 @@ struct sMatrixCellCost
 	///
 	/// \brief operator []
 	/// \param pt
-	/// \return le cout intrinsèque du point
+	/// \return le cout intrinsque du point
 	///
     T*                      operator[](uint2 pt)
     {
@@ -227,7 +227,7 @@ struct sMatrixCellCost
 	///
 	/// \brief operator []
 	/// \param pt
-	/// \return  le cout intrinsèque du point
+	/// \return  le cout intrinsque du point
 	///
     T*                      operator[](Pt2di pt)
     {
@@ -237,7 +237,7 @@ struct sMatrixCellCost
 	///
 	/// \brief operator []
 	/// \param pt
-	/// \return   le cout intrinsèque du point
+	/// \return   le cout intrinsque du point
 	///
     T&                      operator[](int3 pt)
     {
@@ -248,7 +248,7 @@ struct sMatrixCellCost
 
 
 /// \class InterfOptimizGpGpu
-/// \brief Class qui permet a micmac de lancer les calculs d optimisations sur le Gpu
+/// \brief Class qui permet a micmac de lancer les calculs d optimisations on le Gpu
 ///
 class InterfOptimizGpGpu : public CSimpleJobCpuGpu<bool>
 {
@@ -262,12 +262,12 @@ public:
 
     ///
 	/// \brief Data2Opt
-	/// \return les données device
+	/// \return les donnes device
     ///
     HOST_Data2Opti& HData2Opt(){ return _H_data2Opt;}
 	///
 	/// \brief DData2Opt
-	/// \return Les données hote
+	/// \return Les donnes hote
 	///
     DEVC_Data2Opti& DData2Opt(){ return _D_data2Opt;}
 
@@ -277,7 +277,7 @@ public:
     void            Dealloc();
 
 	///
-	/// \brief Prepare Initialisation des paramètres
+	/// \brief Prepare Initialisation des paramtres
 	/// \param x
 	/// \param y
 	/// \param penteMax
@@ -297,21 +297,21 @@ public:
 
 	///
 	/// \brief _preFinalCost1D
-	/// Structure de données des couts forcées
+	/// Structure de donnes des couts forces
     CuHostData3D<uint>      _preFinalCost1D;
 
 	///
 	/// \brief _FinalDefCor
-	/// Structure de données des cellules de defCor
+	/// Structure de donnes des cellules de defCor
     CuHostData3D<uint>      _FinalDefCor;
 
 	///
 	/// \brief _poInitCost
-	/// Matrice des cellules
+	/// matrix des cellules
     sMatrixCellCost<ushort>    _poInitCost;
 
 	///
-	/// \brief optimisation Lance le calcul d'optimisation en GpGpu
+	/// \brief optimisation Lance le computation d'optimisation en GpGpu
 	///
     void            optimisation();
 

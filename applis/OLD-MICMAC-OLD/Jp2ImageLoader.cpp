@@ -138,9 +138,9 @@ namespace NS_ParamMICMAC
 		for(size_t i=0;i<aVImages.size();++i) precisions[i]=precision;
 		for(size_t i=0;i<aVImages.size();++i) is_signed[i]=signe;
 		kdu_dims dims,mdims;
-		// Position de l'origine en coord fichier (cad plein resolution)
+		// Position de l'origine en coord file (cad plein resolution)
 		dims.pos=kdu_coords(aP0File.real()*aDeZoom,aP0File.imag()*aDeZoom);
-		// Taille de la zone en coord fichier (cad pleine resolution)
+		// Taille de la zone en coord file (cad pleine resolution)
 		dims.size=kdu_coords(aSz.real()*aDeZoom,aSz.imag()*aDeZoom);
 		codestream.map_region(0,dims,mdims);
 		int premier_canal = -1;
@@ -273,9 +273,9 @@ namespace NS_ParamMICMAC
 		for(size_t i=0;i<aVImages.size();++i) precisions[i]=precision;
 		for(size_t i=0;i<aVImages.size();++i) is_signed[i]=signe;
 		kdu_dims dims,mdims;
-		// Position de l'origine en coord fichier (cad plein resolution)
+		// Position de l'origine en coord file (cad plein resolution)
 		dims.pos=kdu_coords(aP0File.real()*aDeZoom,aP0File.imag()*aDeZoom);
-		// Taille de la zone en coord fichier (cad pleine resolution)
+		// Taille de la zone en coord file (cad pleine resolution)
 		dims.size=kdu_coords(aSz.real()*aDeZoom,aSz.imag()*aDeZoom);
 		codestream.map_region(0,dims,mdims);
 		//std::cout << "mdims : "<<mdims.pos.x<<" "<<mdims.pos.y<<" "<<mdims.size.x<<" "<<mdims.size.y<<std::endl;

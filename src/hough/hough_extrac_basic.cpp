@@ -85,7 +85,7 @@ void ElHoughImplem::Transform_Ang
                         Im2D_U_INT1 ImMod,
                         Im2D_U_INT1 ImAng,
                         REAL        RealIncAng,
-                        bool        AngIsGrad  // Si vrai += 90 degre
+                        bool        AngIsGrad  // if vrai += 90 degre
                     )
 {
    SetImageRTCur(aHoughTr);
@@ -112,9 +112,9 @@ void ElHoughImplem::Transform_Ang
            if (val)
            {
               INT iAng = dataAng[y][x];
-              if (! AngIsGrad)          // pour passer de gradient a ligne de niveau
+              if (! AngIsGrad)          // for passer de gradient a line de niveau
                  iAng += 64;
-              iAng = iAng %128;       // pour faire un angle de droite
+              iAng = iAng %128;       // for faire un angle de droite
               iAng =(iAng*NbTeta())/128; // dynamic locale
               INT iAng1 = mod(iAng-IincTeta,NbTeta());
               INT iAng2 = mod(iAng+IincTeta,NbTeta());

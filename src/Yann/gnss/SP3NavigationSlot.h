@@ -8,7 +8,7 @@
 #include <vector>
 
 // ---------------------------------------------------------------
-// Classe contenant un paquet de données de navigation SP3
+// class contenant un paquet de données de navigation SP3
 // ---------------------------------------------------------------
 class SP3NavigationSlot {
 

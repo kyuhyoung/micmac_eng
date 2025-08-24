@@ -641,7 +641,7 @@ void cGHCFH_Appli::WriteCpInHFile(std::string aFile, cInterfChantierNameManipula
 	//std::cout << "Footer = " << std::endl;
 	ShowVs(aLFooter);
 	
-	//ecrire dans un nouveau fichier
+	//ecrire in un nouveau file
 	std::string aOut= StdPrefixGen(mHPF) + "_Homol.pto";
 	if (!MMVisualMode)
 	{

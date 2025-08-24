@@ -298,7 +298,7 @@ void ImgToOriTabA::imageSelected2() {
 }
 
 void ImgToOriTabA::addClicked() {
-	//listWidget2 & parametres
+	//listWidget2 & parameters
 	QList<QListWidgetItem *> l = listWidget2->selectedItems();	//images à ajouter
 	QStringList l2 = listWidgetToStringList(l);
 	for (QList<QListWidgetItem *>::const_iterator it=l.begin(); it!=l.end(); it++) {
@@ -317,7 +317,7 @@ void ImgToOriTabA::addClicked() {
 }
 
 void ImgToOriTabA::removeClicked() {
-	//listWidget & parametres
+	//listWidget & parameters
 	QList<QListWidgetItem *> l = listWidget->selectedItems();	//images à supprimer
 	QStringList l2 = listWidgetToStringList(l);
 	for (QList<QListWidgetItem*>::const_iterator it=l.begin(); it!=l.end(); it++) {
@@ -388,7 +388,7 @@ MaitresseTabA::MaitresseTabA(ParamApero* paramApero, const ParamMain* pMain, QSt
 MaitresseTabA::~MaitresseTabA () {}
 
 QString MaitresseTabA::calculeBestMaitresse () {
-	//recherche du nombre d'images connectées à chaque image et du nombre de points homologues	
+	//recherche du number d'images connectées à chaque image and du number de points homologues	
 	QVector<int> nbVois(listWidget->count(),0);
 	QVector<int> nbHom(listWidget->count(),0);
 	cTplValGesInit<string>  aTpl;
@@ -415,11 +415,11 @@ QString MaitresseTabA::calculeBestMaitresse () {
 	delete [] argv[0];
 	delete [] argv;
 	delete mICNM;
-	//imges avec le plus d'images connectées
+	//imges with le plus d'images connectées
 	QVector<int>::const_iterator maximum = max_element(nbVois.begin(), nbVois.end());
 	int nb = count(nbVois.begin(), nbVois.end(), *maximum);
 	if (nb==1) return listWidget->item(maximum-nbVois.begin())->text();
-	//et avec le plus de points homologues
+	//and with le plus de points homologues
 	QVector<int> bestImgs(listWidget->count(),0);
 	QVector<int>::const_iterator it2=nbHom.begin();
 	QVector<int>::iterator it3=bestImgs.begin();
@@ -497,7 +497,7 @@ ReferenceTabA::ReferenceTabA (ParamApero* paramApero, InterfApero* parentWindow,
 	connect(checkDoPlanDir, SIGNAL(stateChanged(int)), this, SLOT(doPlanDirChecked()));
 	connect(checkDoEchelle, SIGNAL(stateChanged(int)), this, SLOT(doEchelleChecked()));
 
-		//saisie du plan et de la direction
+		//saisie du plan and de la direction
 	QLabel* planLabel = new QLabel(tr("Horizontal plan"));
 	QFont font;
 	font.setBold(true);
@@ -586,7 +586,7 @@ ReferenceTabA::ReferenceTabA (ParamApero* paramApero, InterfApero* parentWindow,
 	connect(radioFichier, SIGNAL(clicked(bool)), this, SLOT(radioAbsChecked(bool)));
 	connect(radioHand, SIGNAL(clicked(bool)), this, SLOT(radioAbsChecked(bool)));
 
-		//import d'un fichier
+		//import d'un file
 	QLabel* fichierAbsLabel = new QLabel(tr("Georeferencing file : "));
 	fichierAbsEdit = new QLineEdit;
 	fichierAbsEdit->setMinimumWidth(150);
@@ -662,7 +662,7 @@ ReferenceTabA::ReferenceTabA (ParamApero* paramApero, InterfApero* parentWindow,
 
 	//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx//
 	//cas du géoréférencement par points d'appui
-		//import d'un fichier de points terrain
+		//import d'un file de points terrain
 	QLabel* fileAppLabel = new QLabel(conv(tr("GCP file : ")));
 	fileAppEdit = new QLineEdit;
 	fileAppEdit->setMinimumWidth(150);
@@ -682,7 +682,7 @@ ReferenceTabA::ReferenceTabA (ParamApero* paramApero, InterfApero* parentWindow,
 	fileAppBox->setAlignment(Qt::AlignLeft);
 	fileAppBox->setLayout(fileAppLayout);
 
-		//import d'un fichier de mesures
+		//import d'un file de mesures
 	QLabel* fileMesLabel = new QLabel(conv(tr("Image measure file : ")));
 	fileMesEdit = new QLineEdit;
 	fileMesEdit->setMinimumWidth(150);
@@ -786,7 +786,7 @@ ReferenceTabA::ReferenceTabA (ParamApero* paramApero, InterfApero* parentWindow,
 	//setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	radioClicked(parametres->getUserOrientation().getOrientMethode());
-	buttonGroup->button(parametres->getUserOrientation().getOrientMethode())->setChecked(true);	//dans cet ordre
+	buttonGroup->button(parametres->getUserOrientation().getOrientMethode())->setChecked(true);	//in cet ordre
 	doPlanDirChecked();
 	doEchelleChecked();
 	adjustSize();
@@ -805,7 +805,7 @@ void ReferenceTabA::resizeEvent(QResizeEvent*) {
 }
 
 void ReferenceTabA::radioClicked(int idx) {
-	switch (idx) {	//ne pas regrouper sinon pb de hide() et de redimensionnement
+	switch (idx) {	//ne pas regrouper else pb de hide() and de redimensionnement
 		case 0 : parametres->modifUserOrientation().setOrientMethode(0);
 				manuBox->hide();
 				imgAbsBox->hide();
@@ -892,7 +892,7 @@ void ReferenceTabA::fichierAbsClicked() {
 	QString fichier = *(fileNames.begin());
 	//chemin absolu
 	fichier = QDir(dir).absoluteFilePath(fichier);
-	//on vérifie que le nom du fichier est lisible (à cause des accents)
+	//on vérifie que le nom du file est lisible (à cause des accents)
 	if (!checkPath(fichier)) {
 		qMessageBox(this, tr("Read error"),conv(tr("Fail to read file %1.\nCheck there are no accents in path.")).arg(fichier));	
 		return;
@@ -941,7 +941,7 @@ void ReferenceTabA::appuisClicked() {
 	QString fichier = *(fileNames.begin());
 	//chemin absolu
 	fichier = QDir(dir).absoluteFilePath(fichier);
-	//on vérifie que le nom du fichier est lisible (à cause des accents)
+	//on vérifie que le nom du file est lisible (à cause des accents)
 	if (!checkPath(fichier)) {
 		qMessageBox(this, tr("Read error"),conv(tr("Fail to read file %1.\nCheck there are no accents in path.")).arg(fichier));	
 		return;
@@ -965,7 +965,7 @@ void ReferenceTabA::mesAppClicked() {
 	QString fichier = *(fileNames.begin());
 	//chemin absolu
 	fichier = QDir(dir).absoluteFilePath(fichier);
-	//on vérifie que le nom du fichier est lisible (à cause des accents)
+	//on vérifie que le nom du file est lisible (à cause des accents)
 	if (!checkPath(fichier)) {
 		qMessageBox(this, tr("Read error"), conv(tr("Fail to read file %1.\nCheck there are no accents in path.")).arg(fichier));	
 		return;
@@ -991,7 +991,7 @@ void ReferenceTabA::saisieAppClicked() {
 		}
 	}
 
-	//affichage et saisie
+	//affichage and saisie
 	if (paintInterfAppui!=0) delete paintInterfAppui;
 	paintInterfAppui = new PaintInterfAppui(paramMain, assistant, points, pointsAppui, this);
 	if (!paintInterfAppui->getDone()) return;
@@ -1038,7 +1038,7 @@ void ReferenceTabA::sommetsClicked() {
 	}
 	//chemin absolu
 	fichier = QDir(dir).absoluteFilePath(fichier);
-	//on vérifie que le nom du fichier est lisible (à cause des accents)
+	//on vérifie que le nom du file est lisible (à cause des accents)
 	if (!checkPath(fichier)) {
 		qMessageBox(this, tr("Read error"),conv(tr("Fail to read file %1.\nCheck there are no accents in path.")).arg(fichier));	
 		return;
@@ -1048,7 +1048,7 @@ void ReferenceTabA::sommetsClicked() {
 	parametres->modifUserOrientation().setPointsGPS(fichier);
 }
 void ReferenceTabA::filterSelected(const QString& filtre) {
-//permet de choisir à la fois des fichiers texte (liste des points GPS) et des dossiers (coordonnées GPS formatées en xml par pose) avec la même QFileDialog
+//permet de choisir à la fois des fichiers texte (list des points GPS) and des dossiers (coordonnées GPS formatées en xml par pose) with la même QFileDialog
 	if (filtre==tr("All directories (*)"))
 		fileDialogSommets->setFileMode(QFileDialog::Directory);
 	else
@@ -1056,10 +1056,10 @@ void ReferenceTabA::filterSelected(const QString& filtre) {
 }
 
 bool ReferenceTabA::renameDirBDDC() {
-//renomme le dossier des sommets GPS en Ori-BDDC
+//renomme le folder des sommets GPS en Ori-BDDC
 	QString dirBDDC = parametres->getUserOrientation().getPointsGPS();
 	if (parametres->getUserOrientation().getOrientMethode()!=4) return true;
-	if (!QDir(dirBDDC).exists()) return true;	//fichier à convertir avec aperoThread
+	if (!QDir(dirBDDC).exists()) return true;	//file à convertir with aperoThread
 	if (dirBDDC==dir+QString("Ori-BDDC/")) return true;	//rien à faire
 	if (QDir(dir+QString("Ori-BDDC")).exists()) {
 		int i = 0;
@@ -1335,7 +1335,7 @@ MultiEchelleTabA::MultiEchelleTabA (ParamApero* paramApero, const QList<std::pai
 	listWidget1->adjustSize();
 	listWidget1->setMaximumWidth(50);
 	/*if (precCalibFigees!=0)		
-		*(parametres->calibFigees) = *precCalibFigees;*/
+		*(parameters->calibFigees) = *precCalibFigees;*/
 
 	//sélection des focales longues
 	QLabel *label2 = new QLabel(conv(tr("Remained calibration for estimation second step (long focal lengths) :")));
@@ -1547,7 +1547,7 @@ MasqueWidget::MasqueWidget(const ParamMain* param, Assistant* help, bool mm, boo
 		imageBox->setLayout(imageLayout);
 	}
 
-	//créer ou ou ouvrir un masque
+	//créer or or ouvrir un masque
 	radioNvu = new QRadioButton(conv(tr("Draw a new mask")));
 	radioOpen = new QRadioButton(tr("Open an existing mask"));
 	radioNvu->setChecked(false);	
@@ -1700,13 +1700,13 @@ void MasqueWidget::openClicked() {
 	masque = 0;
 	QString fichier = *(fileNames.begin());
 
-	//on vérifie que le nom du fichier est lisible (à cause des accents)
+	//on vérifie que le nom du file est lisible (à cause des accents)
 	if (!checkPath(fichier)) {
 		qMessageBox(this, tr("Read error"),conv(tr("Fail to read file %1.\nCheck there are no accents in path.")).arg(fichier));	
 		return;
 	}
 
-	//si c'est le fichier non tuilé, on le remplace par le fichier tuilé
+	//if c'est le file non tuilé, on le remplace par le file tuilé
 	if (fichier.right(12)==QString("nontuile.tif") && QFile(fichier.left(fichier.size()-12)+QString(".tif")).exists()) {
 		fichier = fichier.left(fichier.size()-12)+QString(".tif");
 	}	
@@ -1714,7 +1714,7 @@ void MasqueWidget::openClicked() {
 	openEdit->setText(fichier);
 	if (fichier!=masqueFile) QFile(fichier).copy(masqueFile);
 	saveEdit->setText(masqueFile);
-	saveClicked();	//pour le fichier de géoréférencement
+	saveClicked();	//for le file de géoréférencement
 }
 
 void MasqueWidget::showPainter (QString masquePrec) {
@@ -1768,7 +1768,7 @@ void MasqueWidget::modifClicked() {
 }
 
 QString MasqueWidget::convert2Rgba(const QString& tuiledFile, bool toMask, const QString& newFile) {
-//convertit le fichier pour être lisible par Qt et si toMask, convertit le fichier au format du masque de drawMask (masque en vert transparent)
+//convertit le file for être lisible par Qt and if toMask, convertit le file au format du masque de drawMask (masque en vert transparent)
 	QString saveFile = (newFile.isEmpty())? (imgNontuilee(tuiledFile)) : newFile;
 	//if (QFile(saveFile).exists()) return QString();
 	deleteFile(saveFile);
@@ -1792,7 +1792,7 @@ void MasqueWidget::saveClicked() {
 
 	//masque
 	QSize size;
-	if (masque!=0) {	//new ou modif
+	if (masque!=0) {	//new or modif
 		if (QFile(masqueFile).exists()) QFile(masqueFile).remove();
 		if (!QFile(applicationPath()+QString("/masquetempo.tif")).rename(masqueFile)) {
 			if (!checkPath(masqueFile)) {
@@ -1805,7 +1805,7 @@ void MasqueWidget::saveClicked() {
 		}
 		QString masqueFile2 = imgNontuilee(masqueFile);
 		if (QFile(masqueFile2).exists()) QFile(masqueFile2).remove();
-		if (QFile(imgNontuilee(applicationPath()+QString("/masquetempo.tif"))).exists()) QFile(imgNontuilee(applicationPath()+QString("/masquetempo.tif"))).remove();	//pas de masque non tuilé si création
+		if (QFile(imgNontuilee(applicationPath()+QString("/masquetempo.tif"))).exists()) QFile(imgNontuilee(applicationPath()+QString("/masquetempo.tif"))).remove();	//pas de masque non tuilé if création
 		size = QSize(masque->sz().x,masque->sz().y);
 	} else {
 			ELISE_fp fp;
@@ -1822,7 +1822,7 @@ void MasqueWidget::saveClicked() {
 		delete [] buf;
 	}
 
-	//fichier de référencement du masque
+	//file de référencement du masque
 	bool ok;
 	paramMain->getNumImage(imageFond,&ok,false);
 	if (ok) {	//repère image
@@ -2269,7 +2269,7 @@ void EchelleWidget::imageEchClicked() {
 	if (nbList==4 && (images[0]==images[2] || images[1]==images[3])) {
 		qMessageBox(this, tr("Selection error"),conv(tr("The two images on which each point is drawn must be different to recover the third dimension.")));
 		return;
-	} //si nbList=2, c'est juste un rapport de taille ortho/MNT à calculer (au pire ça sert à rien)
+	} //if nbList=2, c'est juste un rapport de taille ortho/MNT à compute (au pire ça sert à rien)
 
 	QVector<QPoint> P(4);
 	for (int i=0; i<4; i++) {

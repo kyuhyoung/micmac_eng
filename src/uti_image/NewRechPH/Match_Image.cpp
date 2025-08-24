@@ -166,7 +166,7 @@ void FiltrageDirectionnel(std::vector<cCdtCplHom> & aVCpl,cAppli_FitsMatch1Im & 
       }
    }
 
-   // calcul du pt max
+   // computation du pt max
    int aHMax=-1;
    int aKMax = -1;
    for (int aKD=0 ; aKD<aNbDir ; aKD++)
@@ -442,7 +442,7 @@ void cAFM_Im::LoadLab(bool DoIndex,bool aGlob, eTypePtRemark aLab,bool MaintainI
         aSet->Add(aCPC);
     }
 
-    // On rajoute dans Glob ceux d'indexe 0 
+    // On rajoute in Glob ceux d'indexe 0 
     if (aGlob)
     {
        for (const auto & aPC : mSetInd0[int(aLab)]->VOpc())
@@ -572,7 +572,7 @@ void cAFM_Im_Master::FilterVoisCplCt(std::vector<cCdtCplHom> & aV0)
         aCpl.mDistS = euclid(aSim(aCpl.PM()) - aCpl.PS());
     }
     std::sort(aV0.begin(),aV0.end(),CmpCC);
-    // On refait une deuxieme passe car adresse pas conservee dans std::sort ...
+    // On refait une deuxieme passe car adresse pas conservee in std::sort ...
     for (auto  & aCpl : aV0)
     {
         mQt.insert(&aCpl);
@@ -606,7 +606,7 @@ void cAFM_Im_Master::FilterVoisCplCt(std::vector<cCdtCplHom> & aV0)
                     {
                         Pt2dr aV1 = aSim(aCpl.PM()) - aSim(aCpV->PM());
                         Pt2dr aV2 = aCpl.PS() - aCpV->PS();
-                        double aD = euclid(aV1-aV2) / (1+euclid(aV1)+euclid(aV2)); // +1 modelise erreur pixel
+                        double aD = euclid(aV1-aV2) / (1+euclid(aV1)+euclid(aV2)); // +1 modelise error pixel
                         aSomD += aD;
                         aNbD ++;
                     }
@@ -798,7 +798,7 @@ bool  cAFM_Im_Master::MatchLow(cAFM_Im_Sec & anISec,std::vector<cCdtCplHom> & aV
     // eTypePtRemark aLab = mAppli.LabInit();
     // int aKL = int(aLab);
     
-    // Premier calcul sur nb de points reduit
+    // Premier computation on nb de points reduit
     // for (const auto & aKL : aVLab)
     for (int aKL=0 ; aKL< int(eTPR_NoLabel) ; aKL++)
     {
@@ -872,7 +872,7 @@ bool  cAFM_Im_Master::MatchGlob(cAFM_Im_Sec & anISec)
     // eTypePtRemark aLab = mAppli.LabInit();
     // int aKL = int(aLab);
     
-    // Premier calcul sur nb de points reduit
+    // Premier computation on nb de points reduit
     // for (const auto & aKL : aVLab)
     for (int aKL=0 ; aKL< int(eTPR_NoLabel) ; aKL++)
     {

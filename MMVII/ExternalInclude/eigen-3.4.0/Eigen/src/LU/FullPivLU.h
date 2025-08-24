@@ -715,7 +715,7 @@ struct image_retval<FullPivLU<_MatrixType> >
     using std::abs;
     if(rank() == 0)
     {
-      // The Image is just {0}, so it doesn't have a basis properly speaking, but let's
+      // The image is just {0}, so it doesn't have a basis properly speaking, but let's
       // avoid crashing/asserting as that depends on floating point calculations. Let's
       // just return a single column vector filled with zeros.
       dst.setZero();

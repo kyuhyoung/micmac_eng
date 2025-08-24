@@ -669,7 +669,7 @@ void ElImIncruster::BeginIncrust()
 {
     BeginIncrust
     (
-       Pt2dr(0,0),      // Si on ne change pas le scale, la valeur n'a pas d'importance
+       Pt2dr(0,0),      // if on ne change pas le scale, la value n'a pas d'importance
        mTabScr[0]->sc()
     );
 }

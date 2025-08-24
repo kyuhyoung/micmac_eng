@@ -46,7 +46,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 int  LucasChCloud_main(int argc,char ** argv)
 {
-  //=====================  PARAMETRES EN DUR ==============
+  //=====================  parameters EN DUR ==============
 
 
     std::string aNameNuage,aNameOut;

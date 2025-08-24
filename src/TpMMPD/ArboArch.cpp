@@ -87,12 +87,12 @@ struct sensor{
 
 //
 
-//option pour renommer toutes les images;
-//détecter s'il y a des images avec nom identique --> renomme tout
-//si toutes les images ont des noms difféente; --> je garde tel quel ou option spécifiée par le user
+//option for renommer toutes les images;
+//détecter s'il y a des images with nom identique --> renomme tout
+//if toutes les images ont des noms difféente; --> je garde tel quel or option spécifiée par le user
 //
 
-//input : nom du dossier qui contient les images
+//input : nom du folder qui contient les images
 //		  structure : 0/ img+file
 //		  structure : 1/ Folder1/img+file
 //		  			     Folder2/img+file
@@ -103,9 +103,9 @@ struct sensor{
 //IMG/Centrale1/Batiment1/FaceNord/Vol2
 
 
-//input : indice de profondeur pour genérer l'archive
+//input : indice de profondeur for genérer l'archive
 
-//générer l'arboresence au niveau du dossier courant
+//générer l'arboresence au niveau du folder courant
 
 //copier toutes les données au bon endroit
 

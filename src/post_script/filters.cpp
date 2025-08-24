@@ -136,7 +136,7 @@ void cConvertBaseXXX::PutC(char aC,std::ostream & aStream)
 		  }
       }
       mNbCCur = 0;
-      // Si mCurI != 0, toute l'info n'a pas ete transmise !!
+      // if mCurI != 0, toute l'info n'a pas ete transmise !!
       ELISE_ASSERT(mCurI==0,"Inc in cConvertBaseXXX::PutC");
    }
 }

@@ -394,7 +394,7 @@ void bench_polynome()
         REAL r3 = 4+NRrandom3();
         REAL r4 = 6+NRrandom3();
 
-        INT degre = 4; // 4 ou 7
+        INT degre = 4; // 4 or 7
         ElPolynome<REAL>  P =    ElPolynome<REAL> (-r1,1)
                                * ElPolynome<REAL> (-r2,1)
                                * ElPolynome<REAL> (1,0,1) ; // Pas de racine
@@ -621,8 +621,8 @@ void BenchOrFromPtsApp()
     
 }
 
-// Classe pour verifier que si on merdoie sur l'orientation
-// des espaces (terrain ou camera) on ne trouve pas de solution
+// class for verifier que if on merdoie on l'orientation
+// des espaces (terrain or camera) on ne trouve pas de solution
 // au pb des 4 points d'appuis
 
 
@@ -822,7 +822,7 @@ void BenchDiffCam()
      //ElRotation3D   Orient ( Tr,M);
      ElRotation3D   Orient ( Tr,M, true/*isDirect*/); // __NEW
 
-     // Parcequ'il existe une ambiguite sur les angles :
+     // Parcequ'il existe une ambiguite on les angles :
      A01 = Orient.teta01();
      A02 = Orient.teta02();
      A12 = Orient.teta12();
@@ -974,7 +974,7 @@ static Polynome2dReal    Rand_Polynome2dReal(REAL anAmpl,REAL attenNonLin,bool D
    {
         REAL aCoeff = (0.5+0.5 * NRrandom3()) * anAmpl;
         if (DistY && (kMon == 1))
-           aCoeff *= -1;  // Pour Avoir Tjs une mat inversible
+           aCoeff *= -1;  // for Avoir Tjs une mat inversible
         INT aDtot = aRes.KthMonome(kMon).DegreTot();
         if (aDtot ==0) 
              aCoeff *= 0.1;
@@ -1003,7 +1003,7 @@ void    bench_Polynome2dReal()
             Pt2dr aVal = Pt2dr(anAmpl*NRrandom3(),anAmpl*NRrandom3()) * 0.3;
 
 
-             // Verifie operations sur les polynomes
+             // Verifie operations on les polynomes
             {
                 Polynome2dReal    aPol1 = Rand_Polynome2dReal(1.0+100*NRrandom3(),1.0,false);
                 Polynome2dReal    aPol2 = Rand_Polynome2dReal(1.0+100*NRrandom3(),1.0,false);

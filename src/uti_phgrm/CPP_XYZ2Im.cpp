@@ -230,19 +230,19 @@ int TransfoCam_main(int argc,char ** argv,bool Ter2Im)
 		{
 			int aNb = sscanf(aLine,"%lf %lf %lf",&aPIm.x,&aPIm.y,&aInputZ);
                 	ELISE_ASSERT(aNb==3,"Could not read 3 double values");
-			// std::cout << "2D Point + Z: ["<<aPIm.x<< ","<<aPIm.y<<","<<aInputZ<<"]\n";
+			// std::cout << "2D point + Z: ["<<aPIm.x<< ","<<aPIm.y<<","<<aInputZ<<"]\n";
 		}
 		else
 		{
 			int aNb = sscanf(aLine,"%lf %lf",&aPIm.x,&aPIm.y);
                 	ELISE_ASSERT(aNb==2,"Could not read 2 double values");
-			// std::cout << "2D Point: ["<<aPIm.x<< ","<<aPIm.y<<"]\n";
+			// std::cout << "2D point: ["<<aPIm.x<< ","<<aPIm.y<<"]\n";
 		}
 		if (aNuage)
 		{
                         Pt2dr aPIm0 = aPIm;
 			if (aPoinIsImRef)
-                    	    aPIm = aNuage->ImRef2Capteur (aPIm);/* ici il y a un bug sous linux, segmention core dumped*/
+                    	    aPIm = aNuage->ImRef2Capteur (aPIm);/* ici il y a un bug under linux, segmention core dumped*/
 
        			if (aNuage->CaptHasData(aPIm))
                 	{
@@ -552,7 +552,7 @@ int main(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -568,17 +568,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

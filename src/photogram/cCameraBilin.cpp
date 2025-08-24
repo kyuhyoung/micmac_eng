@@ -152,7 +152,7 @@ cPIF_Bilin::cPIF_Bilin(cCamStenopeBilin *aCSB,cSetEqFormelles & aSet):
     }
 
     int aCpt=0;
-    // Pour initier dans unr ordre ou le premri quadrangle passe d'abord
+    // for initier in unr ordre or le premri quadrangle passe d'abord
     for (int aKD8=0 ; aKD8<=ElMax(mDistCur.Nb().y,mDistCur.Nb().x) ; aKD8++)
     {
         for (int aKY=0; aKY<=mDistCur.Nb().y ; aKY++)
@@ -294,7 +294,7 @@ CamStenope * cPIF_Bilin::CurPIF()
 
 CamStenope * cPIF_Bilin::DupCurPIF()
 {
-    //  Respecte le protocole standard pour le cas ou on ajoute qq ch de + complexe dans NV_UpdateCurPIF
+    //  Respecte le protocole standard for le cas or on ajoute qq ch de + complexe in NV_UpdateCurPIF
      cCamStenopeBilin * aCSB = mCurPIF;
      NV_UpdateCurPIF();
      ElSwap(aCSB,mCurPIF);
@@ -327,7 +327,7 @@ void cPIF_Bilin::SetDistFigee()
 void cPIF_Bilin::SetDistFree(int aDegre)
 {
    mFiged = false;
-   mDegreFree = aDegre;  // Pour l'instant inutile
+   mDegreFree = aDegre;  // for l'instant inutile
 }
 
 

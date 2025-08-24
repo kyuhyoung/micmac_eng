@@ -38,7 +38,7 @@ int  DocEx_Introanalyse_main(int,char **)
 
 //=========================================================
 //
-//    LISTE DE POINTS 
+//    list DE POINTS 
 //
 //=========================================================
       
@@ -123,7 +123,7 @@ int  DocEx_Introanalyse_main(int,char **)
 
 //=========================================================
 //
-//    RELATION DE VOSINAGES ET DILATATION 
+//    RELATION DE VOSINAGES and DILATATION 
 //
 //=========================================================
 
@@ -336,9 +336,9 @@ int  DocEx_Introanalyse_main(int,char **)
           U_INT1 ** d = Ibin.data();
 
    // Parcourt toute les composant connexes de l'image
-   // et les met en vert, si elles ont + de 200 point:
+   // and les met en vert, if elles ont + de 200 point:
    //   * les mets en cyan
-   //   * affiche leur boite englobant et centre de gravite
+   //   * affiche leur boite englobant and centre de gravite
 
           for (INT x=0; x < 256; x++)
                for (INT y=0; y < 256; y++)

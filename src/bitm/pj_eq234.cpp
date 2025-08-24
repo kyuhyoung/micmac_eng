@@ -43,18 +43,18 @@ Header-MicMac-eLiSe-25/06/2007*/
 //
 
 
-// Pourquoi CAS n'est pas mise a jour dans RacinesPolyneDegre2Reel
+// Pourquoi CAS n'est pas mise a jour in RacinesPolyneDegre2Reel
 // Pourquoi  if (b<=0) ElSwap
-// Pourquoi utiliser produit des racine  et pas somme
-//  CAS non initialise dans EQ2
+// Pourquoi utiliser produit des racine  and pas somme
+//  CAS non initialise in EQ2
 
 
-// Dans Degre 4 : R=AMINU4-B*A3+B2*AMINU2-3D0*B4  !!
-// Dans Degre 4 : R=AMINU4-B*AMINU3+B2*AMINU2-3D0*B4  serait plus OK ?
-// Dans Degre 3 : cas des racines triples, => if (ElAbs(r)< 1e-15)
+// in Degre 4 : R=AMINU4-B*A3+B2*AMINU2-3D0*B4  !!
+// in Degre 4 : R=AMINU4-B*AMINU3+B2*AMINU2-3D0*B4  serait plus OK ?
+// in Degre 3 : cas des racines triples, => if (ElAbs(r)< 1e-15)
 
-// Dans degre 4, cas des equation quasi bicarre => if (ElAbs(Q)< 1e-10)
-// Solution , avec un coup de Newton sur la racine de Deg 3
+// in degre 4, cas des equation quasi bicarre => if (ElAbs(Q)< 1e-10)
+// Solution , with un coup de Newton on la racine de Deg 3
 
 
 

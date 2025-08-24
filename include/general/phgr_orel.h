@@ -64,12 +64,12 @@ class cIncParamIntrinseque
 {
      public :
 
-        friend class cIncCpleCamera; // Pour GenerateAllCodeGen
-        friend class cIncEnsembleCamera; // Pour GenerateAllCodeGen
+        friend class cIncCpleCamera; // for GenerateAllCodeGen
+        friend class cIncEnsembleCamera; // for GenerateAllCodeGen
 
 
     // Transforme un point (formel) en pixel (== dist non) , en une direction (formelle), 
-    // dans le repere camera
+    // in le repere camera
 
          Pt3d<Fonc_Num>  DirRayon(Pt2d<Fonc_Num> aPCam,INT aNumParam);
 
@@ -188,7 +188,7 @@ class cIncParamIntrinseque
          double *                          mFRadrFoc;
 
          std::vector<cElCompiledFonc *>   mFoncsAux;
-      // Classe permettant de gerer la numerotation des variables locales
+      // class permettant de gerer la numerotation des variables locales
 
 
       // Prohibited
@@ -208,7 +208,7 @@ class cIncParamExtrinseque
           typedef enum {ePosFixe,ePosBaseUnite,ePosLibre} tPosition;
 
 
-       // Omega() * P + Tr() : transforme un point (formel) des coordonnees camera
+       // Omega() * P + Tr() : transforme un point (formel) des coordinates camera
        //  en un point formel coord monde
          virtual ElMatrix<Fonc_Num> & Omega(INT aNum) =0 ;
          virtual Pt3d<Fonc_Num>     & Tr(INT aNum) =0 ;
@@ -217,7 +217,7 @@ class cIncParamExtrinseque
 
           AllocateurDInconnues & Alloc();
 
-      // CurRot() : matrice de passage courante   coord camera -> coord monde
+      // CurRot() : matrix de passage courante   coord camera -> coord monde
           virtual ElRotation3D  CurRot () = 0;
           virtual ~cIncParamExtrinseque();
           std::vector<cElCompiledFonc *> &  
@@ -474,7 +474,7 @@ class cIncEnsembleCamera
                                       bool     isFocaleFree,
                                       Pt2dr    aPP,
                                       bool     isPPFree,
-	                              ElDistRadiale_PolynImpair * = 0 // Si on la donne, ell est libre
+	                              ElDistRadiale_PolynImpair * = 0 // if on la donne, ell est libre
                                   );
 
 
@@ -500,8 +500,8 @@ class cIncEnsembleCamera
          void AddEqRappelCentreDR(cIncParamIntrinseque & aParamI, REAL aPds);
 
          void ResetEquation();
-         void ItereLineaire();  // Ne remplit pas la matrice
-         void OneItereDevL1(bool WithFaux);  // Vide et  Remplit la matrice
+         void ItereLineaire();  // Ne remplit pas la matrix
+         void OneItereDevL1(bool WithFaux);  // Vide and  Remplit la matrix
 
 	 void StdAddEq(cElCompiledFonc *,REAL aP);
 

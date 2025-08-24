@@ -81,13 +81,13 @@ class cOneVisuPMul;
 class  cBdAppuisFlottant;
 
 typedef std::map<std::string,cCalibCam *> tDiCal;
-typedef std::map<std::string,const cCalibrationCameraInc *> tDiArgCab; // Pour gerer les calib/pose qui necessitent
+typedef std::map<std::string,const cCalibrationCameraInc *> tDiArgCab; // for gerer les calib/pose qui necessitent
 typedef std::map<std::string,cPoseCam *>  tDiPo;
 typedef std::map<std::string,cGenPoseCam *>  tDiPoGen;
 typedef std::map<std::string, cPackObsLiaison *> tDiLia;
 
 
-// Pour les rapports
+// for les rapports
 class cRes1OnsAppui;
 
 class cArgGetPtsTerrain;
@@ -110,7 +110,7 @@ class cPoseCdtImSec;
 std::vector<cGenPoseCam *> ToVecGP(const std::vector<cPoseCam *> &);
 std::vector<cPoseCam *> ToVecDownCastPoseCamNN(const std::vector<cGenPoseCam *> &);
 
-// Compilation des blocs, avant init
+// Compilation des blocs, before init
 class cPreCB1Pose;
 class cPreCompBloc;
 
@@ -130,7 +130,7 @@ class cObsCentre
        cTplValGesInit<Pt3dr> mVitesse;
 };
 
-// Utilisation dans AddObservationsRigidGrp 
+// Utilisation in AddObservationsRigidGrp 
 
 class cClassEquivPose
 {
@@ -162,8 +162,8 @@ class cRelEquivPose
           cRelEquivPose(const cRelEquivPose &); // N.I. 
 
           // int                                     mNum;
-          std::map<std::string,cClassEquivPose *> mMap; // Map   NomDeClasse -> Classe
-          std::map<std::string,cClassEquivPose *> mPos2C; // Map   Nom de pose -> Classe
+          std::map<std::string,cClassEquivPose *> mMap; // Map   NomDeClasse -> class
+          std::map<std::string,cClassEquivPose *> mPos2C; // Map   Nom de pose -> class
 };
 
 
@@ -202,7 +202,7 @@ class cCalibCam
                             );   
 	CamStenope & CamInit();
 	void SetContrainte(const cContraintesCamerasInc &);
-	       // Resultat indique si la contrainte a ete traitee
+	       // result indique if la contrainte a ete traitee
 	virtual bool InstSetContrainte
 	             (
 		           double aTol,
@@ -371,7 +371,7 @@ class cGenPoseCam
           virtual const cGenPDVFormelle *  PDVF() const  = 0;
           virtual cCalibCam *  CalibCam() const ;
           cCalibCam *  CalibCamNN() const ;
-          int   & NumTmp(); // Entre autre dans bloc bascule
+          int   & NumTmp(); // between autre in bloc bascule
 
           virtual const cBasicGeomCap3D * GenCurCam () const ;
           virtual cBasicGeomCap3D * GenCurCam () ;
@@ -419,7 +419,7 @@ class cGenPoseCam
    
           cAppliApero & mAppli;
 	  std::string   mName;
-          int           mNumTmp; // Entre autre dans bloc bascule
+          int           mNumTmp; // between autre in bloc bascule
           cPoseCdtImSec *              mCdtImSec;
           bool                         mRotIsInit;
           bool                         mPreInit;
@@ -467,7 +467,7 @@ class cStructRigidInit
         cStructRigidInit(cPoseCam * RigidMere,const ElRotation3D &);
 
         cPoseCam *   mCMere;    
-        ElRotation3D mR0m1L0 ;  //  R0-1 L0 = matrice de passage selon notaion cImplemBlockCam.cpp
+        ElRotation3D mR0m1L0 ;  //  R0-1 L0 = matrix de passage selon notaion cImplemBlockCam.cpp
 };
 
 class cPreCB1Pose
@@ -499,10 +499,10 @@ class cPoseCam : public cGenPoseCam
          virtual const cGenPDVFormelle *  PDVF() const;
          Pt2di SzCalib() const ;
 
-       // Fonction relative a une camera eventuellement non ortho,
-       // si active alors toute evolution est bloquee
+       // function relative a une camera eventuellement non ortho,
+       // if active then toute evolution est bloquee
          void  SetCamNonOrtho(CamStenope *);
-         CamStenope *  GetCamNonOrtho() const;  // Erreur si != 0
+         CamStenope *  GetCamNonOrtho() const;  // error if != 0
          bool HasCamNonOrtho() const;
          void AssertHasCamNonOrtho() const;
          void AssertHasNotCamNonOrtho() const;
@@ -564,7 +564,7 @@ class cPoseCam : public cGenPoseCam
 
           void  ShowRel(const cTraceCpleCam &,const cPoseCam & aCam2) const;
 
-         // Si true requiert une initialisation complete
+         // if true requiert une initialisation complete
           bool ProfIsInit() const;
           int Prof2Init() const;
           void Set0Prof2Init();
@@ -630,7 +630,7 @@ class cPoseCam : public cGenPoseCam
 
 
           cEqOffsetGPS *   EqOffsetGPS();
-         // Relatif a un couple dans un bloc
+         // Relatif a un couple in un bloc
           void SetSRI(cStructRigidInit * aSRI);
           cStructRigidInit*  GetSRI(bool SVP) const;
 
@@ -669,7 +669,7 @@ class cPoseCam : public cGenPoseCam
 	  std::string               mNameCalib;
 	  // std::string               mName;
 	  int                       mCpt;  // Compteur de date de creation
-          // 0 si direct (appuis,BDD, ) sinon 1 + Prof de la pose de base
+          // 0 if direct (appuis,BDD, ) else 1 + Prof de la pose de base
           int                       mProf2Init;
           double                    mPdsTmpMST;
 	  const cPoseCameraInc *    mPCI;
@@ -701,7 +701,7 @@ class cPoseCam : public cGenPoseCam
           bool                         mHasObsOnVitesse;
           bool                         mLastItereHasUsedObsOnCentre;
 
-          // Pour qualifier les Pack Pts Mul
+          // for qualifier les Pack Pts Mul
 
           // Ensemble des poses a centre comun 
           int                          mNumInit;
@@ -709,10 +709,10 @@ class cPoseCam : public cGenPoseCam
           cPoseCam *                   mPrec;  
           cPoseCam *                   mNext;
 
-          int                          mNumCreate; // Pour conserver l'ordre de creation
+          int                          mNumCreate; // for conserver l'ordre de creation
           // Ensemble des poses liees par des equations de liaison
           int                          mNbPosOfInit;
-   // Parametres lies aux export pour MicMac (en fait de maniere + generale
+   // parameters lies aux export for MicMac (en fait de maniere + generale
    // a la gestion du canevas)
 
 /*
@@ -736,7 +736,7 @@ class cPoseCam : public cGenPoseCam
           int                          mNumTimeBloc;
           cPreCB1Pose *                mPoseInBlocCam;
           bool                         mUseRappelPose;  // Do we use a "rappel" to a given value
-          ElRotation3D                 mRotURP;  // Rotation use Rappel Pose
+          ElRotation3D                 mRotURP;  // rotation use Rappel Pose
 };
 
 
@@ -747,8 +747,8 @@ class cPoseCam : public cGenPoseCam
 /************************************************************/
 
 
-// N.B. les classes cObserv1Im et cPackObserv1Im ne sont pas tres bien faites,
-// Elles possedent en commun d'etre (+ou-) en bijection avec les Poses inconnues .  Apres
+// N.B. les classes cObserv1Im and cPackObserv1Im ne sont pas tres bien faites,
+// Elles possedent en commun d'etre (+or-) en bijection with les Poses inconnues .  after
 // avoir ecrit le code de 
 
 
@@ -924,7 +924,7 @@ typedef cPackObserv1Im<cTypeEnglob_Centre,cPackGlobVide> tPackCentre;
 class cResul_RL;
 class cAgglomRRL;
 
-class cObservLiaison_1Cple  // Dans cPackObsLiaison
+class cObservLiaison_1Cple  // in cPackObsLiaison
 {
       public :
          cObservLiaison_1Cple
@@ -962,14 +962,14 @@ class cObservLiaison_1Cple  // Dans cPackObsLiaison
          cPoseCam *       mPose1;
          cPoseCam *       mPose2;
 
-	 // cCpleCamFormelle * mCpleR1;  // Resisu en Im1 ou Im2
+	 // cCpleCamFormelle * mCpleR1;  // Resisu en Im1 or Im2
 	 // cCpleCamFormelle * mCpleR2;
 	 cManipPt3TerInc  * mPLiaisTer;
 	 cSurfParam *                               mSurf;
 	 cSurfInconnueFormelle *                    mEqS;
 
           double                                     mEcMax; 
-	                            // Ecart Max, pour repere
+	                            // Ecart Max, for repere
                                     // les erreurs d'appar
 	  double                                     mSomPds;
 	  double                                     mNbPts;
@@ -980,9 +980,9 @@ class cObservLiaison_1Cple  // Dans cPackObsLiaison
 
 // Pb eventuel du couts memmoire d'une combinaison specifique par cameras:
 //
-//   1- Pour l'instant scenario 0, on ne fait rien
+//   1- for l'instant scenario 0, on ne fait rien
 //   2- Premier niveau d'intervention, au chargement on peut mettre des
-//      poids 0 pour diminuer le nombre de camera
+//      poids 0 for diminuer le number de camera
 //   3- Au niveau de la compile, on peut aussi "unifier" (supprimer les combine trop
 //   rare)
 
@@ -1014,7 +1014,7 @@ class cOneCombinMult
 	const std::vector<int> & NumCams();
 	const std::vector<cGenPoseCam *> &  GenVP();
         //
-        // Renvoie -1 si pas trouve
+        // Renvoie -1 if pas trouve
         int IndOfPose(cGenPoseCam *) const;
         cGenPoseCam *  GenPose0() const;
         cGenPoseCam *  GenPoseK(int aK) const;
@@ -1025,7 +1025,7 @@ class cOneCombinMult
 	 cManipPt3TerInc  * mPLiaisTer;
 	 std::vector<int>   mNumCams;
 	 std::vector<cGenPoseCam *>  mGenVP;
-	 // Pour savoir le rappel on Z calcule 
+	 // for savoir le rappel on Z compute 
 	 const cRapOnZ *   mRapOnZ;
 	 bool        mRappelOnZApply;
 };
@@ -1046,8 +1046,8 @@ Pt3dr InterFaisceaux
            const cNupletPtsHomologues  &   aNPt
       );
 
-// Pour pouvoir optionnellement reconstituer les TieP originaux
-// Par exemple dans l'export
+// for pouvoir optionnellement reconstituer les TieP originaux
+// Par exemple in l'export
 
 class cSingleTieP
 {
@@ -1061,12 +1061,12 @@ class cSingleTieP
 class cOnePtsMult
 {
     public :
-        // Si aInitRequired = false , compte le nombre de Pre-Init
-        // Si aInitRequired = true,   compte le nombre de Init-Full
+        // if aInitRequired = false , compte le number de Pre-Init
+        // if aInitRequired = true,   compte le number de Init-Full
         int NbPoseOK(bool aFullInitRequired,bool UseZU) const;
-     // Si il n'y a qu'une seule pose initialisee sur ce PM, renvoie
+     // if il n'y a qu'une seule pose initialisee on ce PM, renvoie
      // la droite image correspondant a  la projection du faisceau issu
-     // de ce point dans la premiere camera
+     // de ce point in la premiere camera
         ElSeg3D  GetUniqueDroiteInit(bool UseZU);
 
 
@@ -1080,7 +1080,7 @@ class cOnePtsMult
         cOneCombinMult * OCM();
         const  cNupletPtsHomologues & NPts() const;
 
-        //  NbRealRotIsInit Nombre de rot reellement init, peut etre > si pts elim because ZU
+        //  NbRealRotIsInit number de rot reellement init, peut etre > if pts elim because ZU
 
         int  InitPdsPMul(double aPds,std::vector<double> &,int * NbRealRotIsInit=0) const;
 
@@ -1094,7 +1094,7 @@ class cOnePtsMult
 
 
 
-        // Renvoie -1 si pas trouve
+        // Renvoie -1 if pas trouve
         int IndOfPose(cGenPoseCam *) const;
         cGenPoseCam *  GenPose0() const;
         cGenPoseCam *  GenPoseK(int aK) const;
@@ -1117,7 +1117,7 @@ class cOnePtsMult
         cNupletPtsHomologues mNPts;
         tFixedSetInt         mFlagI;
         cOneCombinMult *     mOCM;
-  // Rajouter a posteriori, donc valeur def par compatibilite, c.a.d si pas specifiee,
+  // Rajouter a posteriori, donc value def par compatibilite, c.a.d if pas specifiee,
   // tous les points appartiennent au plan de rappel
         U_INT1                 mOnPlaneRapOnz;
         U_INT1                 mMemPtOk;
@@ -1212,9 +1212,9 @@ class cObsLiaisonMultiple
 //   Ces deux fonctions correspondent a la version modifiee du choix des poses
 //
 //   QualityZoneAlgoCV :  permet de choisir la prochaine pose, sachant
-//   que le critere est calcule sur tous les points qui voient une meme zone.
-//   A priori utilise pour mettre en place la deuxieme image. En l'absence
-//   de point multiples pour les appuis, ce ne peut etre que celle la
+//   que le critere est compute on tous les points qui voient une meme zone.
+//   A priori utilise for mettre en place la deuxieme image. En l'absence
+//   de point multiples for les appuis, ce ne peut etre que celle la
 //   qui fonctionne. Se content de rappeler BestPoseInitStd qui fait tres
 //   bien l'essentiel du boulot
 //
@@ -1365,9 +1365,9 @@ class cObsLiaisonMultiple
           std::vector<cOnePtsMult *>                 mVPMul;
           bool                                       mCompilePoseDone;
           cGenPoseCam *                              mPose1;
-// Pour l'instant inutile, mais qd les points multiples seront partages
-// entre les images, il conviendra de gerer un numero variable;
-// c'est plutot un tag pour a partir de maintenant reperer les references
+// for l'instant inutile, but qd les points multiples seront partages
+// between les images, il conviendra de gerer un numero variable;
+// c'est plutot un tag for a partir de maintenant reperer les references
           int mKIm;
           const cRapOnZ *  mRazGlob;
           bool             mLayerImDone;
@@ -1522,7 +1522,7 @@ class cPackObsLiaison
 
 		std::list<cPoseCam *> ListCamInitAvecPtCom(cPoseCam *);
 
-		// Resultat indique si swaped 
+		// result indique if swaped 
 		bool InitPack
 		(
 			ElPackHomologue &, 
@@ -1535,7 +1535,7 @@ class cPackObsLiaison
 			const cParamEstimPlan & aPEP,
 			cSetName &                    aSelectorEstim,
 			cArgGetPtsTerrain &,
-			const char * Attr // Nom en + pour calculer le masque
+			const char * Attr // Nom en + for compute le masque
 		);
 
 
@@ -1620,7 +1620,7 @@ class cOneAppuisFlottant
 
        Pt3dr PInter() const;
 
-    //  EN fait ne fait rien car  mMP3TI est une interface sur PtTmp ..
+    //  EN fait ne fait rien car  mMP3TI est une interface on PtTmp ..
        void DoAMD(cAMD_Interf *);
        int NbMesures() const;
 
@@ -1766,8 +1766,8 @@ class cRecorrel : private Optim2DParam
          (
               const cOneVisuPMul &,
               cPoseCam *          ,
-              double aSzV,  // 1 Pour 3x3
-              double aStep  // 1.0 "habituellement", mais pq p 0.5 ou 0.33
+              double aSzV,  // 1 for 3x3
+              double aStep  // 1.0 "habituellement", but pq p 0.5 or 0.33
          );
  
          double TestAndUpdateOneCorrelOfDec(Pt2dr aDec,cRecorrel &);
@@ -2185,15 +2185,15 @@ class cAppliApero : public NROptF1vND
         void AddObservationsPlane(const cDataObsPlane &);
 
 
-        // Dans le cas "particulier" ou on ajoute toutes les images connexes a une images
-        // donnees, il est necessaire d'acceder a une liste de points homolgues avant 
+        // in le cas "particulier" or on ajoute toutes les images connexes a une images
+        // donnees, il est necessaire d'acceder a une list de points homolgues before 
         // de connaitre l'ensemble des images
 
         const cBDD_PtsLiaisons & GetBDPtsLiaisonOfId(const std::string &);
 
 	void DoCompensation();
 
-	// Verifie qu'il n'existe pas et la rajoute
+	// Verifie qu'il n'existe pas and la rajoute
 	void NewSymb(const std::string &);
 
 	bool NamePoseGenIsKnown(const std::string &) const;
@@ -2241,8 +2241,8 @@ class cAppliApero : public NROptF1vND
         const std::vector<cPoseCam*> & VecLoadedPose();
         const std::vector<cPoseCam*> & VecAllPose();
 
-        // Si vecteur non vide, donne garantie que 
-        //  1- Chaque pose contient la projection de aPM avec le rab qui va bien
+        // if vector non vide, donne garantie que 
+        //  1- Chaque pose contient la projection de aPM with le rab qui va bien
         //  2- Il y a au - deux pose
         //  3- La premiere est la pose0
         //
@@ -2314,9 +2314,9 @@ class cAppliApero : public NROptF1vND
         void CDNP_Compense(std::vector<cStatResPM> & ,cSetPMul1ConfigTPM*,cSetTiePMul*,const cObsLiaisons &);
         bool IsLastEtapeOfLastIter() const;
 
-        // Ne genere pas d'erreur mais met aNameTime a "" si pb (aucune ou multiple)
+        // Ne genere pas d'error but met aNameTime a "" if pb (aucune or multiple)
         ElRotation3D  SVPGetRotationBloc(const std::string & aNameBloc,const std::string& aNameCam,std::string & aNameTime);
-        //  Genere erreur si moindre probleme
+        //  Genere error if moindre probleme
         ElRotation3D  GetUnikRotationBloc(const std::string & aNameBloc,const std::string& aNameCam);
 
         void PreInitBloc(const std::string & aNameBloc);
@@ -2341,7 +2341,7 @@ class cAppliApero : public NROptF1vND
        void InitNewBDL(const cBDD_NewPtMul &);
 
 
-       // Active uniquement si  mFileDebug != 0
+       // Active uniquement if  mFileDebug != 0
        void AddAllMajick(int aLine,const std::string & aFile,const std::string & aMes);
        void PosesAddMajick();
        void MajAddCoeffMatrix();  
@@ -2672,7 +2672,7 @@ class cAppliApero : public NROptF1vND
         cSetEqFormelles  mSetEq;
         cAMD_Interf *    mAMD;
 	tDiCal mDicoCalib;
-        tDiArgCab mDicoArgCalib; // Pour gerer les calib/pose qui necessitent
+        tDiArgCab mDicoArgCalib; // for gerer les calib/pose qui necessitent
                                                                      // une initialisation differeee
         std::vector<cGenPoseCam*> mVecGenPose;
 
@@ -2682,7 +2682,7 @@ class cAppliApero : public NROptF1vND
 
         std::map<std::string,cCompiledObsRelGPS *> mMCORelGps;
 
-    // Utilise pour connaitre les poses pour lesquels des images te chargees
+    // Utilise for connaitre les poses for lesquels des images te chargees
     // (lorsque l'on recherche  a affiner les pts mul par re-correl)
         std::vector<cPoseCam*> mVecLoadedPose;
 
@@ -2788,7 +2788,7 @@ class cAppliApero : public NROptF1vND
          cGenPoseCam *                         mPoseWorstRes;
          cGenPoseCam *                         mPoseWorstPerc;
 
-         // Stat sur les Pts flottants 
+         // Stat on les Pts flottants 
          double mNbPtsFlot;
          double mMaxDistFlot;
          double mSomDistFlot;
@@ -2798,7 +2798,7 @@ class cAppliApero : public NROptF1vND
          Pt3dr  mSomRmsEcPtsFlot;
          Pt3dr  mMaxAbsEcPtsFlot;
 
-         // Utilise pour genere les identifiant permettant d'interpreter les incertitudes
+         // Utilise for genere les identifiant permettant d'interpreter les incertitudes
          int   mNumCalib;
          std::vector<std::string> mNamesIdCalib;
          int   mNumImage;

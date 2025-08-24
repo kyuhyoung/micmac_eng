@@ -55,7 +55,7 @@ template <class Type,const int SzTEigen> void cTestOperationVector<Type,SzTEigen
         int aNb=  1e7 * (90.0/SzTEigen) ;
         double aT0 = cMMVII_Appli::CurrentAppli().SecFromT0();
 
-        // Eigen vecteur fix
+        // Eigen vector fix
         for (int aK=0 ; aK<aNb ; aK++)
         {
              aAFix = aAFix + aAFix -10;
@@ -64,7 +64,7 @@ template <class Type,const int SzTEigen> void cTestOperationVector<Type,SzTEigen
         DoNothingWithIt(&aAFix); // To avoid too clever compiler supress the loop 
         double aT1 = cMMVII_Appli::CurrentAppli().SecFromT0();
 
-        // Eigen vecteur dyn
+        // Eigen vector dyn
         for (int aK=0 ; aK<aNb ; aK++)
         {
              aADyn = aADyn + aADyn -10;
@@ -72,7 +72,7 @@ template <class Type,const int SzTEigen> void cTestOperationVector<Type,SzTEigen
         }
         double aT2 = cMMVII_Appli::CurrentAppli().SecFromT0();
 
-        if (0)  // Eigen vecteur 1, quite long
+        if (0)  // Eigen vector 1, quite long
         {
            for (int aK=0 ; aK<aNb*SzTEigen ; aK++)
            {

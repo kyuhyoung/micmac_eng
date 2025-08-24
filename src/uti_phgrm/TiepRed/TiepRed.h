@@ -96,8 +96,8 @@ class cImageGrid {
 		std::vector<cPMulTiepRed *> & CellPoints(int aCellIndex); // Gets the vector of (point to) multi-tie-points in a cell given its cellIndex
 		void Remove(cPMulTiepRed * aMultiTiePoint, int aCellIndex); // Remove the multi-tie-point from the cell index
 	private:
-		cImageTiepRed * mImage; // Image
-		Box2dr mBox; // Image-space of the image (always p0=(-1,-1) p1=(1,1))
+		cImageTiepRed * mImage; // image
+		Box2dr mBox; // image-space of the image (always p0=(-1,-1) p1=(1,1))
 		int mNumCellsX; // Number of cells in x dimension of image-space
 		int mNumCellsY; // Number of cells in y dimension of image-space
 		std::vector<std::vector<cPMulTiepRed *> > mCellsPoints; // vector of grid cells. For each cell we have the vector of multi-tie-points in it.
@@ -137,9 +137,9 @@ class cImageTiepRed {
 		const bool & ImageBeenMaster() const; // Gets the ImageBeenMaster
 	private :
 		cImageTiepRed(const cImageTiepRed &); // Not Implemented
-		std::string mImageName; // Image name
+		std::string mImageName; // image name
 		int mNbPtsHom2Im; // Total number of tie-points that this image shares with other images (including duplicates)
-		int mImageId; // Image identifier (within current subcommand/task)
+		int mImageId; // image identifier (within current subcommand/task)
 		bool mImageBeenMaster; // Indicates if image has been master before
 };
 
@@ -230,7 +230,7 @@ class cAppliTiepRed {
 		bool mAdaptive; // Indicates if grids are adaptive (for image-pairs with less points grids with more cells are used)
 		double mWeightAccGain; // Weight of multi-tie-point accuracy (with respect to the multiplicity) in the Gain formula
 		cVirtInterf_NewO_NameManager * mNM ; // Folder name manager
-		const std::vector<std::string> * mImagesNames; // Image names
+		const std::vector<std::string> * mImagesNames; // image names
 		std::vector<cImageTiepRed *> mImages; // Images
 		bool mCallBack; //Indicates if current running process is a subcommand
 		bool mExpSubCom; //Indicates if the user wishes to export the subcommands instead of executing them (this is required to run Noodles)
@@ -245,7 +245,7 @@ class cAppliTiepRed {
 		int mNumInit; // Initial number of tie-points in the master image
 		int mNumDeleted; // Number of deleted multi-tie-points
 		cXml_ParamSubcommandTiepRed mXmlParamSubcommand; // Structure with subcommand configuration info
-		std::map<pair<int, int>, cLnk2ImTiepRed * > mImagePairsMap; //Image pairs map
+		std::map<pair<int, int>, cLnk2ImTiepRed * > mImagePairsMap; //image pairs map
 		tMergeStr * mMergeStruct; //Merging structure to obtain the list of raw multi-tie-points
 		const std::list<tMerge *> * mMultiTiePointsRaw;//List of raw multi-tie-points (without gain and removing flag)
 		std::vector<cPMulTiepRed* > mMultiTiePoints; // List of multi-tie-points (with gain and removing flag)

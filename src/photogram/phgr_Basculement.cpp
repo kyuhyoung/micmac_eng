@@ -210,7 +210,7 @@ cSolBasculeRig cSolBasculeRig::StdSolFromPts
                (
                     const std::vector<Pt3dr> & aV1,
                     const std::vector<Pt3dr> & aV2,
-                    const std::vector<double> * aVPds, // si 0 ts les pds valent 1
+                    const std::vector<double> * aVPds, // if 0 ts les pds valent 1
                     int   aNbRansac             ,
                     int   aNbL2                
                 )

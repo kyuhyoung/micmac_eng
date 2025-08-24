@@ -76,7 +76,7 @@ class ElImIncruster;
 
 // Permet de coder la soustraction de deux boite
 //  comme une union de boite
-// (de maniere minimale et non  redondante si je ne m'abuse)
+// (de maniere minimale and non  redondante if je ne m'abuse)
 
 class ModelBoxSubstr
 {
@@ -313,7 +313,7 @@ class cElScrCalcNameSsResol
 class ElImScroller
 {
      public :
-               virtual ElImScroller * CurScale() ;   // Default this => utilise dans Pyram
+               virtual ElImScroller * CurScale() ;   // Default this => utilise in Pyram
                virtual bool CanReinitTif();
                virtual void ReInitTifFile(Tiff_Im aTif);
 
@@ -330,7 +330,7 @@ class ElImScroller
 		virtual Output out(); //  Output::onul();
 		virtual Fonc_Num in(); // 0
                 virtual Pt2di SzIn() = 0;
-                virtual REAL  GetValPtsR(Pt2dr aP);  // Def Erreur Fatale
+                virtual REAL  GetValPtsR(Pt2dr aP);  // Def error Fatale
 
                 virtual void Sauv(const std::string & aName);
                 virtual void SetPoly(Fonc_Num ,std::vector<Pt2dr>);
@@ -345,7 +345,7 @@ class ElImScroller
 
 
 
-		// Si EchAcc = 0, ou si EchAcc->size() =0, alors aucune selection n'est
+		// if EchAcc = 0, or if EchAcc->size() =0, then aucune selection n'est
 		// faite
 	    static ElPyramScroller * StdPyramide
 				     (
@@ -405,7 +405,7 @@ class ElImScroller
         void LoadXImageInVisu(Visu_ElImDest &,Pt2di p0W,Pt2di p1W,bool quick);
         void LoadXImageInVisu(Visu_ElImDest &,Pt2di p0W,Pt2di p1W,bool quick,Pt2dr tr,REAL sc);
 
-	// Plutot utilisee pour la mise au point
+	// Plutot utilisee for la mise au point
         Pt2dr tr() const {return _tr;}
         REAL sc() const {return _sc;}
         REAL sc_abs() const {return _sc * _sc_im;}
@@ -466,7 +466,7 @@ class ElImScroller
         void LoadAndVerifXImage(Pt2di p0W,Pt2di p1W,bool quick) ;
 
         Visu_ElImScr &  mVisuStd; // celui par defaut
-        Visu_ElImDest *  mVisuCur; // celui utilise dans  LoadXImage(Visu_ElImScr &,..)
+        Visu_ElImDest *  mVisuCur; // celui utilise in  LoadXImage(Visu_ElImScr &,..)
 
 
 		INT                     mDimOut;
@@ -596,10 +596,10 @@ class ElImIncruster
                                           Pt2di p0,
                                           Pt2di p1
                                     ) =0;
-			            // return value = Nombre de cannaux utiles
+			            // return value = number de cannaux utiles
 
-			virtual bool PixelIndep() const =0; // Si PixelIndep vaut true la valeur calculee en 1 pixel
-			                              // reste valable apres changement de  tr  ou de sz
+			virtual bool PixelIndep() const =0; // if PixelIndep vaut true la value calculee en 1 pixel
+			                              // reste valable after changement de  tr  or de sz
 
 
 			Pt2di mSzBrd0;
@@ -726,7 +726,7 @@ class Filtr_Incr_AngDeriche
 
 
 
-         // Pop Up Menu avec transparence
+         // Pop Up Menu with transparence
 
 class PopUpMenuTransp
 {
@@ -883,7 +883,7 @@ class ChoixParmiCaseGPUMT : public CaseGPUMT
 				 Fonc_Num aFTrue,
 				 Fonc_Num aFFalse,
 				 INT  anId,  // souvent manipules par switch (Enum) {}
-				 ChoixParmiCaseGPUMT * oneExcluing  // 0 pour la premiere
+				 ChoixParmiCaseGPUMT * oneExcluing  // 0 for la premiere
 			);
 			void CaseGPUMTOnSelected();
 
@@ -1097,7 +1097,7 @@ class  EliseStdImageInteractor
           Pt2di P1W () {return mW.sz();}
 
           Video_Win    WinEch1();
-          // Uniquemement si image de Dim1
+          // Uniquemement if image de Dim1
           Im2D_U_INT1  ImEch1(bool VisuSim = true);
 
           void SetModeReplicationPixel();

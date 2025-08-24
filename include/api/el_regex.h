@@ -109,7 +109,7 @@ bool AuMoinsUnMatch(const std::list<cElRegex *> &,const  std::string &);
 
 typedef  cElRegex * cElRegex_Ptr;
 
-  // Dans lib-eLiSe
+  // in lib-eLiSe
 extern std::string MatchAndReplace( cElRegex & anExpr,
                                     const std::string & aName,
                                    const std::string &aRepl);
@@ -135,7 +135,7 @@ std::string  GetStringFromLineExprReg
 
 
 
-// class pour memoriser le Nom, centre et orientation d'un fichier de trajecto
+// class for memoriser le Nom, centre and orientation d'un file de trajecto
 class  cLine_N_XYZ_WPK
 {
     public :

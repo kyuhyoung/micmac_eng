@@ -227,7 +227,7 @@ else
 
     cInterfChantierNameManipulateur * aICNM = cInterfChantierNameManipulateur::BasicAlloc(aDir);
 
-    //===========Modifier ou chercher l'image si l'image ne sont pas tif============//
+    //===========Modifier or chercher l'image if l'image ne sont pas tif============//
        std::size_t found = aFullPattern.find_last_of(".");
        string ext = aFullPattern.substr(found+1);
        cout<<"Ext : "<<ext<<endl;
@@ -295,7 +295,7 @@ else
                     ELISE_COPY(mTif.all_pts(), mTif.in(), VWPic[aKImg]->ogray());
               }
               cBasicGeomCap3D * aOri = mVOri[aKImg];
-              // le project sur image
+              // le project on image
               vector<Pt2dr> aVPts;
               Pt2dr aPt1 = aOri->Ter2Capteur(aTri3D.P1());
               Pt2dr aPt2 = aOri->Ter2Capteur(aTri3D.P2());

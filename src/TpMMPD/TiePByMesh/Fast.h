@@ -10,7 +10,7 @@
 class Fast
 {
 public:
-    Fast (double threshold, double radius);    //utilise avec radius = 1 (imagette 3*3)
+    Fast (double threshold, double radius);    //utilise with radius = 1 (imagette 3*3)
     void detect(Im2D<unsigned char, int> &pic, vector<Pt2dr> &resultCorner);
     void dispPtIntertFAST(Im2D<unsigned char, int> pic, vector<Pt2dr>  pts, int zoomF, string filename);
     void outElPackHomo(vector<Pt2dr> &packIn, ElPackHomologue & packOut);

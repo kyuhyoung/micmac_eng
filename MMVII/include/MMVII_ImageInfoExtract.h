@@ -30,7 +30,7 @@ double  ValueStableInterpoleExtr(double V1,double V2,double V3);
 
 
 
-template <class Type> double  MoyAbs(cIm2D<Type> aImIn); ///< Compute  average of Abs of Image
+template <class Type> double  MoyAbs(cIm2D<Type> aImIn); ///< Compute  average of Abs of image
 template <class Type> std::pair<Type,Type>   ValExtre(cIm2D<Type> aImIn); ///< X -> Min, Y -> Max
 
 /// Class to store results of extremum
@@ -57,7 +57,7 @@ void ExtractExtremum1(const cDataIm2D<Type>  &anIm,cResultExtremum & aRes,double
 template <class Type> 
    void ExtractExtremum3
         (
-             const cDataIm2D<Type>  &anImUp,  ///< "Up" Image
+             const cDataIm2D<Type>  &anImUp,  ///< "Up" image
              const cDataIm2D<Type>  &anImC,   ///<
              const cDataIm2D<Type>  &anImBot,
              cResultExtremum & aRes,
@@ -203,8 +203,8 @@ class cExtract_BW_Target
         /// Extract the accurate frontier point, essentially prepare data to call "cGetPts_ImInterp_FromValue"
         cPt2dr RefineFrontierPoint(const cSeedBWTarget & aSeed,const cPt2di & aP0,bool & Ok);
 
-        tIm              mIm;      ///< Image to analyse
-        tDataIm &        mDIm;     ///<  Data of Image
+        tIm              mIm;      ///< image to analyse
+        tDataIm &        mDIm;     ///<  Data of image
         cPt2di           mSz;      ///< Size of image
         tImMarq          mImMarq;    ///< Marqer used in cc exploration
         tDImMarq&        mDImMarq;   ///< Data of Marqer

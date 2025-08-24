@@ -21,30 +21,30 @@ class Algorithms{
 	
     public:
 
-        // Calcul approché
+        // computation approché
         static Solution estimateApproxPosition(std::vector<double>, std::vector<ECEFCoords>);
         static Solution estimateApproxPosition(std::vector<double>, std::vector<ECEFCoords>, ElMatrix<REAL>);
 
-        // Calcul complet de la position avec sélection des satellitess
+        // computation complet de la position with sélection des satellitess
         static Solution estimatePosition(std::vector<std::string>, std::vector<double>, std::vector<ECEFCoords>, AtmosphericModel);
 
-        // Calcul de la position (single et DGPS) par TAD
+        // computation de la position (single and DGPS) par TAD
         static Solution estimatePosition(ObservationSlot, NavigationData);
         static Solution estimatePosition(ObservationSlot, NavigationData, SP3NavigationData);
         static Solution estimatePosition(ObservationSlot, NavigationDataSet, AtmosphericModel);
         static Solution estimateDifferentialPosition(ObservationSlot, ObservationSlot, ECEFCoords, NavigationData);
 
-        // Calcul de la vitesse
+        // computation de la vitesse
         static Solution estimateSpeed(std::vector<double>, std::vector<ECEFCoords>, std::vector<ECEFCoords>, ECEFCoords, int);
         static Solution estimateSpeed(ObservationSlot, NavigationData, ECEFCoords, int);
 
-        // Calcul position + vitesse
+        // computation position + vitesse
         static Solution estimateState(ObservationSlot, NavigationData);
 
-        // Calcul d'un fichier complet
+        // computation d'un file complet
         static Trajectory estimateTrajectory(ObservationData, NavigationData);
 	
-		// Calcul de la position par la phase
+		// computation de la position par la phase
 		static double solve_ambiguity_ref(ObservationData rov, ObservationData bas, NavigationData nav, GPSTime time, std::string sat1, std::string sat2);
         static Solution triple_difference_kalman(ObservationData, ObservationData, NavigationDataSet, ECEFCoords);
 		static ElMatrix<REAL> makeTripleDifferenceMatrix(int, int);

@@ -123,7 +123,7 @@ CamStenope * cParamIFDistPolynXY::DupCurPIF()
 class cPolynFormelXY :  public cElemEqFormelle
 {
 	public :
-        // Tous les Poly sont intialises soit sur IdX soit sur IdY
+        // Tous les Poly sont intialises soit on IdX soit on IdY
             cPolynFormelXY
             (
                    const Polynome2dReal &    aPol,
@@ -629,7 +629,7 @@ double  cParamIntrinsequeFormel::AddObsRegulConseq(int aNbGrids,double aSigmaPix
         return -1;
     }
     ELISE_ASSERT(!mRegCons->mWithR,"Rot not handled in AddObsRegulConseq");
-    // Pas sur de l'utilite InitStateOfFoncteur ....
+    // Pas on de l'utilite InitStateOfFoncteur ....
     InitStateOfFoncteur(mRegCons->mFctr,0);
     // mRegCons->InitInterv();
 
@@ -992,7 +992,7 @@ void cParamIntrinsequeFormel::UpdateCamGrid( double aTol)
       return;
    bool aLastFiged = mFiged;
    mFiged = AllParamIsFiged() ;
-   // Si rien n'a change
+   // if rien n'a change
    if (aLastFiged == mFiged)
       return;
 

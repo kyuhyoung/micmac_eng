@@ -76,7 +76,7 @@ template <class Type> class  cSparseVect  : public cMemCheck
         const tCplIV  * Find(int anInd) const;  /// return the pair of a given index
         tCplIV  * Find(int anInd) ;  /// return the pair of a given index
 
-        // Maximum index, aDef is used if empty, if aDef<=-2  & empty erreur
+        // Maximum index, aDef is used if empty, if aDef<=-2  & empty error
         int MaxIndex(int aDef=-1) const;
 
         void EraseIndex(int anInd);
@@ -92,7 +92,7 @@ template <class Type> class  cSparseVect  : public cMemCheck
 };
 
 
-/** A dense vector is no more than a 1D Image, but with a different interface */
+/** A dense vector is no more than a 1D image, but with a different interface */
 
 template <class Type> class  cDenseVect 
 {
@@ -135,7 +135,7 @@ template <class Type> class  cDenseVect
         const Type * RawData() const;
         std::vector<Type> ToStdVect() const;  ///< duplication
 
-        // No need to duplicate all services offered by Image Classe
+        // No need to duplicate all services offered by image class
         tDIM & DIm(){return mIm.DIm();}
         const tDIM & DIm() const {return mIm.DIm();}
 
@@ -388,7 +388,7 @@ template <class Type> class cUnOptDenseMatrix : public cMatrix<Type>
        const tIm & Im() const {return mIm;}
    protected :
 
-       tIm  mIm;  ///< Image that contains the data
+       tIm  mIm;  ///< image that contains the data
 };
 
 template <class Type> class cResulSymEigenValue;
@@ -545,13 +545,13 @@ template <class Type> class cDenseMatrix : public cUnOptDenseMatrix<Type>
 	void SelfColChSign(int aNumC);  ///<  chang signe of column aNumC, used in QR/RQ to normalize with diag>0 of R
          
         double Diagonalicity() const; ///< how much close to a diagonal matrix, square only , 
-        Type   Det() const;  ///< compute the determinant, not sur optimise
+        Type   Det() const;  ///< compute the determinant, not on optimise
 
         void ChangSign(); ///< Multiply by -1
         void SetDirectBySign(); ///< Multiply by -1 if indirect
 
          tDV  Random1LineCombination() const; // return a vector that is a random combination of lines
-        //  =====   Overridng of cMatrix classe  ==== 
+        //  =====   Overridng of cMatrix class  ==== 
         void  MulColInPlace(tDV &,const tDV &) const override;
         Type MulColElem(int  aY,const tDV &)const override;
         void  MulLineInPlace(tDV &,const tDV &) const override;
@@ -960,7 +960,7 @@ template<class Type> class cSymMeasure
 
 /* ============================================== */
 /*                                                */
-/*         Point/Matrix                           */
+/*         point/Matrix                           */
 /*                                                */
 /* ============================================== */
 
@@ -1089,7 +1089,7 @@ template <class Type> struct cEigenTriplet
         Scalar        mValue;
 };
 
-// Return X sol of  "V3 X = aVec" usign Sparse Cholesky decomposition
+// Return X sol of  "V3 X = with" usign Sparse Cholesky decomposition
 
 template<class Type> cDenseVect<Type> EigenSolveCholeskyarseFromV3
                                       (
@@ -1103,7 +1103,7 @@ template<class Type> cDenseMatrix<Type> EigenSolveCholeskyarseFromV3
                                       );
 
 
-// Return least sqaure X sol of  "V3 X = aVec" usign Conjugate Gradient
+// Return least sqaure X sol of  "V3 X = with" usign Conjugate Gradient
 
 template<class Type> cDenseVect<Type> EigenSolveLsqGC
                                       (

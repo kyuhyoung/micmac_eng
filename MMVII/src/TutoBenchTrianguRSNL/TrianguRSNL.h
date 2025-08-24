@@ -178,7 +178,7 @@ template <class Type>  class  cMainNetwork
           cParamMainNW  mParamNW;
 	  int   mNum;                  ///< Current num of unknown
 	  std::vector<tPNet>  mVPts;   ///< Vector of point of unknowns coordinate
-          tPNet ***           mMatrP;  ///< Indexed matrice of points, give basic spatial indexing
+          tPNet ***           mMatrP;  ///< Indexed matrix of points, give basic spatial indexing
 	  tSys *              mSys;    ///< Sys for solving non linear equations 
 	  tCalc *             mCalcD;  ///< Equation that compute distance & derivate/points corrd
 

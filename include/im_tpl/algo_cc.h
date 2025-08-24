@@ -47,7 +47,7 @@ void ResetMarqueur(TIm2DBits<1> & aMarq,const std::vector<Pt2di> & aVPts);
 
 
 
-// Mais en aValAff les composante connexe de coul=aValSelec de taille < aSeuilCard
+// but en aValAff les composante connexe de coul=aValSelec de taille < aSeuilCard
 
 template <class T1,class T2,class Action> int OneZC
                                  (

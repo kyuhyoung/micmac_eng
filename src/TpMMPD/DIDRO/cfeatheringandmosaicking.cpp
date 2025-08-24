@@ -202,7 +202,7 @@ void c_Appli_FeatheringAndMosaic::GenLabelTable()
         std::string pcName=mDir+KeyAssocNameOrt2PC(im);
 
         // load the incidence map and hidden part map
-        // le tfw convient pour im masque PC mais par pour de l'image incid qui est sous resolue.     
+        // le tfw convient for im masque PC but par for de l'image incid qui est under resolue.     
         cImGeo Masq(pcName,TFWName);
         mTrs[imLab]= Masq.computeTrans(aCorner);// translation between ortho and corner of the complete mosaic
         // current orto instersect box?
@@ -373,7 +373,7 @@ void c_Appli_FeatheringAndMosaic::SplitInBoxes()
     {
         for (int c(0); c<nbC;c++)
         {
-            // box calcul dans la geometrie de la Mosaique globale
+            // box computation in la geometrie de la Mosaique globale
             int dxMin(-mDilat),dxMax(+mDilat),dyMin(-mDilat),dyMax(+mDilat);
             int xMin=ElMax(0,box.P0().x+c*mSzTuile.x-mDilat);
             if (xMin==0) dxMin=0;
@@ -392,9 +392,9 @@ void c_Appli_FeatheringAndMosaic::SplitInBoxes()
             Liste_Pts_INT2 lpt(3);
 
             label=Im2D_U_INT2::FromFileStd(KAtifNameTile(mLabel,idBox));
-            // une box de calcul va nécessiter plusieurs tuile car dilatation de bord pour éviter effet de bord.
-            // une box de calcul peut déborder d'une tuile Im2D label
-            // box calcul dans la geometrie de la tuile
+            // une box de computation va nécessiter plusieurs tuile car dilatation de bord for éviter effet de bord.
+            // une box de computation peut déborder d'une tuile Im2D label
+            // box computation in la geometrie de la tuile
             Box2di boxGeomTile=Box2di(aBox.P0()-box.P0(), aBox.P1()-box.P0());
 
             ELISE_COPY(rectangle(boxGeomTile).chc(Virgule(FX,FY,label.in_proj())),
@@ -470,7 +470,7 @@ void c_Appli_FeatheringAndMosaic::DoMosaicAndFeather()
         int i(boxMap.first);
         Box2di box=boxMap.second;
         Box2di tile=mTiles[mTileofBoxes[i]];
-        // box dans geom de la tuile
+        // box in geom de la tuile
         if (mTiling) box=Box2di(box.P0()-tile.P0(), box.P1()-tile.P0());
         std::string tiling=(mTiling) ? " Tile="+ToString(mTileofBoxes[i]) : " ";
 
@@ -709,8 +709,8 @@ cFeatheringAndMosaicOrtho::cFeatheringAndMosaicOrtho(int argc,char ** argv):lut_
 
             mTiling=1;
             // modify meaning of mBox, which is related to the tile and not to the global mosaic
-            // la c'est mrd car je lisais la taille de la zone en lisant le nombre de pixel de label.tif, no way
-            // sauver le MTD -appli global et le recharger?? oui c'est encore le plus simple
+            // la c'est mrd car je lisais la taille de la zone en lisant le number de pixel de label.tif, no way
+            // sauver le MTD -appli global and le recharger?? oui c'est encore le plus simple
             // change name of input and output
             mNameMosaicOut=KAtifNameTile(mNameMosaicOut,mIdTile);
             mLabel=KAtifNameTile(mLabel,mIdTile);
@@ -877,7 +877,7 @@ void cFeatheringAndMosaicOrtho::ChamferDist4AllOrt()
         mImWs[i]=Im2D_REAL4(aSz.x,aSz.y,0.0);
         mTrs[i]= -mIms[i]->computeTrans(aCorner);
 
-        // la fonction chamfer fonctionne sur une image binaire et va calculer les distance à partir des pixels qui ont une valeur de 0.
+        // la function chamfer fonctionne on une image binaire and va compute les distance à partir des pixels qui ont une value de 0.
         // la distance maximale est de 255
 
         //detect seam line for this image
@@ -893,7 +893,7 @@ void cFeatheringAndMosaicOrtho::ChamferDist4AllOrt()
         // I should maybe stop the feathering outside such small area as well
         Im2D_U_INT1 Ibin(tmp.sz().x,tmp.sz().y,0);
         ELISE_COPY(Ibin.all_pts(),tmp.in(),Ibin.out());
-        // I have to ensure the border of the bin image is not ==1 otherwise I got the error out of bitmap in dilate spec Image
+        // I have to ensure the border of the bin image is not ==1 otherwise I got the error out of bitmap in dilate spec image
         ELISE_COPY(Ibin.border(2),0,Ibin.out());
         U_INT1 ** d = Ibin.data();
         Neighbourhood V8=Neighbourhood::v8();
@@ -911,8 +911,8 @@ void cFeatheringAndMosaicOrtho::ChamferDist4AllOrt()
                                 conc
                                 (
                                     Pt2di(x,y),
-                                    Ibin.neigh_test_and_set(V8, 1, 0,  10) ), // on change la valeur des points sélectionné comme ça à la prochaine itération on ne sélectionne plus cette zone de composante connexe
-                                2, // valeur bidonne, c'est juste le flux que je sauve dans cc
+                                    Ibin.neigh_test_and_set(V8, 1, 0,  10) ), // on change la value des points sélectionné comme ça à la prochaine itération on ne sélectionne plus cette zone de composante connexe
+                                2, // value bidonne, c'est juste le flux que je sauve in cc
                                 cc
                                 );
                     // remove the patch: if it is smal, note these pixel as been not in the image, this way no chamfer dist are computed inside
@@ -958,17 +958,17 @@ void cFeatheringAndMosaicOrtho::ChamferDist4AllOrt()
             // save TFW file
             mIms[i]->writeTFW(KAChamferName(im,mTmpDir,mNumBox));
         }
-        // comptage du nombre d'image a utiliser pour le blending (geométrie mosaic)
+        // comptage du number d'image a utiliser for le blending (geométrie mosaic)
         ELISE_COPY(select(NbIm.all_pts(),trans(mChamferDist[i].in(mDist+1),-mTrs[i])<=mDist),
                    NbIm.in(0)+1,
                    NbIm.out()
                    );
-        // somme des distances de chamber dans les enveloppes externes  - pour gérer les cas de blending de 3 images (et plus)
+        // somme des distances de chamber in les enveloppes externes  - for gérer les cas de blending de 3 images (and plus)
         ELISE_COPY(select(mSumDistExt.all_pts(),(trans(mChamferDist[i].in_proj(),-mTrs[i])<=mDist ) && ( trans(mChamferDist[i].in_proj(),-mTrs[i])>0 ) ),
                    mSumDistExt.in(0)+trans(mChamferDist[i].in(0),-mTrs[i]),
                    mSumDistExt.out()
                    );
-        // Distance de chamber dans les enveloppes inter - également pour gérer les cas de blending de 3 images
+        // Distance de chamber in les enveloppes inter - également for gérer les cas de blending de 3 images
         ELISE_COPY(select(mSumDistInter.all_pts(),(trans(mChamferDist[i].in_proj(),-mTrs[i])>=-mDist) && ( trans(mChamferDist[i].in_proj(),-mTrs[i])<0)),
                    mSumDistInter.in(0)+trans(mChamferDist[i].in(0),-mTrs[i]),
                    mSumDistInter.out()
@@ -979,7 +979,7 @@ void cFeatheringAndMosaicOrtho::ChamferDist4AllOrt()
 void cFeatheringAndMosaicOrtho::WeightingNbIm1and2()
 {
 
-    //  pondération contribution de l'image à l'intérieur de son enveloppe; je peux effectuer le calcul du facteur de pondération pour toutes les images d'un coup
+    //  pondération contribution de l'image à l'intérieur de son enveloppe; je peux effectuer le computation du facteur de pondération for toutes les images d'un coup
     if (mDebug) std::cout << "Computing weighting in overlap NbIm=1 and 2\n";
 
     // NbIm==1
@@ -987,7 +987,7 @@ void cFeatheringAndMosaicOrtho::WeightingNbIm1and2()
                1,
                PondInterne.out()
                );
-    // NbIm==2, feathering dans l'enveloppe interne
+    // NbIm==2, feathering in l'enveloppe interne
     ELISE_COPY(select(PondInterne.all_pts(), (NbIm.in()==2) && mSumDistInter.in() <=0 && mSumDistInter.in()>=-mDist),
                 lut_w.in()[mDist+mSumDistInter.in()],
                 PondInterne.out()
@@ -1080,18 +1080,18 @@ void cFeatheringAndMosaicOrtho::WeightingNbIm3AndMore()
 
                 // strategy; firt im1 and im2 are blended, then im3 with the blend of im1 im2. but in fact, process first im3
 
-                // feathering dans l'enveloppe interne de l'image numéro 3
+                // feathering in l'enveloppe interne de l'image numéro 3
                 Pt2di tr = -mTrs[labs[2]];
                 ELISE_COPY(select(mImWs[labs[2]].all_pts(), (mChamferDist[labs[2]].in()<=0) && (trans(CurrentArea.in(0),-tr)==1)),
                          lut_w.in()[mDist+mChamferDist[labs[2]].in()],
                         mImWs[labs[2]].out()
                         );
-                // feathering dans l'enveloppe externe de l'image numéro 3
+                // feathering in l'enveloppe externe de l'image numéro 3
                 ELISE_COPY(select(mImWs[labs[2]].all_pts(), (mChamferDist[labs[2]].in()>0) && (mChamferDist[labs[2]].in()<=mDist) && (trans(CurrentArea.in(0),-tr)==1)),
                         1-lut_w.in()[mDist-mChamferDist[labs[2]].in()],
                         mImWs[labs[2]].out()
                         );
-                // copie de ceci dans PondInterne
+                // copie de ceci in PondInterne
                 ELISE_COPY(select(PondInterne.all_pts(), (CurrentArea.in()==1) && (trans(mChamferDist[labs[2]].in(0),tr)<=0)),
                         trans(mImWs[labs[2]].in(0),tr),
                         PondInterne.out()

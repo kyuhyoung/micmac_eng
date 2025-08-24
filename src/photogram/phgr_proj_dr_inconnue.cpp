@@ -49,7 +49,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 class cEqDroiteInconnue
 {
     public :
-       // Appellee avec 0 et 1 pour les extrem, appelable aussi pour des points interm
+       // Appellee with 0 and 1 for les extrem, appelable aussi for des points interm
        void GenerateParamLambdaIm(double aLambdaIm);
        cEqDroiteInconnue(const Pt3dr & aPTer1,const Pt3dr &  aPTer2);
     private :
@@ -58,7 +58,7 @@ class cEqDroiteInconnue
        Pt3dr mU;
        Pt3dr mV;
        Pt3dr mW;
-       // Cette partie est variable car utilisable sur plusieurs images
+       // Cette partie est variable car utilisable on plusieurs images
        Pt2dr        mPIm1;
        Pt2dr        mPIm2;
        CamStenope * mCam;

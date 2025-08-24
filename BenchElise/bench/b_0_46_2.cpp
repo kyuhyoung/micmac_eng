@@ -277,7 +277,7 @@ void cBenchLeastSquare::TestFoncNVar()
 	aFQuad.AddDiff(f);
     }
     
-    // Verif de gradient + fonc sur aFQuad
+    // Verif de gradient + fonc on aFQuad
     for (INT aNb=0 ; aNb<10 ; aNb++)
     {
        Im1D_REAL8 aPt(mNbVar);
@@ -436,7 +436,7 @@ cBenchLeastSquare::cBenchLeastSquare
 
 void bench_triviale_opt_sous_contrainte()
 {
-   // Miminise x2+y2, sous la contrainte x+y=2
+   // Miminise x2+y2, under la contrainte x+y=2
      L2SysSurResol aSys(2);
      double C[2] = {1,1};
      aSys.GSSR_AddContrainte(C,3);

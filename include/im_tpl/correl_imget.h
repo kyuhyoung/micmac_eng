@@ -130,7 +130,7 @@ template <class tElem> class  TImageFixedCorrelateurSubPix
                mP1_I2= aP1;
            }
 
-           // Correlation ou les valeurs sont arrondie en reel
+           // Correlation or les valeurs sont arrondie en real
            REAL icorrel(Pt2dr aPr1,Pt2dr aPr2)
            {
                  tPF aP1 (aPr1);
@@ -154,7 +154,7 @@ template <class tElem> class  TImageFixedCorrelateurSubPix
 
            }
 
-           // Correlation ou les valeurs sont arrondie en reel
+           // Correlation or les valeurs sont arrondie en real
            REAL rcorrel(Pt2dr aPr1,Pt2dr aPr2)
            {
 

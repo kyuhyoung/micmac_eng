@@ -56,7 +56,7 @@ using namespace std;
 #define EPSILON_SYMMETRY 1e-6
 #define EPSILON_MATCH 1e-4
 
-// Permt de shifter les entiers (+ rapide que la div) sans rien faire pour
+// Permt de shifter les entiers (+ rapide que la div) without rien faire for
 // les flottants
 inline REAL ShiftDr(const REAL & aD,const int &) { return aD; }
 inline REAL ShiftG(const REAL & aD,const int &) { return aD; }
@@ -642,8 +642,8 @@ inline void setMax( T &v1, T v2 ){ if (v1<v2) v1=v2; }
 template <class T>
 inline void setMin( T &v1, T v2 ){ if (v1>v2) v1=v2; }
 
-// Pour utiliser un filtre sur les bord, clip les intervalle
-// pour ne pas deborder et renvoie la somme partielle
+// for utiliser un filtre on les bord, clip les intervalle
+// for ne pas deborder and renvoie la somme partielle
 template <class tBase> tBase ClipForConvol( int aSz, int aKXY, const tBase *aData, int & aDeb, int &aFin )
 {
 	setMax(aDeb,-aKXY);
@@ -658,8 +658,8 @@ template <class tBase> tBase ClipForConvol( int aSz, int aKXY, const tBase *aDat
 
 
 
-   // Produit scalaire basique d'un filtre lineaire avec une ligne
-   // et une colonne image
+   // Produit scalaire basique d'un filtre lineaire with une line
+   // and une colonne image
 template <class Type,class tBase> 
 inline tBase CorrelLine(tBase aSom,const Type * aData1,const tBase *  aData2,const int & aDeb,const int & aFin)
 {
@@ -718,7 +718,7 @@ void SetConvolSepX
 		SetConvolBordX( i_srcData, i_width, i_height, i_dstData, anX, aConvolution1d.DataCoeff(), aConvolution1d.Deb(), aConvolution1d.Fin() );
 
 	int aX1 = std::max( i_width-aConvolution1d.Fin(), anX );
-	for ( anX=aX1; anX<i_width; anX++ ) // max car aX1 peut être < aX0 voir negatif et faire planter
+	for ( anX=aX1; anX<i_width; anX++ ) // max car aX1 peut être < aX0 voir negatif and faire planter
 		SetConvolBordX( i_srcData, i_width, i_height, i_dstData, anX, aConvolution1d.DataCoeff(), aConvolution1d.Deb(), aConvolution1d.Fin() );
 
 	// const tBase aSom = InitFromDiv(ShiftG(tBase(1),aNbShitX),(tBase*)0);

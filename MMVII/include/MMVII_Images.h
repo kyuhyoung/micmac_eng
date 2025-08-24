@@ -359,13 +359,13 @@ template <class Type,const int Dim> class cDataTypedIm : public cDataGenUnTypedI
 
         void InitId();                  ///< Identity, only avalaible for 2D-squares images
         void InitNull();                ///< Null, faster than InitCste(0)
-        void InitDirac(const cPtxd<int,Dim> & aP,const Type &  aVal=1);  ///<  Create aDirac Image, 0 execpt 1 in P, used in test
+        void InitDirac(const cPtxd<int,Dim> & aP,const Type &  aVal=1);  ///<  Create aDirac image, 0 execpt 1 in P, used in test
         void InitDirac(const Type &  aVal=1);  ///<  Create aDirac with val in center
         void Init(eModeInitImage);      ///< swicth to previous specialized version
 
         //========= Test access ============
 
-        inline bool Inside(const cPtxd<int,Dim> & aP) const {return tPB::Inside(aP);} ///< Is Point inside def
+        inline bool Inside(const cPtxd<int,Dim> & aP) const {return tPB::Inside(aP);} ///< Is point inside def
         inline bool ValueOk(const tBase & aV) const {return tTraits::ValueOk(aV);}  ///< Is value Ok (overflow, nan, infty..)
 
         cDataTypedIm (const cPtxd<int,Dim> & aP0,const cPtxd<int,Dim> & aP1,

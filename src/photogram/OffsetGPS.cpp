@@ -136,8 +136,8 @@ cEqOffsetGPS::cEqOffsetGPS(cRotationFormelle & aRF,cBaseGPS & aBase,bool doGenCo
 
 void cEqOffsetGPS::GenCode()
 {
-   // Un objet de type equation peux gerer plusieurs equation;
-    // il faut passer par un vecteur
+   // Un object de type equation peux gerer plusieurs equation;
+    // il faut passer par un vector
     std::vector<Fonc_Num> aV;
     aV.push_back(mResidu.x);
     aV.push_back(mResidu.y);
@@ -145,8 +145,8 @@ void cEqOffsetGPS::GenCode()
 
     cElCompileFN::DoEverything
     (
-        DIRECTORY_GENCODE_FORMEL,  // Directory ou est localise le code genere
-        mNameType,  // donne les noms de fichier .cpp et .h ainsi que les nom de classe
+        DIRECTORY_GENCODE_FORMEL,  // Directory or est localise le code genere
+        mNameType,  // donne les noms de file .cpp and .h ainsi que les nom de class
         aV,  // expressions formelles 
         mLInterv  // intervalle de reference
     );
@@ -207,7 +207,7 @@ cBaseGPS *  cSetEqFormelles::NewBaseGPS(const Pt3dr & aV0)
     cBaseGPS *aRes = new cBaseGPS(*this,aV0);
 
     aRes->CloseEEF(); // OBLIG : indique a la base cElemEqFormelle que toutes les inconnue ont ete allouees
-                      // et que la base peut allouer un certain nombre d'objets utilitaire (genre Fctr de rappel)
+                      // and que la base peut allouer un certain number d'objets utilitaire (genre Fctr de rappel)
 
     AddObj2Kill(aRes);
     return aRes;
@@ -287,8 +287,8 @@ cEqRelativeGPS::cEqRelativeGPS
 
          cElCompileFN::DoEverything
          (
-             DIRECTORY_GENCODE_FORMEL,  // Directory ou est localise le code genere
-             mNameType,  // donne les noms de .cpp et .h  de classe
+             DIRECTORY_GENCODE_FORMEL,  // Directory or est localise le code genere
+             mNameType,  // donne les noms de .cpp and .h  de class
              aV,  // expressions formelles 
              mLInterv  // intervalle de reference
          );

@@ -45,7 +45,7 @@ namespace NS_ParamMICMAC
 {
 
 
-// pour extraire le kieme bit d'un tableau de bits compactes 
+// for extraire le kieme bit d'un array de bits compactes 
 // selon les conventions MicMac
 
 static inline   bool GET_Val_BIT(const U_INT1 * aData,int anX)
@@ -58,11 +58,11 @@ template <class Type> static Type Square(const Type & aV) {return aV*aV;}
 
 
 // ============================================================
-// Classe pour  representer de maniere minimaliste une image
-// (acces a ses valeurs et fonction de projection)
+// class for  representer de maniere minimaliste une image
+// (acces a ses valeurs and function de projection)
 //
-// Sert aussi pour stocker les info temporaires relatives a chaque
-// image (par ex le vecteur des radiometrie dans le voisinage courant)
+// Sert aussi for stocker les info temporaires relatives a chaque
+// image (par ex le vector des radiometrie in le voisinage courant)
 // ============================================================
 
 class   cGPU_LoadedImGeom
@@ -70,15 +70,15 @@ class   cGPU_LoadedImGeom
    public :
        cGPU_LoadedImGeom(cPriseDeVue*,int aNbVals);
 
-//  Est-ce que un point terrain est visible (si l'option des parties cachees
+//  Est-ce que un point terrain est visible (if l'option des parties cachees
 //  a ete activee)
        bool  IsVisible(int anX,int anY) const
        {
              return   (!mUsePC) || (mImPC[anY][anX] <mSeuilPC);
        }
 
-// Est ce qu'un point image est dans le domaine de definition de l'image
-// (dans le rectangle + dans le masque)
+// Est ce qu'un point image est in le domaine de definition de l'image
+// (in le rectangle + in le masque)
 
       bool IsOk(double aRX,double aRY)
       {
@@ -106,18 +106,18 @@ class   cGPU_LoadedImGeom
        cLoadedImage *   mLI;
        cGeomImage *     mGeom;
        
-    //  tampon pour empiler les valeur de l'image sur un voisinage ("imagette")
+    //  tampon for empiler les value de l'image on un voisinage ("imagette")
         std::vector<double>  mVals;
 
     //  zone de donnee : "l'image" elle meme en fait
 
         float **         mDataIm;
-    //  Masque Image (en geometrie image)
+    //  Masque image (en geometrie image)
         int              mSzX;
         int              mSzY;
         U_INT1**         mImMasq;
 
-   // Parties cachee :  masque image (en geom terrain), Seuil  et usage 
+   // Parties cachee :  masque image (en geom terrain), Seuil  and usage 
        U_INT1 **          mImPC;
        int                mSeuilPC;
        bool               mUsePC;
@@ -145,30 +145,30 @@ cGPU_LoadedImGeom::cGPU_LoadedImGeom(cPriseDeVue* aPDV,int aNbVals) :
 }
 
 //
-//    Fonction de correlation preparant une version GPU. Pour l'instant on se
-//    reduit a la version qui fonctionne pixel par pixel (sans redressement global),
-//    de toute facon il faudra l'ecrire et elle est plus simple. 
+//    function de correlation preparant une version GPU. for l'instant on se
+//    reduit a la version qui fonctionne pixel par pixel (without redressement global),
+//    de toute facon il faudra l'ecrire and elle est plus simple. 
 //
-//    Une fois les parametres d'environnement decode et traduits en donnees
-//    de bas niveau  ( des tableau bi-dim  de valeur numerique : entier, flottant et bits)
-//    les communications, dans le corps de la boucle, avec l'environnement MicMac sont reduites
+//    Une fois les parameters d'environnement decode and traduits en donnees
+//    de bas niveau  ( des array bi-dim  de value numerique : integer, flottant and bits)
+//    les communications, in le corps de la boucle, with l'environnement MicMac sont reduites
 //    a trois appels :
 //
 //       [1]   Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);
 //
-//             Appelle la fonction virtuelle de projection associee a chaque
+//             Appelle la function virtuelle de projection associee a chaque
 //             descripteur de geometrie de l'image.
 //
 //       [2]    mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,aDefCost);
 //
-//             Appelle la fonction virtuelle de remplissage de cout
+//             Appelle la function virtuelle de remplissage de cout
 //             de l'optimiseur actuellement utilise
 //
 //
 //       [3]    double aVal =  mInterpolTabule.GetVal(aDataIm,aPIm);
 //
-//               Utilise l'interpolateur courant. Pour l'instant l'interpolateur
-//               est en dur quand on fonctionne en GPU
+//               Utilise l'interpolateur courant. for l'instant l'interpolateur
+//               est en dur when on fonctionne en GPU
 //
 
 
@@ -177,9 +177,9 @@ void cAppliMICMAC::GPU_Correl
             const Box2di & aBox
      )
 {
-   //  Lecture des parametre d'environnement MicMac : nappes, images, quantification etc ...
+   //  Lecture des parameter d'environnement MicMac : nappes, images, quantification etc ...
 
-   //   Boite Terrain sur laquelle on va effectuer une portion de calcul
+   //   Boite Terrain on laquelle on va effectuer une portion de computation
    int aX0Ter = aBox._p0.x;
    int aX1Ter = aBox._p1.x;
    int aY0Ter = aBox._p0.y;
@@ -192,18 +192,18 @@ void cAppliMICMAC::GPU_Correl
    //   Masque des points terrains valides
    U_INT1 **  aTabMasqTER = mLTer->GPULowLevel_MasqTer();
 
-   //   Deux constantes : cout lorque la correlation ne peut etre calculee et
+   //   Deux constantes : cout lorque la correlation ne peut etre calculee and
    //   ecart type minmal
    double aDefCost =  mStatGlob->CorrelToCout(mDefCorr);
    double anEpsilon = EpsilonCorrelation().Val();
 
-   //   Parametre de quantification
+   //   parameter de quantification
    double anOrigineZ = mGeomDFPx.OrigineAlti();
    double aStepZ = mGeomDFPx.ResolutionAlti();
    Pt2dr aOriPlani,aStepPlani;
    mGeomDFPx.SetOriResolPlani(aOriPlani,aStepPlani);
 
-   //   Lecture des parametres representant les images
+   //   Lecture des parameters representant les images
    std::vector<cGPU_LoadedImGeom>  aVLI;
    for
    (
@@ -216,7 +216,7 @@ void cAppliMICMAC::GPU_Correl
    }
    int aNbIm = aVLI.size();
 
-   // Buffer pour pointer sur l'ensmble des vignettes OK
+   // Buffer for pointer on l'ensmble des vignettes OK
    std::vector<double *> aVecVals(aNbIm);
    double ** aVVals = &(aVecVals[0]);
 
@@ -229,7 +229,7 @@ void cAppliMICMAC::GPU_Correl
            int aZMin = aTabZMin[anY][anX];
            int aZMax = aTabZMax[anY][anX];
 
-           // est-on dans le masque des points terrains valide
+           // est-on in le masque des points terrains valide
            if ( GET_Val_BIT(aTabMasqTER[anY],anX))
            {
 
@@ -239,11 +239,11 @@ void cAppliMICMAC::GPU_Correl
                int aY0v = anY-mPtSzWFixe.y;
                int aY1v = anY+mPtSzWFixe.y;
 
-               // on parcourt l'intervalle de Z compris dans la nappe au point courant
+               // on parcourt l'intervalle de Z compris in la nappe au point courant
                for (int aZInt=aZMin ;  aZInt< aZMax ; aZInt++)
                {
 
-                   // Pointera sur la derniere imagette OK
+                   // Pointera on la derniere imagette OK
                    double ** aVVCur = aVVals;
                    // Statistique MICMAC
                    mNbPointsIsole++;
@@ -254,27 +254,27 @@ void cAppliMICMAC::GPU_Correl
 
                    int aNbImOk = 0;
 
-                   // On balaye les images  pour lire les valeur et stocker, par image,
-                   // un vecteur des valeurs voisine normalisees en moyenne et ecart type
+                   // On balaye les images  for lire les value and stocker, par image,
+                   // un vector des valeurs voisine normalisees en moyenne and ecart type
                    for (int aKIm=0 ; aKIm<aNbIm ; aKIm++)
                    {
                        cGPU_LoadedImGeom & aGLI = aVLI[aKIm];
                        const cGeomImage * aGeom=aGLI.Geom();
                        float ** aDataIm =  aGLI.DataIm();
        
-                       // Pour empiler les valeurs
+                       // for empiler les valeurs
                        double * mValsIm = aGLI.Vals();
                        double * mCurVals = mValsIm;
 
-                       // Pour stocker les moment d'ordre 1 et 2
+                       // for stocker les moment d'ordre 1 and 2
                        double  aSV = 0;
                        double  aSVV = 0;
                        
                        // En cas de gestion parties cachees, un masque terrain 
-                       // de visibilite a ete calcule par image
+                       // de visibilite a ete compute par image
                        if (aGLI.IsVisible(anX,anY))
                        {
-                           // memorise le fait que tout est OK pour le pixel et l'image consideres
+                           // memorise le fait que tout est OK for le pixel and l'image consideres
                            bool IsOk = true;
 
                            // Balaye le voisinage
@@ -287,14 +287,14 @@ void cAppliMICMAC::GPU_Correl
                                                    aOriPlani.x + aStepPlani.x*aXVois,
                                                    aOriPlani.y + aStepPlani.y*aYVois
                                                ); 
-                                   // On projette dans l'image 
+                                   // On projette in l'image 
                                      Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);
 
                                      if (aGLI.IsOk(aPIm.x,aPIm.y))
                                      {
-                                        // On utilise l'interpolateur pour lire la valeur image
+                                        // On utilise l'interpolateur for lire la value image
                                         double aVal =  mInterpolTabule.GetVal(aDataIm,aPIm);
-                                        // On "push" la nouvelle valeur de l'image
+                                        // On "push" la nouvelle value de l'image
                                         *(mCurVals++) = aVal;
                                         aSV += aVal;
                                         aSVV += Square(aVal) ;
@@ -303,7 +303,7 @@ void cAppliMICMAC::GPU_Correl
                                      }
                                      else
                                      {
-                                        // Si un  seul des voisin n'est pas lisible , on annule tout
+                                        // if un  seul des voisin n'est pas lisible , on annule tout
                                         IsOk =false;
                                      }
                                }
@@ -311,11 +311,11 @@ void cAppliMICMAC::GPU_Correl
                            if (IsOk)
                            {
 
-                             // On normalise en moyenne et ecart type
+                             // On normalise en moyenne and ecart type
                               aSV /= mNbPtsWFixe;
                               aSVV /= mNbPtsWFixe;
                               aSVV -=  Square(aSV) ;
-                              if (aSVV >anEpsilon) // Test pour eviter / 0 et sqrt(<0) 
+                              if (aSVV >anEpsilon) // Test for eviter / 0 and sqrt(<0) 
                               {
                                   *(aVVCur++) = mValsIm;
                                    aSVV = sqrt(aSVV);
@@ -336,16 +336,16 @@ void cAppliMICMAC::GPU_Correl
                        }
                    }
 
-                   // Calcul "rapide"  de la multi-correlation en utilisant la formule
+                   // computation "rapide"  de la multi-correlation en utilisant la formule
                    // de Huygens comme decrit en 3.5 de la Doc MicMac
                    if (aNbImOk>=2)
                    {
                       double anEC2 = 0;
-                      // Pour chaque pixel
+                      // for chaque pixel
                       for (int aKV=0 ; aKV<mNbPtsWFixe; aKV++)
                       {
                           double aSV=0,aSVV=0;
-                          // Pour chaque image, maj des stat 1 et 2
+                          // for chaque image, maj des stat 1 and 2
                           for (int aKIm=0 ; aKIm<aNbImOk ; aKIm++)
                           {
                                 double aV = aVVals[aKIm][aKV];
@@ -356,14 +356,14 @@ void cAppliMICMAC::GPU_Correl
                           anEC2 += (aSVV-Square(aSV)/aNbImOk);
                       }
 
-                     // Normalisation pour le ramener a un equivalent de 1-Correl 
+                     // Normalisation for le ramener a un equivalent de 1-Correl 
                      double aCost = anEC2 / (( aNbImOk-1) *mNbPtsWFixe);
-                     // On envoie le resultat a l'optimiseur pour valoir  ce que de droit
+                     // On envoie le result a l'optimiseur for valoir  ce que de droit
                      mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,aCost);
                    }
                    else
                    {
-                       // Si pas assez d'image, il faut quand meme remplir la case avec qq chose
+                       // if pas assez d'image, il faut when meme remplir la case with qq chose
                        mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,aDefCost);
                    }
                }

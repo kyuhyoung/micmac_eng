@@ -412,7 +412,7 @@ Box2dr cGeomImage::BoxImageOfVPts
     Pt2dr aPMax;
     Pt2dr aPMin;
 
-    // Pour explorer les 2^(2+mDimPx) coins de cubes on
+    // for explorer les 2^(2+mDimPx) coins de cubes on
     // passe par un flag de bits
     for (int aKP=0 ; aKP<int(aVPts.size()) ; aKP++)
     {
@@ -546,7 +546,7 @@ void cGeomImage::SetClip
          double aRabInterp
      )
 {
-   // Pour ?? eviter des pb de singularite dans les rayons
+   // for ?? eviter des pb de singularite in les rayons
 
    Box2dr aBoxTer =  BoxImageOfVPts
                   (
@@ -841,7 +841,7 @@ double cGeomImage::BSurH
      return aRes;
 }
 
-// Pour l'instant, la version Eulid ne fait que rappeler la version NonEuclid
+// for l'instant, la version Eulid ne fait que rappeler la version NonEuclid
 
 Pt3dr   cGeomImage::CentreRestit() const
 {
@@ -1013,7 +1013,7 @@ Pt2dr cGeomImage::P1P2ToPx(Pt2dr aP1,Pt2dr aP2) const
 }
 
 
-// Voir en fin de fichier pour les allocateur
+// Voir en fin de file for les allocateur
 
 /*****************************************/
 /*                                       */
@@ -1021,8 +1021,8 @@ Pt2dr cGeomImage::P1P2ToPx(Pt2dr aP1,Pt2dr aP2) const
 /*                                       */
 /*****************************************/
 
-//  En appariement image/image, les coordonnees objet
-//  sont confondues avec les coordonnees de la premiere image.
+//  En appariement image/image, les coordinates object
+//  sont confondues with les coordinates de la premiere image.
 //  Il s'agit donc d'une geometrie "Identite".
 
 class cGeomImage_Id : public cGeomImage
@@ -1111,30 +1111,30 @@ class cGeomImage_NoGeom : public cGeomImage
 /*                                       */
 /*****************************************/
 
-//    Le modele DHD_Px correspond au cas ou apres
+//    Le modele DHD_Px correspond au cas or after
 // correction d'une eventuelle distorsion, le modele
 // de correspondance a priori est celui d'une homographie
 // 
-// Cela inclut l'autocalibration sur le mur (scene quasi-plane)
+// Cela inclut l'autocalibration on le mur (scene quasi-plane)
 // la mise en correspondance des cannaux de la camera
-// numerique (centre optique quasi confondus) ou la 
-// photogrammetrie elementaire montre que pour une camera
-// parfaite (donc apres correction de la distortion) la 
+// numerique (centre optique quasi confondus) or la 
+// photogrammetrie elementaire montre que for une camera
+// parfaite (donc after correction de la distortion) la 
 // correspondance est une homographie.
 //
-//    Cela inclut aussi des modeles plus elementaire, avec
-// Dist=Identite, et homographie eventuellement reduite
+//    Cela inclut aussi des modeles plus elementaire, with
+// Dist=Identite, and homographie eventuellement reduite
 // a une application lineaire, voire une homotetie rotation,
 // voir  une translation, voir l'identite. Par exemple
-// la mise en correspondance d'image satellite pour
-// un couple le long de la trace ou en l'absence de 
+// la mise en correspondance d'image satellite for
+// un couple le long de la trace or en l'absence de 
 // modele physique un modele approche peut etre trouve
 // par simple translation.
 //
-//    On passe en parametre les deux distorsion sous forme
-// de pointeur sur des Grille, si c'est le pointeur null
+//    On passe en parameter les deux distorsion under forme
+// de pointeur on des Grille, if c'est le pointeur null
 // on utilisera une correction identite.
-//    L'Homographie est passee sous forme de couples homologues,
+//    L'Homographie est passee under forme de couples homologues,
 // qui seront corrige des eventuelles distorsion, ensuite l'homographie
 // est estimee selon les conventions "habituelles" :
 //    - 0 couple       : identite
@@ -1525,7 +1525,7 @@ void cGeomImage_Terrain_Ori::Init0MasqAnam()
                      Pt3dr aQ3B = mAnam->UVL2E(aP3B);
                      Pt3dr aNormRentr= vunit(aQ3B-aQ3A);
 
-             // Signe -, le rayon part vert le haut de la camera, alors
+             // Signe -, le rayon part vert le haut de la camera, then
              // qu'elle voit en bas ?!
                      double aSc = scal(aNormRentr,aSeg.TgNormee());
 //std::cout << "SCAL " << aSc << "\n";
@@ -1975,7 +1975,7 @@ class cGeomImage_Id_Ori : public cGeomImage_Id
     protected :
       bool GetPxMoyenne_NonEuclid(double * aPxMoy,bool MakeInvIfNeeded) const
       {
-           // Calcul d'un point "central"
+           // computation d'un point "central"
 	   //
 	   // OO double aProf = mOriRef.profondeur();
 	   // OO double aZ = mOriRef.altisol();
@@ -2064,7 +2064,7 @@ class cGeomImage_Faisceau : public cGeomImage_Id_Ori
 {
     public :
 
-      // interface pour cGeomBasculement3D, envoie de image vers terrain
+      // interface for cGeomBasculement3D, envoie de image vers terrain
       Pt3dr Bascule(const Pt3dr & aP3) const
       {
           //  return mOriRef.ImEtProf_To_Terrain(Pt2dr(aP3.x,aP3.y),1/aP3.z);
@@ -2110,7 +2110,7 @@ class cGeomImage_Faisceau : public cGeomImage_Id_Ori
       }
 
        
-       // Precaution anti singularite ou +infini devient - infini
+       // Precaution anti singularite or +infini devient - infini
       double Px2Prof(double aPax) const
       {
          return 1.0 / ElMax(aPax,1e-5);

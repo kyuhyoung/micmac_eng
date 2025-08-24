@@ -132,7 +132,7 @@ class cSetMesPtOf1Im : public cMemCheck
 void AddData(const  cAuxAr2007 & anAux,cSetMesPtOf1Im & aGCPMI);
 
 
-/**  class for representing  the measure of a 3D point (Ground Control Point) */
+/**  class for representing  the measure of a 3D point (Ground Control point) */
 class cMes1Gnd3D
 {
      public :
@@ -225,7 +225,7 @@ class cMultipleImPt
     const std::vector<cMes2DDirInfo*> & VMesDirInfo() const { return mVMesDirInfo; }  ///< Accessor
     int NumPt() const;
 private :
-    int                             mNumPt; // Num of Point used as identifier
+    int                             mNumPt; // Num of point used as identifier
     std::vector<cPt2dr>             mVMeasures;
     std::vector<cMes2DDirInfo*>     mVMesDirInfo;
     std::vector<int>                mVImages;
@@ -485,7 +485,7 @@ class cInterfParsePMulGCP : public cMemCheck
 };
 
 
-/// create a structure of multiple tie-point from Tab of "Point+Index", saved in "MulTieP"
+/// create a structure of multiple tie-point from Tab of "point+Index", saved in "MulTieP"
 
 cComputeMergeMulTieP * AllocStdFromMTP
                       (
@@ -517,7 +517,7 @@ cComputeMergeMulTieP * AllocStdFromMTPFromFolder
 class cFilterMesIm
 {
       public :
-         /// constructor Name of Image + Project (for loading GCP & final export)
+         /// constructor Name of image + Project (for loading GCP & final export)
          cFilterMesIm(cPhotogrammetricProject & aPhProj,const std::string & aNameIm);
 
 	 /// memorize a measure  as in or Out

@@ -282,15 +282,15 @@ bool  cAppli_NewRechPH::CalvInvariantRot(cOnePCarac & aPt,bool aModeTest)
       return aPt.OK() = false;
    }
 
-   // Buf[KTeta][KRho]   pour KRho=0, duplication de la valeur centrale
+   // Buf[KTeta][KRho]   for KRho=0, duplication de la value centrale
    Im2D_REAL4 aImBuf(SzInvRadCalc().x,SzInvRadCalc().y);
    TIm2D<REAL4,REAL8> aTBuf(aImBuf);
 
    std::vector<cOneScaleImRechPH *>  aVIm;
-   // Tableau des distance / au centre pour echantillonner
+   // array des distance / au centre for echantillonner
    std::vector<double>               aVRhoAbs;
-   std::vector<double>               aVDeltaRadAbs;  // distance entre deux  rho consecutif
-   std::vector<double>               aVDeltaTangAbs; // distance entre deux  teta consecutif
+   std::vector<double>               aVDeltaRadAbs;  // distance between deux  rho consecutif
+   std::vector<double>               aVDeltaTangAbs; // distance between deux  teta consecutif
    double aStepTeta =  (2*PI)/mNbTetaInv;
 
    int aN0 = aPt.NivScale();
@@ -316,7 +316,7 @@ bool  cAppli_NewRechPH::CalvInvariantRot(cOnePCarac & aPt,bool aModeTest)
    }
 
 
-   // On verifie maintenant que l'on est dedans, pour pouvoir tourner en mode test
+   // On verifie maintenant que l'on est dedans, for pouvoir tourner en mode test
    {
       double aRho = aRhoAbs * 1.1  + 5.0;
       Pt2dr aPRho(aRho,aRho);
@@ -335,7 +335,7 @@ bool  cAppli_NewRechPH::CalvInvariantRot(cOnePCarac & aPt,bool aModeTest)
    Im2D_REAL4 aBufRad(aSzIm.x,aSzIm.y,DefInvRad);
    REAL4 ** aDataBR = aBufRad.data();
 
-   // Calcul de l'image "log/polar"
+   // computation de l'image "log/polar"
 
    for (int aKTeta=0 ; aKTeta<mNbTetaInv; aKTeta++)
    {
@@ -358,7 +358,7 @@ bool  cAppli_NewRechPH::CalvInvariantRot(cOnePCarac & aPt,bool aModeTest)
    }
 
    double aMoy = 0;
-   // Normalisation a priori, pour l'instant sans rolling
+   // Normalisation a priori, for l'instant without rolling
    if (mRollNorm)
    {
        for (int aX= 0 ; aX<mNbSR2Use ; aX++)
@@ -521,7 +521,7 @@ bool  cAppli_NewRechPH::CalvInvariantRot(cOnePCarac & aPt,bool aModeTest)
 
    
 
-   // Pour l'export xml
+   // for l'export xml
    {
       if (0)
       {
@@ -599,7 +599,7 @@ class cOnePCarac_HeapCompare
     public :
 // compare score correl global
         bool operator () (tPCPtr   & aPCP1,tPCPtr   & aPCP2) {return aPCP1->Prio() > aPCP2->Prio();}
-        // est ce que objet 1 est meuilleur que 2
+        // est ce que object 1 est meuilleur que 2
 };
 
 

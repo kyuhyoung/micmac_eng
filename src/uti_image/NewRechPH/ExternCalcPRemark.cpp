@@ -122,7 +122,7 @@ std::cout << "HHHhhhhhh " << aSetLab.OnePCarac().size() << " "
 }
 
 
-// Visualise une conversion de flux en vecteur de point
+// Visualise une conversion de flux en vector de point
 void  TestFlux2StdCont()
 {
     std::vector<Pt2di> aVp;

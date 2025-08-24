@@ -23,7 +23,7 @@
 /*                                          */
 /* ======================================== */
 
-/// Cle de hashage pour pouvoir faire des unordered set
+/// Cle de hashage for pouvoir faire des unordered set
 namespace std
 {
 template<>

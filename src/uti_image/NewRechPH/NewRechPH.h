@@ -87,21 +87,21 @@ typedef std::forward_list<tPtrPtRemark> tLPtBuf;
 
 /************************************************************************/
 
-// represente une echelle de points remarquable
-// contient une image floutee et les points extrait
+// represente une scale de points remarquable
+// contient une image floutee and les points extrait
 
 class cOneScaleImRechPH
 {
       public :
           // deux constructeurs statiques 
 
-             // 1- constucteur "top-level" a partir du fichier
+             // 1- constucteur "top-level" a partir du file
           static cOneScaleImRechPH* FromFile 
                  (
                     cAppli_NewRechPH &,
                     const double & aS0, // sigma0
-                    const std::string &,  // Nom du fichier
-                    const Pt2di & aP0,const Pt2di & aP1  // Box Calcule
+                    const std::string &,  // Nom du file
+                    const Pt2di & aP0,const Pt2di & aP1  // Box compute
                  );
           static cOneScaleImRechPH* FromScale
                  (
@@ -144,7 +144,7 @@ class cOneScaleImRechPH
           bool SameDecim(const cOneScaleImRechPH &) const;  // Meme niveau de decimation
           bool SifDifMade() const;  // Meme niveau de decimation
 
-         // return le premier a meme decim ou sinon 0
+         // return le premier a meme decim or else 0
          cOneScaleImRechPH * GetSameDecimSiftMade(cOneScaleImRechPH*,cOneScaleImRechPH*);
 
       private :
@@ -159,15 +159,15 @@ class cOneScaleImRechPH
 
           cOneScaleImRechPH(cAppli_NewRechPH &,const Pt2di & aSz,const double & aScale,const int & aNiv,int aPowDecim);
  
-          // Selectionne les maxima locaux a cette echelle
+          // Selectionne les maxima locaux a cette scale
           bool  SelectVois(const Pt2di & aP,const std::vector<Pt2di> & aVVois,int aValCmp);
-          // Selectionne les maxima locaux a avec une echelle differente
+          // Selectionne les maxima locaux a with une scale differente
           bool  ScaleSelectVois(cOneScaleImRechPH*, const Pt2di&, const std::vector<Pt2d<int> >&, int,double);
           std::list<cPtRemark *>  mLIPM;
    
           cAppli_NewRechPH & mAppli;
           Pt2di     mSz;
-          tImNRPH   mIm;   // Image brute
+          tImNRPH   mIm;   // image brute
           tTImNRPH  mTIm;
 
 
@@ -264,12 +264,12 @@ class cAppli_NewRechPH
         
         void AddScale(cOneScaleImRechPH *,cOneScaleImRechPH *);
         void Clik();
-        bool  CalvInvariantRot(cOnePCarac & aPt,bool ModeTest); // ModeTest : juste pour savoir si probable calcul est possible
+        bool  CalvInvariantRot(cOnePCarac & aPt,bool ModeTest); // ModeTest : juste for savoir if probable computation est possible
 
         std::string mName;
-        double      mNbByOct;    // Nombre d'echelle dans une puisse de 2
-        double      mPowS;       // Ratio d'echelle entre 2
-        double      mEch0Decim;  // Premiere echelle de decimation
+        double      mNbByOct;    // number d'scale in une puisse de 2
+        double      mPowS;       // Ratio d'scale between 2
+        double      mEch0Decim;  // Premiere scale de decimation
         int         mNbS;
 
         Pt2dr   mISF; // Interval Scale Forced
@@ -277,16 +277,16 @@ class cAppli_NewRechPH
 /*
   Invariant Rotation
 */
-        double      mStepSR;  // Pas entre les pixel de reechantillonage pour les desc
-        bool        mRollNorm; // si true , normalisation par fenetre glissante, :
-        int         mNbSR2Use;     // Nbre de niveau pour utilisation
-        int         mNbSR2Calc;     // Nbre de niveau a calculer, different si rolling
-        int         mDeltaSR;  // Delta entre deux niveau radiaux, genre 1 ou 2 ?
-        int         mMaxLevR;  // Niv max permettant le calcul (calcule a partir des autres)
+        double      mStepSR;  // Pas between les pixel de reechantillonage for les desc
+        bool        mRollNorm; // if true , normalisation par fenetre glissante, :
+        int         mNbSR2Use;     // Nbre de niveau for utilisation
+        int         mNbSR2Calc;     // Nbre de niveau a compute, different if rolling
+        int         mDeltaSR;  // Delta between deux niveau radiaux, genre 1 or 2 ?
+        int         mMaxLevR;  // Niv max permettant le computation (compute a partir des autres)
 
-        // int         mNbTetaIm;  // Assez si on veut pouvoir interpoler entre les angles pour recalage
-        // int         mMulNbTetaInv; // Comme ceux pour l'invariance ne coutent pas très cher, on a interet a en mettre + ?
-        int         mNbTetaInv; // Calcule, 
+        // int         mNbTetaIm;  // Assez if on veut pouvoir interpoler between les angles for recalage
+        // int         mMulNbTetaInv; // Comme ceux for l'invariance ne coutent pas très cher, on a interet a en mettre + ?
+        int         mNbTetaInv; // compute, 
 
 
         double      mS0;
@@ -300,7 +300,7 @@ class cAppli_NewRechPH
         Pt2di       mP1Calc;
 
         std::vector<cOneScaleImRechPH *> mVILowR;
-        std::vector<cOneScaleImRechPH *> mVIHighR; // Celle qui ont une echelle eventuellement plus large
+        std::vector<cOneScaleImRechPH *> mVIHighR; // Celle qui ont une scale eventuellement plus large
         Video_Win  * mW1;
         bool         mModeVisu;
     
@@ -343,10 +343,10 @@ class cAppli_NewRechPH
 
         cPtFromCOPC mArgQt;
         tQtOPC * mQT;
-        int    mNbMaxLabByIm;   // Nombre max pour une image
-        int    mNbMinLabByIm;   // Nomvre min pour couper
-        int    mNbMaxLabBy10MP; // Nombre max par 10 MegaPix
-        int    mNbMaxLabInBox;  // Calcule a partir des 2 autres
+        int    mNbMaxLabByIm;   // number max for une image
+        int    mNbMinLabByIm;   // Nomvre min for couper
+        int    mNbMaxLabBy10MP; // number max par 10 MegaPix
+        int    mNbMaxLabInBox;  // compute a partir des 2 autres
         int    mNbPreAnalyse;   // Those save for pre analysis (visib graph, initial model etc ...)
         double mDistStdLab;     // Average dist between
 
@@ -357,7 +357,7 @@ class cAppli_NewRechPH
         tTImContrNRPH  mTImContrast;
         tInterpolNRPH * mInterp;
         int          mIdPts;
-        bool          mCallBackMulI; // Est on en call back pour cause d'image multiple
+        bool          mCallBackMulI; // Est on en call back for cause d'image multiple
         int          mModeTest;
         int          mNbHighScale;
 
@@ -423,7 +423,7 @@ class cCompileOPC
 {
     public :
 
-      // Return -1 si arret avant correl
+      // Return -1 if arret before correl
       double  Match(cCompileOPC & aCP2,const cFitsOneLabel &,const cSeuilFitsParam &,int & aShift,int & aLevFail,cTimeMatch *);
       std::vector<double>  Time(cCompileOPC & aCP2,const cFitsParam & aFP);
 

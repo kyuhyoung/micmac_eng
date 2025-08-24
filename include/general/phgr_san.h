@@ -61,9 +61,9 @@ typedef enum
 {
      eSurfPseudoInter, // Fausse intersection, par projection
      eSurfInterTgt,     // Intersection par tangence
-     // Vrai Inter, Sotant-Rentrant, on est rentrant si passant en suivant
-     // les abscisses positive (de la droite) Z decroit (donc pour une surface
-     // avec interieur, comme le cylindre, on rentre dedans
+     // Vrai Inter, Sotant-Rentrant, on est rentrant if passant en suivant
+     // les abscisses positive (de la droite) Z decroit (donc for une surface
+     // with interieur, comme le cylindre, on rentre dedans
      eSurfVI_Sort,
      eSurfVI_Rent,
 } eTypeInterSurDemiDr;
@@ -90,7 +90,7 @@ cInterfSurfaceAnalytique * SFromFile
                            (
                                 const std::string & aFile,
                                 const std::string & anId,  // Nom
-                                std::string  aTag="",  // Si defaut valeur xml
+                                std::string  aTag="",  // if defaut value xml
                                 cXmlOneSurfaceAnalytique * aMemXML = 0
                            );
 
@@ -131,7 +131,7 @@ class cPlyCloud
          static const tCol Magenta;
          static const tCol Black;
          static const tCol White;
-         static tCol Gray(const double & aGr); // Entre 0 et 1
+         static tCol Gray(const double & aGr); // between 0 and 1
 		 static tCol RandomColor();
 
          void PutDigit(char aDigit,Pt3dr aP0,Pt3dr aX,Pt3dr aY,tCol aCoul,double aLargCar,int aNbByCase);
@@ -141,7 +141,7 @@ class cPlyCloud
 
 class cInterfSurfaceAnalytique
 {
-    // UV coordonnee parametrique de la surface , L + ou -
+    // UV coordonnee parametrique de la surface , L + or -
     // troisieme coordonnee (genre faisceau de normal)
      public :
 
@@ -154,8 +154,8 @@ class cInterfSurfaceAnalytique
 
          virtual double SeuilDistPbTopo() const;
 
-         // renvoie une surface identite, utile pour beneficier
-         // de certaine fonction MicMac passant par l'interface
+         // renvoie une surface identite, utile for beneficier
+         // de certaine function MicMac passant par l'interface
          static cInterfSurfaceAnalytique * Identite(double aZ);
          static cInterfSurfaceAnalytique * FromCCC(const cChCoCart & );
 
@@ -169,8 +169,8 @@ class cInterfSurfaceAnalytique
                                               // En theorie plus general, indique qu'il doit se desanamorphoser ...
         virtual Pt3dr ToOrLoc(const Pt3dr & aP) const ; // Def Err fatale
         virtual Pt3dr FromOrLoc(const Pt3dr & aP) const ; // Def Err fatale
-        virtual bool OrthoLocIsXCste() const ; // Si vrai les ligne F(X,Y,Z0) = F(Y,Z0), la desanamorphose est automatique
-        virtual bool IsAnamXCsteOfCart() const ; // Vrai pour Orthocyl faux pour les autres
+        virtual bool OrthoLocIsXCste() const ; // if vrai les line F(X,Y,Z0) = F(Y,Z0), la desanamorphose est automatique
+        virtual bool IsAnamXCsteOfCart() const ; // Vrai for Orthocyl faux for les autres
 
 
         // Defaut return 0
@@ -182,13 +182,13 @@ class cInterfSurfaceAnalytique
          static cInterfSurfaceAnalytique * FromXml(const cXmlOneSurfaceAnalytique &);
          static cInterfSurfaceAnalytique * FromFile(const std::string &);
 
-// Pour gerer d'eventuels pb de topologie, a la faculte de modifier la boite
+// for gerer d'eventuels pb de topologie, a la faculte de modifier la boite
          virtual void AdaptBox(Pt2dr & aP0,Pt2dr & aP1) const = 0;
 
-       // Renvoie, sous forme de leurs abscisses curvilignes
-       //  la liste des intersections de la droite et de la nappe Z=Z0
-       // si aucune "vraie" solution renvoie la droite des moindre carres et IsVraiSol = false
-       // Peut etre un jour ecrire un valeur par defaut fonctionnant par dichotomie (sinon
+       // Renvoie, under forme de leurs abscisses curvilignes
+       //  la list des intersections de la droite and de la nappe Z=Z0
+       // if aucune "vraie" solution renvoie la droite des moindre carres and IsVraiSol = false
+       // Peut etre un jour ecrire un value par defaut fonctionnant par dichotomie (else
        //  mettre virtuelle pure)
 
 
@@ -198,15 +198,15 @@ class cInterfSurfaceAnalytique
          cTplValGesInit<Pt3dr> InterDemiDroiteVisible(const ElSeg3D &,double aZ0) const ;
          cTplValGesInit<Pt3dr> PImageToSurf0(const cCapture3D & aCap,const Pt2dr & aPIm) const; // Coord UVL
 
-         // Si SurfExt, on selectionne les rayons rentantrant, coord UVL
+         // if SurfExt, on selectionne les rayons rentantrant, coord UVL
          Pt3dr BestInterDemiDroiteVisible(const ElSeg3D &,double aZ0) const ;
 
          virtual ~cInterfSurfaceAnalytique();
          cInterfSurfaceAnalytique(bool isVueExt);
-         bool VueDeLext() const; // Change le nom pour grep / mIsVueExt
+         bool VueDeLext() const; // Change le nom for grep / mIsVueExt
          int SignDZSensRayCam()const;
 
-        // Rappiecage pour pouvoir dynamiquement inhiber l'anamorphose verticale sans toucher au reste
+        // Rappiecage for pouvoir dynamiquement inhiber l'anamorphose verticale without toucher au reste
          void SetUnusedAnamXCSte();
      protected :
          bool mUnUseAnamXCSte;
@@ -216,15 +216,15 @@ class cInterfSurfaceAnalytique
 };
 
 
-// Dans SAN/cylindre.cpp
+// in SAN/cylindre.cpp
 
 
 // Une cInterfSurfAn_Formelle est a la fois un allocateur
-// d'inconnue (comme une rotation, ici les parametres de la surface)
-// et une equation d'observation (comme  l'equation d'appuis, ici
-// la projection d'un point 3d sur la surface).
+// d'inconnue (comme une rotation, ici les parameters de la surface)
+// and une equation d'observation (comme  l'equation d'appuis, ici
+// la projection d'un point 3d on la surface).
 //
-// Rien n'empeche que d'autres equations soient utilisees sur
+// Rien n'empeche que d'autres equations soient utilisees on
 // une surface.
 
 class cInterfSurfAn_Formelle : public cElemEqFormelle,
@@ -273,7 +273,7 @@ class cCylindreRevolution : public cInterfSurfaceAnalytique
          virtual double SeuilDistPbTopo() const;
 
          friend class cProjTore;
-     // aPOnCyl fixe a la fois le rayon et le premier axe
+     // aPOnCyl fixe a la fois le rayon and le premier axe
      // du plan Ortho, origine des angles
         cCylindreRevolution
         (
@@ -320,9 +320,9 @@ class cCylindreRevolution : public cInterfSurfaceAnalytique
       private :
          void V_MakePly (const cParamISAPly & , cPlyCloud & ,const std::vector<ElCamera *> &,const Box2dr & aBox,const double aProfMoy);
 
-         Pt3dr mP0; // Point sur l'axe
+         Pt3dr mP0; // point on l'axe
          double mRay;
-         Pt3dr mU;  // vecteur du plan pointant sur P0
+         Pt3dr mU;  // vector du plan pointant on P0
          Pt3dr mV;  //
          Pt3dr mW;  //   axe du cylinde
          int   mSign;
@@ -380,22 +380,22 @@ class cProjTore : public cInterfSurfaceAnalytique
    //   Euclidien <=> Torique
         Pt3dr E2UVL(const Pt3dr & aP) const;
         Pt3dr UVL2E(const Pt3dr & aP) const;
-   // Fonction virtuelle generale , cree un objet multi type
+   // function virtuelle generale , cree un object multi type
         cXmlDescriptionAnalytique Xml() const;
-   // Fonction specifique
+   // function specifique
         cXmlToreRevol  XmlTore() const;
 // En pratique identique a OrthoLocIsXCste
 // En theorie plus general, indique qu'il doit se desanamorphoser ...
         bool HasOrthoLoc() const ;
-        bool OrthoLocIsXCste() const ; // Si vrai les ligne F(X,Y,Z0) = F(Y,Z0), la desanamorphose est automatique
+        bool OrthoLocIsXCste() const ; // if vrai les line F(X,Y,Z0) = F(Y,Z0), la desanamorphose est automatique
 
-// Utilise dans la desanamorphose selon les ligne "verticale"  ,
+// Utilise in la desanamorphose selon les line "verticale"  ,
         Pt3dr ToOrLoc(const Pt3dr & aP) const ; // Def Err fatale
         Pt3dr FromOrLoc(const Pt3dr & aP) const ; // Def Err fatale
 
         // Defaut return 0
          static cProjTore  FromXml(const cXmlOneSurfaceAnalytique &,const cXmlToreRevol &);
-// Pour gerer d'eventuels pb de topologie, a la faculte de modifier la boite
+// for gerer d'eventuels pb de topologie, a la faculte de modifier la boite
          void AdaptBox(Pt2dr & aP0,Pt2dr & aP1) const ;
          std::vector<cInterSurfSegDroite>  InterDroite(const ElSeg3D &,double aZ0) const ;
 
@@ -419,7 +419,7 @@ class cProjOrthoCylindrique : public cInterfSurfaceAnalytique
      public :
 
 
-         // Pour de la generation d'otrtho anOri, anOx, anOy est le plan principal
+         // for de la generation d'otrtho anOri, anOx, anOy est le plan principal
          // de redressement
          cProjOrthoCylindrique
          (
@@ -427,12 +427,12 @@ class cProjOrthoCylindrique : public cInterfSurfaceAnalytique
                const ElSeg3D & aSegAbs,
                bool    aAngulCorr
          );
-         // Le parametrage de la droite dans le repere local est
+         // Le parametrage de la droite in le repere local est
          //  (X' , b Y' , D + c X')
 
-         // Creation a partir des elements "naturels" le plan de projection et l'axe du cylindre;
-         // le P0 de la droite projete sur le plan fixe l'origine; si prio au plan la droite est
-         // modifiee pour etre // , et lycee de versailles
+         // Creation a partir des elements "naturels" le plan de projection and l'axe du cylindre;
+         // le P0 de la droite projete on le plan fixe l'origine; if prio au plan la droite est
+         // modifiee for etre // , and lycee de versailles
 
          Pt3dr E2UVL(const Pt3dr & aP) const;
          Pt3dr UVL2E(const Pt3dr & aP) const;
@@ -446,7 +446,7 @@ class cProjOrthoCylindrique : public cInterfSurfaceAnalytique
                                          const cXmlOrthoCyl&
                                     );
         bool OrthoLocIsXCste() const ;
-        bool IsAnamXCsteOfCart() const ; // Vrai pour Orthocyl faux pour les autres
+        bool IsAnamXCsteOfCart() const ; // Vrai for Orthocyl faux for les autres
         bool HasOrthoLoc() const ;
         Pt3dr ToOrLoc(const Pt3dr & aP) const ; // Def Err fatale
         Pt3dr FromOrLoc(const Pt3dr & aP) const ; // Def Err fatale
@@ -479,7 +479,7 @@ class cProjOrthoCylindrique : public cInterfSurfaceAnalytique
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -495,17 +495,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

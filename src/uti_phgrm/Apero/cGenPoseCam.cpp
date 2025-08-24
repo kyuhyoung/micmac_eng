@@ -341,7 +341,7 @@ cPolynBGC3M2D_Formelle::cPolynBGC3M2D_Formelle
 
 
     // ============================================================
-    //   Calcul des cellules 
+    //   computation des cellules 
     // ============================================================
 
 
@@ -756,8 +756,8 @@ void  cPolynBGC3M2D_Formelle::GenerateCode(Pt2d<Fonc_Num> aFormP,const std::stri
 
     cElCompileFN::DoEverything
     (
-        DIRECTORY_GENCODE_FORMEL,  // Directory ou est localise le code genere
-        aName,  // donne les noms de fichier .cpp et .h ainsi que les nom de classe
+        DIRECTORY_GENCODE_FORMEL,  // Directory or est localise le code genere
+        aName,  // donne les noms de file .cpp and .h ainsi que les nom de class
         aFormP.ToTab(),  // expressions formelles 
         anInterv  // intervalle de reference
     );
@@ -851,7 +851,7 @@ CS :
     if (0) // (MPD MM())
     {
         double aCheck = euclid(   (aP3DTer-mEqP3I->GetEqP3iVal()) /  ElMax(1e-9,(euclid(aP3DTer)+euclid(mEqP3I->GetEqP3iVal())))   );
-       // Test apres correction du probleme en cas proj ou le Pinit est a 000 en CS
+       // Test after correction du probleme en cas proj or le Pinit est a 000 en CS
        if (aCheck>1e-4)
        {
           std::cout << "PTSSS = " << aP3DTer << " " << mEqP3I->GetEqP3iVal() << "\n";
@@ -1236,7 +1236,7 @@ std::string cPolynomial_BGC3M2D::Save2XmlStdMMName(  cInterfChantierNameManipula
             ELISE_fp::CpFile(mNameFileCam0,aNameSsCor);
      }
 
-     // Pour ne pas avoir le tmp mmdir ....
+     // for ne pas avoir le tmp mmdir ....
      aXml.NameCamSsCor() = aDirFull + NameWithoutDir(mNameFileCam0);
 
 

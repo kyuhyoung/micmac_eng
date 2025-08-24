@@ -74,7 +74,7 @@ class cTomKanCamUnk
 {
     public :
         friend class cTomKanSolver;
-        cTomKanCamUnk(const std::vector<Pt2dr> & aVpt,double aDist,CamStenopeIdeale * aRef); // Dist >0 -> Pts Photogram, utilise pour normaliser
+        cTomKanCamUnk(const std::vector<Pt2dr> & aVpt,double aDist,CamStenopeIdeale * aRef); // Dist >0 -> Pts Photogram, utilise for normaliser
         const cBasicCamOrtho & SolOrth() const;
         void SetCamOrtho(const Pt3dr & aI,const Pt3dr & aJ);
         const Pt2dr & VInitK(int) const;
@@ -297,7 +297,7 @@ Pt2dr cBasicCamOrtho::Proj(const Pt3dr & aP) const
 /*****************************************************/
 
 
-// Si les points sont des "points photogrammetriques" (i.e. (x,y,1) est un dir de rayon)
+// if les points sont des "points photogrammetriques" (i.e. (x,y,1) est un dir de rayon)
 
 static std::vector<Pt2dr> ApproxFuseau(const std::vector<Pt2dr> & aV0,double aDist)
 {
@@ -515,7 +515,7 @@ cTomKanSolver::cTomKanSolver
    std::sort(aVInd.begin(),aVInd.begin()+3);   // Sort the 3 highest by their initial order
 
 
-   // 2.3 On remets dans mDiag0 ... ce qu'on aurait si pas une SVD carre
+   // 2.3 On remets in mDiag0 ... ce qu'on aurait if pas une SVD carre
    for (int aKVp=0 ; aKVp<3 ; aKVp++)
    {
        int aIVp = aVInd[aKVp];

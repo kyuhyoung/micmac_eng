@@ -256,7 +256,7 @@ cGlobEqLineraiseAngle::cGlobEqLineraiseAngle(bool doGenCode,bool UseAccelCste0) 
 
  //========================
    Pt3d<Fonc_Num>  aQ2 = mQ2.PtF();
-   Pt3d<Fonc_Num>  aQp2 = aQ2 + (mW->mP^aQ2);  // Comme W0 = 0 et Q2^W |_ Q2 , pas necessair de normer
+   Pt3d<Fonc_Num>  aQp2 = aQ2 + (mW->mP^aQ2);  // Comme W0 = 0 and Q2^W |_ Q2 , pas necessair de normer
    Pt3d<Fonc_Num>  aQp1 = mQp1.PtF();
 
    Pt3d<Fonc_Num>  aBase = mB0.PtF() + mC.PtF() * mc->mS + mD.PtF() * md->mS;
@@ -264,7 +264,7 @@ cGlobEqLineraiseAngle::cGlobEqLineraiseAngle(bool doGenCode,bool UseAccelCste0) 
 
    Pt3d<Fonc_Num> aQp1VQp2 = vunit(aQp1 ^ aQp2) ^aBase;
 
-   //  / 4 pour etre coherent avec PVCost, qui lui meme est/4 pour etre similaire a ProjCost et DisCost
+   //  / 4 for etre coherent with PVCost, qui lui meme est/4 for etre similaire a ProjCost and DisCost
    Fonc_Num aDet = Det(aQp1,aQp2,aBase) / 4.0;
 
    mVFRes.push_back(aDet/scal(aQp1VQp2,aQp1));
@@ -276,8 +276,8 @@ cGlobEqLineraiseAngle::cGlobEqLineraiseAngle(bool doGenCode,bool UseAccelCste0) 
    {
         cElCompileFN::DoEverything
         (
-            DIRECTORY_GENCODE_FORMEL,  // Directory ou est localise le code genere
-            mNameType,  // donne les noms de fichier .cpp et .h ainsi que les nom de classe
+            DIRECTORY_GENCODE_FORMEL,  // Directory or est localise le code genere
+            mNameType,  // donne les noms de file .cpp and .h ainsi que les nom de class
             mVFRes,  // expressions formelles
             mLInterv, // intervalle de reference
             UseAccelCste0
@@ -324,14 +324,14 @@ void GenCodeEqLinariseAngle()
 /************************************************************/
 
 // Equation initiale     [U1,Base, R U2] = 0
-//      [U1,Base, R0 dR U2] = 0     R = R0 (Id+dR)    dR ~0  R = (Id + ^W) et W ~ 0
+//      [U1,Base, R0 dR U2] = 0     R = R0 (Id+dR)    dR ~0  R = (Id + ^W) and W ~ 0
 //   [tR0 U1, tR0 Base,U2 + W^U2] = 0 ,
-//    tR0 Base = B0 +dB   est un vecteur norme, soit CD tq (B0,C,D) est un Base ortho norme;
+//    tR0 Base = B0 +dB   est un vector norme, soit CD tq (B0,C,D) est un Base ortho norme;
 //    tR0 U1 = U'1
 //   [U'1 ,  B0 + c C + d D , U2 + W ^U2] = 0
 //   (U1' ^ (B0 + c C + d D)) . (U2 + W ^U2) = 0
 //   (U'1 ^B0  + c U'1^C + d U'1 ^D ) . (U2 + W ^ U2) = 0
-//  En supprimant les termes en Wc ou Wd :
+//  En supprimant les termes en Wc or Wd :
 //   (U'1 ^ B0) .U2    +  c ((U'1^C).U2) + d ((U'1 ^D).U2)  + (U'1 ^ B0) . (W^U2)
 //   (U'1 ^ B0) .U2    +  c ((U'1^C).U2) + d ((U'1 ^D).U2)  +  W.(U2 ^(U'1 ^ B0)) => Verifier Signe permut prod vect
 
@@ -457,7 +457,7 @@ double cBundleIterLin::AddObs(const Pt3dr & aQ1,const Pt3dr& aQ2,const double & 
 
    if (0)
    {
-       std::cout << "RRRRatioBlin   " << LinearCostMEP(mRot,aQ1,aQ2,-1) / aCste << "\n";  // 1 ou -1
+       std::cout << "RRRRatioBlin   " << LinearCostMEP(mRot,aQ1,aQ2,-1) / aCste << "\n";  // 1 or -1
    }
    return aCste;
 }
@@ -651,7 +651,7 @@ double  cFullBundleLin::VIB2I_AddObsK(const int & aK,const double & aPds)
 {
    double aRes =  mBIL.AddObs(mVP1[aK],mVP2[aK],aPds);
 
-   //  std::cout << "RRRBLLL " << aRes /  VIB2I_ErrorK(mBIL.mRot,aK) << "\n"; 1 et - 1
+   //  std::cout << "RRRBLLL " << aRes /  VIB2I_ErrorK(mBIL.mRot,aK) << "\n"; 1 and - 1
    return aRes;
 }
 

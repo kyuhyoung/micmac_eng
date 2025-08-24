@@ -11,8 +11,8 @@ using namespace std;
 template<class T> class CuHostData3D;
 
 /// \class GpGpuTools
-/// \brief classe d outils divers
-/// La classe gere la restructuration de donnees, des outils d'affichages console
+/// \brief class d outils divers
+/// La class gere la restructuration de donnees, des outils d'affichages console
 class GpGpuTools
 {
 
@@ -22,46 +22,46 @@ public:
 
     ~GpGpuTools(){}
 
-    /// \brief          parametre texture
+    /// \brief          parameter texture
     static void			SetParamterTexture(textureReference &textRef);
 
-    ///  \brief         Convertir array 2D en tableau lineaire
+    ///  \brief         Convertir array 2D en array lineaire
     template <class T>
     static void			Memcpy2Dto1D(T** dataImage2D, T* dataImage1D, uint2 dimDest, uint2 dimSource);
 
-    ///  \brief         Sauvegarder tableau de valeur dans un fichier PGN
+    ///  \brief         Sauvegarder array de value in un file PGN
     ///  \param         dataImage : Donnees images a ecrire
-    ///  \param         fileName : nom du fichier a ecrire
+    ///  \param         fileName : nom du file a ecrire
     ///  \param         dimImage : dimension de l image
-    ///  \return        true si l ecriture reussie
+    ///  \return        true if l ecriture reussie
     template <class T>
     static bool			Array1DtoImageFile(T* dataImage,const char* fileName, uint2 dimImage);
 
-    ///  \brief			Sauvegarder tableau de valeur (multiplier par un facteur) dans un fichier PGN
+    ///  \brief			Sauvegarder array de value (multiplier par un facteur) in un file PGN
     ///  \param         dataImage : Donnees images a ecrire
-    ///  \param         fileName : nom du fichier a ecrire
+    ///  \param         fileName : nom du file a ecrire
     ///  \param         dimImage : dimension de l image
     ///  \param         factor : facteur multiplicatif
-    ///  \return        true si l ecriture reussie
+    ///  \return        true if l ecriture reussie
     template <class T>
     static bool			Array1DtoImageFile(T* dataImage,const char* fileName, uint2 dimImage, float factor );
 
-    ///  \brief			Retourne la dossier image de l'utilisateur
+    ///  \brief			Retourne la folder image de l'utilisateur
     ///  \return        renvoie un string
     static std::string	GetImagesFolder();
 
-    ///  \brief			Divise toutes les valeurs du tableau par un facteur
+    ///  \brief			Divise toutes les valeurs du array par un facteur
     ///  \param         data : Donnees images a ecrire
-    ///  \param         dimImage : dimension du tableau
+    ///  \param         dimImage : dimension du array
     ///  \param         factor : facteur multiplicatif
-    ///  \return        renvoie un pointeur sur le tableau resultant
+    ///  \return        renvoie un pointeur on le array resultant
     template <class T>
     static T*			MultArray(T* data, uint2 dimImage, float factor);
 
 
     template <class T>
 	///
-	/// \brief AddArray Additionner une valeur a toutes composantes d'un tableau
+	/// \brief AddArray Additionner une value a toutes composantes d'un array
 	/// \param data
 	/// \param dimImage
 	/// \param factor
@@ -70,19 +70,19 @@ public:
     static T*			AddArray(T* data, uint2 dimImage, float factor);
 
     ///	\brief			Sortie console d'une donnees
-    ///  \param         data : Donnees du tableau a afficher
-    ///  \param         dim : dimension du tableau
-    ///  \param         offset : nombre de chiffre apres la virgule
-    ///  \param         defaut : valeur affichee par un caractere speciale
-    ///  \param         sample : saut dans l'affichage
+    ///  \param         data : Donnees du array a afficher
+    ///  \param         dim : dimension du array
+    ///  \param         offset : number de chiffre after la virgule
+    ///  \param         defaut : value affichee par un caractere speciale
+    ///  \param         sample : saut in l'affichage
     ///  \param         factor : facteur multiplicatif
-    ///  \return        renvoie un pointeur sur le tableau resultant
+    ///  \return        renvoie un pointeur on le array resultant
 
 	/// \cond
 
 	template <class T>
 	///
-	/// \brief GetArrayValue Obtenir la valeur dans un tableau en fonction de ses coordonnees
+	/// \brief GetArrayValue Obtenir la value in un array en function de ses coordinates
 	/// \param data
 	/// \param pt
 	/// \param dim
@@ -94,14 +94,14 @@ public:
     template <class T>
     static void			OutputArray(T* data, uint3 dim, uint plan = XY, uint level = 0, Rect rect = NEGARECT, uint offset = 3, T defaut = (T)0.0f, float sample = 1.0f, float factor = 1.0f);
 
-    ///	\brief			Sortie console d'un tableau de donnees host cuda
-    ///  \param         data : tableau host cuda
-    ///  \param         Z : profondeur du tableau a afficher
-    ///  \param         offset : nombre de chiffre apres la virgule
-    ///  \param         defaut : valeur affichee par un caractere speciale
-    ///  \param         sample : saut dans l'affichage
+    ///	\brief			Sortie console d'un array de donnees host cuda
+    ///  \param         data : array host cuda
+    ///  \param         Z : profondeur du array a afficher
+    ///  \param         offset : number de chiffre after la virgule
+    ///  \param         defaut : value affichee par un caractere speciale
+    ///  \param         sample : saut in l'affichage
     ///  \param         factor : facteur multiplicatif
-    ///  \return        renvoie un pointeur sur le tableau resultant
+    ///  \return        renvoie un pointeur on le array resultant
     template <class T>
     static void			OutputArray(CuHostData3D<T> &data, uint Z = 0, uint offset = 3, T defaut = (T)0.0f, float sample = 1.0f, float factor = 1.0f);
 
@@ -131,7 +131,7 @@ public:
     ///	\brief			Convertie un uint2 en string
     static const char* 	conca(const char* texte, int t = 0);
 
-    ///	\brief			Affiche les parametres GpGpu de correlation multi-images
+    ///	\brief			Affiche les parameters GpGpu de correlation multi-images
     //static void			OutputInfoGpuMemory();
 
     ///	\brief			(X)
@@ -141,7 +141,7 @@ public:
 
 #ifdef NVTOOLS
 	///
-	/// \brief NvtxR_Push Pousser une fonction pour le profiling
+	/// \brief NvtxR_Push Pousser une function for le profiling
 	/// \param message
 	/// \param color
 	///
@@ -156,7 +156,7 @@ public:
 #endif
 
 	///
-	/// \brief Nvtx_RangePop Retirer une fonction du profiling
+	/// \brief Nvtx_RangePop Retirer une function du profiling
 	///
 	static void	Nvtx_RangePop();
 
@@ -206,7 +206,7 @@ void GpGpuTools::OutputValue( T value, uint offset, T defaut, float factor)
 
 template <> inline
 ///
-/// \brief GpGpuTools::OutputValue Affiche une valeur
+/// \brief GpGpuTools::OutputValue Affiche une value
 /// \param value
 /// \param offset
 /// \param defaut
@@ -262,7 +262,7 @@ void GpGpuTools::OutputValue( float value, uint offset, float defaut, float fact
     else if (outO == 8*defaut)
         std::cout << S1 << "?" << S2;
     else if (outO == 9*defaut)
-        std::cout << S1 << "¤" << S2;
+        std::cout << S1 << "" << S2;
     else if ( outO < 0.0f)
         std::cout << out << ES;
     else
@@ -272,7 +272,7 @@ void GpGpuTools::OutputValue( float value, uint offset, float defaut, float fact
 
 template<> inline
 ///
-/// \brief GpGpuTools::OutputValue Affiche une valeur
+/// \brief GpGpuTools::OutputValue Affiche une value
 /// \param value
 /// \param offset
 /// \param defaut

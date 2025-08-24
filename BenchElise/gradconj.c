@@ -37,7 +37,7 @@ void Grad_Conj::Descente() {
 	potsol = lpt;
 }
 
-/*		Calcul de la derivee et de la courbure le long d'une direction	*/
+/*		computation de la derivee and de la courbure le long d'une direction	*/
 
 void Grad_Conj::CalcDer( double &G, double &C, double &gm ) {
 	double e, v2, v4;
@@ -52,7 +52,7 @@ void Grad_Conj::CalcDer( double &G, double &C, double &gm ) {
 	G /= e;
 }
 
-/*		Minimisation de la fonction par la methode des gradients conjugues
+/*		Minimisation de la function par la method des gradients conjugues
 */
 void Grad_Conj::Minimize() {
 	double gdg, cbg, gmx, k, modagr, modngr;
@@ -63,7 +63,7 @@ void Grad_Conj::Minimize() {
 	iterations = 0;
 	while( 1 ) {
 		iterations++;
-/*			Calcul de la nouvelle solution approchee	*/
+/*			computation de la nouvelle solution approchee	*/
 		CalcDer( gdg, cbg, gmx );
 		if( cbg <= 0 ) {
 			fprintf( stderr, "Trouve courbure negative.\n" );
@@ -75,13 +75,13 @@ void Grad_Conj::Minimize() {
 
 		if( Controle() ) break;
 
-/*	Calcul du potentiel pour cette solution		*/
-/*			Calcul du nouveau gradient		*/
+/*	computation du potentiel for cette solution		*/
+/*			computation du nouveau gradient		*/
 		potsol = Gradient();
 		modagr = modngr;
 		modngr = Grad/Grad;
 
-/*		Calcul de la nouvelle direction a explorer		*/
+/*		computation de la nouvelle direction a explorer		*/
 		k = modngr/modagr;
 		GradC *= k;
 		GradC -= Grad;

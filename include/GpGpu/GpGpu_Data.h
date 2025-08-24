@@ -18,7 +18,7 @@
 /// \endcond
 
 /// \class CData
-/// \brief Classe Abstraite de donnees
+/// \brief class Abstraite de donnees
 template<class T>
 class CData : public CGObject
 {
@@ -34,14 +34,14 @@ public:
     /// \brief      Allocation memoire
     bool            Malloc();
 
-    /// \brief      Initialise toutes les elements avec la valeur val
-    /// \param      val : valeur d initialisation
+    /// \brief      Initialise toutes les elements with la value val
+    /// \param      val : value d initialisation
     virtual bool	Memset(int val) = 0;
 
     /// \brief      Desalloue la memoire alloue
     bool            Dealloc();
 
-    /// \brief      Sortie console de la classe
+    /// \brief      Sortie console de la class
     virtual void	OutputInfo()	= 0;
 
     /// \brief      Renvoie le pointeur des donnees
@@ -51,7 +51,7 @@ public:
 
     void            MallocInfo();
 
-    /// \brief      Obtenir une valeur aleatoire comprise entre min et max
+    /// \brief      Obtenir une value aleatoire comprise between min and max
     static T        GetRandomValue(T min, T max);
 
 #if OPENCL_ENABLED
@@ -70,26 +70,26 @@ protected:
     void            SetPData(T *p){ _data = p;}
 
 	///
-	/// \brief abDealloc Désallocation de la mémoire
-	/// \return true si la désallocation est reussie
+	/// \brief abDealloc Dsallocation de la mmoire
+	/// \return true if la dsallocation est reussie
 	///
-    virtual bool    abDealloc(){ return false;} // TODO pour le rendre completement virtuelle il faut reimplementer les destructeurs...
+    virtual bool    abDealloc(){ return false;} // TODO for le rendre completement virtuelle il faut reimplementer les destructeurs...
 
 	///
-	/// \brief abMalloc Allocation de la mémoire
+	/// \brief abMalloc Allocation de la mmoire
 	/// \return
 	///
     virtual bool    abMalloc(){ return false;}
 
 	///
-	/// \brief Sizeof retourn le taille de la structure en mémoire
+	/// \brief Sizeof retourn le taille de la structure en mmoire
 	/// \return
 	///
     virtual uint    Sizeof(){return 0;}
 
     /// \brief      Sortie console des erreurs Cuda
-    /// \param      err :  erreur cuda rencontree
-    /// \param      fonctionName : nom de la fonction ou se trouve l erreur
+    /// \param      err :  error cuda rencontree
+    /// \param      fonctionName : nom de la function or se trouve l error
     virtual bool	ErrorOutput(cudaError_t err,const char* fonctionName);
 
 
@@ -116,7 +116,7 @@ private:
     /// \brief      Initialise a NULL le pointeur des donnees
     void            dataNULL(){ _data = NULL;}
 
-    /// \brief      Renvoie True si le pointeur des donnees est NULL
+    /// \brief      Renvoie True if le pointeur des donnees est NULL
     bool            isNULL(){return (_data == NULL);}
 
     /// \param      sizeofmalloc : Taille de l allocation
@@ -424,7 +424,7 @@ protected:
 
 
 /// \class CData2D
-/// \brief Classe abstraite d un tableau d elements structuree en deux dimensions
+/// \brief class abstraite d un array d elements structuree en deux dimensions
 template <class T>
 class CData2D : public struct2D, virtual public CData<T>
 {
@@ -432,26 +432,26 @@ class CData2D : public struct2D, virtual public CData<T>
 public:
 
     CData2D(){}
-    /// \brief      constructeur avec initialisation de la dimension de la structure
+    /// \brief      constructeur with initialisation de la dimension de la structure
     /// \param      dim : Dimension a initialiser
     CData2D(uint2 dim) { Malloc(dim); }
 
     /// \brief      Initialise les elements des images a val
-    /// \param      val : Valeur d initialisation
+    /// \param      val : value d initialisation
     virtual bool	Memset(int val) = 0;
 
     void			OutputInfo();
 
-    /// \brief       Allocation memoire pour les tous les elements de la structures avec initialisation de la dimension de la structure
+    /// \brief       Allocation memoire for les tous les elements de la structures with initialisation de la dimension de la structure
     /// \param      dim : Dimension 2D a initialiser
     bool			Malloc(uint2 dim);
-    /// \brief      Desallocation puis re-allocation memoire pour les tous les elements
-    ///             de la structures avec initialisation de la dimension
+    /// \brief      Desallocation puis re-allocation memoire for les tous les elements
+    ///             de la structures with initialisation de la dimension
     /// \param      dim : Dimension 2D a initialiser
     bool			Realloc(uint2 dim);
 
 	///
-	/// \brief ReallocIfDim Reallocation mémoire si le dimension est supèrieure à la dimension actuelle
+	/// \brief ReallocIfDim Reallocation mmoire if le dimension est suprieure  la dimension actuelle
 	/// \param dim Taille de l'allocation en 2 dimensions
 	/// \return
 	///
@@ -474,7 +474,7 @@ TPL_T void CData2D<T>::OutputInfo()
 }
 
 
-/// Specialisation pour cudaArray la taille memoire
+/// Specialisation for cudaArray la taille memoire
 template <> inline
 uint CData2D<cudaArray>::Sizeof()
 {
@@ -505,7 +505,7 @@ TPL_T bool CData2D<T>::Malloc( uint2 dim )
 }
 
 /// \class CData3D
-/// \brief Classe abstraite d un tableau d elements structuree en trois dimensions
+/// \brief class abstraite d un array d elements structuree en trois dimensions
 template <class T>
 class CData3D : public struct2DLayered, public CData<T>
 {
@@ -513,23 +513,23 @@ public:
 
     CData3D(){}
 
-    /// \brief constructeur avec initialisation de la dimension de la structure
+    /// \brief constructeur with initialisation de la dimension de la structure
     /// \param dim : Dimension 2D a initialiser
     /// \param l : Taille de la 3eme dimension
     CData3D(uint2 dim, uint l){ Malloc(dim,l); }
 
-    /// \brief      Initialise toutes les elements avec la valeur val
-    /// \param      val : valeur d initialisation
+    /// \brief      Initialise toutes les elements with la value val
+    /// \param      val : value d initialisation
     virtual bool	Memset(int val) = 0;
 
     void			OutputInfo();
 
-    /// \brief      Allocation memoire pour les tous les elements de la structures avec initialisation de la dimension de la structure
+    /// \brief      Allocation memoire for les tous les elements de la structures with initialisation de la dimension de la structure
     /// \param      dim : Dimension 2D a initialiser
     /// \param      l : Taille de la 3eme dimension
     bool			Malloc(uint2 dim, uint l);
 
-    /// \brief      Desallocation puis re-allocation memoire pour les tous les elements de la structures avec initialisation de la dimension de la structure
+    /// \brief      Desallocation puis re-allocation memoire for les tous les elements de la structures with initialisation de la dimension de la structure
     /// \param      dim : Dimension 2D a initialiser
     /// \param      l : Taille de la 3eme dimension
     bool			Realloc(uint2 dim, uint l);
@@ -542,48 +542,48 @@ public:
     bool			Realloc(uint size){return Realloc(make_uint2(size,1),1);}
 
 	///
-	/// \brief Realloc Reallocation de la mémoire de taille dim
+	/// \brief Realloc Reallocation de la mmoire de taille dim
 	/// \param dim Taille de l'allocation de dimension 3
 	/// \return
 	///
     bool			Realloc(uint3 dim){return Realloc(make_uint2(dim.x,dim.y),dim.z);}
 
 	///
-	/// \brief ReallocIf Reallocation si la nouvelle taille est supèrieure à l'actuelle
+	/// \brief ReallocIf Reallocation if la nouvelle taille est suprieure  l'actuelle
 	/// \param dim1D Taille de l'allocation
 	/// \return
 	///
     bool			ReallocIf(uint dim1D);
 
 	///
-	/// \brief ReallocIf Reallocation si la nouvelle taille est supèrieure à l'actuelle
+	/// \brief ReallocIf Reallocation if la nouvelle taille est suprieure  l'actuelle
 	/// \param dim taille de dimension 2
-	/// \param l taille sur la dimension Z
+	/// \param l taille on la dimension Z
 	/// \return
 	///
     bool			ReallocIf(uint2 dim, uint l = 1);
 
 	///
-	/// \brief ReallocIf Reallocation si la nouvelle taille est supèrieure à l'actuelle
-	/// \param dimX Taille sur X
-	/// \param dimY Taille sur Y
-	/// \param l Taille sur Z
+	/// \brief ReallocIf Reallocation if la nouvelle taille est suprieure  l'actuelle
+	/// \param dimX Taille on X
+	/// \param dimY Taille on Y
+	/// \param l Taille on Z
 	/// \return
 	///
     bool			ReallocIf(uint dimX, uint dimY, uint l = 1);
 
 	///
-	/// \brief ReallocIfDim Reallocation si la nouvelle taille est supèrieure à l'actuelle
+	/// \brief ReallocIfDim Reallocation if la nouvelle taille est suprieure  l'actuelle
 	/// \param dim taille de dimension 2
-	/// \param l taille sur la dimension Z
+	/// \param l taille on la dimension Z
 	/// \return
 	///
     bool            ReallocIfDim(uint2 dim,uint l);
 
 	///
 	/// \brief operator []
-	/// \param pt coordonnées de la données requeter
-	/// \return retourne la valeur
+	/// \param pt coordonnes de la donnes requeter
+	/// \return retourne la value
 	///
     T&              operator[](uint2 pt);
 
@@ -597,14 +597,14 @@ public:
 	///
 	/// \brief operator []
 	/// \param pt1D
-	/// \return  La valeur en position pt1D
+	/// \return  La value en position pt1D
 	///
     T&              operator[](uint pt1D)   {   return (CData<T>::pData())[pt1D];       }
 
 	///
 	/// \brief operator []
 	/// \param pt1D
-	/// \return La valeur en position pt1D
+	/// \return La value en position pt1D
 	///
     T&              operator[](int pt1D)    {   return (CData<T>::pData())[(uint)pt1D]; }
 
@@ -615,7 +615,7 @@ protected:
 
     virtual bool    abDealloc() = 0;
 
-    /// \brief      Nombre d elements de la structure
+    /// \brief      number d elements de la structure
     uint			Sizeof(){return GetSize() * sizeof(T);}
 
     void            bInit(uint2 dim = make_uint2(0), uint l = 0);
@@ -718,7 +718,7 @@ TPL_T void CData3D<T>::bInit(uint2 dim, uint l)
 /// \endcond
 
 /// \class CuHostData3D
-/// \brief Tableau 3D d elements contenue la memoire du Host.
+/// \brief array 3D d elements contenue la memoire du Host.
 /// La gestion memoire est realise par l API Cuda.
 template <class T>
 class CuHostData3D : public CData3D<T>
@@ -727,8 +727,8 @@ public:
 
 	///
 	/// \brief CuHostData3D Constructeur
-	/// \param pgLockMem Option de mémoire paginée
-	/// \param alignMemory Option de mémoire alignée
+	/// \param pgLockMem Option de mmoire pagine
+	/// \param alignMemory Option de mmoire aligne
 	///
 	CuHostData3D(bool pgLockMem = NOPAGLOCKMEM,bool alignMemory = NOALIGNM128){init(pgLockMem,alignMemory);}
 
@@ -736,8 +736,8 @@ public:
 	/// \param dimX Dimension 1D a initialiser
 	/// \param dimY Dimension 1D a initialiser
 	/// \param l Taille de la 3eme dimension
-	/// \param pgLockMem Option de mémoire paginée
-	/// \param alignMemory Option de mémoire alignée
+	/// \param pgLockMem Option de mmoire pagine
+	/// \param alignMemory Option de mmoire aligne
 	///
 	CuHostData3D(uint dimX, uint dimY = 1, uint l = 1, bool pgLockMem = NOPAGLOCKMEM,bool alignMemory = NOALIGNM128){init(pgLockMem,alignMemory,make_uint2(dimX,dimY),l);}
 
@@ -760,27 +760,27 @@ public:
 
     bool Memset(int val);
 
-    /// \brief Remplie le tableau avec la valeur Value
-    /// \param Value : valeur a remplir
+    /// \brief Remplie le array with la value Value
+    /// \param Value : value a remplir
     void Fill(T Value);
 
-    /// \brief Remplie le tableau avec la valeur aleatoire pour chaque element
-    /// \param min : valeur a remplir minimum
-    /// \param max : valeur a remplir maximum
+    /// \brief Remplie le array with la value aleatoire for chaque element
+    /// \param min : value a remplir minimum
+    /// \param max : value a remplir maximum
     void FillRandom(T min, T max);
 
-    /// \brief Affiche un Z du tableau dans la console
+    /// \brief Affiche un Z du array in la console
     void OutputValues(uint level = 0, uint plan = XY, Rect rect = NEGARECT, uint offset = 3, T defaut = GpGpuTools::SetValue<T>(), float sample = 1.0f, float factor = 1.0f);
 
 	///
 	/// \brief pLData
 	/// \param layer
-	/// \return  le pointeur du calque pointée
+	/// \return  le pointeur du calque pointe
 	///
     T*   pLData(uint layer){ return CData<T>::pData() + layer*size(CData3D<T>::GetDimension());}
 
 	///
-	/// \brief saveImage Sauvegaerder l'image l sur le disque
+	/// \brief saveImage Sauvegaerder l'image l on le disque
 	/// \param nameImage Nom de la sauvergarde
 	/// \param layer Identifiant de calque
 	/// \return
@@ -789,7 +789,7 @@ public:
 
 	///
 	/// \brief pgLockMem
-	/// \return Option de mémoire paginée
+	/// \return Option de mmoire pagine
 	///
 	bool pgLockMem() const;
 	///
@@ -800,7 +800,7 @@ public:
 
 	///
 	/// \brief alignMemory
-	/// \return Option de mémoire alignée
+	/// \return Option de mmoire aligne
 	///
 	bool alignMemory() const;
 
@@ -965,8 +965,8 @@ public:
         return _dD->ErrorOutput(cudaMemset( _dD->pData(), val, _dD->Sizeof()),__FUNCTION__);
     }
 
-    ///     \brief  Copie asynchrone de toutes les valeurs du tableau dans un tableau du host
-    ///     \param  hostData : tableau destination
+    ///     \brief  Copie asynchrone de toutes les valeurs du array in un array du host
+    ///     \param  hostData : array destination
     ///     \param stream : flux cuda de gestion des appels asynchrone
     bool    CopyDevicetoHostASync( T* hostData, cudaStream_t stream )
     {
@@ -975,8 +975,8 @@ public:
 
     }
 
-    /// \brief  Copie toutes les valeurs d un tableau dans la structure de donnee de la classe (dans la memoire globale GPU)
-    /// \param  hostData : tableau cible
+    /// \brief  Copie toutes les valeurs d un array in la structure de donnee de la class (in la memoire globale GPU)
+    /// \param  hostData : array cible
     bool    CopyHostToDevice(T *hostData)
     {
 
@@ -1030,8 +1030,8 @@ public:
 
     }
 
-    /// \brief  Copie toutes les valeurs d un tableau dans la structure de donnee de la classe (dans la memoire globale GPU)
-    /// \param  hostData : tableau cible
+    /// \brief  Copie toutes les valeurs d un array in la structure de donnee de la class (in la memoire globale GPU)
+    /// \param  hostData : array cible
     bool    CopyHostToDevice(T *hostData){     return clEnqueueWriteBuffer(CGpGpuContext<openClContext>::commandQueue(),_dD->clMem(),CL_FALSE,0,_dD->Sizeof(),hostData,0,NULL,NULL) == CL_SUCCESS;}
 
 protected:
@@ -1068,7 +1068,7 @@ private:
 
 
 /// \class CuDeviceData2D
-/// \brief Cette classe est un tableau de donnee 2D situee dans memoire globale de la carte video
+/// \brief Cette class est un array de donnee 2D situee in memoire globale de la carte video
 ///
 template <class T, class gpsdk = cudaContext >
 class CuDeviceData2D : public CData2D<T>, public DecoratorDeviceData<T,gpsdk>
@@ -1096,7 +1096,7 @@ protected:
 
 
 /// \class CuDeviceData3D
-/// \brief Structure 3d de données instanciées dans la mémoire globale vidéo
+/// \brief Structure 3d de donnes instancies in la mmoire globale vido
 template <class T>
 class CuDeviceData3D : public CData3D<T>, public DecoratorDeviceData<T,cudaContext>
 {
@@ -1105,27 +1105,27 @@ public:
     CuDeviceData3D():DecoratorDeviceData<T,cudaContext>(this){init("No Name");}
 
 	///
-	/// \brief CuDeviceData3D Constructeur de la classe
-	/// \param dim	Dimension 2D de la structure de données
-	/// \param l	Taille de la structure dans la dimansion 3 (Z)
-	/// \param name Nommer la sctructure pour le débogage
+	/// \brief CuDeviceData3D Constructeur de la class
+	/// \param dim	Dimension 2D de la structure de donnes
+	/// \param l	Taille de la structure in la dimansion 3 (Z)
+	/// \param name Nommer la sctructure for le dbogage
 	///
     CuDeviceData3D(uint2 dim,uint l, string name = "NoName"):DecoratorDeviceData<T,cudaContext>(this) { init(name,dim,l);}
 
 	///
 	/// \brief CuDeviceData3D
-	/// \param dim	Dimension totale de la structure de données
-	/// \param name Nommer la sctructure pour le débogage
+	/// \param dim	Dimension totale de la structure de donnes
+	/// \param name Nommer la sctructure for le dbogage
     CuDeviceData3D(uint dim, string name = "NoName"):DecoratorDeviceData<T,cudaContext>(this){init(name,make_uint2(dim,1),1);}
 
-    /// \brief Initialise toutes les valeurs du tableau a val
-    /// \param val : valeur d initialisation
+    /// \brief Initialise toutes les valeurs du array a val
+    /// \param val : value d initialisation
     bool        Memset(int val){return DecoratorDeviceData<T,cudaContext>::Memset(val);}
 
 	///
-	/// \brief CopyDevicetoHost Copier le contenue de la mémoire globale de la structure vers l'hote
+	/// \brief CopyDevicetoHost Copier le contenue de la mmoire globale de la structure vers l'hote
 	/// \param hostData pointeur hote de destination
-	/// \return vrais si l'opération a réussi
+	/// \return vrais if l'opration a russi
 	///
     bool        CopyDevicetoHost(CuHostData3D<T> &hostData){return  DecoratorDeviceData<T,cudaContext>::CopyDevicetoHost(hostData.pData());}
 
@@ -1165,7 +1165,7 @@ class DecoratorImage{};
 
 /// \cond
 /// \class DecoratorImage
-/// \brief Decorateur pour imageCuda
+/// \brief Decorateur for imageCuda
 template<>
 class DecoratorImage<cudaContext> : public CData3D<cudaArray>
 {
@@ -1198,15 +1198,15 @@ protected:
 
     DecoratorImage(){}
 
-    /// \brief  Initialisation de toutes les valeurs du tableau a val
-    /// \param  val : valeur d initialisation
+    /// \brief  Initialisation de toutes les valeurs du array a val
+    /// \param  val : value d initialisation
     bool		Memset(int val)
     {
         std::cout << "PAS DE MEMSET POUR CUDA ARRAY" << "\n";
         return true;
     }
 
-    /// \brief  renvoie le tableau cuda contenant les valeurs de l'image
+    /// \brief  renvoie le array cuda contenant les valeurs de l'image
     cudaArray*	GetCudaArray()
     {
         return pData();
@@ -1243,8 +1243,8 @@ protected:
     DecoratorImage(CData<cl_mem> *buffer):
         _buffer(buffer){}
 
-    /// \brief  Initialisation de toutes les valeurs du tableau a val
-    /// \param  val : valeur d initialisation
+    /// \brief  Initialisation de toutes les valeurs du array a val
+    /// \param  val : value d initialisation
     bool		Memset(int val)
     {
         std::cout << "PAS DE MEMSET POUR OPENCL" << "\n";
@@ -1272,7 +1272,7 @@ template <class T,class context> class ImageGpGpu
 template <class T>
 ///
 /// \brief The ImageGpGpu<T, cudaContext> class
-/// Texture device pour le GpGpu dans le contexte CUDA
+/// Texture device for le GpGpu in le contexte CUDA
 class ImageGpGpu<T,cudaContext > : public DecoratorImage<cudaContext>
 {
 public:
@@ -1288,14 +1288,14 @@ public:
         DecoratorImage<cudaContext>::ClassTemplate(DecoratorImage<cudaContext>::ClassTemplate() + " " + DecoratorImage<cudaContext>::StringClass<T>(_ClassData));
     }
 
-    /// \brief Initialise les valeurs de l image avec un tableau de valeur du Host
+    /// \brief Initialise les valeurs de l image with un array de value du Host
     /// \param data : Donnees cible a copier
     bool	copyHostToDevice(T* data){
         return DecoratorImage<cudaContext>::ErrorOutput(cudaMemcpyToArray(DecoratorImage<cudaContext>::pData(), 0, 0, data, sizeof(T)*size(GetDimension()), cudaMemcpyHostToDevice),__FUNCTION__);
     }
 
 	///
-	/// \brief SetNameImage Nommer l'image pour le débogage
+	/// \brief SetNameImage Nommer l'image for le dbogage
 	/// \param name Le nom a donner
 	///
     void SetNameImage(string name)
@@ -1304,7 +1304,7 @@ public:
     }
 
 	///
-	/// \brief syncDevice Copier les données de l'hote vers le device
+	/// \brief syncDevice Copier les donnes de l'hote vers le device
 	/// \param hostData Pointeur source
 	/// \param texture Texture destinataire
 	/// \return
@@ -1354,7 +1354,7 @@ class ImageGpGpu<T,openClContext> : public CData2D<cl_mem>, public DecoratorImag
         CData2D::ClassTemplate(CData2D::ClassTemplate() + " " + CData2D::StringClass<T>(_ClassData));
     }
 
-    /// \brief Initialise les valeurs de l image avec un tableau de valeur du Host
+    /// \brief Initialise les valeurs de l image with un array de value du Host
     /// \param data : Donnees cible a copier
     bool	copyHostToDevice(T* data)
     {
@@ -1380,8 +1380,8 @@ protected:
     bool    abMalloc(){
 
         cl_image_format img_fmt;
-        img_fmt.image_channel_order = CL_RGBA; // --> en fonction de je ne sait quoi!!!
-        img_fmt.image_channel_data_type = CL_FLOAT; // --> en fonction de T
+        img_fmt.image_channel_order = CL_RGBA; // --> en function de je ne sait quoi!!!
+        img_fmt.image_channel_data_type = CL_FLOAT; // --> en function de T
         cl_int err;
         cl_mem *image = new cl_mem;
         CData2D<cl_mem>::SetPData(image);
@@ -1404,7 +1404,7 @@ template <class T, class context> class ImageLayeredGpGpu {};
 template <class T>
 ///
 /// \brief The ImageLayeredGpGpu<T, cudaContext> class
-///  Cette classe est une pile d'image 2D directement liable a une texture dans un context CUDA
+///  Cette class est une pile d'image 2D directement liable a une texture in un context CUDA
 class ImageLayeredGpGpu <T, cudaContext> :  public DecoratorImage<cudaContext>
 {
 
@@ -1420,7 +1420,7 @@ public:
         CData3D::ClassTemplate(CData3D::ClassTemplate() + " " + CData3D::StringClass<T>(_ClassData));
     }
 
-    /// \brief Copie des valeurs des images avec un tableau 3D de valeur du Host
+    /// \brief Copie des valeurs des images with un array 3D de value du Host
     /// \param data : Donnees cible a copier
     bool	copyHostToDevice(T* data)
     {
@@ -1430,15 +1430,15 @@ public:
         return CData3D::ErrorOutput(cudaMemcpy3D(&p),__FUNCTION__) ;
 
     }
-    /// \brief Copie des valeurs des images vers un tableau 3D du Host
-    /// \param data : tableau de destination
+    /// \brief Copie des valeurs des images vers un array 3D du Host
+    /// \param data : array de destination
     bool	copyDeviceToDevice(T* data)
     {
         cudaMemcpy3DParms	p = CudaMemcpy3DParms(data,cudaMemcpyDeviceToDevice);
 
         return CData3D::ErrorOutput(cudaMemcpy3D(&p),__FUNCTION__) ;
     }
-    /// \brief Copie asynchrone des valeurs des images avec un tableau 3D de valeur du Host
+    /// \brief Copie asynchrone des valeurs des images with un array 3D de value du Host
     /// \param data : Donnees cible a copierAImageCuda
     /// \param stream : flux cuda
     bool	copyHostToDeviceASync(T* data, cudaStream_t stream = 0){
@@ -1449,7 +1449,7 @@ public:
 
 
 	///
-	/// \brief syncDevice Copier les données de l'hote vers le device
+	/// \brief syncDevice Copier les donnes de l'hote vers le device
 	/// \param hostData Pointeur source
 	/// \param texture Texture destinataire
 	/// \return
@@ -1485,11 +1485,11 @@ private:
     {
         cudaExtent sizeImgsLay      = CudaExtent();
 
-        // Déclaration des parametres de copie 3D
+        // Dclaration des parameters de copie 3D
         cudaMemcpy3DParms	p		= { 0 };
         cudaPitchedPtr		pitch	= make_cudaPitchedPtr(data, sizeImgsLay.width * sizeof(T), sizeImgsLay.width, sizeImgsLay.height);
 
-        p.dstArray	= pData();   // Pointeur du tableau de destination
+        p.dstArray	= pData();   // Pointeur du array de destination
         p.srcPtr	= pitch;                        // Pitch
         p.extent	= sizeImgsLay;                  // Taille du cube
         p.kind      = kind;                         // Type de copie
@@ -1508,23 +1508,23 @@ private:
 template<class T>
 ///
 /// \brief The CuUnifiedData3D struct
-/// Structure de données unifiées
-/// Cette structure de données est constituées d'un espace mémoire sur l'hote et un espace identique sur le device
+/// Structure de donnes unifies
+/// Cette structure de donnes est constitues d'un espace mmoire on l'hote and un espace identique on le device
 struct CuUnifiedData3D
 {
 	///
-	/// \brief deviceData les données sur le device
+	/// \brief deviceData les donnes on le device
 	///
     CuDeviceData3D<T>   deviceData;
 	///
-	/// \brief hostData les données sur l'hote
+	/// \brief hostData les donnes on l'hote
 	///
     CuHostData3D<T>     hostData;
 
 	///
-	/// \brief Malloc Allocation de  la mémoire pour l'hote et le device
-	/// \param dim Taille 2d des structures de données
-	/// \param l Taille en Z des structures de données
+	/// \brief Malloc Allocation de  la mmoire for l'hote and le device
+	/// \param dim Taille 2d des structures de donnes
+	/// \param l Taille en Z des structures de donnes
 	///
     void Malloc( uint2 dim, uint l )
     {
@@ -1534,7 +1534,7 @@ struct CuUnifiedData3D
 
 	///
 	/// \brief syncDevice
-	/// Copier les données de l'hote vers le device
+	/// Copier les donnes de l'hote vers le device
     void syncDevice()
     {
         deviceData.CopyHostToDevice(hostData.pData());
@@ -1543,7 +1543,7 @@ struct CuUnifiedData3D
 
 	///
 	/// \brief syncHost
-	/// Copier les données du device vers l'hote
+	/// Copier les donnes du device vers l'hote
     void syncHost()
     {
         deviceData.CopyDevicetoHost(hostData);
@@ -1551,9 +1551,9 @@ struct CuUnifiedData3D
 
 
 	///
-	/// \brief ReallocIfDim Reallocation mémoire si la dimension totale est supérieur à la précédente
-	/// \param dim Taille 2d des structures de données
-	/// \param l Taille en Z des structures de données
+	/// \brief ReallocIfDim Reallocation mmoire if la dimension totale est suprieur  la prcdente
+	/// \param dim Taille 2d des structures de donnes
+	/// \param l Taille en Z des structures de donnes
 	///
     void ReallocIfDim(uint2 dim, uint l)
     {
@@ -1562,7 +1562,7 @@ struct CuUnifiedData3D
     }
 
 	///
-	/// \brief Reallocation mémoire si la dimension totale est supérieur à la précédente
+	/// \brief Reallocation mmoire if la dimension totale est suprieur  la prcdente
 	/// \param size Taille totale de la nouvelle allocation
 	///
 	void ReallocIfDim(uint size)
@@ -1574,7 +1574,7 @@ struct CuUnifiedData3D
 	}
 
 	///
-	/// \brief Dealloc Désalocation de la mémoire des deux structures
+	/// \brief Dealloc Dsalocation de la mmoire des deux structures
 	///
     void Dealloc()
     {
@@ -1584,7 +1584,7 @@ struct CuUnifiedData3D
 
 	///
 	/// \brief pData
-	/// \return le pointeur sur les données du device
+	/// \return le pointeur on les donnes du device
 	///
     T* pData()
     {
@@ -1592,9 +1592,9 @@ struct CuUnifiedData3D
     }
 
 	///
-	/// \brief SetName Nommer la structure pour le débogage
+	/// \brief SetName Nommer la structure for le dbogage
 	/// \param name Nom
-	/// \param id Agreger un identifiant à la suite du nom
+	/// \param id Agreger un identifiant  la suite du nom
 	///
 	void SetName(string name,ushort id = 0)
 	{

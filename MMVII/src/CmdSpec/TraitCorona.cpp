@@ -31,7 +31,7 @@ class cACDI_Stat1Im
        }
 
        bool    mLeft;            ///< Is it left
-       tIm     mIm;              ///< Image to store part of file
+       tIm     mIm;              ///< image to store part of file
        double  mMoy;             ///< Average
        double  mMed;             ///<  Median
        std::vector<double> mVy;  ///<  Stacking along the line
@@ -65,7 +65,7 @@ class cAppli_CalcDiscIm : public cMMVII_Appli
          void InitC(int aXYC);
 
       // Read mandatory parameters
-         std::string       mNameFile;    ///< Name of Image File
+         std::string       mNameFile;    ///< Name of image File
          std::vector<int>  mCenters;     ///< Centers of lines, can be X or Y
          cPt2di            mDP0;         ///<  Top Left corner, relative to centrale position
          cPt2di            mDP1;         ///<  Bottom Right corner

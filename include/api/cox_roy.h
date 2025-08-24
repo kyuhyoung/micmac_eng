@@ -150,7 +150,7 @@ class cInterfaceCoxRoyAlgo
 
            virtual void SetCost(int anX,int anY,int aZ,int mNumEdge,int aCost) = 0;
 
-          // Fixe le cout de p1 vers  p2=(p1.x,p1.y,p1.z+1) , et  de p2 ver p1
+          // Fixe le cout de p1 vers  p2=(p1.x,p1.y,p1.z+1) , and  de p2 ver p1
 
            virtual void SetCostVert(int anX,int anY,int aZ,int aCost) = 0;
 
@@ -158,15 +158,15 @@ class cInterfaceCoxRoyAlgo
           // fixe les couts horizontaux, a partir des cout verticaux C1,C2  selon la formule
           //       ((C1+C2)/2 * aCoeff + aCste ) * DIV
           //
-          //     ou DIV vaut    : 
-          //          1  si grape de 4 connexite
-          //          1 / (1+ sqrt(2)) si arc de 4 connexite dans  une graphe de 8 conexite
-          //          1 / (2+ sqrt(2)) si arc de 8 connexite dans  une graphe de 8 conexite
+          //     or DIV vaut    : 
+          //          1  if grape de 4 connexite
+          //          1 / (1+ sqrt(2)) if arc de 4 connexite in  une graphe de 8 conexite
+          //          1 / (2+ sqrt(2)) if arc de 8 connexite in  une graphe de 8 conexite
           //
           //  Compte tenu des arrondis, cost peut valoir assez souvent 0, notamment en 8 connexite,
-          //  si on souhaite eviter cela a tout prix, passer aVmin a 1  (par exemple)
+          //  if on souhaite eviter cela a tout prix, passer aVmin a 1  (par exemple)
 	   //
-	   //  Dans tous les cas, les couts sont tronques sur l'intervalle  [0 100]
+	   //  in tous les cas, les couts sont tronques on l'intervalle  [0 100]
 
            virtual void SetStdCostRegul(double aCoeff,double aCste,int aVMin =0) =0;
 
@@ -178,8 +178,8 @@ class cInterfaceCoxRoyAlgo
                                                signed short ** aDataZmin,
                                                signed short ** aDataZmax,
                                                bool  Cx8,
-                 //   !! Nouveau param, si vaut true les valeur seront
-                 //   stockee sur un octet, sinon sur deux (utile quand
+                 //   !! Nouveau param, if vaut true les value seront
+                 //   stockee on un octet, else on deux (utile when
                  //   le coeff de regul est tres faible)
                                                bool  OnUChar
                                          );

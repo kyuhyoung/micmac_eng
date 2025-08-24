@@ -79,7 +79,7 @@ double DistanceRot(const ElRotation3D & aR1,const ElRotation3D & aR2,double aBSu
       return aDistTr + aDistRot;
 }
 
-// Calcul robuste d'un element moyen comme etant celui qui minimise la somme des distance
+// computation robuste d'un element moyen comme etant celui qui minimise la somme des distance
 #if (0)
 
 #endif
@@ -170,7 +170,7 @@ void cNOSolIn_Triplet::SetArc(int aK,tArcNSI * anArc)
    mArcs[aK] = anArc;
 }
 
-// Initialise une solution globale sur ce triplet
+// Initialise une solution globale on ce triplet
 void cNOSolIn_Triplet::InitRot3Som()
 {
      mSoms[0]->attr().CurRot() = ElRotation3D::Id;
@@ -198,7 +198,7 @@ void cNOSolIn_Triplet::CheckArcsSom()
 }
 
 
-// Les arcs ayant une rotation "moyenne" calculee sur tout les triplets les contenant
+// Les arcs ayant une rotation "moyenne" calculee on tout les triplets les contenant
 // on estime le triplet
 
 void  cNOSolIn_Triplet::CalcCoherFromArcs(bool Test)
@@ -446,8 +446,8 @@ bool cAppli_NewSolGolInit::TripletIsValide(cNOSolIn_Triplet * aTri)
 void cAppli_NewSolGolInit::TestInitRot(tArcNSI * anArc,const cLinkTripl & aLnk)
 
 {
-      // Mp = M' coordonnees monde du triplet
-      // M = coordonnees mondes courrament construite
+      // Mp = M' coordinates monde du triplet
+      // M = coordinates mondes courrament construite
       // La tranfo M' -> peut etre construite de deux maniere
       ElRotation3D aR1Mp2M  = aLnk.S1()->attr().CurRot() * aLnk.m3->RotOfSom(aLnk.S1()).inv();
       ElRotation3D aR2Mp2M  = aLnk.S2()->attr().CurRot() * aLnk.m3->RotOfSom(aLnk.S2()).inv();
@@ -660,7 +660,7 @@ on en prend la mediane. Avec les grand jeu de donnees on en prend que 100000 au 
 
 void  cAppli_NewSolGolInit::EstimCoherenceMed()
 {
-    // Calcul du nombre de couples de triplets ayant des arcs commun
+    // computation du number de couples de triplets ayant des arcs commun
   
     int aNbTT = 0; // Number of pair of triplet
     for (tItSNSI anItS=mGr.begin(mSubAll) ; anItS.go_on(); anItS++)
@@ -739,7 +739,7 @@ void  cAppli_NewSolGolInit::InitRotOfArc(tArcNSI * anArc,bool Test)
    ELISE_ASSERT(anArc->attr().IsOrASym(),"Arc orient in cAppli_NewSolGolInit::InitRotOfArc");
    std::vector<cLinkTripl> & aVL = anArc->attr().ASym()->Lnk3();
 
-   // Impression de la matrice
+   // Impression de la matrix
    if (Test)
    {
        for (int aK1=0 ; aK1<int(aVL.size()) ; aK1++)
@@ -1168,7 +1168,7 @@ void cAppli_NewSolGolInit::Save()
         ElRotation3D aROld2Cam = (*anItS).attr().CurRot().inv();
 
         aCS->SetOrientation(aROld2Cam);
-        if (0)   // Verif avec iii
+        if (0)   // Verif with iii
            std::cout << "hhhhhh " << aCS->R3toF2(aPMed) << "\n";
 
 

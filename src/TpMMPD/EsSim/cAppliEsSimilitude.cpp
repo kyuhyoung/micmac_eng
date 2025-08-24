@@ -1,6 +1,6 @@
 #include "EsSimilitude.h"
 
-//==================== Si je mets ca dans .h, ca va pas content parce que multiple define ================
+//==================== if je mets ca in .h, ca va pas content parce que multiple define ================
 cParamEsSim::cParamEsSim(string & aDir, string & aImgX, string & aImgY, Pt2dr & aPtCtr, int & aSzW, Pt3di & aDispParam, int & nInt, Pt2di & aNbGrill, double & aSclDepl, bool & aSaveImg):
     mDir (aDir),
     mImgX (aImgX),
@@ -24,7 +24,7 @@ cAppliEsSim::cAppliEsSim(cParamEsSim * aParam):
 {
     mImgX = new cImgEsSim(mParam->mImgX, this);
     mImgY = new cImgEsSim(mParam->mImgY, this);
-    //calcul grill
+    //computation grill
     Pt2di aSzImg = mImgX->Tif().sz();
     Pt2di aStepGrill( int(aSzImg.x/mParam->mNbGrill.x), int(aSzImg.y/mParam->mNbGrill.y));
     for (int aStepX=0; aStepX<aSzImg.x; aStepX=aStepX+aStepGrill.x)
@@ -246,7 +246,7 @@ bool cAppliEsSim::EsSimEnGrill(vector<Pt2di> aVPtCtrVig, int & aSzw, Pt2dr & rot
             {
                 if (mWDepl == 0)
                 {
-                    //=====initialiser avec scale
+                    //=====initialiser with scale
                     if (aSzIm.x >= aSzIm.y)
                     {
                         double scale =  double(aSzIm.x) / double(aSzIm.y) ;

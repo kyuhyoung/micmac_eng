@@ -48,10 +48,10 @@ class cCameraModuleOrientation : public ElCamera
 {
 private:
     ModuleOrientation * mOri;
-    // La notion d'origine n'a pas reellement de sens pour un projection ortho (au mieux elle
-    // situee n'importe ou sur le rayon partant du centre de l'image), pourtant il en faut bien une
-    // meme completement arbitraire  pour  des fonctions telle que image et profondeur 2 Terrains
-    // quand on correle en faisceau
+    // La notion d'origine n'a pas reellement de sens for un projection ortho (au mieux elle
+    // situee n'importe or on le rayon partant du centre de l'image), pourtant il en faut bien une
+    // meme completement arbitraire  for  des fonctions telle que image and profondeur 2 Terrains
+    // when on correle en faisceau
     Pt3dr mCentre;
     
     ElAffin2D mOrIntImaM2C;

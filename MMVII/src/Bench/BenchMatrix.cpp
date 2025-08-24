@@ -21,7 +21,7 @@ static double FTestVect(const int & aK)
 }
 
 
-// SzMil =>  Taille intermediaire pour multiplication matrice
+// SzMil =>  Taille intermediaire for multiplication matrix
 
 template <class TypeMatr,class TypeVect>  void TplBenchMatrix(int aSzX,int aSzY,int aSzMil)
 {
@@ -41,7 +41,7 @@ template <class TypeMatr,class TypeVect>  void TplBenchMatrix(int aSzX,int aSzY,
         }
         aM.MulColInPlace(aVOut,aVIn);
 
-        // Verifie mul col avec alloc
+        // Verifie mul col with alloc
         cDenseVect<TypeVect>  aVOut3 = aM.MulCol(aVIn);
         MMVII_INTERNAL_ASSERT_bench(aVOut.L2Dist(aVOut3)<1e-5,"Bench Matrixes");
         aVOut3 = aM*aVIn;
@@ -273,7 +273,7 @@ template <class Type>  void TplBenchDenseMatr(int aSzX,int aSzY)
 
 
         
-        {  //  Test sur transp transp = Id
+        {  //  Test on transp transp = Id
            double aDtt = aM1.DIm().L2Dist(aM1.Transpose().Transpose().DIm());
            MMVII_INTERNAL_ASSERT_bench(aDtt<1e-5,"Bench diff  Matrixes");
         }
@@ -327,7 +327,7 @@ template <class Type>  void TplBenchDenseMatr(int aSzX,int aSzY)
            cDenseMatrix<Type> aM2 = aSim+aASim;
            MMVII_INTERNAL_ASSERT_bench(aM.DIm().L2Dist(aM2.DIm()) <1e-5,"Bench mul  Matrixes");
            
-           //   Bench sur Eigene value
+           //   Bench on Eigene value
            cResulSymEigenValue<Type> aRSEV = aSim.SymEigenValue();
 
            // Test it's really orthognal
@@ -422,7 +422,7 @@ template <class Type>  void TplBenchDenseMatr(int aSzX,int aSzY)
         // cDenseMatrix<Type> aM1(aNb,aNb,eModeInitImage::eMIA_Rand);
     }
 
-    // Bench sur kernel and rank-deficient matrix
+    // Bench on kernel and rank-deficient matrix
     {
         int aNb = aSzX;
         // int aSzK = std::min(aNb,1 + round_ni(RandUnif_N(2));

@@ -10,7 +10,7 @@
 #include "SP3NavigationData.h"
 
 // ---------------------------------------------------------------
-// Classe permettant de gérer plusieurs fichiers de navigation
+// class permettant de grer plusieurs fichiers de navigation
 // ---------------------------------------------------------------
 class NavigationDataSet {
 

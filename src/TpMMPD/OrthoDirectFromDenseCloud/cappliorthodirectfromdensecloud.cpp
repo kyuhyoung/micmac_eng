@@ -216,7 +216,7 @@ double cAppliOrthoDirectFromDenseCloud::ComputeGSDOneIm(CamStenope * aCamOneIm)
 // Write TFW, thanks DIDRO Code
 void cAppliOrthoDirectFromDenseCloud::writeTFW(std::string aImName, double aGSD, Pt2dr offset)
 {
-    std::string aNameTFW=aImName.substr(0, aImName.size()-3)+"tfw"; // potentiel error if Image have extension more than 3 caracters
+    std::string aNameTFW=aImName.substr(0, aImName.size()-3)+"tfw"; // potentiel error if image have extension more than 3 caracters
     std::ofstream aTFW(aNameTFW.c_str());
     aTFW.precision(12);
     aTFW << aGSD << "\n" << 0 << "\n";
@@ -408,7 +408,7 @@ PlyFile * cAppliOrthoDirectFromDenseCloud::ReadPly(string & aPlyName)
     Pt2dr aSzTer(Pt2dr(mPtMax.x-mPtMin.x , mPtMax.y-mPtMin.y));
     Pt2dr aSzImg(mTransTerImg(Pt2dr(aMaxX, aMaxY)) - mTransTerImg(Pt2dr(aMinX, aMinY)));
     */
-    // Test calcul Boxterrain
+    // Test computation Boxterrain
 
     // Init trans affine
     ElAffin2D aTrans (
@@ -436,7 +436,7 @@ PlyFile * cAppliOrthoDirectFromDenseCloud::ReadPly(string & aPlyName)
     mImOrthoB.Resize(Pt2di(aSzImg));
     //mImOrtho.AugmentSizeTo(Pt2di(aSzImg), double(Z_DEFAULT));
 
-    // calcul equilization parameters
+    // computation equilization parameters
     mContrast = 255/(mPtMax.z  - mPtMin.z);
     mLumino = -mPtMin.z;
 

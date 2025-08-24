@@ -81,7 +81,7 @@ void bench_flag_front (Pt2di   sz,bool FN)
     );
 
     INT nbZ1 = 0;
-    INT nbZ0 = -1;  // pour tenir compte de la zone externe
+    INT nbZ0 = -1;  // for tenir compte de la zone externe
     {
           Im2D_U_INT1 ImZ(sz.x,sz.y); 
           ELISE_COPY(ImZ.all_pts(),Im.in()==1,ImZ.out());

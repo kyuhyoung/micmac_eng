@@ -303,7 +303,7 @@ Data_TGA_File::Data_TGA_File(const char * name)
      };
 
 
-   // Field 3 :  Image Type
+   // Field 3 :  image Type
 
     _im_present = true;
 	INT imt;
@@ -344,7 +344,7 @@ Data_TGA_File::Data_TGA_File(const char * name)
          );
 
 
-    // Field 5 :  Image Specification field
+    // Field 5 :  image Specification field
 
 
       _x0  = fp.lsb_read_U_INT2() ;

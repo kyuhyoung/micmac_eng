@@ -46,10 +46,10 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "PHO_MI.h"
 
 
-//   R3 : "reel" coordonnee initiale
-//   L3 : "Locale", apres rotation
-//   C2 :  camera, avant distortion
-//   F2 : finale apres Distortion
+//   R3 : "real" coordonnee initiale
+//   L3 : "Locale", after rotation
+//   C2 :  camera, before distortion
+//   F2 : finale after Distortion
 //
 //       Orientation      Projection      Distortion
 //   R3 -------------> L3------------>C2------------->F2

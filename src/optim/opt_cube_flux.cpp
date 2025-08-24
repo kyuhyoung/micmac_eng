@@ -92,7 +92,7 @@ void cCoxAlgoGen::NewOrder(Pt2di aP0,Pt2di aP1)
 }
 
 // Ordre : Vois Vert, puis 4-Voisin, puis 8-Voisin
-// D'abord les coordonnees positives
+// D'abord les coordinates positives
 
 /*
 static cCoxAlgoGenRelVois aV0(Pt3di( 0, 0, 1),true ,true ,0       ,false  ,1);
@@ -274,13 +274,13 @@ template <const INT NbV,class TC,class TF>
            };
 
            void ShowStateSom(Pt3di);
-// Correction pour compilation windows
+// Correction for compilation windows
 		   public:
            class cSomInStack
            {
               public :
                  cSomInStack(Pt2di aSrc,cSom * ,Pt3di,INT aPrio);
-                 cSomInStack();  // Pour ElFifo
+                 cSomInStack();  // for ElFifo
 
 		 Pt2di  mSrc;
                  cSom * mPSom;
@@ -867,7 +867,7 @@ template <const INT NbV,class TC,class TF>
     GlobV4 = mCostV4;
     GlobV8 = mCostV8;
 
-// Met dans la file d'attente tous les sommets qui
+// Met in la file d'attente tous les sommets qui
 // sont connectes a "Source" (les sommets de Z minimal)
 
 // cout << "One , end Init"  << aP0 << " " << aP1 << "\n";
@@ -906,7 +906,7 @@ ElTimer aTF;
 
 
     // Algo PCC de base, pique le premier sommet
-    // de la pile et remet ses voisins non explores
+    // de la pile and remet ses voisins non explores
     // en attente a la fin de la pile
 
     INT aCpt =0;

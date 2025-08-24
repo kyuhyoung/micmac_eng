@@ -81,15 +81,15 @@ enum class eApF
                ManMMVII,   ///< Managenent of MMVII
                Project,    ///< Project Managenent (user's)
                Test,       ///< Test
-               ImProc,     ///< Image processing
+               ImProc,     ///< image processing
                Radiometry, ///< Radiometric modelization
                SysCo,        ///< Coordinate system
                Ori,        ///< Orientation
                Match,      ///< Dense Matching
                GCP,        ///< Ground point processing
-               TieP,       ///< Tie-Point processing
+               TieP,       ///< Tie-point processing
                Lines,       ///< Lines processing
-               TiePLearn,    ///< Tie-Point processing  - Learning step
+               TiePLearn,    ///< Tie-point processing  - Learning step
                Cloud,       ///< Cloud processing
                CodedTarget,  ///< Coded target (generate, match )
                Topo,        ///< Topo survey
@@ -150,7 +150,7 @@ enum class eApDT
               ObjMesInstr,  ///< Ground Points image coords
               ObjCoordWorld,  ///< Ground Points ground coords
               Lines,   ///< Tie Points
-              Image,   ///< Image
+              Image,   ///< image
               Orient,   ///< Orientations files
               SysCo,   ///< Coordinate system
               Radiom,   ///< Orientations files
@@ -381,8 +381,8 @@ enum class eModeTestPropCov
 {
    eMTPC_MatCovRFix,  // Mode directly add the covariance matrix, rotation fix
    //   eMTPC_MatCovRUk,  // Mode directly add the covariance matrix, rotation unknown (to implemant ?)
-   //   eMTPC_SomL2RFix,  // Mode sum of square linear form, Rotation fix (to implement ?)
-   eMTPC_SomL2RUk,  // Mode sum of square linear form, Rotation uknonwn
+   //   eMTPC_SomL2RFix,  // Mode sum of square linear form, rotation fix (to implement ?)
+   eMTPC_SomL2RUk,  // Mode sum of square linear form, rotation uknonwn
    eMTPC_PtsRFix,  // Mode direct distance to points, rotation fix
    eMTPC_PtsRUk,  // Mode direct distance to points, rotation unknown
    eNbVals
@@ -397,7 +397,7 @@ enum class eModeEpipMatch
    eNbVals
 };
 
-/**  Mode os system "sur resolus"  */
+/**  Mode os system "on resolus"  */
 enum class eModeSSR
 {
       eSSR_LsqDense,        ///< Least square, normal equation, with dense implementation

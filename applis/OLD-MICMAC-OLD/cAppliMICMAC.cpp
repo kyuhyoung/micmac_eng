@@ -40,7 +40,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "MICMAC.h"
 
 #ifdef MAC
-// Modif Greg pour avoir le nom de la machine dans les log
+// Modif Greg for avoir le nom de la machine in les log
 #include <sys/utsname.h>
 #endif
 
@@ -159,7 +159,7 @@ eModeGeomMEC CalculGeomMEC(const cParamMICMAC & aParam)
          case eGeomImageCON :
          case eGeomImageOri :
          {
-              // Quelques cas toleres jusqu'a present mais en fait
+              // Quelques cas toleres jusqu'a present but en fait
               // au comportement pas tres definis
               if (
                           (aParam.GeomImages()==eGeomImageModule)
@@ -490,7 +490,7 @@ std::cout << "END TEST REDUCE " <<mGPRed2 <<  "\n"; getchar();
 
    // ShowEtapes();
 
-    // Optionnel permet de generer le fichier apres modif 
+    // Optionnel permet de generer le file after modif 
     if  ((! CalledByProcess().Val()) && (mModeAlloc==eAllocAM_STD))
     {
         if (! DoNotOriMNT())
@@ -546,7 +546,7 @@ cAppliMICMAC::~cAppliMICMAC()
 
 cAppliMICMAC * cAppliMICMAC::Alloc(int argc,char ** argv,eModeAllocAM aMode)
 {
-/* Priorites pour aller rechercher le fichier de specification :
+/* Priorites for aller rechercher le file de specification :
 
     - dans la ligne de commande NameFileParamMICMAC=MonFichier.xml
     - dans le fichier de parametre effectif sous le tag <NameFileParamMICMAC>
@@ -575,7 +575,7 @@ cAppliMICMAC * cAppliMICMAC::Alloc(int argc,char ** argv,eModeAllocAM aMode)
            aName = aTrNameParam->GetUniqueVal().c_str();
        }
     }
-    // Creation de l'arbre de specif et de l'arbre des parametres
+    // Creation de l'arbre de specif and de l'arbre des parameters
     if (aName==0) 
     {
         aName = getenv("NameFileParamMICMAC");
@@ -619,7 +619,7 @@ cAppliMICMAC * cAppliMICMAC::Alloc(int argc,char ** argv,eModeAllocAM aMode)
     cElXMLTree aTreeSpec(aName);
     // Verification adequation du param Specif
     aTreeParam.TopVerifMatch(&aTreeSpec,"ParamMICMAC");
-    // Traitement des args en ligne de commandes
+    // Traitement des args en line de commandes
     aTreeParam.ModifLC(argc-2,argv+2,&aTreeSpec);
     // "Binding"
     cParamMICMAC aParam;
@@ -877,8 +877,8 @@ void cAppliMICMAC::InitMecComp()
    for (; itE != EtapeMEC().end() ; itE++)
    {
         // La premiere fois on rajoute 2 etape, la toute
-        // premiere ne sera pas executee mais contiendra
-        // les infos sur les paralaxes initiales (soit que
+        // premiere ne sera pas executee but contiendra
+        // les infos on les paralaxes initiales (soit que
         // des 0 soit un MNT exhogene)
         if (itE->InterfaceVisualisation().IsInit())
         {
@@ -914,9 +914,9 @@ void cAppliMICMAC::InitMecComp()
         isFirst = false;
         aKEtape++;
    }
-   // On supprime la premier etape (artificielle) de la liste de celles
+   // On supprime la premier etape (artificielle) de la list de celles
    // a executer
-   if (! isFirst)  // Pour l'instant on essaye encore de gerer un ensemble vide d'etapes
+   if (! isFirst)  // for l'instant on essaye encore de gerer un ensemble vide d'etapes
    {
        mEtape00 = mEtapesMecComp.front();
        mEtapesMecComp.pop_front();
@@ -1307,7 +1307,7 @@ cEl_GPAO *    cAppliMICMAC::GPRed2() const
 
 
 /*****************************************/
-/*       Valeur Speciale Not Image       */
+/*       value Speciale Not image       */
 /*****************************************/
 
 bool  cAppliMICMAC::HasVSNI() const
@@ -1698,8 +1698,8 @@ void cAppliMICMAC::ExeProcessParallelisable
    if (aLProc.empty())
       return;
 
-   // Modification pour la gestion des espaces dans les nom de repertoire (GM)
-   // Remodifie pour fonctionnement sous windows (DB)
+   // Modification for la gestion des espaces in les nom de directory (GM)
+   // Remodifie for fonctionnement under windows (DB)
    std::string ToAdd("");
    if (AddNameExeMicMac)
    {
@@ -1712,13 +1712,13 @@ void cAppliMICMAC::ExeProcessParallelisable
 
    //std::string ToAdd = AddNameExeMicMac ? (mNameExe ) : "";
    std::string nomAvancement = std::string("\"") + WorkDir()+std::string("avancement-")+NameChantier()+std::string(".txt\"");
-   // Version sans parallelisation
-   // si ByProcess == 0, on peut quand meme
-   // se retrouver la pour des generation de resultats faisant
+   // Version without parallelisation
+   // if ByProcess == 0, on peut when meme
+   // se retrouver la for des generation de resultats faisant
    // appel a des process extern (to8bits, GrShade ...)
    //
-   // Modif MPD : pour ne pas passser par le Makefile quand ByProcess=1
-   // (inutile et incompatible Windows)
+   // Modif MPD : for ne pas passser par le Makefile when ByProcess=1
+   // (inutile and incompatible Windows)
    if ((ByProcess().Val() == 0) || (ByProcess().Val() == 1))
    {
 	int num=0;
@@ -1764,11 +1764,11 @@ void cAppliMICMAC::ExeProcessParallelisable
 	}
        return;
   }
-  // Version parallelisation avec makefile
-  // la valeur absolue donne le nombre de job en parallele dans le Makefile (option -j)
-  // si ByProcess().Val()>0 --> version classique
-  // si ByProcess().Val()<0 --> version qsub (pour le cluster) ou condor
-  // Pour la version qsub on utilise un script qsub_synchrone.sh pour 
+  // Version parallelisation with makefile
+  // la value absolue donne le number de job en parallele in le Makefile (option -j)
+  // if ByProcess().Val()>0 --> version classique
+  // if ByProcess().Val()<0 --> version qsub (for le cluster) or condor
+  // for la version qsub on utilise un script qsub_synchrone.sh for 
   // avoir une attente passive lors de la soumission d'un job
   else if (ByProcess().Val()>0)
   {
@@ -1841,7 +1841,7 @@ void cAppliMICMAC::ExeProcessParallelisable
    {
        //std::string nomAvancement = WorkDir()+std::string("avancement-")+NameChantier()+std::string(".dot");
        int numEtape = mCurEtape->Num();
-	// Modif Greg version sans dag suite a des problemes NFS
+	// Modif Greg version without dag suite a des problemes NFS
 	// creation du fichiers de commandes
 	std::string nomCmd = WorkDir()+std::string("Micmac_")+ToString(numEtape)+std::string(".cmd");
        std::ofstream fic(nomCmd.c_str(),ios_base::app);
@@ -1887,12 +1887,12 @@ bool  cAppliMICMAC::InversePx() const
 
 /*****************************************/
 /*                                       */
-/*   FONCTION UTILES POUR TEST ET        */
-/*   MISE AU POINT                       */
+/*   function UTILES for TEST and        */
+/*   MISE AU point                       */
 /*                                       */
 /*****************************************/
 
-// Pour forcer la creation d'une pyramide
+// for forcer la creation d'une pyramide
 void cAppliMICMAC::TestReducIm(int aDZ)
 {
 // std::cout << "PDVS " << mPrisesDeVue.size() << "\n";

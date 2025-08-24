@@ -69,7 +69,7 @@ void ShowMaskAuto(TIm2D<INT2,INT> aTZ,TIm2DBits<1>  aTM,const std::string & aFil
 }
 
 
-// Plus ou moins completion K Liptsi inf
+// Plus or moins completion K Liptsi inf
 
    //===============================================================================================
    //===============================================================================================
@@ -294,12 +294,12 @@ template <class Type,const int NbV> class cTypeTabValArgPgr2D
 template <class TypeArg> class cMMNewPrg2D : public cSurfaceOptimiseur
 {
      public :
-      // Pre-requis (template instanciation)  pour  cProg2DOptimiser
+      // Pre-requis (template instanciation)  for  cProg2DOptimiser
         typedef typename TypeArg::tArgCelTmp tArgCelTmp;  
         typedef typename TypeArg::tArgNappe  tArgNappe;  
         typedef typename TypeArg::tArgGlob   tArgGlob;  
 
-        // Pas pre-requis mais aide
+        // Pas pre-requis but aide
         typedef  cTplCelNapPrgDyn<tArgNappe>    tCelNap;
         typedef  cTplCelOptProgDyn<tArgCelTmp>  tCelOpt;
 
@@ -314,7 +314,7 @@ template <class TypeArg> class cMMNewPrg2D : public cSurfaceOptimiseur
         void GlobInitDir(cProg2DOptimiser<cMMNewPrg2D> &);
         //  void GlobalInitialisation(cProg2DOptimiser<cMMNewPrg2D> &);
 
-      // Pre-requis (interface virtuelle) pour cSurfaceOptimiseur
+      // Pre-requis (interface virtuelle) for cSurfaceOptimiseur
         void Local_SetCout(Pt2di aPTer,int * aPX,REAL aCost,int aLabel);
         void Local_SolveOpt(Im2D_U_INT1);
 
@@ -348,7 +348,7 @@ template <class TypeArg> class cMMNewPrg2D : public cSurfaceOptimiseur
         cModulationProgDyn      mMod;
         cEtapeProgDyn           mEPG;
         const cEtapeMecComp &   mEtape;
-        int                     mNumNap;  // Pour l'instant seult zero, mais a voir ...
+        int                     mNumNap;  // for l'instant seult zero, but a voir ...
         const cOneNappePx &     mONP;
 
 
@@ -609,7 +609,7 @@ template <class Type>  void cMMNewPrg2D<Type>::Local_SolveOpt(Im2D_U_INT1 aImCor
 
 
         // Initialisation des cout d'etat de non correl
-        // les point en dehors du masque sont + ou - forces a etre en non correl (via mCostOut)
+        // les point en dehors du masque sont + or - forces a etre en non correl (via mCostOut)
         Pt2di aP;
         for (aP.x=0 ; aP.x<aSz.x ; aP.x++)
         {

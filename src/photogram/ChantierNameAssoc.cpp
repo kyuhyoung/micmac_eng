@@ -109,7 +109,7 @@ bool TransFormArgKey(cFiltreByRelSsEch & aF , bool AMMNoArg, const std::vector<s
 bool TransFormArgKey
     (
     std::string & aName ,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aDirExt
     )
 {
@@ -158,7 +158,7 @@ bool TransFormArgKey
 bool TransFormArgKey
     (
     cTplValGesInit<std::string> & aName ,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aDirExt
     )
 {
@@ -171,7 +171,7 @@ bool TransFormArgKey
 template<class TypeCtn> bool ContainerTransFormArgKey
     (
     TypeCtn & aV,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aDirExt
     )
 {
@@ -188,7 +188,7 @@ template<class TypeCtn> bool ContainerTransFormArgKey
 bool TransFormArgKey
     (
     cNameFilter & aSND,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aDirExt
     )
 {
@@ -218,7 +218,7 @@ bool TransFormArgKey
 bool TransFormArgKey
     (
     cSetNameDescriptor & aSND,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aDirExt
     )
 {
@@ -244,7 +244,7 @@ bool TransFormArgKey
 bool TransFormArgKey
     (
     cBasicAssocNameToName & aBANA,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aDirExt
     )
 {
@@ -261,7 +261,7 @@ bool TransFormArgKey
 bool TransFormArgKey
     (
     cAssocNameToName & anANA,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aDirExt
     )
 {
@@ -278,7 +278,7 @@ bool TransFormArgKey
 bool TransFormArgKey
     (
     cKeyedNamesAssociations & aKNA,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aDirExt
     )
 {
@@ -301,12 +301,12 @@ bool TransFormArgKey
     return aRes;
 }
 
-//   =================  POUR LES RELATIONS ==================
+//   =================  for LES RELATIONS ==================
 
 template <class Type> bool TransFormArgKey
     (
     TypeSubst<Type> & aIS ,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aVParam
     )
 {
@@ -317,7 +317,7 @@ template <class Type> bool TransFormArgKey
 bool TransFormArgKey
     (
     cFiltreByRelSsEch & aF ,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aVParam
     )
 {
@@ -343,7 +343,7 @@ bool TransFormArgKey
 bool TransFormArgKey
     (
     cFiltreDeRelationOrient & aF ,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aVParam
     )
 {
@@ -361,7 +361,7 @@ bool TransFormArgKey
 bool TransFormArgKey
     (
     cByAdjacence & aAdj ,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aVParam
     )
 {
@@ -411,7 +411,7 @@ bool TransFormArgKey
 bool TransFormArgKey
     (
     cNameRelDescriptor & aNRD ,
-    bool AMMNoArg,  // Accept mismatch si DirExt vide
+    bool AMMNoArg,  // Accept mismatch if DirExt vide
     const std::vector<std::string> & aVParam
     )
 {
@@ -533,7 +533,7 @@ void MMD_InitArgcArgv(int argc,char ** argv,int aNbMin)
             // if the /proc filesystem is not available, try Using the "which" command
             bool whichSucceed = ElGetStrSys( "which "+ std::string( argv[0] ), aFullArg0 );
 
-            // modif Greg: il y a un probleme sous MacOS, on perd le 'd' de mm3d
+            // modif Greg: il y a un probleme under MacOS, on perd le 'd' de mm3d
             // remove the which's ending '\n'
             if (aFullArg0[aFullArg0.size()-1] == '\n')
                 aFullArg0.resize( aFullArg0.size()-1 );
@@ -1281,7 +1281,7 @@ const cInterfChantierSetNC::tSet  * cSetName::Get()
 
     cSetName *  cDicoSetNC::GetSet(const tKey & aKey)
     {
-        // Si le nom existe dans le dico, on le retourne
+        // if le nom existe in le dico, on le retourne
         {
             //std::cout << "FOUND0 " << aKey<<"\n";
             std::map<tKey,cSetName *>::iterator anIt = mDico.find(aKey);
@@ -1300,7 +1300,7 @@ const cInterfChantierSetNC::tSet  * cSetName::Get()
             //std::cout << "NO @ " << aKey<<"\n";
             return 0;
         }
-        // Si le nom sans arrobasque n'existe pas fin
+        // if le nom without arrobasque n'existe pas fin
         std::map<tKey,cSetName *>::iterator anIt = mDico.find(aKeySsArb);
         if (anIt==mDico.end())
         {
@@ -1308,7 +1308,7 @@ const cInterfChantierSetNC::tSet  * cSetName::Get()
         }
 
 
-        // Si il existe sans @, on le construit avec
+        // if il existe without @, on le construit with
         cSetNameDescriptor & aSND = * new cSetNameDescriptor(anIt->second->SND());
         TransFormArgKey(aSND,false,aVParams);
         cSetName *aSet = new cSetName(anIt->second->ICNM(),aSND);
@@ -1394,7 +1394,7 @@ const cInterfChantierSetNC::tSet  * cSetName::Get()
             return anIt;
         }
 
-        // Si le nom sans @ n'existe pas
+        // if le nom without @ n'existe pas
         anIt = mINC_Dico.find(aKeySsArb);
         if (anIt==mINC_Dico.end())
         {
@@ -1402,7 +1402,7 @@ const cInterfChantierSetNC::tSet  * cSetName::Get()
         }
         cInterfNameCalculator * anINC = anIt->second;
         cKeyedNamesAssociations * aKNA0 = anINC->KNA();
-        // Si on de derive pas d'une classe cree par cKeyedNamesAssociations
+        // if on de derive pas d'une class cree par cKeyedNamesAssociations
         if (aKNA0 ==0)
         {
             return mINC_Dico.end();
@@ -2106,7 +2106,7 @@ std::string cInterfChantierNameManipulateur::NameOriStenope(const tKey & aKeyOri
     }
 
     const char cInterfChantierNameManipulateur::theCharModifDico = '+';
-    const char cInterfChantierNameManipulateur::theCharSymbOptGlob = '@';  // Surtout pas '-', interfere avec ELDcraw !!
+    const char cInterfChantierNameManipulateur::theCharSymbOptGlob = '@';  // Surtout pas '-', interfere with ELDcraw !!
 
     const cInterfChantierNameManipulateur::tSet *  cStdChantierMultiManipulateur::Get(const tKey & aKey)
     {
@@ -2753,7 +2753,7 @@ std::list<std::string> cInterfChantierNameManipulateur::StdGetListOfFile
             if (aName.size() < aKey.size())
                  return StdGetListOfFile
 */
-            // Si la directory a ete ajoutee deux fois ...
+            // if la directory a ete ajoutee deux fois ...
             if (ELISE_fp::exist_file(mDir + NameWithoutDir(aKeyOrPat)))
             {
                 aRes.push_back(NameWithoutDir(aKeyOrPat));

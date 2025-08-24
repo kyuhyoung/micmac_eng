@@ -111,7 +111,7 @@ void  cAppliApero::ConstructMST
 
    std::vector<cPoseCam *> aVCible;
 
-   // Initialisation de aVGerms + calcul de flags
+   // Initialisation de aVGerms + computation de flags
    for (int aK=0 ; aK<int(mVecPose.size()) ; aK++)
    {
        if (mVecPose[aK]->PreInit())
@@ -171,7 +171,7 @@ void  cAppliApero::ConstructMST
 std::cout << " Times " << aTimes << " Pds " << aPdsMax << "MUL " << aBestGotPM  << " " << aBestCam<<  " " << aNbRotPreInit << "\n";
 // if (! aBestGotPM) getchar();
 
-       // On calcule les pere-mere
+       // On compute les pere-mere
        std::vector<cPoseCam *>  aVBestC;
        if (aBestCam != 0)
        {

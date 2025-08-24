@@ -372,7 +372,7 @@ template<class Type> bool   cProtoAimeTieP<Type>::FillAPC(const cFilterPCar& aFP
 
 
    tGPI * aImCarac = mGPI;
-   tGPI * aImDetect   = aImCarac->ImOriHom();  ///< Image original with same level of detection
+   tGPI * aImDetect   = aImCarac->ImOriHom();  ///< image original with same level of detection
    const std::vector<tGPI*> &   aVIm =  aImDetect->Pyr().VMajIm() ; ///< Vector of Major Images
 
    int aK0 = aImDetect->NumMaj() + aShiftI0; ///< We may wish to have more resolved images (or less ?)
@@ -399,10 +399,10 @@ template<class Type> bool   cProtoAimeTieP<Type>::FillAPC(const cFilterPCar& aFP
 
    for (int aKIm=aK0 ; aKIm<=aKLim  ; aKIm+= aDeltaIm)
    {
-        tGPI &  anIk  =  *(aVIm.at(aKIm));  // Image at corresponding level
+        tGPI &  anIk  =  *(aVIm.at(aKIm));  // image at corresponding level
         cPt2dr  aCk   =  anIk.File2Im(aCenter);  // Centre in geometry of image
         double  aRhok =  aRho0 * anIk.ScaleInO();  // Rho in fact R0 * ScaleAbs / ScaleOfOct
-        cDataIm2D<Type> &  aDImk (anIk.ImG().DIm());  // Data Image at level
+        cDataIm2D<Type> &  aDImk (anIk.ImG().DIm());  // Data image at level
 
         if (ForTest)
         {
@@ -431,7 +431,7 @@ template<class Type> bool   cProtoAimeTieP<Type>::FillAPC(const cFilterPCar& aFP
              for (int aKTeta=0 ; aKTeta<aNbTeta ; aKTeta++)
              {
                  const cPt2dr & aDir = (aKIm%2) ? aVDirTeta1.at(aKTeta) : aVDirTeta0.at(aKTeta);
-                 cPt2dr aP = aCk + aDir * aRhok; // Point in LogPol
+                 cPt2dr aP = aCk + aDir * aRhok; // point in LogPol
                  double aV = aDImk.GetVBL(aP);
                  aDILPr.SetV(cPt2di(aKTeta,IndRhoLP),aV);
                  if (! aCensusMode)

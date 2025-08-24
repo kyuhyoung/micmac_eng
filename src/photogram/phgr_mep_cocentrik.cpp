@@ -178,7 +178,7 @@ class cMEPCoCentrik
         std::vector<Pt2dr> mVP2;
         std::vector<double> mVPds;
         bool                mDoPly;
-        std::vector<Pt3dr>  mVPlanBase;  // Des vecteur ds la plan de la base
+        std::vector<Pt3dr>  mVPlanBase;  // Des vector ds la plan de la base
         std::vector<Pt3dr>  mPtsPly; 
         std::vector<Pt3di>  mColPly;  
         double              mEcartCo;
@@ -275,9 +275,9 @@ ElRotation3D cMEPCoCentrik::OneTestMatr(const ElMatrix<REAL>  & aMat,const Pt3dr
    return aRot;
 }
 
-// ROUGE => vecteur normal 
+// ROUGE => vector normal 
 
-// Calcul les vecteur qui sont |_  dans un plan contenant la base
+// computation les vector qui sont |_  in un plan contenant la base
 void cMEPCoCentrik::ComputePlanBase(const ElMatrix<REAL>  & aMat)
 {
     Pt3di aRouge(255,0,0);
@@ -334,7 +334,7 @@ void cMEPCoCentrik::ComputePlanBase(const ElMatrix<REAL>  & aMat)
 
 Pt3dr cMEPCoCentrik::ComputeNormBase()
 {
-    // Valeur initiale par Ransac
+    // value initiale par Ransac
     double aSomMin = 1e30;
     Pt3dr aBestNorm(0,0,0);
     for (int aCpt=0 ; aCpt<NbCpleBase ; )

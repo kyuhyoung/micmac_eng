@@ -519,7 +519,7 @@ EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived& QuaternionBase<Derived>::operator
   return derived();
 }
 
-/** Rotation of a vector by a quaternion.
+/** rotation of a vector by a quaternion.
   * \remarks If the quaternion is used to rotate several points (>1)
   * then it is much more efficient to first convert it to a 3x3 Matrix.
   * Comparison of the operation cost for n transformations:

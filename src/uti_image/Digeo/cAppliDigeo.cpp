@@ -260,7 +260,7 @@ void cAppliDigeo::InitAllImage()
 
   mDecoupInt = cDecoupageInterv2D (aBox,Pt2di(aSzMax,aSzMax),Box2di(aBrd));
 
-  // Les images s'itialisent en fonction de la Box
+  // Les images s'itialisent en function de la Box
 	for (int aKB=0; aKB<mDecoupInt.NbInterv() ; aKB++)
 		image.NotifUseBox(mDecoupInt.KthIntervIn(aKB));
 	image.AllocImages();

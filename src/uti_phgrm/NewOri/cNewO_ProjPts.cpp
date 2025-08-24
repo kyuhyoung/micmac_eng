@@ -147,7 +147,7 @@ template<class TypePt> void cTplSelecPt<TypePt>::CalcPond()
         for (int aKS2 = aKS1 ; aKS2 <mNbPres ; aKS2++)
         {
            double aDist = euclid( aP1-PSel(aKS2));
-           // sqrt pour attenuer la ponderation
+           // sqrt for attenuer la ponderation
            double aPds = sqrt(1 / (mDistType+aDist));
            mVPresel[aKS1].mPdsOccup += aPds;
            mVPresel[aKS2].mPdsOccup += aPds;
@@ -204,7 +204,7 @@ template<class TypePt> void cTplSelecPt<TypePt>::SelectN(int aTargetNbSel,double
          UpdateDistPtsAdd(PSel(*aBest));
          mVSel.push_back(aBest->mNum);
 
-         //    aKSom>50 => pour que la dist puisse etre fiable;  aKSom%10 pour gagner du temps
+         //    aKSom>50 => for que la dist puisse etre fiable;  aKSom%10 for gagner du temps
          if ( (aDistArret>0) && (aKSel>50)  && ((aKSel%10)==0) )
          {
              Cont = (DistMinSelMoy() > aDistArret);

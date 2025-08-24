@@ -4,7 +4,7 @@
 #include "MMVII_Linear2DFiltering.h"
 #include "MMVII_NonLinear2DFiltering.h"
 
-// FIXME CM->MPD: Mail a MPD ! Qu'est ce qu'on fait ici pour remplacer ELISE_COPY ?
+// FIXME CM->MPD: Mail a MPD ! Qu'est ce qu'on fait ici for remplacer ELISE_COPY ?
 
 /** \file ImageFilterMMV1.cpp
     \brief file for using MMV1 filters

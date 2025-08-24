@@ -184,7 +184,7 @@ int ascii2tif(int argc,char ** argv)
 template <class T,class TB>
 void ImReadFromTxt(std::string aName, Im2D<T,TB> & aImOut, int aSkipLine,bool aVario,string colSep)
 {
-    // lecture du fichier ascii
+    // lecture du file ascii
     ifstream ascii(aName);
     std::string output;
     T aVal(0);
@@ -194,7 +194,7 @@ void ImReadFromTxt(std::string aName, Im2D<T,TB> & aImOut, int aSkipLine,bool aV
 
     for (int l(0); l < aImOut.sz().y; l++)
     {
-        // si le separator de colonne n'est pas une tabultation ou un espace, ca se gere pas de la meme manière
+        // if le separator de colonne n'est pas une tabultation or un espace, ca se gere pas de la meme manière
         if (colSep!="\t")
         {
             ascii >> output;
@@ -237,7 +237,7 @@ int main_ascii2tif(int argc,char ** argv)
 
 
 
-// derawtisation de video thermique (optris et variocam): 1) surabondant (trop de frame) et 2) noisy (en particulier optris, effet de filé
+// derawtisation de video thermique (optris and variocam): 1) surabondant (trop de frame) and 2) noisy (en particulier optris, effet de filé
 // select only one frame among n consecutive  frame, choosen in compairing image bluriness
 // export tiff only for these selected frames
 

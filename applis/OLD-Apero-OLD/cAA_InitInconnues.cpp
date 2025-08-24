@@ -402,7 +402,7 @@ void cAppliApero::CompileInitPoseGen(bool isPrecComp)
               }
               aLName = aNewL;
            }
-           if (isMST)  // L'init est faite "a la volee" dans MST
+           if (isMST)  // L'init est faite "a la volee" in MST
            {
                ConstructMST(aLName,*itP);
            }
@@ -439,7 +439,7 @@ void cAppliApero::CompileInitPoseGen(bool isPrecComp)
                   else
                   {
                       aPC->Set0Prof2Init();
-                      // La valeur par defaut 0 de Prof2Init va tres bien
+                      // La value par defaut 0 de Prof2Init va tres bien
                   }
                   aPC->DoInitIfNow();
 	      }

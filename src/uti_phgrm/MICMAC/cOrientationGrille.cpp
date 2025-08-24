@@ -56,7 +56,7 @@ XERCES_CPP_NAMESPACE_USE
 #include "private/files.h"
 #endif
 
-// variable static de la classe
+// variable static de la class
 std::map<std::string, OrientationGrille*> OrientationGrille::dico_camera;
 
 void OrientationGrille::WriteBinary(std::string const &nom)const
@@ -466,7 +466,7 @@ void OrientationGrille::InitXML(std::string const &nom)
                 std::map<std::string, OrientationGrille*>::iterator it=dico_camera.find(nomCamera);
                 if (it==dico_camera.end())
                 {
-                        // recuperation du chemin de fichier
+                        // recuperation du chemin de file
                         std::string path;
                         {
                                 int placeSlash = -1;
@@ -503,22 +503,22 @@ void OrientationGrille::ImageAndPx2Obj(double c, double l, const double *aPx,
         double &x, double &y)const
 {
         std::complex<double> position_grille;
-        // Si besoin on corrige la distorsion
+        // if besoin on corrige la distorsion
         if (camera)
         {
                 double c_sans_distorsion,l_sans_distorsion = l;
                 camera->ImageAndPx2Obj(c,l,aPx,c_sans_distorsion,l_sans_distorsion);
-                // Position dans la grille
+                // Position in la grille
                 position_grille = std::complex<double>((c_sans_distorsion-Image2Obj_ULC.real())/Image2Obj_Pas.real(),
                                 (Image2Obj_ULC.imag()-l_sans_distorsion)/Image2Obj_Pas.imag());
         }
         else
         {
-                // Position dans la grille
+                // Position in la grille
                 position_grille = std::complex<double>((c-Image2Obj_ULC.real())/Image2Obj_Pas.real(),
                                 (Image2Obj_ULC.imag()-l)/Image2Obj_Pas.imag());
         }
-        // Si on n'a qu'une couche
+        // if on n'a qu'une couche
         if (Image2Obj_Value.size() == 1)
         {
                 std::complex<double> P = interpolation(position_grille,Image2Obj[0],Image2Obj_Taille,Image2Obj_TailleZ);
@@ -572,10 +572,10 @@ void OrientationGrille::Objet2ImageInit(double x, double y, const double *aPx,
         throw std::logic_error("[OrientationGrille::Objet2ImageInit] : Grille inverse non disponible");
                 return;
         }
-        // Position dans la grille
+        // Position in la grille
         std::complex<double> position_grille((x-Obj2Image_ULC.real())/Obj2Image_Pas.real(),
                         (Obj2Image_ULC.imag()-y)/Obj2Image_Pas.imag());
-        // Si il n'y a qu'un seul niveau
+        // if il n'y a qu'un seul niveau
         if (Obj2Image_Value.size()==1)
         {
                 std::complex<double> P = interpolation(position_grille,Obj2Image[0],Obj2Image_Taille,Obj2Image_TailleZ);
@@ -619,10 +619,10 @@ void OrientationGrille::Objet2ImageInit(double x, double y, const double *aPx,
                 l = (P1.imag()*d2+P2.imag()*d1)/(d1+d2);
         }
 
-        // Si besoin on applique la correction de distorsion
+        // if besoin on applique la correction de distorsion
         if (camera)
         {
-                // transfo de coord sans distorsion vers des coord avec prise en compte de la distorsion
+                // transfo de coord without distorsion vers des coord with prise en compte de la distorsion
                 double c_sans_disto = c;
                 double l_sans_disto = l;
                 camera->Objet2ImageInit(c_sans_disto,l_sans_disto,aPx,c,l);
@@ -673,10 +673,10 @@ double OrientationGrille::GetResolMoyenne() const
     // Estimation de la resolution au centre de la grille
     // Pos : la position du centre de l'image (de la Grille)
     int pos = Image2Obj_Taille.real()/2*Image2Obj_Taille.imag()/2;
-    // Vect : le vecteur Obj entre deux points voisins (sur une ligne) au centre de la grille (les points : pos et (pos+1))
+    // Vect : le vector Obj between deux points voisins (on une line) au centre de la grille (les points : pos and (pos+1))
     std::complex<double> Vect(Image2Obj[0][2*(pos+1)  ]-Image2Obj[0][2*pos   ],
             Image2Obj[0][2*(pos+1)+1]-Image2Obj[0][2*pos +1]);
-    // On divise la norme de ce vecteur (distance en geometrie Obj) par le pas de la grille en X (un nombre de pixels)
+    // On divise la norme de ce vector (distance en geometrie Obj) par le pas de la grille en X (un number de pixels)
     double reso = sqrt(Vect.real()*Vect.real()+Vect.imag()*Vect.imag())/Image2Obj_Pas.real();
     return reso;
 }
@@ -685,7 +685,7 @@ bool OrientationGrille::GetPxMoyenne(double * aPxMoy) const
 {
 	//These comments are non informative (ZMoy is a compulsory agument when using GRI files)
     //std::cout << "GetPxMoyenne" << std::endl;
-    //std::cout << "Attention on n'a pas d'info sur l'altitude moyenne du sol dans les fichiers GRI"<< std::endl;
+    //std::cout << "Attention on n'a pas d'info on l'altitude moyenne du sol in les fichiers GRI"<< std::endl;
     aPxMoy[0]=0.;
     return true;
 }
@@ -744,7 +744,7 @@ Pt2dr OrientationGrille::GetRangeZ() const
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -760,17 +760,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

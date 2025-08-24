@@ -203,7 +203,7 @@ cNChannel cNChannel::Std(const cArgMpDCRaw & anArg,const std::string & aNameFile
    bool HasFlF=false;
    Im2D_REAL4 aFlF(1,1);
    std::string aNameFF = DirOfFile(aNameFile)+ "Foc"+ ToString(round_ni(aMDP.FocMm())) + "-FlatField.tif";
-   // Pas de FF en coul pour l'insntnt
+   // Pas de FF en coul for l'insntnt
    if (ELISE_fp::exist_file(aNameFF) && anArg.UseFF())
    {
        std::cout << "USE FLAT FIELD " << aNameFF << "\n";

@@ -84,7 +84,7 @@ bool cFaceton::IsFaceExterne(const cInterfSurfaceAnalytique & anISA) const
    double aEps = 1e-6;
    Pt3dr aP0 = anISA.E2UVL(mCentre); 
    Pt3dr aP1 = anISA.E2UVL(mCentre + mNormale * aEps); 
-   // On est une face externe si le rayon rentre dans la surface, donc z decroit
+   // On est une face externe if le rayon rentre in la surface, donc z decroit
    return aP1.z < aP0.z;
 }
 

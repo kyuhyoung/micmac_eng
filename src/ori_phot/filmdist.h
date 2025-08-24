@@ -43,7 +43,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #define _FILMDISTORTION_
 
 
-/* 	Identifiants utilises pour les marques de coin de fond de chambre dans le MEP Patrick 
+/* 	Identifiants utilises for les marques de coin de fond de chambre in le MEP Patrick 
 	Ordre = 	1	5	2
 				6		7
 				3	8	4

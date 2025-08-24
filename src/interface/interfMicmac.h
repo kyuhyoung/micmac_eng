@@ -16,7 +16,7 @@ La classe ParamMasqueXml regroupe les paramètres d'un masque afin d'écrire son
 
 #include "all.h"
 
-/* fenêtre de saisie des paramètres pour MicMac et d'ouverture de la fenêtre de dessin/modification du masque */
+/* fenêtre de saisie des paramètres for MicMac and d'ouverture de la fenêtre de dessin/modification du masque */
 
 QString imgNontuilee(const QString& img);
 
@@ -31,13 +31,13 @@ class CarteDeProfondeur
 
 		CarteDeProfondeur& operator=(const CarteDeProfondeur& carteDeProfondeur);
 		bool ecrireCorrelListe(const ParamMain& paramMain) const;
-		QString getMasque(const ParamMain& paramMain) const;	//avec le dossier
-		QString getRepereFile(const ParamMain& paramMain) const;	//sans le dossier
-		QString getReferencementMasque(const ParamMain& paramMain) const;	//avec le dossier
-		QString getImageSaisie(const ParamMain& paramMain) const;	//avec le dossier	//image utilisée pour la saisie du masque (imageDeReference si repère image, TA si repère terrain) ; par défaut le masque s'appellera masque_idxImageSaisie.tif
+		QString getMasque(const ParamMain& paramMain) const;	//with le folder
+		QString getRepereFile(const ParamMain& paramMain) const;	//without le folder
+		QString getReferencementMasque(const ParamMain& paramMain) const;	//with le folder
+		QString getImageSaisie(const ParamMain& paramMain) const;	//with le folder	//image utilisée for la saisie du masque (imageDeReference if repère image, TA if repère terrain) ; par défaut le masque s'appellera masque_idxImageSaisie.tif
 
 		bool getACalculer() const;
-		const QString& getImageDeReference() const;	//sans le dossier
+		const QString& getImageDeReference() const;	//without le folder
 		const QStringList& getImagesCorrel() const;
 		QStringList& modifImagesCorrel();
 		bool getRepere() const;
@@ -84,18 +84,18 @@ class CarteDeProfondeur
 		//MNT
 		bool aCalculer;
 		QString imageDeReference;
-		QStringList imagesCorrel;	//images pour la corrélation
+		QStringList imagesCorrel;	//images for la corrélation
 		//repère
-		bool repere;	//true si repère image
-		bool autreRepere;	//true si repère euclidien autre que le repère de l'aéro : par défaut le repère s'appellera repere_idxImageDeReference.xml
-			//pour la saisie
+		bool repere;	//true if repère image
+		bool autreRepere;	//true if repère euclidien autre que le repère de l'aéro : par défaut le repère s'appellera repere_idxImageDeReference.xml
+			//for la saisie
 		QString imgRepMasq;	//par défaut le masque s'appellera imgMasqPlan.section(".",0,-2)+QString("_MasqRepTA.tif");
-		QString imgRep; //img pour la direction
+		QString imgRep; //img for la direction
 		std::pair<QPoint,QPoint> segmentRep; //direction
 		QPoint axeRep;
 		//orthos
 		bool doOrtho;
-		bool orthoCalculee;	//pour Porto
+		bool orthoCalculee;	//for Porto
 		QStringList imgsOrtho;
 		double echelleOrtho;
 			//saisie

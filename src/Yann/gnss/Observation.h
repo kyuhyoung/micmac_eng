@@ -8,7 +8,7 @@
 #include "GPSTime.h"
 
 // ---------------------------------------------------------------
-// Classe contenant une mesure GPS
+// class contenant une mesure GPS
 // ---------------------------------------------------------------
 class Observation {
 	

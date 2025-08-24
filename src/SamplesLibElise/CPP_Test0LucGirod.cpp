@@ -45,7 +45,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 int  Luc_test_ptshom_main(int argc,char ** argv)
 {
-  //=====================  PARAMETRES EN DUR ==============
+  //=====================  parameters EN DUR ==============
 
    std::string aDir = "C:/Users/Luc Girod/Desktop/TFE/Vignettage/vignette_sift3/";
    std::string aPatIm = ".*NEF";
@@ -55,11 +55,11 @@ int  Luc_test_ptshom_main(int argc,char ** argv)
 
   //=====================
 
-    // Permet de manipuler les ensemble de nom de fichier
+    // Permet de manipuler les ensemble de nom de file
     cInterfChantierNameManipulateur * aICNM = cInterfChantierNameManipulateur::BasicAlloc(aDir);
     const std::vector<std::string> * aSetIm = aICNM->Get(aPatIm);
 
-//On parcourt toutes les paires d'images différentes (->testé dans le if)
+//On parcourt toutes les paires d'images différentes (->testé in le if)
     for (int aK1=0 ; aK1<int(aSetIm->size()) ; aK1++)
     {
         cout<<(*aSetIm)[aK1]<<endl;
@@ -142,7 +142,7 @@ void RotateImage(double alpha, Pt2di aSzOut, vector<Pt2dr> Pts , string aNameDir
     U_INT1 ** aDataGOut = aImGOut.data();
     U_INT1 ** aDataBOut = aImBOut.data();
 
-    //Parcours des points de l'image de sortie et remplissage des valeurs
+    //Parcours des points de l'image de sortie and remplissage des valeurs
     Pt2dr ptOut;
     Pt2di imageTopCorner, imageBottomCorner;
     imageTopCorner.x = (int)(P1Cor.x + 0.5) + (int)(max(abs(P1Cor.x - Pts[1].x), abs(P1Cor.x - P3Cor.x)) - aSzOut.x) / 2;
@@ -352,7 +352,7 @@ public:
     Pt2di SZ;
 };
 
-/* pas utilis� et cause une erreur multiple definition de FindMaltEtape
+/* pas utilis and cause une error multiple definition de FindMaltEtape
 int FindMaltEtape(int ResolModel, std::string aNameIm, std::string aPatModel)
 {
     //Getting full image size
@@ -616,7 +616,7 @@ int Luc_main_truc(int argc, char ** argv)
                         double aScore = Correlator(&aWindow1, &aWindow2);
                         if (aScore < aScoreMin)
                         {
-                            //CACACACACACACACCACACACACA TESTER SI PT EXIST DANS INFO3D2=====================================================================================
+                            //CACACACACACACACCACACACACA TESTER if PT EXIST in INFO3D2=====================================================================================
                             aScoreMin = aScore;
                             Pt2dr aPos2D(bX, bY);
                             Pt3dr aPos3D = info3D2->PreciseCapteur2Terrain(info3D2->Plani2Index(aPos2D));
@@ -898,7 +898,7 @@ int Luc_main_geodesy_geodeticvsgeocentric(int argc, char ** argv)
 	double e2 = 1 - (b * b) / (a * a);
 	double WGSCorFact = 0.99330562;
 
-	//Point 
+	//point 
 	Pt3dr aPtECEF(-2741844.353494039736688137054443359375, -1664255.3605559789575636386871337890625, 6304189.845196328125894069671630859375); //ALASKA
 	//Pt3dr aPtECEF(3310919.731059408746659755706787109375, 628192.44206570624373853206634521484375, 6219499.615476393140852451324462890625); //NORWAY
 	//NEW
@@ -1030,7 +1030,7 @@ int Luc_main(int argc, char ** argv)
 }
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1046,17 +1046,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

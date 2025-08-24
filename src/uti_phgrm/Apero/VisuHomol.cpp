@@ -220,7 +220,7 @@ cVisuResidHom::cVisuResidHom
              fprintf(aFp,"Res[%f]=%f\n",(aK*100.0)/aNbPerc,aRes);
          }
          aPol = LeasquarePol2DFit(aDeg,mVP1,mVEpi,aPol,0.75,2.0,0.5);
-         //Dessiner fit avec cette polygone
+         //Dessiner fit with cette polygone
          cPlyCloud mPlyPolyN;
          Pt3di colorDeg(floor(rand()%256),floor(rand()%256),floor(rand()%256));
          for (ElPackHomologue::iterator itP=mPack.begin() ; itP!=mPack.end() ; itP++)

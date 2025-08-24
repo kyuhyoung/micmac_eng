@@ -141,7 +141,7 @@ void cAppliDigeo::DoCarac()
 
   cDecoupageInterv2D aDec (aBox,Pt2di(aSzMax,aSzMax),Box2di(aBrd));
 
-  // Les images s'itialisent en fonction de la Box
+  // Les images s'itialisent en function de la Box
   for (int aKI=0 ; aKI<int(mVIms.size()) ; aKI++)
   {
       for (int aKB=0; aKB<aDec.NbInterv() ; aKB++)

@@ -70,11 +70,11 @@ FAIT :
 #ifndef _ELISE_MICMAC_ALL_H_
 #define _ELISE_MICMAC_ALL_H_
 
-// Pour la multi correl ponctuelle, le cout de stockage peut etre eleve,
-//   donc au depart on a stocke sur des INT1
-//   mais ensuite il est apparu que cela pouvait creer des probleme de dynamique
+// for la multi correl ponctuelle, le cout de stockage peut etre eleve,
+//   donc au depart on a stocke on des INT1
+//   but ensuite il est apparu que cela pouvait creer des probleme de dynamique
 //   on se garde la possibilite d'avoir des INT2
-// si l'algo finit par etre valide, on fera peut etre du INT1 avec une dynamique non lineaire
+// if l'algo finit par etre valide, on fera peut etre du INT1 with une dynamique non lineaire
 
 #define USE_INT1_4_MCP false
 
@@ -82,18 +82,18 @@ extern const double MCPMulCorel;
 
 #if (USE_INT1_4_MCP)
 typedef U_INT2 tCRVal;
-const tCRVal ValUndefCple = 0 ;  // Valeur pour coder une valeur inexistante en correl "a un pixel" multi image
+const tCRVal ValUndefCple = 0 ;  // value for coder une value inexistante en correl "a un pixel" multi image
 typedef INT1 tMCPVal;
 const int TheDynMCP = 127;
-const int ValUndefCPONT = -128 ;  // Valeur pour coder une valeur inexistante en correl "a un pixel" multi image
+const int ValUndefCPONT = -128 ;  // value for coder une value inexistante en correl "a un pixel" multi image
 #else
 typedef REAL4 tCRVal;
 typedef INT2 tMCPVal;
 const int TheDynMCP = 10000;
-const int ValUndefCPONT = -20000 ;  // Valeur pour coder une valeur inexistante en correl "a un pixel" multi image
+const int ValUndefCPONT = -20000 ;  // value for coder une value inexistante en correl "a un pixel" multi image
 // #define TheDynMCP 10000 
-// #define ValUndefCPONT  -20000 // Valeur pour coder une valeur inexistante en correl "a un pixel" multi image
-const tCRVal ValUndefCple = -1 ;  // Valeur pour coder une valeur inexistante en correl "a un pixel" multi image
+// #define ValUndefCPONT  -20000 // value for coder une value inexistante en correl "a un pixel" multi image
+const tCRVal ValUndefCple = -1 ;  // value for coder une value inexistante en correl "a un pixel" multi image
 #endif
 
 inline int AdaptCostPonct(int aVal)
@@ -141,7 +141,7 @@ typedef enum
 {
    eModeNuage3D,
    eModeCarteProfExterne,
-   eModeCarteProfInterne //   : si + tard on souhaite embarquer l'image
+   eModeCarteProfInterne //   : if + tard on souhaite embarquer l'image
 } eModeExportNuage;
 
 
@@ -209,29 +209,29 @@ TypeIm CreateAllImAndLoadCorrel(cInterfModuleImageLoader * anIMIL,int aDZ)
      "Header du Header",  = declaration des classes
  */
 
-// Pour memoire, classes definies dans "cParamMICMAC.h" :
+// for memoire, classes definies in "cParamMICMAC.h" :
 
 // class cEtapeMEC;
 // class cParamMICMAC
 
-// Classe implementant les services de transformations
+// class implementant les services de transformations
 // geometriques.
-   // Correspondance entre l'espace objets "reels" et
+   // Correspondance between l'espace objets "reels" and
    // l'espace discretises
-class cGeomDiscR2  ; //                          Dans cGeomXXX
-class cGeomDiscFPx ; // : public  cGeomDiscR2    Dans cGeomXXX
+class cGeomDiscR2  ; //                          in cGeomXXX
+class cGeomDiscFPx ; // : public  cGeomDiscR2    in cGeomXXX
 
-   // Correspondance entre espace objet et espaces images
+   // Correspondance between espace object and espaces images
 class cGeomImage;  
 
-   // Classe pour representer une image en memoire, essentiellement
-   // une classe abstraite , ce sont les derivees templates
+   // class for representer une image en memoire, essentiellement
+   // une class abstraite , ce sont les derivees templates
    // qui implementent les services reels, typiquement les
    // dervivees contiendront plusieurs images (image, image
    // redressee, moyennee etc....);
 class cLoadedImage;
 
-// Classe "maitresse", gere une application
+// class "maitresse", gere une application
 // de mise en correspondance en "coordonnant" les services
 // des autres classes
 class cAppliMICMAC;  
@@ -241,26 +241,26 @@ class cAppliMICMAC;
 class cPriseDeVue;
 
 // Etape de Mise en correspondance "compilee"
-// c'est a dire apres post-traitements
+// c'est a dire after post-traitements
 // Role :
-//     - verifier en detail les <EtapeMEC> et
+//     - verifier en detail les <EtapeMEC> and
 //     terminer leur "binding" en memoire
-//     - gerer les fichier de paralaxes
-//     (calcul des nappes a partir des resolutions
+//     - gerer les file de paralaxes
+//     (computation des nappes a partir des resolutions
 //     inferieures, sauvegarde)
 //
 class cEtapeMecComp;
 
 // Contient les informations qui sont specifiques a un numero
-// de DeZoom donne. Cette classe etant arrivee assez tard, pas
+// de DeZoom donne. Cette class etant arrivee assez tard, pas
 // mal d'info qui devraient s'y trouver sont en fait gerees en
 // dehors
 class cCaracOfDeZoom;
 
-// Class auxiliaire pour l'implementation de cFilePx
+// Class auxiliaire for l'implementation de cFilePx
 struct cArgOneEtapePx; 
 
-// Gere chaque fichier de paralaxe
+// Gere chaque file de paralaxe
 class cFilePx;  
 
 // Gere  une "nappe de paralaxe", 
@@ -270,17 +270,17 @@ struct cOneNappePx;
 // (nappes , masque ...)
 class cLoadTer;
 
-// Classe abstraite, interface de CoxRoy ou de Prog-Dyn
+// class abstraite, interface de CoxRoy or de Prog-Dyn
 class cSurfaceOptimiseur;
 
 // class permettant de representer des distribution
-// de valeur, d'en calculer la correlation
+// de value, d'en compute la correlation
 class cStat1Distrib;
 class cStatOneClassEquiv;
 
-class cPxSelector;  // Classe d'interface
+class cPxSelector;  // class d'interface
 
-// Dim de paralaxe 1 ou 2
+// Dim de paralaxe 1 or 2
 static const int theDimPxMax = 2;
 
 class cLineariseProj;
@@ -296,7 +296,7 @@ typedef tContPDV::iterator          tIterPDV;
 typedef std::list<cEtapeMecComp *>  tContEMC;
 
 
-// Definie dans cOptimisationDiff.cpp
+// Definie in cOptimisationDiff.cpp
 class cOptimDiffer;
 class cMicMacVisu;
 
@@ -454,7 +454,7 @@ class cSurfaceOptimiseur
 
 
       // double                  mICostRegul[theDimPxMax];
-      //Est la meme que mLT si Res!=1
+      //Est la meme que mLT if Res!=1
       std::vector<Im2D_INT2>  mImRes;
       std::vector<INT2 **>    mDataImRes;
       std::vector<Im2D_INT2>  mImResInit;
@@ -484,7 +484,7 @@ class cSurfaceOptimiseur
 /*                                                   */
 /*****************************************************/
 
-class cStat1Distrib  // dans cStatOneClassEquiv
+class cStat1Distrib  // in cStatOneClassEquiv
 {
     public :
         cStat1Distrib(int aNbV,int * aPtInEc,int aNbVIn,double aRatioIn);
@@ -680,9 +680,9 @@ class cPriseDeVue
             const cGeomImage & Geom() const;
             Pt2di SzIm() const;
 
-            // Charge en RAM une zone de fichier image,
+            // Charge en RAM une zone de file image,
             // la zone Terrain est accedee via mAppli
-            // aLT sert a calculer PXmin et PXmax pour convertir
+            // aLT sert a compute PXmin and PXmax for convertir
             // l'emprise terrain en emprise image
             bool LoadImageMM (bool ForTest, const cLoadTer& aLT,
 							  const Pt2di & aSzMaxGeomTer,
@@ -734,9 +734,9 @@ class cPriseDeVue
 
             const cAppliMICMAC &		mAppli;
             cInterfModuleImageLoader *	mIMIL;
-			std::string					mName;		// Nom avec extension, sans dir
-			std::string					mNameTif;	// Nom avec extension, sans dir, tjs termine par ".tif"
-			std::string					mNameGeom; // Nom avec extension, sans dir
+			std::string					mName;		// Nom with extension, without dir
+			std::string					mNameTif;	// Nom with extension, without dir, tjs termine par ".tif"
+			std::string					mNameGeom; // Nom with extension, without dir
             int							mNum;
             cGeomImage *				mGeom;
             cGeomImage *				mGeomTerAssoc;  // Geometrie terrain associee
@@ -789,31 +789,31 @@ class cPriseDeVue
 /*                                                   */
 /*****************************************************/
 
-// Classe assurant les services  de discretisation de R2,
-// c'est a dire la correspondance entre les coordonnées
-// "objets" et leur homologue discret en fonction de
-// de different parametres.
+// class assurant les services  de discretisation de R2,
+// c'est a dire la correspondance between les coordonnées
+// "objets" and leur homologue discret en function de
+// de different parameters.
 // 
-// Ces parametres prennent  en compte la resolution finale 
+// Ces parameters prennent  en compte la resolution finale 
 // (par exemple 10 cm  en Terrain), l'emprise finale, 
 // le facteur de DeZoom  (lie a l'approche multi-resolution) 
-// et un eventuel cliping  (lie a une decoupe pour gestion 
-//  memoire "et-ou" mise en // )
+// and un eventuel cliping  (lie a une decoupe for gestion 
+//  memoire "and-or" mise en // )
 
 class cGeomDiscR2
 {
-       // defini dans GeomXXX.cpp
+       // defini in GeomXXX.cpp
      public :
          cGeomDiscR2 (cAppliMICMAC &);
 
-         // Service essentiel offert par la classe
+         // Service essentiel offert par la class
          Pt2dr    DiscToR2(const  Pt2di & aPRas) const;
          Pt2dr    RDiscToR2(const  Pt2dr & aPRas) const;
 
          Pt2dr   DerX(const  Pt2di & aPRas) const;
          Pt2dr   DerY(const  Pt2di & aPRas) const;
 
-	 // Service inverse pour mise au point
+	 // Service inverse for mise au point
          Pt2di    R2ToDisc(const Pt2dr  & aPRas) const;
          Pt2dr    R2ToRDisc(Pt2dr  aPRas) const;
 
@@ -849,9 +849,9 @@ class cGeomDiscR2
        /*   Partie Data                  */
        /**********************************/
 
-         // Un *, et non un &, pour autoriser le X(const X&)  standard
+         // Un *, and non un &, for autoriser le X(const X&)  standard
          cAppliMICMAC *   mAp;
-         // Zone Terrain et resolution initiale
+         // Zone Terrain and resolution initiale
          Pt2dr                  mP0;
          Pt2dr                  mP1;
          REAL                   mResol;
@@ -864,7 +864,7 @@ class cGeomDiscR2
          REAL                   mDeZoom;
          // Resolution integrant le  DeZoom donne
          REAL                   mResolDz;
-         // Limite de l'espace Discret pour un DeZoom
+         // Limite de l'espace Discret for un DeZoom
          Pt2di                  mSzDz;
 
          // Limite de l'espace Discret une fois clippe
@@ -874,27 +874,27 @@ class cGeomDiscR2
          Pt2dr                  mDerX;
          Pt2dr                  mDerY;
 
-         // Pour l'instant pas utilise mais devrait a
+         // for l'instant pas utilise but devrait a
          // terme permettre de prendre en compte l'inversion
          // des Y du mode carto. C'est eventuellement une
          // transformation affine globale qui pourra etre prise
-         // en compte (par exemple pour avoir les coordonnees
+         // en compte (par exemple for avoir les coordinates
          // orientees de la meme maniere que les axes du chantier)
          bool                   mInvY;
 };
 
-// Classe assurant les services  discretisation d'une
-// "fonction de paralaxe" R2->R ou R2->R2
+// class assurant les services  discretisation d'une
+// "function de paralaxe" R2->R or R2->R2
 //
-//  Le "Step" est relatif au  DeZoom et a la resolution
-//  Par ex, en geom terrain, avec une resolution de 10cm
+//  Le "Step" est relatif au  DeZoom and a la resolution
+//  Par ex, en geom terrain, with une resolution de 10cm
 //  un DeZoom de 4, un Step de 0.75 correspondra a 30 cm
 //  terrain.
 
 class cGeomDiscFPx : public  cGeomDiscR2
 {
      public :
-       // defini dans GeomXXX.cpp
+       // defini in GeomXXX.cpp
 
          void SetZIsAbs();
 
@@ -930,8 +930,8 @@ class cGeomDiscFPx : public  cGeomDiscR2
 
          Pt2di NbPixel() const;
 
-// Devrait etre identiques , mais a cause de surface analytique semi triviale, pour elle : en calcul vaut 0 car le Z Moyen
-// est pris dans la surface , mais a l'export il faut le remettre
+// Devrait etre identiques , but a cause de surface analytique semi triviale, for elle : en computation vaut 0 car le Z Moyen
+// est pris in la surface , but a l'export il faut le remettre
          double OrigineAlti4Compute() const ;
          double OrigineAlti4Export() const ;
 
@@ -997,7 +997,7 @@ class cGeomDiscFPx : public  cGeomDiscR2
          bool    mTronkExport;
 };
 
-// Dans cGeomImage 
+// in cGeomImage 
 class cGeometrieImageComp
 {
     public :
@@ -1034,14 +1034,14 @@ typedef enum
 
 
 
-// Gere les transformations entre la geometrie terrain
-// et une image, compte-tenu d'un eventuel DeZoom et 
+// Gere les transformations between la geometrie terrain
+// and une image, compte-tenu d'un eventuel DeZoom and 
 // d'une zone de clip (correspondant a la portion d'image
 // chargee).
 //
-// Il s'agit d'une classe d'interface, la partie transformation
-// physique entre l'espace terrain et l'image plein a resolution
-// 1 ainsi que sa reciproque devront etre definies dans les derivee
+// Il s'agit d'une class d'interface, la partie transformation
+// physique between l'espace terrain and l'image plein a resolution
+// 1 ainsi que sa reciproque devront etre definies in les derivee
 
 
 struct cGeomImageData
@@ -1055,9 +1055,9 @@ struct cGeomImageData
 
 
 // ElDistortion22_Gen : est une class qui permet de representer
-// des application du plan dans lui meme (donc des distorsion)
-// cGeomImage en herite  surtout pour acceder avec la bonne interface
-// au fonction Objet2ImageInit et ImageAndPx2Obj avec une Pax Nulle
+// des application du plan in lui meme (donc des distorsion)
+// cGeomImage en herite  surtout for acceder with la bonne interface
+// au function Objet2ImageInit and ImageAndPx2Obj with une Pax Nulle
 //
 
 class cGeomBasculement3D
@@ -1073,7 +1073,7 @@ class cGeomBasculement3D
 #define PUBLIC_FOR_DEBUG public
 
 
-class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT en geometrie image
+class cGeomImage : public cGeomBasculement3D, // for pouvoir basculer les MNT en geometrie image
                    PUBLIC_FOR_DEBUG cGeomImageData,
                    public  ElDistortion22_Gen
 {
@@ -1081,8 +1081,8 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
 
         virtual ElCamera * GetCamera(const Pt2di & aSz,bool & ToDel,bool & aZUP) const;
 
-    // Pour l'instant seul la geometrie conique accepte les anamorphose,
-    // car cela necessite des adaptation pas encore faite pour les autres
+    // for l'instant seul la geometrie conique accepte les anamorphose,
+    // car cela necessite des adaptation pas encore faite for les autres
         virtual bool AcceptAnamSA() const;
         friend class cAppliMICMAC;
         bool  UseMasqTerAnamSA();
@@ -1105,14 +1105,14 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
          inline double Px1(const REAL * aPx) const {return (mDimPx > 1) ? aPx[1] : 0;}
 
 
- // A priori ce pourrait etre la fonction fondamentale, en fait elle
- // a ete rajoutee tardivement et est rarement definie pour l'instant.
+ // A priori ce pourrait etre la function fondamentale, en fait elle
+ // a ete rajoutee tardivement and est rarement definie for l'instant.
  //
- // Si necessaire on peut lui rajouter une valeur par defaut correcte
+ // if necessaire on peut lui rajouter une value par defaut correcte
  //
         virtual ElSeg3D FaisceauPersp(const Pt2dr & )  const;
-        //  Les faisceau perspectif sont exprime en geom euclid, si c'est la geometrie
-       // Finale (apres anam) qui est interessante, il faut encore composer par cela ...
+        //  Les faisceau perspectif sont exprime en geom euclid, if c'est la geometrie
+       // Finale (after anam) qui est interessante, il faut encore composer par cela ...
         virtual Pt3dr GeomFP2GeomFinale(const Pt3dr & )  const;
         virtual Pt3dr GeomFinale2GeomFP(const Pt3dr & )  const;
 
@@ -1127,13 +1127,13 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
 
 
 
-        // Pour renseigner eventuellemet le File-Description-Chantier
+        // for renseigner eventuellemet le File-Description-Chantier
 	virtual bool DirEpipTransv(Pt2dr &) const;
 
-        Pt3dr Bascule(const Pt3dr &) const; // interface pour cGeomBasculement3D, envoie de image vers terrain
-        Pt3dr BasculeInv(const Pt3dr &) const; // interface pour cGeomBasculement3D, envoie de image vers terrain
-    // Tient compte d'un eventuel triedre euclidien  exprime dans les
-    // coordonnees de base
+        Pt3dr Bascule(const Pt3dr &) const; // interface for cGeomBasculement3D, envoie de image vers terrain
+        Pt3dr BasculeInv(const Pt3dr &) const; // interface for cGeomBasculement3D, envoie de image vers terrain
+    // Tient compte d'un eventuel triedre euclidien  exprime in les
+    // coordinates de base
          Pt2dr ImageAndPx2Obj_Euclid(Pt2dr aP,const REAL * aPx) const;
          Pt2dr Objet2ImageInit_Euclid(Pt2dr aP,const REAL * aPx) const;
  
@@ -1145,14 +1145,14 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
 
 
 
-     // Utilisee quand on veut faire des modif temporaire
-     // sur la geometrie d'une image et les revenir a l'etat
-     // anterieur (pas de copie car classe abstraite)
+     // Utilisee when on veut faire des modif temporaire
+     // on la geometrie d'une image and les revenir a l'etat
+     // anterieur (pas de copie car class abstraite)
 
          cGeomImageData SauvData();
          void RestoreData(const cGeomImageData &);
 
-         // Allocateurs voir cGeomImage.cpp pour la signification
+         // Allocateurs voir cGeomImage.cpp for la signification
          static cGeomImage * GeomId
                              (
                                  const cAppliMICMAC &,
@@ -1168,7 +1168,7 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
                                  cDbleGrid *             aPGr1,
                                  cDbleGrid *             aPGr2,
                                  const ElPackHomologue & aPack,
-				 int                     aDim // En Gal 2, mais 1 pour des "vraies" epipolaires
+				 int                     aDim // En Gal 2, but 1 for des "vraies" epipolaires
                              );
 
 	 static cGeomImage * Geom_Terrain_Ori
@@ -1277,20 +1277,20 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
 
          // SetDeZoom : reinitialise la zone de clip
          void SetDeZoomIm(int aDeZoom);
-         // Tient compte du clip et du zoom
+         // Tient compte du clip and du zoom
          Pt2dr CurObj2Im(Pt2dr aPTer,const REAL * aPx) const;
 
 
-         // Ajuste la zone de clipping pour qu'elle
-         // contienne (dans la limite de la taille initiale)
-         // l'image de la boite objet compte tenu des
+         // Ajuste la zone de clipping for qu'elle
+         // contienne (in la limite de la taille initiale)
+         // l'image de la boite object compte tenu des
          // intervalles  de paralaxe, 
-         // et d'un peu de Rab ; ces dernier param sont fixes de
+         // and d'un peu de Rab ; ces dernier param sont fixes de
          // maniere 100% empirique,
-         // disons que 50 pour le rab geom et 
-         // 5 pour le rab interp  sont des valeur pas idiotes ; il doit
-         // tenir compte de l'interpolateur et d'une eventuelle
-         // "courbure" des fonction de projection
+         // disons que 50 for le rab geom and 
+         // 5 for le rab interp  sont des value pas idiotes ; il doit
+         // tenir compte de l'interpolateur and d'une eventuelle
+         // "courbure" des function de projection
          // RabGeom sera divise par Zoom
 
          void SetClip
@@ -1311,7 +1311,7 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
          // Fait appel au SetClip  du dessus en convertissant
          // la zone de clip de cGeomDiscFPx.
          // aSzVgn est une taille de vignette de correlation
-         // a integrer dans la boite
+         // a integrer in la boite
          void  SetClip
                (
                    const cGeomDiscFPx &,
@@ -1322,9 +1322,9 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
                    double aRabInter
                );
          
-         // Un peu redondant avec le SetClip precedent, indique
-         // si la boite terrain trouve un intersection non vide
-         // avec l'emprise image
+         // Un peu redondant with le SetClip precedent, indique
+         // if la boite terrain trouve un intersection non vide
+         // with l'emprise image
          bool BoxTerHasIntersection
          (
               const cGeomDiscFPx & aFPx,
@@ -1342,12 +1342,12 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
          // Rapelle celle du dessus en inversant les signes
          virtual ~cGeomImage();
 
-        // Geometrie sous jacent aux geometries faisceaux
+        // Geometrie under jacent aux geometries faisceaux
          virtual const cGeomImage * GeoTerrainIntrinseque() const;
          cGeomImage * NC_GeoTerrainIntrinseque() ;
         
-         // Indique si  l'intersection entre la zone
-         // image globale et le clip terrain est vide
+         // Indique if  l'intersection between la zone
+         // image globale and le clip terrain est vide
          bool ClipIsEmpty() const;
          Box2di BoxClip() const;
 
@@ -1355,7 +1355,7 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
 	 double CoeffDilNonE() const;
 
 
-         // indique si le ratio est rempli
+         // indique if le ratio est rempli
          virtual bool GetRatioResolAltiPlani(double * aRatio) const;
          // Resolution moyenne par defaut de la geometrie
          double GetResolMoyenne_Euclid() const;
@@ -1363,23 +1363,23 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
 
          // Par defaut ne fair rien
           virtual void RemplitOri(cFileOriMnt & aFOM) const;
-         // Par defaut erreur fatale si pas mode Image_Nuage
+         // Par defaut error fatale if pas mode Image_Nuage
          virtual void RemplitOriXMLNuage(bool CallFromMere,const cMTD_Nuage_Maille &,const cGeomDiscFPx & aGT,cXML_ParamNuage3DMaille &,eModeExportNuage) const;
 
          //  Par defaut return 0
            virtual CamStenope *  GetOri() const ;
-         // Appelle GetOri, genere une erreure si pas d'Ori
+         // Appelle GetOri, genere une erreure if pas d'Ori
            CamStenope *  GetOriNN() const ;
 
-          // Renvoie la fonction comme une distorsion
+          // Renvoie la function comme une distorsion
 
-          // Partie de l'initialisation qui ne peut etre faite que quand le
+          // Partie de l'initialisation qui ne peut etre faite que when le
           // GeomDFPxInit() de Appli est lui meme initialise (il
           // utilise les images ....)
           void PostInit();
 
           // Post initialisation "immediate" prend en  compte les appels de methodes
-	  // virtuelles qui ne peuvent etre faite dans le constructeur
+	  // virtuelles qui ne peuvent etre faite in le constructeur
 	  void PostInitVirtual(const std::vector<cModGeomComp *> &);
 
 
@@ -1393,9 +1393,9 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
  
          virtual bool IsId() const;
 
-         // Si P1 et P2 sont des point hom a px nulle il
-         // auront la meme valeur apres CorrigeModeleCple,
-         // de plus cela est fait dans une geometrie intermediaires
+         // if P1 and P2 sont des point hom a px nulle il
+         // auront la meme value after CorrigeModeleCple,
+         // de plus cela est fait in une geometrie intermediaires
          // telle que la px residuelle soit le plus proche possible d'une
          // homographie
          virtual Pt2dr CorrigeDist1(const Pt2dr & aP1) const;
@@ -1406,10 +1406,10 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
          virtual void CorrectModeleAnalytique(cModeleAnalytiqueComp *);
 
          //
-         //  La fonction est telle que 
+         //  La function est telle que 
          //      Objet2ImageInit(P1,P1P2ToPx(P1,P2)) = P2
          //  Par defaut elle est calculee par inversion iterative
-         //  mais elle peut si necessaire etre redefinie de maniere
+         //  but elle peut if necessaire etre redefinie de maniere
          //  plus efficace
          // 
 
@@ -1420,7 +1420,7 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
 
         virtual void InstPostInit();
          bool GetPxMoyenneNulle(double * aPxMoy) const;
-         // Fonction generale qui calcule l'image d'une boite
+         // function generale qui compute l'image d'une boite
          // englogante, en tenant compte d'un intervalle de para
 
          Box2dr BoxImageOfVPts
@@ -1461,11 +1461,11 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
 
 
          cParamMasqAnam             mAnamSAPMasq;
-// Parametres utilises pour seuiles sur l'incidences
+// parameters utilises for seuiles on l'incidences
          Im2D_INT1                  mMTA;
          TIm2D<INT1,INT>            mTMTA;
 
-// Parametres utilises pour ordonner sur l'incidence et prendre les K Meilleur Nadir
+// parameters utilises for ordonner on l'incidence and prendre les K Meilleur Nadir
          double                     mDynIncidTerr;
          TIm2D<INT2,INT>            mTIncidTerr;
 
@@ -1480,12 +1480,12 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
 	 bool                 mIsIntrinseque;
     // protected :
 
-        // A priori Micmac privilegie le calcul en geometrie terrain,
-	// dans ce cas TerrainRest2Euclid renvoie l'identite
+        // A priori Micmac privilegie le computation en geometrie terrain,
+	// in ce cas TerrainRest2Euclid renvoie l'identite
 	//
-	//  Si ce n'est pas le cas , par exemple en geometrie image
-	//  alors on cette fonction permet de passer de la restite au
-	//  terrain "reel"
+	//  if ce n'est pas le cas , par exemple en geometrie image
+	//  then on cette function permet de passer de la restite au
+	//  terrain "real"
 	//
 
     private :
@@ -1501,22 +1501,22 @@ class cGeomImage : public cGeomBasculement3D, // Pour pouvoir basculer les MNT e
        /*   Partie Data                  */
        /**********************************/
 
-    // Ne tient compte d'un eventuel triedre euclidien  exprime dans les
-    // coordonnees de base
-         // Fonction de localisation "inverse", donne un point
-         // "objet" a partir d'un point image et d'une paralaxe,
+    // Ne tient compte d'un eventuel triedre euclidien  exprime in les
+    // coordinates de base
+         // function de localisation "inverse", donne un point
+         // "object" a partir d'un point image and d'une paralaxe,
          //  ne tient compte  ni du DeZoom ni du ClipImage,
-         //  utilise uniquement pour definir les limites de l'espace
-         //  "objet" a partir des images
+         //  utilise uniquement for definir les limites de l'espace
+         //  "object" a partir des images
          virtual Pt2dr ImageAndPx2Obj_NonEuclid(Pt2dr aP,const REAL * aPx) const=0;
 
-         // Fonction "fondamentale", a definir dans les derivees
+         // function "fondamentale", a definir in les derivees
          //  ne tient compte  ni du DeZoom ni du ClipImage
 // public :
          virtual Pt2dr Objet2ImageInit_NonEuclid(Pt2dr aP,const REAL * aPx) const=0;
 
-         // Indique si la geometrie connait sa Px moyenne (cas altisol
-         // des ori, si true rempli le aPxMoy; Defaut renvoie false
+         // Indique if la geometrie connait sa Px moyenne (cas altisol
+         // des ori, if true rempli le aPxMoy; Defaut renvoie false
          virtual bool GetPxMoyenne_NonEuclid(double * aPxMoy,bool MakeInvIfNeeded) const;
          virtual double GetResolMoyenne_NonEuclid() const = 0;
 };
@@ -1647,7 +1647,7 @@ class cLoadedImage
          void PostInit();
 
          Pt2di DiscTerAppli2DiscTerCorr(const Pt2di  &aPt);
-      // Encapsule le fait qu'il y a une simple translation entre les deux
+      // Encapsule le fait qu'il y a une simple translation between les deux
 
          const cPriseDeVue &  mPDV;
          const cGeomImage &   mGeomI;
@@ -1663,14 +1663,14 @@ class cLoadedImage
          TIm2DBits<1>   mTMasqImErod;
 
          // Geometrie de l'image superposable au bloc terrain,
-         // a une translation pres, pour une paralaxe donnee
+         // a une translation pres, for une paralaxe donnee
          Pt2di          mSzPtWFixe;
          Pt2di          mSzPtWMarge;
          const cGeomDiscFPx &  mGeomTerAp;
          cGeomDiscFPx   mGeomCorrelImTer;
          Pt2di          mSzCImT;
          
-     // Ca c'est un masque qui est calcule a Px donnee
+     // Ca c'est un masque qui est compute a Px donnee
          Im2D_Bits<1>       mMasqImTer;
          TIm2DBits<1>       mTMasqImTer;
          Pt2di              mDecalTer2Cor;
@@ -1706,7 +1706,7 @@ class cLoadedImage
 
 
 
-struct cOneNappePx  // dans cFilePx.cpp
+struct cOneNappePx  // in cFilePx.cpp
 {
      public :
 
@@ -1717,7 +1717,7 @@ struct cOneNappePx  // dans cFilePx.cpp
          void CalculBornesPax(Box2di aBox,INT & aVmin,INT & aVMax);
 
          cOneNappePx(int aKPx,Pt2di aSz);
-         // Calcul d'une nappe DeZoomee 
+         // computation d'une nappe DeZoomee 
          cOneNappePx
          ( 
                TIm2DBits<1> & aMasqDZ,  // Au passage on fait la
@@ -1752,9 +1752,9 @@ struct cOneNappePx  // dans cFilePx.cpp
 
     //  Data
          Pt2di      mSz;
-         Im2D_INT2  mPxRes;  // resultat
+         Im2D_INT2  mPxRes;  // result
          TIm2D<INT2,INT> mTPxRes;
-         Im2D_INT2  mPxInit;  // resultat
+         Im2D_INT2  mPxInit;  // result
          TIm2D<INT2,INT> mTPxInit;
 
          Im2D_INT2  mImPxMin;
@@ -1781,9 +1781,9 @@ struct cOneNappePx  // dans cFilePx.cpp
 
          int        mVPxMin;
          int        mVPxMax;
-  // Quand il y a redressement, les valeurs de nappes sont
+  // when il y a redressement, les valeurs de nappes sont
   // constantes [-ZDilatAlti,+ZDilatAlti], cependant il est prudent  
-  // de  conserver les valeur avant redr pour le calcul d'intervalle
+  // de  conserver les value before redr for le computation d'intervalle
          int        mVPxMinAvRedr;
          int        mVPxMaxAvRedr;
 
@@ -1794,7 +1794,7 @@ struct cOneNappePx  // dans cFilePx.cpp
          bool        mForDeZ;
 };
 
-class cLoadTer // dans cFilePx.cpp
+class cLoadTer // in cFilePx.cpp
 {
     public :
       cLoadTer(int aNbPx,Pt2di aSz,const cEtapeMecComp &);
@@ -1812,7 +1812,7 @@ class cLoadTer // dans cFilePx.cpp
       int * PxMax() ;
       // Masque utilisateur + emprise
       Im2D_Bits<1> ImMasqSsPI() const;
-      // Avec prise en compte eventuelle du masque point d'interet pour la
+      // with prise en compte eventuelle du masque point d'interet for la
       // correlation "creuse" (type point de liaison)
       Im2D_Bits<1> ImMasqTer() const;
       bool IsInMasq(const Pt2di& aP) const
@@ -1853,17 +1853,17 @@ class cLoadTer // dans cFilePx.cpp
        int             mNbPx;
        Pt2di           mSz;
 
-       Im2D_Bits<1>    mImMasqSsPI;  // Sans les points d'interets
+       Im2D_Bits<1>    mImMasqSsPI;  // without les points d'interets
 
        Im2D_Bits<1>    mImMasqTer;
        TIm2DBits<1>    mTImMasqTer;
        //  Une paralaxe courante aPx etant fixee,
-       // contient les points qui sont d'une part dans mImMasqTer et d'autre
-       // part pour lesquels aPX est dans les envellope PxMin PxMax
+       // contient les points qui sont d'une part in mImMasqTer and d'autre
+       // part for lesquels aPX est in les envellope PxMin PxMax
        Im2D_Bits<1>    mImMasqTerOfPx;
        TIm2DBits<1>    mTImMasqTerOfPx;
 
-    // Memorise si un pixel a ete mis a def corr
+    // Memorise if un pixel a ete mis a def corr
        Im2D_Bits<1>    mImOneDefCorr;
        TIm2DBits<1>    mTOneDefCorr;
 
@@ -1875,7 +1875,7 @@ class cLoadTer // dans cFilePx.cpp
 
        Im2D_U_INT1     mImCorrelSol;
        // Contient l'intersection de tout les masques image qui ont ete
-       // calcules pour une paralaxe donnee, utile pour les fenetres
+       // calcules for une paralaxe donnee, utile for les fenetres
        // exponentielles qui necessitent que tous le monde ait le meme
        // masque
        Im2D_REAL8     mSomPdsCorr;
@@ -1886,7 +1886,7 @@ class cLoadTer // dans cFilePx.cpp
        Im2D_Bits<1>   mMasqGlob;
 };
 
-// Classe support pour faciliter la lecture
+// class support for faciliter la lecture
 // de Regul, Step, DilatAlti, DilatPlani
 struct cArgOneEtapePx  
 {
@@ -1894,8 +1894,8 @@ struct cArgOneEtapePx
 
           REAL  mRegul;
           REAL  mRegul_Quad;
-          REAL  mUserPas;  // Nom Change pour verifier usage
-          REAL  mComputedPas;  // Nom Change pour verifier usage
+          REAL  mUserPas;  // Nom Change for verifier usage
+          REAL  mComputedPas;  // Nom Change for verifier usage
 
           int   mDilatAltiPlus;
           int   mDilatAltiMoins;
@@ -1931,8 +1931,8 @@ class cFilePx : public cArgOneEtapePx
 		void CreateMNTInit();
 
                 void  SetCaracOfZoom(cCaracOfDeZoom &);
-		// Renvoie true si un calcul est necessaire, c'est
-		// a dire mDilatAlti ou mDilatPlani sont != 0
+		// Renvoie true if un computation est necessaire, c'est
+		// a dire mDilatAlti or mDilatPlani sont != 0
 		bool NappeIsEpaisse() const;
 		bool IsFirtOrNappeIsEpaisse() const;
                 bool GenFile() const;
@@ -1952,12 +1952,12 @@ class cFilePx : public cArgOneEtapePx
 		int DilatPlani() const;
                 bool RedrPx() const;
 	        const std::string& NameFile() const;
-                // Initialise, sur la boite BoxIn, le contenu
+                // Initialise, on la boite BoxIn, le contenu
                 // des nappes englobantes en :
-                //    -  allant lire le fichier de resolution
-                //      inferieur (ou egale);
-                //     - effectuant le changement d'echelle
-                //     - operant les dilatations alti et plani
+                //    -  allant lire le file de resolution
+                //      inferieur (or egale);
+                //     - effectuant le changement d'scale
+                //     - operant les dilatations alti and plani
                 //       qui vont bien
                 void LoadNappeEstim 
                      (
@@ -1984,22 +1984,22 @@ class cFilePx : public cArgOneEtapePx
 	       std::string  NameFileGenSsDir(const std::string & aCompl) const;
 
 
-	       //  Fichier a partir duquel il faut 
-	       //  faire le calcul predictif
+	       //  file a partir duquel il faut 
+	       //  faire le computation predictif
                const cAppliMICMAC & mAppli;
                cEtapeMecComp & mEtape;
                cFilePx *     mPredCalc;
-               // Entier car DeZoom sont puis de 2
+               // integer car DeZoom sont puis de 2
                int           mRatioDzPrec;
                REAL          mRatioStepPrec;
                bool          mIsPseudoFirst;
 	       std::string   mNamePost;
 	       std::string   mNameFile;
-	       std::string   mNameFileRel; // Fichier relatif a la Px Init
+	       std::string   mNameFileRel; // file relatif a la Px Init
 	       Pt2di         mSzFile;
-	       bool          mGenFile;  // Faut il generer un fichier
-	       bool          mGenFileMA;  // Faut il generer un fichier uniquement
-                                          // pour le modele analytique (et donc
+	       bool          mGenFile;  // Faut il generer un file
+	       bool          mGenFileMA;  // Faut il generer un file uniquement
+                                          // for le modele analytique (and donc
                                           // a ne pas reutiliser en prediction)
                bool          mGenFileRel;  // Generation de l'ecart / a la prediction
                                            // Debug purpose
@@ -2107,14 +2107,14 @@ class cEtapeMecComp
           void Show() const;  // Debug/ MaP
           const cFilePx & KPx(int aK) const;
           // Taille , approximative, prise par l'algo
-          // par pixel image (le nombre eventuel de cellule 3D
+          // par pixel image (le number eventuel de cellule 3D
           // sera estime a partir des Dilatations)
           int MemSizePixelAlgo() const;
           const cEtapeMEC &   EtapeMEC() const;
 
           void SauvNappes (cLoadTer &,Box2di aBoxOut,Box2di aBoxIn);
 
-          // retourne le nombre de cellules creees
+          // retourne le number de cellules creees
           double LoadNappesAndSetGeom
                (
                    cLoadTer & aVNappes ,
@@ -2185,7 +2185,7 @@ class cEtapeMecComp
 
 	  void InitPaxResul(cLoadTer & aLT,const  Pt2dr & aP,double * aPx);  // Px reelles
 
-	  cEtapeMecComp *  PredPC() const; // Derniere etape avec parties cachees
+	  cEtapeMecComp *  PredPC() const; // Derniere etape with parties cachees
           bool             UsePC() const;
           bool                     IsNewProgDyn() const;
           bool                     HasMaskAuto() const;
@@ -2235,8 +2235,8 @@ class cEtapeMecComp
           bool                    mIsOptimReel;
           bool                    mGenImageCorrel;
 	  cEtapeMecComp *         mPrec;
-	  cEtapeMecComp *         mPredPC; // Derniere etape avec parties cachees
-	  cEtapeMecComp *         mPredMaskAuto; // Derniere etape a meme resol avec Mask (peut etre soit meme)
+	  cEtapeMecComp *         mPredPC; // Derniere etape with parties cachees
+	  cEtapeMecComp *         mPredMaskAuto; // Derniere etape a meme resol with Mask (peut etre soit meme)
           bool                    mUsePC;
 
           bool                    mIsNewProgDyn;
@@ -2257,15 +2257,15 @@ class cEtapeMecComp
 /*****************************************************/
 
 
-// Classe permettant de manipuler la linearisation d'une projection
-// Pour l'instant optimisee pour offrir le service du parcour
+// class permettant de manipuler la linearisation d'une projection
+// for l'instant optimisee for offrir le service du parcour
 // d'un rectangle
 class cLineariseProj
 {
      public :
          void InitLP
               (
-        // rectangle sur lequel il faut "optimiser" la linarisation
+        // rectangle on lequel il faut "optimiser" la linarisation
                    Box2di               aRasBoxTer,  
                    int *                aPxI,
                    const cGeomImage &   aGeomIm,
@@ -2306,8 +2306,8 @@ class cLineariseProj
 /*                                                   */
 /*****************************************************/
 
-// Classe utilisee pour recalculer des coefficient de correlation,
-// multi-echelle a partir œ
+// class utilisee for recalculer des coefficient de correlation,
+// multi-scale a partir œ
 //
 
 
@@ -2332,12 +2332,12 @@ class cMC_PairIm
 
 
 
-class cMatrCorresp  // Dans cModeleAnalytiqueComp.cpp
+class cMatrCorresp  // in cModeleAnalytiqueComp.cpp
 {
   public :
     cMatrCorresp(cAppliMICMAC &,Pt2di aSz,int aNBXY2);
     Output  StdHisto();
-    // La dist aNormpt a pour objet de ramener les coordonnes dans 0-1
+    // La dist aNormpt a for object de ramener les coordonnes in 0-1
     void  Normalize
           (
               const cOneModeleAnalytique &      aModele,
@@ -2353,7 +2353,7 @@ class cMatrCorresp  // Dans cModeleAnalytiqueComp.cpp
     void SetXY2(const Pt2di &,double *) const;
     // Corrige eventuellement de la distorsion
     const ElPackHomologue &   PackHomCorr() const;
-    // Brut, utilise pour verifier interiorite image
+    // Brut, utilise for verifier interiorite image
     const ElPackHomologue &   PackHomInit() const;
     const Pt2di & Sz() const;
 
@@ -2408,8 +2408,8 @@ class cModeleAnalytiqueComp  : public ElDistortion22_Gen
        const bool & Glob() const ;
        void  MakeExport();
 
-       // Filtre les  points homologues qui sont dans les point avec une tolerance de Filtre,
-       // renvoie false si tous OK avec la tolerance aTol
+       // Filtre les  points homologues qui sont in les point with une tolerance de Filtre,
+       // renvoie false if tous OK with la tolerance aTol
        bool  FiltragePointHomologues
              (const ElPackHomologue & aPackInit,ElPackHomologue & aNewPack, double aTol,double aFiltre);
        void  LoadMA();
@@ -2436,7 +2436,7 @@ class cModeleAnalytiqueComp  : public ElDistortion22_Gen
         Fonc_Num ImPx(int aK);
         std::string NameFile
                     (
-                         bool  DirMec,  // Si pas Dir MEC, alors Dir Geom
+                         bool  DirMec,  // if pas Dir MEC, then Dir Geom
                          const std::string & aName,
                          const std::string & aPost
                     );
@@ -2547,9 +2547,9 @@ class cGeomTerWithMNT2Image : public ElDistortion22_Gen
 };
 
 
-// Pour enregistrer les etats interne de la simulations sans avoir
-// a les passer en arg et tout en les isolant du reste, on en fait une
-// classe dont on herite
+// for enregistrer les etats interne de la simulations without avoir
+// a les passer en arg and tout en les isolant du reste, on en fait une
+// class dont on herite
 
 class cStateSimul
 {
@@ -2575,7 +2575,7 @@ class cStateSimul
          Tiff_Im *                    mTifText;
 };
 
-// pour extraire le kieme bit d'un tableau de bits compactes 
+// for extraire le kieme bit d'un array de bits compactes 
 // selon les conventions MicMac
 
 inline   bool GET_Val_BIT(const U_INT1 * aData,int anX)
@@ -2588,11 +2588,11 @@ template <class Type> static Type QSquare(const Type & aV) {return aV*aV;}
 
 
 // ============================================================
-// Classe pour  representer de maniere minimaliste une image
-// (acces a ses valeurs et fonction de projection)
+// class for  representer de maniere minimaliste une image
+// (acces a ses valeurs and function de projection)
 //
-// Sert aussi pour stocker les info temporaires relatives a chaque
-// image (par ex le vecteur des radiometrie dans le voisinage courant)
+// Sert aussi for stocker les info temporaires relatives a chaque
+// image (par ex le vector des radiometrie in le voisinage courant)
 // ============================================================
 
 typedef REAL4 tGpuF;
@@ -2628,19 +2628,19 @@ class   cGPU_LoadedImGeom
              bool Top
         );
 
-        // En cas de geometrie image renvoie l'offset entre le 00 du terrain local et la geom image
+        // En cas de geometrie image renvoie l'offset between le 00 du terrain local and la geom image
         // chargee
         Pt2di OffsetIm();
 
-//  Est-ce que un point terrain est visible (si l'option des parties cachees
+//  Est-ce que un point terrain est visible (if l'option des parties cachees
 //  a ete activee)
        bool  IsVisible(int anX,int anY) const
        {
              return   (!mUsePC) || (mImPC[anY][anX] <mSeuilPC);
        }
 
-// Est ce qu'un point image est dans le domaine de definition de l'image
-// (dans le rectangle + dans le masque)
+// Est ce qu'un point image est in le domaine de definition de l'image
+// (in le rectangle + in le masque)
 
       bool IsOk(double aRX,double aRY)
       {
@@ -2861,20 +2861,20 @@ class   cGPU_LoadedImGeom
        
          
 
-    //  tampon pour empiler les valeur de l'image sur un voisinage ("imagette")
+    //  tampon for empiler les value de l'image on un voisinage ("imagette")
         std::vector<double>  mVals;
 
     //  zone de donnee : "l'image" elle meme en fait
 
         float ***        mDataIm;
         float **         mLinDIm;
-    //  Masque Image (en geometrie image)
+    //  Masque image (en geometrie image)
         int              mSzX;
         int              mSzY;
         U_INT1**         mImMasq;
         U_INT1**         mImMasqErod;
 
-   // Parties cachee :  masque image (en geom terrain), Seuil  et usage 
+   // Parties cachee :  masque image (en geom terrain), Seuil  and usage 
        U_INT1 **          mImPC;
        int                mSeuilPC;
        bool               mUsePC;
@@ -2911,8 +2911,8 @@ class cAppliMICMAC  : public   cParamMICMAC,
         cMakeMaskImNadir * MMImNadir() const;
 
 
-     // Pour borner a priori la taille memoire prise par certains algos, on a besoin de savoir
-     // le nombre d'image, avant de charge le terrain, c'est donc approximatif et putot majorant
+     // for borner a priori la taille memoire prise par certains algos, on a besoin de savoir
+     // le number d'image, before de charge le terrain, c'est donc approximatif and putot majorant
      int NbApproxVueActive();
 
       void DoMasqueAutoByTieP(const Box2di& aBox,const cMasqueAutoByTieP & aMATP);
@@ -2925,17 +2925,17 @@ class cAppliMICMAC  : public   cParamMICMAC,
 
       double AdaptPas(double) const;
       cStatGlob  * StatGlob();
-      bool WM() const;  // Avec Message
+      bool WM() const;  // with Message
 
       // Charge en RAM un version reduite en resol des champs de px, corrige
-      // des zoom et pas:  aResol / a Resol 1
+      // des zoom and pas:  aResol / a Resol 1
       cDblePx LoadPx(cEtapeMecComp & anEtape,double aResol);
 
 
      Pt3dr  GetPtMoyOfOri(ElCamera * anOri) const;
-// Ces classes devraient etre des membres ou des parents de 
-// cAppliMICMAC, pour alleger le code elles sont deportees
-// dans des fichiers a part.
+// Ces classes devraient etre des membres or des parents de 
+// cAppliMICMAC, for alleger le code elles sont deportees
+// in des fichiers a part.
        friend class cOptimDiffer;
        friend class cMicMacVisu;
 
@@ -2956,7 +2956,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
         typedef std::list<cTypePyramImage> tContTPyr;
         typedef tContTPyr::const_iterator   tCsteIterTPyr;
 
-        // Creation par ligne de commande
+        // Creation par line de commande
         static cAppliMICMAC * Alloc(int argc,char ** argv,eModeAllocAM aMode);
 	~cAppliMICMAC();
 
@@ -2964,7 +2964,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
         Tiff_Im FileMasqOfResol(int aDeZoom) ;
         Pt2di   SzOfResol(int aDeZoom);
         // Integre le FileMasqOfResol qui est un carac du chantier
-        // et un eventuel masque de point d'interet qui est une 
+        // and un eventuel masque de point d'interet qui est une 
         // carac de la MEC
            Fonc_Num    FoncSsPIMasqOfResol(int aDz);
            Fonc_Num    FoncMasqOfResol(int aDz);
@@ -3033,9 +3033,9 @@ class cAppliMICMAC  : public   cParamMICMAC,
 
 
 
-        // Valeur Speciale Not Image
+        // value Speciale Not image
         bool HasVSNI() const;  // Est-ce qu'il y en a une
-        int  VSNI() const; // Renvoie 0 si pas de VSNI
+        int  VSNI() const; // Renvoie 0 if pas de VSNI
 
 	// typedef tContPDV::iterator          tIterFI;
         tCsteIterPDV PdvBegin() const;
@@ -3100,7 +3100,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
              (
                   const cPxSelector &,
                   const Box2di & aBoxInterne
-             );  // Dans cAppliMICMAC_MEC.cpp
+             );  // in cAppliMICMAC_MEC.cpp
 
 	 bool  CurWSpecUseMasqGlob() const;
          int   CurNbIterFenSpec() const;
@@ -3171,7 +3171,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
         cCaracOfDeZoom * GetCaracOfDZ(int aDZ) const;
 
         const cInterfaceVisualisation * PtrVI() const ;
-        void  AnalyseOri(CamStenope *  ) const; // Pour evt corr Orig Tgt Loc
+        void  AnalyseOri(CamStenope *  ) const; // for evt corr Orig Tgt Loc
         cInterfModuleImageLoader *  LoaderFiltre
                                     (
                                        cInterfModuleImageLoader * aLoaderBase,
@@ -3211,7 +3211,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
         static const int theNbImageMaxAlgoRapide = 3; 
 	cAppliMICMAC (const cAppliMICMAC  &);     // N.I.
 
-	//  Calcul de la taille memoire a priori d'un process
+	//  computation de la taille memoire a priori d'un process
 
 	int MemSizePixelImage() const;
 	double MemSizeProcess(int aTxy) const;
@@ -3253,7 +3253,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
         void VerifTPyr() const;
         void VerifImages() const;
 
-	// Ajoute une image sous reserve qu'elle n'existe pas encore
+	// Ajoute une image under reserve qu'elle n'existe pas encore
 	void AddAnImage(const std::string & aName);
 	// Ajoute toutes les images de WorkDir filtree par le patter,
 	void PatternAddImages(const std::string & aPatternName);
@@ -3317,17 +3317,17 @@ class cAppliMICMAC  : public   cParamMICMAC,
         void GenereOrientationMnt(cEtapeMecComp *);
         void SauvParam();
         void MakeFileFDC();
-	void DoAllMEC();  // Dans cAppliMICMAC_MEC.cpp
-        // OneEtapeSetCur fait ce qui est necessaire pour la generation de
-        // resultats, meme si il n'y a pas de MEC
+	void DoAllMEC();  // in cAppliMICMAC_MEC.cpp
+        // OneEtapeSetCur fait ce qui est necessaire for la generation de
+        // resultats, meme if il n'y a pas de MEC
         void OneEtapeSetCur(cEtapeMecComp & anEtape);
-	void DoOneEtapeMEC(cEtapeMecComp &);  // Dans cAppliMICMAC_MEC.cpp
-	std::string PrefixGenerikRecalEtapeMicmMac(cEtapeMecComp &);  // Dans cAppliMICMAC_MEC.cpp
+	void DoOneEtapeMEC(cEtapeMecComp &);  // in cAppliMICMAC_MEC.cpp
+	std::string PrefixGenerikRecalEtapeMicmMac(cEtapeMecComp &);  // in cAppliMICMAC_MEC.cpp
 	void DoOneBloc( const Box2di & aBoxOut,
 			const Box2di & aBoxIn,
                         int aNiv,
 			const Box2di & aBoxGlob
-                      );  // Dans cAppliMICMAC_MEC.cpp
+                      );  // in cAppliMICMAC_MEC.cpp
 
 
 
@@ -3415,7 +3415,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
         mutable cElRegex *                       mAutomNomPyr;
 
 	//  - -  - - - - - - - - - - - - -
-        // Directories completes pour la mise en corresp,
+        // Directories completes for la mise en corresp,
 	// les pyramides
 	//  - -  - - - - - - - - - - - - -
 	std::string             mFullDirMEC;
@@ -3430,12 +3430,12 @@ class cAppliMICMAC  : public   cParamMICMAC,
 	tContEMC                mEtapesMecComp;
         cEtapeMecComp *         mEtape00;  // "fausse etape", pas executee
                                 // permet d'amorcer le processus multi-resol
-				// elle contient un fichier de 0, (ou + tard un MNT
+				// elle contient un file de 0, (or + tard un MNT
 				// predictif)
 
-        cEtapeMecComp *         mCurEtape; // Pour eviter de la passer
-        cEtapeMecComp *         mPrecEtape; // Pour eviter de la passer
-                                // tout le temps en parametre
+        cEtapeMecComp *         mCurEtape; // for eviter de la passer
+        cEtapeMecComp *         mPrecEtape; // for eviter de la passer
+                                // tout le temps en parameter
          const cEtiqBestImage *  mEBI;
 
          bool                   mIsOptDiffer;
@@ -3445,9 +3445,9 @@ class cAppliMICMAC  : public   cParamMICMAC,
 
          cCaracOfDeZoom *       mCurCarDZ;
          cModeleAnalytiqueComp * mCurMAI;
-	 // Avant les fenetre exponentielle il y a avait une seule SzW de type int
-	 // Maintenant, avec des fentre normales, on a mSzWFixe = mSzWMarge (=ancien mSzW)
-	 // Avec des fenetre exponentielles, on a mSzWMarge = 3 * mSwR
+	 // before les fenetre exponentielle il y a avait une seule SzW de type int
+	 // Maintenant, with des fentre normales, on a mSzWFixe = mSzWMarge (=ancien mSzW)
+	 // with des fenetre exponentielles, on a mSzWMarge = 3 * mSwR
 	 //  mSzWMarge => mPtSzWMarge
          Pt2dr                  mSzWR;
          eTypeWinCorrel         mCurTypeWC;
@@ -3480,7 +3480,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
         Box2di                  mBoxIn;
         Box2di                  mBoxOut;
         Box2di                  mBoxInterne;
-          // Variable pour l'exploration de mBoxInterne
+          // Variable for l'exploration de mBoxInterne
         Pt2di                   mCurPterI;
         Box2di                  mCurBoxW;  // Boite lie a la fenetre de correl
         int                     mCurPxI[theDimPxMax];
@@ -3509,7 +3509,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
         double  mNbPointByRectGen;
         double  mNbPointsIsole;
 
-        // Calcul du cout de calcul
+        // computation du cout de computation
 
         double mCostBilin;  // 1 c'est l'etalon
 	double mCostSinCardElem;
@@ -3519,12 +3519,12 @@ class cAppliMICMAC  : public   cParamMICMAC,
         double mCostTabul; 
 
 
-        double   mCostEc;  // Cout calcul Moyenn+Ec
-        double   mCostCov;  // Cout calcul SXY
+        double   mCostEc;  // Cout computation Moyenn+Ec
+        double   mCostCov;  // Cout computation SXY
         double   mCostCorrel2Im;  // Cout / pixel
         double   mCostCorrel3Im;  // Cout / pixel
-        double   mCostCorrel1ImOnNSsEc;  // Cout / pixel / Image , ss Ecart
-        double   mCostCorrel1ImOnN;  // Cout / pixel / Image , avec Ecart
+        double   mCostCorrel1ImOnNSsEc;  // Cout / pixel / image , ss Ecart
+        double   mCostCorrel1ImOnN;  // Cout / pixel / image , with Ecart
         double   mCostGeom;  // Cout des projection Geom
         
 
@@ -3547,8 +3547,8 @@ class cAppliMICMAC  : public   cParamMICMAC,
         int mDeZoomMin;
         std::vector<cCaracOfDeZoom *> mVCaracZ;
          
-        int mFreqPtsInt;  // 1 si pas de Pts d'interet
-        // Indique si a la courante etape il y a une acceleration speciale
+        int mFreqPtsInt;  // 1 if pas de Pts d'interet
+        // Indique if a la courante etape il y a une acceleration speciale
         // en partique, c'est equivalent a etre en eGeomMECIm1
         bool mCSAccelIm1;
 
@@ -3567,14 +3567,14 @@ class cAppliMICMAC  : public   cParamMICMAC,
 	int    mDeZoomFilesAux;
 
 
-        //  Variables utilisee dans les correls Ad Hoc
+        //  Variables utilisee in les correls Ad Hoc
 
            void DoInitAdHoc(const Box2di & aBox);
-           // Si pas FirstZ de la colone et Im1 maitresse, pas la peine
+           // if pas FirstZ de la colone and Im1 maitresse, pas la peine
            // de reinitialiser 
            bool InitZ(int aZ,eModeInitZ aMode);
 
-  // Permet entre autre d'optimiser pour geom image maitresse
+  // Permet between autre d'optimiser for geom image maitresse
            bool mFirstZIsInit;
 
            Pt2di mSzGlobTer;
@@ -3631,8 +3631,8 @@ class cAppliMICMAC  : public   cParamMICMAC,
            std::vector<U_INT1 *>  mVDOkTerDil;
            U_INT1 **              mDOkTerDil;
 
-           // Besoin comme cas special sur image 1 maitresse pour forcer
-           // le calcul sur premiere nappe
+           // Besoin comme cas special on image 1 maitresse for forcer
+           // le computation on premiere nappe
            Im2D_U_INT1            mAll1ImOkTerDil;
            TIm2D<U_INT1,INT>      mAll1TImOkTerDil;
            std::vector<U_INT1 *>  mAll1VDOkTerDil;
@@ -3661,7 +3661,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
            INT2 ** mTabZMax;
            U_INT1 **  mTabMasqTER;
 
-           // Param pour la quantification
+           // Param for la quantification
            Pt2dr mOriPlani;
            Pt2dr mStepPlani;
            double mOrigineZ;
@@ -3687,14 +3687,14 @@ class cAppliMICMAC  : public   cParamMICMAC,
         mutable bool   mOriPtLoc_Read; // ConvertToSameOriPtTgtLoc fait
 
         cStdMapName2Name *  mMapEquiv;
-        // Pour "deformation" de la geometrie de calcul
+        // for "deformation" de la geometrie de computation
         cInterfSurfaceAnalytique * mAnamSA;
         cXmlOneSurfaceAnalytique * mXmlAnamSA;
         std::string                mNameAnamSA;
         cChCoCart *  mRepCorrel;
         cChCoCart *  mRepInvCorrel;
 
-       // Utilitaire pour le DoNothingBut
+       // Utilitaire for le DoNothingBut
        bool DoNotMemPart() const;
        bool DoNotTA() const;
        bool DoNotMasqChantier() const;
@@ -3726,7 +3726,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
        void SimulateOneBoxPDV(cPriseDeVue & aPDV,Tiff_Im * aTifIm,Tiff_Im * aFileMNT);
 
 
-       //  Pour le calcul de masque par tie points
+       //  for le computation de masque par tie points
       
       
        
@@ -3763,7 +3763,7 @@ class cAppliMICMAC  : public   cParamMICMAC,
 
          void ResetCalRad();
          
-       // Pour debug MM TieP
+       // for debug MM TieP
          cMasqBin3D *           mGLOBMasq3D;
          cElNuage3DMaille*      mGLOBNuage;
          const cMultiCorrelPonctuel * mMCP;
@@ -3868,7 +3868,7 @@ void GenTFW(const cFileOriMnt & aFOM,const std::string & aName);
 
 void TestGeomTer(const cFileOriMnt & aFOM,const std::string & aMessage);
 
-// Fonction extern pour appel depuis CPU ou GPU
+// function extern for appel depuis CPU or GPU
 void CombleTrouPrgDyn (
          const cModulationProgDyn & aPrgD,
          Im2D_Bits<1>  aMaskCalc,
@@ -3876,7 +3876,7 @@ void CombleTrouPrgDyn (
          Im2D_INT2     aImZ
      );
 
-// Fonction du ratio compris entre -1 et 1; 0 qd egaux
+// function du ratio compris between -1 and 1; 0 qd egaux
 double EcartNormalise(double aI1,double aI2);
 
 

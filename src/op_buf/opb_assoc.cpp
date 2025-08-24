@@ -363,10 +363,10 @@ Red_Ass_OPB_No_Comp::Red_Ass_OPB_No_Comp
 {
 /*
    // Les operateur Buf etant implantes de manieres telle qu'il modifient
-   // l'entre pour calculer la sortie, on ne peut pas utiliser pour
+   // l'between for compute la sortie, on ne peut pas utiliser for
    // l'instant l'option de concatenation de l'entree
    //
-   //  Pour l'instant on inhibe, on verra + tard
+   //  for l'instant on inhibe, on verra + tard
 
    Tjs_El_User.Assert
    (

@@ -236,7 +236,7 @@ class cAppli_GenPTripleOneImage : public cCommonMartiniAppli
 {
       public :
            cAppli_GenPTripleOneImage(int argc,char ** argv);
-           // Genere des homologues, filtre A/R et flottants
+           // Genere des homologues, filtre A/R and flottants
            void GenerateHomFloat();
            void GenerateTriplets();
       private :
@@ -346,7 +346,7 @@ void cAppli_GenPTripleOneImage::GenerateTriplets()
    if (!mSkWhenExist)  std::cout << "GeneratePointTriple " << mCam->Name() << "\n";  // !mSkWhenExist ~ mise au point
 
 
-   /* Charge les points correspond a tous les homologues avec le "master" */
+   /* Charge les points correspond a tous les homologues with le "master" */
 
    mVP1.resize(mVCams.size());
    mVP2.resize(mVCams.size());
@@ -355,8 +355,8 @@ void cAppli_GenPTripleOneImage::GenerateTriplets()
        mNM->LoadHomFloats(mCam,mVCams[aKC],&(mVP1[aKC]),&(mVP2[aKC]));
    }
 
-   /* parcour tout les couple d'images ne contenant pas le master, pour generer
-      les triplets avec le master */
+   /* parcour tout les couple d'images ne contenant pas le master, for generer
+      les triplets with le master */
    for (int aKC1=1 ; aKC1<int(mVCams.size()) ; aKC1++)
    {
       for (int aKC2=aKC1+1 ; aKC2<int(mVCams.size()) ; aKC2++)
@@ -391,7 +391,7 @@ void  cAppli_GenPTripleOneImage::GenerateTriplet(int aKC1,int aKC2)
     std::string aName3 = mNM->NameHomTriplet(mCam,mVCams[aKC1],mVCams[aKC2]);
     if (mSkWhenExist && ELISE_fp::exist_file(aName3)) return;
 
-    // Lit le dernier vecteur de point homologue qui manquait
+    // Lit le dernier vector de point homologue qui manquait
     std::vector<Pt2df> aVP1In;
     std::vector<Pt2df> aVP2In;
     mNM->LoadHomFloats(mVCams[aKC1],mVCams[aKC2],&aVP1In,&aVP2In);
@@ -425,7 +425,7 @@ void  cAppli_GenPTripleOneImage::GenerateTriplet(int aKC1,int aKC2)
        aMap.Delete();
        return;
     }
-    // Sauvegarde les triplet si assez
+    // Sauvegarde les triplet if assez
 
     mNM->WriteTriplet(aName3,aVP1Exp,aVP2Exp,aVP3Exp,aVNb);
 
@@ -609,7 +609,7 @@ int PreGenerateDuTriplet(int argc,char ** argv,const std::string & aComIm)
     return EXIT_SUCCESS;
 }
 
-/* Apparemment cette fonction n'est pas appelle dans la chaine */
+/* Apparemment cette function n'est pas appelle in la string */
 
 int CPP_GenAllHomFloat(int argc,char ** argv)
 {
@@ -626,7 +626,7 @@ int CPP_GenAllImP3(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -642,17 +642,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

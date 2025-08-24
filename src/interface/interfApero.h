@@ -25,19 +25,19 @@ class ParamApero;
 
 
 class MasqueWidget : public QWidget
-//classe qui regroupe les GroupBox utiles pour saisir le masque (utilisées par interfMicmac->maskTab, interfMicmac->repereTab et par interfApero->referenceTabA)
+//class qui regroupe les GroupBox utiles for saisir le masque (utilisées par interfMicmac->maskTab, interfMicmac->repereTab and par interfApero->referenceTabA)
 {
 	Q_OBJECT
 
 	public:
-		MasqueWidget(const ParamMain* param, Assistant* help, bool mm=false, bool mmasq=false, QPushButton* vue3DButton=0, const QString& image=QString(), const QString& postfx=QString("_MasqPlan"));	//si TA, image=imageFond=chemin complet
+		MasqueWidget(const ParamMain* param, Assistant* help, bool mm=false, bool mmasq=false, QPushButton* vue3DButton=0, const QString& image=QString(), const QString& postfx=QString("_MasqPlan"));	//if TA, image=imageFond=chemin complet
 		~MasqueWidget();
 
 		enum Mode { Begin, Image, NewMasque, OpenMasque, Enreg };
 
 		QGroupBox* getMasqueBox();
 		const Mode& getCurrentMode() const;
-		void setImageFond(const QString& img);	//nom sans le chemin
+		void setImageFond(const QString& img);	//nom without le chemin
 		static QString convert2Rgba(const QString& tuiledFile, bool toMask, const QString& newFile=QString());
 		void updateParam(ParamApero* parametres);
 
@@ -93,7 +93,7 @@ class DirectionWidget : public QWidget
 	Q_OBJECT
 
 	public :
-		DirectionWidget(const ParamMain* pMain, const QStringList & liste, Assistant* help, const std::pair<QString,QString>& imgPrec/*=std::pair<QString,QString>()*/, int N/*=2*/, const std::pair<QPoint,QPoint>& ptsPrec/*=std::pair<QPoint,QPoint>(QPoint(-1,-1),QPoint(-1,-1))*/, const QPoint& axePrec=QPoint(1,0));
+		DirectionWidget(const ParamMain* pMain, const QStringList & list, Assistant* help, const std::pair<QString,QString>& imgPrec/*=std::pair<QString,QString>()*/, int N/*=2*/, const std::pair<QPoint,QPoint>& ptsPrec/*=std::pair<QPoint,QPoint>(QPoint(-1,-1),QPoint(-1,-1))*/, const QPoint& axePrec=QPoint(1,0));
 		~DirectionWidget();
 
 		QGroupBox* getBox();
@@ -132,7 +132,7 @@ class EchelleWidget : public QWidget
 	Q_OBJECT
 
 	public :
-		EchelleWidget(const ParamMain* pMain, int N, const QStringList & liste1, const QStringList & liste2, Assistant* help, const std::pair<QVector<QString>,QVector<QPoint> > & paramPrec/*=std::pair<QVector<QString>,QVector<QPoint> >()*/, double mesPrec=0);	//pour micmac ortho : liste1=MNT, liste2=ortho
+		EchelleWidget(const ParamMain* pMain, int N, const QStringList & liste1, const QStringList & liste2, Assistant* help, const std::pair<QVector<QString>,QVector<QPoint> > & paramPrec/*=std::pair<QVector<QString>,QVector<QPoint> >()*/, double mesPrec=0);	//for micmac ortho : liste1=MNT, liste2=ortho
 		~EchelleWidget();
 
 		QGroupBox* getBox();
@@ -164,7 +164,7 @@ class EchelleWidget : public QWidget
 
 class ImgToOriTabA : public QWidget
 {
-//onglet pour la saisie de l'image maîtresse
+//onglet for la saisie de l'image maîtresse
 	Q_OBJECT
 
 	public:
@@ -193,7 +193,7 @@ class ImgToOriTabA : public QWidget
 
 class MaitresseTabA : public QWidget
 {
-//onglet pour la saisie de l'image maîtresse
+//onglet for la saisie de l'image maîtresse
 	Q_OBJECT
 
 	public:
@@ -218,7 +218,7 @@ class MaitresseTabA : public QWidget
 
 class ReferenceTabA : public QScrollArea
 {
-//onglet pour le référencement partiel ou total
+//onglet for le référencement partiel or total
 	Q_OBJECT
 
 	public:
@@ -302,7 +302,7 @@ class ReferenceTabA : public QScrollArea
 
 class OriInitTabA : public QWidget
 {
-//onglet pour la saisie des orientations initiales
+//onglet for la saisie des orientations initiales
 	Q_OBJECT
 
 	public:
@@ -327,7 +327,7 @@ class OriInitTabA : public QWidget
 
 class AutoCalibTabA : public QWidget
 {
-//onglet pour la saisie de l'image maîtresse
+//onglet for la saisie de l'image maîtresse
 	Q_OBJECT
 
 	public:
@@ -360,7 +360,7 @@ class AutoCalibTabA : public QWidget
 
 class MultiEchelleTabA : public QWidget
 {
-//onglet pour le traitement multiéchelle par bloc
+//onglet for le traitement multiéchelle par bloc
 	Q_OBJECT
 
 	public:
@@ -383,7 +383,7 @@ class MultiEchelleTabA : public QWidget
 
 class LiberCalibTabA : public QWidget
 {
-//onglet pour le libérer les calibrations (une calibration différente par image)
+//onglet for le libérer les calibrations (une calibration différente par image)
 	Q_OBJECT
 
 	public:
@@ -402,7 +402,7 @@ class LiberCalibTabA : public QWidget
 
 class PtsHomolTabA : public QWidget
 {
-//onglet pour le libérer les calibrations (une calibration différente par image)
+//onglet for le libérer les calibrations (une calibration différente par image)
 	Q_OBJECT
 
 	public:
@@ -490,18 +490,18 @@ class UserOrientation {
 		QPoint point1;
 		QPoint point2;
 		QPoint axe;
-			//echelle
+			//scale
 		bool fixEchelle;	//il doit au moins y avoir soit plan+direction soit l'échelle de fixé
 		QVector<QPoint> points;	//point1 img1, point2 img1, point1 img2, point2 img2
 		QVector<QString> images;
 		double distance;
 		//orientation absolue d'une image
 		QString imageGeoref;	//image géoréférencée
-		QString georefFile;	//si par un fichier (chemin complet)
-		QVector<REAL> centreAbs;	//si saisis
+		QString georefFile;	//if par un file (chemin complet)
+		QVector<REAL> centreAbs;	//if saisis
 		QVector<REAL> rotationAbs;
 		//géoréférencement
-		QString pointsGPS;	//coordonnées GPS des points d'appui (méthode 3) ou fichier/dossier des sommets GPS (méthode 4)
+		QString pointsGPS;	//coordonnées GPS des points d'appui (méthode 3) or file/folder des sommets GPS (méthode 4)
 		QString appuisImg;
 };
 class ParamApero

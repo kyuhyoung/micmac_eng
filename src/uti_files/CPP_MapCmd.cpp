@@ -52,7 +52,7 @@ mm3d MapCmd ScaleIm  "P=./(IMG_020[0-4]).CR2" 4 F8B=true FG=true M=MKScale "T=\$
 // N Niv
 // M  Makefile
 // K  
-// A ->  Ne Rajoute pas la directory dans le C=
+// A ->  Ne Rajoute pas la directory in le C=
 // C  Change
 // T Target
 // c  Change+Target:
@@ -76,7 +76,7 @@ int MapCmd_main(int argc,char ** argv)
       exit(0);
    }
 // K  
-// A ->  Ne Rajoute pas la directory dans le C=
+// A ->  Ne Rajoute pas la directory in le C=
 // C  Change
 // T Target
 // c  Change+Target:

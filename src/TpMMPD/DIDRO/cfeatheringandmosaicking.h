@@ -101,7 +101,7 @@ class  cFeatheringAndMosaicOrtho : public cMyICNM
 
     Box2di mBox; // box en pixel
     Box2di mDilat;  // dilatation buffer to remove prior result writing
-    Box2di mBox2Save; //box sans la dilatation
+    Box2di mBox2Save; //box without la dilatation
 
     private:
     std::map<int, cImGeo*>      mIms; // key=label

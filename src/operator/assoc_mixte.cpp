@@ -344,7 +344,7 @@ template <class elem,class Type> void tpl_red_seg<elem,Type>::f
     X_min = x_min + dx0;
     X_max = x_max + dx1;
 
-    // une passe en avant;
+    // une passe en before;
 
     INT4 x; // FUUUCCKKK to visual
 
@@ -685,8 +685,8 @@ ElTmplSpecNull const char * OpMIxteTpl<plus_elem>::name() const
     return "OpSum";
 }
 // Initialisation ici, car initialisation par OpMin est
-// source d'erreur (= depend de l'ordre choisie). Ici
-// en le faisant sur l'adresse d'un objet ca marche
+// source d'error (= depend de l'ordre choisie). Ici
+// en le faisant on l'adresse d'un object ca marche
 // car c'est en fait une constante (resolue a l'edition
 // de lien)
 
@@ -741,7 +741,7 @@ const OperAssocMixte & min_elem::optab
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -757,17 +757,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

@@ -313,7 +313,7 @@ class Arg_Prg_Dyn
 
          );
 
-         // donne leur valeur a  _max_dz et _cost_dz 
+         // donne leur value a  _max_dz and _cost_dz 
          // en supposant que l'on va balayer selon des lignes
          // de direction dir
 
@@ -341,9 +341,9 @@ class Arg_Prg_Dyn
          Im2D_INT4             _cost;
 
 
-        // arguments donnes en coord terrain, converti en coordonnees cube
-        // _fact_mul_cts : permet de garder une cerraine precision apres
-        // la convertion a 5 valeur des prg dyn
+        // arguments donnes en coord terrain, converti en coordinates cube
+        // _fact_mul_cts : permet de garder une cerraine precision after
+        // la convertion a 5 value des prg dyn
 
 
 

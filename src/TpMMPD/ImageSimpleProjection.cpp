@@ -84,14 +84,14 @@ cISR_ColorImg::~cISR_ColorImg()
     delete mImgBT;
 } 
 
-cISR_Color cISR_ColorImg::get(Pt2di pt) // the method get() return an objet "color" point
+cISR_Color cISR_ColorImg::get(Pt2di pt) // the method get() return an object "color" point
 {
     return cISR_Color(mImgRT->get(pt,0),mImgGT->get(pt,0),mImgBT->get(pt,0));
 }
 
 cISR_Color cISR_ColorImg::getr(Pt2dr pt)
 {
-    // get (pt, 0) est plus robuste que get (pt), retourne 0 si le point est hors images
+    // get (pt, 0) est plus robuste que get (pt), retourne 0 if le point est hors images
     return cISR_Color(mImgRT->getr(pt,0),mImgGT->getr(pt,0),mImgBT->getr(pt,0));
 }
 
@@ -149,7 +149,7 @@ cISR_ColorImg  cISR_ColorImg::ResampleColorImg(double aFact)
 /*                                                                  */
 /********************************************************************/
 
-// constructor of class ISR Image
+// constructor of class ISR image
 cISR_Ima::cISR_Ima(cISR_Appli & anAppli,const std::string & aName,int aAlti,int aDZ, std::string & aPrefix,bool aQuick) :
     mAlti   (aAlti),
     mZTerrain (0),
@@ -309,7 +309,7 @@ void cISR_Ima::InitGeomTerrain()
     // get the pseudo optical center of the camera (position XYZ of the optical center)
     Pt3dr OC=mCam->PseudoOpticalCenter();
     mZTerrain=static_cast<int>(OC.z-mAlti);
-    // des fois l'info alti est notée dans mCam mais pas l'info Profondeur. c'est peut-etre uniquement le cas pour les mauvais orientation
+    // des fois l'info alti est notée in mCam but pas l'info Profondeur. c'est peut-etre uniquement le cas for les mauvais orientation
     //if (mZTerrain<0) (mZTerrain=static_cast<int>(OC.z-mCam->GetAlti()));
     if (mZTerrain<0) {
         std::cout << "For Image  " << this->mName  << " \n";
@@ -352,7 +352,7 @@ void cISR_Ima::InitGeomTerrain()
 void cISR_Ima::Estime4PtsProjectiveTransformation()
 {
     //   R3 : coordonné terrain absolue
-    //   L3 : coordonné terrain dans repere camera
+    //   L3 : coordonné terrain in repere camera
     //   C2 : coordonné 2D caméra
     //   F2 : coordonné 2D image
     //
@@ -435,20 +435,20 @@ void cISR_Ima::RectifyByProjectiveTransformation(vector<Pt2dr> aVp, vector<Pt3dr
     double g2 = aParamProj[7];
 
         // convertir coins image metrique aux coins image pixel
-            // calcul GSD :
+            // computation GSD :
             double aGSDInit = mCam->ResolutionAngulaire() * mCam->GetProfondeur(); // (tan(resolAngulaire) = ResolSol/H = reslAngulaire : parce que reslAngulaire est petit)
             cout<<" + GSD : "<<aGSDInit<<endl; // metre/pixel
             // Box sol :
             Pt2dr aBoxSolMin(ElMin4(aVP[0].x,aVP[1].x,aVP[2].x,aVP[3].x), ElMin4(aVP[0].y,aVP[1].y,aVP[2].y,aVP[3].y));
             Pt2dr aBoxSolMax(ElMax4(aVP[0].x,aVP[1].x,aVP[2].x,aVP[3].x), ElMax4(aVP[0].y,aVP[1].y,aVP[2].y,aVP[3].y));
             cout<<"Box sol : "<<aBoxSolMin<<aBoxSolMax<<aBoxSolMax-aBoxSolMin<<endl;
-            // Determiner offset georef et taille d'image rectifié :
+            // Determiner offset georef and taille d'image rectifié :
             Pt2dr offset(aBoxSolMin.x, -aBoxSolMax.y);
             Pt2dr sZImRecMetric(aBoxSolMax-aBoxSolMin);
             Pt2di sZImRecPxl((aBoxSolMax-aBoxSolMin)/aGSDInit);
             cout<<"offset : "<<offset<<" , sZRec : "<<sZImRecPxl<<" , sZOrg : "<<mCam->SzPixel()<<endl;
 
-        // parcourir espace terrain, puis chercher point sur terrain par la projective
+        // parcourir espace terrain, puis chercher point on terrain par la projective
         Pt2di apImg(0,0);
         Pt2di aSz(mCam->SzPixel());
         cISR_ColorImg ImCol(mNameTiff.c_str());
@@ -527,7 +527,7 @@ void cISR_Ima::RectifyByHomography()
     Pt2dr aBoxSolMin(ElMin4(aVP[0].x,aVP[1].x,aVP[2].x,aVP[3].x), ElMin4(aVP[0].y,aVP[1].y,aVP[2].y,aVP[3].y));
     Pt2dr aBoxSolMax(ElMax4(aVP[0].x,aVP[1].x,aVP[2].x,aVP[3].x), ElMax4(aVP[0].y,aVP[1].y,aVP[2].y,aVP[3].y));
     //cout<<"Box sol : "<<aBoxSolMin<<aBoxSolMax<<aBoxSolMax-aBoxSolMin<<endl;
-    // Determiner offset georef et taille d'image rectifié :
+    // Determiner offset georef and taille d'image rectifié :
     Pt2dr offset(aBoxSolMin.x, -aBoxSolMax.y);
     Pt2di aPImg;
     // compute homographie by 100 points

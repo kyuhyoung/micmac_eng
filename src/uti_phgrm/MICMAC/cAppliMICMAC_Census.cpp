@@ -62,7 +62,7 @@ static int VX[4] = {1,1,0,-1};
 static int VY[4] = {0,1,1,1};
 
 // Structure optimisee lorsque l'on veut interpoler 
-// une image plusieur fois avec le meme X
+// une image plusieur fois with le meme X
 class cQckInterpolEpip
 {
     public :
@@ -129,7 +129,7 @@ class cOnePCGr
 class cCensusGr
 {
     public :
-       // FactDepond =>  0 aucune depond  ; 1 => le pds theo est 1 pour 00 et 0 pour 
+       // FactDepond =>  0 aucune depond  ; 1 => le pds theo est 1 for 00 and 0 for 
        cCensusGr(const Pt2di & aV,const double & FactDepond,bool DoFlag,cCensusGr * aGrShareFlag = 0);
        double GainBasic(float ** Im1,float ** Im2,int  aPx2);
        double CostFlag(int aFlag)
@@ -227,7 +227,7 @@ template <class Type> class cFlagPonder : cFlagTabule<Type>
           bool                      mHasVois;
 };
 
-std::vector<double> PondVois(const Pt2di & aV,double Depond,double aGama=1.0); // Si Depond = 0, tous egaux
+std::vector<double> PondVois(const Pt2di & aV,double Depond,double aGama=1.0); // if Depond = 0, tous egaux
 int NbSomOfVois(const Pt2di & aVois);
 
 
@@ -1250,14 +1250,14 @@ double CensusQuantif(float ** Im1,Pt2di aP1,float ** Im2,float X2,int Y2,Pt2di a
      cQckInterpolEpip aQI2(X2);
 
      float aVC1 =  Im1[aP1.y][aP1.x];
-     float * aL2C = Im2[aP1.y] + aQI2.mX0; // debut de la colone Im2, centre sur la partie entiere
+     float * aL2C = Im2[aP1.y] + aQI2.mX0; // debut de la colone Im2, centre on la partie entiere
      float aVC2 = aQI2.GetVal(aL2C);  // 
      double aSomEcart = 0;
 
      for (int aDy=-aSzV.y ; aDy<=aSzV.y ; aDy++)
      {
           float * aL1 = Im1[aP1.y+aDy] + aP1.x; // debut de la colone Im1, centre x1
-          float * aL2 = Im2[Y2+aDy] + aQI2.mX0; // debut de la colone Im2, centre sur la partie entiere
+          float * aL2 = Im2[Y2+aDy] + aQI2.mX0; // debut de la colone Im2, centre on la partie entiere
           for (int aDx=-aSzV.x ; aDx<= aSzV.x ; aDx++)
           {
               // Val du voisin  Dx,Dy en 
@@ -1323,8 +1323,8 @@ int CPP_AutoCorr_CensusQuant(int argc,char ** argv)
 */
 
 
-// Version basique du calcul de Census par graphe;
-// Est utilise pour verifier la correction du calcul optimise
+// Version basique du computation de Census par graphe;
+// Est utilise for verifier la correction du computation optimise
 
 
 double CensusGraphePlein(float ** Im1,Pt2di aP1,float ** Im2,float X2,int Y2,Pt2di aSzV)
@@ -1337,7 +1337,7 @@ double CensusGraphePlein(float ** Im1,Pt2di aP1,float ** Im2,float X2,int Y2,Pt2
      for (int aDy=-aSzV.y ; aDy<=aSzV.y ; aDy++)
      {
           float * aL1 = Im1[aP1.y+aDy] + aP1.x; // debut de la colone Im1, centre x1
-          float * aL2 = Im2[Y2+aDy] + aQI2.mX0; // debut de la colone Im2, centre sur la partie entiere
+          float * aL2 = Im2[Y2+aDy] + aQI2.mX0; // debut de la colone Im2, centre on la partie entiere
           for (int aDx=-aSzV.x ; aDx<= aSzV.x ; aDx++)
           {
               // Val du voisin  Dx,Dy en 
@@ -1347,7 +1347,7 @@ double CensusGraphePlein(float ** Im1,Pt2di aP1,float ** Im2,float X2,int Y2,Pt2
               {
                    int aDx2 = aDx+VX[aK];  // Dx-Dy des des 8 voisins
                    int aDy2 = aDy+VY[aK];
-                   // Pour ne pas sortir
+                   // for ne pas sortir
                    if  ((aDx2>=-aSzV.x) && (aDx2<=aSzV.x) && (aDy2>=-aSzV.y) && (aDy2<=aSzV.y))
                    {
                        // 
@@ -1540,7 +1540,7 @@ void cAppliMICMAC::DoCensusCorrel(const Box2di & aBox,const cCensusCost & aCC)
 
 
 
- //  ====  2. Pas quotient d'entier
+ //  ====  2. Pas quotient d'integer
     double aRealNbByPix = 1/ aStepPix;
     int mNbByPix = round_ni(aRealNbByPix);
 
@@ -1693,7 +1693,7 @@ void cAppliMICMAC::DoCensusCorrel(const Box2di & aBox,const cCensusCost & aCC)
         //  aTabFlag0 =   cImFlags<U_INT2>::Census(*(anI0.FloatIm(0)),mCurSzVMax) ;
         aTabFlag0 = cImFlags<U_INT2>::CensusMS(anI0.VIm(),mCurSzVMax,aVSz,aVSigma);
     }
-    // La phase code le decalage sub pixel, on impose un pas en 1/N pour n'avoir que N image 
+    // La phase code le decalage sub pixel, on impose un pas en 1/N for n'avoir que N image 
     // interpolee a creer
     for (int aPhase = 0 ; aPhase<mNbByPix ; aPhase++)
     {
@@ -1714,7 +1714,7 @@ void cAppliMICMAC::DoCensusCorrel(const Box2di & aBox,const cCensusCost & aCC)
             float ** aDataC   = mDataBufC[aK];
             Pt2di aSz = mBufCensusIm2[aK].sz();
 
-            // On calcule l'image interpolee
+            // On compute l'image interpolee
             for (int anY = 0 ; anY < aSz.y ; anY++)
             {
                  float * aL1 = aDataIm1[anY] ;
@@ -1877,7 +1877,7 @@ void cAppliMICMAC::DoCensusCorrel(const Box2di & aBox,const cCensusCost & aCC)
                                 if (DoCensQuant)
                                 {
                                     aCost =  Quick_MS_CensusQuant(aVBOI0,aVBOIC,anOffset,aVKImS,aVPds);
-                                    aGlobCostCorrel = aCost; // ?? Pas sur utilite
+                                    aGlobCostCorrel = aCost; // ?? Pas on utilite
   // return Quick_MS_CensusQuant(aVBOI1,aVBOI2,aPx2,aVV,aVPds);
                                 }
                                 if (DoCorrel)
@@ -1991,33 +1991,33 @@ void cAppliMICMAC::DoCensusCorrel(const Box2di & aBox,const cCensusCost & aCC)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant à  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
-Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
+Ce logiciel est rgi par la licence CeCILL-B soumise au droit franais et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
-de la licence CeCILL-B telle que diffusée par le CEA, le CNRS et l'INRIA
+de la licence CeCILL-B telle que diffuse par le CEA, le CNRS et l'INRIA
 sur le site "http://www.cecill.info".
 
-En contrepartie de l'accessibilité au code source et des droits de copie,
-de modification et de redistribution accordés par cette licence, il n'est
-offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
-seule une responsabilité restreinte pèse sur l'auteur du programme,  le
-titulaire des droits patrimoniaux et les concédants successifs.
+En contrepartie de l'accessibilit au code source et des droits de copie,
+de modification et de redistribution accords par cette licence, il n'est
+offert aux utilisateurs qu'une garantie limite.  Pour les mmes raisons,
+seule une responsabilit restreinte pse sur l'auteur du programme,  le
+titulaire des droits patrimoniaux et les concdants successifs.
 
-A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  à  l'utilisation,  à  la modification et/ou au
-développement et à  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe à
-manipuler et qui le réserve donc à  des développeurs et des professionnels
-avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités à  charger  et  tester  l'adéquation  du
-logiciel à  leurs besoins dans des conditions permettant d'assurer la
-sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-à  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+A cet gard  l'attention de l'utilisateur est attire sur les risques
+associs au chargement,    l'utilisation,    la modification et/ou au
+dveloppement et   la reproduction du logiciel par l'utilisateur tant
+donn sa spcificit de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le rserve donc   des dveloppeurs et des professionnels
+avertis possdant  des  connaissances  informatiques approfondies.  Les
+utilisateurs sont donc invits   charger  et  tester  l'adquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
+scurit de leurs systmes et ou de leurs donnes et, plus gnralement,
+  l'utiliser et l'exploiter dans les mmes conditions de scurit.
 
-Le fait que vous puissiez accéder à  cet en-tête signifie que vous avez
-pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
+Le fait que vous puissiez accder   cet en-tte signifie que vous avez
+pris connaissance de la licence CeCILL-B, et que vous en avez accept les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

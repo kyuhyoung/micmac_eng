@@ -70,7 +70,7 @@ class cOnePDV
         Pt2di mIIndex;
         Pt2dr mRIndex;
         Pt2dr mC2Loc;
-        Pt3dr mV3;  // Vecteur CentrePDV -> 
+        Pt3dr mV3;  // vector CentrePDV -> 
         Pt3dr mC3;
 
         Pt3dr mK;  // I,J,K trieder lie a la camera
@@ -92,9 +92,9 @@ class cSimulePDV
         double       mFoc;
         Pt2dr        mSzIm;
 
-      // ecart pour n'avoir aucun recouvrement
+      // ecart for n'avoir aucun recouvrement
         Pt2dr        mEcartNorm;
-      // ecart pour avoir le recouvrement specifie
+      // ecart for avoir le recouvrement specifie
         Pt2dr        mEcartBH;
    
         Pt2di       mNb;

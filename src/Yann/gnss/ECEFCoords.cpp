@@ -106,7 +106,7 @@ void ECEFCoords::scalar(double factor){
 }
 
 // ---------------------------------------------------------
-// Rotation du repère ECEF d'un angle theta (en radian)
+// rotation du repre ECEF d'un angle theta (en radian)
 // ---------------------------------------------------------
 void ECEFCoords::rotate(double theta) {
 
@@ -122,23 +122,23 @@ void ECEFCoords::rotate(double theta) {
 }
 
 // ---------------------------------------------------------
-// Conversion de coordonnées ECEF -> ECI (= ECEF fixé au
-// niveau de l'utilisateur à l'instant de la réception)
+// Conversion de coordonnes ECEF -> ECI (= ECEF fix au
+// niveau de l'utilisateur  l'instant de la rception)
 // ---------------------------------------------------------
 void ECEFCoords::shiftECEFRef(double propagation_time) {
     this->rotate(Utils::dOMEGAe*propagation_time);
 }
 
 // ---------------------------------------------------------
-// Normalisation d'un vecteur (norme L2)
+// Normalisation d'un vector (norme L2)
 // ---------------------------------------------------------
 void ECEFCoords::normalize(){
     this->scalar(1/this->norm());
 }
 
 // ---------------------------------------------------------------
-// Transformation d'une vitesse des coordonnées ECEF vers les
-// les coordonnées planes ENU (par rapport au point ref)
+// transformation d'une vitesse des coordonnes ECEF vers les
+// les coordonnes planes ENU (par rapport au point ref)
 // ---------------------------------------------------------------
 ENUCoords ECEFCoords::toENUSpeed(ECEFCoords ref){
     return (ref+*this).toENUCoords(ref);

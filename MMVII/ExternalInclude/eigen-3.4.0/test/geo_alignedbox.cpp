@@ -233,7 +233,7 @@ Matrix<Scalar, Dim, (1<<Dim)> boxGetCorners(const Matrix<Scalar, Dim, 1>& min_, 
 
 template<typename BoxType, typename Rotation> void alignedboxRotatable(
     const BoxType& box,
-    Rotation (*rotate)(typename NumTraits<typename BoxType::Scalar>::NonInteger /*_angle*/))
+    rotation (*rotate)(typename NumTraits<typename BoxType::Scalar>::NonInteger /*_angle*/))
 {
   alignedboxTranslatable(box);
 
@@ -303,7 +303,7 @@ template<typename BoxType, typename Rotation> void alignedboxRotatable(
 
 template<typename BoxType, typename Rotation> void alignedboxNonIntegralRotatable(
     const BoxType& box,
-    Rotation (*rotate)(typename NumTraits<typename BoxType::Scalar>::NonInteger /*_angle*/))
+    rotation (*rotate)(typename NumTraits<typename BoxType::Scalar>::NonInteger /*_angle*/))
 {
   alignedboxRotatable(box, rotate);
 

@@ -101,7 +101,7 @@ GlCloud* cLoader::loadCloud(string i_ply_file)
 			maskedImg->_m_image = new QImage( aNameFile);
 		}
 
-		// TODO: message d'erreur (non bloquant)
+		// TODO: message d'error (non bloquant)
 		// foo: Can not read scanlines from a tiled image.
 		// see QTBUG-12636 => QImage load error on tiff tiled with lzw compression https://bugreports.qt-project.org/browse/QTBUG-12636
 		// bug Qt non resolu
@@ -706,12 +706,12 @@ float cEngine::computeScaleFactor(QStringList& filenames)
         //cur_avail_mem_kb = 5 * 1024;
 
         /*float scaleFactorVRAM = 1.f;
-        // TODO delete texture car il y a un fuite dans la VRAM!!!
+        // TODO delete texture car il y a un fuite in la VRAM!!!
 
         if(cur_avail_mem_kb !=0)
         {
             // TODO GERER le MASK... car pas forcememt afficher
-            if (appMode == MASK2D) sizeMemoryTexture_kb *= 2; // Image + masque
+            if (appMode == MASK2D) sizeMemoryTexture_kb *= 2; // image + masque
             if(sizeMemoryTexture_kb > cur_avail_mem_kb)
             {
                 scaleFactorVRAM = (float) cur_avail_mem_kb / sizeMemoryTexture_kb;
@@ -759,7 +759,7 @@ float cEngine::computeScaleFactor(QStringList& filenames)
 
         scaleFactor = (float) totalSize.width() / widthMax;
 
-        //if (appMode == MASK2D) scaleFactor /= 2.f; //Image + Masque
+        //if (appMode == MASK2D) scaleFactor /= 2.f; //image + Masque
 
         //cout << "scale factor = " << scaleFactor << endl;
     }

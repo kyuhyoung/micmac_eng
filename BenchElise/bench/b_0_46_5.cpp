@@ -349,7 +349,7 @@ template <class tComp> void TplBench_cB_GCF(INT aNumF,tComp & aComp)
    {
       anOri.ReSet();
 
-      // Une fois sur deux, on utilile les SetA, sinon en dyn
+      // Une fois on deux, on utilile les SetA, else en dyn
       if (NRrandC()>0)
       {
           aComp.SetA(anOri.A());
@@ -529,7 +529,7 @@ void Bench_cB_GCF()
 
 void bench_GenerationCodeFormelle()
 {
-   cElCompiledFonc * aNul = cElCompiledFonc::AllocFromName("PP$£%@");
+   cElCompiledFonc * aNul = cElCompiledFonc::AllocFromName("PP$%@");
    BENCH_ASSERT(aNul == 0);
 
 /*

@@ -1033,7 +1033,7 @@ void cAppliExtractCircTarget::TestOnSimul()
      AddOneReportCSV(mReportSimulGlob,aVRep);
 
    //if (mDoReportSimul)
-         // AddOneReportCSV(mReportSimulDet,{"Image","Name","Ok","N2","Dx","Dy"});
+         // AddOneReportCSV(mReportSimulDet,{"image","Name","Ok","N2","Dx","Dy"});
 
      // analyse detected target to get false extracted
      for (const auto & anEE : mVCTE)

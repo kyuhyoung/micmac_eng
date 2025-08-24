@@ -285,7 +285,7 @@ void InitOutil::reprojectAllTriOnAllImg()
 {
     cout<<" ++ Reproject"<<endl;
     //Access sommet of triangle i:
-    //PtrListTri[i]->getSommet(0) -- Pt3d; ou PtrListTri[0]->getSommetV(0) -- Ptr to Vertex
+    //PtrListTri[i]->getSommet(0) -- Pt3d; or PtrListTri[0]->getSommetV(0) -- Ptr to Vertex
     for (uint i=0; i<mPtrListTri.size(); i++)
     {
         for (uint j=0; j<mPtrListPic.size(); j++)
@@ -298,7 +298,7 @@ void InitOutil::reprojectAllTriOnAllImg()
     //Access to reprojection of triangle i on pic j by : *PtrListTri[i]->getReprSurImg()[j] -- return Tri2d;
 }
 
-//=====Creat pack homologue initial avec des autre images
+//=====Creat pack homologue initial with des autre images
 /*
     *1. Si creatLikeHomoPackInit=true => chaque pic
     * sauvgarde vector<mPackHomoWithAnotherPic> contient pack homo avec tout les autre image
@@ -583,7 +583,7 @@ void InitOutil::creatJobCorrel(double angleF)
     }
 }
 
-//========les fonction outil supplementaire ===========//
+//========les function outil supplementaire ===========//
 std::string intToString ( int number )
 {
   std::ostringstream oss;

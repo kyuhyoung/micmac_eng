@@ -3,7 +3,7 @@
 #include "StdAfx.h"
 #include "cransac_2dline.h"
 
-// pour manipuler des images géorérérencée avec .tfw file, des ortho individuelles générées avec Malt par ex.
+// for manipuler des images géorérérencée with .tfw file, des ortho individuelles générées with Malt par ex.
 class cImGeo
 {
 public:
@@ -32,8 +32,8 @@ public:
     // méthodes
     bool overlap(cImGeo * aIm2);
     bool overlap(cImGeo * aIm2,int aRec); // au minimum aRec (en pourcent) de recouvrement)
-    int pixCommun(cImGeo * aIm2); // nombre de pixel en commun
-    Pt2di computeTrans(cImGeo * aIm2); // retourne la translation pixel e im1 et im2
+    int pixCommun(cImGeo * aIm2); // number de pixel en commun
+    Pt2di computeTrans(cImGeo * aIm2); // retourne la translation pixel e im1 and im2
     Pt2di computeTrans(Pt2dr aPTer);
     void applyTrans(Pt2di aTr);
     //Pt2di overlapBox(cImGeo * aIm2);
@@ -43,11 +43,11 @@ public:
     int writeTFW();
     int writeTFW(std::string aName);
 
-    // je devrais pouvoir utiliser toutes ces fontions aussi bien pour l'incidence,le masque et la radiométrie.
-    Im2D_REAL4 toRAM(); // copie l'image tiff dans la ram pour la manipuler avec elise
-    Im2D_REAL4 clipImPix(Pt2di aMin,Pt2di aMax); // clip l'image avec une box pixel
-    Im2D_REAL4 clipImTer(Pt2dr aMin,Pt2dr aMax); // clip l'image avec une box terrain
-    Im2D_REAL4 clipImTer(Box2dr aBox); // clip l'image avec une box terrain
+    // je devrais pouvoir utiliser toutes ces fontions aussi bien for l'incidence,le masque and la radiométrie.
+    Im2D_REAL4 toRAM(); // copie l'image tiff in la ram for la manipuler with elise
+    Im2D_REAL4 clipImPix(Pt2di aMin,Pt2di aMax); // clip l'image with une box pixel
+    Im2D_REAL4 clipImTer(Pt2dr aMin,Pt2dr aMax); // clip l'image with une box terrain
+    Im2D_REAL4 clipImTer(Box2dr aBox); // clip l'image with une box terrain
     Im2D_REAL4 clipIncidTer(Box2dr aBox);
     Im2D_REAL4 clipIncidPix(Pt2di aMin,Pt2di aMax);
 
@@ -64,7 +64,7 @@ public:
     Pt2di XY2UV(Pt2dr XY);
     Pt2dr UV2XY(Pt2di UV);
 private:
-    //Pt2di X2U(Pt2dr X); // je passe un point contenant xmin et xmax et il me retourne u min u max
+    //Pt2di X2U(Pt2dr X); // je passe un point contenant xmin and xmax and il me retourne u min u max
     //Pt2di Y2V(Pt2dr Y);
 
 
@@ -73,7 +73,7 @@ private:
     std::string mName,mDir;
     double mGSD;
     Tiff_Im mIm;
-    Im2D_REAL4 mIncid; // j'ai déjà fait une erreur en intégrant mIM comme Tiff_IM, ça aurait été plus maniable de l'avoir comme Im2D_REAL4. pour incid je fait comme cela
+    Im2D_REAL4 mIncid; // j'ai déjà fait une error en intégrant mIM comme Tiff_IM, ça aurait été plus maniable de l'avoir comme Im2D_REAL4. for incid je fait comme cela
 
     double mXmin, mXmax, mYmin, mYmax;
     Pt2dr mSzImTer,mOrigine;

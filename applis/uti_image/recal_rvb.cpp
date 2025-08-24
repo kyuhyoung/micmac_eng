@@ -494,7 +494,7 @@ ElTimer aChrono;
                Pt2dr aTrOpt  =  anOpt12.param();
 
 
-//    TEST de coherence avec  diff
+//    TEST de coherence with  diff
 if (! FirstRecal)
 {
     Pt3dr aDifPt (aP2.x,aP2.y,0);

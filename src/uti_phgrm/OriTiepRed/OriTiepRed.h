@@ -170,7 +170,7 @@ class cCameraTiepRed
 
 
         Pt2dr ToImagePds(const Pt2dr & aP) const;
-        Pt2dr Hom2Pds(const Pt2df & aP) const; // Compose ToImagePds et Hom2Cam
+        Pt2dr Hom2Pds(const Pt2df & aP) const; // Compose ToImagePds and Hom2Cam
 
 
         void MakeImPds();
@@ -361,7 +361,7 @@ class cAppliTiepRed
           void GenerateSplit();
           void DoReduceBox();
           void DoLoadTiePoints();
-          // Solution pour faire d'abord les master
+          // Solution for faire d'abord les master
           void DoLoadTiePoints(bool DoMaster);
           void DoFilterCamAnLinks();
           void DoExport();
@@ -405,7 +405,7 @@ class cAppliTiepRed
           Box2dr                           mBoxGlob;
           Box2dr                           mBoxLocQT;
           Box2dr                           mBoxRabLocQT; // Enlarged box
-          // En geom image, il convient de distinguer la box mode photogram de la box image (QT) pour rester en metrique
+          // En geom image, il convient de distinguer la box mode photogram de la box image (QT) for rester en metrique
           // image, qui peut etre assez differente de la photogram (cas des fish eye)
           double                           mResolInit;
           double                           mResolQT;

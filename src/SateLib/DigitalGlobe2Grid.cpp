@@ -23,7 +23,7 @@ int DigitalGlobe2Grid_main(int argc, char **argv)
         << EAMC(nbLayers, "number of layers (min 4)")
         << EAMC(targetSyst, "targetSyst - target system in Proj4 format (ex : \"+proj=utm +zone=32 +north +datum=WGS84 +units=m +no_defs\""),
         LArgMain()
-        //caracteristique du systeme geodesique saisies sans espace (+proj=utm +zone=10 +north +datum=WGS84...)
+        //caracteristique du system geodesique saisies without espace (+proj=utm +zone=10 +north +datum=WGS84...)
         << EAM(stepPixel, "stepPixel", true, "Step in pixel (Def=100pix)")
         << EAM(stepCarto, "stepCarto", true, "Step in m (carto) (Def=50m)")
         << EAM(refineCoef, "refineCoef", true, "File of Coef to refine Grid")

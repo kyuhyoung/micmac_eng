@@ -139,7 +139,7 @@ void cOneScaleImRechPH::SiftMaxLoc(cOneScaleImRechPH* aHR,cOneScaleImRechPH* aLR
       
       // std::vector<double
    }
-   // Ajoute l'image de calcul dans le resultat, pour affinage etc ....
+   // Ajoute l'image de computation in le result, for affinage etc ....
    // ELISE_ASSERT(false,"Finire cOneScaleImRechPH::SiftMaxLoc");
 
    double aRatioPt =  mAppli.RatioDecimLRHR(mNiv,FromLR);

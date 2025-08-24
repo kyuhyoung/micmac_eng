@@ -162,7 +162,7 @@ void cElFaisceauDr2D::CalibrDistRadiale
 	 std::vector<REAL> &  Coeffs
      )
 {
-    std::string NameGroupe = "GrpElFaisceauDr2D"; // Groupe Bidon pour classe desuete
+    std::string NameGroupe = "GrpElFaisceauDr2D"; // Groupe Bidon for class desuete
     AllocateurDInconnues anAlloc;
 
     Pt2d<Fonc_Num> fCentre = CentreMobile ? 

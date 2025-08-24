@@ -10,7 +10,7 @@
 #include "SP3NavigationData.h"
 
 // ---------------------------------------------------------------
-// Classe contenant les fonctions de lecture de fichiers sp3
+// class contenant les fonctions de lecture de fichiers sp3
 // ---------------------------------------------------------------
 class SP3Reader {
 

@@ -131,7 +131,7 @@ void TestEcartTypeStd()
 
 /*******************************************************************************************/
 /*                                                                                         */
-/*   classes optimisees pour faire du filtrage gaussien par exp recurs sur image entiere   */
+/*   classes optimisees for faire du filtrage gaussien par exp recurs on image entiere   */
 /*                                                                                         */
 /*******************************************************************************************/
 
@@ -168,7 +168,7 @@ cFGGBEBufLigne::cFGGBEBufLigne(int aSz,double aFact) :
    mSz        (aSz),
    mFact      (aFact),
    mNBBDynFE  (14),  
-   mDynFE     (1<<mNBBDynFE), // +ou 16000
+   mDynFE     (1<<mNBBDynFE), // +or 16000
    mDemiDynFE (mDynFE/2),
    mFactInt (round_ni(mDynFE*aFact)),
    mBuf1   (mSz),           // To know how a constant function is modified
@@ -192,7 +192,7 @@ void cFGGBEBufLigne::OneFiterLineAndNormalize(INT4 * aData)
     for (int aX=0 ; aX < mSz ; aX++) 
     {
         // La formule correspond a (aData[aX] / (mData1[aX] /mDynFE))
-        // On divise  donc par la reponse sur un signal constant 1, en tenant compte du
+        // On divise  donc par la reponse on un signal constant 1, en tenant compte du
         // fait que mData1 a une dynamique de mDynFE
         aData[aX] = (aData[aX] << mNBBDynFE) /  mData1[aX];
     }
@@ -378,9 +378,9 @@ void TestDist(Pt2di aSz,Fonc_Num aP,double aScale)
    aSXX -= ElSquare(aSX);
    aSYY -= ElSquare(aSY);
 
-   // Il y a une difficulte, pour les vrais images on fait l'hypothese que a la premiere
-   // echelle sigm=1 (on n'en sait rien, ptet + ptet - en fait)
-   // mais ici avec un dirac la sigma=0 a ech =1
+   // Il y a une difficulte, for les vrais images on fait l'hypothese que a la premiere
+   // scale sigm=1 (on n'en sait rien, ptet + ptet - en fait)
+   // but ici with un dirac la sigma=0 a ech =1
    // la relation est en 1+ sig ^2 = Ech ^2
 
    double aSigTh = sqrt(ElSquare(aScale)-1);

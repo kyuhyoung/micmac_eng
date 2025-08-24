@@ -133,7 +133,7 @@ class cAppliCmpMnt
        void ShowDiff
             (
                 const std::string & aMes,
-	        bool  isSigned,  // Visu + calcul de biais
+	        bool  isSigned,  // Visu + computation de biais
 		double aDynVisu
 	    );
        void DoOneCmp();

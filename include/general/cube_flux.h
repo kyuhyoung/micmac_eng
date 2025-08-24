@@ -76,7 +76,7 @@ class cNappe2DGen
               return mDataOffset[aPt.x] +aPt.y;
 	 }
 
-	 // Offset de la colone pour y=0
+	 // Offset de la colone for y=0
 	 INT OffsetCol(INT anX) const 
 	 {
               return mDataOffset[anX];
@@ -115,7 +115,7 @@ template <class Type> class cTplNape2D : public cNappe2DGen
         {
 	}
 	Type & El(Pt2di aPt) {return mData[OffsetPt(aPt)];}
-	// Retourne l'adresse de la colonne pour y = 0
+	// Retourne l'adresse de la colonne for y = 0
 	Type * Colum(INT anX) {return mData+OffsetCol(anX);}
 
          void Resize(INT aSz,Fonc_Num aZMin,Fonc_Num aZMax)

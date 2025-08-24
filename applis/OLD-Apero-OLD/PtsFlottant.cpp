@@ -176,9 +176,9 @@ void cOneAppuisFlottant::AddObs(const cObsAppuisFlottant & anObs,cStatObs & aSO)
         }
    }
 
-   // A verifier, mais probable que la methode de subsistution degenere
-   // si il n'y a que deux  points (Lambda non inversible)
-   //En fait, sans doute pas degeneree car attache au point !
+   // A verifier, but probable que la method de subsistution degenere
+   // if il n'y a que deux  points (Lambda non inversible)
+   //En fait, without doute pas degeneree car attache au point !
    if (aNbOK<0)
    {
       if (aShowDet)

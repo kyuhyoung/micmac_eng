@@ -178,7 +178,7 @@ int TaskCorrel_main(int argc,char ** argv)
 
                         aRot_PE = aPlanLoc->CoordPlan2Euclid();
                         aRot_EP = aRot_PE.inv();
-                        //calcul coordonne sommet triangle dans plan 3D local (devrait avoir meme Z)
+                        //computation coordonne sommet triangle in plan 3D local (devrait avoir meme Z)
                         Pt3dr aPtP0 = aRot_EP.ImAff(atri->getSommet(0)); //sommet triangle on plan local
                         Pt3dr aPtP1 = aRot_EP.ImAff(atri->getSommet(1));
                         Pt3dr aPtP2 = aRot_EP.ImAff(atri->getSommet(2));
@@ -187,20 +187,20 @@ int TaskCorrel_main(int argc,char ** argv)
 
 
 
-                        //creer translation entre coordonne image global -> coordonne image local du triangle (plan image)
+                        //creer translation between coordonne image global -> coordonne image local du triangle (plan image)
                         ElAffin2D aAffImG2ImL(ElAffin2D::trans(aPtI0));
                         Pt2dr aPtPIm0 = aAffImG2ImL(aPtI0);
                         Pt2dr aPtPIm1 = aAffImG2ImL(aPtI1);
                         Pt2dr aPtPIm2 = aAffImG2ImL(aPtI2);
 
 /*
-                        //creer plan 2D local dans plan image (deplacer origin haut gauche d'image -> origin avec 1 sommet de triangle)
+                        //creer plan 2D local in plan image (deplacer origin haut gauche d'image -> origin with 1 sommet de triangle)
                         cElPlan3D * aPlanIm = new cElPlan3D (   Pt3dr(aPtI0.x, aPtI0.y, 0),
                                                                 Pt3dr(aPtI1.x, aPtI1.y, 0),
                                                                 Pt3dr(aPtI2.x, aPtI2.y, 0)   );
 
                         ElRotation3D aRot_EPIm = aPlanIm->CoordPlan2Euclid().inv();
-                        //calcul coordonne sommet triangle dans plan 2D local
+                        //computation coordonne sommet triangle in plan 2D local
                         Pt3dr aPtPIm0 = aRot_EPIm.ImAff(Pt3dr(aPtI0.x, aPtI0.y, 0));
                         Pt3dr aPtPIm1 = aRot_EPIm.ImAff(Pt3dr(aPtI1.x, aPtI1.y, 0));
                         Pt3dr aPtPIm2 = aRot_EPIm.ImAff(Pt3dr(aPtI2.x, aPtI2.y, 0) );
@@ -208,7 +208,7 @@ int TaskCorrel_main(int argc,char ** argv)
                         cout<<"aPtPIm0 "<<aPtPIm0<<aPtPIm1<<aPtPIm2<<endl;
 */
 
-                        //calcul affine entre plan 3D local (elimine Z) et plan 2D local
+                        //computation affine between plan 3D local (elimine Z) and plan 2D local
                         ElAffin2D aAffLc2Im;
                         aAffLc2Im = aAffLc2Im.FromTri2Tri(  Pt2dr(aPtP0.x, aPtP0.y),
                                                             Pt2dr(aPtP1.x, aPtP1.y),
@@ -217,7 +217,7 @@ int TaskCorrel_main(int argc,char ** argv)
                                                          );
                         VaAffLc2Im.push_back(aAffLc2Im);
 
-                        //calcul le cercle discretize dans le plan 3D local
+                        //computation le cercle discretize in le plan 3D local
                         double rho;
                         if (aSclElps == -1)
                         {
@@ -244,7 +244,7 @@ int TaskCorrel_main(int argc,char ** argv)
                         }
                         VVCl[aIP] = VCl;
 
-                        //calcul vector max min pour choisir img master
+                        //computation vector max min for choisir img master
                         double vecA_cr =  aAffLc2Im.I10().x*aAffLc2Im.I10().x + aAffLc2Im.I10().y*aAffLc2Im.I10().y;
                         double vecB_cr =  aAffLc2Im.I01().x*aAffLc2Im.I01().x + aAffLc2Im.I01().y*aAffLc2Im.I01().y;
                         double AB_cr   =  pow(aAffLc2Im.I10().x*aAffLc2Im.I01().x,2) + pow(aAffLc2Im.I10().y*aAffLc2Im.I01().y,2);
@@ -256,7 +256,7 @@ int TaskCorrel_main(int argc,char ** argv)
                             min_cur = theta_min;
                             picMaster = apic;
                         }
-                        if (theta_min > TT_SEUIL_RESOLUTION)        //condition de choisir image 2nd : pour l'instant, choisir tout les reste comme 2nd
+                        if (theta_min > TT_SEUIL_RESOLUTION)        //condition de choisir image 2nd : for l'instant, choisir tout les reste comme 2nd
                             VPicAcpt.push_back(apic);
                     }
                     else

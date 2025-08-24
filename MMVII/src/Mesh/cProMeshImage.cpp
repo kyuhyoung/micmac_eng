@@ -137,7 +137,7 @@ class cAppliProMeshImage : public cMMVII_Appli
 	int         mNbPixImRedr;
         bool        mDoImages;
         bool        mSKE;
-	double      mMII;   ///<  Marge Inside Image
+	double      mMII;   ///<  Marge Inside image
 
      // --- constructed ---
         cPhotogrammetricProject   mPhProj;

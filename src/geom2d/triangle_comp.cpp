@@ -44,8 +44,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 
-// Modifie l'intervale entier [aXMinLoc,aXMaxLoc [, 
-// si aXMaxLoc <= aXMinLoc  -> intervalle vide
+// Modifie l'intervale integer [aXMinLoc,aXMaxLoc [, 
+// if aXMaxLoc <= aXMinLoc  -> intervalle vide
 
 void ModifInterv(int & aXMinLoc,int & aXMaxLoc,int aY,const SegComp & aSeg)
 {

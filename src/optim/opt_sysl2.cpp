@@ -265,7 +265,7 @@ void cGenSysSurResol::GSSR_AddContrainteIndexee
    }
 
 
- // Gestion des contrainte l'ancienne si pas univariee
+ // Gestion des contrainte l'ancienne if pas univariee
 
     mNbContrainte++;
     // Premiere contrainte
@@ -274,7 +274,7 @@ void cGenSysSurResol::GSSR_AddContrainteIndexee
        ELISE_ASSERT(AcceptContrainteNonUniV(),"Ce systeme n'accepte que les contraintes uni var");
        mC.set_to_size(NbVar(),NbVar());
        mE.set_to_size(1,NbVar());
-       // a priori inutile, mais pour initialiser toujours
+       // a priori inutile, but for initialiser toujours
        for (int y=0 ; y<NbVar() ; y++)
            mE(0,y) = 0;
        mtL.set_to_size(NbVar(),1);
@@ -316,7 +316,7 @@ void cGenSysSurResol::TraitementContrainteUniVar(const std::vector<int> * aVA2S)
 
     INT NBV = NbVar();
 
-    // La premiere fois on rajoute les equations qui feront que  le systeme ne sera pas
+    // La premiere fois on rajoute les equations qui feront que  le system ne sera pas
     // degenere
     for (int aKV=0 ; aKV< NBV; aKV++)
     {
@@ -334,7 +334,7 @@ void cGenSysSurResol::TraitementContrainteUniVar(const std::vector<int> * aVA2S)
               aVInd.push_back(aKI);
               double aCoef1 = 1.0;
               Basic_GSSR_AddNewEquation_Indexe(0,0,0,aVInd,1.0,&aCoef1,mValCstr.data()[aKV],NullPCVU);
-// std::cout << "PB QUand on passe par indexee \n";
+// std::cout << "PB when on passe par indexee \n";
         }
     }
 // std::cout << "cGenSysSurResol::TraitementContrainteUniVar \n" ;  getchar();
@@ -384,7 +384,7 @@ void cGenSysSurResol::GSSR_AddNewEquation
         mGP.SelfSetMatrixInverse(mC,3);
 
 
-    // On rajoute des contrainte nulle sur les
+    // On rajoute des contrainte nulle on les
     // N derniere variable
        for (INT y= mLineCC ; y<NBV ; y++)
            {
@@ -782,7 +782,7 @@ L2SysSurResol::L2SysSurResol(INT aNbVar,bool IsSym) :
          !DebugPbCondFaisceau, // true,
          // L2SYM, !L2SYM,
    // false,false,
-         IsSym, (! IsSym),     // MPD 05-04_2015 ; avant L2SYM, sous optimale pour subsitution, voit pas pourquoi cela serait bien ???
+         IsSym, (! IsSym),     // MPD 05-04_2015 ; before L2SYM, under optimale for subsitution, voit pas pourquoi cela serait bien ???
         true
     ),
     mNbVar             (aNbVar),
@@ -955,7 +955,7 @@ void L2SysSurResol::AddEquation(REAL aPds,REAL * aCoeff,REAL aB)
 
      for (INT iVar1=0 ; iVar1<mNbVar ; iVar1++)
      {
-         if (aCoeff[iVar1] != 0.0)  // Acceleration pour les formes creuses
+         if (aCoeff[iVar1] != 0.0)  // Acceleration for les formes creuses
          {
              VInd.push_back(iVar1);
              VALS.push_back(aCoeff[iVar1]);
@@ -1161,10 +1161,10 @@ void  L2SysSurResol::SoutraitProduc3x3
 
 
 
-// Classe permettant de faire communiquer V_GSSR_AddNewEquation_Indexe et SoutraitProduc3x3 (ou DoSubst ?)
-// pour le calcul de variance covariance en cas d'elimination d'inconnues (complement de Schurr)
-// En effet lorsque l'on effectue la substitution  on a, pour l'instant, perdu trace du detail des
-// obsevation qui ont amene au calcul
+// class permettant de faire communiquer V_GSSR_AddNewEquation_Indexe and SoutraitProduc3x3 (or DoSubst ?)
+// for le computation de variance covariance en cas d'elimination d'inconnues (complement de Schurr)
+// En effet lorsque l'on effectue la substitution  on a, for l'instant, perdu trace du detail des
+// obsevation qui ont amene au computation
 
 
 
@@ -1270,7 +1270,7 @@ aCalcUKn = 0;
                aVarIndCoeff.push_back(Ind1);
             }
 
-            // Si mOptSym o n remplit la partie telle que  Ind2 >= Ind1
+            // if mOptSym o n remplit la partie telle que  Ind2 >= Ind1
             // donc x >= y, donc  partie "superieure"
             int aDebInd2 = mOptSym  ? Ind1 : 0;
             for (INT Ind2 =aDebInd2 ; Ind2<NbInd ; Ind2++)
@@ -1529,7 +1529,7 @@ bool  L2SysSurResol::ResiduIsComputedAfterSolve()
 
 /*********************************************************************/
 /*                                                                   */
-/*        Classe optimise pour la decomposition en valeur singuliere */
+/*        class optimise for la decomposition en value singuliere */
 /*   des matrices 3x3                                                */
 /*                                                                   */
 /*********************************************************************/
@@ -1539,10 +1539,10 @@ template <class Type> class cSVD3x3
      public :
            cSVD3x3 (ElMatrix<double> & aMat);
 
-        // Soit A les matrice a SVD
+        // Soit A les matrix a SVD
 
 
-       // Contient la matrice A
+       // Contient la matrix A
            Type m00, m10, m20;
            Type m01, m11, m21;
            Type m02, m12, m22;
@@ -1594,11 +1594,11 @@ template <class Type> class cSVD3x3
                  std::cout << "PolInit " << aSol <<  " => " << PolInit(aSol) << "\n";
             }
 
-     // ValP1 et VecP1
+     // ValP1 and VecP1
             Type R1;
             Type x1, y1, z1;
 
-      //  Matrice  A tA + R1 Id
+      //  matrix  A tA + R1 Id
 
             Type  aR1;
             Type  eR1;
@@ -1626,7 +1626,7 @@ template <class Type> class cSVD3x3
             Type x2O,y2O,z2O;
             Type x3O,y3O,z3O;
 
-     // Image des prec par AtA
+     // image des prec par AtA
             Type Ax2O,Ay2O,Az2O;
             Type Ax3O,Ay3O,Az3O;
             Type mVP2;
@@ -1682,12 +1682,12 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
     double * aL1 = aDM[1];
     double * aL2 = aDM[2];
 
-   // Memorise la matrice pour un acces direct non indexe
+   // Memorise la matrix for un acces direct non indexe
     m00 = aL0[0];    m10 = aL0[1];    m20 = aL0[2];
     m01 = aL1[0];    m11 = aL1[1];    m21 = aL1[2];
     m02 = aL2[0];    m12 = aL2[1];    m22 = aL2[2];
 
-   // Calcul A tA
+   // computation A tA
     a = m00*m00  + m10*m10 + m20*m20 ;  // L0 . L0
     b = m00*m01  + m10*m11 + m20*m21 ;  // L0 . L1
     c = m00*m02  + m10*m12 + m20*m22 ;  // L0 . L2
@@ -1696,7 +1696,7 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
     i = m02*m02  + m12*m12 + m22*m22 ;  // L2 . L2
 
 
-   // Calcul de produit qui reviennent plusieurs fois
+   // computation de produit qui reviennent plusieurs fois
     ae = a * e;
     ei = e * i;
     ia = a * i;
@@ -1720,7 +1720,7 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
     // Discr = q * q + (4*p*p*p)/27;
     // Discr = - (4 *p*p*p +9 * q * q);
 
-    // Je comprends plus trop PK, mais experim p est tjs < 0, donc OK ....
+    // Je comprends plus trop PK, but experim p est tjs < 0, donc OK ....
     // std::cout << "P= " << p << "\n"; ELISE_ASSERT(p<=0,"JpppPPppp");
     if (p>0) p=0;
 
@@ -1731,7 +1731,7 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
     R1  = 2*sqrt(-p/3)*cos(om/3.0) - K2Div3;
 
 
-   //  ==== TEST si PB, verifie que R1 est bien racine du polynome carac
+   //  ==== TEST if PB, verifie que R1 est bien racine du polynome carac
    // TestSolInit(R1);
 
 /*
@@ -1748,15 +1748,15 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
      eR1 = e+R1;
      iR1 = i+R1;
 
-     // Pour trouver le vecteur propre si par ex
-     // Si Z = 1; le systeme devient
+     // for trouver le vector propre if par ex
+     // if Z = 1; le system devient
      //
      //   aR1  b    c       X      0
      //   b    eR1  f       Y  =   0
      //   c    f    iR1     1      0
 
 
-     // On cherche le systeme des 3 le  stable
+     // On cherche le system des 3 le  stable
 /*
      {
         Type deltaZ = aR1 * eR1 - b2;    Type AbsDZ = ElAbs(deltaZ);
@@ -1820,7 +1820,7 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
      }
 */
 
-     /*  Calcul robusrte ? du noyau */
+     /*  computation robusrte ? du noyau */
      Type aDiv = 1e-15;
      {
           cMSymCoffact3x3<Type> aCof;
@@ -1855,7 +1855,7 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
 
      //TestSolVP1();
 
-     // Calcul d'un vecteur orthog
+     // computation d'un vector orthog
      {
          Type AX1 =ElAbs(x1);
          Type AY1 =ElAbs(y1);
@@ -1875,21 +1875,21 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
      }
      MakeNorm(x2O,y2O,z2O);
 
-     // Calcul de l'autre vecteur
+     // computation de l'autre vector
      x3O = y1 * z2O - z1 * y2O;
      y3O = z1 * x2O - x1 * z2O;
      z3O = x1 * y2O - y1 * x2O;
 
      //TestRON();
 
-     // Analyse de la matrice dans la base x2O .. x3O
+     // Analyse de la matrix in la base x2O .. x3O
 
      {
-         // Image par AtA de x2O ..
+         // image par AtA de x2O ..
          MulAtA(Ax2O,Ay2O,Az2O,x2O,y2O,z2O);
          MulAtA(Ax3O,Ay3O,Az3O,x3O,y3O,z3O);
 
-         // Image par AtA dans le repere x2O ...
+         // image par AtA in le repere x2O ...
          Type aS22 = x2O*Ax2O +  y2O*Ay2O + z2O*Az2O;
          Type aS23 = x2O*Ax3O +  y2O*Ay3O + z2O*Az3O;
          Type aS33 = x3O*Ax3O +  y3O*Ay3O + z3O*Az3O;
@@ -1915,7 +1915,7 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
          Type aS22VP = aS22 + mVP2;
          Type aS33VP = aS33 + mVP2;
 
-         // Calcul deu noyau de la matrice reduite
+         // computation deu noyau de la matrix reduite
 
              //          aS22VP aS23       |           aS23   aS33VP
              //   aS22VP                   |     aS23
@@ -1930,7 +1930,7 @@ template <class Type> cSVD3x3<Type>::cSVD3x3 (ElMatrix<double> & aMat)
 
           Type aDet = aMA * aMC - ElSquare(aMB);
 
-          // Image de (1,1) par l'inverse
+          // image de (1,1) par l'inverse
           Type aVpX = (aS33VP-aS23) / aDet;
           Type aVpY = (aS22VP-aS23) / aDet;
 
@@ -2085,10 +2085,10 @@ template <class Type> cMSymCoffact3x3<Type>::cMSymCoffact3x3()
 
 template <class Type> cMSymCoffact3x3<Type>::cMSymCoffact3x3(Type ** aMat)
 {
-// Pour notations voir
+// for notations voir
 // http://www.philipperey.net/maths3-4/algebreLineaireVecteurs/algebreLineaire/inverseMatrice.php
 //
-// Methode basee sur les cofacteurs
+// method basee on les cofacteurs
 
    Type * L0 = aMat[0];
 
@@ -2191,7 +2191,7 @@ template <class Type> void cMSymCoffact3x3<Type>::CoffSetInv(Type ** aMat)
 
       for (int aK=0 ; aK< aNbIter ; aK++)
       {
-        // aV00 ... : erreur / a l'identite
+        // aV00 ... : error / a l'identite
           Type aEr00 = a *aMat[0][0] + b *  aMat[0][1]  + c * aMat[0][2] -1.0;
           Type aEr10 = a *aMat[1][0] + b *  aMat[1][1]  + c * aMat[1][2] ;
           Type aEr20 = a *aMat[2][0] + b *  aMat[2][1]  + c * aMat[2][2] ;
@@ -2285,7 +2285,7 @@ Pt3d<double>  L2SysSurResol::Solve3x3Sym(bool * OK)
 
    En contrepartie de l'accessibilite au code source et des droits de copie,
    de modification et de redistribution accordes par cette licence, il n'est
-   offert aux utilisateurs qu'une garantie limitee.  Pour les mêmes raisons,
+   offert aux utilisateurs qu'une garantie limitee.  Pour les mmes raisons,
    seule une responsabilite restreinte pese sur l'auteur du programme,  le
    titulaire des droits patrimoniaux et les concedants successifs.
 

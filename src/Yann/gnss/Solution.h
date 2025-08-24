@@ -29,9 +29,9 @@ class Solution{
 		std::vector<double> residuals;
 
         // -------------------------------------
-        // Code de réussite du calcul
+        // Code de russite du computation
         // -------------------------------------
-        // 0 : estimation réussie
+        // 0 : estimation russie
         // 1 : pas assez de satellites visibles
         // -------------------------------------
         int code = 0;

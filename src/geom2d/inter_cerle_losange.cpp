@@ -95,7 +95,7 @@ class cICL_Courbe
 	   void SetVisu();
 	   void SetNoVisu();
 	   REAL Surf() const;
-	   REAL SurfDigit(REAL Scale) const; // Pour Verif
+	   REAL SurfDigit(REAL Scale) const; // for Verif
 	private :
 	   Pt2dr ToLoc(Pt2dr aP) const;
 
@@ -109,10 +109,10 @@ class cICL_Courbe
            bool                  mDerivNulles;
 };
 
-// Renvoie l'intersection entre le cerle unite  et un segment de droite
-// renvoie toujours un couple de point, si Res>0 deux vrais points,
-// si Res==0 un point double, si Res <0 un point double correspondant
-// a la projection du cercle sur le segment
+// Renvoie l'intersection between le cerle unite  and un segment de droite
+// renvoie toujours un couple de point, if Res>0 deux vrais points,
+// if Res==0 un point double, if Res <0 un point double correspondant
+// a la projection du cercle on le segment
 // Le premier point est le plus pres de Seg.p0()
 REAL IntersecSegCercle(const SegComp &aSeg,Pt2dr & Q0,Pt2dr & Q1);
 
@@ -392,7 +392,7 @@ void cICL_Courbe::DoAll(const std::vector<Pt2dr> &  VPtsInit)
 		   
 }
 
-REAL cICL_Courbe::SurfDigit(REAL Scale) const // Pour Verif
+REAL cICL_Courbe::SurfDigit(REAL Scale) const // for Verif
 {
     INT aNbPts = (INT) mVPts.size();
     ElList<Pt2di> lPts;
@@ -446,7 +446,7 @@ REAL IntersectionCercleUniteLosange
 // ELLIPSE DEFINIE PAR 
 //   Son Centre CentreEllipse,
 //   L'equation (AX+BY)2 + (BX+CY)2 = 1
-//   Image reciproque du cercle unite par 
+//   image reciproque du cercle unite par 
 //
 //           A B
 //     M =   B C
@@ -740,7 +740,7 @@ void SurfIER_Fonc_Num_Not_Comp::compile (cElCompileFN & anEnv)
 
 
 // De l'image par une transfo affine d'un repere orthonorme
-// au parametre ABC de l'ellipse passant par ce repere
+// au parameter ABC de l'ellipse passant par ce repere
 
 void ImRON2ParmEllipse
      (
@@ -774,8 +774,8 @@ void ImRON2ParmEllipse
     C = aABC(1,1);
 }
 
-// Des parametres A,B,C de l'equation aux
-// parametres "physiques"
+// Des parameters A,B,C de l'equation aux
+// parameters "physiques"
 
 
 bool EllipseEq2ParamPhys

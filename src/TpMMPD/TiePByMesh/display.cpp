@@ -49,7 +49,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 Video_Win *mW, *mW1, *mWImgetGlobMas, *mWImagetGlobSlav, *mW6, *mW7;
 
-/*=====Affiche 2 fenetre pour imagette maitre et second======
+/*=====Affiche 2 fenetre for imagette maitre and second======
  *1. Affiche en 2 cas: fenetre sans pts interet et fenetre avec pts interet
  *2. *mWImgetGlobMas, *mWImagetGlobSlav => fenetre sans pts interet
  *3. *mW, *mW1 : fentre avec pts interet
@@ -92,7 +92,7 @@ void display(cCorrelImage * Imgette_Maitre, cCorrelImage * Imagette_2nd, bool im
         mWImagetGlobSlav->clik_in();
     }
     else
-    {   //imagette pour pts interet
+    {   //imagette for pts interet
         cout<<"check display sz: "<<Imgette_Maitre->getIm()->sz()<<" "<<Imagette_2nd->getIm()->sz()<<endl;
         if (mW==0)
         {
@@ -127,7 +127,7 @@ void display(cCorrelImage * Imgette_Maitre, cCorrelImage * Imagette_2nd, bool im
     }
 }
 
-/*=====Affichier triangle et pts d'interet bleu sur image=========
+/*=====Affichier triangle and pts d'interet bleu on image=========
  * 1. zoomF pour réduire résolution d'image (choisir en respect résolution d'ecran)
  * 2. Affiche 2 image maitre et slave en 2 fenetre separer mW6 mW7
  * 3. Affiche pts interet sur image maitre
@@ -159,7 +159,7 @@ extern void dispTriSurImg(Tri2d TriMaitre, pic * ImgMaitre ,Tri2d Tri2nd, pic * 
     sommet2nd.push_back(Tri2nd.sommet1[2]);
     if (mW6==0)
     {
-        mW6 = Video_Win::PtrWStd(ImgMaitre->mPic_Im2D->sz()/zoomF, 1, Pt2dr(0.2,0.2));   //coherent avec zoomF
+        mW6 = Video_Win::PtrWStd(ImgMaitre->mPic_Im2D->sz()/zoomF, 1, Pt2dr(0.2,0.2));   //coherent with zoomF
         //mW6 = Video_Win::PtrWStd(ImgMaitre->pic_Im2D->sz()/zoomF, 1); //pas reduit la taille image
         mW6->set_title("Image Master");
     }
@@ -193,7 +193,7 @@ extern void dispTriSurImg(Tri2d TriMaitre, pic * ImgMaitre ,Tri2d Tri2nd, pic * 
 
 }
 
-/*=====Affichier pts d'interet Green sur imaget maitre et dans le triangle process d'image maitre=========
+/*=====Affichier pts d'interet Green on imaget maitre and in le triangle process d'image maitre=========
  * 1. aVWin est pointer au fenetre à dessiner les pts (vers imagette maitre)
  * 2. mW6 est fenetre image maitre
 */
@@ -217,7 +217,7 @@ void dispPtsSurImageMaster(const Pt2dr pts, Pt2dr centre , double SzDemiCote, Vi
         mW6->draw_circle_loc(pts, 2, lstLineG);             //draw pts on image matraisse
 }
 
-/*=====Affichier pts d'interet bleu sur image mW6 (image maitre)=========
+/*=====Affichier pts d'interet bleu on image mW6 (image maitre)=========
 */
 void dispAllPtsInteret(vector<Pt2dr> listPtsInteret)
 {
@@ -252,7 +252,7 @@ extern Video_Win * display_image( Im2D<U_INT1,INT4> *ImgIm2D,
     else
     {
         if(thisVWin->sz().x != (int)ImgIm2D->sz().x*zoomF)
-        {   //si taille different => ouvrir nouveau fenetre
+        {   //if taille different => ouvrir nouveau fenetre
             thisVWin = 0;
             thisVWin = Video_Win::PtrWStd(size_disp, 1, scale);
         }

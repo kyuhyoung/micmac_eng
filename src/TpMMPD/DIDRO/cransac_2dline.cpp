@@ -7,7 +7,7 @@ cRansac_2dline::cRansac_2dline():mObs(0)
 
 cRansac_2dline::~cRansac_2dline()
 {
-   // les observation ne sont pas detruite  car elle sont encore utilisées en dehors de cet objet
+   // les observation ne sont pas detruite  car elle sont encore utilisées en dehors de cet object
    //delete mObs;
 }
 
@@ -19,7 +19,7 @@ cRansac_2dline::cRansac_2dline(std::vector<Pt2dr> * aObs, ModelForm model, int a
     mObs(aObs),
     mQuiet(true)
 {
-    //std::cout << "initialisation d'un objet cRansac_2dline \n";
+    //std::cout << "initialisation d'un object cRansac_2dline \n";
     // mettre les pondérations à 1
     for (unsigned int i(0) ;i< mObs->size(); i++)
     {
@@ -42,7 +42,7 @@ void cRansac_2dline::affiche()
 {
     // affiche les résumés du modèle
     std::cout << "Modele ligne 2D ransac - summary \n";
-    // test si l'ajustement a déjà eu lieu
+    // test if l'ajustement a déjà eu lieu
     if(mNbItConvergence>0)
     {
     std::cout << "Itérations ;" << mNbIt << ". Observations :" << mObs->size() <<". Meilleur modèle déterminé à la " << mNbItConvergence << " ieme itérations, cout de " << mBestModel.getCout() << ".\n";
@@ -53,7 +53,7 @@ void cRansac_2dline::affiche()
 
 void cRansac_2dline::adjustModel(int nbIter,int prcOutliers)
 {
-    // la valeur par défaut des deux arguments est 0
+    // la value par défaut des deux arguments est 0
     if (nbIter!=0) mNbIt=nbIter;
     if (prcOutliers!=0) mPrcOutliers=prcOutliers;
 
@@ -68,7 +68,7 @@ void cRansac_2dline::adjustModel(int nbIter,int prcOutliers)
 
         if (!mQuiet) std::cout << "ransac itération " << it+1 << ",  random points num " << aRandom1 << " , " << mObs->at(aRandom1) << "  et num " << aRandom2 << " , " << mObs->at(aRandom2) << "\n";
 
-        // test si tout ça ne bug pas trop en effectuant une itération
+        // test if tout ça ne bug pas trop en effectuant une itération
         c2DLineModel currentM(mObs->at(aRandom1),mObs->at(aRandom2));
         currentM.computeCout(mObs);
 
@@ -77,7 +77,7 @@ void cRansac_2dline::adjustModel(int nbIter,int prcOutliers)
 
         //if (!mQuiet) std::cout << "cout actuel : " << mBestModel.getCout() << "\n";
 
-        // si le cout de ce modèle est inférieur à celui du bes model, on le garde
+        // if le cout de ce modèle est inférieur à celui du bes model, on le garde
         if(currentM.getCout()<mBestModel.getCout())
         {
             if (!mQuiet) std::cout << "ransac itération " << it+1 << ", minimisation du cout, " << mBestModel.getCout() << "-->" <<currentM.getCout() << "\n";
@@ -93,7 +93,7 @@ void cRansac_2dline::adjustModel(int nbIter,int prcOutliers)
 
 
 
-/* -------------------------------------- classe Ligne 2D model --------------------------------------- */
+/* -------------------------------------- class line 2D model --------------------------------------- */
 
 
 c2DLineModel::c2DLineModel():mA(0),mB(1),mForme(a_plus_bx),mError(10000000),mPropOutliers(3)
@@ -111,7 +111,7 @@ c2DLineModel::c2DLineModel(Pt2dr aP1, Pt2dr aP2):mA(0),mB(0),mForme(a_plus_bx),m
         if (aP2.x!=aP1.x)
         {
         mB=(aP2.y-aP1.y)/(aP2.x-aP1.x);
-        } else mB=0; // 0 au hasard, ransac va baquer le modèle et puis c'est tout
+        } else mB=0; // 0 au hasard, ransac va baquer le modèle and puis c'est tout
         // intersect
         mA=aP1.y-mB*aP1.x;
 }
@@ -154,12 +154,12 @@ void c2DLineModel::computeCout(std::vector<Pt2dr> * aObs,std::vector<double> * a
     {
     std::vector<double> couts;
 
-    // boucle sur chacunes des informations
+    // boucle on chacunes des informations
     for (unsigned int i(0) ;  i< aObs->size() ; i++)
     {
         Pt2dr uneObs(aObs->at(i));
         couts.push_back(std::abs(distPoint2Model(uneObs))*(aPond->at(i)));
-       // std::cout << "Cout calculé pour l'observation" << uneObs << " de " << std::abs(distPoint2Model(uneObs)) <<"\n";
+       // std::cout << "Cout calculé for l'observation" << uneObs << " de " << std::abs(distPoint2Model(uneObs)) <<"\n";
     }
 
     // enleve les n outliers supposés
@@ -229,7 +229,7 @@ cLSQ_2dline::cLSQ_2dline():mPond(1),mOk(0)
 
 cLSQ_2dline::~cLSQ_2dline()
 {
-   // les observation ne sont pas detruite  car elle sont encore utilisées en dehors de cet objet
+   // les observation ne sont pas detruite  car elle sont encore utilisées en dehors de cet object
    //delete mObs;
 }
 
@@ -292,7 +292,7 @@ void cLSQ_2dline::affiche()
 {
     // affiche les résumés du modèle
     std::cout << "Modele ligne 2D LSQ - summary \n";
-    // test si l'ajustement a déjà eu lieu
+    // test if l'ajustement a déjà eu lieu
     if(mOk)
     {
     std::cout << "Observations :" << pObs.size() << "\n";

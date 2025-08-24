@@ -46,7 +46,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 int  Abdou_main(int argc,char ** argv)
 {
-  //=====================  PARAMETRES EN DUR ==============
+  //=====================  parameters EN DUR ==============
 
    std::string aDir = "/media/data1/Jeux-Tests/Tortue-Pagode-Hue/";
    std::string aPatIm = "IMGP687.*JPG";
@@ -54,7 +54,7 @@ int  Abdou_main(int argc,char ** argv)
 
   //===================== 
 
-    // Permet de manipuler les ensemble de nom de fichier
+    // Permet de manipuler les ensemble de nom de file
     cInterfChantierNameManipulateur * aICNM = cInterfChantierNameManipulateur::BasicAlloc(aDir);
 
 

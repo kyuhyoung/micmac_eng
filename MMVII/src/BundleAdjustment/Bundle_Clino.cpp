@@ -238,7 +238,7 @@ namespace MMVII
         // Push index of unknowns (Boresight matrix)
         pushClinoIndex(aVInd, aClinoName);
 
-        //Push index of unknowns (Camera orientation)
+        //Push index of unknowns (camera orientation)
         aMeasure.pushIndex(aVInd);
 
         // Push weights

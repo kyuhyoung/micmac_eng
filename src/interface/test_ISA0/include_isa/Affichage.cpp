@@ -9,7 +9,7 @@ Affichage::Affichage(ListImg* l, string dossier, int i) : lstImg(l), img0(i), do
 
 
 bool Affichage::Can_open(const char * name)
-//renvoie true si le fichier de la photo est trouvé
+//renvoie true if le file de la photo est trouvé
 {
     ELISE_fp fp;
     if (! fp.ropen(name,true))
@@ -43,7 +43,7 @@ void Affichage::MakeTiff(Bitm_Win aW, string result) {
 }
 
 void Affichage::AffichePointsImage(ListPt* LstInit, ListPt* LstFin, int img, string result) {
-//affiche tous les points de l'image en fonction de leur multiplicité
+//affiche tous les points de l'image en function de leur multiplicité
 	if (img-img0>signed((*lstImg).size())) return;
 	INT max_val;
 	INT mult;

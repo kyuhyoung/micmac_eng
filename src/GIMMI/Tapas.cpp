@@ -343,7 +343,7 @@ Tapas::Tapas(QList <QString> list, QList <QString> listCheckedItems, QString pat
     boxlayouth32->addWidget(RefineAllQt);
     RefineAllQt->setFixedWidth(300);
     RefineAllQt->setFixedHeight(27);
-//      ImMinMax] vector<std::string> :: {Image min and max (may avoid tricky pattern ...)}
+//      ImMinMax] vector<std::string> :: {image min and max (may avoid tricky pattern ...)}
     QLabel *ImMinMax = new QLabel(this);
     ImMinMax->setText("ImMinMax");
     ImMinMaxQt = new QTextEdit();

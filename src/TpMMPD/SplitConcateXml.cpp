@@ -109,7 +109,7 @@ cCPSH_Appli::cCPSH_Appli(int argc,char ** argv)
     //~ }
     //~ else
     //~ {
-			//~ cout<<"Warning : Image frame in Photoscan format (not compatible with MicMac) - give Size"<<endl;
+			//~ cout<<"Warning : image frame in Photoscan format (not compatible with MicMac) - give Size"<<endl;
 	//~ }
     //name output homol folder
     if (aOut=="")
@@ -761,7 +761,7 @@ int CheckPatCple_main(int argc,char ** argv)
     //check for each img if it is present in the .xml file
     for (std::list<std::string>::iterator iT1 = aLFile.begin() ; iT1 != aLFile.end() ; iT1++)
     {
-		//~ std::cout << "Image = " << *iT1 << std::endl;
+		//~ std::cout << "image = " << *iT1 << std::endl;
 		unsigned int aCmpt=0;
 		for (unsigned int aP=0; aP<aVCple.size(); aP++)
 		{

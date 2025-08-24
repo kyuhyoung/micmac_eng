@@ -67,7 +67,7 @@ template <class  Graphe, class GrDual> class ElMakeDual
 
 
         //====================================================
-        // Section Methode a (re)definir  par l'utilisateur 
+        // Section method a (re)definir  par l'utilisateur 
         //====================================================
 
         virtual bool  DM_OkFace(ElSubFilo<TArc *> )

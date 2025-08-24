@@ -532,7 +532,7 @@ template <class Type>  class cHomogr2D
 
 //template <class Type,class TMap>  cTplBox<2,Type>  ImageOfBox();
 
-/// Image of an tri by a mapping
+/// image of an tri by a mapping
 template <class Type,class tMap>  cTriangle<Type,2>  ImageOfTri(const cTriangle<Type,2> &,const tMap &);
 
 
@@ -704,7 +704,7 @@ class cEllipse_Estimate
 template <class Type> std::vector<cPtxd<Type,2> > RandomPtsOnCircle(int aNbPts);
 /// Specialze for homogr, avoid singlularity in [-1,1]^2 
 template <class Type> std::pair<std::vector<cPtxd<Type,2> >,std::vector<cPtxd<Type,2>>> RandomPtsHomgr(Type aAmpl=1.5);
-/// Point regularly positionned on circle, to generate mapping close to Identity 
+/// point regularly positionned on circle, to generate mapping close to Identity 
 template <class Type> std::pair<std::vector<cPtxd<Type,2> >,std::vector<cPtxd<Type,2>>>  RandomPtsId(int aNb,Type aEpsId);
 /// generate a map, "close to Id", using RandomPtsId
 template <class tMap>  tMap RandomMapId(typename tMap::tTypeElem aEpsId);

@@ -123,7 +123,7 @@ void TraitementSpecHall(std::vector<cCibleCalib> &  aVCC)
    for (int aK=0 ; aK<int(aVCC.size()) ; aK++)
    {
        cCibleCalib & aC = aVCC[aK];
-       int aEtage = round_ni(aC.Position().z/3.15);  // 1 ,2 ou 3=plafond
+       int aEtage = round_ni(aC.Position().z/3.15);  // 1 ,2 or 3=plafond
        ELISE_ASSERT
        (
            (aEtage>=1)  && (aEtage<=3),

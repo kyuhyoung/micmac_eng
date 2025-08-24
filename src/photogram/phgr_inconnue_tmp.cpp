@@ -563,10 +563,10 @@ void cEqfBlocIncNonTmp::SetVal(int aK,const double & aVal)
 /************************************************************/
 
 
-// Classe permettant de faire communiquer V_GSSR_AddNewEquation_Indexe et SoutraitProduc3x3 (ou DoSubst ?)
-// pour le calcul de variance covariance en cas d'elimination d'inconnues (complement de Schurr)
-// En effet lorsque l'on effectue la substitution  on a, pour l'instant, perdu trace du detail des
-// obsevation qui ont amene au calcul
+// class permettant de faire communiquer V_GSSR_AddNewEquation_Indexe and SoutraitProduc3x3 (or DoSubst ?)
+// for le computation de variance covariance en cas d'elimination d'inconnues (complement de Schurr)
+// En effet lorsque l'on effectue la substitution  on a, for l'instant, perdu trace du detail des
+// obsevation qui ont amene au computation
 
 
 
@@ -711,7 +711,7 @@ double CondMat(ElMatrix<tSysCho> & aMat,bool Sym3,bool SSym)
 
 
 double cBufSubstIncTmp::DoSubst
-     (  // X et Y notation de la doc, pas ligne ou colonnes
+     (  // X and Y notation de la doc, pas line or colonnes
           cParamCalcVarUnkEl * aCalcUKn,
           cSetEqFormelles * aSet,
           const std::vector<cSsBloc> &  aX_SBlTmp,
@@ -1008,7 +1008,7 @@ void cSubstitueBlocIncTmp::AddInc(const cIncListInterv & anILI)
       }
       else
       {
-          // On a besoin de connaitre l'ordre Tmp/Non Tmp pour la gestion des sym
+          // On a besoin de connaitre l'ordre Tmp/Non Tmp for la gestion des sym
           if (mVSBlTmp[0].I0AbsAlloc()<aSB.I1AbsAlloc())
           {
 
@@ -1205,8 +1205,8 @@ cManipPt3TerInc::cManipPt3TerInc
    mEqSurf     (anEqSurf),
    mVCamVis    (aVCamVis),
    mSubst      (*mP3Inc),
-   mTerIsInit  (false),  // Pour eventuellement eviter le re-calcul
-   mPPP        (0.0,0.0,true,-1), // INIT +ou- bidon, refaite par ailleurs
+   mTerIsInit  (false),  // for eventuellement eviter le re-computation
+   mPPP        (0.0,0.0,true,-1), // INIT +or- bidon, refaite par ailleurs
    mMulGlobPds (1.0)
 
 {
@@ -1416,7 +1416,7 @@ bool OkReproj
               return false;
            }
 */
- // Semble + robuste de se baser sur la visibilite car reprojection peut etre degeneree
+ // Semble + robuste de se baser on la visibilite car reprojection peut etre degeneree
            if (! aCam.PIsVisibleInImage(aPTer,&anArg))
            {
               Why = anArg.mWhy;
@@ -1475,7 +1475,7 @@ Pt3dr  cManipPt3TerInc::CalcPTerInterFaisceauCams
         // ElSeg3D aSeg ;
 
 
-// Apparemmnt les cCamStenopeGrid ne sont plus utilisee pour simplifier le code et faciliter vers 
+// Apparemmnt les cCamStenopeGrid ne sont plus utilisee for simplifier le code and faciliter vers 
 // une transition vers  CapteurBasic 
 /*
             cCamStenopeGrid * aCSG =  mVCamVis[aK]->PIF().CamGrid();
@@ -1508,7 +1508,7 @@ Pt3dr  cManipPt3TerInc::CalcPTerInterFaisceauCams
    }
 
        
-   // Calcul du B/H par dispersion des direction
+   // computation du B/H par dispersion des direction
    Pt3dr aSomC(0,0,0);
    Pt3dr aSomT(0,0,0);
    Pt3dr aSomT2(0,0,0);
@@ -1535,7 +1535,7 @@ Pt3dr  cManipPt3TerInc::CalcPTerInterFaisceauCams
       aSomT = aSomT / aSP;
       aSomT2 = aSomT2 / aSP;
       aSomT2 = aSomT2 - Pcoord2(aSomT);
-      // Ce debiaisement est necessaire, par exemple si tous les poids sauf 1 sont
+      // Ce debiaisement est necessaire, par exemple if tous les poids sauf 1 sont
       // presque nuls
       double aDebias = 1 - aSP2/ElSquare(aSP);
       ELISE_ASSERT(aDebias>0,"Singularity in cManipPt3TerInc::CalcPTerInterFaisceauCams ");
@@ -1697,8 +1697,8 @@ Pt3dr  cManipPt3TerInc::CalcPTerInterFaisceauCams
           aParam.mI = aROIF.mVec2 / sqrt(aROIF.mVal2);
           aParam.mJ = aROIF.mVec3 / sqrt(aROIF.mVal3);
 
-// Bizzarement, alors que ca augmente le conditionnement
-// ca fait converger sur le jeux de donnees Samantha
+// Bizzarement, then que ca augmente le conditionnement
+// ca fait converger on le jeux de donnees Samantha
 /*
           aParam.mK = aROIF.mVec1 ;
           aParam.mI = aROIF.mVec2 ;
@@ -1723,7 +1723,7 @@ Pt3dr  cManipPt3TerInc::CalcPTerInterFaisceauCams
       aParam.mHasResolMoy = true;
       aParam.mSomPds = aSP;
       
-      // Test les ratio de distances pour eviter en amont un probleme de conditionnement
+      // Test les ratio de distances for eviter en amont un probleme de conditionnement
       if (1) // (DEBUG_LSQ)
       {
           std::vector<double> aVD;
@@ -1890,8 +1890,8 @@ const cResiduP3Inc& cManipPt3TerInc::UsePointLiaisonGen
           mResidus.mPTer = CalcPTerInterFaisceauCams
                         (
                               aRAZ,
-//  GROS BUG ???? AVANT   WithApp && (aRAZ==0),
-// GENERE EVIDEMMENT PB EN INTER RASANT COMPREND PAS POURQUOI CA MARCHE AVEC APPUIS ??????
+//  GROS BUG ???? before   WithApp && (aRAZ==0),
+// GENERE EVIDEMMENT PB EN INTER RASANT COMPREND PAS POURQUOI CA MARCHE with APPUIS ??????
                               (! WithApp) && (aRAZ==0),
                               mResidus.mOKRP3I,
                               aNuple,
@@ -1979,7 +1979,7 @@ const cResiduP3Inc& cManipPt3TerInc::UsePointLiaisonGen
         }
         else
         {
-           // Modif 15/02/2012  avant les residus etait pas superposables aux poses
+           // Modif 15/02/2012  before les residus etait pas superposables aux poses
            mResidus.mEcIm.push_back(Pt2dr(1e5,1e5));
         }
     }
@@ -2065,7 +2065,7 @@ const cResiduP3Inc & cManipPt3TerInc::UsePointLiaisonWithConstr
                           double aPdsPl,
                           const cNupletPtsHomologues & aNuple,
                           std::vector<double> & aVPdsIm,
-                          bool   AddEq , // Si false calcule les residu met ne modifie pas le syst
+                          bool   AddEq , // if false compute les residu met ne modifie pas le syst
                           const Pt3dr  & aPtApuis,
                           const Pt3dr  & anIncertApuis,
                           bool           aUseAppAsInit

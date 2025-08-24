@@ -48,7 +48,7 @@ bool DEBUG_MPD_ONLY_DEN = false;
 Pt3dr  NODATA_TITAN(-1.000000,-1.000000,-1.000000);
 double NEWPARAM_REGUL = 0.00001; 
 
-/* Image coordinates order: [Line, Sample] = [row, col] =  [y, x]*/
+/* image coordinates order: [Line, Sample] = [row, col] =  [y, x]*/
 /******************************************************/
 /*                                                    */
 /*                   CameraRPC                        */
@@ -412,8 +412,8 @@ Pt3dr CameraRPC::ImEtProf2Terrain(const Pt2dr & aP,double aProf) const
     }
     else
     {
-// MPD pour corriger bug reproj epipo dans Saisie Appuis 
-// A terme il faudra changer avec une fonction specifique
+// MPD for corriger bug reproj epipo in Saisie Appuis 
+// A terme il faudra changer with une function specifique
         Pt3dr aC  = OpticalCenterOfPixel(aP);
         ElSeg3D   aSeg = Capteur2RayTer(aP);
         Pt3dr aPTer = RoughCapteur2Terrain(aP);
@@ -1572,7 +1572,7 @@ std::string cRPC::Save2XmlStdMMName(  cInterfChantierNameManipulateur * anICNM,
 {
 	//std::cout << "cRPC::Save2XmlStdMMName" << "\n";
 
-  // aOri == "" => convention pour cas special appel a l'ancienne
+  // aOri == "" => convention for cas special appel a l'ancienne
     std::string aName = (aOri=="")? aNameImClip  : anICNM->StdNameCamGenOfNames(aOri,aNameImClip);
     std::string aPref = (aOri=="") ? "" :  anICNM->Dir() ;
     /* Create new RPC */
@@ -4590,7 +4590,7 @@ int CalcBsurH_main(int argc,char ** argv)
     aICNM = cInterfChantierNameManipulateur::BasicAlloc(aDir);
     aListFile = aICNM->StdGetListOfFile(aName);
 
-    /* Print out the b sur h */
+    /* Print out the b on h */
     int i=0, j=0;
     std::list<std::string>::iterator it1=aListFile.begin();
     for( ; it1 !=aListFile.end(); it1++, i++ )

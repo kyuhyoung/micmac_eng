@@ -44,10 +44,10 @@ Header-MicMac-eLiSe-25/06/2007*/
 namespace NS_ParamApero
 {
 
-//  Lorsque l'on veut ponderer des observation ponctuelle dans le plan, 
-//  si elles tombe toute au meme endroit, chacune doit avoir un poid proportionnel
-// a l'inverse du nombre d'observation;
-//  Ici cela est gere avec une certaine incertitude, les observation etant suposee
+//  Lorsque l'on veut ponderer des observation ponctuelle in le plan, 
+//  if elles tombe toute au meme endroit, chacune doit avoir un poid proportionnel
+// a l'inverse du number d'observation;
+//  Ici cela est gere with une certaine incertitude, les observation etant suposee
 // etre localisees selon une gaussienne
 
 
@@ -61,7 +61,7 @@ class cImDePonderH
 
         void Compile();
 
-        // n'a de sens que lorsque c'est un des points ayant ete utilises pour 
+        // n'a de sens que lorsque c'est un des points ayant ete utilises for 
         // pondere
         double GetPds(const Pt2dr & aP)
         {
@@ -151,9 +151,9 @@ class cCmpImOnAngle
 
 
 // A Angle  , O Optimum
-//  La formule est faite pour que
+//  La formule est faite for que
 //   *  on ait un gain proportionnel a l'angle en 0
-//   *  un maximum pour Opt avec une derivee nulle
+//   *  un maximum for Opt with une derivee nulle
 //   *
 
 double GainAngle(double A,double Opt) 
@@ -185,7 +185,7 @@ void  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0)
        aPC2->MMNbPts() =0;
     }
 
-     // On compte le nombre de points de liaisons
+     // On compte le number de points de liaisons
     for (int aKPt=0 ; aKPt<int(aVPM.size()) ;aKPt++)
     {
         cOnePtsMult & aPMul = *(aVPM[aKPt]);
@@ -225,7 +225,7 @@ ELISE_ASSERT(false,"METTRE AU MOINS NbMaxPresel \n");
     }
 
 
-    // On reduit au nombre Max de Presel
+    // On reduit au number Max de Presel
     cCmpImOnGainHom aCmpGH;
     std::sort(aVPPres.begin(),aVPPres.end(),aCmpGH);
     while (int(aVPPres.size()) > aCIM.NbMaxPresel().Val())

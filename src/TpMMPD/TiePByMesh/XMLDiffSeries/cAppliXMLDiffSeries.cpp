@@ -129,7 +129,7 @@ int XMLDiffSeries_main(int argc,char ** argv)
 
     }
     //fabriquer XML:
-    vector<CplString> vCplFusion = fsnPairImg(vCplLine); //a voir si Tapioca File faire 1 ou 2 sens ?
+    vector<CplString> vCplFusion = fsnPairImg(vCplLine); //a voir if Tapioca File faire 1 or 2 sens ?
     cout<<vCplLine.size()<<" cpls - "<<vCplFusion.size()<<" cpls fusion"<<endl;
     MakeXMLPairImg(vCplFusion, outXML);
 

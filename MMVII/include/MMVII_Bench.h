@@ -140,7 +140,7 @@ void BenchUnCalibResection();
 void BenchPoseEstim(cParamExeBench & aParam);
 
 
-void BenchSSRNL(cParamExeBench & aParam);  // Syst Sur Resol Non Linear
+void BenchSSRNL(cParamExeBench & aParam);  // Syst on Resol Non Linear
 void BenchDeformIm(cParamExeBench & aParam); // using image in non-linear least square system
 void BenchMeshDev(cParamExeBench & aParam);  // bench  devlopment  (on devlopable surface)
 void BenchCentralePerspective(cParamExeBench & aParam); // test on implementation of central perstective model

@@ -62,7 +62,7 @@ int main(int argc,char ** argv)
   Pt2dr aQ1 = aCamSimul.R3toF2(aP1);
   Pt2dr aQ2 = aCamSimul.R3toF2(aP2);
 
-  // Partie utilisation du relevement dans l'espace
+  // Partie utilisation du relevement in l'espace
   std::list<ElRotation3D> aLRot;
   CamStenopeIdeale aCamInc(1.0,Pt2dr(0,0));
   aCamInc.OrientFromPtsAppui(aLRot,aP0,aP1,aP2,aQ0,aQ1,aQ2);

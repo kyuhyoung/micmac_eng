@@ -140,7 +140,7 @@ std::vector<INT>  approx_poly(const std::vector<Pt2dr> &,bool circ,ArgAPP arg);
 
 /************************************************************/
 /*                                                          */
-/*                 RASTER / VECTEUR                         */
+/*                 RASTER / vector                         */
 /*                                                          */
 /************************************************************/
 REAL FixedSomSegDr 
@@ -228,7 +228,7 @@ class  Optim2DParam
          Optim2DParam
          (
               REAL    step_lim,
-              REAL    def_out,  // Valeur tjs < ou > a la val cur
+              REAL    def_out,  // value tjs < or > a la val cur
               REAL    epsilon, //  les dif < espilon sont negligee
               bool    Maxim,   
               REAL    lambda = 0.5,

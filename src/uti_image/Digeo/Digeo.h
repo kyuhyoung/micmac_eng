@@ -183,44 +183,44 @@ class cPtsCaracDigeo
 
 /*****************************************************************/
 /*                                                               */
-/*   Fonctions elementaires de noyaux 1D faits notamment pour    */
-/* permettre le calcul de noyau enchaine                         */
+/*   Fonctions elementaires de noyaux 1D faits notamment for    */
+/* permettre le computation de noyau enchaine                         */
 /*                                                               */
 /*****************************************************************/
 
 //  Resout l'equation  aI o I2 = aI3 , au sens des moindres carres
 Im1D_REAL8 DeConvol
 (
-     int aC2,   // Indexe 0 dans I2
+     int aC2,   // Indexe 0 in I2
      int aSz2,  // Taille I2
      Im1D_REAL8 aI1,   // Kernel 1
-     int aC1,          // Indexe 0 dans I1
+     int aC1,          // Indexe 0 in I1
      Im1D_REAL8 aI3,   // Kernel 3
-     int aC3           // Indexe 0 dans I3
+     int aC3           // Indexe 0 in I3
 );
 // Paramametrage standardA  0 en centre image
 Im1D_REAL8 DeConvol(int aDemISz2,Im1D_REAL8 aI1,Im1D_REAL8 aI3);
 
-// Convolution C1 et C2 = indexe 0,  lent ; pour verif DeConvol
+// Convolution C1 and C2 = indexe 0,  lent ; for verif DeConvol
 Im1D_REAL8 Convol(Im1D_REAL8 aI1,int aC1,Im1D_REAL8 aI2,int aC2);
 // Parametrage stantdard 
 Im1D_REAL8 Convol(Im1D_REAL8 aI1,Im1D_REAL8 aI2);
 
-// Force l'image à une integrale donnee
+// Force l'image  une integrale donnee
 Im1D_REAL8 MakeSom(Im1D_REAL8 &aIm,double aSomCible);
 Im1D_REAL8 MakeSom1(Im1D_REAL8 &aIm);
 
-//  Calcul un noyau gaussien en faisant pour chaque pixel la valeur integrale.
+//  computation un noyau gaussien en faisant for chaque pixel la value integrale.
 Im1D_REAL8 DigeoGaussianKernel(double aSigma,int aNb,int aSurEch);
 
-//  Calcul le nombre d'element pour que la gaussiennne puisse etre tronquee a Residu pres
+//  computation le number d'element for que la gaussiennne puisse etre tronquee a Residu pres
 int NbElemForGausKern(double aSigma,double aResidu);
 
-//  Calcule un noyau gaussien
+//  compute un noyau gaussien
 Im1D_REAL8 DigeoGaussianKernelFromResidue(double aSigma,double aResidu,int aSurEch);
 
-// Conversion d'un noyau double (de somme 1) en entier, en conservant la somme
-// (Pour une image entiere qui sera interpretee comme rationnele de quotient aMul)
+// Conversion d'un noyau double (de somme 1) en integer, en conservant la somme
+// (for une image entiere qui sera interpretee comme rationnele de quotient aMul)
 Im1D_INT4 ToIntegerKernel(Im1D_REAL8 aRK,int aMul,bool aForceSym);
 
 cConvolSpec<INT>*   IGausCS(double aSigma,double anEpsilon);
@@ -234,7 +234,7 @@ Fonc_Num GaussSepFilter(Fonc_Num   aFonc,double aSigma,double anEpsilon);
 
 
 
-     //     Pour representer une image
+     //     for representer une image
 
 class cImInMem
 {
@@ -263,7 +263,7 @@ class cImInMem
          virtual void LoadFile(Fonc_Num aFile,const Box2di & aBox,GenIm::type_el) = 0;
          virtual Im2DGen Im() = 0;
 
-         // La relation mere-fille a meme DZ se fait entre image de mm type
+         // La relation mere-fille a meme DZ se fait between image de mm type
          // virtual void  SetMereSameDZ(cImInMem *)=0;
 
          // virtual void MakeConvolInit(double aSigm )= 0;
@@ -351,8 +351,8 @@ template <class Type> class cTplImInMem : public cImInMem
 /*
         void SetConvolSepXY
              (
-                  bool   Increm,  // Increm et Sigma, renseignement sur l'origine du noyau
-                  double aSigma,  // permet de generer des commentaires dans code auto
+                  bool   Increm,  // Increm and Sigma, renseignement on l'origine du noyau
+                  double aSigma,  // permet de generer des commentaires in code auto
                   const cTplImInMem<Type> & aImIn,
                   Im1D<tBase,tBase> aKerXY,
                   int  aNbShitXY
@@ -554,8 +554,8 @@ class cOctaveDigeo
         virtual cTplOctDig<REAL4> *  REAL4_This() = 0;
 
         bool Pt2Sauv(const Pt2dr&) const;
-        Pt2dr  ToPtImCalc(const Pt2dr& aP0) const;  // Renvoie dans l'image sur/sous-resolue
-        Pt2dr  ToPtImR1(const Pt2dr& aP0) const;  // Renvoie les coordonnees dans l'image initiale
+        Pt2dr  ToPtImCalc(const Pt2dr& aP0) const;  // Renvoie in l'image on/under-resolue
+        Pt2dr  ToPtImR1(const Pt2dr& aP0) const;  // Renvoie les coordinates in l'image initiale
 
         double trueSamplingPace() const;
         REAL8 GetMaxValue() const;
@@ -713,7 +713,7 @@ class cImDigeo
               cAppliDigeo &
          );
 
-        // Est ce que le point a la resolution de calcul doit etre sauve
+        // Est ce que le point a la resolution de computation doit etre sauve
         bool PtResolCalcSauv(const Pt2dr & aP);
         // void ComputeCarac();
         const std::string  &  Fullname() const;
@@ -722,7 +722,7 @@ class cImDigeo
         cAppliDigeo &  Appli();
         const Box2di & BoxImCalc() const;
 
-        // Pour pouvoir se dimentionner au "pire" des cas, chaque image est
+        // for pouvoir se dimentionner au "pire" des cas, chaque image est
         // d'abord notifiee de l'existence d'une box
         void NotifUseBox(const Box2di &);
         void AllocImages();
@@ -757,7 +757,7 @@ class cImDigeo
        size_t addAllPoints( list<DigeoPoint> &o_allPoints ) const;
        unsigned int getNbFeaturePoints() const;
 
-	// Modif Greg pour le support JP2
+	// Modif Greg for le support JP2
 	//Tiff_Im TifF();
 	int bitpp()const{return mInterfImage->bitpp();}
 
@@ -798,7 +798,7 @@ class cImDigeo
         bool                         mG2MoyIsCalc;
         double                       mGradMoy;
         double                       mDyn;
-        REAL8                        mMaxValue; // valeur max d'un pixel, utilisée pour la normalisation du gradient
+        REAL8                        mMaxValue; // value max d'un pixel, utilise for la normalisation du gradient
         Im2DGen *                    mFileInMem;
         double                       mSigma0; // sigma of the first level of each octave (in the octave's space)
         double                       mSigmaN; // nominal sigma value of source image
@@ -1037,7 +1037,7 @@ class cParamAppliDigeo
         int      mNivByOctave;
         bool     mExigeCodeCompile;
         int      mNivFloatIm;        // Ne depend pas de la resolution
-        bool     mSauvPyram;        // Pour Mise au point, sauve ttes les pyramides
+        bool     mSauvPyram;        // for Mise au point, sauve ttes les pyramides
         double   mRatioGrad;  // Le gradient doit etre > a mRatioGrad le gradient moyen
 
         cParamAppliDigeo() :
@@ -1067,33 +1067,33 @@ cAppliDigeo * DigeoCPP
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant à la mise en
+Ce logiciel est un programme informatique servant  la mise en
 correspondances d'images pour la reconstruction du relief.
 
-Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
+Ce logiciel est rgi par la licence CeCILL-B soumise au droit franais et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
-de la licence CeCILL-B telle que diffusée par le CEA, le CNRS et l'INRIA 
+de la licence CeCILL-B telle que diffuse par le CEA, le CNRS et l'INRIA 
 sur le site "http://www.cecill.info".
 
-En contrepartie de l'accessibilité au code source et des droits de copie,
-de modification et de redistribution accordés par cette licence, il n'est
-offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
-seule une responsabilité restreinte pèse sur l'auteur du programme,  le
-titulaire des droits patrimoniaux et les concédants successifs.
+En contrepartie de l'accessibilit au code source et des droits de copie,
+de modification et de redistribution accords par cette licence, il n'est
+offert aux utilisateurs qu'une garantie limite.  Pour les mmes raisons,
+seule une responsabilit restreinte pse sur l'auteur du programme,  le
+titulaire des droits patrimoniaux et les concdants successifs.
 
-A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  à l'utilisation,  à la modification et/ou au
-développement et à la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe à 
-manipuler et qui le réserve donc à des développeurs et des professionnels
-avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
-logiciel à leurs besoins dans des conditions permettant d'assurer la
-sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-à l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+A cet gard  l'attention de l'utilisateur est attire sur les risques
+associs au chargement,   l'utilisation,   la modification et/ou au
+dveloppement et  la reproduction du logiciel par l'utilisateur tant 
+donn sa spcificit de logiciel libre, qui peut le rendre complexe  
+manipuler et qui le rserve donc  des dveloppeurs et des professionnels
+avertis possdant  des  connaissances  informatiques approfondies.  Les
+utilisateurs sont donc invits  charger  et  tester  l'adquation  du
+logiciel  leurs besoins dans des conditions permettant d'assurer la
+scurit de leurs systmes et ou de leurs donnes et, plus gnralement, 
+ l'utiliser et l'exploiter dans les mmes conditions de scurit. 
 
-Le fait que vous puissiez accéder à cet en-tête signifie que vous avez 
-pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
+Le fait que vous puissiez accder  cet en-tte signifie que vous avez 
+pris connaissance de la licence CeCILL-B, et que vous en avez accept les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

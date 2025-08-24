@@ -68,7 +68,7 @@ double DefScoreOpt() {return USE_SCOR_CORREL ? TT_DefCorrel : -1e20;}
 /*                                                                              */
 /********************************************************************************/
 
-// Classe pour calculer de l'autocorrelation rapide
+// class for compute de l'autocorrelation rapide
 /*
 template <class TypeIm> class cCutAutoCorrelDir : public cAutoCorrelDir<TypeIm>
 {
@@ -361,7 +361,7 @@ cResulRechCorrel TT_RechMaxCorrelMultiScaleBilin
 /********************************************************************/
 /*                                                                  */
 /*                                                                  */
-/*           Correlation avec  :                                    */
+/*           Correlation with  :                                    */
 /*                        *   interpol SinC                         */
 /*                        *   fenetre dense                         */
 /*                        *   1 seul reech                          */
@@ -375,10 +375,10 @@ class cTT_MaxLocCorrelDS1R : public Optim2DParam
 
          REAL Op2DParam_ComputeScore(REAL aDx,REAL aDy) ;
          double               mStep0;
-         std::vector<double>  mVals1; // Les valeurs interpolees de l'image 1 sont stockees une fois pour toute
+         std::vector<double>  mVals1; // Les valeurs interpolees de l'image 1 sont stockees une fois for toute
          const tTImTiepTri & mIm1;
          
-         std::vector<Pt2dr> mVois2; // Les voisin de l'images 2 sont stockes une fois pour toute
+         std::vector<Pt2dr> mVois2; // Les voisin de l'images 2 sont stockes une fois for toute
          const tTImTiepTri & mIm2;
          tElTiepTri **       mData2;
          Pt2dr               mDecInit;

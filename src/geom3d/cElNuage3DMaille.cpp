@@ -46,8 +46,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 
-// En entree c'est le clip et la taille, d'entree
-// en sortie c'est la translation (diff si le scale<0) et la taille
+// En entree c'est le clip and la taille, d'entree
+// en sortie c'est la translation (diff if le scale<0) and la taille
 // de sortie
 
 cXML_ParamNuage3DMaille CropAndSousEch
@@ -241,7 +241,7 @@ cElNuage3DMaille::cElNuage3DMaille
                            mParams.Orientation().OrIntImaM2C().Val(),
                            cBasicGeomCap3D::StdGetFromFile(mParams.NameOri().Val(),mITypeCam),
                            aNameFile,
-                           aDir+mParams.PN3M_Nuage().Image_Profondeur().Val().Image() // Ne Sert que pour la taille ?
+                           aDir+mParams.PN3M_Nuage().Image_Profondeur().Val().Image() // Ne Sert que for la taille ?
                        )  :  
                        Cam_Gen_From_XML(mParams.Orientation(),mICNM,aNameFile)     
                   ),
@@ -376,7 +376,7 @@ ElSeg3D  cElNuage3DMaille::Capteur2RayTer(const Pt2dr & aP) const
     return FaisceauFromIndex(aP);
 }
 
-// En fait peut avoir valeur par defaut
+// En fait peut avoir value par defaut
 
 double cElNuage3DMaille::ResolSolOfPt(const Pt3dr & aP) const
 {
@@ -773,8 +773,8 @@ void cElNuage3DMaille::PlyPutFile
        }
    }
 
-   //GERALD : Correction bug : ecriture binaire incorrect sous windows
-   //Mode Ecriture : binaire ou non
+   //GERALD : Correction bug : ecriture binaire incorrect under windows
+   //Mode Ecriture : binaire or non
    std::string mode = aModeBin ? "wb" : "w";
    FILE * aFP = FopenNN(aName,mode,"cElNuage3DMaille::PlyPutFile");
 
@@ -1193,7 +1193,7 @@ Pt3dr cElNuage3DMaille::NormaleOfIndex(const tIndex2D& anI1, int wSize, const Pt
                 {
                     Pt3dr aCentreOptique = mCam->OrigineProf() - anOffset;
 
-                    if(aCentreOptique.z==0) //On est probablement en mode grille, donc il faut calculer un pseudo centre...
+                    if(aCentreOptique.z==0) //On est probablement en mode grille, donc il faut compute un pseudo centre...
                     {
                         std::cout<<"Be carefull, GRID orientation -> it's not the real center. Camera distance set to "<<mDistCenter<<"m (DistC"<<std::endl;
                         aCentreOptique = aV.P0()+aTgt*mDistCenter - anOffset;
@@ -1208,7 +1208,7 @@ Pt3dr cElNuage3DMaille::NormaleOfIndex(const tIndex2D& anI1, int wSize, const Pt
         tIndex2D anI2 = anI1 - Pt2di(halfSize, halfSize); //top-left corner of window
         tIndex2D anI3;
 
-        //recherche des voisins et stockage des points
+        //recherche des voisins and stockage des points
         for(int aK = 0; aK<wSize ; ++aK)
         {
             for(int bK = 0; bK<wSize ; ++bK)
@@ -1227,7 +1227,7 @@ Pt3dr cElNuage3DMaille::NormaleOfIndex(const tIndex2D& anI1, int wSize, const Pt
         //estimation du plan aux moindres carrés
         cElPlan3D aPlan(aVP, &aVPds);
 
-        //retourne la normale en fonction de l'angle avec le segment PdV-Pt
+        //retourne la normale en function de l'angle with le segment PdV-Pt
         Pt3dr aN = aPlan.Norm()* aFact;
         // if (aN.x*aTgt.x + aN.y*aTgt.y + aN.z*aTgt.z < 0.f)
         if (scal(aN,aTgt) < 0.f)
@@ -1616,7 +1616,7 @@ class cBasculeNuage : public cZBuffer
              if (Ok)
                 return mInput->ProfOfIndexInterpol(aP);
              return 0.0;
-            // �� Pt3dr aPEucl = mInput->IndexAndProf2Euclid(Pt2dr(aP.x,aP.y),0);
+            //  Pt3dr aPEucl = mInput->IndexAndProf2Euclid(Pt2dr(aP.x,aP.y),0);
             // return  mInput->ProfOfIndex(aP);
         }
 
@@ -1980,7 +1980,7 @@ cElNuage3DMaille *  BasculeNuageAutoReSize
        Pt2di aP;
        double aSeuil = anArgBasc.mSeuilEtir;
 // aSeuil = 0.9;
-       //Ewelina : unsed variable commented ou
+       //Ewelina : unsed variable commented or
 		//double aDynSeuil = 0.5 / ElMax(aSeuil,1-aSeuil);
 
 
@@ -2075,7 +2075,7 @@ double cElNuage3DMaille::SeuilDistPbTopo() const
 }
 
 
-// Pour teni compt du fait que la resolution a pu etre multipliee,
+// for teni compt du fait que la resolution a pu etre multipliee,
 // Ex 0.12 initiale , on finit a DeZoom 2, donc devienr 0.24 qui n'est pas un chiffre rond
 // (on peut avoir 23, 48, 96, 192  .... comme chifre rond)
 
@@ -2134,10 +2134,10 @@ void ToFOMOriStdRound(double & aVal,const double & aResol)
 //    double aIR = aDec.RVal();
     double aIR = round_ni(aRatio);
     double aDif = ElAbs(aRatio-aIR);
-    // MPD : 01/06/2015 , Brutal-in�legant-dangdereux mais efficace
-    // L'origine du pb vient d'arrondi avec les "grande" coordonnes (type lambert) et petite
-    // resol (genre < au mm); Bon ce serait + propre de gere des calcul exact ou au moins precis dans les XML
-    // mais sans soute toute une chaine a remonter ...
+    // MPD : 01/06/2015 , Brutal-inlegant-dangdereux but efficace
+    // L'origine du pb vient d'arrondi with les "grande" coordonnes (type lambert) and petite
+    // resol (genre < au mm); Bon ce serait + propre de gere des computation exact or au moins precis in les XML
+    // but without soute toute une string a remonter ...
     if (aDif>= 1e-7)
     {
        std::cout << "Waring supciciousrs round, DIF " << aDif  << " at " << __LINE__ << " of " << __FILE__ << "\n";
@@ -2197,7 +2197,7 @@ cFileOriMnt ToFOM(const cXML_ParamNuage3DMaille & aXML,bool StdRound)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -2213,17 +2213,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

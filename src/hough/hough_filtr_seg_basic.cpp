@@ -435,7 +435,7 @@ void  EHFS_PrgDyn::ComputeBestChem
     /*+-+-+-+-+-+-+-+-++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--+-+-+-+-+-+-+-+-+-+-+-+*/
 
 
-   // MACRO DEFINITION POUR  CONTOURNER LES membre-template
+   // MACRO DEFINITION for  CONTOURNER LES membre-template
 
 
              // VerifSize

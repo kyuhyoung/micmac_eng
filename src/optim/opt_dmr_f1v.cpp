@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 #include "StdAfx.h"
 
-// NROptF1vND : Num Recipes Optimisation de Fonction d'1 var, Non Derivable
+// NROptF1vND : Num Recipes Optimisation de function d'1 var, Non Derivable
 
 /******************************************************/
 /*                                                    */

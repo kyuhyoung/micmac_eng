@@ -492,10 +492,10 @@ cEtapeMecComp::cEtapeMecComp
                }
            }
       }
-      // Si la taille est 0, on sauvgarde le booleen a la bonne valeur
-      // ensuite on  met une taille + importante pour bufferiser
-      // et eviter trop d'appel cLineariseProj::Init, mais le fait
-      // de mattre mUseGeomDerivable a 0, inhibe la derivation dans 
+      // if la taille est 0, on sauvgarde le booleen a la bonne value
+      // ensuite on  met une taille + importante for bufferiser
+      // and eviter trop d'appel cLineariseProj::Init, but le fait
+      // de mattre mUseGeomDerivable a 0, inhibe la derivation in 
       mUseGeomDerivable = (mSzGeomDerivable!=0);
       if (mSzGeomDerivable ==0)
          mSzGeomDerivable = 10;
@@ -520,7 +520,7 @@ cEtapeMecComp::cEtapeMecComp
                     mModeleAnToReuse = aMod;
                  }
                  mModelesOut.push_back(aMod);
-                 // Il faut generer des fichier de paralaxes meme quand il sont
+                 // Il faut generer des file de paralaxes meme when il sont
                  // en theorie inutiles car redondants
                  for (int aK=0 ; aK<int(mFilesPx.size()) ; aK++)
                      mFilesPx[aK]->ForceGenFileMA();
@@ -531,7 +531,7 @@ cEtapeMecComp::cEtapeMecComp
       }
       InitModeleImported(aVEtPrec);
  
-      // Pour que les eventuels fichier de correlation soient creees dans le processu
+      // for que les eventuels file de correlation soient creees in le processu
       // pere
 
       if (    (mGenImageCorrel)
@@ -542,7 +542,7 @@ cEtapeMecComp::cEtapeMecComp
       }
     
 
-      // Pour eviter les conflits lorsque les fichiers sont crees par les
+      // for eviter les conflits lorsque les fichiers sont crees par les
       // process en paralelles
       //
       if (mAppli.OneDefCorAllPxDefCor().Val())
@@ -659,7 +659,7 @@ cEtapeMecComp::cEtapeMecComp
       }
 
 
-      //   Calcul l'etape la + proche avec generation de masque autom
+      //   computation l'etape la + proche with generation de masque autom
      if (mArgMaskAuto) mPredMaskAuto = this;
      for 
      (
@@ -674,7 +674,7 @@ cEtapeMecComp::cEtapeMecComp
            }
      }
 
-      //   Calcul l'etape la + proche avec parties cachees
+      //   computation l'etape la + proche with parties cachees
      for 
      (
          tContEMC::const_reverse_iterator itC= aVEtPrec.rbegin();
@@ -683,7 +683,7 @@ cEtapeMecComp::cEtapeMecComp
      )
      {
            if (
-                  ((*itC)->mNum!=0)   // Cas special sur le 0 qui est un dedoublemnt "bidon" du 1
+                  ((*itC)->mNum!=0)   // Cas special on le 0 qui est un dedoublemnt "bidon" du 1
                && ((*itC)->mEtape.GenerePartiesCachees().IsInit())
               )
            {
@@ -936,8 +936,8 @@ cFilePx * cEtapeMecComp::GetPred(const tContEMC & aCont,int anInd)
          itC != aCont.rend();
 	 itC++
     )
-        // Appelee avant que Px1IncCalc soit utilise, donc on
-        // tient compte du cas ou Num == 0
+        // Appelee before que Px1IncCalc soit utilise, donc on
+        // tient compte du cas or Num == 0
         if ((*itC)->mFilesPx[anInd]->GenFile())
             return (*itC)->mFilesPx[anInd];
     return 0;
@@ -1235,7 +1235,7 @@ if (0)
 
    ELISE_COPY(aIMasq.border(1),0,aIMasq.out()|aISsPIMasq.out());
 
-   // Le + simple pour traiter de maniere generique les dimensions
+   // Le + simple for traiter de maniere generique les dimensions
    // de paralaxe est parfois d'explorer un intervalle vide
    for (int aK=0 ; aK<  theDimPxMax ; aK++)
    {
@@ -1473,7 +1473,7 @@ void cEtapeMecComp::SauvNappes
       );
       mFilesPx[aK]->SauvResulPxRel(aNP.mPxRes,aNP.mPxInit,aBoxOut,aBoxIn);
 
-      // Calcul du masque debordant du ZMin/ZMax pour eviter le pb d'instab RPC
+      // computation du masque debordant du ZMin/ZMax for eviter le pb d'instab RPC
       if (DoMasqMnt &&  (aK==0))
       {
           Pt2di aSzIn = aIResult.sz();
@@ -1806,8 +1806,8 @@ void cEtapeMecComp::DoRemplitXMLNuage() const
 cXML_ParamNuage3DMaille cEtapeMecComp::DoRemplitXML_MTD_Nuage() const
 {
 
-   // Prudence pour la generation systematique, ce ne doit pas
-   // fonctionner avec toutes les geometries
+   // Prudence for la generation systematique, ce ne doit pas
+   // fonctionner with toutes les geometries
 
 
    cMTD_Nuage_Maille aMTD;
@@ -1976,7 +1976,7 @@ void cEtapeMecComp::RemplitXMLNuage
         aIP.Masq() = NameWithoutDir(NameMasqCarteProf());
 
 
-        // Gestion du cas particulier dernier fichier
+        // Gestion du cas particulier dernier file
         bool AddCorr = mGenImageCorrel;
         std::string  aFileCorrel = NameWithoutDir(NameFileCorrel());
         if ((! AddCorr) && mPrec && mPrec->mGenImageCorrel && (DeZoomTer() == mPrec->DeZoomTer()))
@@ -2079,13 +2079,13 @@ void cEtapeMecComp::RemplitXMLNuage
      aNuage.TolVerifNuage().SetVal(aSensibility/20.0);
     
     // aIP
-    // aIP.Image() =;
+    // aIP.image() =;
 }
 
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -2101,17 +2101,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

@@ -89,12 +89,12 @@ void WarnTest();
 
 namespace NS_ReducHoms
 {
-class cPtHom;    // Point final multiple
+class cPtHom;    // point final multiple
 class cLink2Img; // "arc" du graphe de visibilite
 class cImagH;    // Une image
 class cPhIndexed;     // Pt Hom en cours de traitement
-class cIndexImag;    // Structure temporaire pour analyser les point d'une nouvelle image
-class cAppliReduc;    // Structure temporaire pour analyser les point d'une nouvelle image
+class cIndexImag;    // Structure temporaire for analyser les point d'une nouvelle image
+class cAppliReduc;    // Structure temporaire for analyser les point d'une nouvelle image
 
 typedef std::map<cImagH *,cLink2Img *> tSetLinks;
 
@@ -145,7 +145,7 @@ class cPtHom
   //           cImagH      
   //======================================
 
-class cLink2Img  // dans cImagH.cpp
+class cLink2Img  // in cImagH.cpp
 {
     public :
          cLink2Img(cImagH * aSrce,cImagH * aDest,const std::string & aNameH);
@@ -184,7 +184,7 @@ class cLink2Img  // dans cImagH.cpp
 class cImagH
 {
      public :
-// PRE REQUIS POUR LE MERGING
+// PRE REQUIS for LE MERGING
 //=====================
 
         cLink2Img * GetLinkOfImage(cImagH*);
@@ -202,7 +202,7 @@ class cImagH
          void SetMarqued(int);
          void SetUnMarqued(int);
          bool Marqued(int) const;
-         // std::vector<cImagH *> AdjRefl();  // Image adj + lui meme
+         // std::vector<cImagH *> AdjRefl();  // image adj + lui meme
 
 
 
@@ -228,7 +228,7 @@ class cImagH
          cImagH(const cImagH &); // N.I.
          void ComputePtsLink(cLink2Img & aLnk);
 
-         std::map<Pt2dr,cPtHom *>   mMapH;  // Liste des Hom deja trouves via les prec
+         std::map<Pt2dr,cPtHom *>   mMapH;  // list des Hom deja trouves via les prec
          tSetLinks                  mLnks;
          std::string                mName;
          cAppliReduc &              mAppli;
@@ -250,7 +250,7 @@ class cImagH
   //======================================
 
 
-// Pour indexer les Pt Hom dans un QTree
+// for indexer les Pt Hom in un QTree
 class cPhIndexed
 {
      public :

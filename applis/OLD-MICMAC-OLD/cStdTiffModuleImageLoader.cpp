@@ -271,10 +271,10 @@ std::string cStdTiffModuleImageLoader::NameFileOfResol(int aDeZoom) const
           +  mAppli.NameFilePyr(mName,aDeZoom);
 }
 
-//  [1]- Si le fichier existe on le renvoie
-//  [2]- Sinon si la resolution vaut 1 y un pb
-//  [3]- Si la resolution n'est pas une puissance de 2 y a  aussi un pb
-//  [4]- Sinon on le calcul par reduction de la resolution
+//  [1]- if le file existe on le renvoie
+//  [2]- else if la resolution vaut 1 y un pb
+//  [3]- if la resolution n'est pas une puissance de 2 y a  aussi un pb
+//  [4]- else on le computation par reduction de la resolution
 //     du dessus.
 
 Tiff_Im     cStdTiffModuleImageLoader::FileOfResol(int aDeZoom) const
@@ -367,10 +367,10 @@ std::string     cStdTiffModuleImageLoader::CreateFileOfResol(int aDeZoom,bool Fo
 
 
    // On recherche la plus faible resolution meilleure
-   // ou egale a aDeZoom, c'est elle qui fixe le type,
-   // si elle vaut exactement aDeZoom elle fixe aussi le Diviseur
+   // or egale a aDeZoom, c'est elle qui fixe le type,
+   // if elle vaut exactement aDeZoom elle fixe aussi le Diviseur
 
-        // Auparavant , initialisation sur les valeur de la resolution 1
+        // Auparavant , initialisation on les value de la resolution 1
    Tiff_Im aFile1 = FileOfResol(1);
    GenIm::type_el aType = aFile1.type_el();
    int aDivIm = 16;
@@ -452,7 +452,7 @@ std::cout << "xxxBBBBBB \n";
 /*                                               */
 /*************************************************/
 
-// A mettre dans le .h pour utilisation hors MICMAC
+// A mettre in le .h for utilisation hors MICMAC
 /*
     cInterfModuleImageLoader::cInterfModuleImageLoader() :
     mAppli (0)

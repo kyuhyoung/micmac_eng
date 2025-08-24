@@ -463,7 +463,7 @@ void cEllipse::BenchEllispe()
              // getchar();
          }
 
-	 /* Check experimentaly that ApproxDist ~ EuclidDist and that the approximation can be bounded as a fonction
+	 /* Check experimentaly that ApproxDist ~ EuclidDist and that the approximation can be bounded as a function
 	  * of ellipse excentricity*/
 	 tREAL8              aMaxRatio=0.0;
 	 cWeightAv<tREAL8>  aWAvg;
@@ -896,7 +896,7 @@ bool  cExtract_BW_Ellipse::AnalyseEllipse(cSeedBWTarget & aSeed,const std::strin
 if (true)
 {
 #if (0)
-   // si on veut afficher la fonion bicub
+   // if on veut afficher la fonion bicub
    {
       static bool First = false;
       if (First)

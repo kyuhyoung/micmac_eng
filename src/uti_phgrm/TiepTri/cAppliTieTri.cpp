@@ -130,7 +130,7 @@ cAppliTieTri::cAppliTieTri
 
 void StatCorrel(const  std::vector<cResulMultiImRechCorrel*> &  aVec, const std::string & aMes)
 {
-    //============= Statistic sur un vector result de correlation =============
+    //============= Statistic on un vector result de correlation =============
     double aSomC = 0;
     int aNbC = 0;
     std::vector<double> aVCor;
@@ -141,9 +141,9 @@ void StatCorrel(const  std::vector<cResulMultiImRechCorrel*> &  aVec, const std:
         std::vector<cResulRechCorrel > &  aVRRC = aRMIRC->VRRC() ;
         for (int aKIndIm=0 ; aKIndIm<int(aVRRC.size()) ; aKIndIm++)
         {
-            aVCor.push_back(aVRRC[aKIndIm].mCorrel);    // prendre score correl avec chaque pt 2nd
+            aVCor.push_back(aVRRC[aKIndIm].mCorrel);    // prendre score correl with chaque pt 2nd
             aSomC += aVRRC[aKIndIm].mCorrel ;           // accumuler les valeurs de scores de correls
-            aNbC ++ ;                                   // nombre de couple Master-2nd
+            aNbC ++ ;                                   // number de couple Master-2nd
         }
     }
     if (aVCor.size() > 0)
@@ -225,7 +225,7 @@ void cAppliTieTri::DoAllTri(const cXml_TriAngulationImMaster & aTriang)
     vector< vector<int> > VNumIms;
     vector< vector<Pt2dr> > VPtsIms;
 
-    //====== Parcour les  PtsMul et rempli Hom classique + nouvelle structure==========//
+    //====== Parcour les  PtsMul and rempli Hom classique + nouvelle structure==========//
     {
         for (int aKP=0 ; aKP<int(mGlobMRIRC.size()) ; aKP++)
         {
@@ -249,7 +249,7 @@ void cAppliTieTri::DoAllTri(const cXml_TriAngulationImMaster & aTriang)
                     cImSecTieTri * anIm = mImSec[aVInd[aKI]];
                     anIm->PackH().Cple_Add(ElCplePtsHomologues(aPMaster,aRRC.mPt)) ;
                     //=================//
-                    //aNumIms.push_back(aKI);           // -> bug sur index of image when export new FH ?
+                    //aNumIms.push_back(aKI);           // -> bug on index of image when export new FH ?
                     aNumIms.push_back(anIm->Num());
                     aPtsIms.push_back(aRRC.mPt);
                     //==================//
@@ -257,8 +257,8 @@ void cAppliTieTri::DoAllTri(const cXml_TriAngulationImMaster & aTriang)
                  }
                  else
                  {
-                      // Ce cas peut sans doute se produire legitimment si la valeur entiere etait trop proche
-                      // de la frontiere et que toute les  tentative etaient en dehors
+                      // Ce cas peut without doute se produire legitimment if la value entiere etait trop proche
+                      // de la frontiere and que toute les  tentative etaient en dehors
                       //ELISE_ASSERT(false,"Incoh init in cAppliTieTri::DoAllTri");
                       // getchar();
                  }
@@ -298,7 +298,7 @@ void cAppliTieTri::DoAllTri(const cXml_TriAngulationImMaster & aTriang)
         cImSecTieTri* aImSec = mImSec[aKIm];
         std::string pic1 = Master()->NameIm();
         std::string pic2 = aImSec->NameIm();
-        // La classe cHomolPackTiepTri semble n'apporter aucun service par rapport a sauver directement ...
+        // La class cHomolPackTiepTri semble n'apporter aucun service par rapport a sauver directement ...
         cHomolPackTiepTri aPack(pic1, pic2, aKIm, mICNM, true); //true = skipPackVide
         aPack.Pack() = aImSec->PackH();
         if (aPack.Pack().size() > 0)
@@ -374,8 +374,8 @@ void cAppliTieTri::DoOneTri(const cXml_Triangle3DForTieP & aTri,int aKT )
     mPIsInImRedr = true;
 
     // ================  Chargement des images ======================
-    //   Cela inclut le calcul des points d'interet pour toute les images
-    //   ainsi qu'un filtrage spatial sur l'image Master, selon le critere Fast
+    //   Cela inclut le computation des points d'interet for toute les images
+    //   ainsi qu'un filtrage spatial on l'image Master, selon le critere Fast
 
     if (!  mMasIm->LoadTri(aTri)) return;
 
@@ -396,7 +396,7 @@ void cAppliTieTri::DoOneTri(const cXml_Triangle3DForTieP & aTri,int aKT )
        return;
 
 
-    // ================ Calcul des correlations entieres ======================
+    // ================ computation des correlations entieres ======================
 
     mCurEtape = ETAPE_CORREL_ENT;
     if (mWithW && (mEtapeInteract==0))
@@ -406,7 +406,7 @@ void cAppliTieTri::DoOneTri(const cXml_Triangle3DForTieP & aTri,int aKT )
               cIntTieTriInterest aPI= mMasIm->GetPtsInteret();
               for (int aKIm=0 ; aKIm<int(mImSecLoaded.size()) ; aKIm++)
               {
-                  mImSecLoaded[aKIm]->RechHomPtsInteretEntier(true,aPI);  //1pxl/2 -> pxl entier   //  sub pxl
+                  mImSecLoaded[aKIm]->RechHomPtsInteretEntier(true,aPI);  //1pxl/2 -> pxl integer   //  sub pxl
               }
          }
     }
@@ -443,15 +443,15 @@ void cAppliTieTri::DoOneTri(const cXml_Triangle3DForTieP & aTri,int aKT )
     if (CurEtapeInFlagFiltre())    // Flag = 1 => Filter Spatial in each triangle
         mVCurMIRMC = FiltrageSpatial(mVCurMIRMC,mDistFiltr/TT_RatioCorrEntFiltrSpatial,TT_FSDeltaCorrel);
 
-    // ================ Calcul des correlations sous pixellaire ======================
+    // ================ computation des correlations under pixellaire ======================
 
 
     {
        for (mCurEtape=ETAPE_CORREL_BILIN ; mCurEtape<=mLastEtape ; mCurEtape++)    // mLastEtape = LastStep in command's parameter. default = 2
        {
-           mPIsInImRedr = (mCurEtape <ETAPE_CORREL_DENSE); // mCurEtape = 1 => Point correl est pts redress ; = 2 => non
+           mPIsInImRedr = (mCurEtape <ETAPE_CORREL_DENSE); // mCurEtape = 1 => point correl est pts redress ; = 2 => non
            bool ModeInteractif = mWithW && (mEtapeInteract==mCurEtape);
-           for (int aKp=0 ; aKp<int(mVCurMIRMC.size()) ; /* aKp++ SURTOUT PAS INCREMENTER FAIT EN FIN DE BOUCLE !! */ )  // => aKp incremente seulement quand !ModeInteractif
+           for (int aKp=0 ; aKp<int(mVCurMIRMC.size()) ; /* aKp++ SURTOUT PAS INCREMENTER FAIT EN FIN DE BOUCLE !! */ )  // => aKp incremente seulement when !ModeInteractif
            {
 if (ModeInteractif) std::cout << "AAAAAA\n";
                cResulMultiImRechCorrel * aRMIRC = ModeInteractif ?  mMasIm->GetRMIRC(mVCurMIRMC) : mVCurMIRMC[aKp];

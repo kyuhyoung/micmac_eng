@@ -330,7 +330,7 @@ void cCalibCam::SetContrainte(const cContraintesCamerasInc & aCCI)
 	        mPIF.SetFocFree(true);
 	    break;
 
-      //  PARAMETRES AFOCAUX
+      //  parameters AFOCAUX
             case eLiberte_AFocal0 :
                  mPIF.SetAF1Free(true);
             break;
@@ -895,7 +895,7 @@ std::cout << "aaaaaaaaaaaaaaaaaaaaaaa\n";
    Pt2di aSzIm = aMDP.TifSzIm();
 std::cout << "BBBBBBBBBBBBBBBB\n";
 */
-   // MPD Modif pour que ca passe avec des fichiers vides
+   // MPD Modif for que ca passe with des fichiers vides
    Pt2di aSzIm = aMDP.SzImTifOrXif();
 
 
@@ -1125,7 +1125,7 @@ void cCalibCam::InitAvantCompens()
 
 void  cCalibCam::PostFinCompens()
 {
-   // On renormalise pour que ce soit equivalent a un nombre de point et prop a une ponderation
+   // On renormalise for que ce soit equivalent a un number de point and prop a une ponderation
    ELISE_COPY(mImReg.all_pts(),mImReg.in() * (mSomNbReg/mSomPdsReg),mImReg.out());
 
    const cXmlPondRegDist * aPond = mAppli.CurXmlPondRegDist();
@@ -1143,8 +1143,8 @@ void  cCalibCam::PostFinCompens()
         aImPds.out()
    );
 
-   // Renormalise a som=mSomNbReg, et multiplie par une case pour que en moyenne, la valeur d'un pixel soit 
-   // la somme sur une case
+   // Renormalise a som=mSomNbReg, and multiplie par une case for que en moyenne, la value d'un pixel soit 
+   // la somme on une case
    double aSom;
    ELISE_COPY(aImPds.all_pts(),aImPds.in(),sigma(aSom));
    double aNbByCase = (1+2*aSzW.x)*(1+2*aSzW.y);

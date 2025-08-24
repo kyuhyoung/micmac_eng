@@ -187,7 +187,7 @@ void bench_TDigiline()
            //SegComp SEG(p0,p1);
 	   Pt2dr p0_r(p0); // __NEW
            Pt2dr p1_r(p1); // __NEW
-           //SegComp SEG( Pt2dr(p0), Pt2dr(p1) ); devrait marcher mais non oO
+           //SegComp SEG( Pt2dr(p0), Pt2dr(p1) ); devrait marcher but non oO
            SegComp SEG( p0_r, p1_r );                                   // __NEW
            for ( k = 0; k<F.nb() ; k++)                                 // __NEW
                BENCH_ASSERT(SEG.square_dist_droite( Pt2dr(F[k]) ) < 1); // __NEW
@@ -383,7 +383,7 @@ void bench_Telcopy_0()
                )
             );
 
-            // pour k = 4,5, il y a un bug dans border_rect (=> 1 point, devrait etre 0)
+            // for k = 4,5, il y a un bug in border_rect (=> 1 point, devrait etre 0)
             if (k<4)
                BENCH_ASSERT((s1==s2) && (v1==v2));
         }

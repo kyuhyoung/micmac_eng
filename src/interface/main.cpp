@@ -29,12 +29,12 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	
-	//fermeture si une interface est déjà lancée ailleurs
+	//fermeture if une interface est déjà lancée ailleurs
 	/*QSharedMemory sharedMemory("{35DF4G354DFH35FG5-534GN53-21S}");
 	if (sharedMemory.create(sizeof(int))==false) {
 		int reponse = Interface::dispMsgBox("L'application est déjà lancée dans une autre fenêtre.", "Voulez-vous l'exécuter quand même ?", QVector<int>()<<0<<-1<<1, 2);
 		if (reponse!=0) return 0;
-	}*/	//pb : le segment reste si l'interface est quittée brusquement
+	}*/	//pb : le segment reste if l'interface est quittée brusquement
 	
 	//rappel des données globales inter-sessions
 	QSettings settings("IGN/MATIS", "interfaceMicmac");
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 	QCoreApplication::setOrganizationDomain("IGN/MATIS/interfaceMicmac.com");
 	QCoreApplication::setApplicationName("interfaceMicmac");
 	
-	//traductions (doivent être faites avant de charger la MainWindow) et encodage
+	//traductions (doivent être faites before de charger la MainWindow) and encodage
 	QString langue = settings.value("langue").toString();
 
 	QTranslator qtTranslator;

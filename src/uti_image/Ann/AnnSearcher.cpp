@@ -301,7 +301,7 @@ void neighbourFilter( vector<DigeoPoint> &i_array0, vector<DigeoPoint> &i_array1
 
     int nbCouples = (int)i_array0.size();
     //vector<int> neighbours( SIFT_ANN_DEFAULT_NB_NEIGHBOURS );
-	vector<int> neighbours( SIFT_ANN_DEFAULT_NB_NEIGHBOURS+1 ); // TODO : voir pourquoi un point n'est pas toujours dans ses 8 plus proches voisins
+	vector<int> neighbours( SIFT_ANN_DEFAULT_NB_NEIGHBOURS+1 ); // TODO : voir pourquoi un point n'est pas toujours in ses 8 plus proches voisins
     vector<vector<int> > neighbours0( nbCouples, neighbours ),
                          neighbours1( nbCouples, neighbours );
     getNeighbours( i_array0, neighbours0, SIFT_ANN_DEFAULT_NB_NEIGHBOURS );

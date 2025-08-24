@@ -107,30 +107,30 @@ double cTriForTiepTri::valElipse(int & aNInter)
         Pt3dr Pt1 = mTri3D_.P1();
         Pt3dr Pt2 = mTri3D_.P2();
         Pt3dr Pt3 = mTri3D_.P3();
-        bool isColnr = isCollinear(Pt1, Pt2, Pt3);  //si 3 point du triangle sont collinears
+        bool isColnr = isCollinear(Pt1, Pt2, Pt3);  //if 3 point du triangle sont collinears
         if (-aSurf > mAppli->SEUIL_SURF_TRIANGLE() && mrprjOK && !isColnr)
         {
         //creer plan 3D local contient triangle
-            cElPlan3D * aPlanLoc = new cElPlan3D(Pt1, Pt2, Pt3);    //ATTENTION : peut causer error vuunit si 3 point collinear
+            cElPlan3D * aPlanLoc = new cElPlan3D(Pt1, Pt2, Pt3);    //ATTENTION : peut causer error vuunit if 3 point collinear
             ElRotation3D aRot_PE = aPlanLoc->CoordPlan2Euclid();
             ElRotation3D aRot_EP = aRot_PE.inv();
-	    //calcul coordonne sommet triangle dans plan 3D local (devrait avoir meme Z)
+	    //computation coordonne sommet triangle in plan 3D local (devrait avoir meme Z)
             Pt3dr aPtP0 = aRot_EP.ImAff(Pt1); //sommet triangle on plan local
             Pt3dr aPtP1 = aRot_EP.ImAff(Pt2);
             Pt3dr aPtP2 = aRot_EP.ImAff(Pt3);
-	    //creer translation entre coordonne image global -> coordonne image local du triangle (plan image)
+	    //creer translation between coordonne image global -> coordonne image local du triangle (plan image)
             ElAffin2D aAffImG2ImL(ElAffin2D::trans(mPt1));
             Pt2dr aPtPIm0 = aAffImG2ImL(mPt1);
             Pt2dr aPtPIm1 = aAffImG2ImL(mPt2);
             Pt2dr aPtPIm2 = aAffImG2ImL(mPt3);
-	    //calcul affine entre plan 3D local (elimine Z) et plan 2D local
+	    //computation affine between plan 3D local (elimine Z) and plan 2D local
             ElAffin2D aAffLc2Im;
             aAffLc2Im = aAffLc2Im.FromTri2Tri(  Pt2dr(aPtP0.x, aPtP0.y),
                                                 Pt2dr(aPtP1.x, aPtP1.y),
                                                 Pt2dr(aPtP2.x, aPtP2.y),
                                                 aPtPIm0,aPtPIm1,aPtPIm2
                                              );
-        //calcul vector max min pour choisir img master
+        //computation vector max min for choisir img master
             // double vecA_cr =  aAffLc2Im.I10().x*aAffLc2Im.I10().x + aAffLc2Im.I10().y*aAffLc2Im.I10().y;
             double vecA_cr =  square_euclid(aAffLc2Im.I10());
             //  double vecB_cr =  aAffLc2Im.I01().x*aAffLc2Im.I01().x + aAffLc2Im.I01().y*aAffLc2Im.I01().y;
@@ -146,7 +146,7 @@ double cTriForTiepTri::valElipse(int & aNInter)
             //Interaction : disp ellipse on image:
             if (aNInter > 1)
             {
-                //calcul le cercle discretize dans le plan 3D local
+                //computation le cercle discretize in le plan 3D local
                 Video_Win * aVW = mAppli->VVW()[mNumImg];
                 double rho;
                 double aSclElps=-1;

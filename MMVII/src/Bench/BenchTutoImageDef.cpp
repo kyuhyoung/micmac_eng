@@ -92,8 +92,8 @@ class cTestDeformIm
          double             mTrRad;    ///<  Ground truth translation on radiometry
          double             mScRad;    ///<  Ground truth scale on radiometry
 
-         cHomot2D<tREAL8>   mGT_I2Mod;     ///<  Ground truth homotethy   Image  -> Modele
-         cHomot2D<tREAL8>   mGT_Mod2Im;    ///<  Ground truth homotethy   Modele -> Image
+         cHomot2D<tREAL8>   mGT_I2Mod;     ///<  Ground truth homotethy   image  -> Modele
+         cHomot2D<tREAL8>   mGT_Mod2Im;    ///<  Ground truth homotethy   Modele -> image
 
          cGaussF2D          mGaussIm;      ///<  Gaussian in image space
          cGaussF2D          mGaussModel;   ///<  Gaussian in model space
@@ -118,7 +118,7 @@ cTestDeformIm::cTestDeformIm(int aSzGlob,double aEps,bool Show,cDiffInterpolator
    mSigmaIm    (mSzGlob/5.0),
    mTrRad      (mAmplRad/20.0),
    mScRad      (0.7),
-   mGT_I2Mod   (cPt2dr(10,16),2),  // arbitrary value for homotethy  Image -> Modele
+   mGT_I2Mod   (cPt2dr(10,16),2),  // arbitrary value for homotethy  image -> Modele
    mGT_Mod2Im  (mGT_I2Mod.MapInverse()),  
    mGaussIm    (mCenterLaw,mSigmaIm),
    mGaussModel (mGaussIm,mGT_Mod2Im),  // gaussian for modelby composition of gausian image & homothety

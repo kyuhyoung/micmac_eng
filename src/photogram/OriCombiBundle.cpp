@@ -154,7 +154,7 @@ class cOriFromBundle
            Pt3dr mDir1A;
            Pt3dr mDir2A;
            Pt3dr mDir3A;
-// Direction |_ a B et au mDirKA
+// Direction |_ a B and au mDirKA
            Pt3dr mDirOr1A;
            Pt3dr mDirOr2A;
            Pt3dr mDirOr3A;
@@ -167,7 +167,7 @@ class cOriFromBundle
            // mDir1B mYB mZB est _|   mDir1B mYB m plan que mDir1B/mDir2B
            Pt3dr  mZB;
            Pt3dr  mYB;
- // Coordonnee de mDir3B dans mDir1B mYB mZB
+ // Coordonnee de mDir3B in mDir1B mYB mZB
            double mSc3X;
            double mSc3Y;
            double mSc3Z;
@@ -305,15 +305,15 @@ bool Bug = false;// (aCpt==67);
 
     cOFB_Sol1T  aRes;
     aRes.mTeta = aT1;
-    // L'image de  mDir1B par la rot est dans le plan |_ a mBase et mDir1A donc
-    // dans mX12 mY1
+    // L'image de  mDir1B par la rot est in le plan |_ a mBase and mDir1A donc
+    // in mX12 mY1
     double aC1 = cos(aT1);
     double aS1 = sin(aT1);
 
     Pt3dr aV1 = mX12 * aC1 + mY1 * aS1;
     // std::cout << aV1 << "\n";
 
-    // On V2 = mX12 cos(T2) + mY2 sin (T2) et V2.V1 = mSc12 par conservation
+    // On V2 = mX12 cos(T2) + mY2 sin (T2) and V2.V1 = mSc12 par conservation
     //   V2 = mX12 C2 +   (mCosY2 mY1 + mSinY2 m Z1) S2
     //  V1.V2  = C1 C2 + S1 S2 mCosY2 = mSc12 = cos(Teta12)
 

@@ -3987,7 +3987,7 @@ re_match_2 (struct re_pattern_buffer *bufp, const char *string1, int size1, cons
 		  }
 	      }
 	  }
-	  p -= 2;		/* Point at relative address again.  */
+	  p -= 2;		/* point at relative address again.  */
 	  if ((re_opcode_t) p[-1] != pop_failure_jump)
 	    {
 	      p[-1] = (unsigned char) jump;
@@ -4033,7 +4033,7 @@ re_match_2 (struct re_pattern_buffer *bufp, const char *string1, int size1, cons
 
 
         /* We need this opcode so we can detect where alternatives end
-           in `group_match_null_string_p' et al.  */
+           in `group_match_null_string_p' and al.  */
         case jump_past_alt:
           DEBUG_PRINT1 ("EXECUTING jump_past_alt.\n");
           goto unconditional_jump;
@@ -4298,7 +4298,7 @@ static boolean
 group_match_null_string_p (unsigned char **p, unsigned char *end, register_info_type *reg_info)
 {
   int mcnt;
-  /* Point to after the args to the start_memory.  */
+  /* point to after the args to the start_memory.  */
   unsigned char *p1 = *p + 2;
 
   while (p1 < end)

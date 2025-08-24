@@ -144,7 +144,7 @@ bool cImTieTri::LoadTri(const cXml_Triangle3DForTieP &  aTri)
     mP2Loc = mP2Glob - Pt2dr(mDecal);
     mP3Loc = mP3Glob - Pt2dr(mDecal);
 
-    // ---- Point 3D to estimate Homographie ----
+    // ---- point 3D to estimate Homographie ----
     if (mAppli.mUseHomo)
     {
         double l_12 = euclid(aTri.P2() - aTri.P1());
@@ -195,7 +195,7 @@ bool cImTieTri::LoadTri(const cXml_Triangle3DForTieP &  aTri)
     ELISE_COPY(mImInit.all_pts(),trans(mTif.in(0),mDecal),mImInit.out());
 
 
-    // Remplit l'image de masque avec les point qui sont dans le triangle
+    // Remplit l'image de masque with les point qui sont in le triangle
     mMasqTri =  Im2D_Bits<1>(mSzIm.x,mSzIm.y,0);
     mTMasqTri = TIm2DBits<1> (mMasqTri);
     mMasqIm =  Im2D_Bits<1>(mSzIm.x,mSzIm.y,1);
@@ -327,7 +327,7 @@ void  cImTieTri::MakeInterestPoint
     Pt2di aP;
     Pt2di aSzIm = anIm.sz();
 
-    // Calcul des maxima et minima
+    // computation des maxima and minima
     for (aP.x=0 ; aP.x<aSzIm.x ; aP.x++)
     {
         for (aP.y=0 ; aP.y<aSzIm.y ; aP.y++)
@@ -341,7 +341,7 @@ void  cImTieTri::MakeInterestPoint
                 int aCmp0 =  IsExtrema(anIm,aP);
 
                 if (aCmp0)
-                {  // Point is an extrema
+                {  // point is an extrema
                    eTypeTieTri aType = (aCmp0==1)  ? eTTTMax : eTTTMin;
                    Pt2dr aFastQual =  FastQuality(anIm,aP,*mFastCC,aType==eTTTMax,Pt2dr(TT_PropFastStd,TT_PropFastConsec));
 
@@ -368,7 +368,7 @@ void  cImTieTri::MakeInterestPoint
                    }
 
                    if (OkAc)
-                   {  // Point valid through 2 filter FAST & AC
+                   {  // point valid through 2 filter FAST & AC
                       if  (aImLabel) 
                            aImLabel->oset(aP,aType);
                       if (aListPI)
@@ -381,7 +381,7 @@ void  cImTieTri::MakeInterestPoint
         }
     }
     // Filtrage spatial du point d'interet.
-    // Cet filtrage est appliquer apres la detection de point d'interet sur master image seulement.
+    // Cet filtrage est appliquer after la detection de point d'interet on master image seulement.
     // Priorité par FAST quality
     if (IsMaster())
     {

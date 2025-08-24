@@ -1238,8 +1238,8 @@ for (int aK=0 ; aK<int(aVpds.size()) ;  aK++)
                 }
                 if (anAVA &&  (anAVA->VA().TypeVerif()==eVerifDZ) && (aPdsIm >0) && (aNbRInit>=3))
                 {
-                //  Dz regarde ce qui se passe quand on supprime les points de l'image elle meme
-                // dans la compensation. Sans doute pour tester les pb de biais
+                //  Dz regarde ce qui se passe when on supprime les points de l'image elle meme
+                // in la compensation. without doute for tester les pb de biais
                     Pt3dr aPTerGlob =  aRes.mPTer;
                     std::vector<double>  aDupV  = aVpds;
                     aDupV[0] = 0;
@@ -1381,7 +1381,7 @@ void cObsLiaisonMultiple::ClearAggregImage()
 }
 
 
-// Qualite des que 3eme vue, si au moins aNbPtsMin multiple,
+// Qualite des que 3eme vue, if au moins aNbPtsMin multiple,
 // tjrs prio
 double cObsLiaisonMultiple::QualityZonePMul
        (
@@ -1503,7 +1503,7 @@ std::vector<cPoseCam *>  cObsLiaisonMultiple::BestPoseInitStd
     cPoseCam * aBestP=0;
     cPoseCam * aBestSec=0;
    
-    // Calcul de Qual  et select best
+    // computation de Qual  and select best
     for (int aKP=0 ; aKP<int(mVPoses.size()) ; aKP++)
     {
          cPoseCam * aPose = mVPoses[aKP]->Pose();
@@ -1541,7 +1541,7 @@ std::vector<cPoseCam *>  cObsLiaisonMultiple::BestPoseInitStd
 
 
 
-    // Calcul de Qual  et select best
+    // computation de Qual  and select best
 
     ClearAggregImage();
 
@@ -1555,7 +1555,7 @@ std::vector<cPoseCam *>  cObsLiaisonMultiple::BestPoseInitStd
 //   ==============================================================
 //   
 //
-//     Orientation initiales par Point appuis multiples
+//     Orientation initiales par point appuis multiples
 //
 //   ==============================================================
 //   ==============================================================
@@ -1638,10 +1638,10 @@ void  MakeVectIndAppui
         return;
      aRes.clear();
      bool aAllIndex = false;
-     if (aNbInd < 300)  // Pour etre en dehors des debordement
+     if (aNbInd < 300)  // for etre en dehors des debordement
      {
         int aNbMaxResult = (aNbInd*(aNbInd-1)*(aNbInd-2))/6;
-        // Si la proba d'un bon tirage est trop faible
+        // if la proba d'un bon tirage est trop faible
         if (aNbMaxResult < round_up( 1.5 * aNbResult))
             aAllIndex = true;
      }
@@ -1682,7 +1682,7 @@ static inline Pt2dr  ToLoc(const ElRotation3D & aR,const Pt3dr & aPter)
      return ProjStenope(aR.ImRecAff(aPter));
 }
 
-//  Cette fonction de conversion de distance permet de limiter l'influence de 
+//  Cette function de conversion de distance permet de limiter l'influence de 
 // point a l'infini.
 
 double DistConversion(double aDist)
@@ -1750,7 +1750,7 @@ void cObsLiaisonMultiple::TestMEPAppuis
    // CompilePose();
 
 //
-//   1- On calcul combien de point multiple et simple devront etre selectionnes:
+//   1- On computation combien de point multiple and simple devront etre selectionnes:
 //
 
    int aNb1 =0;
@@ -1773,7 +1773,7 @@ void cObsLiaisonMultiple::TestMEPAppuis
    int aNbMax =  ElMin(aLI.NbMaxPtsRanAp().Val(),aNbTot);
 
    // La proportion de point multiple est le max de la proportion reell
-   // et de celle souhaitee
+   // and de celle souhaitee
    double aProp2 = ElMax(aLI.PropMinPtsMult().Val(),aNb2/double(aNbTot));
    // Cepepdant on ne peut selectionner les points qu'une fois
    aProp2 = ElMin3(1.0,aProp2,aNb2/double(aNbMax));
@@ -1918,7 +1918,7 @@ void cObsLiaisonMultiple::InitRapOnZ(const cRapOnZ *  aRAZGlob)
    }
    //     std::vector<cOneElemLiaisonMultiple *>     mVPoses;
 
-   // SI les 
+   // if les 
 
    for (int aKPm=0 ; aKPm<int(mVPMul.size()) ; aKPm++)
    {

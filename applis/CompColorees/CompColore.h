@@ -110,11 +110,11 @@ class cChannelIn
 
 
 //  En tant que distortion, Direct va de l'espace image brute
-//  vers l'espace de fusion. Avant toute homotetie translation
+//  vers l'espace de fusion. before toute homotetie translation
 //  due au clip.
 //
 //
-//  Pour l'image maitresse , directe vaut soit
+//  for l'image maitresse , directe vaut soit
 //    *  Id (cas non corrigee)
 //    * DistInverse, de la camera, donc (en mode M->C) Direct
 //       de la distorsion
@@ -145,7 +145,7 @@ class cCC_OneChannel  : protected ElDistortion22_Gen
         // Adpate la box In
         bool  SetBoxOut(const Box2di & aBox) ;
         // Fait les init necessitant des appels virtuels, eq :
-        // Calcule la grille (qui ne tient pas compte des decalage)
+        // compute la grille (qui ne tient pas compte des decalage)
         void   VirtualPostInit() ;
 
 
@@ -223,7 +223,7 @@ class cCC_OneChannelSec : public cCC_OneChannel
 
        cElHomographie  mH_M2This;
        cElHomographie  mH_This2M;
-       cDbleGrid  *         mGM2This;   //  Eventuellement la transfo sous forme grille
+       cDbleGrid  *         mGM2This;   //  Eventuellement la transfo under forme grille
                                         // qui envoie vers la maitresse
 };
 
@@ -242,7 +242,7 @@ class cChanelOut
       void AddChIn(cChannelIn *);
 
       double  GetInterpolPFus(const Pt2dr & aPFus,bool & Ok);
-      // Pour l'instant ca s'appelle "modestement" initialisation par
+      // for l'instant ca s'appelle "modestement" initialisation par
       // interpolation car on envisage "un jour" d'implanter une approche
       // par assimilation  (pb inverse)
       void InitByInterp();

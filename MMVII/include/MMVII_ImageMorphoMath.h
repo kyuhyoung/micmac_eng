@@ -78,13 +78,13 @@ template <class Type>  cFlag8Neigh   FlagSup8Neigh(const cDataIm2D<Type> & aDIm,
 template <class Type>  tREAL8   CriterionTopoSadle(const cDataIm2D<Type> & aDIm,const cPt2di & aPixC);
 
 
-/**  Put in vector "VPts",  the connected component of a seed , of point having the same colour in Image,
+/**  Put in vector "VPts",  the connected component of a seed , of point having the same colour in image,
  * update  with "NewMarq" */
  
 void ConnectedComponent
      (
          std::vector<cPt2di> & aVPts,  // Vector of results
-         cDataIm2D<tU_INT1>  & aDIm,   // Image marquing point of CC to compute
+         cDataIm2D<tU_INT1>  & aDIm,   // image marquing point of CC to compute
          const std::vector<cPt2di> & aNeighbourhood,  // generally 4 or 8 neighbourhood
          const std::vector<cPt2di>& aSeed,         // seeds of the connected component
          int aMarqInit=1,             // will extract CC of point having this colour

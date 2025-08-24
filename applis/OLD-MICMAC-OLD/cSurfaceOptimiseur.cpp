@@ -148,7 +148,7 @@ cSurfaceOptimiseur::cSurfaceOptimiseur
       mImRes.push_back(mLTCur->KthNap(aK).mPxRes);
       mDataImRes.push_back(mImRes.back().data());
    }
-   // Rajouter la mise a niveau de min et max
+   // Rajouter la mise a niveau de min and max
    INT2 ** mDXMin = mLTCur->KthNap(0).mImPxMin.data();
    INT2 ** mDXMax = mLTCur->KthNap(0).mImPxMax.data();
    INT2 ** mDYMin = (mDimPx>1) ? mLTCur->KthNap(1).mImPxMin.data() : 0;
@@ -395,7 +395,7 @@ Fonc_Num  OneItereFiltrageImMicMac
 	 Symb_FNum  sM (Rconv(aFoncMasq));
 
 	 Fonc_Num fSom = Virgule(sM,sM*sF,sM*Square(sF));
-         fSom = rect_som(fSom,aSzI)/ElSquare(1.0+2.0*aSzI);  // Pour Eviter les divergences
+         fSom = rect_som(fSom,aSzI)/ElSquare(1.0+2.0*aSzI);  // for Eviter les divergences
          Symb_FNum  S012 (fSom);
 
          Symb_FNum s0 (S012.v0());
@@ -526,8 +526,8 @@ Im2D_Bits<1>   cSurfaceOptimiseur::MaskCalc()     {return mMaskCalc;}
 void cSurfaceOptimiseur::SolveOpt()
 {
      mMaskCalcDone = false;
-     // Si c'est le cas il faut utiliser le comptage pour normaliser
-     // Corr en fonction de Cpt puis transferer par Local_SetCout
+     // if c'est le cas il faut utiliser le comptage for normaliser
+     // Corr en function de Cpt puis transferer par Local_SetCout
      {
          Pt2di aPTer;
          int aPxMin[theDimPxMax] = {0,0};
@@ -555,7 +555,7 @@ void cSurfaceOptimiseur::SolveOpt()
 			          aCost = mDefCost;
 			          aCpt  = 1;
 			      }
-                              // Ce cas est rare mais tout a fait possible
+                              // Ce cas est rare but tout a fait possible
                               else if (aCpt ==0)
                               {
                                    aCpt = 1;
@@ -593,7 +593,7 @@ void cSurfaceOptimiseur::SolveOpt()
      const cTplValGesInit< cPostFiltragePx > & aPF = mEtape.EtapeMEC().PostFiltragePx();
      if (aPF.IsInit())
      {
-         // ELISE_ASSERT (mMemoCorrel==0, "Filtrage-et-Resultat-Correl incompatibles");
+         // ELISE_ASSERT (mMemoCorrel==0, "Filtrage-and-result-Correl incompatibles");
          const tLPFP & aLPFP = aPF.Val().OneFitragePx();
          for (int aK=0 ; aK<int(mImRes.size()) ; aK++)
          {
@@ -619,7 +619,7 @@ void cSurfaceOptimiseur::SolveOpt()
          }
      }
 
-     // Sinon il faut remettre la solution reduite a la
+     // else il faut remettre la solution reduite a la
      // resolution initiale
 
      if  (mWithEQ)

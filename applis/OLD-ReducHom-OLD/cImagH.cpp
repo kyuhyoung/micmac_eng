@@ -203,7 +203,7 @@ cImagH::cImagH(const std::string & aName,cAppliReduc & anAppli,int aNum) :
 {
 }
 
-   //============ FONCTION DE GRAPHE IMAGE =========================
+   //============ function DE GRAPHE image =========================
 
 cLink2Img * cImagH::GetLinkOfImage(cImagH* anI2)
 {
@@ -244,7 +244,7 @@ cElHomographie &   cImagH::HTmp()
 
 
 
-   //============ FUSION DE POINT =========================
+   //============ FUSION DE point =========================
 
 const std::string & cImagH::Name() const
 {
@@ -330,7 +330,7 @@ void cImagH::ComputePts()
     std::cout << "Compute " << mName << "\n";
 
 
-    //  D'abod on complete avec les arcs
+    //  D'abod on complete with les arcs
     for ( tSetLinks::iterator itL=mLnks.begin(); itL!=mLnks.end(); itL++)
     {
         ComputePtsLink(*(itL->second));

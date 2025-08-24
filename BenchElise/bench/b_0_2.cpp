@@ -32,7 +32,7 @@ eLiSe06/05/99*/
 
 
        //-----------------------------------------------------
-       // verification d'une ecriture simple sur une bitmap
+       // verification d'une ecriture simple on une bitmap
        //-----------------------------------------------------
 
 void verif_bitm_0()
@@ -82,7 +82,7 @@ void verif_bitm_1()
 
 
      //================================
-     //  Verification sur une expression
+     //  Verification on une expression
      // melangeant +,*,max,min,-,/
      //================================
 
@@ -250,10 +250,10 @@ void verif_op_round()
     Im2D_INT4 b(tx,ty);
 
 
-// LES VALEURS SONT VOLONTAIREMENT CHOISIES POUR TOUJOURS
+// LES VALEURS SONT VOLONTAIREMENT CHOISIES for TOUJOURS
 // AVOIR DES DOUBLE LES REPRESENTANT VRAIMENT.
-// Si par exemple on prennait FX*0.1 + FY*0.35, on risquerait
-// d'avoir 1+epsilon avec Elise et 1-epislon avec l'expression a la
+// if par exemple on prennait FX*0.1 + FY*0.35, on risquerait
+// d'avoir 1+epsilon with Elise and 1-epislon with l'expression a la
 // main (car le compilateur l'aura rearrangee).
 
     ELISE_COPY

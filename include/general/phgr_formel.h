@@ -40,7 +40,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #ifndef  _PHGR_FORMEL_H_
 #define  _PHGR_FORMEL_H_
 
-//Debug du probleme de condtionnement de la matrice (3x3) de point
+//Debug du probleme de condtionnement de la matrix (3x3) de point
 
 /*
 
@@ -65,7 +65,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #define DIRECTORY_GENCODE_FORMEL "CodeGenere/photogram/"
 
 
-// Pour mettre au point les pb de conditionnement
+// for mettre au point les pb de conditionnement
 extern double aSeuilMaxCondSubstFaiseau;
 extern bool DebugPbCondFaisceau ;
 extern bool BugUPL;
@@ -85,7 +85,7 @@ extern const bool AFocalAcceptNoDist;
 extern bool TestPermutVar;
 extern bool ShowPermutVar;
 extern bool ShowCholesky;
-// Devrait toujours etre true, mais il y a un bug pour l'instant, avant
+// Devrait toujours etre true, but il y a un bug for l'instant, before
 // d'assurer une reversibilite tant que le bug n'est pas trouve ....
 
 extern Pt2dr aDebugPIm;
@@ -94,9 +94,9 @@ extern Pt2dr aDebugPL3;
 
 void DebugLaser(const std::string & aName);
 
-// dans exemple_phgr_formel.h
+// in exemple_phgr_formel.h
  
-      // Qc classe simple liee aux equation directe entre calib,
+      // Qc class simple liee aux equation directe between calib,
       // aussi a but "didactique"
 class cEqObsRotVect;
 class cEqCalibCroisee;
@@ -105,7 +105,7 @@ class cEqDirecteDistorsion;
 
 class cEqf1IncTmp;   // 1 Inconnue temporaire
 class cEqfBlocIncTmp;  // 1 Bloc d'inconnue temporaire
-class cEqfP3dIncTmp;  // Une specialisation de cEqfBlocIncTmp pour point terrain
+class cEqfP3dIncTmp;  // Une specialisation de cEqfBlocIncTmp for point terrain
 
 class cParamPtProj;
 class cP3d_Etat_PhgrF;
@@ -165,12 +165,12 @@ class cEqRelativeGPS;
 
 
 
-//   Il n'avait pas ete prevu de renumeroter les intervales. Quand le besoin
-//   est apparu, pour la resolution des systemes par cholesky creux, on a gere
+//   Il n'avait pas ete prevu de renumeroter les intervales. when le besoin
+//   est apparu, for la resolution des systemes par cholesky creux, on a gere
 //   ca par une double numerotation :
 //         - I0Init : numerotation initiale, lie a l'ordre d'allocation des inconnues
-//         - I0Final : systeme de numerotation  optumisie pour les matrices
-//    En premiere phase, on duplique touts les numero, sans doute certains deviendront
+//         - I0Final : system de numerotation  optumisie for les matrices
+//    En premiere phase, on duplique touts les numero, without doute certains deviendront
 //   inutiles.
 // 
 
@@ -184,7 +184,7 @@ class cIncIntervale
 
        cIncIntervale(bool isTmp,const tId & anId,cSetEqFormelles     &,int aNbInc=-1);
        cIncIntervale(const tId & anId,INT anI0,INT anI1,bool isTmp=false);
-    // Copie, avec renommage
+    // Copie, with renommage
        cIncIntervale(const cIncIntervale &,const tId &);
 
        void SetName(const tId &);
@@ -207,7 +207,7 @@ class cIncIntervale
     // bool operator < (const cIncIntervale &) const; // Compare les Id
 
        void SetFiged(bool);
-       bool IsFiged() const;  // Est ce que TOUTES les var sont figees dans l'int
+       bool IsFiged() const;  // Est ce que TOUTES les var sont figees in l'int
        double Order() const;
        void SetOrder(double) ;
        void SetFirstIntervalSolve();
@@ -348,7 +348,7 @@ class cNameSpaceEqF
              {
                      eHomLibre,
                      eHomFigee,
-                     eHomStdBloqueRot  // Bloquage en rotation en 0,0 et axe des X
+                     eHomStdBloqueRot  // Bloquage en rotation en 0,0 and axe des X
              } eModeContrHom;
 
 	     typedef enum
@@ -472,9 +472,9 @@ class  cElemEqFormelle :  public cNameSpaceEqF
             void AssertSameSet(const cElemEqFormelle &);
 
 	    virtual void SetValAndInit(REAL,INT IndGlob);
-	    // Les contraintes se referent au valeur init,
-	    // d'ou l'interet eventuel de les remettre sur 
-	    // sur les valeur courantes si c'est elles que l'on
+	    // Les contraintes se referent au value init,
+	    // d'or l'interet eventuel de les remettre on 
+	    // on les value courantes if c'est elles que l'on
 	    // veut figer
 	    virtual void SetValInitOnValCur();
 	    INT NbInc();
@@ -485,16 +485,16 @@ class  cElemEqFormelle :  public cNameSpaceEqF
 	    void AddFoncteurEEF(cElCompiledFonc *);
             void CloseEEF(bool asIntervBlock = true);
 
-            // Rajoute ce qui doit etre fait dans le constructeur de maniere virtuelle et est specifique
+            // Rajoute ce qui doit etre fait in le constructeur de maniere virtuelle and est specifique
             virtual void Virtual_CloseEEF();
-            // Au cas ou des inconnues ont ete modifiee,
+            // Au cas or des inconnues ont ete modifiee,
             // remet a jour mSet.Alloc()
             void ReinitOnCur();
             tContFcteur  FoncRapp(INT i0,INT i1,const double * vals);
             tContFcteur  FoncRappInit(INT i0,INT i1);
 
             cSetEqFormelles & mSet;
-            // Foncteur de Rappel sur Valeur Init
+            // Foncteur de Rappel on value Init
             INT                    mNumInc0;
             cIncIntervale          mIncInterv;
             INT                    mNumIncN;
@@ -545,7 +545,7 @@ class cSignedEqFPtLiaison  : public cEqFPtLiaison
 {
      public :
 	  virtual REAL ResiduSigneP1P2(Pt2dr aP1,Pt2dr aP2) = 0;
-	  // Par Defaut, renvoie la valeur abs    
+	  // Par Defaut, renvoie la value abs    
 	  REAL ResiduNonSigneP1P2(Pt2dr aP1,Pt2dr aP2) ;
      private :
 };
@@ -613,10 +613,10 @@ class cSetEqFormelles : public cNameSpaceEqF
 	      cEqCorrelGrid * ReuseEqCorrelGrid(INT aNbPix, bool Im2MoyVar);
 
 
-              // Valeur par defaut, correspondant ancienne
+              // value par defaut, correspondant ancienne
               // utilisation PosInit=0, 
               // 
-              //   DMax en valeur relative de la boite englobante
+              //   DMax en value relative de la boite englobante
               //
               cTriangulFormelle * NewTriangulFormelle
                                  ( int aDim,
@@ -725,7 +725,7 @@ class cSetEqFormelles : public cNameSpaceEqF
 
 
                 cPIF_Bilin *  NewPIFBilin(cCamStenopeBilin * aCSB);
-                cParamIntrinsequeFormel *  AsPIF_NewPIFBilin(cCamStenopeBilin * aCSB); // Pour utiliser sans connaitre cPIF_Bilin
+                cParamIntrinsequeFormel *  AsPIF_NewPIFBilin(cCamStenopeBilin * aCSB); // for utiliser without connaitre cPIF_Bilin
 
 
                 cEqEllipseImage * NewEqElIm
@@ -747,10 +747,10 @@ class cSetEqFormelles : public cNameSpaceEqF
                                       bool                    Cod2Gen
                                    );
              
-              // dans phgr_cEqObsRotVect.cpp
+              // in phgr_cEqObsRotVect.cpp
                 cEqObsRotVect * NewEqObsRotVect
                                 (
-                     // Si nulle, la rotation est allouee
+                     // if nulle, la rotation est allouee
                      // le seul cas envisage aujourd'hui une seule rot 1
                      // seule equation
                                     cRotationFormelle * aRot=0,
@@ -775,7 +775,7 @@ class cSetEqFormelles : public cNameSpaceEqF
 		 cTFI_AttrSom *         AttrP3(const Pt3dr &aP0);
 
 		// VALEURS INIT BIDON , car souvent usage multiple
-		// du meme objet, donc initialise
+		// du meme object, donc initialise
                 cEqEllipseImage * NewEqElIm(const cMirePolygonEtal &,bool  Code2Gen = false);
 	               
 
@@ -810,7 +810,7 @@ class cSetEqFormelles : public cNameSpaceEqF
               void AddFonct(cElCompiledFonc *);
               void SolveResetUpdate(double aExpectedResidu=-1,bool *OK=0);
               void Solve(double aExpectedResidu,bool *OK);
-              void ResetUpdate(double aLambda);  // aLambda "absicse" sur le droite de grad
+              void ResetUpdate(double aLambda);  // aLambda "absicse" on le droite de grad
               void SetSol(double aLambda);
               void DebugResetSys();
 
@@ -820,13 +820,13 @@ class cSetEqFormelles : public cNameSpaceEqF
               bool IsClosed() const;
 
 
-          // Sur aPds => comprend plus comment marche AddContrainte, les poids
+          // on aPds => comprend plus comment marche AddContrainte, les poids
           // semblent idiot, comme je ne veux pas casser ce qui marche (peut etre ?)
           // on rajoute ce param qui permet de forcer le poids
 	  void AddContrainte(const cContrainteEQF &,bool Strictes,double aPds=-1);
 	  void AddContrainte(const cMultiContEQF &,bool Strictes,double aPds=-1);
 
-	  // AddEqFonctToSys est connservee pour compatibilite
+	  // AddEqFonctToSys est connservee for compatibilite
 
 	  const std::vector<REAL> & VAddEqFonctToSys
                (
@@ -877,7 +877,7 @@ class cSetEqFormelles : public cNameSpaceEqF
           cEqfP3dIncTmp * Pt3dIncTmp( );
 
           void AddABlocAlloc(cIncIntervale *);
-           // return le Bloc avec le bon intervalle
+           // return le Bloc with le bon intervalle
           cSsBloc GetBlocOfI0Alloc(int aI0Alloc,int aI1Alloc) const;
           cSsBloc GetBlocOfI0Alloc(const cIncIntervale & aBl) const;
           // cSsBloc GetBlocOfI0(const cIncIntervale & aBl) const;
@@ -893,7 +893,7 @@ class cSetEqFormelles : public cNameSpaceEqF
 
            cEqCorrelGrid * NewEqCorrelGridGen
 		              (INT aNbPix, bool Im2MoyVar, bool GenCode,bool Reuse);
-	  friend class cParamIntrinsequeFormel;  // pour AddCamFormelle
+	  friend class cParamIntrinsequeFormel;  // for AddCamFormelle
           void  AddCamFormelle(cCameraFormelle  *,const std::string &);
 
 
@@ -929,7 +929,7 @@ class cSetEqFormelles : public cNameSpaceEqF
           cEqfP3dIncTmp  *  mPt3dIncTmp;
           bool              mTmpBegun;
           int               mIndIncTmp;
-	  // Sert, avant un solve a mettre a Id les coeffs
+	  // Sert, before un solve a mettre a Id les coeffs
 	  std::list<cEqfBlocIncTmp *>  mLBlocTmp;
           std::list<cElemEqFormelle *>  mLEEF;
 
@@ -990,7 +990,7 @@ class cHomogFormelle : public cElemEqFormelle,
                     Fonc_Num  m1;
             };
 
-            // Foncteur de Rappel sur Valeur Init
+            // Foncteur de Rappel on value Init
             cElHomographie  mHomInit;
             cElHomographie  mCurHom;
 
@@ -1038,7 +1038,7 @@ class cHomogFormelle : public cElemEqFormelle,
                     Fonc_Num  m1;
             };
 
-            // Foncteur de Rappel sur Valeur Init
+            // Foncteur de Rappel on value Init
             cElHomographie  mHomInit;
             cElHomographie  mCurHom;
 
@@ -1136,9 +1136,9 @@ class cPIFRegulDist
       cP2d_Etat_PhgrF  *         mRegulDistKnownVal;
 
       std::string                mNameRegDistDxDy;
-      std::string                mNameRegDistD2;  // Partage pour Dxx Dyy
-      std::string                mNameRegDistGrad;  // Partage pour Dx et Dy
-      std::string                mNameRegDistVal;  // Partage pour Dx et Dy
+      std::string                mNameRegDistD2;  // Partage for Dxx Dyy
+      std::string                mNameRegDistGrad;  // Partage for Dx and Dy
+      std::string                mNameRegDistVal;  // Partage for Dx and Dy
 
       cElCompiledFonc *          mFER_DxDy; 
       cElCompiledFonc *          mFER_Dxx; 
@@ -1180,14 +1180,14 @@ class cParamIntrinsequeFormel : public cElemEqFormelle,
            void AddCstrRegulGlob(int aNbEch,double aPdsVal,double aPdsGrad,double aPdsD2,Im2D_REAL4 * aFoncPds=0);
 
 
-           // certaine camera (par exe de type grid def) ont besoin de "changer l'état" des equations ou
-           // elle interviennet notamment sur la numeroration  dans les inconnues des variable
+           // certaine camera (par exe de type grid def) ont besoin de "changer l'état" des equations or
+           // elle interviennet notamment on la numeroration  in les inconnues des variable
            virtual void PrepareEqFForPointIm(const cIncListInterv &,cElCompiledFonc *,const Pt2dr &,bool EqDroite,int aKCam); 
            void GenEqRegulDist();
 
-           // Avant il y avait en dur :   mLInterv.AddInterv(mCam.PIF().IncInterv());
-           // Pour prendre en compte les camera grilles avec des intervalles d'inconnues non connexes
-           // (et evolutif) on ajoute cette fonction virtuelle qui pemet de specialiser
+           // before il y avait en dur :   mLInterv.AddInterv(mCam.PIF().IncInterv());
+           // for prendre en compte les camera grilles with des intervalles d'inconnues non connexes
+           // (and evolutif) on ajoute cette function virtuelle qui pemet de specialiser
            virtual void AddToListInterval( cIncListInterv &);
 
 
@@ -1201,11 +1201,11 @@ class cParamIntrinsequeFormel : public cElemEqFormelle,
 	   virtual CamStenope * CurPIF();
 	   virtual CamStenope * DupCurPIF();
 	   virtual void    UpdateCurPIF();
-	   void    NV_UpdateCurPIF();   // Non virtuel, pour appel constructeur
+	   void    NV_UpdateCurPIF();   // Non virtuel, for appel constructeur
 
            double StdScaleN() const;
            double StdScaleNNoGrid() const;
-	   CamStenope * CamInit();  // Utilisee pour pre-corriger les distortions
+	   CamStenope * CamInit();  // Utilisee for pre-corriger les distortions
            cCamStenopeGrid * CamGrid();
            void              UpdateCamGrid( double aTol );
 
@@ -1218,7 +1218,7 @@ class cParamIntrinsequeFormel : public cElemEqFormelle,
 
              virtual Fonc_Num  NormGradC2M(Pt2d<Fonc_Num>);
              virtual bool UseSz() const;
-	    // DOIT se CHARGER DE Foc et PP si necessaire
+	    // DOIT se CHARGER DE Foc and PP if necessaire
 
 
             cCameraFormelle * NewCam
@@ -1247,9 +1247,9 @@ class cParamIntrinsequeFormel : public cElemEqFormelle,
 
 
 	    INT IndPP() const;
-	    // Lorsque le PIF possede des variables d'etats et que plusieurs PIF sont
-	    // impliques dans une equation, il importe de pouvoir distinguer les variables,
-	    // d'ou le role de KCam
+	    // Lorsque le PIF possede des variables d'etats and que plusieurs PIF sont
+	    // impliques in une equation, il importe de pouvoir distinguer les variables,
+	    // d'or le role de KCam
 	    
             Pt2d<Fonc_Num> DistorC2M(Pt2d<Fonc_Num>,bool UsePC=true,int aKCam=0);
             Pt2d<Fonc_Num> DistorM2C(Pt2d<Fonc_Num>,bool UsePC=true,int aKCam=0);
@@ -1264,11 +1264,11 @@ class cParamIntrinsequeFormel : public cElemEqFormelle,
 	    Pt2dr  CorrigePFromDAdd(const Pt2dr & aP1,bool UseGrid);
 
 
-            // Nom horrible coherent avec un usage prohibee en dehors du cas tres particulier de
-	    // la conversion de format; on utilise la distorsion dans le sens M->C ce qui est
+            // Nom horrible coherent with un usage prohibee en dehors du cas tres particulier de
+	    // la conversion de format; on utilise la distorsion in le sens M->C ce qui est
 	    // contraire aux usages d'Elise
 	    //
-	    // Rajoute un Z nul uniquement pour la compat avec ce qui a ete fait dans le sens standard
+	    // Rajoute un Z nul uniquement for la compat with ce qui a ete fait in le sens standard
 	    // C2M de cEqCalibCroisee
 	    //
             // Pt2d<Fonc_Num>   DirCam_2_PtCam_AssumingDistDirecte(Pt3d<Fonc_Num>,int aKCam);
@@ -1280,7 +1280,7 @@ class cParamIntrinsequeFormel : public cElemEqFormelle,
 
         protected :
 
-            // Par defaut focale et PP sont figes
+            // Par defaut focale and PP sont figes
 	    // Ne fait pas "Close", doit etre fait pres construction
 	    // des derives, donc est fait par l'allocateur static
 	    // de cSetEqFormelles
@@ -1349,7 +1349,7 @@ class cParamIFHomogr  : public cParamIntrinsequeFormel
 	   CamStenope * DupCurPIF();
 	   cCamStenopeDistHomogr *  CurPIFHom();
 	   virtual void    UpdateCurPIF();
-	   void    NV_UpdateCurPIF();   // Non virtuel, pour appel constructeur
+	   void    NV_UpdateCurPIF();   // Non virtuel, for appel constructeur
 	private  :
             cParamIFHomogr(bool isDC2M,cCamStenopeDistHomogr *,cSetEqFormelles &,eModeContrHom);
 	    virtual ~cParamIFHomogr();
@@ -1380,10 +1380,10 @@ class cParamIFDistRadiale : public cParamIntrinsequeFormel
 	   CamStenope * DupCurPIF();
 	   cCamStenopeDistRadPol  * CurPIFPolRad();
 	   virtual void    UpdateCurPIF();
-	   void    NV_UpdateCurPIF();   // Non virtuel, pour appel constructeur
+	   void    NV_UpdateCurPIF();   // Non virtuel, for appel constructeur
 
             // L'option PP-CDist lie est exclusive des options
-            // PP lie ou CDist lie
+            // PP lie or CDist lie
                     void  SetLibertePPAndCDist(bool,bool,double aTol=cContrainteEQF::theContrStricte);
                     void  SetCDistPPLie(double aTol=cContrainteEQF::theContrStricte);
 
@@ -1413,8 +1413,8 @@ class cParamIFDistRadiale : public cParamIntrinsequeFormel
             virtual void  SetPPFree(bool);
 };
 
-// Classe pour modeliser ma distortion telle que
-//  decrite dans Fraser, ISPRS 97, Vol 52, 149-159
+// class for modeliser ma distortion telle que
+//  decrite in Fraser, ISPRS 97, Vol 52, 149-159
 //  i.e.  : Radiale + Decentrique + Affine
 
 class cParamIFDistStdPhgr : public cParamIFDistRadiale 
@@ -1430,7 +1430,7 @@ class cParamIFDistStdPhgr : public cParamIFDistRadiale
 	   CamStenope * DupCurPIF();
 	   cCamStenopeModStdPhpgr *  CurPIFStdPhgr();
 	   virtual void    UpdateCurPIF();
-	   void    NV_UpdateCurPIF();   // Non virtuel, pour appel constructeur
+	   void    NV_UpdateCurPIF();   // Non virtuel, for appel constructeur
 
 	   void SetParam_Aff_Fige(double aTol=cContrainteEQF::theContrStricte);
 	   void SetParam_Dec_Fige(double aTol=cContrainteEQF::theContrStricte);
@@ -1485,7 +1485,7 @@ class  cPolynome1VarFormel
 };
 
 
-// Pour le GL (Gimbal-Lock) ,c'est la rotation qui transforme Cam->Monde
+// for le GL (Gimbal-Lock) ,c'est la rotation qui transforme Cam->Monde
 //   cRotationFormelle::C2M  mFMatr * aP + mFCOpt;
 //    mFMatrInv * (aP - mFCOpt);
 
@@ -1494,10 +1494,10 @@ class cRotationFormelle : public cElemEqFormelle,
 {
 	// Sauf eventuel cas contraire explicite,
 	// toutes les rotations sont passees, memorisees
-	// et stockees dans le sens Cam->Monde
+	// and stockees in le sens Cam->Monde
 	//
-	// Donc si ca ne correspond pas une orientation de camera
-	// C2M est le sens direct et M2C le sens reciproque
+	// Donc if ca ne correspond pas une orientation de camera
+	// C2M est le sens direct and M2C le sens reciproque
 	public  :
           bool IsFiged() const;
 
@@ -1517,8 +1517,8 @@ class cRotationFormelle : public cElemEqFormelle,
 	  Pt3d<Fonc_Num>   ImVect(Pt3d<Fonc_Num>,int aKForceGL=-1);
           Pt3d<Fonc_Num>   COpt();
 	  ElRotation3D     CurRot();
-          // Si on veut forcer une valeur de rotation, on le fait avec MForce * DRot et une contraintye Drot =0
-          // du cout cela se fait en utilisant le codage guimbal et en separant la rotation courrante de la veleur guimbal
+          // if on veut forcer une value de rotation, on le fait with MForce * DRot and une contraintye Drot =0
+          // du cout cela se fait en utilisant le codage guimbal and en separant la rotation courrante de la veleur guimbal
 	  void     SetCurRot(const ElRotation3D & aCurR2CM,const ElRotation3D & aGuimbCurR2CM);
 	  ElRotation3D     CurRot(REAL aT);
 
@@ -1561,9 +1561,9 @@ class cRotationFormelle : public cElemEqFormelle,
                 eModeContrRot,
 		ElRotation3D aRC2MInit,
                 cSetEqFormelles &,
-                cRotationFormelle *,  // Rotation de ratachement eventuelle
+                cRotationFormelle *,  // rotation de ratachement eventuelle
 		const std::string & aName,
-                INT   aDegre,            // Cas des parametre variables dans le temps
+                INT   aDegre,            // Cas des parameter variables in le temps
                                          // -1 correspond au cas non employe
                 bool  aUseVraiBaseU
            );
@@ -1609,9 +1609,9 @@ class cRotationFormelle : public cElemEqFormelle,
 	   Pt3d<Fonc_Num> mFCOpt;
 
            cRotationFormelle *  pRotAttach;
-           // Le pRotAttach est assez lourd et en gal inutile grace au nouveau mode
-           // de controle par fixage d'une des var en mode pseudo  .. ; pour ne
-           // pas interferer avec on rajoute
+           // Le pRotAttach est assez lourd and en gal inutile grace au nouveau mode
+           // de controle par fixage d'une des var en mode pseudo  .. ; for ne
+           // pas interferer with on rajoute
            cRotationFormelle *  pRotPseudoBaseU;
 	   cElCompiledFonc *    mFcteurRapCoU;
 	   std::string          mName;
@@ -1675,8 +1675,8 @@ class cCameraFormelle :  public cGenPDVFormelle
 
 	  //
 	  //
-	  //  Ne refait pas le calcul a chaque fois, est memorise
-	  //  dans mCameraCourante ; C'est CalcCameraCourante qui 
+	  //  Ne refait pas le computation a chaque fois, est memorise
+	  //  in mCameraCourante ; C'est CalcCameraCourante qui 
 	  //  refait le calc
 	  //
 	  const CamStenope * CameraCourante() const;
@@ -1697,16 +1697,16 @@ class cCameraFormelle :  public cGenPDVFormelle
 
 	  // static void GenAllCode();
 
-	  // Le resultat est un point renvoyant le vecteur de residu
+	  // Le result est un point renvoyant le vector de residu
 	  Pt2dr  AddAppui(Pt3dr aP,Pt2dr aPIm,REAL aPds);
-	         // Donne le residu mais n'ajoute pas au systeme
+	         // Donne le residu but n'ajoute pas au system
 	  Pt2dr  ResiduAppui(Pt3dr aP,Pt2dr aPIm);
 
 	   Pt2dr  CorrigePFromDAdd(const Pt2dr & aP1,bool UseGrid,bool ModeDr);
 
            class cEqAppui ;
-	   cEqAppui * AddFctrEqAppuisInc(bool aGenCode,bool Proj,bool isGL,bool wDist,bool EqDr);  // Initialise si nec le fcteur
-	   cEqAppui * AddForUseFctrEqAppuisInc(bool aGenCode,bool Proj,bool wDist,bool IsEqDr);  // Initialise si nec le fcteur
+	   cEqAppui * AddFctrEqAppuisInc(bool aGenCode,bool Proj,bool isGL,bool wDist,bool EqDr);  // Initialise if nec le fcteur
+	   cEqAppui * AddForUseFctrEqAppuisInc(bool aGenCode,bool Proj,bool wDist,bool IsEqDr);  // Initialise if nec le fcteur
 	   cIncListInterv & IntervAppuisPtsInc(); 
 	   Pt2dr AddEqAppuisInc(const Pt2dr & aPIm,double aPds, cParamPtProj &,bool IsEqDroite,cParamCalcVarUnkEl*);
            virtual void Update_0F2D();
@@ -1718,7 +1718,7 @@ class cCameraFormelle :  public cGenPDVFormelle
 	  class cEqAppui
 	  {
 		  public :
-                      void PrepareEqFForPointIm(const Pt2dr &);  // Transmet a Camera Formelle
+                      void PrepareEqFForPointIm(const Pt2dr &);  // Transmet a camera Formelle
                       friend class cCameraFormelle;
                       cEqAppui
 		      (
@@ -1734,7 +1734,7 @@ class cCameraFormelle :  public cGenPDVFormelle
 		      void GenCode();
                       cIncListInterv & LInterv();
 
-		      // Si P <0, n'ajoute pas au sys
+		      // if P <0, n'ajoute pas au sys
 		      Pt2dr Residu(Pt3dr aP1,Pt2dr aP2,REAL Pds);
 		      Pt2dr ResiduPInc(Pt2dr aP2,REAL Pds,const cParamPtProj & aPPP,cParamCalcVarUnkEl *);
 		  private :
@@ -1820,9 +1820,9 @@ class cCameraFormelle :  public cGenPDVFormelle
 	  CamStenope *                  mCameraCourante;
 
 
-        // S'ajoute eventuellement a mGlobOrImaM2C pour  ResiduMond2Cam
+        // S'ajoute eventuellement a mGlobOrImaM2C for  ResiduMond2Cam
          // permet de gerer les marques fiduciaire qui etant integre par modif
-         // des points homols, n'interviennent pas dans la camera
+         // des points homols, n'interviennent pas in la camera
          ElAffin2D                      mResiduM2C;
          bool                           mHasEqDroite;
 
@@ -1837,12 +1837,12 @@ class cCpleCamFormelle : public cNameSpaceEqF,
 
           friend class cSetEqFormelles;
 	  static void GenAllCode();
-         // WithD2 : avec derivees secondes
+         // WithD2 : with derivees secondes
           REAL AddLiaisonP1P2(Pt2dr P1,Pt2dr P2,REAL aPds,bool WithD2);
 
           REAL ResiduSigneP1P2(Pt2dr P1,Pt2dr P2); 
 	  // Pondere en 1 / (1+ square(Residu/Ecart))
-	  // Si Residu > Coupure > 0 , poids = 0
+	  // if Residu > Coupure > 0 , poids = 0
 
 
           cCameraFormelle & Cam1();
@@ -1897,7 +1897,7 @@ class cEqHomogFormelle : public  cNameSpaceEqF ,
 		bool Code2Gen
           );
 
-         // WithD2 : avec derivees secondes
+         // WithD2 : with derivees secondes
           REAL AddLiaisonP1P2(Pt2dr P1,Pt2dr P2,REAL aPds,bool WithD2);
 	  REAL ResiduNonSigneP1P2(Pt2dr aP1,Pt2dr aP2);
 	  Pt2dr  PtResidu(Pt2dr aP1,Pt2dr aP2);
@@ -1959,7 +1959,7 @@ class cEqOneHomogFormelle : public  cNameSpaceEqF ,
                 bool Code2Gen
           );
 
-         // WithD2 : avec derivees secondes
+         // WithD2 : with derivees secondes
           REAL AddLiaisonP1P2(Pt2dr P1, Pt2dr aP2, REAL aPds,bool WithD2);
           Pt2dr StdAddLiaisonP1P2(Pt2dr P1,Pt2dr P2,REAL aPds,bool WithD2); // Version moderne type camera
           REAL ResiduNonSigneP1P2(Pt2dr aP1,Pt2dr aP2);
@@ -2009,14 +2009,14 @@ class cEqHomogFormelle : public  cNameSpaceEqF ,
           ~cEqHomogFormelle();
           cEqHomogFormelle
           (
-                bool InSpaceInit, // Si true equation H1 H2-1
+                bool InSpaceInit, // if true equation H1 H2-1
                 cHomogFormelle &,
                 cHomogFormelle &,
                 cDistRadialeFormelle *,
 		bool Code2Gen
           );
 
-         // WithD2 : avec derivees secondes
+         // WithD2 : with derivees secondes
           REAL AddLiaisonP1P2(Pt2dr P1,Pt2dr P2,REAL aPds,bool WithD2);
           Pt2dr StdAddLiaisonP1P2(Pt2dr P1,Pt2dr P2,REAL aPds,bool WithD2); // Version moderne type camera
 	  REAL ResiduNonSigneP1P2(Pt2dr aP1,Pt2dr aP2);
@@ -2068,7 +2068,7 @@ class cEqHomogFormelle : public  cNameSpaceEqF ,
 
 
 
-// Class pour resoudre de maniere simplifiee, l'equation homographique
+// Class for resoudre de maniere simplifiee, l'equation homographique
 
 /*
     Cette classe se specialise dans la resolution
@@ -2087,7 +2087,7 @@ class  cLEqHomOneDist
          cLEqHomOneDist(REAL aDiag);
          void AddCple(const ElPackHomologue &);
 
-         // Calcul un score, en mettant tous les parametres a leur valeur
+         // computation un score, en mettant tous les parameters a leur value
          // initiale sauf le centre fige a aCentre
 
 
@@ -2099,7 +2099,7 @@ class  cLEqHomOneDist
          void CloseSet();
 
       protected :
-         // Met dans le systeme toute les equation de laison + contrainte
+         // Met in le system toute les equation de laison + contrainte
          // renvoie la moyenne des equation de liaisons
 
          void AddLiaisonOnTop(Pt2dr aP1,Pt2dr aP2,REAL aPds);
@@ -2170,7 +2170,7 @@ class cParamIFDistPolynXY : public cParamIntrinsequeFormel
 	   CamStenope * DupCurPIF();
 	   cCamStenopeDistPolyn *  CurPIFPolyn();
 	   virtual void    UpdateCurPIF();
-	   void    NV_UpdateCurPIF();   // Non virtuel, pour appel constructeur
+	   void    NV_UpdateCurPIF();   // Non virtuel, for appel constructeur
       private :
           cParamIFDistPolynXY(bool IsC2M,cCamStenopeDistPolyn *,cSetEqFormelles & aSet);
           cDistFormelPolXY  mDist;
@@ -2252,7 +2252,7 @@ class cTFI_Triangle
 	  int Dim() const;
          cSetEqFormelles &     Set();
 
-     // Si dim=1 et les inconnue sont des Z, renvoie le plan passant par
+     // if dim=1 and les inconnue sont des Z, renvoie le plan passant par
      // les trois points
 	 cElPlan3D CalcPlancCurValAsZ() const;
 	 cTFI_AttrSom & S1();
@@ -2287,10 +2287,10 @@ class cTFI_Triangle
 
 
 
-// Classe d'Interface
+// class d'Interface
 //
-//  Une triangulation formelle peut etre de dimension qcq sur les attribut
-//  (parametre Dim), ce n'est que lorsque Dim=2 qu'elle herite pertinement
+//  Une triangulation formelle peut etre de dimension qcq on les attribut
+//  (parameter Dim), ce n'est que lorsque Dim=2 qu'elle herite pertinement
 //  de ElDistortion22_Gen 
 //
 class cTriangulFormelle : public ElDistortion22_Gen,
@@ -2301,28 +2301,28 @@ class cTriangulFormelle : public ElDistortion22_Gen,
         virtual void SetAllPtCur(const ElDistortion22_Gen &) =0;
         virtual ~cTriangulFormelle() ;
         std::vector<double> ValsOfPt(const Pt2dr &  aP) const;  // Direct
-	Pt2dr Direct(Pt2dr  aP) const;  // En dim 2 pour heriter de ElDistortion22_Gen,
+	Pt2dr Direct(Pt2dr  aP) const;  // En dim 2 for heriter de ElDistortion22_Gen,
 
 	static void Test();
 	virtual cTFI_Triangle & GetTriFromP(const Pt2dr & aP) const = 0;
 	virtual void TestOneTri() = 0;
-	// Renvoie un point  dans la tri, + ou - au centre, a priori
-	// le barry mais sans garantie
+	// Renvoie un point  in la tri, + or - au centre, a priori
+	// le barry but without garantie
 	virtual Pt2dr APointInTri() const =0;
 	virtual void Show() =0;
 	virtual void Show(ElPackHomologue) =0;
 
 	// Renvoie un sommet central, le plus proche de la  BBbox
 	// virtual cTFI_AttrSom  & SomCentral() =0;
-	// Renvoie un sommet aS2 tq (aS1 aS2) soit horizontal et assez grand
+	// Renvoie un sommet aS2 tq (aS1 aS2) soit horizontal and assez grand
 	// virtual cTFI_AttrSom  & SomVecHorz(cTFI_AttrSom & aS1) =0;
 	// 
 	// INT 
 
           cSetEqFormelles & Set();
-	  // Contraintes pour bloquer un mouvement de rotation
+	  // Contraintes for bloquer un mouvement de rotation
           cMultiContEQF      ContraintesRot() ;
-	  // Contraintes pour bloquer tous les sommets
+	  // Contraintes for bloquer tous les sommets
           cMultiContEQF      ContraintesAll() ;
 	  virtual void SetTolMax(REAL) =0;
           const  std::vector<cTFI_Triangle *> & VTri() const;
@@ -2351,9 +2351,9 @@ class cTriangulFormelle : public ElDistortion22_Gen,
 // Les Grids ne peuvent pas (simplement) etre utlisees comme
 // les autres distorsions parce qu'elle necessite un manipulation
 // non standard des indices (le jeux des indices d'inconnues
-// intervennant dans les equation depends du (ou des) triangles
+// intervennant in les equation depends du (or des) triangles
 // en jeux. Par ailleurs, il n'ont pas de raison d'avoir une
-// focale ou un point principal variable.
+// focale or un point principal variable.
 
 
 
@@ -2363,7 +2363,7 @@ class cAppuiGridEq : public cNameSpaceEqF,
      public :
 	  void   GenCode();
 	  Pt2dr  AddAppui(Pt3dr aP,Pt2dr aPIm,REAL aPds);
-	         // Donne le residu mais n'ajoute pas au systeme
+	         // Donne le residu but n'ajoute pas au system
 	  Pt2dr  ResiduAppui(Pt3dr aP,Pt2dr aPIm);
 
      private  :
@@ -2481,7 +2481,7 @@ class cEqEllipseImage : public cElemEqFormelle,
           cMultiContEQF  ContrFigeLarg();
 
 	  const cMirePolygonEtal & Mire() const;
-	  // Si Fact > 1 donne ellipse plus grande
+	  // if Fact > 1 donne ellipse plus grande
 	  Box2dr  BoxCurEllipse(REAL Fact=1.0) const;
 	  REAL SurfIER(Pt2dr aP,REAL Fact=1.0,REAL Larg=-1) const;
 
@@ -2614,7 +2614,7 @@ class cLI_MakeEqIm
 	      (
 	           const std::string &      aPref,
 		   cLIParam_Image &              anIm,
-                   bool Normalize, // Si faux pas de normalisation Moy/Ect
+                   bool Normalize, // if faux pas de normalisation Moy/Ect
 		   INT        aNbPts,
                    cRotationFormelle * aRotPts
 	      );
@@ -2683,7 +2683,7 @@ class cEqVueLaserImage : public cObjFormel2Destroy
 	        (
                         cRotationFormelle * aRotPts,
                         bool Multi,
-                        bool Normal, // Si faux pas de normalisation Moy/Ect
+                        bool Normal, // if faux pas de normalisation Moy/Ect
                         INT aNbPts,
                         cLIParam_Image &,
                         cLIParam_Image &,
@@ -2944,7 +2944,7 @@ class cPIF_Bilin : public cParamIntrinsequeFormel
           // virtual Fonc_Num  NormGradC2M(Pt2d<Fonc_Num>); a priori inutile
           virtual void PrepareEqFForPointIm(const cIncListInterv &,cElCompiledFonc *,const Pt2dr &,bool EqDroite,int aKCam);
           virtual  Pt2d<Fonc_Num> VirtualDist(Pt2d<Fonc_Num>,bool UsePC=true,int aKCam=0);
-          void    NV_UpdateCurPIF();   // Non virtuel, pour appel constructeur ????
+          void    NV_UpdateCurPIF();   // Non virtuel, for appel constructeur ????
           virtual void    UpdateCurPIF();
           virtual bool IsDistFiged() const;
           virtual std::string  NameType() const;
@@ -2968,7 +2968,7 @@ class cPIF_Bilin : public cParamIntrinsequeFormel
           static const std::string TheNameType ;
        // ==============================================
           cSetEqFormelles &                            mSet;
-          std::vector<cP2d_Etat_PhgrF>                 mCornF; // Size 8, pour eventuelleme,t gerer aKCam=1
+          std::vector<cP2d_Etat_PhgrF>                 mCornF; // Size 8, for eventuelleme,t gerer aKCam=1
           bool                                         mFiged;
           int                                          mDegreFree;
           cDistorBilin                                 mDistInit;
@@ -2979,8 +2979,8 @@ class cPIF_Bilin : public cParamIntrinsequeFormel
 
           std::vector<cElCompiledFonc* >               mFctrRegul;
 
-          // Index des deux point qui doivent etre figee arbirtairemnt pour fixer PP,Focale, Rotation
-          // situes sur les extre de la ligne horiz coupant la capteur en 2
+          // Index des deux point qui doivent etre figee arbirtairemnt for fixer PP,Focale, rotation
+          // situes on les extre de la line horiz coupant la capteur en 2
           int                                          mIndFrozen0;
           int                                          mIndFrozen1;
 
@@ -2989,7 +2989,7 @@ class cPIF_Bilin : public cParamIntrinsequeFormel
           // cCamStenopeBilin                             
 };
 
-// Variable globale pour savoir si il faut initaliser la regul dist
+// Variable globale for savoir if il faut initaliser la regul dist
 extern bool GlobUseRegulDist;
 extern bool GlobUseRegulCamConseq;
 

@@ -7,7 +7,7 @@ class cImgEsSim;
 /*====================== cParamEsSim ========================*/
 class cParamEsSim
 {
-    /* string [aDir]: repertoire
+    /* string [aDir]: directory
      * string [aImgX]: name of the deplacement image of X-axis
      * string [aImgY]: name of the deplacement image of Y-axis
      * Pt2dr [aPtCtr]: coordinate of the center point of the vignette

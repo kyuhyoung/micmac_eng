@@ -250,7 +250,7 @@ cAppli_Vino::cAppli_Vino(int argc,char ** argv,const std::string & aNameImExtern
     double aSzLim = SzLimSsEch().Val();
     while ( ((mNbPix*mSzEl)/ElSquare(aSc))  > aSzLim)
     {
-        aSzLim = 6e6; // Si on reduit, tant qu'a faire on 
+        aSzLim = 6e6; // if on reduit, tant qu'a faire on 
         aSc *= 2;
         mVEch.push_back(aSc); 
         std::string aName = NamePyramImage(mVEch.back());
@@ -404,9 +404,9 @@ cAppli_Vino::cAppli_Vino(int argc,char ** argv,const std::string & aNameImExtern
        std::cout << "\n";
 
 
-       // Fenetre pour voir l'image initiale en zoom
+       // Fenetre for voir l'image initiale en zoom
        mAimWI0  = mW->PtrChc(Pt2dr(0,0),Pt2dr(mAimeZoomW,mAimeZoomW));
-       // Fenetre pour voir l'image initiale  de caracteristique
+       // Fenetre for voir l'image initiale  de caracteristique
        mAimWStd  = mW->PtrChc(Pt2dr(-(2+mAimeSzW.x),0),Pt2dr(mAimeZoomW,mAimeZoomW));
 
        double aTr =  4+ 2 * mAimeSzW.x;
@@ -434,7 +434,7 @@ void cAppli_Vino::PostInitVirtual()
         aPtrAp->PostInitVirtual();
     }
 
-    // Calcul des homologues par nuage
+    // computation des homologues par nuage
 
     if ((!mMother) && mSPC && mCheckNuage && (mAVSI.size()==1))
     {
@@ -500,7 +500,7 @@ void cAppli_Vino::ExeOneClik(Clik & aCl)
    mCtrl0  = aCl.controled();
    mShift0  = aCl.shifted();
 
-   // Click sur la fenetre principale 
+   // Click on la fenetre principale 
    if (aCl._w == *mW)
    {
       if (mBut0==2)

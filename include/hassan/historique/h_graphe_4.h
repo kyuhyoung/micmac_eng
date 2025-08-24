@@ -152,7 +152,7 @@ class H_Graphe : public Camera_V
       REAL merite_cont(INT n_sol);
       void arrange_solutions(Boite& b_a, Boite& b_b, INT s_t_f, Output w);
 
-                                            //methode d'affichage
+                                            //method d'affichage
 
       virtual void reperer();
       virtual void afficher();

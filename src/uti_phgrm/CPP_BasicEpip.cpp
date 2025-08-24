@@ -64,8 +64,8 @@ class cAppliEpiBasic
           cAppliEpiBasic(int,char **,bool aModeTestDeep);
     private :
           void InitZoom0(const std::string & aNameIm);
-          // En mode TestDeep on simule une programme qui va tourner sur petite dalle
-          //    donc pas en paral (car il va deja etre appelle en //) et nettoie apres
+          // En mode TestDeep on simule une programme qui va tourner on petite dalle
+          //    donc pas en paral (car il va deja etre appelle en //) and nettoie after
           bool mModeTestDeep;
 
           std::string mDir;     // Dir of data

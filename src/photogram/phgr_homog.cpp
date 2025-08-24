@@ -170,7 +170,7 @@ static cElComposHomographie   ComputeHomFromHomologues
                                )
 {
      ElPackHomologue::const_iterator anIt=aPack.begin();
-     // 0 Point : identite 
+     // 0 point : identite 
      if (aPack.size() ==0)
      {
         aHX = cElComposHomographie(1,0,0);
@@ -181,7 +181,7 @@ static cElComposHomographie   ComputeHomFromHomologues
      }
 
 
- // 1 Point : translation 
+ // 1 point : translation 
      Pt2dr P1 =  anIt->P1();
      Pt2dr P2 =  anIt->P2();
      anIt++;
@@ -196,7 +196,7 @@ static cElComposHomographie   ComputeHomFromHomologues
         return  aHX;
      }
 
- // 2 Point : Similitude 
+ // 2 point : Similitude 
      Pt2dr Q1 =  anIt->P1();
      Pt2dr Q2 =  anIt->P2();
      anIt++;
@@ -214,7 +214,7 @@ static cElComposHomographie   ComputeHomFromHomologues
         return  aHX;
      }
 
- // 3 Point : Affinite 
+ // 3 point : Affinite 
      Pt2dr R1 =  anIt->P1();
      Pt2dr R2 =  anIt->P2();
      anIt++;
@@ -940,7 +940,7 @@ bool cDistHomographieRadiale::OwnInverse(Pt2dr & aP) const
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -956,17 +956,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

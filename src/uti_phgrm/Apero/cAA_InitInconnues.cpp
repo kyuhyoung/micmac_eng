@@ -446,7 +446,7 @@ void cAppliApero::CompileInitPoseGen(bool isPrecComp)
         }
 
 
-        // On regarde si il existe un nom bundle gen
+        // On regarde if il existe un nom bundle gen
         {
              std::list<std::string> aNewL;
 	     for 
@@ -500,7 +500,7 @@ void cAppliApero::CompileInitPoseGen(bool isPrecComp)
                        aNameCal = ICNM()->Assoc1To1(aNameCal,*itS,true);
                   }
               }
-              // Si les calibrations sont geres par le nouveua systeme
+              // if les calibrations sont geres par le nouveua system
               if (!itP->CalcNameCalibAux().empty())
               {
                   ELISE_ASSERT(!itP->CalcNameCalib().IsInit(),"Choose CalcNameCalib OR CalcNameCalibAux");
@@ -598,7 +598,7 @@ void cAppliApero::CompileInitPoseGen(bool isPrecComp)
               aLName = aNewL;
            }
 
-           if (isMST)  // L'init est faite "a la volee" dans MST
+           if (isMST)  // L'init est faite "a la volee" in MST
            {
                ConstructMST(aLName,*itP);
            }
@@ -632,7 +632,7 @@ void cAppliApero::CompileInitPoseGen(bool isPrecComp)
                   else
                   {
                       aPC->Set0Prof2Init();
-                      // La valeur par defaut 0 de Prof2Init va tres bien
+                      // La value par defaut 0 de Prof2Init va tres bien
                   }
                   aPC->DoInitIfNow();
 	      }

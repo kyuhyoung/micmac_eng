@@ -45,7 +45,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 using namespace NS_ParamChantierPhotogram;
 
 
-// Pour recopier une arborescence d'ensemble de fichier en les remplacant par des fichiers vides
+// for recopier une arborescence d'ensemble de file en les remplacant par des fichiers vides
 /*********************************************/
 /*                                           */
 /*                ::                         */

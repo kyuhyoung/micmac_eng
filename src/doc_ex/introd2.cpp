@@ -386,7 +386,7 @@ int  DocEx_Introd2_main(int,char **)
 
 
 
-      //  On declare trois fenetre Wr, Wg et Wb
+      //  On declare trois fenetre Wr, Wg and Wb
         Video_Win   Wr = W;  
         Video_Win   Wg (Ecr,SOP,Pt2di(50,50),SZ);
         Video_Win   Wb (Ecr,SOP,Pt2di(50,50),SZ);
@@ -410,7 +410,7 @@ int  DocEx_Introd2_main(int,char **)
         Wr.clear(); Wg.clear(); Wb.clear();
 
         // affichage des 3 canaux en niveau de gris,
-        //  version operateur "," sur les Output
+        //  version operateur "," on les Output
         ELISE_COPY
         (
             W.all_pts(),
@@ -426,8 +426,8 @@ int  DocEx_Introd2_main(int,char **)
        Im2D_U_INT1 G(256,256);
        Im2D_U_INT1 B(256,256);
 
-// affichage des trois canaux dans Wr, Wg et Wb
-// et memo en meme temps dans R,G et B
+// affichage des trois canaux in Wr, Wg and Wb
+// and memo en meme temps in R,G and B
        ELISE_COPY
        (
             W.all_pts(),
@@ -445,8 +445,8 @@ int  DocEx_Introd2_main(int,char **)
        getchar();
 
 // une autre facon de faire 
-// affichage des trois canaux dans Wr, Wg et Wb
-// et memo en meme temps dans R,G et B
+// affichage des trois canaux in Wr, Wg and Wb
+// and memo en meme temps in R,G and B
        ELISE_COPY
        (
             W.all_pts(),

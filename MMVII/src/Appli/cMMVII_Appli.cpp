@@ -181,7 +181,7 @@ void cMMVII_Appli::AddObj2DelAtEnd(cObj2DelAtEnd * aPtrO)
 
 void cMMVII_Appli::ToDoBeforeDestruction()
 {
-   // Merge report call virtual methode :q
+   // Merge report call virtual method :q
  
    DoMergeReport();
 
@@ -689,7 +689,7 @@ void cMMVII_Appli::InitParam(cGenArgsSpecContext *aArgsSpecs)
                      + std::string("_Pid")  + ToStr(mPid) 
                      + std::string("_") + mSpecs.Name()
                    ;
-   if (mGlobalMainAppli)  // Pour communique aux sous process
+   if (mGlobalMainAppli)  // for communique aux under process
    {
        mPrefixGMA  = mPrefixNameAppli;
        mPrefix_TIM_GMA = StrIdTime();

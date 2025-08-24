@@ -93,7 +93,7 @@ class H_Optimisation : public virtual  H_Graphe
       void segment_interne_poids_coef(Boite& b_coef);
 
       void select_meil_composante();
-      REAL explorer();   //retour le temps de calcul
+      REAL explorer();   //retour le temps de computation
 
       REAL merite(INT n_sol);
       REAL merite_cont(INT n_sol);
@@ -108,7 +108,7 @@ class H_Optimisation : public virtual  H_Graphe
       REAL heuristic(REAL alpha = .1, REAL seuil_sup = .5, REAL seuil_inf = .1, INT nb_min = 60, REAL surafce_min = 1.6);
       
 
-                                            //methode d'affichage
+                                            //method d'affichage
 
       void affiche_solution(INT n_sol, INT color);
       void parcour_solution(bool debut = false);

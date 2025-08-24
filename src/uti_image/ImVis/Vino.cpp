@@ -42,7 +42,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #if (ELISE_X11)
 
 
-// Reisdu sur 4 point FFTK
+// Reisdu on 4 point FFTK
 
 // Ortho en mod Forest
 

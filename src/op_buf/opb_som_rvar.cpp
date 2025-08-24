@@ -141,8 +141,8 @@ template <class Type> void Som_Rvar_Comp<Type>::post_new_line(bool first)
                         - lines[y0][x+x1] - lines[y1][x+x0];
             }
      
-            // Strictement inutile sur une machine ideale;
-            // mais evite les pbs d'overflow en pratique
+            // Strictement inutile on une machine ideale;
+            // but evite les pbs d'overflow en pratique
             
             if (_y_cpt % (1+this->_y1_side-this->_y0_side) == 0)
             {

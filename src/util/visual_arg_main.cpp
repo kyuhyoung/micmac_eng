@@ -76,7 +76,7 @@ list<string> listPossibleValues(const cMMSpecArg & anArg)
 // ====================================================================
 //
 //      Lecture d'un argument optionnel; utilise par MMRunVisualMode
-//      retourne false si on specifie la fin de lecture;
+//      retourne false if on specifie la fin de lecture;
 //
 //=====================================================================
 
@@ -84,7 +84,7 @@ list<string> listPossibleValues(const cMMSpecArg & anArg)
 /*
 bool ContinuerReadOneArg(std::vector<cMMSpecArg> & aVAO, bool Prems)
 {
-    // la premiere fois on imprime toute l'info sur tous les arguments
+    // la premiere fois on imprime toute l'info on tous les arguments
     if (Prems)
     {
         for (int aK=0 ; aK<int(aVAO.size()) ; aK++)
@@ -97,17 +97,17 @@ bool ContinuerReadOneArg(std::vector<cMMSpecArg> & aVAO, bool Prems)
         }
     }
 
-    // Lecture du nom et de la valeur
+    // Lecture du nom and de la value
     cout << "Enter Name + Val of optional arg, NONE if finish\n";
     std::string aName,aVal;
 
     std::cin >> aName >> aVal;
 
 
-    // Si on veut signifier la fin il faut taper NONE  xxx
+    // if on veut signifier la fin il faut taper NONE  xxx
     if (aName=="NONE") return false;
 
-    // Si on trouve le bon nom, on initialise et on retourne true
+    // if on trouve le bon nom, on initialise and on retourne true
     for (int aK=0 ; aK<int(aVAO.size()) ; aK++)
     {
         if (aVAO[aK].NameArg() ==aName)
@@ -117,7 +117,7 @@ bool ContinuerReadOneArg(std::vector<cMMSpecArg> & aVAO, bool Prems)
         }
     }
 
-    // Sinon un message d'insulte (light) et on continue
+    // else un message d'insulte (light) and on continue
     std::cout << "Name is not valid !!! (got " << aName << ")\n";
     return true;
 }*/

@@ -142,7 +142,7 @@ class Camera_V
                                          }
 
 
-                                        //parametre de camera
+                                        //parameter de camera
 
       void calcul_matrice() {   _m00 = -sin(_teta) * _zoom;
                                 _m01 =  cos(_teta) * _zoom;
@@ -169,7 +169,7 @@ class Camera_V
                                                );
                                }
 
-                                        // afficahge et desaffichage
+                                        // afficahge and desaffichage
 
       virtual void afficher() {}
 

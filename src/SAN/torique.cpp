@@ -58,7 +58,7 @@ cProjTore::cProjTore(const cCylindreRevolution & aCyl,const Pt3dr & aPEuclInitDi
 
 
     Pt3dr aDiamCyl =  mCyl.E2UVL(aPEuclInitDiamTor);
-    aDiamCyl.x = 0;                     // On met le teta a 0 : alligne sur POnCyl
+    aDiamCyl.x = 0;                     // On met le teta a 0 : alligne on POnCyl
     mDiamEucl =  mCyl.UVL2E(aDiamCyl);
     Pt3dr aCylPOnCyl(0,aDiamCyl.y,0);
     Pt3dr anEuclPOnCyl  = mCyl.UVL2E(aCylPOnCyl);
@@ -91,7 +91,7 @@ Pt3dr cProjTore::Cyl2Tore(const Pt3dr & aP) const // Loc2Cyl
 {
    if (mUnUseAnamXCSte) return aP;
 
-   double  A = aP.y ;  // le Z avec origine sur le diam du tore
+   double  A = aP.y ;  // le Z with origine on le diam du tore
    double  B = mDiamCyl.z-aP.z  ;
 
 
@@ -286,7 +286,7 @@ cAppliDonuts::cAppliDonuts(int argc,char **argv) :
              Pt3dr aPE2 = aISA.UVL2E(aPC);
 
              double aEps= 1e-5;
-             Pt3dr aP0 (aPC.x,0,0);  // Le syste est Orthonorme sur le cyl au niveau du diam
+             Pt3dr aP0 (aPC.x,0,0);  // Le syste est Orthonorme on le cyl au niveau du diam
              Pt3dr aGradT = (aISA.UVL2E(aP0+Pt3dr(aEps,0,0))-aISA.UVL2E(aP0+Pt3dr(-aEps,0,0)))/(2*aEps);
              Pt3dr aGradZ = (aISA.UVL2E(aP0+Pt3dr(0,aEps,0))-aISA.UVL2E(aP0+Pt3dr(0,-aEps,0)))/(2*aEps);
              Pt3dr aGradR = (aISA.UVL2E(aP0+Pt3dr(0,0,aEps))-aISA.UVL2E(aP0+Pt3dr(0,0,-aEps))) /(2*aEps);
@@ -296,9 +296,9 @@ cAppliDonuts::cAppliDonuts(int argc,char **argv) :
              double aMixte = scal(aGradT,aGradZ^aGradR);
 
 
-             double EcartInv = euclid(aPE-aPE2);  // Test que les systeme sont inverse
+             double EcartInv = euclid(aPE-aPE2);  // Test que les system sont inverse
              double EcartON = aP.L2();            // Test que le system est orthorme en R=0
-             double EcartDir =  ElAbs(aMixte-1);  // Test que le systeme est direct
+             double EcartDir =  ElAbs(aMixte-1);  // Test que le system est direct
 
 
 /*
@@ -355,7 +355,7 @@ int Donuts_main(int argc,char **argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -371,17 +371,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

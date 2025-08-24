@@ -1,4 +1,4 @@
-/* interfConversion.h et interfConversion.cpp correspondent au menu Conversion
+/* interfConversion.h and interfConversion.cpp correspondent au menu Conversion
 La classe InterfCartes8B correspond à la fenêtre du menu Conversion -> Cartes de profondeur 8B ; elle permet de sélectionner les cartes à convertir ainsi que les paramètres de GrShade à appliquer pour toutes les cartes à convertir (couleurs hypsométriques, ombrage...).
 La classe BoiteArea correspond à la saisie de la boîte englobante et est incluse dans InterfCartes8B.
 La classe ParamConvert8B enregistre ces paramètres.
@@ -54,8 +54,8 @@ class ParamConvert8B
 		QList<ParamConvert8B::carte8B>& modifImages();
 		const QList<ParamConvert8B::carte8B>& getImages() const;
 
-		bool getCommande(const QString& micmacDir, const QString& dir, const carte8B& image, const QString& outimage, const QString& outstd, bool holdvisu=true);	//commande GrShade en fonction de l'image et des paramères actuels et exécution
-		QString getOutFile(const QString& dossier, const carte8B& image);	//fichier de sortie en fonction de l'image et des paramères actuels
+		bool getCommande(const QString& micmacDir, const QString& dir, const carte8B& image, const QString& outimage, const QString& outstd, bool holdvisu=true);	//commande GrShade en function de l'image and des paramères actuels and exécution
+		QString getOutFile(const QString& dossier, const carte8B& image);	//file de sortie en function de l'image and des paramères actuels
 		const QList<ParamConvert8B::carte8B>& readImages() const;
 
 		bool 				visualiser;
@@ -235,12 +235,12 @@ class ParamNuages
 		void copie(const ParamNuages& paramNuages);
 
 		const CarteDeProfondeur* paramMasque;	//pointeur vers paramMain.getMasques()
-		QString 				 carte;			//avec dossier
+		QString 				 carte;			//with folder
 		int 					 dezoom;
 		QString 				 numCarte;
 		int 					 etape;
-		QString					 fichierPly;	//avec dossier (conversion)
-		QString					 fichierXml;	//avec dossier
+		QString					 fichierPly;	//with folder (conversion)
+		QString					 fichierXml;	//with folder
 };
 
 class ParamPly
@@ -312,7 +312,7 @@ class InterfModele3D : public QDialog
 
 		const QVector<ParamNuages>& getModifications() const;
 		const ParamPly& getParamPly() const;
-		void chercheOrtho();	//si une orthoimage mosaïquée a été calculée, modifie cette fenêtre et les paramètres
+		void chercheOrtho();	//if une orthoimage mosaïquée a été calculée, modifie cette fenêtre and les paramètres
 
 	private slots:
 		void optionChanged(int n=-1);
@@ -340,7 +340,7 @@ class InterfModele3D : public QDialog
 		QCheckBox		*checkFiltr;
 		QCheckBox		*checkFusion;
 		QCheckBox		*checkRadiomEq;
-		QLabel		  	*listeMasques;	//-> à rajouter pour montrer les masques modifiés
+		QLabel		  	*listeMasques;	//-> à rajouter for montrer les masques modifiés
 		QSignalMapper 	*mapper;	
 		QPushButton		*calButton;
 		QPushButton		*cancelButton;

@@ -496,7 +496,7 @@ cWhichMin<tRotR,tREAL8>   cAppli_ClinoInit::ComputeInitialSolution(int aNbStep) 
     for (size_t aKQ=0 ; aKQ<aSQ.NbRot() ; aKQ++) // parse all quaternion
     {
         cDenseMatrix<tREAL8> aMat = Quat2MatrRot(aSQ.KthQuat(aKQ)); // quaternion -> rotation
-	tRotR aRot(aMat,false); // Rotation from Matrix, w/o optimization
+	tRotR aRot(aMat,false); // rotation from Matrix, w/o optimization
 
         tREAL8 aCost = CostRot(aRot);  // compute the cost of tested rot
         aWMin.Add(aRot,aCost);  // update lowest cost solution
@@ -578,7 +578,7 @@ int cAppli_ClinoInit::Exe()
     std::vector<cOneMesureClino>  aVMC =  aSMC.SetMeasures();
 
     // ------------- Compute vector ofrelative position  : usefull only when we have 2 clino
-    tRotR aRSim = tRotR::Identity();  // Rotation for simulation
+    tRotR aRSim = tRotR::Identity();  // rotation for simulation
     mOriRelClin.push_back(tRotR::Identity());   // First clinometer : id to itself
     mOriRelClin.push_back(tRotR::RotFromCanonicalAxes(mNameRel12));  // Relative 2 to 1 
 

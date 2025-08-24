@@ -89,7 +89,7 @@ cXeres_NumSom cXeres_NumSom::CreateFromStdName_V0(const std::string & aName)
         }
         else if (aC<='W')
         {
-               aNumMer += 1;  // Y'a un trou dans la numerotation
+               aNumMer += 1;  // Y'a un trou in la numerotation
         }
         else
         {
@@ -118,7 +118,7 @@ cXeres_NumSom cXeres_NumSom::CreateFromStdName_V0(const std::string & aName)
                  aPorte = true;
              }
              int aNumPar = 8;
-             // X7 est +ou- equiv a A1
+             // X7 est +or- equiv a A1
              double aTeta = (aNum+0.5-7) * ((2*PI) / 18.0);
              return cXeres_NumSom(aNumPar,aNum,aTeta, aName,aPorte);
          }
@@ -130,7 +130,7 @@ cXeres_NumSom cXeres_NumSom::CreateFromStdName_V0(const std::string & aName)
              }
              int aNumPar = 9;
              
-             // X19 est +ou- equiv a A1
+             // X19 est +or- equiv a A1
              double aTeta = (aNum+0.5-19) * ((2*PI) / 12.0);
              return cXeres_NumSom(aNumPar,aNum,aTeta, aName,aPorte);
              

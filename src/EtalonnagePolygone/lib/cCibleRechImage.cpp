@@ -226,7 +226,7 @@ void cCibleRechImage::RechercheImage
     REAL aDConfShape  = anHyp.Set().DistConfusionShape();
 
     cout << "NUM C " << anHyp.Cible().Ind() << "\n";
-    // CHARGEMENT DE L'IMAGE
+    // CHARGEMENT DE L'image
     pCam = & anHyp.Cam();
     mDecIm = round_ni(anHyp.Centr0() - Pt2dr(mSzIm)/2.0);
 
@@ -266,7 +266,7 @@ void cCibleRechImage::RechercheImage
     REAL FPtsCorrel = 1.0;
     REAL FPtsRaff   = 1.0;
 
-    // SELECTION DU BON ENSEMBLE D'EQUATIONS (M5 ou M7)
+    // SELECTION DU BON ENSEMBLE D'EQUATIONS (M5 or M7)
     const cMirePolygonEtal & aMire = anHyp.Cible().Mire();
 
 
@@ -347,7 +347,7 @@ void cCibleRechImage::RechercheImage
     FPtsCorrel = aCC.FacteurElargRechCorrel().ValWithDef(FPtsCorrel);
     FPtsRaff = aCC.FacteurElargRechRaffine().ValWithDef(FPtsRaff);
 
-    // CALCUL d'UNE IMAGE d'ELLIPSE DE SYNTHESE
+    // computation d'UNE image d'ELLIPSE DE SYNTHESE
 
     pEqElIm->SetCentre(mCentreImSynt);
     pEqElIm->SetA(anHyp.A0());
@@ -425,9 +425,9 @@ std::cout << "cCibleRechImage.cpp :" << pWIm << "\n"; getchar();
     }
 
 
-    // Calcul du centre initial par Max de correlation
+    // computation du centre initial par Max de correlation
     
-        // Calcul de l'image de Correlation
+        // computation de l'image de Correlation
     Im2D_REAL8   aCor = ElFFTPonderedCorrelNCPadded
                         (
                             mIm.in(),
@@ -459,7 +459,7 @@ std::cout << "cCibleRechImage.cpp :" << pWIm << "\n"; getchar();
 	);
     }
    
-        // Calcul du Max de correlation
+        // computation du Max de correlation
     Pt2di aDecMax;
     ELISE_COPY
     (
@@ -493,7 +493,7 @@ std::cout << "cCibleRechImage.cpp :" << pWIm << "\n"; getchar();
     }
 
 
-    // Calcul du blanc et noir initiaux
+    // computation du blanc and noir initiaux
     REAL Noir  =   255;
     REAL Blanc =   0;
     {

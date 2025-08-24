@@ -120,7 +120,7 @@ class cDaisyFOneBook
        std::string  mNameBook;  ///< Name of the book
        std::string  mAuthor;  ///< Name of the book
        std::string  mNarrator;  ///< Name of the book
-       std::list<cDaisyFOneChap>  mChaps;  ///< Liste of chapter of the book
+       std::list<cDaisyFOneChap>  mChaps;  ///< list of chapter of the book
 };
 
 void AddData(const  cAuxAr2007 & anAux,cDaisyFOneBook & aBook)

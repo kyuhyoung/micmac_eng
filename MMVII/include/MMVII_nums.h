@@ -67,7 +67,7 @@ template <class Type> bool ValidPosFloatValue(const Type & aV)
 double RandUnif_0_1(); ///<  Uniform distribution in 0-1
 std::vector<double> VRandUnif_0_1(int aNb); ///<  Uniform distribution in 0-1
 double RandUnif_C();   ///<  Uniform distribution in  -1 1
-bool   HeadOrTail();   ///< 1/2 , french 'Pile ou Face'
+bool   HeadOrTail();   ///< 1/2 , french 'Pile or Face'
 double RandUnif_N(int aN); ///< Uniform disrtibution in [0,N[ 
 double RandUnif_C_NotNull(double aEps);   ///<  Uniform distribution in  -1 1, but abs > aEps
 double RandUnif_NotNull(double aEps);   ///<  Uniform distribution in  0 1, but abs > aEps

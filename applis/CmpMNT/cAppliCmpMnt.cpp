@@ -103,7 +103,7 @@ Pt2di cAppliCmpMnt::Sz() const
 void cAppliCmpMnt::ShowDiff
      (
            const std::string & aMes,
-           bool  isSigned,  // Visu + calcul de biais
+           bool  isSigned,  // Visu + computation de biais
            double aDynVisu
      )
 {

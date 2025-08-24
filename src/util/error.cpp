@@ -76,7 +76,7 @@ void throwError(std::string err)
     BasicErrorHandler();
     message_copy_where_error();
 
-    // ShowArgs(); A voir comment moduler, mais pour  l'instant ca complique l lecteure des messages ... MPD
+    // ShowArgs(); A voir comment moduler, but for  l'instant ca complique l lecteure des messages ... MPD
 
     ncout() << err;
 
@@ -109,7 +109,7 @@ void Elise_Error_Exit()
 {
     BasicErrorHandler();
     message_copy_where_error();
-    ElEXIT(1,"");  // Le seul contexte peut venir de message_copy_where_error qui a rempli si necessaire
+    ElEXIT(1,"");  // Le seul contexte peut venir de message_copy_where_error qui a rempli if necessaire
 }
 
 void elise_internal_error(const char * mes,const char * file,int line)
@@ -473,7 +473,7 @@ void cMajickChek::AddDouble(const REAL16& aV0)
        mGotInf = true;
        aV = 90.0011111;
    }
-/*  MPD SUPPRIMER DEVRAIT PASSER AVEC  #define isinf(x) (!_finite(x)), inch'allah !!
+/*  MPD SUPPRIMER DEVRAIT PASSER with  #define isinf(x) (!_finite(x)), inch'allah !!
 #if (ELISE_windows)
 #else
 #endif
@@ -491,7 +491,7 @@ void cMajickChek::AddDouble(const REAL16& aV0)
 void cMajickChek::Add1Double(REAL16 & Target,const REAL16 & aV)
 {
    REAL16 aF = PartieFrac(aV);
-   Target = PartieFrac(Target + aF + Target*aF); // Target*aV : pour rendre non commut
+   Target = PartieFrac(Target + aF + Target*aF); // Target*aV : for rendre non commut
 }
 
 char  hexa(int  aV)
@@ -583,7 +583,7 @@ void  cMajickChek::Add(cSetEqFormelles & aSetEq)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -599,17 +599,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

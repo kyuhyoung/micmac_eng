@@ -290,7 +290,7 @@ void MyBisCr::SauvGrille()
         }
     }
 
-    if (1) // Image en geometrie 1
+    if (1) // image en geometrie 1
     {
         Im2D_U_INT1 aI1 = Im2D_U_INT1::FromFile(mNameFull1);
         Pt2di aSz = aI1.sz();
@@ -319,7 +319,7 @@ void MyBisCr::SauvGrille()
          cout << "Done Superp\n";
     }
 
-    if (0) // Image en geometrie 2
+    if (0) // image en geometrie 2
     {
         Im2D_U_INT1 aI1 = Im2D_U_INT1::FromFile(mNameFull1);
 
@@ -1089,7 +1089,7 @@ bool ToImEqual
 
     Fonc_Num fSom = Virgule(Rconv(Pond),Fonc,ElSquare(Fonc));
     for (INT k=0; k< 1 ; k++)
-        fSom = rect_som(fSom,aSzW)/ElSquare(1.0+2.0*aSzW);  // Pour Eviter les divergences
+        fSom = rect_som(fSom,aSzW)/ElSquare(1.0+2.0*aSzW);  // for Eviter les divergences
     Symb_FNum  S012 (fSom);
 
     Symb_FNum s0 (Rconv(S012.v0()));

@@ -72,7 +72,7 @@ class cOneGeo3
 
         void Compile(double aT0,double aT1,double mDT);
 
-        // Calcul le cost et memorise le KMin / CostMin
+        // computation le cost and memorise le KMin / CostMin
         double CostK(int aK,const Pt3dr & aPond);
         void ShowDiff(int aKGlob);
     private :
@@ -80,7 +80,7 @@ class cOneGeo3
         cDicoGpsFlottant mDicoOri;
         std::vector<cOneGpsDGF> &  mVObs;
         std::vector<cMoyGeo3>      mVMoy;
-// Box de temps et d'espace
+// Box de temps and d'espace
         Pt3dr            mP0;
         Pt3dr            mP1;
         double           mT0;
@@ -190,7 +190,7 @@ cOneGeo3::cOneGeo3(const std::string& aName)  :
        mCostKMin (1e30)
 {
     std::sort(mVObs.begin(),mVObs.end(),CmpcOneGeo3OnTime);
-    // Calcul des intervalle de temps et d'espace
+    // computation des intervalle de temps and d'espace
     mP0 = mP1 = mDicoOri.OneGpsDGF().at(0).Pt();
     mT0 = mT1 = mDicoOri.OneGpsDGF().at(0).TimePt();
     for (const auto & anObs :  mDicoOri.OneGpsDGF())

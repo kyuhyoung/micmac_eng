@@ -272,7 +272,7 @@ bool cLSQMatch::MatchbyLSQ(
             Pt3dr aNewVD2= mInterpol->GetValDer(aImg2.data(),aPC2);   // Get intensity & derive value of point 2nd img
             double aGr2X = aNewVD2.x;  // derive en X
             double aGr2Y = aNewVD2.y;  // derive en Y
-            double aV2   = aNewVD2.z;  // valeur d'intensite
+            double aV2   = aNewVD2.z;  // value d'intensite
 /*          // This code works also
             mCoeff[0] = aV1 ; // A
             mCoeff[1] = 1.0 ; // B
@@ -415,7 +415,7 @@ double dblTst_Correl1Win
      */
 
     // Compute point most up & most down for two images
-    // Image 1 & 2 : check if center patch point aP with window size aSzW is inside
+    // image 1 & 2 : check if center patch point aP with window size aSzW is inside
     Pt2dr aPtSupIm1 = aP1 + aSzW;
     Pt2dr aPtInfIm1 = aP1 - aSzW;
     Pt2dr aPtSupIm2 = aP2 + aSzW;
@@ -803,7 +803,7 @@ bool cLSMHomol::DoLSMRefine   (
                         Pt3dr aNewVD2= mInterpol->GetValDer(mIm2D_2.data(),aPC2);   // Get intensity & derive value of point 2nd img
                         double aGr2X = aNewVD2.x;  // derive en X
                         double aGr2Y = aNewVD2.y;  // derive en Y
-                        double aV2   = aNewVD2.z;  // valeur d'intensite
+                        double aV2   = aNewVD2.z;  // value d'intensite
                        /*
                         mCoeff[0] = aV1 ; // A
                         mCoeff[1] = 1.0 ; // B
@@ -861,7 +861,7 @@ bool cLSMHomol::DoLSMRefine   (
         mNbRef++;
         if (saveToPack)
         {
-            if (euclid(aPt2_Update - aPt2) <3)  // seuil d'ecart avec init match by SIFT
+            if (euclid(aPt2_Update - aPt2) <3)  // seuil d'ecart with init match by SIFT
             {
                 ElCplePtsHomologues aCpl(aPt1, aPt2_Update);
                 aPack.Cple_Add(aCpl);
@@ -965,7 +965,7 @@ Pt2dr doLSM1Cpl(Pt2dr & aPt1, Pt2dr & aPt2, Tiff_Im & aTif1, Tiff_Im & aTif2, cP
                         Pt3dr aNewVD2= mInterpol->GetValDer(mIm2D_2.data(),aPC2);   // Get intensity & derive value of point 2nd img
                         double aGr2X = aNewVD2.x;  // derive en X
                         double aGr2Y = aNewVD2.y;  // derive en Y
-                        double aV2   = aNewVD2.z;  // valeur d'intensite
+                        double aV2   = aNewVD2.z;  // value d'intensite
 
                         mCoeff[0] = aV1 ; // A
                         mCoeff[1] = 1.0 ; // B
@@ -1128,8 +1128,8 @@ int HomolLSMRefine_main(int argc,char ** argv)
                     for (ElPackHomologue::const_iterator itP=aPack.begin(); itP!=aPack.end() ; itP++)
                     {
 
-                        Pt2dr aP1 = itP->P1();  //Point img1
-                        Pt2dr aP2 = itP->P2();  //Point img2
+                        Pt2dr aP1 = itP->P1();  //point img1
+                        Pt2dr aP2 = itP->P2();  //point img2
                         aLSM->DoLSMRefine(aP1, aP2, aParam, 1);
                     }
                     // Export homol

@@ -52,7 +52,7 @@ extern Pt2di TAB_9_NEIGH[9];     // pts[8] = 0,0
 extern Pt2di TAB_5_NEIGH[5];     // pts[5] = 0,0
 
 
-extern Pt2di VOIS_9[9];  // dans l'ordre de parcourt "video"
+extern Pt2di VOIS_9[9];  // in l'ordre de parcourt "video"
 
 
 extern INT TAB_8_FREEM_SUCC_TRIG[8];

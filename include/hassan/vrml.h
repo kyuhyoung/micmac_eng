@@ -107,7 +107,7 @@ public:
 class TImageTexture
 {
 private:
-	char url[256];//GIF JPEG ou PNG
+	char url[256];//GIF JPEG or PNG
 	
 public:
 	void GetUrl(char * nom)const;
@@ -773,7 +773,7 @@ public:
 
 	void SauverTRAPU(std::ofstream &fic,int const index)const
 	{
-		printf("Attention les Viewpoints ne sont pas sauvés en TRAPU;\n");
+		printf("Attention les Viewpoints ne sont pas sauvs en TRAPU;\n");
 	}
 
 	BlocType GetType()const{return VIEWPOINT;}

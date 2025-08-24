@@ -290,7 +290,7 @@ class cAppliCheckBoardTargetExtract : public cMMVII_Appli
 	/// Method called do each image
 	void DoOneImageAndScale(tREAL8,const  tIm & anIm ) ;
 	
-	    ///  Read Image from files, init Label Image, init eventually masq 4 debug, compute blurred version of input image
+	    ///  Read image from files, init Label image, init eventually masq 4 debug, compute blurred version of input image
            void ReadImagesAndBlurr();
 	   /// compute points that are "topologicall" : memorized in  label image as  label "eTopoTmpCC"
            void ComputeTopoSadles();
@@ -373,10 +373,10 @@ class cAppliCheckBoardTargetExtract : public cMMVII_Appli
 	tDIm *                mDImBlur;     ///< Data input image 
 	bool                  mHasMasqTest; ///< Do we have a test image 4 debuf (with masq)
 	cIm2D<tU_INT1>        mMasqTest;    ///< Possible image of mas 4 debug, print info ...
-        cIm2D<tU_INT1>        mImLabel;     ///< Image storing labels of centers
-	cDataIm2D<tU_INT1> *  mDImLabel;    ///< Data Image of label
+        cIm2D<tU_INT1>        mImLabel;     ///< image storing labels of centers
+	cDataIm2D<tU_INT1> *  mDImLabel;    ///< Data image of label
         cIm2D<tU_INT1>        mImTmp;       ///< Temporary image for connected components
-	cDataIm2D<tU_INT1> *  mDImTmp;      ///< Data Image of "mImTmp"
+	cDataIm2D<tU_INT1> *  mDImTmp;      ///< Data image of "mImTmp"
 
         std::vector<cCdSadle> mVCdtSad;     ///< Candidate  that are selected as local max of saddle criteria
         std::vector<int>      mNbSads;      ///< For info, number of sadle points at different step

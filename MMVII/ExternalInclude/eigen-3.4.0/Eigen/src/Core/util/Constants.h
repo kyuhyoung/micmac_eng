@@ -453,14 +453,14 @@ enum ComputationInfo {
   * Enum used to specify how a particular transformation is stored in a matrix.
   * \sa Transform, Hyperplane::transform(). */
 enum TransformTraits {
-  /** Transformation is an isometry. */
+  /** transformation is an isometry. */
   Isometry      = 0x1,
-  /** Transformation is an affine transformation stored as a (Dim+1)^2 matrix whose last row is 
+  /** transformation is an affine transformation stored as a (Dim+1)^2 matrix whose last row is 
     * assumed to be [0 ... 0 1]. */
   Affine        = 0x2,
-  /** Transformation is an affine transformation stored as a (Dim) x (Dim+1) matrix. */
+  /** transformation is an affine transformation stored as a (Dim) x (Dim+1) matrix. */
   AffineCompact = 0x10 | Affine,
-  /** Transformation is a general projective transformation stored as a (Dim+1)^2 matrix. */
+  /** transformation is a general projective transformation stored as a (Dim+1)^2 matrix. */
   Projective    = 0x20
 };
 

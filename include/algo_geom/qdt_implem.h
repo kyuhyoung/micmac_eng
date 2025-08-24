@@ -200,8 +200,8 @@ template <class Obj,class Prim,class FPrim>
 
 /**********************************************/
 /*                                            */
-/* Fonction InsertObj dans  qdt_insertobj.h	  */
-/* pour compilation sous windows              */
+/* function InsertObj in  qdt_insertobj.h	  */
+/* for compilation under windows              */
 /*                                            */
 /**********************************************/
 template <class Obj>void InsertObj(std::set<Obj> & aSet,const Obj & anObj);
@@ -696,8 +696,8 @@ template <class Obj,class Prim,class FPrim>
 }
 
 
-//  Prerequis pour param
-//   bool operator()(const Type & aPI1,const Type & aPI2) ; => Indique si PI1 es meilleurs que PI2
+//  Prerequis for param
+//   bool operator()(const Type & aPI1,const Type & aPI2) ; => Indique if PI1 es meilleurs que PI2
 //   Pt2dr operator()(const Type * aPI) ;   
 //   bool IsSelected(const cIntTieTriInterest & aPI) ;    
 //   void SetSelected(cIntTieTriInterest & aPI,bool aVal) ;
@@ -713,7 +713,7 @@ template <class Type,class cParam> class   cTplFiltrageSpatial
      if (aVType.size() <=1 )
         return;
 
-// === sort par comparator aParam => sort list point d'interet dans la priorité de FastQuality ===
+// === sort par comparator aParam => sort list point d'interet in la priorité de FastQuality ===
      std::sort(aVType.begin(),aVType.end(),aParam);
 
      Pt2dr aP0 = aParam(&(aVType[0]));
@@ -749,10 +749,10 @@ template <class Type,class cParam> class   cTplFiltrageSpatial
      ElQT<Type *,Pt2dr,cParam>  aQt(aParam,Box2dr(aP0-aPRab,aP1+aPRab),10, sqrt(aSurfElem) *2 );
 
 
-     // "insert" tout les pt interet dans ElQT, initialization = "selected"
+     // "insert" tout les pt interet in ElQT, initialization = "selected"
      for (int aK=0 ; aK<int(aVType.size()) ; aK++)
      {
-         // "insert" marche toujours parcque le "box" dans ElQT est la region Box de (Min, Max) coordonne du point d'interet
+         // "insert" marche toujours parcque le "box" in ElQT est la region Box de (Min, Max) coordonne du point d'interet
          aQt.insert(&aVType[aK]);
          aParam.SetSelected(aVType[aK],true);
      }
@@ -762,12 +762,12 @@ template <class Type,class cParam> class   cTplFiltrageSpatial
      std::vector<Type> aRes;
      for (int aK=0 ; aK<int(aVType.size()) ; aK++)
      {
-         // consider un point d'interet (dans l'ordre de fastquality
+         // consider un point d'interet (in l'ordre de fastquality
          if (aParam.IsSelected(aVType[aK]))
          {
              aRes.push_back(aVType[aK]);
              std::set<Type *> aSet;
-             // recuperer tout les point dans rayon aSeuilDist autour de point aVType[aK], le stocker dans aSet
+             // recuperer tout les point in rayon aSeuilDist autour de point aVType[aK], le stocker in aSet
              aQt.RVoisins(aSet,aParam(&(aVType[aK])),aSeuilDist);
 
              for (typename std::set<Type *>::iterator itS=aSet.begin(); itS!=aSet.end() ; itS++)

@@ -16,11 +16,11 @@ SData2Correl::SData2Correl():
     _dt_LayeredMaskImages.CData3D::SetName("_dt_LayeredMaskImages");
     _dt_LayeredProjection->CData3D::SetName("_dt_LayeredProjection");
 
-    // Parametres texture des projections
+    // parameters texture des projections
     for (int s = 0;s<NSTREAM;s++)
         GpGpuTools::SetParamterTexture(GetTeXProjection(s));
 
-    // Parametres texture des Images
+    // parameters texture des Images
     GpGpuTools::SetParamterTexture(_texImages);
 
     _texMaskGlobal.addressMode[0]	= cudaAddressModeBorder;
@@ -163,7 +163,7 @@ void SData2Correl::SetGlobalMask(pixel *dataMask, uint2 dimMask)
 	#ifdef  NVTOOLS
     GpGpuTools::NvtxR_Push(__FUNCTION__,0xFF1A2B51);
     #endif
-    //  TODO Verifier si le ReallocIfDim fonctionne.... s'il ne redimmension pas a chaque fois!!!
+    //  TODO Verifier if le ReallocIfDim fonctionne.... s'il ne redimmension pas a chaque fois!!!
     _dt_GlobalMask.DecoratorImage<cudaContext>::ReallocIfDim(dimMask,1);
     _dt_GlobalMask.copyHostToDevice(dataMask);
     _dt_GlobalMask.bindTexture(_texMaskGlobal);
@@ -195,7 +195,7 @@ void SData2Correl::copyHostToDevice(pCorGpu param,uint s)
     // Copier les projections du host --> device
     _dt_LayeredProjection[s].copyHostToDevice(_hVolumeProj.pData());
 
-    // Lié de données de projections du device avec la texture de projections
+    // Li de donnes de projections du device with la texture de projections
     _dt_LayeredProjection[s].bindTexture(GetTeXProjection(s));
 	#ifdef  NVTOOLS
 	GpGpuTools::Nvtx_RangePop();

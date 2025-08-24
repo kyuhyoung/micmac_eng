@@ -213,7 +213,7 @@ int ExtractZ_main(int argc,char ** argv)
 
      //interpolation
      cInterpolBilineaire<REAL4> * bicu = new cInterpolBilineaire<REAL4>;
-    //Lecture de point qui sont deja dans l'espace d'image SRTM"	 
+    //Lecture de point qui sont deja in l'espace d'image SRTM"	 
      ELISE_fp aFIn(aFile1.c_str(),ELISE_fp::READ);
      std::vector<Pt2dr> aV2Ok;
      char * aLine;
@@ -231,7 +231,7 @@ int ExtractZ_main(int argc,char ** argv)
 
     // Pt2dr aP;
 
-    // Recuperation de valeurs Z sur SRTM 
+    // Recuperation de valeurs Z on SRTM 
    
      FILE *aFOut = FopenNN(aFileOut.c_str(),"w","Cillia") ;
      double aZTmp=0;

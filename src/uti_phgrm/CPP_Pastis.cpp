@@ -76,14 +76,14 @@ Autres options possibles :
  --levels=S            Number of levels per octave
  --first-octave=MINO   Index of the first octave
  --threshold=THR       Keypoint strength threshold : les points pour
-lesquels la fonction différence de gaussienne est inférieure �  ce seuil
+lesquels la fonction différence de gaussienne est inférieure   ce seuil
 sont éliminés
  --edge-threshold=THR  On-edge threshold : c'est pour l'élimination des
 candidats situés sur des arêtes
 
 J'avais testé des solutions du type de celle que tu proposais au tout
 début des tests (alors que l'appariement "brut" prenait près de 5h par
-couple d'images aériennes). Il faudrait que je rejette un oeil l�
+couple d'images aériennes). Il faudrait que je rejette un oeil l
 dessus. Ca pourrait notamment être utile pour de grandes images avec de
 très grandes quantités de points (cf images satellites voire images
 Marseille 10 cm...).
@@ -557,8 +557,8 @@ std::list<cCple>  cAppliPastis::FiltrageRot(std::list<cCple>  aLC,double aSeuil)
 
    Cam2()->SetOrientation(aR);
 
-   // On filtre selon la pax transverse et on rajoute
-   // dans le qdt, on calcule le Z
+   // On filtre selon la pax transverse and on rajoute
+   // in le qdt, on compute le Z
    Box2dr aBox(Pt2dr(-5,-5),Pt2dr(mSzIm1)+Pt2dr(5,5));
    cPtOfCple aGetP1(true);
    ElQT<cCple * ,Pt2dr,cPtOfCple> aQT(aGetP1,aBox,20,20);
@@ -977,7 +977,7 @@ cAppliPastis::cAppliPastis(int argc,char ** argv,bool FBD) :
    mSiftImplem = "eModeLeBrisPP";
    mKCal = "Key-Assoc-CalibOfIm";
 
-   mSeuilFHom = NOSFH;  // Si pas defini : 10% de la diag
+   mSeuilFHom = NOSFH;  // if pas defini : 10% de la diag
    mSeuilDistEpip=2;
    mSeuilPente = 0.7;
    mNbMinPtsExp = -1;

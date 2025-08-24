@@ -114,12 +114,12 @@ class Data_Ori3D_Std : public Data_Ori3D_Gen
          Pt3dr orDirK();
          Pt2dr OrigineTgtLoc() const;
 
-         //  Transforme une direction de rayon dans le repere
+         //  Transforme une direction de rayon in le repere
          // locale IJK en un point photo
          Pt2dr orDirLoc_to_photo(Pt3dr);
 
          //  Transforme   un point photo en 
-         // une direction de rayon dans le repere locale IJK 
+         // une direction de rayon in le repere locale IJK 
          Pt3dr orPhoto_to_DirLoc(Pt2dr);
 
 
@@ -127,8 +127,8 @@ class Data_Ori3D_Std : public Data_Ori3D_Gen
 	 REAL profondeur();
          void SetAltiSol(REAL aZ);
 
-         Pt3dr orSM(Pt2dr aP); // renvoie la dierction du rayon perspectif dans le repere terrain
-         // W est optionnel, calcule comme produit vectoriel
+         Pt3dr orSM(Pt2dr aP); // renvoie la dierction du rayon perspectif in le repere terrain
+         // W est optionnel, compute comme produit vectoriel
          void orrepere_3D_image(Pt3dr & aP0,Pt3dr & anU,Pt3dr & aV,Pt3dr * aW);
 
          void  correct(REAL *xp,REAL *yp,INT nb);
@@ -150,8 +150,8 @@ class Data_Ori3D_Std : public Data_Ori3D_Gen
          Pt3dr carte_to_terr(Pt3dr);
          Pt3dr terr_to_carte(Pt3dr);    //   HJMPD
 
-         // Renvoie un point se projetant en PIm et siuter a une profondeur de aProf
-	 // dans la direction aNormPl
+         // Renvoie un point se projetant en PIm and siuter a une profondeur de aProf
+	 // in la direction aNormPl
 	 Pt3dr  ImDirEtProf2Terrain(const Pt2dr & aPIm,const REAL & aProf,const Pt3dr & aNormPl);
 
          Pt3dr ImEtProf_To_Terrain(Pt2dr p1,REAL prof);
@@ -193,9 +193,9 @@ class Data_Ori3D_Std : public Data_Ori3D_Gen
 
          Tab_CPT_REF<Pt2dr> carte_et_z_to_terrain(Tab_CPT_REF<Pt2dr>,REAL z_lamb,REAL & z_ter);
 
-         // Met dans epi1 epi2 les orientation  epipolaire de phot1, phot2
+         // Met in epi1 epi2 les orientation  epipolaire de phot1, phot2
          // aP1 , aP2 est un couple de point approximatvement homologue,
-         // il permet que les paralaxes soit approximativement centres et
+         // il permet que les paralaxes soit approximativement centres and
          // (il sert a regler le zmin, zmax de l'appel a orilib)
          static void  ororient_epipolaires 
                 (
@@ -237,21 +237,21 @@ class cOri3D_OneEpip : public  ElDistortion22_Gen
            );
 
            virtual bool OwnInverse(Pt2dr &) const ;    //  Epi vers Phot
-           virtual Pt2dr Direct(Pt2dr) const  ;    // Photo vers Epi
+           virtual Pt2dr Direct(Pt2dr) const  ;    // photo vers Epi
            cOri3D_OneEpip MapingChScale(REAL aChSacle) const;
            ~cOri3D_OneEpip();
 
           Data_Ori3D_Std  * Phot();
           Data_Ori3D_Std  * Epip();
 
-       // Pour eventuellement eviter un delete dans le ~
+       // for eventuellement eviter un delete in le ~
           void SetPhot0();
           void SetEpi0();
 
       private :
 
             virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; // 
-            void  Diff(ElMatrix<REAL> &,Pt2dr) const ;  //  Erreur Fatale
+            void  Diff(ElMatrix<REAL> &,Pt2dr) const ;  //  error Fatale
 
 
 
@@ -260,7 +260,7 @@ class cOri3D_OneEpip : public  ElDistortion22_Gen
             Data_Ori3D_Std  * mEpi;
 
 
-            Pt3dr             mCPDV;  // Normalement commun a epi et photo, en coordonnees epi
+            Pt3dr             mCPDV;  // Normalement commun a epi and photo, en coordinates epi
             Pt3dr             mP0Epi;
             Pt3dr             mUEpi;
             Pt3dr             mVEpi;

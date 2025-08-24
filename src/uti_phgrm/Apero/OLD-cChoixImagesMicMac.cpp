@@ -39,10 +39,10 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "StdAfx.h"
 
 
-//  Lorsque l'on veut ponderer des observation ponctuelle dans le plan, 
-//  si elles tombe toute au meme endroit, chacune doit avoir un poid proportionnel
-// a l'inverse du nombre d'observation;
-//  Ici cela est gere avec une certaine incertitude, les observation etant suposee
+//  Lorsque l'on veut ponderer des observation ponctuelle in le plan, 
+//  if elles tombe toute au meme endroit, chacune doit avoir un poid proportionnel
+// a l'inverse du number d'observation;
+//  Ici cela est gere with une certaine incertitude, les observation etant suposee
 // etre localisees selon une gaussienne
 
 
@@ -56,7 +56,7 @@ class cImDePonderH
 
         void Compile();
 
-        // n'a de sens que lorsque c'est un des points ayant ete utilises pour 
+        // n'a de sens que lorsque c'est un des points ayant ete utilises for 
         // pondere
         double GetPds(const Pt2dr & aP)
         {
@@ -169,9 +169,9 @@ class cCmpSubset
 
 
 // A Angle  , O Optimum
-//  La formule est faite pour que
+//  La formule est faite for que
 //   *  on ait un gain proportionnel a l'angle en 0
-//   *  un maximum pour Opt avec une derivee nulle
+//   *  un maximum for Opt with une derivee nulle
 //   *
 
 double GainSup(double aRatio)
@@ -191,7 +191,7 @@ double GainAngle(double A,double Opt)
 
 // Un autre critere de qualite du couple est que la base soit _| aux dir de visee
 // C'est un critere complementair du B/H tradi , il evite les "stereo" en profondeurs
-// qui sont mauvaises et peut generer des epipolaire degenerees
+// qui sont mauvaises and peut generer des epipolaire degenerees
 
 
 double OrthogBase(cPoseCam* aPC1,cPoseCam* aPC2)
@@ -225,7 +225,7 @@ void  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0)
     cObsLiaisonMultiple * anOLM = PackMulOfIndAndNale (aCIM.IdBdl(),aPC0->Name());
     const std::vector<cOnePtsMult *> &  aVPM = anOLM->VPMul();
 
-    //  Point 3D : pt image par moyenne, profondeur par médiane, devrait etre robuste ?
+    //  point 3D : pt image par moyenne, profondeur par médiane, devrait etre robuste ?
     Pt3dr  aPt0 = anOLM->CentreNuage();
 
     const CamStenope & aCS0 = *(aPC0->CurCam());
@@ -239,14 +239,14 @@ void  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0)
     ElMatrix<double>  aMatI = gaussj(aMat);
  
 	
-     // On remet a zero le nombre de points
+     // On remet a zero le number de points
     for(int aKP=0 ; aKP<int(mVecPose.size()) ;aKP++)
     {
        cPoseCam* aPC2 = mVecPose[aKP];
        aPC2->MMNbPts() =0;
     }
 
-     // On compte le nombre de points de liaisons
+     // On compte le number de points de liaisons
     for (int aKPt=0 ; aKPt<int(aVPM.size()) ;aKPt++)
     {
         cOnePtsMult & aPMul = *(aVPM[aKPt]);
@@ -298,7 +298,7 @@ void  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0)
 
 
 
-    // On reduit au nombre Max de Presel
+    // On reduit au number Max de Presel
     cCmpImOnGainHom aCmpGH;
     std::sort(aVPPres.begin(),aVPPres.end(),aCmpGH);
     while (int(aVPPres.size()) > aCIM.NbMaxPresel().Val())

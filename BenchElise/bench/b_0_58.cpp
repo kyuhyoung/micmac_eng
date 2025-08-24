@@ -50,7 +50,7 @@ ctPath strToPath( const string i_str )
 
 void bench_path()
 {
-   // test la classe ctPath
+   // test la class ctPath
 
    cout << "current directory = ";
    getWorkingDirectory().trace();
@@ -104,7 +104,7 @@ void bench_path()
 
 void bench_command()
 {
-   // test la classe cElCommand et ses classes connexes
+   // test la class cElCommand and ses classes connexes
    bench_path();
    //string command = "\"d:/dev/culture3d/bin/mm3d\" Apero \"d:/dev/culture3d/include/XML_MicMac/Apero-Glob.xml\"  DirectoryChantier=./  \"+PatternAllIm=.*.JPG\"  +AeroOut=-Arbitrary +Ext=dat +ModeleCam=eCalibAutomPhgrStdBasic +FileLibereParam=Param-Fraser.xml DoCompensation=1 +SeuilFE=-1.000000 +TetaLVM=0.010000 +CentreLVM=0.100000 +RayFEInit=0.850000 +CalibIn=-#@LL?~~XXXXXXXXXX +AeroIn=-#@LL?~~XXXXXXXXXX +VitesseInit=4 +PropDiagU=1.000000 +ValDec=eLiberte_Phgr_Std_Dec +ValDecPP=eLiberte_Dec1 +ValAffPP=eLiberteParamDeg_1 +ValAff=eLiberte_Phgr_Std_Aff";
    //cout << "[" << command << "]" << endl;

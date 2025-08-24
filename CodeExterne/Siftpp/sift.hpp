@@ -151,9 +151,9 @@ __attribute__ ((__visibility__("default")))
  **/
 struct PgmBuffer
 {
-  int width ;     ///< Image width
-  int height ;    ///< Image hegith
-  pixel_t* data ; ///< Image data
+  int width ;     ///< image width
+  int height ;    ///< image hegith
+  pixel_t* data ; ///< image data
 } ;
 std::ostream& insertPgm(std::ostream&, pixel_t const* im, int width, int height) ;
 std::istream& extractPgm(std::istream&, PgmBuffer& buffer) ;

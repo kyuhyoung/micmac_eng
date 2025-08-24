@@ -98,7 +98,7 @@ cCollecSpecArg2007 & cAppliMatchMultipleOrtho::ArgOpt(cCollecSpecArg2007 & anArg
 void cAppliMatchMultipleOrtho::CorrelMaster
      (
          const cPt2di & aCenter,   // Central Pixel
-	 int aKIm,                  // Num of Image
+	 int aKIm,                  // Num of image
 	 bool & AllOk,              // Is all Window in masq ?
 	 float &aWeight,            //  Weight of inside pixel
 	 float & aCorrel            // Correl

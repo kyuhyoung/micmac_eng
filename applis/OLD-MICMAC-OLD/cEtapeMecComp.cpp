@@ -356,15 +356,15 @@ cEtapeMecComp::cEtapeMecComp
 	   }
       }
 
-      // INTERVERTI AVEC L'ETAPE TYU pour prendre en compte
+      // INTERVERTI with L'ETAPE TYU for prendre en compte
       // la dilat init
 
-      // Pour l'etape 1 (la premiere, une fois
+      // for l'etape 1 (la premiere, une fois
       // enlevee 000) on augment DilatAlti de l'incertitude
       // en Z
 
-              // RAJOUTE apres l'intervretion car sinon le pas relatif (celui du xml) n'est pas initialise
-	      // et la dilat init est incorrecte !
+              // RAJOUTE after l'intervretion car else le pas relatif (celui du xml) n'est pas initialise
+	      // and la dilat init est incorrecte !
 /*
       for (int aK=0 ; aK<int(mFilesPx.size()) ; aK++)
       {
@@ -483,10 +483,10 @@ cEtapeMecComp::cEtapeMecComp
                }
            }
       }
-      // Si la taille est 0, on sauvgarde le booleen a la bonne valeur
-      // ensuite on  met une taille + importante pour bufferiser
-      // et eviter trop d'appel cLineariseProj::Init, mais le fait
-      // de mattre mUseGeomDerivable a 0, inhibe la derivation dans 
+      // if la taille est 0, on sauvgarde le booleen a la bonne value
+      // ensuite on  met une taille + importante for bufferiser
+      // and eviter trop d'appel cLineariseProj::Init, but le fait
+      // de mattre mUseGeomDerivable a 0, inhibe la derivation in 
       mUseGeomDerivable = (mSzGeomDerivable!=0);
       if (mSzGeomDerivable ==0)
          mSzGeomDerivable = 10;
@@ -511,7 +511,7 @@ cEtapeMecComp::cEtapeMecComp
                     mModeleAnToReuse = aMod;
                  }
                  mModelesOut.push_back(aMod);
-                 // Il faut generer des fichier de paralaxes meme quand il sont
+                 // Il faut generer des file de paralaxes meme when il sont
                  // en theorie inutiles car redondants
                  for (int aK=0 ; aK<int(mFilesPx.size()) ; aK++)
                      mFilesPx[aK]->ForceGenFileMA();
@@ -522,7 +522,7 @@ cEtapeMecComp::cEtapeMecComp
       }
       InitModeleImported(aVEtPrec);
  
-      // Pour que les eventuels fichier de correlation soient creees dans le processu
+      // for que les eventuels file de correlation soient creees in le processu
       // pere
 
       if (    (mGenImageCorrel)
@@ -533,7 +533,7 @@ cEtapeMecComp::cEtapeMecComp
       }
     
 
-      // Pour eviter les conflits lorsque les fichiers sont crees par les
+      // for eviter les conflits lorsque les fichiers sont crees par les
       // process en paralelles
       //
       if (mAppli.OneDefCorAllPxDefCor().Val())
@@ -629,7 +629,7 @@ cEtapeMecComp::cEtapeMecComp
       }
 
 
-      //   Calcul l'etape la + proche avec generation de masque autom
+      //   computation l'etape la + proche with generation de masque autom
      if (mArgMaskAuto) mPredMaskAuto = this;
      for 
      (
@@ -644,7 +644,7 @@ cEtapeMecComp::cEtapeMecComp
            }
      }
 
-      //   Calcul l'etape la + proche avec parties cachees
+      //   computation l'etape la + proche with parties cachees
      for 
      (
          tContEMC::const_reverse_iterator itC= aVEtPrec.rbegin();
@@ -653,7 +653,7 @@ cEtapeMecComp::cEtapeMecComp
      )
      {
            if (
-                  ((*itC)->mNum!=0)   // Cas special sur le 0 qui est un dedoublemnt "bidon" du 1
+                  ((*itC)->mNum!=0)   // Cas special on le 0 qui est un dedoublemnt "bidon" du 1
                && ((*itC)->mEtape.GenerePartiesCachees().IsInit())
               )
            {
@@ -853,8 +853,8 @@ cFilePx * cEtapeMecComp::GetPred(const tContEMC & aCont,int anInd)
          itC != aCont.rend();
 	 itC++
     )
-        // Appelee avant que Px1IncCalc soit utilise, donc on
-        // tient compte du cas ou Num == 0
+        // Appelee before que Px1IncCalc soit utilise, donc on
+        // tient compte du cas or Num == 0
         if ((*itC)->mFilesPx[anInd]->GenFile())
             return (*itC)->mFilesPx[anInd];
     return 0;
@@ -1122,7 +1122,7 @@ double cEtapeMecComp::LoadNappesAndSetGeom
 
    ELISE_COPY(aIMasq.border(1),0,aIMasq.out()|aISsPIMasq.out());
 
-   // Le + simple pour traiter de maniere generique les dimensions
+   // Le + simple for traiter de maniere generique les dimensions
    // de paralaxe est parfois d'explorer un intervalle vide
    for (int aK=0 ; aK<  theDimPxMax ; aK++)
    {
@@ -1560,8 +1560,8 @@ void cEtapeMecComp::DoRemplitXMLNuage() const
 
 void cEtapeMecComp::DoRemplitXML_MTD_Nuage() const
 {
-   // Prudence pour la generation systematique, ce ne doit pas
-   // fonctionner avec toutes les geometries
+   // Prudence for la generation systematique, ce ne doit pas
+   // fonctionner with toutes les geometries
 
 
 
@@ -1797,7 +1797,7 @@ void cEtapeMecComp::RemplitXMLNuage
      aNuage.TolVerifNuage().SetVal(aSensibility/20.0);
     
     // aIP
-    // aIP.Image() =;
+    // aIP.image() =;
 }
 
 };

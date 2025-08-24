@@ -38,12 +38,12 @@ public:
     ~CSimpleJobCpuGpu();
 
     ///
-    /// \brief SetCompute indique au thread Gpu s'il doit traiter les données
+    /// \brief SetCompute indique au thread Gpu s'il doit traiter les donnes
     /// \param toBeComputed
     ///
     void            SetCompute(T toBeComputed);
     ///
-    /// \brief GetCompute : savoir si le Gpu doit traiter des données
+    /// \brief GetCompute : savoir if le Gpu doit traiter des donnes
     /// \return
     ///
     T               GetCompute();
@@ -74,7 +74,7 @@ public:
 
 	///
 	/// \brief UseMultiThreading
-	/// \return La valeur de l'option sur l'utilisation du parallélisme CPU
+	/// \return La value de l'option on l'utilisation du paralllisme CPU
 	///
     bool            UseMultiThreading();
 
@@ -89,23 +89,23 @@ public:
     void            SwitchIdBuffer();
 	///
 	/// \brief ResetIdBuffer
-	/// Réinitialise l'identifiant du buffer
+	/// Rinitialise l'identifiant du buffer
     void            ResetIdBuffer();
 
 	///
 	/// \brief freezeCompute
-	/// Stoppe le calcul
+	/// Stoppe le computation
     virtual void    freezeCompute() = 0;
 
 
 	///
 	/// \brief SetProgress
 	/// \param expected_count
-	/// Définir la progression
+	/// Dfinir la progression
     void            SetProgress(unsigned long expected_count);
 
 	///
-	/// \brief IncProgress Incrémenter la progression
+	/// \brief IncProgress Incrmenter la progression
 	/// \param inc
 	///
     void            IncProgress(uint inc = 1);

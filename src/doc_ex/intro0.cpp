@@ -29,7 +29,7 @@ void TEST_plot_Im0 (Plot_1d plot)
      ELISE_COPY(I.all_pts(),I.in(),plot.out());
 }
 
-       //  Operator sur Fonc_Num
+       //  Operator on Fonc_Num
 
 void TEST_plot_expr_1 (Plot_1d plot)
 {
@@ -71,7 +71,7 @@ void TEST_plot_rects (Plot_1d plot)
      ELISE_COPY(rectangle(-20,40),FX,plot.out());
 }
 
-       //=== operateur sur Flux_Pts
+       //=== operateur on Flux_Pts
 
 void TEST_plot_op_flx0 (Plot_1d plot)
 {
@@ -107,7 +107,7 @@ void TEST_plot_out_image (Plot_1d plot)
      ELISE_COPY(I.all_pts(),I.in(),plot.out());
 }
 
-       //=== Operateur sur Output
+       //=== Operateur on Output
 
 void TEST_plot_oper_out_0(Plot_1d plot,Line_St lst)
 {

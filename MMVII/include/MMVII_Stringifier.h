@@ -179,7 +179,7 @@ template <class TypeEnum> class cEnumAttr
       std::string    mAux;
 };
 
-///  Enum-String Property-liste (using the old fashioned LISP naming )
+///  Enum-String Property-list (using the old fashioned LISP naming )
 template <class TypeEnum> class cES_PropertyList
 {
     public :
@@ -277,7 +277,7 @@ class cCollecSpecArg2007
 };
 
 
-///  Two auxilary fonction to create easily cSpecOneArg2007 , one for mandatory
+///  Two auxilary function to create easily cSpecOneArg2007 , one for mandatory
 template <class Type> tPtrArg2007 Arg2007(Type &, const std::string & aCom, const cSpecOneArg2007::tAllSemPL & = cSpecOneArg2007::TheEmptySem);
 ///  One for optional args
 template <class Type> tPtrArg2007 AOpt2007(Type &,const std::string & aName, const std::string & aCom,const std::vector<tSemA2007> & = cSpecOneArg2007::TheEmptySem);

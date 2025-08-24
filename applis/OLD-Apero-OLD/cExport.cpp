@@ -269,7 +269,7 @@ void cAppliApero::ExportPose(const cExportPose & anEP,const std::string & aPref)
 
            if (anEP.ChC().IsInit())
            {
-              // On modifie, donc on travaille sur un dupl
+              // On modifie, donc on travaille on un dupl
                 CamStenope *aCS2 = aPC->CF()->DuplicataCameraCourante();
 
                 aCS2->ChangeSys(*aSource,*aCible,aCS2->PseudoOpticalCenter());
@@ -547,11 +547,11 @@ void cAppliApero::ExportRepereLoc(const cExportRepereLoc & anERL)
        aVX = vunit(aQ2-aQ1) ;
        aVZ = aPlan.Norm();
        aVY = vunit(aVZ ^ aVX);
-       aVX = aVY ^aVZ ;   // Sans doute inutile, mais bon  ....
+       aVX = aVY ^aVZ ;   // without doute inutile, but bon  ....
 
        aVX = vunit(aVX*anAxe.x + aVY * anAxe.y);
        aVY = vunit(aVZ ^ aVX);
-       aVX = aVY ^aVZ ;   // Sans doute inutile, mais bon  ....
+       aVX = aVY ^aVZ ;   // without doute inutile, but bon  ....
 
        aVP.clear();
        aVP.push_back(aPose1);

@@ -101,7 +101,7 @@ int ConvTiePointPix4DMM::parseLine(string & aL, vector<string> & aVWord)
 
 bool ConvTiePointPix4DMM::ImportTiePointFile(string aFile, int & file_type)
 {
-    // detect automatiquement tiepoint format (Bingo ou Pix4D)
+    // detect automatiquement tiepoint format (Bingo or Pix4D)
     mFileName = aFile;
     ifstream aF(aFile.c_str());
     if(!aF)

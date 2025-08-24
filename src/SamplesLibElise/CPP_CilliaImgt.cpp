@@ -113,13 +113,13 @@ int CilliaImgt_main(int argc, char ** argv)
     std::string  aCom;
     std::list<std::string> aLCom;
  
-    int aNbc;//nombre de couple d'image à appliquer la commande Tapioca en parallel ;
+    int aNbc;//number de couple d'image à appliquer la commande Tapioca en parallel ;
     int i;
     i=1;
     aNbc=aNb/2;
 
  
-  for (int j=1 ; j<=8 ;j++) // pour parcourir toute l'image
+  for (int j=1 ; j<=8 ;j++) // for parcourir toute l'image
      {
     
         for (i=i; i<=aNbc ; i++ )
@@ -150,7 +150,7 @@ int CilliaImgt_main(int argc, char ** argv)
            Pt2dr aQ1aa =  (*aMaps)(Pt2dr(aaPa1));
    
            int aQaaxi;
-           if(aQaa.x >0)// pour verifier si la coordonées x  est bien dasn l'image 
+           if(aQaa.x >0)// for verifier if la coordonées x  est bien dasn l'image 
               {
                aQaaxi=floor(aQaa.x);
               }
@@ -159,7 +159,7 @@ int CilliaImgt_main(int argc, char ** argv)
                aQaaxi=0 ;
             } 
            int aQaayi;
-           if(aQaa.y >0)// pour vérifier si la coordonnée y est bien dans l'image
+           if(aQaa.y >0)// for vérifier if la coordonnée y est bien in l'image
                { 
                  aQaayi=floor(aQaa.y);
                }   
@@ -247,7 +247,7 @@ int CilliaImgt_main(int argc, char ** argv)
   
 
             int aQaaxi;
-            if(aQaa.x >0)//pour vérifier si la coordonnée x est bien à l'interieure de l'image
+            if(aQaa.x >0)//for vérifier if la coordonnée x est bien à l'interieure de l'image
                     {
                       aQaaxi=floor(aQaa.x);
                     }
@@ -257,7 +257,7 @@ int CilliaImgt_main(int argc, char ** argv)
                }
 
            int aQaayi;
-           if(aQaa.y >0)//pour vérifier que la coordonnées y est bien à l'interrieure de l'image
+           if(aQaa.y >0)//for vérifier que la coordonnées y est bien à l'interrieure de l'image
                    {
                    aQaayi=floor(aQaa.y);
                    }

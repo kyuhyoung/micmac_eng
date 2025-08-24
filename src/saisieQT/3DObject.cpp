@@ -590,7 +590,7 @@ void cCamGL::draw()
         glVertex3d(C.x(), C.y(), C.z());
         glVertex3d(P4.x(), P4.y(), P4.z());
 
-        //Image
+        //image
 
         setGLColor();
 
@@ -1010,7 +1010,7 @@ void cPolygon::add(cPoint &pt)
         RemoveLastPointAndClose();
 }
 
-// TODO pourquoi les fonctions : 2 add et addPoint?
+// TODO pourquoi les fonctions : 2 add and addPoint?
 void cPolygon::add(const QPointF &pt, bool selected, cPoint* lock )
 {
     if (size() <= _maxSz)
@@ -1414,7 +1414,7 @@ bool cPolygon::isPointInsidePoly(const QPointF& P)
     {
         B = _points[i%vertices];
 
-        //Point Inclusion in Polygon Test (inspired from W. Randolph Franklin - WRF)
+        //point Inclusion in Polygon Test (inspired from W. Randolph Franklin - WRF)
         if (((B.y() <= P.y()) && (P.y()<A.y())) ||
                 ((A.y() <= P.y()) && (P.y()<B.y())))
         {

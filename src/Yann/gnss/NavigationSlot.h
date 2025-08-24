@@ -14,7 +14,7 @@
 #include "GPSTime.h"
 
 // ---------------------------------------------------------------
-// Classe contenant un paquet de données de navigation
+// class contenant un paquet de données de navigation
 // ---------------------------------------------------------------
 class NavigationSlot {
 

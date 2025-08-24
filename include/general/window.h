@@ -76,9 +76,9 @@ class  Video_Display : public PRC0
          Clik   clik();
          Clik   clik_press();
          Clik   clik_release();
-		 INT  Depth() const; // Nombre de bits par pixel
-		 Pt2di  Sz() const; // Nombre de pixels
-		 bool TrueCol() const; // false si col-indexe
+		 INT  Depth() const; // number de bits par pixel
+		 Pt2di  Sz() const; // number de pixels
+		 bool TrueCol() const; // false if col-indexe
 
      private :
          Video_Display(Data_El_Video_Display *);
@@ -173,7 +173,7 @@ class El_Window  : public PRC0        ,
 
 
               // cache misere, en attendant d'avoir 
-              // installe un systeme de fonte portable correct
+              // installe un system de fonte portable correct
         void fixed_string(Pt2dr pt,const char * name, Col_Pal,bool draw_im = false);
 		Elise_Set_Of_Palette sop();
 
@@ -286,7 +286,7 @@ class Video_Win   :  public El_Window
 		Video_Display    disp();
 
 		// Manipulation d'images
-		// Ignorent les coordonnees 
+		// Ignorent les coordinates 
 
 	 void write_image
            (
@@ -357,7 +357,7 @@ class ElXim : public PRC0
         void load();
         void load(Pt2di   p0src,Pt2di  p0dest,Pt2di  sz);
 	void write_image_per(Pt2di   p0src,Pt2di  p0dest,Pt2di  sz); 
-		// recopie, periodiquement, la petite image sur la grande image
+		// recopie, periodiquement, la petite image on la grande image
 		// associee a la fenetre
 		
 

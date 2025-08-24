@@ -53,7 +53,7 @@ typedef enum
 	eNonSelec,
 	eSelected,
 	eCur,
-	eAutreImPointes // Pour ne pas perdre les pointes sur d'uatres iamgae
+	eAutreImPointes // for ne pas perdre les pointes on d'uatres iamgae
 } eTyEtat;
 
 class cParamPointeInit
@@ -61,9 +61,9 @@ class cParamPointeInit
       public :
 	 Pt2dr Im2Norm(Pt2dr );
 	 Pt2dr Norm2Im(Pt2dr );
-	 virtual Pt3dr P3ofIm(Pt2dr) ; // Def Erreur Fatale
+	 virtual Pt3dr P3ofIm(Pt2dr) ; // Def error Fatale
         virtual cSetPointes1Im    SetPointe(const std::string &) = 0;
-	// Renvoie, pour le polygone, une liste de cibles avec des
+	// Renvoie, for le polygone, une list de cibles with des
 	// pointes non initialise
 	virtual std::string NamePointeInit() = 0;
 	virtual std::string NamePointeInterm() = 0;

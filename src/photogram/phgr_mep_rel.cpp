@@ -78,9 +78,9 @@ void ShowMatr(const char * mes, ElMatrix<REAL> aMatr)
 
 
 
-// Resoudre par moindre L1  la matrice essentielle
-// dans le plan tangent a la sphere en aVect (ie le plan
-// orthogonal a aVect), le resultat est norme
+// Resoudre par moindre L1  la matrix essentielle
+// in le plan tangent a la sphere en aVect (ie le plan
+// orthogonal a aVect), le result est norme
 
 /*
     On optimise sous la contrainte
@@ -166,7 +166,7 @@ REAL ElPackHomologue::MatriceEssentielle(cGenSysSurResol & aSys,double *  aVect,
       Im1D_REAL8  aSolRed = aSys.GSSR_Solve(0);
 
 
-     // Une fois trouve les K != kMax, on utilise l'equation pour determiner kMax
+     // Une fois trouve les K != kMax, on utilise l'equation for determiner kMax
      {
           double aSol[9];
           REAL aNormSol = 0.0;
@@ -343,7 +343,7 @@ std::list<ElRotation3D>  MatEssToMulipleRot(const  ElMatrix<REAL> & aMEss,double
            REAL aTeta2 = PI * (kTeta+0.5);
 
            ElMatrix<REAL> aR1 = aSvd1;
-           // ElMatrix<REAL>::Rotation(0,0,aTeta2);  0.4 sur 1.46
+           // ElMatrix<REAL>::rotation(0,0,aTeta2);  0.4 on 1.46
            ElMatrix<REAL> aR2 =  ElMatrix<REAL>::Rotation(0,0,aTeta2)
 		               * aSvd2;
 

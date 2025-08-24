@@ -227,10 +227,10 @@ int Nuage2Ply_main(int argc,char ** argv)
        aNuage->Std_AddAttrFromFile(anAttr1,aDyn,aRatio,ForceRGB);
     }
 
-    // ATTENTION , SI &aNeighMask => IL FAUT QUE aRes soit egal a aNuage SANS passer par ReScaleAndClip
+    // ATTENTION , if &aNeighMask => IL FAUT QUE aRes soit egal a aNuage without passer par ReScaleAndClip
     cElNuage3DMaille * aRes = aNuage;
 
-    //Application d'une box terrain (remplacement du crop pour que la recherche point par point ne soit pas trop longue)
+    //Application d'une box terrain (remplacement du crop for que la recherche point par point ne soit pas trop longue)
     bool doBoxterrain = (aBoxTerrain[0].x != aBoxTerrain[0].y) && (aBoxTerrain[1].x != aBoxTerrain[1].y);
     if (doBoxterrain)
     {
@@ -548,7 +548,7 @@ void cApply_PlyCamOrthoC::AddFaisceauMaster(std::vector<ElSeg3D> & aRes,Pt3dr  a
 
     for (int aK=0 ; aK<mNbPoints ; aK++)
     {
-          Pt3dr aProj = mPts[aK]-aSeg.ProjOrtho(mPts[aK]); // Proj sur le plan ortho
+          Pt3dr aProj = mPts[aK]-aSeg.ProjOrtho(mPts[aK]); // Proj on le plan ortho
 
           aRes.push_back(ElSeg3D(aProj-aDir*mDist,aProj+aDir*mDist));
     }
@@ -597,7 +597,7 @@ int MakePly_CamOrthoC(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -613,17 +613,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

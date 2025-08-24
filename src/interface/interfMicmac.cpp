@@ -269,7 +269,7 @@ CartesTab::CartesTab(InterfMicmac* interfMicmac, const ParamMain* pMain,  QVecto
 	parent( interfMicmac ),
 	paramMain( pMain )
 {
-	//liste des cartes créées et importées
+	//list des cartes créées and importées
 	treeWidget = new QTreeWidget;
 	treeWidget->setColumnCount(3);
 	treeWidget->setSelectionMode (QAbstractItemView::SingleSelection);
@@ -443,7 +443,7 @@ void CartesTab::modifCarte() {
 }
 
 void CartesTab::updateListe() {
-//si une carte a été modifiée ou ajoutée
+//if une carte a été modifiée or ajoutée
 	treeWidget->clear();
 	if (parametres->count()>0) {
 		for (QVector<CarteDeProfondeur>::const_iterator it=parametres->begin(); it!=parametres->end(); it++) {
@@ -460,7 +460,7 @@ void CartesTab::updateListe() {
 }
 
 int CartesTab::getCarte(const QVector<CarteDeProfondeur>& parametres, const QString& nomImg) const {
-//index de la carte d'image de référence nomImg dans parametres ; renvoie parametres.count() si elle n'est pas trouvée
+//index de la carte d'image de référence nomImg in parameters ; renvoie parameters.count() if elle n'est pas trouvée
 	int idx=0;
 	while (idx<parametres.count()) {
 		if (nomImg==parametres.at(idx).getImageDeReference()) break;
@@ -517,7 +517,7 @@ MNTTab::MNTTab(InterfMicmac* interfMicmac, const ParamMain* pMain,  CarteDeProfo
 	imageBox->setAlignment(Qt::AlignLeft);
 	imageBox->setLayout(imageLayout);
 
-	//liste des images pour la corrélation
+	//list des images for la corrélation
 	QLabel* correlLabel = new QLabel(conv(tr("Images to be used for correlation :")));
 
 	correlImgsList = new QListWidget;
@@ -617,7 +617,7 @@ void MNTTab::vue3DClicked() {
 }
 
 void MNTTab::addCorrelImgClicked() {
-	//affiche le menu de addCorrelImgButton : ajout à partir de la liste ou de la vue
+	//affiche le menu de addCorrelImgButton : ajout à partir de la list or de la vue
 	QMenu menu(addCorrelImgButton);
 	menu.addAction(addFromList);
 	menu.addAction(addFromView);
@@ -626,12 +626,12 @@ void MNTTab::addCorrelImgClicked() {
 }
 
 void MNTTab::addFromListClicked() {
-	//l'utilisateur doit sélectionner une caméra dans une liste
-		//liste des images sélectionnables
+	//l'utilisateur doit sélectionner une caméra in une list
+		//list des images sélectionnables
 	QStringList l;
 	for (QStringList::const_iterator it=paramMain->getParamApero().getImgToOri().begin(); it!=paramMain->getParamApero().getImgToOri().end(); it++) {
 		if (*it==imageCombo->itemText(imageCombo->currentIndex())) continue;
-		if (parametre->getImagesCorrel().contains(*it)) continue;	//l'image est déjà sélectionnée comme image pour la corrélation
+		if (parametre->getImagesCorrel().contains(*it)) continue;	//l'image est déjà sélectionnée comme image for la corrélation
 		l.push_back(*it);
 	}
 	if (l.count()==0) return;
@@ -650,7 +650,7 @@ void MNTTab::addFromListClicked() {
 }
 
 void MNTTab::addFromViewClicked() {
-	//l'utilisateur doit sélectionner une caméra dans la vue 3D
+	//l'utilisateur doit sélectionner une caméra in la vue 3D
 	QApplication::setOverrideCursor( Qt::WaitCursor );
 	if (vue3D==0) vue3D = new VueChantier(paramMain, this, assistant);
 	vue3D->show(SelectCamBox::CorrelImages, imageCombo->itemText(imageCombo->currentIndex()), parametre->getImagesCorrel());
@@ -669,7 +669,7 @@ void MNTTab::addFromViewClicked() {
 }
 
 void MNTTab::addFromStatClicked() {
-	//ajoute par défaut les 4 caméras qui recouvrent le mieux la carte et encadrant la caméra de référence
+	//ajoute par défaut les 4 caméras qui recouvrent le mieux la carte and encadrant la caméra de référence
 	QApplication::setOverrideCursor( Qt::WaitCursor );
 	if (vue3D==0) vue3D = new VueChantier(paramMain, this, assistant);
        const  QVector<Pose>* poses = &(vue3D->getPoses());
@@ -690,14 +690,14 @@ void MNTTab::addFromStatClicked() {
 	for (int i=0; i<poses->count(); i++) {
 		if (i==n) continue;
 
-		//on ne prend que les caméras qui sont dans le même demi-espace que la caméra de référence (on calcule l'angle entre les directions)
+		//on ne prend que les caméras qui sont in le même demi-espace que la caméra de référence (on compute l'angle between les directions)
 		QVector<REAL> V2 = poses->at(i).direction();
 		double angle = 0;	//cos angle(V1;V2)
 		for (int k=0; k<3; k++) angle += V1[k] * V2[k]; //prod scal
 		if (angle<0) continue;
 
-		//recouvrement (projection de l'emprise au plan moyen de l'img de réf dans l'img i et % du recouvrement par/ à la projection)
-		QVector<Pt2dr> proj(4);	//emprise de l'img de réf sur l'img i
+		//recouvrement (projection de l'emprise au plan moyen de l'img de réf in l'img i and % du recouvrement par/ à la projection)
+		QVector<Pt2dr> proj(4);	//emprise de l'img de réf on l'img i
 		for (int j=0; j<4; j++)
 			proj[j] = poses->at(i).getCamera().R3toF2(emprise[j]);
 		REAL proj2[4] = {proj[0].x, proj[0].x, proj[0].y, proj[0].y};	//rectangle de l'emprise
@@ -716,14 +716,14 @@ void MNTTab::addFromStatClicked() {
 		double recouvrement = (rec[1]-rec[0])*(rec[3]-rec[2]) / (proj2[1]-proj2[0])*(proj2[3]-proj2[2]);
 		if (recouvrement<0.6) continue;
 
-		//quadrant (placement du sommet i par rapport au sommet n dans le plan de l'img n)
+		//quadrant (placement du sommet i par rapport au sommet n in le plan de l'img n)
 		QVector<REAL> DS(3);
 		for (int k=0; k<3; k++) DS[k] = poses->at(i).centre2()[k] - poses->at(n).centre2()[k];
 		QVector<REAL> D(2,0);
 		for (int k=0; k<2; k++)
 			for (int l=0; l<2; l++) D[k] += rotation(l,k) * DS[l];
 
-		//enregistrement (on veut la meilleure cam dans chaque direction (-x, +x, -y, +y), comme la cam i est dans 2 directions, on prend les 2 meilleures caméras dans chaque direction pour avoir au moins 4 caméras)
+		//enregistrement (on veut la meilleure cam in chaque direction (-x, +x, -y, +y), comme la cam i est in 2 directions, on prend les 2 meilleures caméras in chaque direction for avoir au moins 4 caméras)
 		for (int k=0; k<8; k++) {
 			bool b = (D[0]<0 && (k==0 || k==1))
 				|| (D[0]>0 && (k==2 || k==3))
@@ -744,7 +744,7 @@ void MNTTab::addFromStatClicked() {
 		}	
 	}
 
-	//on vérifie qu'il y a une caméra dans chaque direction
+	//on vérifie qu'il y a une caméra in chaque direction
 	for (int k=0; k<8; k+=2) {
 		if (cam[k].first.isEmpty()) {
 			qMessageBox(this, tr("Warning"), QApplication::translate("Dialog", tr("Selected cameras do not surround the reference camera.\nSome parts of the depth map could be unseen from any other image and not be reconstructed.").toStdString().c_str(), 0, QApplication::CodecForTr));
@@ -845,7 +845,7 @@ RepereTab::RepereTab(InterfMicmac* interfMicmac, const ParamMain* pMain, VueChan
 	radio2Box = new QGroupBox;
 	radio2Box->setLayout(radio2Layout);
 
-	//import d'un fichier
+	//import d'un file
 	QLabel* openLabel = new QLabel(tr("File :"));
 	openEdit = new QLineEdit;
 	openEdit->setMinimumWidth(150);
@@ -898,7 +898,7 @@ RepereTab::RepereTab(InterfMicmac* interfMicmac, const ParamMain* pMain, VueChan
 	paramBox->setFlat(true);
 	paramBox->setLayout(paramLayout);
 
-	//bouton pour lancer le calcul du TA
+	//bouton for lancer le computation du TA
 	TAButton = new QPushButton(tr("Compute IM"));
 	TAButton->setToolTip(conv(tr("Compute index map to draw mask in Euclidian frame")));
 	TAButton->adjustSize();
@@ -1000,7 +1000,7 @@ void RepereTab::updateInterface(Mode mode) {
 				openBox->hide();
 				openEdit->setText(QString());
 				paramBox->show();
-				TAButton->show();	//à modifier-> show quand masqueWidget et DirectionWidget ok
+				TAButton->show();	//à modifier-> show when masqueWidget and DirectionWidget ok
 				emit suiteRepere(false);
 				break;
 		case OpenRepere :
@@ -1088,7 +1088,7 @@ void RepereTab::vue3DClicked() {
 QString RepereTab::QPoint2QString(const QPoint& P) { return QString("[%1,%2]").arg(P.x()).arg(P.y()); }
 
 void RepereTab::TAClicked() {
-//calcul du repère
+//computation du repère
 	QString s = noBlank(dir) + QString("\\(");
 	for (QStringList::const_iterator it=paramMain->getParamApero().getImgToOri().begin(); it!=paramMain->getParamApero().getImgToOri().end(); it++) {
 		s += *it;
@@ -1118,7 +1118,7 @@ void RepereTab::TAClicked() {
 		}
 cout << (dir+QString("KeyCalibration.xml")).toStdString() << endl;		
 
-		//calcul
+		//computation
 		QString commande = comm(QString("cd %1 \n %1bin/Bascule %2 F %3 PostPlan=%4 P1Rep=%5 P2Rep=%6 AxeRep=%7 ImRep=%8").arg(noBlank(paramMain->getMicmacDir())).arg(s).arg(noBlank(parametre->getRepereFile(*paramMain))).arg("_MasqRepTA").arg(QPoint2QString(parametre->getSegmentRep().first)).arg(QPoint2QString(parametre->getSegmentRep().second)).arg(QPoint2QString(parametre->getAxeRep())).arg(parametre->getImgRep()));
 		if (execute(commande)!=0) {
 			if (QApplication::overrideCursor()!=0) QApplication::restoreOverrideCursor();
@@ -1147,7 +1147,7 @@ cout << (dir+QString("KeyCalibration.xml")).toStdString() << endl;
 		}
 	}
 
-//calcul du TA
+//computation du TA
 	QString s2 = noBlank(dir) + QString("\\(");
 	for (QStringList::const_iterator it=parametre->getImagesCorrel().begin(); it!=parametre->getImagesCorrel().end(); it++) {
 		s2 += *it + QString("\\|");
@@ -1174,7 +1174,7 @@ cout << (dir+QString("KeyCalibration.xml")).toStdString() << endl;
 		return;
 	}
 
-	//écriture du fichier de référencement du masque
+	//écriture du file de référencement du masque
 	ParamMasqueXml paramMasqueXml;
 	QString infile = paramMain->getDossier()+QString("TA%1/Z_Num1_DeZoom8_LeChantier.xml").arg(paramMain->getNumImage(parametre->getImageDeReference()));
 	err = FichierMasque::lire(infile, paramMasqueXml);
@@ -1350,11 +1350,11 @@ void OrthoTab::orthoClicked() {
 void OrthoTab::selectionChanged() { removeImgsButton->setEnabled(listeWidget->selectedItems().size()>0); }
 
 void OrthoTab::addImgsClicked() {
-	//l'utilisateur doit sélectionner une caméra dans une liste
-		//liste des images sélectionnables
+	//l'utilisateur doit sélectionner une caméra in une list
+		//list des images sélectionnables
 	QStringList l;
 	for (QStringList::const_iterator it=paramMain->getParamApero().getImgToOri().begin(); it!=paramMain->getParamApero().getImgToOri().end(); it++) {
-		if (parametre->getImgsOrtho().contains(*it)) continue;	//l'image est déjà sélectionnée comme image pour la corrélation
+		if (parametre->getImgsOrtho().contains(*it)) continue;	//l'image est déjà sélectionnée comme image for la corrélation
 		l.push_back(*it);
 	}
 	if (l.count()==0) return;

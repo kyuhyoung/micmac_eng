@@ -138,7 +138,7 @@ cVideoVisage::cVideoVisage(int argc,char ** argv) :
 
         if (! EAMIsInit(&mRate))
         {
-            // Un film de 100 Go au rate de 4 a donne 71 image sur 180, on en voulait 36
+            // Un film de 100 Go au rate de 4 a donne 71 image on 180, on en voulait 36
             mRate = 4.0 * ( 1.03e8 / aNbB) * (36.0 /71.0);
             std::cout << "Rate=" << mRate << "\n";
         }

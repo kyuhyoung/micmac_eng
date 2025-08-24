@@ -104,7 +104,7 @@ int PlyBascule(int argc, char ** argv)
 // ========== Test Zone Trajecto Acquisition BLoc Rigid ==========
 int Test_TrajectoFromOri(int argc, char ** argv)
 {
-    // Tracer trajectoire en concatenant tout les centres du camera dans Ori donne
+    // Tracer trajectoire en concatenant tout les centres du camera in Ori donne
     string aDir="./";
     string aPatIn;
     string aPlyOut="";
@@ -447,7 +447,7 @@ int Test_CtrlCloseLoopv2(int argc, char ** argv)
          cSetPMul1ConfigTPM* aCnf = aSelectCnf[aKCnf];
          for (uint aKIdImg=0; aKIdImg<aIdAllImg.size(); aKIdImg++)
          {
-             int aQueryId = aIdAllImg[aKIdImg]; // Id of an Image in pts homologue file
+             int aQueryId = aIdAllImg[aKIdImg]; // Id of an image in pts homologue file
              // get all 2D points of image ID aQueryId in aCnf
              cOneImInLoop * aImLoop = aVImInLoop[aKIdImg];
              for (uint aKPt=0; (int)aKPt<aCnf->NbPts(); aKPt++)
@@ -463,7 +463,7 @@ int Test_CtrlCloseLoopv2(int argc, char ** argv)
          }
      }
 
-     // Arrange Image in loop order
+     // Arrange image in loop order
      vector<cOneLoop*> aVLoop;
      for (uint aKL=0; (int)aKL<aNbLoop; aKL++)
      {
@@ -499,7 +499,7 @@ int Test_CtrlCloseLoopv2(int argc, char ** argv)
          cout<<"  - "<<aPt3dFrmAllIm[aKPt]<<endl;
      }
 
-     // Export Point for Close Loop Test
+     // Export point for Close Loop Test
      ofstream csvPt3d;
      csvPt3d.open(aCSV);
      for (uint aKL=0; (int)aKL<aNbLoop; aKL++)
@@ -869,7 +869,7 @@ int Test_CtrlCloseLoop(int argc, char ** argv)
             cout<<"Image is not in Good Loop 2??? Il y a vraiement prob la..";
         }
 
-        // Export Point for Close Loop Test
+        // Export point for Close Loop Test
         ofstream csvPt3d;
         csvPt3d.open ("CtrlCloseLoop.csv");
         csvPt3d<<"Ecart"<<endl;
@@ -907,7 +907,7 @@ int Test_CtrlCloseLoop(int argc, char ** argv)
             cout<<"Total : "<<aPtCtrlLoop1.size()<<" pts in control"<<endl;
         }
 
-        // Stat on aVEcart && Sortie pt cloud d'erreur
+        // Stat on aVEcart && Sortie pt cloud d'error
         {
             // Sort ascending
             sort(aVEcart.begin(), aVEcart.end(), sortAscending);
@@ -1209,7 +1209,7 @@ void cOneTimeStamp::AddCam(string aCamId, string KeyIm2TimeCam)
                     ElMatrix<double> R21t = aPrRotCamRef.transpose();
                     ElMatrix<double> R31R21t(3);
                     R31R21t.mul(aPrRotCam, R21t);
-                    ElMatrix<double> R3W(3);    // Rotation CamToInit
+                    ElMatrix<double> R3W(3);    // rotation CamToInit
                     R3W.mul(R31R21t, aRotCamRef);
 
                     ElMatrix<double> TrInBlock(1,3);
@@ -1229,7 +1229,7 @@ void cOneTimeStamp::AddCam(string aCamId, string KeyIm2TimeCam)
                     // Store result in aCamToInit ???
                     //aCamToInit->SetIncCentre(aCenterCamToInit);
                     //aCamToInit->SetOrientation(R3W);
-                    // cout pour verifier
+                    // cout for verifier
                     double aL1_Cam1[3];R3W.GetLine(0,aL1_Cam1);
                     double aL2_Cam1[3];R3W.GetLine(1,aL2_Cam1);
                     double aL3_Cam1[3];R3W.GetLine(2,aL3_Cam1);
@@ -1259,7 +1259,7 @@ void cOneTimeStamp::AddCam(string aCamId, string KeyIm2TimeCam)
 
 void cOneTimeStamp::AddAllCamPossible(string KeyIm2TimeCam)
 {
-    // from a time stamp & list of camId, get all Image existed
+    // from a time stamp & list of camId, get all image existed
     std::list< cParamOrientSHC >::iterator aK = mLSHC->ParamOrientSHC().begin();
     cout<<"   + Search all possible cam to add "<<endl;
     while (aK != mLSHC->ParamOrientSHC().end())
@@ -1350,7 +1350,7 @@ int Test_InitBloc(int argc, char ** argv)
         std::string aNamePose = aPC->NameIm();
         cout<<endl<<"++ NameIm : "<<aNamePose<<endl;
 
-        // From name Im, get $1 et $2 (time stamp & CamID)
+        // From name Im, get $1 and $2 (time stamp & CamID)
         std::pair<std::string,std::string> aPair = aICNM->Assoc2To1(aSBC.KeyIm2TimeCam(),aNamePose,true);
         cout<<"   + Assoc21 "<<aPair.first<<" + "<<aPair.second<<endl;
         string nTimeId = aPair.first;
@@ -2013,7 +2013,7 @@ void DrawOneFootPrintToPly(CamStenope * aCam,
                            Pt3dr aOffSetGeoJSON = Pt3dr(0,0,0),
                            bool aPlyEachImg = false)
 {
-    std::string aPathPly = "./PLYFootPrint/" + aNameIm + "_FP.ply"; // We can't get name Image from CamStenope !!!
+    std::string aPathPly = "./PLYFootPrint/" + aNameIm + "_FP.ply"; // We can't get name image from CamStenope !!!
 
     cPlyCloud aPly;
     cElPolygone aPolyEmprise = aCam->EmpriseSol();
@@ -2692,13 +2692,13 @@ int TestGiangNewHomol_Main(int argc,char ** argv)
     cout<<"VPMul - Nb Config: "<<aSHIn->VPMul().size()<<endl;
     std::vector<cSetPMul1ConfigTPM *> aVCnf = aSHIn->VPMul();
 
-    vector<double> aVResidu;            // residue de tout les points dans pack
-    vector<Pt3dr> aVAllPtInter;         // Coordonne 3D de tout les points dans pack
-    vector<int> aVNbImgOvlap;           // Nb Overlape de tout les points 3D dans pack
+    vector<double> aVResidu;            // residue de tout les points in pack
+    vector<Pt3dr> aVAllPtInter;         // Coordonne 3D de tout les points in pack
+    vector<int> aVNbImgOvlap;           // Nb Overlape de tout les points 3D in pack
 
-    vector<int> aStats(aSHIn->NbIm());  // Vector contient multiplicite de pack, index d'element du vector <=> multiplicite, valeur d'element <=> nb point
-    vector<int> aStatsInRange(aSHIn->NbIm()); // Vector contient multiplicite de pack dans 1 gamme de residue defini, index d'element du vector <=> multiplicite, valeur d'element <=> nb point
-    vector<int> aStatsValid;            // Vector contient multiplicite existe de pack, valeur d'element <=> multiplicité
+    vector<int> aStats(aSHIn->NbIm());  // Vector contient multiplicite de pack, index d'element du vector <=> multiplicite, value d'element <=> nb point
+    vector<int> aStatsInRange(aSHIn->NbIm()); // Vector contient multiplicite de pack in 1 gamme de residue defini, index d'element du vector <=> multiplicite, value d'element <=> nb point
+    vector<int> aStatsValid;            // Vector contient multiplicite existe de pack, value d'element <=> multiplicité
 
     int nbPtsInRange = 0;
     double resMax = 0.0;
@@ -2726,7 +2726,7 @@ int TestGiangNewHomol_Main(int argc,char ** argv)
             ELISE_ASSERT(aVPtInter.size() == aVCamInter.size(), "Size not coherent");
             ELISE_ASSERT(aVPtInter.size() > 1 && aVCamInter.size() > 1, "Nb faiseaux < 2");
             Pt3dr aPInter3D = Intersect_Simple(aVCamInter , aVPtInter);
-            //calcul reprojection error :
+            //computation reprojection error :
             double resMoy = cal_Residu( aPInter3D , aVCamInter, aVPtInter);
             //cout<<resMoy<<endl;
             if (resMoy >= resMax)
@@ -2789,10 +2789,10 @@ int TestGiangNewHomol_Main(int argc,char ** argv)
             aStatsInRange[nbImgsVu1Pts]++;
             nbPtsInRange++;
         }
-        //voir si dans aStatsValid exist nbImgsVu1Pts
+        //voir if in aStatsValid exist nbImgsVu1Pts
         if (!(std::find(aStatsValid.begin(), aStatsValid.end(), nbImgsVu1Pts) != aStatsValid.end()))
         {
-            //si exist pas
+            //if exist pas
             aStatsValid.push_back(nbImgsVu1Pts);
         }
         //==================================
@@ -2868,7 +2868,7 @@ int TestGiangNewHomol_Main(int argc,char ** argv)
     return EXIT_SUCCESS;
 }
 
-//= ===========================  TEST GIANG DISPLAY ALL HOMOL WITH 1 IMAGE ============================
+//= ===========================  TEST GIANG DISPLAY ALL HOMOL WITH 1 image ============================
 
 
 int TestGiangDispHomol_Main(int argc,char ** argv)
@@ -2930,7 +2930,7 @@ int TestGiangDispHomol_Main(int argc,char ** argv)
                        for (ElPackHomologue::const_iterator itP=aPackIn.begin(); itP!=aPackIn.end() ; itP++)
                        {
 
-                           Pt2dr aP1 = itP->P1();  //Point img1
+                           Pt2dr aP1 = itP->P1();  //point img1
                            mVPts.push_back(aP1);
 
                        }
@@ -2953,7 +2953,7 @@ int TestGiangDispHomol_Main(int argc,char ** argv)
                            for (ElPackHomologue::const_iterator itP=aPackIn.begin(); itP!=aPackIn.end() ; itP++)
                            {
 
-                               Pt2dr aP2 = itP->P2();  //Point img1
+                               Pt2dr aP2 = itP->P2();  //point img1
                                mVPts.push_back(aP2);
 
                            }

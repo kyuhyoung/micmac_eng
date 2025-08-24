@@ -402,7 +402,7 @@ template<> struct ldlt_inplace<Lower>
     return ret;
   }
 
-  // Reference for the algorithm: Davis and Hager, "Multiple Rank
+  // reference for the algorithm: Davis and Hager, "Multiple Rank
   // Modifications of a Sparse Cholesky Factorization" (Algorithm 1)
   // Trivial rearrangements of their computations (Timothy E. Holy)
   // allow their algorithm to work for rank-1 updates even if the

@@ -74,7 +74,7 @@ void  cAppliZBufferRaster::DoAllIm(vector<vector<bool> > & aVTriValid)
                    cout<<"["<<(aKTri*100.0/mVTri.size())<<" %]"<<endl;
                aZBuf->LoadTri(mVTri[aKTri]);
            }
-           //save Image ZBuffer to disk
+           //save image ZBuffer to disk
 
            ELISE_fp::MkDirSvp(path);
 

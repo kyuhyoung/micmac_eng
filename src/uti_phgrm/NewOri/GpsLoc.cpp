@@ -40,17 +40,17 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "NewOri.h"
 
 
-/// Classe qui contient l'orientation relative de chaque image dans un triplet et son sommet GPS
+/// class qui contient l'orientation relative de chaque image in un triplet and son sommet GPS
 class cGpsLoc_Triplet;
 
-/// Classe qui contient le nom d'une image et son repere GPS
+/// class qui contient le nom d'une image and son repere GPS
 class cGpsLoc_Som;     
 typedef cGpsLoc_Som *  tGLS_Ptr;
 
-///  Classe pour definir un repere image avec juste 1 Point et 3 vecteur  
+///  class for definir un repere image with juste 1 point and 3 vector  
 class cGpsLoc_Rep;
 
-/// Classe de l'application
+/// class de l'application
 class cAppliGpsLoc;
 
 
@@ -59,7 +59,7 @@ cSolBasculeRig StdSolFromPts
                 (
                       const std::vector<Pt3dr> & aV1,
                       const std::vector<Pt3dr> & aV2,
-                      const std::vector<double> * aVPds=0, // si 0 ts les pds valent 1
+                      const std::vector<double> * aVPds=0, // if 0 ts les pds valent 1
                       int   aNbRansac             = 200,
                       int   aNbL2                 = 5
                 );
@@ -90,7 +90,7 @@ cXml_Rotation El2Xml(const ElRotation3D & aRot);
 class cGpsLoc_Rep
 {
      public :
-        cGpsLoc_Rep(); // Pour rotation identitie, et centre optique à (0,0,0)
+        cGpsLoc_Rep(); // for rotation identitie, and centre optique à (0,0,0)
         cGpsLoc_Rep(const ElRotation3D & aPose);
         ElMatrix<double>  MatRot() const;
         const Pt3dr & Ori() const {return mOri;}
@@ -295,7 +295,7 @@ void cGpsLoc_Triplet::InitSomTrivial()
         mVP2.push_back(mSoms[aK]->Gps());
     }
 
-    //le calcul de la similitude (7parametrs) à partir de points dans les deux reperes 
+    //le computation de la similitude (7parametrs) à partir de points in les deux reperes 
     mBasc = cSolBasculeRig::StdSolFromPts(mVP1,mVP2);
  
     ElRotation3D      aPose(mBasc.Tr(),mBasc.Rot(),true);
@@ -307,14 +307,14 @@ void cGpsLoc_Triplet::InitSomTrivial()
                           << mBasc.Rot()(2,0) << ", " << mBasc.Rot()(2,1) << ", " << mBasc.Rot()(2,2) << "\n";*/
     
     
-    //sauvgaurde de la pose dans l'objet de la classe
+    //sauvgaurde de la pose in l'object de la class
     for (auto aK : {0,1,2})
     {
         Pt3dr aPEch( mReps[aK].Ori().x * mBasc.Lambda(),
                      mReps[aK].Ori().y * mBasc.Lambda(),
                      mReps[aK].Ori().z * mBasc.Lambda() );
 
-        //calcul de la position du centre perspectif de la camera aK dans repere absolut 
+        //computation de la position du centre perspectif de la camera aK in repere absolut 
         Pt3dr              aOriBasc = aPose.ImAff(aPEch); // tk + Mk * Ckj;
         ElMatrix<double>   aRotBasc = aPose.Mat() * mReps[aK].MatRot();// Mk * Mkj
 
@@ -369,7 +369,7 @@ class cAppliGpsLoc : public cCommonMartiniAppli
 		  EstimType Str2Enum(std::string& aStr);
 
           std::string                          mDir;
-          // Associe un nom d'image a l'objet C++
+          // Associe un nom d'image a l'object C++
           std::map<std::string,cGpsLoc_Som *>  mMapS;
           std::vector<cGpsLoc_Triplet>         mV3;
           int                                  mNbSom;
@@ -520,20 +520,20 @@ cAppliGpsLoc::cAppliGpsLoc(int argc,char ** argv) :
    		mET = Str2Enum(EstimTypeStr);
 
    SplitDirAndFile(aDir,aPat,aPat);
-   StdCorrecNameOrient(aGpsOri,aDir);//ajoutera "Ori-" devant aGpsOri si necessaire
+   StdCorrecNameOrient(aGpsOri,aDir);//ajoutera "Ori-" devant aGpsOri if necessaire
 
-   //classe qui gerent des fichiers (lecture d'orientation GPS)
+   //class qui gerent des fichiers (lecture d'orientation GPS)
    aICNM     = cInterfChantierNameManipulateur::BasicAlloc(aDir);
    aGpsOri   = aICNM->StdKeyOrient(aGpsOri); 
 
-   //recuperation toutes les images coherent avec un pattern
+   //recuperation toutes les images coherent with un pattern
    cElemAppliSetFile anEASF(aPat);
    const std::vector<std::string> * aSetName =   anEASF.SetIm();
 
-   //lecture des sommets, pour chaque image 
-   //  + recuper son sommet (aC) d'un fichier d'orientation 
-   //  + cree une classe cGpsLoc_Som et  mets la dans la map mMapS
-   //  + initialise la pose avec la pose venant de GPS ( mMapS[itL]->Gps() )
+   //lecture des sommets, for chaque image 
+   //  + recuper son sommet (aC) d'un file d'orientation 
+   //  + cree une class cGpsLoc_Som and  mets la in la map mMapS
+   //  + initialise la pose with la pose venant de GPS ( mMapS[itL]->Gps() )
    for (const auto & aName : *aSetName)
    {
        std::string aNF = aICNM->Dir() + aICNM->Assoc1To1(aGpsOri,aName,true);
@@ -546,7 +546,7 @@ cAppliGpsLoc::cAppliGpsLoc(int argc,char ** argv) :
                         "Pt3dr"
                     );
 
-      // Cree l'objet representant une image et le rentre dans le dictionnaire
+      // Cree l'object representant une image and le rentre in le dictionnaire
       mMapS[aName] = new cGpsLoc_Som(aName);
       mMapS[aName]->Gps() = aC;      
 
@@ -554,18 +554,18 @@ cAppliGpsLoc::cAppliGpsLoc(int argc,char ** argv) :
    }
 
 
-   //encore une classe qui gere les triplets
+   //encore une class qui gere les triplets
    cNewO_NameManager *  aNM =NM(mDir);
    std::string aNameLTriplets = aNM->NameTopoTriplet(true);
-   //lecture d'un fichier xml contenant une liste de tous les triplets
+   //lecture d'un file xml contenant une list de tous les triplets
    cXml_TopoTriplet  aLT = StdGetFromSI(aNameLTriplets,Xml_TopoTriplet);
 
-   //pour chaque triplets 
+   //for chaque triplets 
    //  + verifie s'il y existe son sommet
    //  + recuper les cGpsLoc_Som correspondant a chaque image d'un triplet (absolut)
-   //  + recuper le nom de fichier qui contient l'orientation d'un triplet (relatif)(aName3R) 
-   //  + lecture du fichier (aXml3Ori)
-   //  + "push" de la classe cGpsLoc_Triplet dans le vecteur mV3; cGpsLoc_Triplet contient les trois sommets (GPS=absolut) et ses orientations (relative)
+   //  + recuper le nom de file qui contient l'orientation d'un triplet (relatif)(aName3R) 
+   //  + lecture du file (aXml3Ori)
+   //  + "push" de la class cGpsLoc_Triplet in le vector mV3; cGpsLoc_Triplet contient les trois sommets (GPS=absolut) and ses orientations (relative)
    for (auto a3 : aLT.Triplets())
    {
        if (DicBoolFind(mMapS,a3.Name1()) && DicBoolFind(mMapS,a3.Name2()) && DicBoolFind(mMapS,a3.Name3()))
@@ -583,7 +583,7 @@ cAppliGpsLoc::cAppliGpsLoc(int argc,char ** argv) :
    mNbSom = mMapS.size();
 
 
-   // Cas particulier ou il n'y a que 3 sommets
+   // Cas particulier or il n'y a que 3 sommets
    if (mNbSom==3)
    {
       ELISE_ASSERT(mV3.size()==1,"Incoherent size with on triplet");
@@ -592,7 +592,7 @@ cAppliGpsLoc::cAppliGpsLoc(int argc,char ** argv) :
            aPair.second->Save(aNM);
    }
    else
-   {   // calcul pour chaque triplet
+   {   // computation for chaque triplet
 
        for (auto a3 : mV3)
        {

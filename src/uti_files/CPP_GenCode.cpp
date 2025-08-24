@@ -114,7 +114,7 @@ void GenCodeLaserImage()
 */
 }
 
-//==================== UTI pour Appui/Liaison ==================
+//==================== UTI for Appui/Liaison ==================
 
 template <class Type> Type * CamSetSize(Type * aCam)
 {
@@ -314,7 +314,7 @@ void GenCodeAppui(bool C2M,bool isFixe,bool isGL,bool isAFocal,bool wDist,const 
         }
 
 
-// std::cout << "Type Appui = " << aType << "ENTRE GETCHAR \n"; getchar();
+// std::cout << "Type Appui = " << aType << "between GETCHAR \n"; getchar();
 	cSetEqFormelles aSet;
 	cParamIntrinsequeFormel * aPIF = PIF_For_GC(C2M,aType,aSet,aPAF);
 	ElRotation3D aRot(Pt3dr(0,0,0),0,0,0);
@@ -328,7 +328,7 @@ void GenCodeAppui(bool C2M,bool isFixe,bool isGL,bool isAFocal,bool wDist,const 
             return;
         }
 
-        // Genere auto les appuis fixe en X et Y
+        // Genere auto les appuis fixe en X and Y
          if (isFixe)
 	 {
 	    aPIF->NewCam(cNameSpaceEqF::eRotFigee,aRot,0,"toto",true,true);
@@ -438,10 +438,10 @@ void GenCodeAppui()
 /*  
 void GenCodeAppui(bool C2M,bool isFixe,bool isGL,bool isAFocal,bool EqDroite)
 */
-  // SANS AFOCAL AVEC EQ DROITE
+  // without AFOCAL with EQ DROITE
     // GenCodeAppui(false,false,true,false,true);
     // GenCodeAppui(false,false,false,false,true);
-  // SANS AFOCAL SS EQ DROITE
+  // without AFOCAL SS EQ DROITE
 
     if (true)
     {
@@ -461,7 +461,7 @@ void GenCodeAppui(bool C2M,bool isFixe,bool isGL,bool isAFocal,bool EqDroite)
 
 */
 
-  // AVEC AFOCAL
+  // with AFOCAL
 /*
     GenCodeAppui(false,true,true,true);
     GenCodeAppui(false,true,false,true);
@@ -632,7 +632,7 @@ void GenCodeDiv()
     for (INT aK=1 ; aK<4 ; aK++)
     {
         cSetEqFormelles aSet;
-	aSet.NewEqLin(aK,aK+12,true); // +12 ou n'importe quoi pourGenCode
+	aSet.NewEqLin(aK,aK+12,true); // +12 or n'importe quoi pourGenCode
     }
 }
 
@@ -685,7 +685,7 @@ void GenDirecteDistorsion(cNameSpaceEqF::eTypeEqDisDirecre   Usage)
    {
       cSetEqFormelles aSet;
       // ElDistRadiale_PolynImpair aDRad = ElDistRadiale_PolynImpair::DistId(1e4,Pt2dr(0,0),5);
-      // A priori C2M comme avant, a voir ....
+      // A priori C2M comme before, a voir ....
       cParamIFDistRadiale * aPar1 = aSet.NewIntrDistRad(true,CamDRad5(true,aNOPAF),3);
       aSet.NewEqDirecteDistorsion(*aPar1,Usage,true);
    }

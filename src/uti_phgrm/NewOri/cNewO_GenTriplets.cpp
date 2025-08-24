@@ -128,7 +128,7 @@ class cNewAppli_GenTripletOfCple
 
            std::vector<cNewSom_GenTripletOfCple *>  mVS3;
 
- // Va permettre de creer des indexe pour avoir une fonction de densite tenant compte de la densite 
+ // Va permettre de creer des indexe for avoir une function de densite tenant compte de la densite 
  // de VP1
 /*
            Pt2df               mPInf;
@@ -180,7 +180,7 @@ cGTC_OneBaseIm::cGTC_OneBaseIm(const ElRotation3D & anOri,cNewO_OneIm * anIm,con
    mVPts (&aVP)
 {
 
-   // Calcul des valeur permettant d'indexer les points
+   // computation des value permettant d'indexer les points
    mPInf = Pt2df(1e20,1e20);
    mPSup = Pt2df(-1e20,-1e20);
 
@@ -199,11 +199,11 @@ cGTC_OneBaseIm::cGTC_OneBaseIm(const ElRotation3D & anOri,cNewO_OneIm * anIm,con
    ELISE_ASSERT(mNbCases<=TMaxNbCase,"cNewAppli_GenTripletOfCple::cNewAppli_GenTripletOfCple  : mNbCases");
 
    // Le MulQuant est un majoration/estimation du maximum du gain quantifie, il est egal a
-   //    NbCase  => car somme sur les case
+   //    NbCase  => car somme on les case
    //  * TQuant  => mPdsCase
    //  * TQuant  => Densite
    //  * TQuant  => Gain
-   //  * TQuantBsH  => Dans Gain B/H
+   //  * TQuantBsH  => in Gain B/H
    mMulQuant  = mNbCases *pow((float)TQuant,3) * TQuantBsH;
    ELISE_ASSERT(mMulQuant<TMaxGain,"cNewAppli_GenTripletOfCple::cNewAppli_GenTripletOfCple mMulQuant");
 
@@ -361,7 +361,7 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
 
       // std::cout << "initTriplet " << aNb << " " << aNb3 << " " << aNb33 << "\n";
 
-      // Pour qu'il y ait intersection
+      // for qu'il y ait intersection
       // Det(L C1C3 + C12,  R3U3, ,R2U) = 0
       std::vector<double> aVL13;
       std::vector<double> aVL23;
@@ -386,7 +386,7 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
 
       // Calul du centre
  
-      // Methode qui n'utilisent pas les points multiples, OK mais degeneree avec sommet alignes
+      // method qui n'utilisent pas les points multiples, OK but degeneree with sommet alignes
       //  C2  + L C3, U2 , U3 colineaire
      
 
@@ -416,8 +416,8 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
           Pt3dr aPInt12 = InterSeg(aC1,aC1+aU1,aC2,aC2+aU2,OkI);
           if (OkI)
           {
-              // La vrai C3 est a la fois sur la droite C1C3 et sur le rayon partant de l'intersection et porte
-              // par U3, on calcule
+              // La vrai C3 est a la fois on la droite C1C3 and on le rayon partant de l'intersection and porte
+              // par U3, on compute
               double p,q;
               CoordInterSeg(aC1,aC3,aPInt12,aPInt12+aU31,OkI,p,q);
               if (OkI)
@@ -444,7 +444,7 @@ bool cGTrip_AttrSom::InitTriplet(tSomGT * aSom,tArcGT * anA12)
 
 
 
-     // Calcul gain et densite
+     // computation gain and densite
 
       int aGain1 = mAppli->GainBSurH( mAppli->CurS1(),aSom);
       int aGain2 = mAppli->GainBSurH( mAppli->CurS2(),aSom);

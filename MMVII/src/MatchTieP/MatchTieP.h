@@ -22,8 +22,8 @@ class cBaseMatchTieP : public cMMVII_Appli
      protected :
         std::string  mNameIm1;                ///< First image
         std::string  mNameIm2;                ///< Second image
-        std::vector<cSetAimePCAR> mVSAPc1;    ///<  Aime Carac Point of Im1
-        std::vector<cSetAimePCAR> mVSAPc2;    ///<  Aime Carac Point of Im2
+        std::vector<cSetAimePCAR> mVSAPc1;    ///<  Aime Carac point of Im1
+        std::vector<cSetAimePCAR> mVSAPc2;    ///<  Aime Carac point of Im2
 };
 
 

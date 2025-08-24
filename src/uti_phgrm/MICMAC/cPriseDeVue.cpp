@@ -274,7 +274,7 @@ int  cPriseDeVue::Num() const {return mNum;}
 
 
 /*****************************************/
-/*  Gestion du fichier image             */
+/*  Gestion du file image             */
 /*****************************************/
 
 
@@ -366,8 +366,8 @@ bool cPriseDeVue::LoadImageMM
 
             if (aZoomN != 1.0)
             {
-                // Apparemment le cParamModifGeomMTDNuage ne prenait pas en compte le scale, cela a ete modifie , mais
-                // pas sur que cela soit compatible avec cNuagePredicteur;  comme cNuagePredicteur n'est plus utilise pour l'instant
+                // Apparemment le cParamModifGeomMTDNuage ne prenait pas en compte le scale, cela a ete modifie , but
+                // pas on que cela soit compatible with cNuagePredicteur;  comme cNuagePredicteur n'est plus utilise for l'instant
                 // on se contente d'un warning .....
                 ELISE_ASSERT(false,"VERIFIER FONCTIONNEMENT DE cNuagePredicteur apres modif Scale");
             }
@@ -609,7 +609,7 @@ cGeomImage & cPriseDeVue::Geom()
 
   if (aFaiscPrCh)
   {
-     /* La notion de profondeur de champs, et surtout l'interet de l'echantinnoner
+     /* La notion de profondeur de champs, and surtout l'interet de l'echantinnoner
         en 1/Z est etroitement liee a la prise de vue conique.  */
      if   (mAppli.GeomImages()== eGeomImageOri)
      {
@@ -655,8 +655,8 @@ cGeomImage & cPriseDeVue::Geom()
 
      if (mNum == 0)
      {
-        // En Geometrie image, les coordonnees
-        // objets sont toujours confondues avec
+        // En Geometrie image, les coordinates
+        // objets sont toujours confondues with
         // celles de la premiere image
         mGeom = cGeomImage::GeomId(mAppli,*this,SzIm(),aDim);
      }

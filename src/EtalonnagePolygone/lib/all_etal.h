@@ -94,7 +94,7 @@ class cEtalonnage;
 class cHypDetectCible;
 class cSetHypDetectCible;
 class cParamEtal;
-// Relient entre eux un ensemble de cameras rigides
+// Relient between eux un ensemble de cameras rigides
 class cBlockEtal;
 
 
@@ -224,7 +224,7 @@ class cCibleRechImage
 		void ShowCible(Video_Win *,INT aCoul);
 
 
-		// Retourne la correlation entre image et synthese
+		// Retourne la correlation between image and synthese
 		REAL OneItereRaffinement
                      (REAL aFactPts,bool LargLibre,bool ABCLibre);
 
@@ -436,7 +436,7 @@ class cEtalonnage
                 std::list<Appar23> StdAppuis(bool doPImNorm,std::string &,cSetPointes1Im *  SetPrecis= 0);
 		cEtalonnage &  EtalRatt();
 		cEtalonnage *  EtalRattSvp();
-		// Toute les rotation sont sauvees dans le sens Monde->Cam
+		// Toute les rotation sont sauvees in le sens Monde->Cam
 		ElRotation3D GetBestRotEstim(const std::string & aNameCam);
 
 		static void Verif (bool IsLast,int,char**);
@@ -491,7 +491,7 @@ class cEtalonnage
 
 		Video_Win *              WGlob();
 
-		    // Avec Rech sans Mod rad
+		    // with Rech without Mod rad
 
 		std::string NameTiffIm(const std::string &);
                 void Do8Bits(const std::vector<string> & mVName);
@@ -527,9 +527,9 @@ class cEtalonnage
 		static const std::string  TheNamePhgrStdInterm;
 		static const std::string  TheNamePhgrStdFinale;
 
-		static const  std::string TheNameRotInit;  // Apres DRAD Init
-		static const std::string TheNameRotFinale;  // Apres DRAD Glob
-		static const std::string TheNameRotCouplee; // Apres Couplages Inter Calib
+		static const  std::string TheNameRotInit;  // after DRAD Init
+		static const std::string TheNameRotFinale;  // after DRAD Glob
+		static const std::string TheNameRotCouplee; // after Couplages Inter Calib
 
 		static const INT NbRotEstim = 3;
 		static tCStrPtr	TheRotPoss[NbRotEstim];
@@ -580,7 +580,7 @@ class cEtalonnage
 		REAL                     mSomPds;
 		cElStatErreur            mStats;
 		Video_Win *              mWGlob;
-		// Si pEtalPartageInc existe, il sert aussi de pEtalRattachement
+		// if pEtalPartageInc existe, il sert aussi de pEtalRattachement
 		cEtalonnage *            pEtalRattachement;
 		cCamStenopeDistRadPol *          pCamDRad;
                 std::string                      mModeDist;
@@ -613,7 +613,7 @@ class cParamEllipse
    public :
       cParamEllipse(int aNbDisc,Pt2dr aC,Pt2dr aDirH,Pt2dr aDirV,Pt2dr aProjN);
       int NbDisc() const;
-      Pt2dr KiemV(int aK) const;  // Vecteur, ne tient pas compte de mC
+      Pt2dr KiemV(int aK) const;  // vector, ne tient pas compte de mC
       const Pt2dr &  DirH() const;
       const Pt2dr &  DirV() const;
       const Pt2dr &  ProjN() const;
@@ -642,7 +642,7 @@ class cParamEllipse
       double  mB;
       double  mC;
 
-      //  Representation par parametre physique
+      //  Representation par parameter physique
 
 
       double mGdAxe;

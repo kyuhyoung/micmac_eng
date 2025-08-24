@@ -822,7 +822,7 @@ template <class Type>  void cElemNetwork<Type>::PropagCov(double aWCheatMT)
     std::vector<tPt> aVMain;  // current point of main network
 
     int aNbUkRot = mRotUk ?  3 : 0; // Number of parameters for unknown rotationn
-    // Index of unknown, if Rotation unknown,  begin with 3 Tmp-Schur for rotation
+    // Index of unknown, if rotation unknown,  begin with 3 Tmp-Schur for rotation
     std::vector<int> aVIndUk(this->mVPts.size()*2+aNbUkRot,-1); 
     for (int aK=0 ; aK<aNbUkRot ; aK++)
         aVIndUk[aK] = - (1+aK);

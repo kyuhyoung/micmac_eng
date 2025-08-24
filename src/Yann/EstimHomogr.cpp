@@ -45,7 +45,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "hassan/reechantillonnage.h"
 
 // --------------------------------------------------------------------------------------
-// Classes permettant d'estimer, d'appliquer et d'inverser les points de liaison d'un 
+// Classes permettant d'estimer, d'appliquer and d'inverser les points de liaison d'un 
 // homographie (calculée à partir d'un jeu de points terrain <-> image).
 // --------------------------------------------------------------------------------------
 class cAppli_YannEstimHomog{
@@ -53,14 +53,14 @@ class cAppli_YannEstimHomog{
     public :
        cAppli_YannEstimHomog(int argc, char ** argv);
 
-       std::string mName3D;                        // Fichier des mesures 3D
-       std::string mName2D;                        // fichier des mesures 2D
-       std::string mNameImRef;                     // Image référence (optionnelle)
+       std::string mName3D;                        // file des mesures 3D
+       std::string mName2D;                        // file des mesures 2D
+       std::string mNameImRef;                     // image référence (optionnelle)
        std::string mDirOri;                        // Direction d'orientation
 	   std::string mMargeRel;                      // Marge relative des bords
 	   std::string aNameCam;					   // Chemin calibration interne
-	   bool mCamRot;                               // Camera frame rotation
-       cElemAppliSetFile  mEASF;                   // Pour gerer un ensemble d'images
+	   bool mCamRot;                               // camera frame rotation
+       cElemAppliSetFile  mEASF;                   // for gerer un ensemble d'images
        cInterfChantierNameManipulateur * mICNM;    // Name manipulateur
        std::string                       mDir;     // Directory of data
        cDicoAppuisFlottant               mDAF3D;   // All 3D
@@ -73,13 +73,13 @@ class cAppli_YannApplyHomog{
        cAppli_YannApplyHomog(int argc, char ** argv);
 
        std::string mNameIm;                        // Images à convertir
-       std::string mNameHomog;                     // Fichier d'homographie
+       std::string mNameHomog;                     // file d'homographie
 	   std::string mDir;                           // Répertoire d'images
 	   std::string mDirOut;                        // Répertoire de sortie
 	   std::string mResolution;                    // Resolution images de sortie
 	   std::string mCalib;						   // Calibration interne xml
 	   std::string mInterpType;					   // Interpolation sub-px
-       cElemAppliSetFile  mEASF;                   // Pour gerer un ensemble d'images
+       cElemAppliSetFile  mEASF;                   // for gerer un ensemble d'images
        cInterfChantierNameManipulateur * mICNM;    // Name manipulateur
 };
 // --------------------------------------------------------------------------------------
@@ -90,18 +90,18 @@ class cAppli_YannInvHomolHomog{
 
 	   std::string ImPattern;                      // Images redressées
 	   std::string ImPatternInit;				   // Images initiales
-       std::string mFolderIn;                      // Dossier input
-       std::string mFolderOut;                     // Dossier output
-	   std::string mHomogFile;                     // Fichier d'homographie
+       std::string mFolderIn;                      // folder input
+       std::string mFolderOut;                     // folder output
+	   std::string mHomogFile;                     // file d'homographie
 	   std::string mExt;                           // Extension d'image cible
-	   std::string exportTxtIn;                    // Entrée en binaire ou txt
-	   std::string exportTxtOut;                   // Sortie en binaire ou txt
+	   std::string exportTxtIn;                    // Entrée en binaire or txt
+	   std::string exportTxtOut;                   // Sortie en binaire or txt
        std::string mDir;                           // Directory of data
 	   std::string mCalib;						   // Calibration interne xml
 	   std::string mDirOri;                        // Répertoire d'orientation
-	   std::string mRawFolder;					   // Dossier des images bruts
-	   cElemAppliSetFile mEASF;                    // Pour gerer un ensemble d'images
-	   cElemAppliSetFile mEASF2;                   // Pour gerer un ensemble d'images
+	   std::string mRawFolder;					   // folder des images bruts
+	   cElemAppliSetFile mEASF;                    // for gerer un ensemble d'images
+	   cElemAppliSetFile mEASF2;                   // for gerer un ensemble d'images
 	   cInterfChantierNameManipulateur * mICNM;    // Name manipulateur
 	   cInterfChantierNameManipulateur * mICNM2;   // Name manipulateur
 };
@@ -113,32 +113,32 @@ class cAppli_YannViewIntersect{
        cAppli_YannViewIntersect(int argc, char ** argv);
 
 	   std::string ImPattern;                      // Images à traiter
-	   std::string mDirOri;                        // Dossier d'orientations
+	   std::string mDirOri;                        // folder d'orientations
        std::string mDepth;                         // Profondeur maximale d'intersection
-       std::string mCpleFile;                      // Fichier output
+       std::string mCpleFile;                      // file output
        std::string mDir;                           // Directory of data
 	   std::string mCalib;						   // Calibration interne xml
 	   std::string aNameIn;					       // Nom d'image temporaire
 	   std::string mRes;                           // Pas de discrétisation des cones
-	   std::string mDist;                          // Distance maximale entre caméras
-	   std::string mBuffer;                        // Buffer (pos ou neg) sur le champ
+	   std::string mDist;                          // Distance maximale between caméras
+	   std::string mBuffer;                        // Buffer (pos or neg) on le champ
 	   std::string mAngle;                         // Angle de visée maximal
-	   std::string mDebug;                         // Pour générer des ply des cones
-	   std::string mConeSzDebug;                   // Taille des cones dans les ply
-	   std::string mXmlSize;                       // Nombre maximal paires dans xml
-	   cElemAppliSetFile mEASF;                    // Pour gerer un ensemble d'images
+	   std::string mDebug;                         // for générer des ply des cones
+	   std::string mConeSzDebug;                   // Taille des cones in les ply
+	   std::string mXmlSize;                       // number maximal paires in xml
+	   cElemAppliSetFile mEASF;                    // for gerer un ensemble d'images
 	   cInterfChantierNameManipulateur * mICNM;    // Name manipulateur
 };
 
 
 
 // ======================================================================================
-// Méthodes de calcul d'intersections entre champs de vision
+// Méthodes de computation d'intersections between champs de vision
 // ======================================================================================
 
 
 // --------------------------------------------------------------------------------------
-// Fonction de calcul de rayon
+// function de computation de rayon
 // --------------------------------------------------------------------------------------
 Pt3dr rayon(CamStenope * aCam, Pt2dr pt, double factor){
 	Pt3dr p0 = aCam->Capteur2RayTer(pt).P0();
@@ -150,15 +150,15 @@ Pt3dr rayon(CamStenope * aCam, Pt2dr pt, double factor){
 }
 
 // --------------------------------------------------------------------------------------
-// Fonction de calcul du "cone de visée"
+// function de computation du "cone de visée"
 // --------------------------------------------------------------------------------------
 // Inputs  :
 //   - cam : un pointeur vers une caméra
-//   - N   : un nombre de points dans la discrétisation
+//   - N   : un number de points in la discrétisation
 //   - fz  : facteur de profondeur
-//   - buf ; buffer (pos. ou neg.) en pixels
+//   - buf ; buffer (pos. or neg.) en pixels
 // Outputs : 
-//	 - un vecteur de points Pt3dr (N+4+1 points avec le sommet de prise de vue)
+//	 - un vector de points Pt3dr (N+4+1 points with le sommet de prise de vue)
 // --------------------------------------------------------------------------------------
 std::vector<Pt3dr> discretizedFieldOfView(CamStenope * aCam, unsigned N, int fz, double buf){
 	
@@ -206,13 +206,13 @@ std::vector<Pt3dr> discretizedFieldOfView(CamStenope * aCam, unsigned N, int fz,
 } 
 
 // --------------------------------------------------------------------------------------
-// Fonction de transformation d'un "cone de visée" en nuage de points ply
+// function de transformation d'un "cone de visée" en nuage de points ply
 // --------------------------------------------------------------------------------------
 // Inputs  :
-//   - cone : une liste de points définissant le cone de visée
-//   - path : le chemin d'un fichier de sortie
+//   - cone : une list de points définissant le cone de visée
+//   - path : le chemin d'un file de sortie
 // Outputs : 
-//	 - Impression dans un fichier
+//	 - Impression in un file
 // --------------------------------------------------------------------------------------
 void fieldOfView2Ply(std::vector<Pt3dr>& cone, std::string path){
 	
@@ -271,7 +271,7 @@ void fieldOfView2Ply(std::vector<Pt3dr>& cone, std::string path){
 
 
 // --------------------------------------------------------------------------------------
-// Fonction de calcul du vecteur unitaire de visée de la caméra
+// function de computation du vector unitaire de visée de la caméra
 // --------------------------------------------------------------------------------------
 Pt3dr sightDirectionVector(CamStenope * aCam){
 	ElSeg3D s = aCam->Capteur2RayTer(Pt2dr(aCam->Sz().x/2.0, aCam->Sz().y/2.0));
@@ -283,10 +283,10 @@ Pt3dr sightDirectionVector(CamStenope * aCam){
 }
 
 // --------------------------------------------------------------------------------------
-// Fonction d'intersection d'un triangle et d'un segment
+// function d'intersection d'un triangle and d'un segment
 // 1 triangle : pt1, pt2, pt3
 // 1 segment : ps1, ps2
-// 1 profondeur maximale d'intersection (par rapport aux sommets pt1 et ps1)
+// 1 profondeur maximale d'intersection (par rapport aux sommets pt1 and ps1)
 // --------------------------------------------------------------------------------------
 bool segmentInTriangle(Pt3dr pt1, Pt3dr pt2, Pt3dr pt3, Pt3dr ps1, Pt3dr ps2, double max_depth){
 	
@@ -317,7 +317,7 @@ bool segmentInTriangle(Pt3dr pt1, Pt3dr pt2, Pt3dr pt3, Pt3dr ps1, Pt3dr ps2, do
 			return (inclusion < 1e-10);
 	}
 	
-	// Sinon recherche unique intersection
+	// else recherche unique intersection
 	double t = -inclusion/parallel;
 
 	// Intersection
@@ -344,10 +344,10 @@ bool segmentInTriangle(Pt3dr pt1, Pt3dr pt2, Pt3dr pt3, Pt3dr ps1, Pt3dr ps2, do
 }
 
 // --------------------------------------------------------------------------------------
-// Fonction de test d'intersection des surfaces deux cones
+// function de test d'intersection des surfaces deux cones
 // Inputs :
-//  - Cone 1 (liste de points 3D)
-//  - Cone 2 (liste de points 3D)
+//  - Cone 1 (list de points 3D)
+//  - Cone 2 (list de points 3D)
 //  - max_depth : profondeur maximale de l'intersection
 // --------------------------------------------------------------------------------------
 bool sightIntersect(std::vector<Pt3dr>& cone1, std::vector<Pt3dr>& cone2, double max_depth){
@@ -376,16 +376,16 @@ bool sightIntersect(std::vector<Pt3dr>& cone1, std::vector<Pt3dr>& cone2, double
 
 
 // --------------------------------------------------------------------------------------
-// Fonction principale de calcul des paires de champs de vision
+// function principale de computation des paires de champs de vision
 // --------------------------------------------------------------------------------------
 // Inputs :
-//   - string: liste des images à prendre en compte
-//   - string: dossier d'orientation des images
-//   - string: profondeur maximal de calcul (optionnelle, défaut -1 = Inf)
-//   - string: nom du fichier de sortie (optionnel, défaut cple.xml)
+//   - string: list des images à prendre en compte
+//   - string: folder d'orientation des images
+//   - string: profondeur maximal de computation (optionnelle, défaut -1 = Inf)
+//   - string: nom du file de sortie (optionnel, défaut cple.xml)
 // --------------------------------------------------------------------------------------
 // Outputs :
-//   - Un fichier xml contenant les paires de champs de vision
+//   - Un file xml contenant les paires de champs de vision
 // --------------------------------------------------------------------------------------
 cAppli_YannViewIntersect::cAppli_YannViewIntersect(int argc, char ** argv){
 	
@@ -477,7 +477,7 @@ cAppli_YannViewIntersect::cAppli_YannViewIntersect(int argc, char ** argv){
 	std::cout << "-----------------------------------------------------------------------" << std::endl;
 
 	// ---------------------------------------------------------------
-	// Calcul des paires
+	// computation des paires
 	// ---------------------------------------------------------------
 	
 	ofstream myfile;
@@ -609,11 +609,11 @@ cAppli_YannViewIntersect::cAppli_YannViewIntersect(int argc, char ** argv){
 
 
 // --------------------------------------------------------------------------------------
-// Fonction de calcul des résolutions Nx et Ny en fonction d'un paramètre de maximal
+// function de computation des résolutions Nx and Ny en function d'un paramètre de maximal
 // --------------------------------------------------------------------------------------
 // Inputs :
-//   - Nx et Ny (par référence)
-//   - Résolution maximale en x et en y
+//   - Nx and Ny (par référence)
+//   - Résolution maximale en x and en y
 //   - Extension de la zone d'étude
 // --------------------------------------------------------------------------------------
 void setResolution(int& Nx, int& Ny, int resol_max, double xmin, double xmax, double ymin, double ymax){
@@ -626,13 +626,13 @@ void setResolution(int& Nx, int& Ny, int resol_max, double xmin, double xmax, do
 } 
 
 // --------------------------------------------------------------------------------------
-// Fonction de lecture du fichier d'homographie
+// function de lecture du file d'homographie
 // --------------------------------------------------------------------------------------
 // Inputs :
-//   - nom du fichier à lire
-//   - matrice des paramètres d'homographie
+//   - nom du file à lire
+//   - matrix des paramètres d'homographie
 //   - emprise xmin, ymin, xmax, ymax
-//   - nombre de pixels en x de l'image
+//   - number de pixels en x de l'image
 //   - résolution souhaitée en x
 // --------------------------------------------------------------------------------------
 void readHomogFile(std::string mHomogFile, ElMatrix<REAL> &H, double &xmin, double &ymin, double &xmax, 
@@ -641,7 +641,7 @@ void readHomogFile(std::string mHomogFile, ElMatrix<REAL> &H, double &xmin, doub
 	std::string line;
 	std::ifstream infile(mHomogFile);
 	
-	// Test existence du fichier
+	// Test existence du file
 	std::string message = "ERROR: can't find homography file [" + std::string(mHomogFile) + "]";
 	ELISE_ASSERT(infile.good(), message.c_str());
 	
@@ -701,18 +701,18 @@ void readHomogFile(std::string mHomogFile, ElMatrix<REAL> &H, double &xmin, doub
 }
 
 // --------------------------------------------------------------------------------------
-// Fonction d'inversion de l'homographie
+// function d'inversion de l'homographie
 // --------------------------------------------------------------------------------------
 // Inputs :
 //   - pattern des images homographiées
 //   - pattern des images initiales
-//   - fichier des paramètres d'homographie
-//   - dossier d'orientation des images initiales
-//   - dossier des points homologues transformés (defaut : nom_input + "InvHomog")
-//   - arguments de types de points (binaire ou txt) et d'images produites
+//   - file des paramètres d'homographie
+//   - folder d'orientation des images initiales
+//   - folder des points homologues transformés (defaut : nom_input + "InvHomog")
+//   - arguments de types de points (binaire or txt) and d'images produites
 // --------------------------------------------------------------------------------------
 // Outputs :
-//   - points homologues dans l'espace image de depart
+//   - points homologues in l'espace image de depart
 // --------------------------------------------------------------------------------------
 cAppli_YannInvHomolHomog::cAppli_YannInvHomolHomog(int argc, char ** argv){
 	
@@ -785,7 +785,7 @@ cAppli_YannInvHomolHomog::cAppli_YannInvHomolHomog(int argc, char ** argv){
 	}
 
 	// ---------------------------------------------------------------
-	// Impression console pour confirmation des paramètres
+	// Impression console for confirmation des paramètres
 	// ---------------------------------------------------------------
 	printf ("H = %10.3f %10.3f %10.3f    BBOX = %7.2f %7.2f \n", H(0,0), H(0,1), H(0,2), xmin, xmax);
 	printf ("    %10.3f %10.3f %10.3f           %7.2f %7.2f \n", H(0,3), H(0,4), H(0,5), ymin, ymax);
@@ -918,12 +918,12 @@ cAppli_YannInvHomolHomog::cAppli_YannInvHomolHomog(int argc, char ** argv){
 
 
 // --------------------------------------------------------------------------------------
-// Fonction d'application de l'homographie
+// function d'application de l'homographie
 // --------------------------------------------------------------------------------------
 // Inputs :
-//   - string: Pattern d'images sur lesquelles appliquer la transformation
-//   - string: Fichier des paramètres d'homographie
-//   - string: Répertoire de sortie (optionnel) pour la création des images
+//   - string: Pattern d'images on lesquelles appliquer la transformation
+//   - string: file des paramètres d'homographie
+//   - string: Répertoire de sortie (optionnel) for la création des images
 //   - string: Résolution (maximale) des images générées
 // --------------------------------------------------------------------------------------
 // Outputs :
@@ -993,7 +993,7 @@ cAppli_YannApplyHomog::cAppli_YannApplyHomog(int argc, char ** argv){
 	setResolution(Nx, Ny, resolution, xmin, xmax, ymin, ymax);
 
 	// ---------------------------------------------------------------
-	// Impression console pour confirmation des paramètres
+	// Impression console for confirmation des paramètres
 	// ---------------------------------------------------------------
 	printf ("H = %10.3f %10.3f %10.3f    BBOX = %7.2f %7.2f \n", H(0,0), H(0,1), H(0,2), xmin, xmax);
 	printf ("    %10.3f %10.3f %10.3f           %7.2f %7.2f \n", H(0,3), H(0,4), H(0,5), ymin, ymax);
@@ -1010,7 +1010,7 @@ cAppli_YannApplyHomog::cAppli_YannApplyHomog(int argc, char ** argv){
 	std::cout << sep << std::endl;
 	
 	// ---------------------------------------------------------------
-	// Liste des images a transformer
+	// list des images a transformer
 	// ---------------------------------------------------------------
 	std::string aNameIn;
 	std::string aNameOut;
@@ -1143,22 +1143,22 @@ cAppli_YannApplyHomog::cAppli_YannApplyHomog(int argc, char ** argv){
 
 
 // --------------------------------------------------------------------------------------
-// Fonction principale de calcul de l'homographie
+// function principale de computation de l'homographie
 // --------------------------------------------------------------------------------------
 // Inputs :
-//   - string: Fichier de type "mesure-S3D.xml" de points dans un repère terrain
-//   - string: Fichier de type "mesure-S2D.xml" de points mesurés dans plusieurs images
-//   - string: Répertoire d'orientation (optionnel) pour rotation dans un repère caméra
-//   - string: Nom de l'image centrale (optionnel) pour forcer le choix de la référence
-//   - double: marge (entre 0 et 1) à appliquer sur les bords (défaut: 0.3))
+//   - string: file de type "mesure-S3D.xml" de points in un repère terrain
+//   - string: file de type "mesure-S2D.xml" de points mesurés in plusieurs images
+//   - string: Répertoire d'orientation (optionnel) for rotation in un repère caméra
+//   - string: Nom de l'image centrale (optionnel) for forcer le choix de la référence
+//   - double: marge (between 0 and 1) à appliquer on les bords (défaut: 0.3))
 // --------------------------------------------------------------------------------------
 // Outputs :
-//   - Un fichier xml contenant les 9 paramètres de l'homographie calculée + emprise
-//   - Affichage à l'écran des résidus (d'homographie et de recalage sur la plan)
+//   - Un file xml contenant les 9 paramètres de l'homographie calculée + emprise
+//   - Affichage à l'écran des résidus (d'homographie and de recalage on la plan)
 // --------------------------------------------------------------------------------------
-// Note : la fonction nécessite qu'au moins une image de mesure-S2D.xml contienne un 
+// Note : la function nécessite qu'au moins une image de mesure-S2D.xml contienne un 
 // minimum de 4 points mesurés. Lorsque l'image centrale n'est pas définie, le programme
-// récupère automatiquement l'image contenant le plus de points dans mesure-S2D.xml.
+// récupère automatiquement l'image contenant le plus de points in mesure-S2D.xml.
 // --------------------------------------------------------------------------------------
 
 cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
@@ -1180,7 +1180,7 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
 	
 	
 	// ---------------------------------------------------------------
-	// Si l'image de référence est définie
+	// if l'image de référence est définie
 	// ---------------------------------------------------------------
 	
 	if (EAMIsInit(&mNameImRef)){
@@ -1189,13 +1189,13 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
         mICNM = mEASF.mICNM;
         mDir = mEASF.mDir ;
 		
-		// Test image centrale ne contient qu'une image (si définie)
+		// Test image centrale ne contient qu'une image (if définie)
 		ELISE_ASSERT((mEASF.SetIm()->size() == 1), "ImRef must refer to exactly 1 image");
 		
 	}
 	
 	// ---------------------------------------------------------------
-	// Cohérence dossier d'orientation
+	// Cohérence folder d'orientation
 	// ---------------------------------------------------------------
 	if (EAMIsInit(&mCamRot)){
 		ELISE_ASSERT(EAMIsInit(&mDirOri), "No orientation folder provided for camera frame rotation")
@@ -1211,14 +1211,14 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
 	}
 		
 	// ---------------------------------------------------------------
-	// Récupération des points dans le repère image (2D)
+	// Récupération des points in le repère image (2D)
 	// ---------------------------------------------------------------
 	mDAF2D = StdGetFromPCP(mName2D, SetOfMesureAppuisFlottants);
 	std::cout << "Number of images in measurement file [" << mName2D;
 	std::cout << "]: " << mDAF2D.MesureAppuiFlottant1Im().size() << std::endl;
 
 
-	// Conversion liste -> vecteur
+	// Conversion list -> vector
 	std::vector<cMesureAppuiFlottant1Im> MESURE_IMAGES;
 	for (std::list<cMesureAppuiFlottant1Im>::const_iterator itM= mDAF2D.MesureAppuiFlottant1Im().begin();
          itM != mDAF2D.MesureAppuiFlottant1Im().end();
@@ -1279,7 +1279,7 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
 	int Nx_org = im_size_origin.x;
 	int Ny_org = im_size_origin.y;
 
-	// Test nombre de points suffisant
+	// Test number de points suffisant
 	const size_t N = MESURE_IMAGES[selected].OneMesureAF1I().size();
 	std::string tmp = "ERROR: not enough points in image measurement file (" + std::to_string(N) + ")";
 
@@ -1300,7 +1300,7 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
 	std::cout << sep << std::endl;
 	
 	// ---------------------------------------------------------------
-	// Récupération des points dans le repère terrain (3D)
+	// Récupération des points in le repère terrain (3D)
 	// ---------------------------------------------------------------
 	mDAF3D = StdGetFromPCP(mName3D, DicoAppuisFlottant);
 	std::cout << "Number of 3D ground points in [" << mName3D;
@@ -1322,7 +1322,7 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
 
 
 	// ---------------------------------------------------------------
-	// Appariemment des points IMAGE <-> TERRAIN
+	// Appariemment des points image <-> TERRAIN
 	// ---------------------------------------------------------------
 	std::vector<double> P2D[2];
 	std::vector<double> P3D[3];
@@ -1370,7 +1370,7 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
     }
 	
 	// ---------------------------------------------------------------
-	// Rotation des points du repère terrain dans l'espace caméra
+	// rotation des points du repère terrain in l'espace caméra
 	// ---------------------------------------------------------------
     ElMatrix<REAL> ROT(3,3,0.0);
     if ((EAMIsInit(&mCamRot)) && (mCamRot)){
@@ -1419,7 +1419,7 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
 	double c = Xplan(0,2);
 	double d = -1;
 	
-	// Résidus et rmse
+	// Résidus and rmse
 	double rmse_plan = 0;
 	std::cout << "Point planarization";
 	double abc_norm = sqrt(Xplan.L2());
@@ -1439,7 +1439,7 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
 	d /= abc_norm;
 	
 	
-	// Rotation
+	// rotation
 	double xp = 0; double yp = 0; double zp = -d/c;
 	double xq = 1; double yq = 0; double zq = -(a + d)/c;
 	double pq_norm = sqrt((xq-xp)*(xq-xp) +  (yq-yp)*(yq-yp) + (zq-zp)*(zq-zp));
@@ -1506,7 +1506,7 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
 	std::cout << sep << std::endl;
 	
 	// ---------------------------------------------------------------	
-	// Calcul de l'homographie
+	// computation de l'homographie
 	// ---------------------------------------------------------------
 	
 	L2SysSurResol  system(8);               // Solveur moindres carrés
@@ -1616,8 +1616,8 @@ cAppli_YannEstimHomog::cAppli_YannEstimHomog(int argc, char ** argv){
 
 
 // ----------------------------------------------------------------------------
-//  A chaque commande MicMac correspond une fonction ayant la signature du main
-//  Le lien se fait dans src/CBinaires/mm3d.cpp
+//  A chaque commande MicMac correspond une function ayant la signature du main
+//  Le lien se fait in src/CBinaires/mm3d.cpp
 // ----------------------------------------------------------------------------
 
 // (1) Estimation de l'homographie
@@ -1638,7 +1638,7 @@ int CPP_YannInvHomolHomog(int argc,char ** argv){
    return EXIT_SUCCESS;
 }
   
-// (4) Calcul de champ de vision
+// (4) computation de champ de vision
 int CPP_YannViewIntersect(int argc,char ** argv){
    cAppli_YannViewIntersect(argc,argv);
    return EXIT_SUCCESS;

@@ -100,7 +100,7 @@ class PolygoneClipBandeVert
 
 
 
-// Passe par un typedef IDIOT a cause de bug sur gcc version 2.95.2 19991024  (release)
+// Passe par un typedef IDIOT a cause de bug on gcc version 2.95.2 19991024  (release)
 typedef CalcMaxLoc<INT,INT,ElSTDNS less<INT> > ElH_CML;
 
 
@@ -146,7 +146,7 @@ class ElHoughImplem : public ElHough
 
 
 
-    // XXX_G2S, XXX_S2G  : transfomation "Grille to Space" ou "Space to Grille"
+    // XXX_G2S, XXX_S2G  : transfomation "Grille to Space" or "Space to Grille"
 
 
         REAL  G2S_Teta(REAL iTeta)const{ return iTeta*mStepTeta;}
@@ -205,7 +205,7 @@ class ElHoughImplem : public ElHough
                  Im2D_U_INT1 ImMod,
                  Im2D_U_INT1 ImAng,
                  REAL        IncAng,
-                 bool        AngIsGrad  // Si vrai += 90 degre
+                 bool        AngIsGrad  // if vrai += 90 degre
              );
          Im2D_INT4 PdsAng(Im2D_U_INT1,Im2D_U_INT1,REAL Incert,bool);
 
@@ -302,15 +302,15 @@ class ElHoughImplem : public ElHough
         INT4 **      mDataHA;
         Im2D_INT4    mHouhAcculInit;
         INT4 **      mDataHAInit;
-        Im2D_U_INT1  mImageXY;  // Pointe sur l'image a analsyer
+        Im2D_U_INT1  mImageXY;  // Pointe on l'image a analsyer
         U_INT1 **    mDataImXY;
-        Im2D_INT4    mImageRT;  // Pointe sur l'image a analsyer
+        Im2D_INT4    mImageRT;  // Pointe on l'image a analsyer
         INT **       mDataImRT;
 
         Im1D_U_INT1  mPdsEcTeta;
         U_INT1 *     mDataPdsEcTeta;
 
-		Im2D_U_INT1  mMarqBCVS;     // Tampon pour BandeConnectedVsup
+		Im2D_U_INT1  mMarqBCVS;     // Tampon for BandeConnectedVsup
 
 		ElH_CML mCML;
 

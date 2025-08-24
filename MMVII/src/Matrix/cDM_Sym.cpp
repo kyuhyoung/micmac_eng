@@ -199,7 +199,7 @@ template <class Type>  void cDenseMatrix<Type>::TransposeIn(tDM & aM2) const
      MMVII_INTERNAL_ASSERT_medium(aM2.Sz() == PSymXY(Sz()) ,"Bad size for in place transposition")
      MMVII_INTERNAL_ASSERT_medium(&(aM2.DIm()) != &(this->DIm()) ,"Use TransposeIn with same matrix");
 
-     // Rest du bug bizarre sur :RandomSquareRegMatrix
+     // Rest du bug bizarre on :RandomSquareRegMatrix
      // cPixBox<2> aBox = *this;
      // for (const auto & aP : aBox)
 /*

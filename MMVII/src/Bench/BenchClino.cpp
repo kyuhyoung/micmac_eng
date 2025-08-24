@@ -28,7 +28,7 @@ namespace MMVII
         // Vertical
         tPt3dr aVertical (0.0, 0.0, -1.0);
         
-        // Image orientation
+        // image orientation
         cDenseMatrix<tREAL8> aImageOrientation = cDenseMatrix<tREAL8>::Identity(3);
         // values of the two clinometers
         tREAL8 aClinoValue = 0;
@@ -137,7 +137,7 @@ namespace MMVII
         cDenseVect<tREAL8> aVUk = aSetIntervMultObj.GetVUnKnowns();
         cResolSysNonLinear<tREAL8>  aSys = cResolSysNonLinear<tREAL8>(eModeSSR::eSSR_LsqNormSparse,aVUk);
 
-        // Freeze Camera unknowns : without GCP, resolution cannot converge
+        // Freeze camera unknowns : without GCP, resolution cannot converge
         aSys.SetFrozenAllCurrentValues(aSensorCamPC);
         aSys.SetFrozenAllCurrentValues(aSensorCamPC2);
         aSys.SetFrozenAllCurrentValues(aSensorCamPC3);
@@ -214,13 +214,13 @@ namespace MMVII
         tREAL8 aAmpl = 1e-4;
 
         // Create camera : look at the ground with a small random rotation
-        // Camera is in the 10 meters (distance L1) of the point (15, 15, 100)
+        // camera is in the 10 meters (distance L1) of the point (15, 15, 100)
         // Then camera will be never exactly above the GCP
         cPtxd<tREAL8,3> aCameraTr = {15.0, 15.0, 100.0};
         cPtxd<tREAL8,3> aRandomTr = cPtxd<tREAL8,3>::PRandC()*aAmplTr;
         cPtxd<tREAL8,3> aInitTr = aCameraTr + aRandomTr;
 
-        // Camera must be oriented toward the GCP
+        // camera must be oriented toward the GCP
         // Else, if the GCP is not visible by the camera, then the least square will not converge 
         cPtxd<tREAL8,3> aP0 = VUnit(-aInitTr);
         cPtxd<tREAL8,3> aP1 = VUnit(VOrthog(aP0));

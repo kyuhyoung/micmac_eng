@@ -190,7 +190,7 @@ cAppliTramage::cAppliTramage(int argc,char ** argv,int aCanal,cAppliTramage * aM
 
     Pt2di aSzMax = round_ni(aSzMur /aPasPattern);
 
-    //    Parametres 
+    //    parameters 
 
     Tiff_Im aTif(mNameIn.c_str());
     mNbCh = aTif.nb_chan();
@@ -227,7 +227,7 @@ std::string cAppliTramage::NameOut(const std::string & anAdd)
 */
     }
 
-    //  Calcul de l'image en niveau de gris
+    //  computation de l'image en niveau de gris
 
 
     std::cout << aSzOutGr << aResol << "\n";
@@ -320,7 +320,7 @@ std::string cAppliTramage::NameOut(const std::string & anAdd)
     }
 
 
-    //  Calcul de l'image binaire
+    //  computation de l'image binaire
     mSzBin = aSzOutGr * aSzGrain;
     mIRes = Im2D_U_INT1(mSzBin.x,mSzBin.y);
 

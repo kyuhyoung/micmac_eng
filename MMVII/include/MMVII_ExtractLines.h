@@ -167,11 +167,11 @@ class cHoughTransform
          int                mNbRho;       ///< Number of Rho for hough-accum
 
          cIm1D<tREAL8>      mTabSin;      ///< Tabulation of sinus for a given index of teta
-         cDataIm1D<tREAL8>& mDTabSin;     ///< Data Image of "mTabSin"
+         cDataIm1D<tREAL8>& mDTabSin;     ///< Data image of "mTabSin"
          cIm1D<tREAL8>      mTabCos;      ///< Tabulation of co-sinus for a given index of teta
-         cDataIm1D<tREAL8>& mDTabCos;     ///< Data Image of "mTabCos"
+         cDataIm1D<tREAL8>& mDTabCos;     ///< Data image of "mTabCos"
          cIm2D<tREAL4>      mAccum;       ///<  Accumulator of Hough
-         cDataIm2D<tREAL4>& mDAccum;      ///< Data Image of "mAccum"
+         cDataIm2D<tREAL4>& mDAccum;      ///< Data image of "mAccum"
 };
 
 /**  Class for storing Grad + its norm
@@ -203,8 +203,8 @@ template <class Type> class  cImGradWithN : public cImGrad<Type>
      private :
 	cPt2dr   OneRefinePos(const cPt2dr &) const; ///< One iteration of refinement
  
-        cIm2D<Type>       mNormG;   ///< Image of norm of gradient
-        cDataIm2D<Type>&  mDataNG;  ///<  Data Image of "mNormG"
+        cIm2D<Type>       mNormG;   ///< image of norm of gradient
+        cDataIm2D<Type>&  mDataNG;  ///<  Data image of "mNormG"
 };
 /// Compute the deriche + its norm
 template<class Type> void ComputeDericheAndNorm(cImGradWithN<Type> & aResGrad,const cDataIm2D<Type> & aImIn,double aAlpha) ;
@@ -375,7 +375,7 @@ template <class Type> class cOptimSeg_ValueIm : public cOptimPosSeg
       private :
          tREAL8                    mStepOnSeg;   ///< Sampling step on the seg
          int                       mNbOnSeg;     ///< Number of points (computed from mStepOnSeg)
-         const cDataIm2D<Type> & mDataIm;      ///<  Image on which it is computed
+         const cDataIm2D<Type> & mDataIm;      ///<  image on which it is computed
          tREAL8                    mTargetValue; ///<
 };
 

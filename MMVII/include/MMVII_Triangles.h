@@ -84,7 +84,7 @@ template <class Type,const int Dim> class  cTriangle
        Type MinDist() const;
        /// Area of the triangle
        Type Area() const;
-       /// Point equidistant to 3 point,  To finish for dim 3
+       /// point equidistant to 3 point,  To finish for dim 3
        tPt CenterInscribedCircle() const;
        const tPt & Pt(int aK) const;   ///< Accessor
        const tPt & PtCirc(int aK) const;   ///<  %3, always correc even >3 or <0

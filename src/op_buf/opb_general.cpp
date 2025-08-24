@@ -100,7 +100,7 @@ class Buf_Fonc_Op_buf : public Mcheck
                        bool                      aWlineInit
                 );
 
-         // the arg to buf fonction is completly unused, so one can pass
+         // the arg to buf function is completly unused, so one can pass
          // (REAL *) 0; aim od this args is to allow a generic call in templates
 
          virtual void  *buf_values()  = 0;

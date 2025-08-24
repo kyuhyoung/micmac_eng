@@ -60,7 +60,7 @@ void MakeTiffRed2
 
 void bench_reduc_image(Pt2di aSz,Tiff_Im::PH_INTER_TYPE aType)
 {
-    // Creation d'un fichier tiff 
+    // Creation d'un file tiff 
     Tiff_Im aTif
             (
                  ELISE_BFI_DATA_DIR "tmp.tif",
@@ -183,7 +183,7 @@ void bench_reduc_image(Pt2di aSz,Tiff_Im::PH_INTER_TYPE aType)
     for (INT aK=0; aK<aNbCh ; aK++)
        BENCH_ASSERT(aSigm[aK]==0) ;
     
-    // Creation d'un fichier tiff 
+    // Creation d'un file tiff 
 
     system(RM ELISE_BFI_DATA_DIR "tmp.tif");
     system(RM ELISE_BFI_DATA_DIR "tmpRed.tif");

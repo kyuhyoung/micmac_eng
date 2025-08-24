@@ -40,32 +40,32 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 //  Modifieur speciaux des XML
 //
-//      @$#   cles sur la valeur pour envisager qu'il puissent etres speciaux
+//      @$#   cles on la value for envisager qu'il puissent etres speciaux
 //
-//       ExitOnBrkp="@$#"    -> Modifie le comportement en cas d'erreur
-//       Subst="@$#1"        -> Dans le sous arbres, il faut subsituer les symbole
-//       NameDecl="@$#1"     -> Dans les attribut qui suivent, les declaration sont
+//       ExitOnBrkp="@$#"    -> Modifie le comportement en cas d'error
+//       Subst="@$#1"        -> in le under arbres, il faut subsituer les symbole
+//       NameDecl="@$#1"     -> in les attribut qui suivent, les declaration sont
 //                              des definitions de symboles
 //
 //       DirXmlSpec="@$#..."  -> obsolete
 //
 //
-//      ${NikonPatternNumero}  -> a remplacer par la valeur dans le dictionnaire courant de NikonPatternNumero
+//      ${NikonPatternNumero}  -> a remplacer par la value in le dictionnaire courant de NikonPatternNumero
 //
-//      Dans une declaration
-//      NikonPatternNumero=@KKKK  -> indique qu'il ne faut modifier le dictionnaire que si
-//                                 le symbole n'a pas encore de valeur
+//      in une declaration
+//      NikonPatternNumero=@KKKK  -> indique qu'il ne faut modifier le dictionnaire que if
+//                                 le symbole n'a pas encore de value
 //
 //
-//  Ligne de commande :
+//  line de commande :
 //
-//         aTag=machin  -> modifie le tag aTag, en lui donnant la valeur machin,
-//                         assez restrictif sur la non ambiguite qu'il doit y avoir
-//                         sur aTag (l'arbre formel doit permettre d'apporter la preuve que
+//         aTag=machin  -> modifie le tag aTag, en lui donnant la value machin,
+//                         assez restrictif on la non ambiguite qu'il doit y avoir
+//                         on aTag (l'arbre formel doit permettre d'apporter la preuve que
 //                         toto est au + unique)
 //
-//        @aTag=machin  -> se contente de verifier que l'arbre effectif est unique et modifie
-//        %anAttrId=machin -> va modifier le tag dont l'attribut Id vaut anAttrId (doit existe et unique)
+//        @aTag=machin  -> se contente de verifier que l'arbre effectif est unique and modifie
+//        %anAttrId=machin -> va modifier le tag dont l'attribut Id vaut anAttrId (doit existe and unique)
 //        +anAttrId=machin -> va modifier le dictionnaire du  cInterfChantierNameManipulateur
 //
 //
@@ -223,18 +223,18 @@ class cInterfChantierNameManipulateur
          std::string  NameOriStenope(const tKey & aKeyOri,const std::string & aNameIm);
          std::string  StdNameCalib(const std::string & anOri,const std::string & aNameIm);  // =>  Ori-XX/AutoCal ...
 
-//  !!!! CONVENTION DIFFERENTES ENTRE StdCamStenOfNames  et les deux AUTRES , 
+//  !!!! CONVENTION DIFFERENTES between StdCamStenOfNames  and les deux AUTRES , 
 //  !! NAME puis ORI
          CamStenope *  StdCamStenOfNames(const std::string & aNameIm,const std::string & anOri);  // => Ori-XX/Orientation...
-         CamStenope *  StdCamStenOfNamesSVP(const std::string & aNameIm,const std::string & anOri); // => return 0 si Ori non existed
+         CamStenope *  StdCamStenOfNamesSVP(const std::string & aNameIm,const std::string & anOri); // => return 0 if Ori non existed
 
 //  !!!  ORI pui NAME
          std::string  StdNameCamGenOfNames(const std::string & anOri,const std::string & aNameIm);
          cBasicGeomCap3D *  StdCamGenerikOfNames(const std::string & anOri,const std::string & aNameIm,bool SVP=false);  // => Ori-XX/Orientation...
 
-         // Ori-XX/Orientation... exist, sinon  Ori-XX/GB-Orientation..
+         // Ori-XX/Orientation... exist, else  Ori-XX/GB-Orientation..
          // cBasicGeomCap3D * StdCamGenOfNames(const std::string & anOri,const std::string & aNameIm,bool SVP=false);
-         // return "" si rien trouve
+         // return "" if rien trouve
 
 
          CamStenope * GlobCalibOfName(const std::string  & aNameIm,const std::string & aPrefOriCal,bool ModeFraser /* Genre un Fraser Basixc ss dist*/ ); // No Dist if aPrefOriCal=""
@@ -242,7 +242,7 @@ class cInterfChantierNameManipulateur
 
          std::list<std::string> GetListImByDelta(const cListImByDelta &,const std::string & aN0);
 
-         std::vector<std::string> StdGetVecStr(const std::string &);  // Cas [A,Bn..] , ou toto.txt lit fichie, sinon singleton
+         std::vector<std::string> StdGetVecStr(const std::string &);  // Cas [A,Bn..] , or toto.txt lit fichie, else singleton
          cResulMSO MakeStdOrient(std::string &,bool AccepNone,std::string * aNameIm=0,bool SVP=false);
 
          cSetName *  KeyOrPatSelector(const std::string &);
@@ -250,14 +250,14 @@ class cInterfChantierNameManipulateur
 
          const Pt3dr  & GetPt3dr(const std::string& anIdBase,const std::string& anIdVal) ;
          const double  & GetScal(const std::string& anIdBase,const std::string& anIdVal) ;
-    // Si le fichier n'existe pas , mais que le sym existe,
+    // if le file n'existe pas , but que le sym existe,
     // le cree
         std::string NamePackWithAutoSym
                     (
                         const std::string & aKey,
                         const std::string & aName1,
                         const std::string & aName2,
-                        bool  SVP = false  // Si SVP et aucun existe, renvoie le 1er
+                        bool  SVP = false  // if SVP and aucun existe, renvoie le 1er
                     );
 
 
@@ -302,16 +302,16 @@ class cInterfChantierNameManipulateur
         virtual tNuplet  Inverse(const tKey &,const tNuplet&) =0;
         virtual const bool  * SetIsIn(const tKey & aKey,const std::string & aName) =0;
         virtual bool AssocHasKey(const tKey & aKey) const = 0;
-        std::string StdKeyOrient(const tKey &); // Elle meme si existe sinon NKS
+        std::string StdKeyOrient(const tKey &); // Elle meme if existe else NKS
 
         virtual bool SetHasKey(const tKey & aKey) const = 0;
-    //  Renvoie true si c'est un fichier et pas une cle
-    //  Renvoie false si c'est une cle et pas un fichier
-    //  Genere une erreur si c'est aucun ou les deux
+    //  Renvoie true if c'est un file and pas une cle
+    //  Renvoie false if c'est une cle and pas un file
+    //  Genere une error if c'est aucun or les deux
     bool  IsFile(const std::string &);
 
-         // Si IsFile(aKeyOrFile), le renvoie aKeyOrFile sinon utilise comme cle
-     // pour transformer anEntry
+         // if IsFile(aKeyOrFile), le renvoie aKeyOrFile else utilise comme cle
+     // for transformer anEntry
          std::string  StdCorrect
                   (
                   const std::string & aKeyOrFile,
@@ -326,11 +326,11 @@ class cInterfChantierNameManipulateur
               bool Direct
                       );
 
-         // Prof par defaut 2, par compat avec l'existant
+         // Prof par defaut 2, par compat with l'existant
          std::list<std::string>  StdGetListOfFile(const std::string & aKeyOrPat, int aProf=2,bool ErrorWhenEmpty=true);
      // Quatre  dictionnaire sont charges :
      //   Priorite 0 :
-     //   Priorite 1 : aDir/aName.Val()  (si aName est initialise)
+     //   Priorite 1 : aDir/aName.Val()  (if aName est initialise)
      //   Priorite 2 : aDir/LocalChantierDescripteur.xml (s'il existe)
      //   Priorite 3 : applis/XML-Pattron/DefautChantierDescripteur.xml
      //
@@ -345,7 +345,7 @@ class cInterfChantierNameManipulateur
 
            static cInterfChantierNameManipulateur* BasicAlloc(const std::string & aDir);
 
-      // A cause du facteur d'echelle, l'a priori depend de la paire d'image a
+      // A cause du facteur d'scale, l'a priori depend de la paire d'image a
       // apparier
        std::pair<cCompileCAPI,cCompileCAPI>
             APrioriAppar
@@ -353,7 +353,7 @@ class cInterfChantierNameManipulateur
 	      const std::string & aN2,
 	      const std::string & aKEY1,
 	      const std::string & aKEY2,
-	      double              aSzMax,  // Si >0 ajuste les echelle pour que
+	      double              aSzMax,  // if >0 ajuste les scale for que
 	                                     // la plus grande dimension soit aSzMax
 	      bool forceTMP //forbid using original picture
 	     );
@@ -371,7 +371,7 @@ class cInterfChantierNameManipulateur
       void setDir( const std::string &i_directory );
           cArgCreatXLMTree &  ArgTree();
 
-         // Assez sale, interface pour aller taper dans
+         // Assez sale, interface for aller taper in
          // StdChantierMonoManipulateu
            virtual void CD_Add(cChantierDescripteur *);
            virtual const cBatchChantDesc * BatchDesc(const tKey &) const = 0;
@@ -396,10 +396,10 @@ class cInterfChantierNameManipulateur
          void SetKeySuprAbs2Rel(std::string * aStr);
 
 
-          // Pour les problemes de noms absolus laisses dans les fichier
+          // for les problemes de noms absolus laisses in les file
           void  StdTransfoNameFile(std::string &);
 
-          // Pour les problemes de noms absolus laisses dans les fichier
+          // for les problemes de noms absolus laisses in les file
           void SetMkDB(const cMakeDataBase &);
           void MkDataBase();
           void  AddMTD2Name(std::string & aName,const std::string & aSep,double aMul);
@@ -436,7 +436,7 @@ class cInterfChantierNameManipulateur
           cMakeDataBase  *  mMkDB;
 
           static cInterfChantierNameManipulateur * TheGlob;
-          std::map<std::string,CamStenope *>       mMapName2Calib; // Utilise avec GlobCamOfName
+          std::map<std::string,CamStenope *>       mMapName2Calib; // Utilise with GlobCamOfName
 };
 
 
@@ -535,30 +535,30 @@ cResultSubstAndStdGetFile
 
 
 
-//    soit A l'aphabet, A* l'ensemble des mots sur A,
-//    A*+ l'ensemble des Nuplets (N!=0,  N variable) sur A*
+//    soit A l'aphabet, A* l'ensemble des mots on A,
+//    A*+ l'ensemble des Nuplets (N!=0,  N variable) on A*
 //
-//   cInterfNameCalculator est une classe pour representer l'interface des
-//   objets "fonction de A*+ dans A*+"
+//   cInterfNameCalculator est une class for representer l'interface des
+//   objets "function de A*+ in A*+"
 //
 //   Direct renvoie l'image d'un  N - uplet de mots; s'il n'a pas d'image
-//   (il s'agit d'une fonction) le mot Def est renvoe
+//   (il s'agit d'une function) le mot Def est renvoe
 //
-//   La fonction inverse (pas toujours utile) renvoie par defaut le N-uplet indefini
+//   La function inverse (pas toujours utile) renvoie par defaut le N-uplet indefini
 //
 //
-//   cInterfChantierNC est une application de A x A*+  dans  A*+  (un parametre
+//   cInterfChantierNC est une application de A x A*+  in  A*+  (un parameter
 //   supplementaire, la "cle" permet de specifier parmi les associations possible)
 //
 //
-//    cInterfChantierSetNC est  une application de A dans A*+, on peut acceder
+//    cInterfChantierSetNC est  une application de A in A*+, on peut acceder
 //    a des ensemble de mot a partir d'une cle
 //
 //
 //
 //   cInterfChantierNameManipulateur est l'interface decrivant les manipulation de noms
-//   utiles pour decrire un chantier, il permet d'acceder a des ensemble de mots
-//   et a des transformation de mots a partir de cles.
+//   utiles for decrire un chantier, il permet d'acceder a des ensemble de mots
+//   and a des transformation de mots a partir de cles.
 //
 
 class cInterfNameCalculator;
@@ -576,7 +576,7 @@ class cInterfNameCalculator
         typedef  std::vector<std::string>   tNuplet;
         virtual ~cInterfNameCalculator();
 
-    static  const tNuplet & NotDef();  // size 0; Valeur renoyee en cas d'echec
+    static  const tNuplet & NotDef();  // size 0; value renoyee en cas d'echec
     static bool IsDefined(const tNuplet &);
 
     static cInterfNameCalculator * StdCalcFromXML
@@ -636,7 +636,7 @@ class cInterfChantierSetNC
          typedef  std::vector<std::string>   tSet;
      typedef  std::string             tKey;
 
-       // renvoie 0 si pas trouve
+       // renvoie 0 if pas trouve
          virtual const tSet *  Get(const tKey &) = 0;
      virtual const bool  * SetIsIn(const tKey &,const std::string & aName) = 0;
      virtual bool SetHasKey(const tKey & aKey) const=0;
@@ -775,7 +775,7 @@ class cCompileCAPI : public cContenuAPrioriImage
     Pt2dr Rectif2Init(const Pt2dr &);
     const std::string & NameRectif() const;
      private :
-        // Valeur qui ne tient pas compte des bords
+        // value qui ne tient pas compte des bords
     Pt2dr V0Init2Rectif(const Pt2dr &);
     Pt2dr V0Rectif2Init(const Pt2dr &);
 
@@ -855,7 +855,7 @@ class cStdChantierMonoManipulateur : public cInterfChantierNameManipulateur
          const double * SvpGetScal(const std::string& anIdBase,const std::string& anIdVal) const;
      private :
 
-         // REF A EXEMPLE APRE MACROADDGETBASE dans  ChantierNameAssoc.cpp
+         // REF A EXEMPLE APRE MACROADDGETBASE in  ChantierNameAssoc.cpp
          void AddBase(const cBaseDataCD&);
          const tSet *  Get(const tKey &) ;
          tNuplet  Direct(const tKey &,const tNuplet&);
@@ -965,7 +965,7 @@ class  cSetName
           cSetName(cInterfChantierNameManipulateur *,const cSetNameDescriptor &);
           bool SetBasicIsIn(const std::string & aName);
 
-          // ce devrait etre SetBasicIsIn, mais par compat avec ce qui marche on ne change pas
+          // ce devrait etre SetBasicIsIn, but par compat with ce qui marche on ne change pas
           bool IsSetIn(const std::string & aName);
 
           const cSetNameDescriptor & SND() const;
@@ -1070,13 +1070,13 @@ class cDicoChantierNC : public cInterfChantierNC
 {
     public :
 
-       // Pour l'instant, conservatrice : erreur si plusieur fois la meme Key
+       // for l'instant, conservatrice : error if plusieur fois la meme Key
         void Add(cInterfChantierNameManipulateur *,const cKeyedNamesAssociations &);
     private :
         void PrivateAdd(const tKey &,cInterfNameCalculator *);
 
-        // Gere les @ : si la cle n'existe pas  et possede un@, essaye de la construire a
-        // a partir de la cle sans @
+        // Gere les @ : if la cle n'existe pas  and possede un@, essaye de la construire a
+        // a partir de la cle without @
         std::map<tKey,cInterfNameCalculator *>::iterator  StdFindKey(const tKey & aKey);
     bool AssocHasKey(const tKey & aKey) const;
         tNuplet  Direct(const tKey &,const tNuplet&) ;
@@ -1125,9 +1125,9 @@ ElMatrix<double> ImportMat(const cTypeCodageMatr & aCM);
 
 // Return the cParamOrientSHC of a given name
 cParamOrientSHC * POriFromBloc(cStructBlockCam & aBloc,const std::string & aName,bool SVP);
-// Return the Rotation that transformate from Cam Coord to Block coordinates (in fact coord of "first" cam)
+// Return the rotation that transformate from Cam Coord to Block coordinates (in fact coord of "first" cam)
 ElRotation3D  RotCamToBlock(const cParamOrientSHC & aPOS);
-// Return the Rotation that transformate from Cam1 Coord to Cam2 Coord
+// Return the rotation that transformate from Cam1 Coord to Cam2 Coord
 ElRotation3D  RotCam1ToCam2(const cParamOrientSHC & aPOS1,const cParamOrientSHC & aPOS2);
 
 
@@ -1170,7 +1170,7 @@ cOrientationExterneRigide From_Std_RAff_C2M
                           );
 
 
-// Fonctionne avec une calib ou une camera orientee
+// Fonctionne with une calib or une camera orientee
 CamStenope * CamOrientGenFromFile(const std::string & aNameFile,cInterfChantierNameManipulateur * anICNM, bool throwAssert = true);
 
 CamStenope * BasicCamOrientGenFromFile(const std::string & aNameFile);
@@ -1253,7 +1253,7 @@ ElAffin2D Xml2EL(const cTplValGesInit<cAffinitePlane> &);
 eTypeProj Xml2EL(const eTypeProjectionCam &);
 eTypeProjectionCam El2Xml(const eTypeProj &);
 
-// Encapsulee si + tard on gere qq ch de + complique comme
+// Encapsulee if + tard on gere qq ch de + complique comme
 // des piles de transfo
 void AddAffinite(cOrientationConique &,const ElAffin2D &);
 ElAffin2D AffCur(const cOrientationConique & anOri);
@@ -1290,8 +1290,8 @@ ElCamera * Cam_Gen_From_File
 
 cFichier_Trajecto * GetTrajFromString(const std::string & aNameFile,bool toMemo);
 
-// Pour l'instant, on n'a besoin que du minimum (savoir si deux element
-// sont dans la meme classe)
+// for l'instant, on n'a besoin que du minimum (savoir if deux element
+// sont in la meme class)
 class cStrRelEquiv
 {
     public :
@@ -1357,15 +1357,15 @@ Fonc_Num  AdaptFonc2FileOriMnt
                  const cFileOriMnt & anOriCible,
                  const cFileOriMnt &  aOriInit,
                  Fonc_Num            aFonc,
-                 bool                aModifDyn,  // Si il faut adpater en tenant cont des param altimetriques
-                 double              aZOffset, // dans le cas modif dyn
+                 bool                aModifDyn,  // if il faut adpater en tenant cont des param altimetriques
+                 double              aZOffset, // in le cas modif dyn
                  const Pt2dr &       CropInOriCible
           );
 
 
 class cSetOfMesureAppuisFlottants;
 class cOneMesureAF1I;
-// Ecrit les images dans le NamePt !!!
+// Ecrit les images in le NamePt !!!
 std::vector<cOneMesureAF1I> GetMesureOfPts(const cSetOfMesureAppuisFlottants &,const std::string & aNamePt);
 std::vector<cOneMesureAF1I> GetMesureOfPtsIm(const cSetOfMesureAppuisFlottants &,const std::string & aNamePt,const std::string & aNameIm);
 
@@ -1522,7 +1522,7 @@ class cAppliListIm
 bool isUsingSeparateDirectories(){ return MMUserEnv().UseSeparateDirectories().ValWithDef(false); }
 
 
-// === Gestionnaire de nom pour les fusions ===============
+// === Gestionnaire de nom for les fusions ===============
 
 typedef enum
 {

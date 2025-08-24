@@ -24,7 +24,7 @@ template<int N> struct cEpsNum;  // Sparse implementation of jets
 /* *********************************************** */
 
 
-/** Class that is can interface for computing derivative of a camera (projection fonction) 
+/** Class that is can interface for computing derivative of a camera (projection function) 
     derived are typically jets or generated code */
 
 class cInterfaceTestCam

@@ -37,7 +37,7 @@ template <class Type> class cGetPts_ImInterp_FromValue
      public :
        cGetPts_ImInterp_FromValue 
        (
-	    const cDataIm2D<Type> & aDIm,   ///< Image where we look
+	    const cDataIm2D<Type> & aDIm,   ///< image where we look
 	    tREAL8 aVal,                    ///< Target value
 	    tREAL8 aTol,                    ///< Tolerance to targeted value
 	    cPt2dr aP0,                     ///< Initial point

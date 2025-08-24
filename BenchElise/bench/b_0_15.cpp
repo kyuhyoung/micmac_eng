@@ -256,7 +256,7 @@ void bench_rle_bitm_win(Pt2di sz)
 
 }
 
-// surtout fait pour traquer un bug x11
+// surtout fait for traquer un bug x11
 void bench_chc_bitm_win()
 {
     INT Tail = 500;
@@ -469,7 +469,7 @@ void bench_bitm_colour()
                    bench_bitm_colour(i,t,s,c);
             }
 
-    //  Verifie que its donne le bon RVB pour les couleur pure
+    //  Verifie que its donne le bon RVB for les couleur pure
     
      bench_bitm_colour(1/3.0  ,  0.0    ,  1.0  ,  Elise_colour::rgb(1,0,0));
      bench_bitm_colour(1/3.0  ,  1/3.0  ,  1.0  ,  Elise_colour::rgb(0,1,0));
@@ -482,7 +482,7 @@ void bench_bitm_colour()
      bench_bitm_colour(2/3.0  ,  5/6.0  ,  1.0  ,  Elise_colour::rgb(1,0,1));
 
 
-    //  Verifie que its donne le bon RVB pour les niveaux de gris
+    //  Verifie que its donne le bon RVB for les niveaux de gris
 
     for ( p1 =0.0 ; p1 < 1.0 ; p1 += 0.1)
         for ( p2 =0.0 ; p2 < 1.0 ; p2 += 0.1)
@@ -492,7 +492,7 @@ void bench_bitm_colour()
             bench_bitm_colour(p1,p2,0,Elise_colour::rgb(p1,p1,p1));
         }
 
-    //   Verif pour les versions Fonc_Num :
+    //   Verif for les versions Fonc_Num :
 
     static INT nb = 1000;
 

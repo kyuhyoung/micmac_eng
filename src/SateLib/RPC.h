@@ -175,16 +175,16 @@ public:
         // Applying the grid affinity from coefficient from vRefineCoef to a point
         Pt3dr ptRefined(Pt3dr Pimg, std::vector<double> vRefineCoef)const;
         ///
-        /// \brief détermination des sommets de la grille en coordonnées image en fonction du pas (en pixels) puis conversion en coordonnées géographiques
-        /// \param ulcSamp colonne du coin supérieur gauche de la grille en coordonnées image
-        /// \param ulcLine ligne du coin supérieur gauche de la grille en coordonnées image
-        /// \param stepPixel pas en pixels pour la grille en coordonnées image
-        /// \param nbSamp nombre de colonnes de la grille en coordonnées image
-        /// \param nbLine nombre de lignes de la grille en coordonnées image
-        /// \param vAltitude vecteur contenant les altitudes de chaque « layer »
-        /// \param vPtCarto vecteur de structures de points Pt2dr qui contient les sommets de la grille directe (pour l'ensemble des « layers »)
-        /// \param targetSyst système de projection cible, suivant la nomenclature proj4
-        /// \param vRefineCoef vecteur contenant les six coefficients de l'affinité servant à affiner la grille
+        /// \brief dtermination des sommets de la grille en coordonnes image en function du pas (en pixels) puis conversion en coordonnes gographiques
+        /// \param ulcSamp colonne du coin suprieur gauche de la grille en coordonnes image
+        /// \param ulcLine line du coin suprieur gauche de la grille en coordonnes image
+        /// \param stepPixel pas en pixels for la grille en coordonnes image
+        /// \param nbSamp number de colonnes de la grille en coordonnes image
+        /// \param nbLine number de lignes de la grille en coordonnes image
+        /// \param vAltitude vector contenant les altitudes de chaque  layer 
+        /// \param vPtCarto vector de structures de points Pt2dr qui contient les sommets de la grille directe (for l'ensemble des  layers )
+        /// \param targetSyst systme de projection cible, suivant la nomenclature proj4
+        /// \param vRefineCoef vector contenant les six coefficients de l'affinit servant  affiner la grille
         ///
         void createDirectGrid(double ulcSamp, double ulcLine,
                 double stepPixel,
@@ -194,16 +194,16 @@ public:
                 std::vector<double> vRefineCoef)const;
 
         ///
-        /// \brief calcul des sommets de la grille en coordonnées terrain (cartographiques) en fonction du pas puis conversion en coordonnées géographiques et enfin image
-        /// \param ulcX longitude du coin supérieur gauche de la grille en coordonnées cartographiques
-        /// \param ulcY latitude du coin supérieur gauche de la grille en coordonnées cartographiques
-        /// \param nbrSamp nombre de colonnes de la grille en coordonnées cartographiques
-        /// \param nbrLine nombre de lignes de la grille en coordonnées cartographiques
-        /// \param stepCarto pas en mètres pour la grille en coordonnées cartographiques
-        /// \param vAltitude vecteur contenant les altitudes de chaque « layer »
-        /// \param vPtImg vecteur de sommets de la grille inverse (pour l'ensemble des « layers »)
-        /// \param targetSyst système de projection cible, suivant la nomenclature proj4
-        /// \param vRefineCoef vecteur contenant les six coefficients de l'affinité servant à affiner la grille
+        /// \brief computation des sommets de la grille en coordonnes terrain (cartographiques) en function du pas puis conversion en coordonnes gographiques and enfin image
+        /// \param ulcX longitude du coin suprieur gauche de la grille en coordonnes cartographiques
+        /// \param ulcY latitude du coin suprieur gauche de la grille en coordonnes cartographiques
+        /// \param nbrSamp number de colonnes de la grille en coordonnes cartographiques
+        /// \param nbrLine number de lignes de la grille en coordonnes cartographiques
+        /// \param stepCarto pas en mtres for la grille en coordonnes cartographiques
+        /// \param vAltitude vector contenant les altitudes de chaque  layer 
+        /// \param vPtImg vector de sommets de la grille inverse (for l'ensemble des  layers )
+        /// \param targetSyst systme de projection cible, suivant la nomenclature proj4
+        /// \param vRefineCoef vector contenant les six coefficients de l'affinit servant  affiner la grille
         ///
         void createInverseGrid(double ulcX, double ulcY,
                 int nbrSamp, int nbrLine,
@@ -213,14 +213,14 @@ public:
                 std::vector<double> vRefineCoef)const;
 
         ///
-        /// \brief creation du fichier XML et calculs intermediaires
-        /// \param nomGrid nom du fichier Grid en sortie
-        /// \param nomImage nom de l'image concernée
-        /// \param stepPixel pas en pixels pour la grille en coordonnées image
-        /// \param stepCarto pas en mètres pour la grille en coordonnées cartographiques
-        /// \param vAltitude vecteur contenant les altitudes de chaque « layer »
-        /// \param targetSyst système de projection cible, suivant la nomenclature proj4
-        /// \param vRefineCoef vecteur contenant les six coefficients de l'affinité servant à affiner la grille
+        /// \brief creation du file XML and calculs intermediaires
+        /// \param nomGrid nom du file Grid en sortie
+        /// \param nomImage nom de l'image concerne
+        /// \param stepPixel pas en pixels for la grille en coordonnes image
+        /// \param stepCarto pas en mtres for la grille en coordonnes cartographiques
+        /// \param vAltitude vector contenant les altitudes de chaque  layer 
+        /// \param targetSyst systme de projection cible, suivant la nomenclature proj4
+        /// \param vRefineCoef vector contenant les six coefficients de l'affinit servant  affiner la grille
         ///
         void createGrid(std::string const &nomGrid, std::string const &nomImage,
                 double stepPixel, double stepCarto,
@@ -228,9 +228,9 @@ public:
                 std::vector<double> vRefineCoef);
 
         ///
-        /// \brief effacement des fichiers relatifs à la creation des grilles ssi le modèle n'est pas affiné
-        /// \param nomGrid nom du fichier Grid en sortie
-        /// \param refine la grille est-elle affinée
+        /// \brief effacement des fichiers relatifs  la creation des grilles ssi le modle n'est pas affin
+        /// \param nomGrid nom du file Grid en sortie
+        /// \param refine la grille est-elle affine
         ///
         void clearing(std::string const &nomGrid, bool refine)
         {
@@ -244,7 +244,7 @@ public:
                         if (ifstream("processing/inverse_ptCarto.txt")) ELISE_fp::RmFile("processing/inverse_ptCarto.txt");
                         if (ELISE_fp::IsDirectory("processing"))         ELISE_fp::RmDir("processing");
                 }
-                //effacement de la grille affinee + grilles GRC et binaire
+                //effacement de la grille affinee + grilles GRC and binaire
                 std::string gridGRC = nomGrid;
                 std::string refGridGRC2 = nomGrid;
                 refGridGRC2.append("Bin");
@@ -353,7 +353,7 @@ private:
 #endif
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant Ã  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est rÃ©gi par la licence CeCILL-B soumise au droit franÃ§ais et
@@ -369,17 +369,17 @@ seule une responsabilitÃ© restreinte pÃ¨se sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concÃ©dants successifs.
 
 A cet Ã©gard  l'attention de l'utilisateur est attirÃ©e sur les risques
-associÃ©s au chargement,  Ã  l'utilisation,  Ã  la modification et/ou au
-dÃ©veloppement et Ã  la reproduction du logiciel par l'utilisateur Ã©tant
-donnÃ© sa spÃ©cificitÃ© de logiciel libre, qui peut le rendre complexe Ã
-manipuler et qui le rÃ©serve donc Ã  des dÃ©veloppeurs et des professionnels
+associÃ©s au chargement,    l'utilisation,    la modification et/ou au
+dÃ©veloppement et   la reproduction du logiciel par l'utilisateur Ã©tant
+donnÃ© sa spÃ©cificitÃ© de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le rÃ©serve donc   des dÃ©veloppeurs et des professionnels
 avertis possÃ©dant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invitÃ©s Ã  charger  et  tester  l'adÃ©quation  du
-logiciel Ã  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invitÃ©s   charger  et  tester  l'adÃ©quation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sÃ©curitÃ© de leurs systÃ¨mes et ou de leurs donnÃ©es et, plus gÃ©nÃ©ralement,
-Ã  l'utiliser et l'exploiter dans les mÃªmes conditions de sÃ©curitÃ©.
+  l'utiliser et l'exploiter dans les mÃªmes conditions de sÃ©curitÃ©.
 
-Le fait que vous puissiez accÃ©der Ã  cet en-tÃªte signifie que vous avez
+Le fait que vous puissiez accÃ©der   cet en-tÃªte signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez acceptÃ© les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

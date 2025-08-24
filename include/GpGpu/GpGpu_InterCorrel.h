@@ -35,7 +35,7 @@ extern "C" void	LaunchKernelprojectionImage(pCorGpu &param,CuDeviceData3D<float>
 /// \endcond
 
 /// \class GpGpuInterfaceCorrel
-/// \brief Class qui lie micmac avec les outils de calculs GpGpu
+/// \brief Class qui lie micmac with les outils de calculs GpGpu
 class GpGpuInterfaceCorrel : public CSimpleJobCpuGpu< bool>
 {
 
@@ -44,18 +44,18 @@ public:
   GpGpuInterfaceCorrel();
   ~GpGpuInterfaceCorrel();
 
-  /// \brief    Initialise les parametres de correlation
+  /// \brief    Initialise les parameters de correlation
   void          SetParameter(int nbLayer , ushort2 dRVig , uint2 dimImg, float mAhEpsilon, uint samplingZ, int uvINTDef, ushort nClass);
 
-  /// \brief    Calcul de la correlation en Gpu
+  /// \brief    computation de la correlation en Gpu
   void          BasicCorrelation();
 
-  /// \brief    Renvoie les parametres de correlation
+  /// \brief    Renvoie les parameters de correlation
 
   pCorGpu&      Param(ushort idBuf);
 
   ///
-  /// \brief signalComputeCorrel Signal le debut d'une corrélation
+  /// \brief signalComputeCorrel Signal le debut d'une corrlation
   /// \param dZ
   ///
   void          signalComputeCorrel(uint dZ);
@@ -71,7 +71,7 @@ public:
   void          freezeCompute();
 
   ///
-  /// \brief IntervalZ Calcul l'interval Z
+  /// \brief IntervalZ computation l'interval Z
   /// \param interZ
   /// \param anZProjection
   /// \param aZMaxTer
@@ -80,31 +80,31 @@ public:
 
   ///
   /// \brief Data
-  /// \return les données de corrélation
+  /// \return les donnes de corrlation
   ///
   SData2Correl& Data();
 
   ///
   /// \brief VolumeCost
   /// \param id
-  /// \return Le volume de corrélation
+  /// \return Le volume de corrlation
   ///
   float*        VolumeCost(ushort id);
 
   ///
   /// \brief TexturesAreLoaded
-  /// \return Vraie si les images sont chargées dans le device
+  /// \return Vraie if les images sont charges in le device
   ///
   bool          TexturesAreLoaded();
 
   ///
-  /// \brief SetTexturesAreLoaded Définir si les images sont chargées dans le device
+  /// \brief SetTexturesAreLoaded Dfinir if les images sont charges in le device
   /// \param load
   ///
   void          SetTexturesAreLoaded(bool load);  
 
   ///
-  /// \brief ReallocHostData Réallouer la mémoire dans l'hote
+  /// \brief ReallocHostData Rallouer la mmoire in l'hote
   /// \param interZ
   /// \param idBuff
   ///
@@ -118,13 +118,13 @@ public:
 
   ///
   /// \brief MaskVolumeBlock
-  /// \return Un vecteur des cellules à corréler
+  /// \return Un vector des cellules  corrler
   ///
   std::vector<cellules> &MaskVolumeBlock();
 
   ///
   /// \brief NoMasked
-  /// Paramètre qui indique si les cellules doivent etre calculer
+  /// Paramtre qui indique if les cellules doivent etre compute
   bool              NoMasked;
 
 private:

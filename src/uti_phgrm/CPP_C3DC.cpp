@@ -47,7 +47,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 // ffmpeg -i MVI_0001.MOV  -ss 30 -t 20 Im%5d_Ok.png
 
 // Im*_Ok => OK
-// Im*_Nl => Image Nulle (eliminee)
+// Im*_Nl => image Nulle (eliminee)
 
 
 // =============  ::  ===================================
@@ -152,8 +152,8 @@ cAppli_C3DC::cAppli_C3DC(int argc,char ** argv,bool DoMerge) :
     if (MMVisualMode)
     {
 /*
-// MPD : je comprends pas a quoi cela sert, et cela fait planter, sur les tests cela
-// marche sans
+// MPD : je comprends pas a quoi cela sert, and cela fait planter, on les tests cela
+// marche without
         QApplication app(argc, argv);
 
         LArgMain LAM;
@@ -903,7 +903,7 @@ cAppli_MPI2Mnt::cAppli_MPI2Mnt(int argc,char ** argv) :
    mICNM = cInterfChantierNameManipulateur::BasicAlloc(mDirApp);
    mSetIm = mICNM->Get(mCFPI->mStrPat);
 
-// Probleme d'incoherence et pas purgee !!!
+// Probleme d'incoherence and pas purgee !!!
    if ((mPurge) && (!mDebug))
    {
       ELISE_fp::PurgeDirRecursif(mDirApp+mDirMTD);

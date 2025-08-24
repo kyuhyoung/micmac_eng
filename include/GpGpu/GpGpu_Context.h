@@ -29,12 +29,12 @@ template<class T> class CData;
 
 ///
 /// \brief kMultTab
-/// Fonction Cuda test gpgpu générique
+/// function Cuda test gpgpu gnrique
 extern void kMultTab();
 
 ///
 /// \brief The GPGPUCONTEXT enum
-///	Enumération des types de contextes GpGpu
+///	Enumration des types de contextes GpGpu
 /// CUDA_CONTEXT Nvidia Cuda contexte
 /// OpenCL_CONTEXT OpenCL contexte
 enum GPGPUCONTEXT
@@ -45,8 +45,8 @@ enum GPGPUCONTEXT
 
 ///
 /// \brief The vGpuContext class
-/// Classe générique d'un contexte gpgpu
-/// Chaque nouvelle définition de contexte doit héritée de cette classe
+/// class gnrique d'un contexte gpgpu
+/// Chaque nouvelle dfinition de contexte doit hrite de cette class
 template<int typecontext>
 class vGpuContext
 {
@@ -61,19 +61,19 @@ public:
     }
 	///
 	/// \brief _nbArg
-	/// Nombre d'arguments du kernel
+	/// number d'arguments du kernel
     static unsigned short       _nbArg;
 
 	///
 	/// \brief _kernelArgs
-	/// Vecteur des arguments du kernel
+	/// vector des arguments du kernel
     static std::vector<void*>   _kernelArgs;
 };
 
 
 ///
 /// \brief The cudaContext class
-/// Définition du contexte Cuda
+/// Dfinition du contexte Cuda
 class cudaContext : public vGpuContext<CUDA_CONTEXT>
 {
 
@@ -82,7 +82,7 @@ class cudaContext : public vGpuContext<CUDA_CONTEXT>
 #ifdef OPENCL_ENABLED
 ///
 /// \brief The openClContext class
-/// Définition du contexte OpenCL
+/// Dfinition du contexte OpenCL
 class openClContext : public vGpuContext<OPENCL_CONTEXT>
 {
 public:
@@ -99,14 +99,14 @@ public:
 
 	///
 	/// \brief _kernel
-	/// fonction kernel
+	/// function kernel
     static cl_kernel            _kernel;
 };
 #endif
 
 /// \class CGpGpuContext
-/// \brief le context GpGpu, OpenCl ou Cuda
-/// Permet de gérer génériquement le contexte
+/// \brief le context GpGpu, OpenCl or Cuda
+/// Permet de grer gnriquement le contexte
 template<class context>
 class CGpGpuContext
 {
@@ -116,12 +116,12 @@ public:
 
 
 
-	/// \brief createContext créer le context en fonction de < class context > du template
-	///  si context = cudaContext alors un context cuda est créé
-	///  si context = openClContext alors un context openCl est créé
+	/// \brief createContext crer le context en function de < class context > du template
+	///  if context = cudaContext then un context cuda est cr
+	///  if context = openClContext then un context openCl est cr
 	static void createContext();
 
-    /// \brief deleteContext Détruit le context créé
+    /// \brief deleteContext Dtruit le context cr
     static void deleteContext(){}
 
 	///
@@ -129,37 +129,37 @@ public:
 	///
 	static  void OutputInfoGpuMemory(){}
 
-    /// \brief Sortie console de la version Cuda utilisé dans cette compilation du logiciel
+    /// \brief Sortie console de la version Cuda utilis in cette compilation du logiciel
     static  void check_Cuda(){}
 
-    /// \brief createKernel Créé le kernel OpenCL
-    /// \param file Nom du fichier contenant le kernel OpenCL
-    /// \param kernelName Non du kernel attaché
+    /// \brief createKernel Cr le kernel OpenCL
+    /// \param file Nom du file contenant le kernel OpenCL
+    /// \param kernelName Non du kernel attach
     static  void createKernel(string file,string kernelName){}
 
     ///
-    /// \brief Lance le kernel OpenCL crér
+    /// \brief Lance le kernel OpenCL crr
     ///
     static  void launchKernel(){}
 
 
     template< class T, template< class O, class G > class U >
     ///
-    /// \brief Ajoute un buffer pour le kernel OpenCL
+    /// \brief Ajoute un buffer for le kernel OpenCL
     /// \param arg Buffer du kernel OpenCL
     ///
     static  void addKernelArg( U<T,context> &arg);
 
     template<class T>
     ///
-    /// \brief Ajoute un argument pour le kernel OpenCL
+    /// \brief Ajoute un argument for le kernel OpenCL
     /// \param arg Argument du kernel OpenCL
     ///
     static  void addKernelArg(T &arg){}
 
     ///
-    /// \brief Sortie console de l'erreur GpGpu
-    /// \param tErr Type d'erreur
+    /// \brief Sortie console de l'error GpGpu
+    /// \param tErr Type d'error
     /// \param erName
     /// \return
     ///
@@ -245,10 +245,10 @@ bool CGpGpuContext<context>::errorDump(int tErr,string erName)
 
 template<> inline
 ///
-/// \brief CGpGpuContext<cudaContext>::errorDump retourne dans la console le type d'erreur CUDA
+/// \brief CGpGpuContext<cudaContext>::errorDump retourne in la console le type d'error CUDA
 /// \param tErr
 /// \param erName
-/// \return true s'il n'y a pas d'erreur
+/// \return true s'il n'y a pas d'error
 ///
 bool CGpGpuContext<cudaContext>::errorDump(int tErr,string erName)
 {
@@ -259,10 +259,10 @@ bool CGpGpuContext<cudaContext>::errorDump(int tErr,string erName)
 #ifdef OPENCL_ENABLED
 template<> inline
 ///
-/// \brief CGpGpuContext<openClContext>::errorDump retourne dans la console le type d'erreur OpenCL
+/// \brief CGpGpuContext<openClContext>::errorDump retourne in la console le type d'error OpenCL
 /// \param tErr
 /// \param erName
-/// \return true s'il n'y a pas d'erreur
+/// \return true s'il n'y a pas d'error
 ///
 bool CGpGpuContext<openClContext>::errorDump(int tErr,string erName)
 {
@@ -285,7 +285,7 @@ void CGpGpuContext<cudaContext>::OutputInfoGpuMemory()
 
 template <> inline
 ///
-/// \brief CGpGpuContext<cudaContext>::check_Cuda renvoie dans la console le nom de la carte, sa capacité et la version de cuda
+/// \brief CGpGpuContext<cudaContext>::check_Cuda renvoie in la console le nom de la carte, sa capacit and la version de cuda
 ///
 void CGpGpuContext<cudaContext>::check_Cuda()
 {
@@ -327,7 +327,7 @@ void CGpGpuContext<cudaContext>::check_Cuda()
 
 template <> inline
 ///
-/// \brief CGpGpuContext<cudaContext>::createContext créer le contexte CUDA
+/// \brief CGpGpuContext<cudaContext>::createContext crer le contexte CUDA
 ///
 void CGpGpuContext<cudaContext>::createContext() {
 
@@ -365,7 +365,7 @@ void CGpGpuContext<cudaContext>::deleteContext()
 template <> inline
 ///
 /// \brief CGpGpuContext::createContext
-///  Créer le contexte OpenCL
+///  Crer le contexte OpenCL
 void CGpGpuContext<openClContext>::createContext() {
 
     cl_uint platformIdCount = 0;
@@ -452,8 +452,8 @@ cl_kernel CGpGpuContext<openClContext>::kernel()
 
 template <> inline
 ///
-/// \brief CGpGpuContext<openClContext>::createKernel Créer le contexte OpenCL
-/// \param fileName Fichier contenant le code du kernel
+/// \brief CGpGpuContext<openClContext>::createKernel Crer le contexte OpenCL
+/// \param fileName file contenant le code du kernel
 /// \param kernelName non du kernel
 ///
 void CGpGpuContext<openClContext>::createKernel(string fileName,string kernelName)
@@ -528,7 +528,7 @@ template <>
 template <class T> inline
 ///
 /// \brief CGpGpuContext<openClContext>::addKernelArg Ajoute un argument
-/// \param arg Argument à ajouter
+/// \param arg Argument  ajouter
 ///
 void CGpGpuContext<openClContext>::addKernelArg(T &arg)
 {
@@ -546,7 +546,7 @@ void CGpGpuContext<openClContext>::addKernelArg(T &arg)
 template<>
 template <class T> inline
 ///
-/// \brief CGpGpuContext<openClContext>::addKernelArgSDK ajoute un argument de type CData<T> pour OpenCL
+/// \brief CGpGpuContext<openClContext>::addKernelArgSDK ajoute un argument de type CData<T> for OpenCL
 /// \param arg
 ///
 void CGpGpuContext<openClContext>::addKernelArgSDK( CData<T> &arg)
@@ -567,7 +567,7 @@ void CGpGpuContext<openClContext>::addKernelArgSDK( CData<T> &arg)
 template<>
 template <class T> inline
 ///
-/// \brief CGpGpuContext<cudaContext>::addKernelArgSDK ajoute un argument de type CData<T> pour Cuda
+/// \brief CGpGpuContext<cudaContext>::addKernelArgSDK ajoute un argument de type CData<T> for Cuda
 /// \param arg
 ///
 void CGpGpuContext<cudaContext>::addKernelArgSDK( CData<T> &arg)
@@ -589,7 +589,7 @@ void CGpGpuContext<cudaContext>::launchKernel()
 template <>
 template <class T> inline
 ///
-/// \brief CGpGpuContext<cudaContext>::addKernelArg Ajoute un argument pour Cuda
+/// \brief CGpGpuContext<cudaContext>::addKernelArg Ajoute un argument for Cuda
 /// \param arg
 ///
 void CGpGpuContext<cudaContext>::addKernelArg(T &arg)

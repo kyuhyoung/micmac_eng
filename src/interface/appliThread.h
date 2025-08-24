@@ -65,7 +65,7 @@ class PastisThread : public AppliThread
 {
    Q_OBJECT
 
-//enregistrement des paramètres saisis dans InterfPastis et exécution des calculs de recherche des points d'intérêt
+//enregistrement des paramètres saisis in InterfPastis and exécution des calculs de recherche des points d'intérêt
 	public:
 		enum Avancement { Enregistrement=0, Conversion, Ecriture, FiltrCpls, PtsInteret, ImgsOrientables, Termine };
 
@@ -90,7 +90,7 @@ class Pose;
 class AperoThread : public AppliThread
 {
    Q_OBJECT
-//enregistrement des paramètres saisis dans InterfApero et exécution des calculs d'orientation
+//enregistrement des paramètres saisis in InterfApero and exécution des calculs d'orientation
 	public:
 		enum Avancement { Enregistrement=0, Filtrage, AutoCalibration, Poses, PosesLgFocales, DissocCalib, ParamVue3D, Termine };
 
@@ -122,7 +122,7 @@ class Points3DThread : public AppliThread
 {
    Q_OBJECT
 
-//enregistrement des paramètres saisis dans InterfPastis et exécution des calculs de recherche des points d'intérêt
+//enregistrement des paramètres saisis in InterfPastis and exécution des calculs de recherche des points d'intérêt
 	public:
                 Points3DThread();
                 Points3DThread(ParamMain* pMain, const QVector<Pose>& cam, bool* annul, const ParamApero& pApero, const vector<string>* fichiers, const vector<pair<string,string> >* pairCam, const QVector<bool>* fishEye);
@@ -151,7 +151,7 @@ class Points3DThread : public AppliThread
 		const ParamApero					*paramApero;
 		const vector<string>				*aVN;
 		const vector<pair<string,string> >	*aPair;
-		const QVector<bool>					*typesCam;	//true si fish-eye
+		const QVector<bool>					*typesCam;	//true if fish-eye
 };
 
 class InterfMicmac;
@@ -159,7 +159,7 @@ class CarteDeProfondeur;
 class MicmacThread : public AppliThread
 {
    Q_OBJECT
-//enregistrement des paramètres saisis dans InterfApero et exécution des calculs d'orientation
+//enregistrement des paramètres saisis in InterfApero and exécution des calculs d'orientation
 	public:
 		enum Avancement { Enregistrement=0, Calcul, Ortho, Termine };
 
@@ -168,7 +168,7 @@ class MicmacThread : public AppliThread
 		bool killProcess();
 	
 	private :
-//si type=0, on calcule pour toutes les cartes de pMain->getMasques(), si type=1, on calcule uniquement masque avec les paramètres et noms pour le TA
+//if type=0, on compute for toutes les cartes de pMain->getMasques(), if type=1, on compute uniquement masque with les paramètres and noms for le TA
 };
 
 class InterfCartes8B;
@@ -176,7 +176,7 @@ class ParamConvert8B;
 class Cartes8BThread : public AppliThread
 {
    Q_OBJECT
-//enregistrement des paramètres saisis dans InterfApero et exécution des calculs d'orientation
+//enregistrement des paramètres saisis in InterfApero and exécution des calculs d'orientation
 	public:
 		Cartes8BThread(ParamMain* pMain, const QString& stdoutfilename, ParamConvert8B* pConvert8B, QLabel *label, bool* annul);
 		~Cartes8BThread();
@@ -193,7 +193,7 @@ class LectureCamThread : public AppliThread
 {
    Q_OBJECT
 
-//enregistrement des paramètres saisis dans InterfPastis et exécution des calculs de recherche des points d'intérêt
+//enregistrement des paramètres saisis in InterfPastis and exécution des calculs de recherche des points d'intérêt
 	public:
 		LectureCamThread(int num, ParamMain* pMain, Pose* cam);
 		~LectureCamThread();
@@ -209,7 +209,7 @@ class Model3DThread : public AppliThread
 {
    Q_OBJECT
 
-//enregistrement des paramètres saisis dans InterfPastis et exécution des calculs de recherche des points d'intérêt
+//enregistrement des paramètres saisis in InterfPastis and exécution des calculs de recherche des points d'intérêt
 	public:
 		Model3DThread();
 		Model3DThread(ParamMain* pMain, GLParams*& pGL);
@@ -230,7 +230,7 @@ class Model3DSousThread : public AppliThread
 {
    Q_OBJECT
 
-//enregistrement des paramètres saisis dans InterfPastis et exécution des calculs de recherche des points d'intérêt
+//enregistrement des paramètres saisis in InterfPastis and exécution des calculs de recherche des points d'intérêt
 	public:
 		Model3DSousThread();
 		Model3DSousThread(int num, const QString& carte, ParamMain* pMain, GLParams*& pGL);
@@ -254,7 +254,7 @@ class OrthoThread : public AppliThread
 {
    Q_OBJECT
 
-//enregistrement des paramètres saisis dans InterfPastis et exécution des calculs de recherche des points d'intérêt
+//enregistrement des paramètres saisis in InterfPastis and exécution des calculs de recherche des points d'intérêt
 	public:
 		OrthoThread();
 		OrthoThread(ParamMain* pMain, QLabel *label, bool egal);
@@ -279,7 +279,7 @@ class Convert2PlyThread : public AppliThread
 {
    Q_OBJECT
 
-//enregistrement des paramètres saisis dans InterfPastis et exécution des calculs de recherche des points d'intérêt
+//enregistrement des paramètres saisis in InterfPastis and exécution des calculs de recherche des points d'intérêt
 	public:
 		Convert2PlyThread();
 		Convert2PlyThread(ParamMain* pMain, QLabel *label, const ParamPly& param);
@@ -303,7 +303,7 @@ class NuageThread : public AppliThread
 {
    Q_OBJECT
 
-//enregistrement des paramètres saisis dans InterfPastis et exécution des calculs de recherche des points d'intérêt
+//enregistrement des paramètres saisis in InterfPastis and exécution des calculs de recherche des points d'intérêt
 	public:
 		NuageThread(GLWidget* glWidg, int num, int dezoom);
 		~NuageThread();

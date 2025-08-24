@@ -215,7 +215,7 @@ Im2D_REAL4 cZBuffer::Basculer
 
 static int aCpt=0; aCpt++;
 
-    // fait pour verifier par cher que le gradient est raisonnable
+    // fait for verifier par cher que le gradient est raisonnable
     
     Pt2di aLastPIn = aP0In - Pt2di(100000,100);
     Pt3dr aLastP3Out(0,0,0);
@@ -597,7 +597,7 @@ void cZBuffer::BasculerUnTriangle(Pt2di A,Pt2di B,Pt2di C,bool TriBas)
      REAL aDet = AB^AC;  //WU :  computue determinant to see if triangle is well oriented
 
 
-	 //Calcul de l'etirement du triangle
+	 //computation de l'etirement du triangle
      int aCoefEtire= -1;
      double aCoefEtirReel=-1;
      if (mDynEtire>0)   // WU this part is not important, it compute some streching caracteristic : goto ENDSKIP
@@ -605,7 +605,7 @@ void cZBuffer::BasculerUnTriangle(Pt2di A,Pt2di B,Pt2di C,bool TriBas)
         Pt2dr u = TriBas ? (B2-A2) : (C2-B2);
         Pt2dr v = TriBas ? (C2-B2) : (C2-A2);
 
-        // On tient compte du jacobien inverse pour avoir une estimation plus intrinseque de l'etirement
+        // On tient compte du jacobien inverse for avoir une estimation plus intrinseque de l'etirement
         Pt2di anIndexDef = ToPtIndexDef(A);
         double m00 = mTImDef_00.get(anIndexDef);
         double m10 = mTImDef_10.get(anIndexDef);

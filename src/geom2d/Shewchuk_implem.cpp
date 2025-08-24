@@ -133,7 +133,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 /*    "Software for C1 Surface Interpolation," in Mathematical Software III, */
 /*    John R. Rice, editor, Academic Press, New York, pp. 161-194, 1977.     */
 /*    For point location, I use the algorithm of Ernst P. Mucke, Isaac       */
-/*    Saias, and Binhai Zhu, "Fast Randomized Point Location Without         */
+/*    Saias, and Binhai Zhu, "Fast Randomized point Location Without         */
 /*    Preprocessing in Two- and Three-dimensional Delaunay Triangulations,"  */
 /*    Proceedings of the Twelfth Annual Symposium on Computational Geometry, */
 /*    ACM, May 1996.  [*]  If I were to randomize the order of point         */
@@ -153,15 +153,15 @@ Header-MicMac-eLiSe-25/06/2007*/
 /*                                                                           */
 /*  The algorithms for exact computation of the signs of determinants are    */
 /*    described in Jonathan Richard Shewchuk, "Adaptive Precision Floating-  */
-/*    Point Arithmetic and Fast Robust Geometric Predicates," Technical      */
+/*    point Arithmetic and Fast Robust Geometric Predicates," Technical      */
 /*    Report CMU-CS-96-140, School of Computer Science, Carnegie Mellon      */
 /*    University, Pittsburgh, Pennsylvania, May 1996.  [*]  (Submitted to    */
 /*    Discrete & Computational Geometry.)  An abbreviated version appears as */
-/*    Jonathan Richard Shewchuk, "Robust Adaptive Floating-Point Geometric   */
+/*    Jonathan Richard Shewchuk, "Robust Adaptive Floating-point Geometric   */
 /*    Predicates," Proceedings of the Twelfth Annual Symposium on Computa-   */
 /*    tional Geometry, ACM, May 1996.  [*]  Many of the ideas for my exact   */
 /*    arithmetic routines originate with Douglas M. Priest, "Algorithms for  */
-/*    Arbitrary Precision Floating Point Arithmetic," Tenth Symposium on     */
+/*    Arbitrary Precision Floating point Arithmetic," Tenth Symposium on     */
 /*    Computer Arithmetic, 132-143, IEEE Computer Society Press, 1991.  [*]  */
 /*    Many of the ideas for the correct evaluation of the signs of           */
 /*    determinants are taken from Steven Fortune and Christopher J. Van Wyk, */
@@ -5048,7 +5048,7 @@ void triangleinit(void)
   points.itembytes = triangles.itembytes = shelles.itembytes = viri.itembytes =
     badsegments.itembytes = badtriangles.itembytes = splaynodes.itembytes = 0;
   recenttri.tri = (triangle *) NULL;    /* No triangle has been visited yet. */
-  samples = 1;            /* Point location should take at least one sample. */
+  samples = 1;            /* point location should take at least one sample. */
   checksegments = 0;      /* There are no segments in the triangulation yet. */
   incirclecount = counterclockcount = hyperbolacount = 0;
   circumcentercount = circletopcount = 0;
@@ -5547,7 +5547,7 @@ void testtriangle( struct triedge *testtri)
 /**                                                                         **/
 /********* Mesh quality testing routines end here                    *********/
 
-/********* Point location routines begin here                        *********/
+/********* point location routines begin here                        *********/
 /**                                                                         **/
 /**                                                                         **/
 
@@ -5905,7 +5905,7 @@ enum locateresult dt2d_locate( point searchpoint, struct triedge *searchtri)
 
 /**                                                                         **/
 /**                                                                         **/
-/********* Point location routines end here                          *********/
+/********* point location routines end here                          *********/
 
 /********* Mesh transformation routines begin here                   *********/
 /**                                                                         **/
@@ -6206,7 +6206,7 @@ toprcasing.orient = 0; // Warning non init
   triangle ptr;                         /* Temporary variable used by sym(). */
   shelle sptr;         /* Temporary variable used by spivot() and tspivot(). */
 
-  toppoint = (point) NULL; /* warning, mais bizarre quand meme */
+  toppoint = (point) NULL; /* warning, but bizarre when meme */
 
   if (verbose > 1) {
     printf("  Inserting (%.12g, %.12g).\n", insertpoint[0], insertpoint[1]);
@@ -11806,7 +11806,7 @@ void writenodes(
     /* X and y coordinates. */
     plist[coordindex++] = pointloop[0];
     plist[coordindex++] = pointloop[1];
-    /* Point attributes. */
+    /* point attributes. */
     for (i = 0; i < nextras; i++) {
       palist[attribindex++] = pointloop[2 + i];
     }
@@ -11815,7 +11815,7 @@ void writenodes(
       pmlist[pointnumber - firstnumber] = pointmark(pointloop);
     }
 #else /* not TRILIBRARY */
-    /* Point number, x and y coordinates. */
+    /* point number, x and y coordinates. */
     fprintf(outfile, "%4d    %.17g  %.17g", pointnumber, pointloop[0],
             pointloop[1]);
     for (i = 0; i < nextras; i++) {

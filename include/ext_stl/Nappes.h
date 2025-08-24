@@ -48,8 +48,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 #ifndef _EL_NAPPES
 #define _EL_NAPPES
 
-// Strtucture pour gerer des napppes telle qu'utilise
-// en Cox-Roy et Progdyn 2D
+// Strtucture for gerer des napppes telle qu'utilise
+// en Cox-Roy and Progdyn 2D
 
 
 template <class T> class cDynTplNappe2D
@@ -122,7 +122,7 @@ template <class T> class cDynTplNappe2D
 
 
 ///  !!!    Data[Y][X][Z]  !!!!
-///  CONVENTIONS "Standard" sur les intervalles de nappes
+///  CONVENTIONS "Standard" on les intervalles de nappes
 ///       aImZMin  <=    Z  < aImZMax
 
 template <class T> class cDynTplNappe3D
@@ -183,7 +183,7 @@ template <class T> class cDynTplNappe3D
 };
 
 
-// Class pour preparer la creation d'une nappe d'objet de taille non connue a l'avance
+// Class for preparer la creation d'une nappe d'object de taille non connue a l'avance
 //   NON TESTEE CAR ABANDONNEE EN ROUTE !!!!
 template <class Type> class cNappeSizeUndef
 {

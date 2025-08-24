@@ -98,7 +98,7 @@ class cParamEtal : public cComplParamEtalPoly
 	public :
 	   cParamEtal(int,char **);
 	   static cParamEtal FromStr(const std::string & aName);
-	   cParamEtal ParamRatt();  // Si a un nom de ratt
+	   cParamEtal ParamRatt();  // if a un nom de ratt
 
 	   INT Zoom() const;
 	   const std::string & Directory() const;
@@ -219,7 +219,7 @@ class cParamEtal : public cComplParamEtalPoly
            REAL                      mSeuilCoupure;
            INT                       mInvYPointe;
            INT                       mRabExportGrid;
-	   // Par defaut calcule sur le nom de la premiere image
+	   // Par defaut compute on le nom de la premiere image
 	   
 	   cNameSpaceEqF::eTypeSysResol  mTypeSysResolve;
 
@@ -237,7 +237,7 @@ class cParamEtal : public cComplParamEtalPoly
            int                      mCalledByItsef;
 
 	   std::string              mPointeInitIm;
-// 1/2 largeur du pixel pour la convol,  0.5 = capteur "parfait"
+// 1/2 largeur du pixel for la convol,  0.5 = capteur "parfait"
 	   double                   mDefLarg;
            cElRegex *               mAutomSift;
            std::string              mKeyExportOri;

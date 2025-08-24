@@ -177,7 +177,7 @@ class cGenGaus3D
         const Pt3dr  & CDG() const {return mCDG;}
 
         //distribution de points selon e1,e2,e3 
-        //indiqué par (2*aN1+1),(2*aN2+1),(2*aN3+1) et Gauss
+        //indiqué par (2*aN1+1),(2*aN2+1),(2*aN3+1) and Gauss
         void GetDistribGaus(std::vector<Pt3dr> & aVPts,int aN1,int aN2,int aN3);
         
         //distribution de points selon e1,e2,e3 

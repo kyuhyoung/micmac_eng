@@ -152,7 +152,7 @@ cCollecSpecArg2007 & cAppliExtractLearnVecDM::ArgOpt(cCollecSpecArg2007 & anArgO
           << AOpt2007(mCutsPrefix,"CutPref"," Name to add to results",{eTA2007::HDV})
           << AOpt2007(mCutsExp,"CutExp","Exposant to set dynamic of view ",{eTA2007::HDV})
           << AOpt2007(mNameIm2,"Im2","Name Im2, Def .*Im1.tif => .*Im2.tif ")
-          // << AOpt2007(mSaveImFilter,"SIF","Save Image Filter",{eTA2007::HDV})
+          // << AOpt2007(mSaveImFilter,"SIF","Save image Filter",{eTA2007::HDV})
    ;
 }
 

@@ -413,7 +413,7 @@ template <class Type>
    cSensorCamPC *    cUncalibSpaceRessection<Type>::ComputeParameters(const std::string & aNameIm)
 {
     cDenseMatrix<Type> aMat = mBestH.IndexExtre().Mat(); // Matrix
-    cPtxd<Type,3>      aTr  = mBestH.IndexExtre().Tr();  // Translation
+    cPtxd<Type,3>      aTr  = mBestH.IndexExtre().Tr();  // translation
 
     cPt3dr      aCLoc   =  ToR(SolveCol(aMat,aTr)) * -1.0 ;  // implementation of [EqCenter]
     cPt3dr      aCAbs   =  aCLoc+ mCentroid.mP3;  // invert initial centering

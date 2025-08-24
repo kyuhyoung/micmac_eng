@@ -164,7 +164,7 @@ class Hplan : public PRC0
       bool  empty();
       Hplan* ptr();
       
-      REAL         distance(Pt3dr p);                         //positive ou negative
+      REAL         distance(Pt3dr p);                         //positive or negative
       REAL         distance(Facette_3d f);                    //distance moyenne
       
       bool         appartenir_plan(Pt3dr p, REAL precision);
@@ -174,8 +174,8 @@ class Hplan : public PRC0
       
       Pt3dr        project_pt_plan(Pt3dr p);
       
-      void         trans(Pt3dr dif);                           //dans l'espace
-      void         trans(REAL dist1, REAL dist2);              //dans le plan
+      void         trans(Pt3dr dif);                           //in l'espace
+      void         trans(REAL dist1, REAL dist2);              //in le plan
       void         rot_x(REAL alpha);                          //alpha en degree
       void         rot_y(REAL alpha);              
       void         rot_z(REAL alpha);              
@@ -323,7 +323,7 @@ class Camera
       void tourne_tete_phi_up();
       void tourne_tete_phi_down();
 
-                                        //parametre de camera
+                                        //parameter de camera
 
       void calcul_matrice();
       void reperer();
@@ -335,7 +335,7 @@ class Camera
                                              );
                               }
 
-                                        // afficahge et desaffichage
+                                        // afficahge and desaffichage
 
       void afficher_pts();
       void afficher_face( INT color = 2);

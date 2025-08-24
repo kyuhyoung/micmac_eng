@@ -89,7 +89,7 @@ class cMicMacZbuf : public cZBuffer
                const  cAppliMICMAC &,
                bool                  aDoDequant,
                const cEtapeMecComp * aCurEtape,
-               const Pt2di &         aTrGT,   // Translation entre la BOX GT et ImZ,ImMasq
+               const Pt2di &         aTrGT,   // translation between la BOX GT and ImZ,ImMasq
                const cGeomDiscFPx&,
                cPriseDeVue & aPdv,
                Im2D_REAL4   aImZInit,
@@ -130,7 +130,7 @@ bool cMicMacZbuf::RPCIsBascVisible(const Pt3dr & aP) const
 
 Pt3dr cMicMacZbuf::ProjTerrain(const Pt3dr & aPTer) const
 {
-   // On n'utilise pas la methode BasculeInv, qui devrait a peu pres
+   // On n'utilise pas la method BasculeInv, qui devrait a peu pres
    // le faire car elle est redefinie
 
 
@@ -446,7 +446,7 @@ void cAppliMICMAC::MakePartiesCachees
 
    double aZMoy;
 
-   // On reduit l'intervalle de Z en l'adaptant sur la Box deja calculee (en theorie on peu iterer)
+   // On reduit l'intervalle de Z en l'adaptant on la Box deja calculee (en theorie on peu iterer)
    if (! aGPC.ZMoy().IsInit())
    {
       Box2di aB  = BoxTer2Disc(aGT,aBoxTer,Pt2di(0,0));
@@ -484,9 +484,9 @@ void cAppliMICMAC::MakePartiesCachees
    }
 
 
-    // On va calculer le masque des points terrain qui sont dans le masque terrain
-    // initial et dont la projection au Z calcule est dans l'image 
-    // Eventuellement on adapte la boite pour la reduire
+    // On va compute le masque des points terrain qui sont in le masque terrain
+    // initial and dont la projection au Z compute est in l'image 
+    // Eventuellement on adapte la boite for la reduire
    
 
 
@@ -526,7 +526,7 @@ void cAppliMICMAC::MakePartiesCachees
       TIm2DBits<1>  aTImMGI(aImMGI);
 
       cGeomImage & aGeoI =  aPdv.Geom();
-      // Calcul le masque en geometrie image
+      // computation le masque en geometrie image
       for (int aY0=0; aY0<aSzIm.y ; aY0+=aSzBloc)
       {
           int aY1 = ElMin(aSzIm.y,aY0+aSzBloc);
@@ -844,7 +844,7 @@ void cAppliMICMAC::MakePartiesCachees
           }
 
 
-           /// Geometrie Masq Ter / Image PC
+           /// Geometrie Masq Ter / image PC
 
            MakeOrtho
            (
@@ -916,8 +916,8 @@ void cAppliMICMAC::MakePartiesCachees
                 MakeFileXML(anOriIm,aNameMtdIm);
 		// generate tfw for the ortho
 		std::string aNameMtdOrt = aDirOrtho + "Ort_"+ StdPrefix(aPdv.Name()) + ".tfw";
-        // Pour le tfw et pour le XML, les conventions sont pas les mm. MTD Xml: ne semblent pas correctes, notament la taille en pixels, pour les orthos individuelles mais tawny s'en sort très bien avec.
-        // aResRelOrtho= 1/(ZoomF*ResolOrtho) alors que devrait etre ResolOrtho/ZoomF (car si resolOrtho diminue, le GSD augmente)
+        // for le tfw and for le XML, les conventions sont pas les mm. MTD Xml: ne semblent pas correctes, notament la taille en pixels, for les orthos individuelles but tawny s'en sort très bien with.
+        // aResRelOrtho= 1/(ZoomF*ResolOrtho) then que devrait etre ResolOrtho/ZoomF (car if resolOrtho diminue, le GSD augmente)
         anOriIm.OriginePlani() = anOriOrtho.OriginePlani() + anOffs.mcbyc(anOriOrtho.ResolutionPlani()/aResRelOrtho);
         GenTFW(anOriIm, aNameMtdOrt);
            }
@@ -1134,7 +1134,7 @@ void cAppliMICMAC::MakeOrtho
                            else
                            {
                               // ElSeg3D  aSeg = aGeom.FaisceauPersp(aPImInc * aDzTer);
-                              // MPD le 07/10/2015 , il semble que ce soit la cause des pb dans l'image
+                              // MPD le 07/10/2015 , il semble que ce soit la cause des pb in l'image
                               // d'incidence
                               ElSeg3D  aSeg = aGeom.FaisceauPersp(aPImInc);
                               // ElSeg3D  aSeg = aGeom.FaisceauPersp(aPImInc * aDzIm);
@@ -1257,7 +1257,7 @@ void cAppliMICMAC::GetIntervZ(const Box2di & aBox,double & aZMin,double & aZMax,
   Symb_FNum  aCFM (1-aFM);
   // double aZMin,aZMax;
 
-  // Pour que les hors masques (CFM=Complementaire Fonction Masque)
+  // for que les hors masques (CFM=Complementaire function Masque)
   // n'aient pas d'influence on leurs donne des valeurs hors borne
 
   Pt2di aP0 = Sup(Pt2di(0,0),aBox._p0);
@@ -1337,7 +1337,7 @@ void cAppliMICMAC::MakePartiesCachees()
 
    if (aVI_PC.Val().ByMkF().Val() && (! Paral_Pc_IdProcess().IsInit()))
    {
-       // Si on demande une mise en // il faut etre logique !
+       // if on demande une mise en // il faut etre logique !
        int aNbP = ElMax(2,ByProcess().Val());
        std::list<std::string> aLP;
        for (int aKP=0 ; aKP < aNbP ; aKP++)

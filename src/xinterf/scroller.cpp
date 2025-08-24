@@ -508,12 +508,12 @@ ElImScroller * ElImScroller::StdFileGenerique
     }
 
 
-    // Test fichier tif "Reduc"
+    // Test file tif "Reduc"
     res = ElImScroller::StdScrollIfExist(aVisu,aName+Reduc+Scale+tif,aScale,VisuAdaptPal,ForceGray);
     if (res) 
        return res;
 
-    // Test fichier saphir  "Reduc"
+    // Test file saphir  "Reduc"
    res =   ElImScroller::StdScrollIfExist(aVisu,aName+_INTERPOLE_MEAN_+Scale,aScale,VisuAdaptPal,ForceGray);
    if (res) 
        return res;
@@ -521,12 +521,12 @@ ElImScroller * ElImScroller::StdFileGenerique
    if (InvScale!= 1)
       return 0;
 
-    // Test fichier tif Initiale
+    // Test file tif Initiale
     res =   ElImScroller::StdScrollIfExist(aVisu,aName+tif,aScale,VisuAdaptPal,ForceGray);
     if (res) 
        return res;
 
-    // Test fichier saphir Initiale
+    // Test file saphir Initiale
     res =   ElImScroller::StdScrollIfExist(aVisu,aName,aScale,VisuAdaptPal,ForceGray);
     if (res) 
        return res;
@@ -698,7 +698,7 @@ void PckBitImScroller::ApplyLutOnPoly(Fonc_Num aLut,std::vector<Pt2dr> VPts)
 
 /****************************************************************/
 /*                                                              */
-/*     RGB_PckbImScr et derivees                                */
+/*     RGB_PckbImScr and derivees                                */
 /*                                                              */
 /****************************************************************/
 
@@ -845,7 +845,7 @@ REAL RGBTrue16Col_PckbImScr::TimeUnCompr() const
 /*********************************************************************/
 
 
-// Fonction identite pour contourner bug sur "," en WSCC5.0
+// function identite for contourner bug on "," en WSCC5.0
 static ElSTDNS vector<ElImScroller *>  VerifSize(ElSTDNS vector<ElImScroller *> & scrolls)
 {
    ELISE_ASSERT(scrolls.size() !=0,"empty size inElPyramScroller");
@@ -902,7 +902,7 @@ void ElPyramScroller::LoadXImage(Pt2di p0,Pt2di p1,bool quick)
         }
 
 
-   // Si pas trouvee Recherche de la plus haute resolution < a la resolution demandee
+   // if pas trouvee Recherche de la plus haute resolution < a la resolution demandee
         if (! ScrClosest)
         {
             ScrClosest = _subs[0];

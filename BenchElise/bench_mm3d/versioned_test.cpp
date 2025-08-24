@@ -22,8 +22,8 @@ public:
 // finit par {0,0,0,""} (à la position nbVersionedTypes)
 // les deux premier champs ne sont pas égaux
 // les deux premier champs sont l'inverse l'un de l'autre
-// aucun nombre magique n'apparait deux fois
-// aucun nombre magique n'est l'inverse d'un autre nombre magique
+// aucun number magique n'apparait deux fois
+// aucun number magique n'est l'inverse d'un autre number magique
 bool check_versioned_headers_list()
 {   
    unsigned int i = 0;
@@ -197,7 +197,7 @@ int main( int argc, char **argv )
    
    print_versioned_file_header_list();
    
-   // génère un nouveau nombre magique à utiliser   
+   // génère un nouveau number magique à utiliser   
    uint32_t magic_direct, magic_reverse;
    generate_new_magic_number( magic_direct, magic_reverse );
    cout << "\nnouveau nombre magique = " << magic_direct << '/' << magic_reverse << endl << endl;

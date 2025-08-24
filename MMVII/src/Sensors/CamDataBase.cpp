@@ -134,7 +134,7 @@ cPerspCamIntrCalib * cPhotogrammetricProject::GetCalibInit
     if (aRes!=nullptr) 
        return aRes;
 
-    // extract Camera from Data Base
+    // extract camera from Data Base
     const cElemCamDataBase * aCam = GetCamFromNameCam(aMTD.CameraName(),SVP);
     if (aCam==nullptr)
     {

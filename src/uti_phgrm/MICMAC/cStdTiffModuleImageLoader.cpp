@@ -272,10 +272,10 @@ std::string cStdTiffModuleImageLoader::NameFileOfResol(int aDeZoom) const
           +  mAppli.NameFilePyr(mName,aDeZoom);
 }
 
-//  [1]- Si le fichier existe on le renvoie
-//  [2]- Sinon si la resolution vaut 1 y un pb
-//  [3]- Si la resolution n'est pas une puissance de 2 y a  aussi un pb
-//  [4]- Sinon on le calcul par reduction de la resolution
+//  [1]- if le file existe on le renvoie
+//  [2]- else if la resolution vaut 1 y un pb
+//  [3]- if la resolution n'est pas une puissance de 2 y a  aussi un pb
+//  [4]- else on le computation par reduction de la resolution
 //     du dessus.
 
 Tiff_Im     cStdTiffModuleImageLoader::FileOfResol(int aDeZoom) const
@@ -368,10 +368,10 @@ std::string     cStdTiffModuleImageLoader::CreateFileOfResol(int aDeZoom,bool Fo
 
 
    // On recherche la plus faible resolution meilleure
-   // ou egale a aDeZoom, c'est elle qui fixe le type,
-   // si elle vaut exactement aDeZoom elle fixe aussi le Diviseur
+   // or egale a aDeZoom, c'est elle qui fixe le type,
+   // if elle vaut exactement aDeZoom elle fixe aussi le Diviseur
 
-        // Auparavant , initialisation sur les valeur de la resolution 1
+        // Auparavant , initialisation on les value de la resolution 1
    Tiff_Im aFile1 = FileOfResol(1);
    GenIm::type_el aType = aFile1.type_el();
    int aDivIm = 16;
@@ -480,7 +480,7 @@ std::string     cStdTiffModuleImageLoader::CreateFileOfResol(int aDeZoom,bool Fo
 /*                                               */
 /*************************************************/
 
-// A mettre dans le .h pour utilisation hors MICMAC
+// A mettre in le .h for utilisation hors MICMAC
 /*
     cInterfModuleImageLoader::cInterfModuleImageLoader() :
     mAppli (0)
@@ -721,7 +721,7 @@ cInterfModuleImageLoader * cAppliMICMAC::GetMIL
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -737,17 +737,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

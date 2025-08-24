@@ -197,9 +197,9 @@ cGeomDiscFPx::cGeomDiscFPx
 
 
 /*************************************************************************/
-/*       Initialise les parametres  definissant la geometrie terrain     */
-/*   a partir des parametre de  <Section_Terrain> , voir ParamMICMAC.xml */
-/*   pour d'autres commentaires                                          */
+/*       Initialise les parameters  definissant la geometrie terrain     */
+/*   a partir des parameter de  <Section_Terrain> , voir ParamMICMAC.xml */
+/*   for d'autres commentaires                                          */
 /*************************************************************************/
 typedef std::list<cListePointsInclus> tLPI;
 typedef std::list<Pt2dr> tLPt;
@@ -228,7 +228,7 @@ if (MPD_MM())
       //aFileEx
   }
 
-  //  Calcul de la resolution terrain et, si possible,
+  //  computation de la resolution terrain and, if possible,
   //  de la paralaxe moyenne a partir des geometrie de
   //  prise de vue
   mDimPx = mAp->DimPx();
@@ -318,7 +318,7 @@ if (MPD_MM())
   if (aFileExt)
   {
        mResol = ElAbs(aFileExt->ResolutionPlani().x);
-       //  Attention -(-x) != x  avec les flottant 
+       //  Attention -(-x) != x  with les flottant 
        ELISE_ASSERT
        (
             ElAbs(mResol- ElAbs(aFileExt->ResolutionPlani().y)) < (1e-8 * mResol),
@@ -334,10 +334,10 @@ if (MPD_MM())
   } 
 
 
-  //  Calcul des intervalles de paralaxe
+  //  computation des intervalles de paralaxe
   if (mAp->ModeGeomMEC() == eGeomMECIm1)
   {
-     //ELISE_ASSERT(aNbPxMoyGot==0,"Redondance dans PxInit eGeomMECIm1");
+     //ELISE_ASSERT(aNbPxMoyGot==0,"Redondance in PxInit eGeomMECIm1");
      ELISE_ASSERT
      (
           !mAp->IntervAltimetrie().IsInit(),
@@ -504,15 +504,15 @@ if (MPD_MM())
 
 
   // Les boites terrain sont definie en prenant les seconde
-  // plus petite (resp. plus grande) valeur, puisque de toute facon
-  // on ne peut pas correler avec une seule image
+  // plus petite (resp. plus grande) value, puisque de toute facon
+  // on ne peut pas correler with une seule image
   cGetSec<double> cSecXMin;
   cGetSec<double> cSecXMax;
   cGetSec<double> cSecYMin;
   cGetSec<double> cSecYMax;
 
 
-// Ne tient pas compte du Full Im1, au cas ou la boite est vide
+// Ne tient pas compte du Full Im1, au cas or la boite est vide
 
   cGetSec<double> cVraiSecXMin;
   cGetSec<double> cVraiSecXMax;
@@ -590,7 +590,7 @@ if (MPD_MM())
              );
 
   // La boite terrain est definie soit explicitement par l'utilisateur
-  // soit comme la boite englobante de la zone objet contenant au - 2 images
+  // soit comme la boite englobante de la zone object contenant au - 2 images
  
   bool isBoxInit = false;
   Box2dr aBox;
@@ -701,7 +701,7 @@ if (MPD_MM())
   }
   mP0 = aBox._p0;
   mP1 = aBox._p1;
-  mBoxEngl  = aBox;  // A priori redondance entre les 2
+  mBoxEngl  = aBox;  // A priori redondance between les 2
   if (mAp->ModeGeomMEC()==eGeomMECIm1)
   {
       mP0 = Pt2dr(round_ni(mP0));
@@ -873,9 +873,9 @@ void cGeomDiscFPx::RemplitOri(cFileOriMnt & aFOM) const
 /*                                       */
 /*****************************************/
 
-// On a privilegie la simplicite et la fiabilite sur la
+// On a privilegie la simplicite and la fiabilite on la
 // rapidite (il est possible de ne faire que 3 evaluation
-// de la proj image et une seule de la proj terrain)
+// de la proj image and une seule de la proj terrain)
 
 
 void cLineariseProj::InitLP
@@ -893,10 +893,10 @@ void cLineariseProj::InitLP
 {
    mDecalRedr =  aDecalRedr;
    mUseDer = anEtape.UseGeomDerivable() ;
-   // Avant 
+   // before 
    // mUseDer = anEtape.UseGeomDerivable() || (aSurEchW!=1);
-   //  JE vois pas pourquoi, mais c'est pas non + utilise souvent
-   //  je met un garde fou, a voir si on passe par la
+   //  JE vois pas pourquoi, but c'est pas non + utilise souvent
+   //  je met un garde fou, a voir if on passe par la
    if ((! anEtape.UseGeomDerivable()) && (aSurEchW!=1))
    {
        ELISE_ASSERT

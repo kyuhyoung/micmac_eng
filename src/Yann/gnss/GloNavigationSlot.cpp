@@ -82,8 +82,8 @@ void GloNavigationSlot::print(){
 
 
 // -------------------------------------------------------------------------------
-// Intégration numérique de la position d'un satellite par Runge-Kutta d'ordre 4
-// Sortie : vecteur cinématique [x,y,z,vx,vy,vz]
+// Intgration numrique de la position d'un satellite par Runge-Kutta d'ordre 4
+// Sortie : vector cinmatique [x,y,z,vx,vy,vz]
 // -------------------------------------------------------------------------------
 std::vector<double> GloNavigationSlot::runge_kutta_4(ECEFCoords pos_ini, ECEFCoords v_ini, ECEFCoords a_ms, double t0, double h){
 
@@ -114,7 +114,7 @@ std::vector<double> GloNavigationSlot::runge_kutta_4(ECEFCoords pos_ini, ECEFCoo
     int T = t0/h;
     double remain = t0-T*h;
 
-    // Intégration
+    // Intgration
     for (int i=0; i<=T; i++){
 
         if (i == T) h = remain;
@@ -140,7 +140,7 @@ std::vector<double> GloNavigationSlot::runge_kutta_4(ECEFCoords pos_ini, ECEFCoo
         k1vz = -mub*zb + 1.5*C20*mub*zb*rob*rob*(3-5*zb*zb) + az_eci;
 
         //----------------------------------------------
-        // Coeff k2 : pente en h/2 calculée avec k1
+        // Coeff k2 : pente en h/2 compute with k1
         //----------------------------------------------
         x = pos_ini.X + k1x*h/2;
         y = pos_ini.Y + k1y*h/2;
@@ -160,7 +160,7 @@ std::vector<double> GloNavigationSlot::runge_kutta_4(ECEFCoords pos_ini, ECEFCoo
 
 
         //----------------------------------------------
-        // Coeff k3 : pente en h/2 recalculée avec k2
+        // Coeff k3 : pente en h/2 recalcule with k2
         //----------------------------------------------
         x = pos_ini.X + k2x*h/2;
         y = pos_ini.Y + k2y*h/2;
@@ -180,7 +180,7 @@ std::vector<double> GloNavigationSlot::runge_kutta_4(ECEFCoords pos_ini, ECEFCoo
 
 
         //----------------------------------------------
-        // Coeff k4 : pente en h calculée avec k3
+        // Coeff k4 : pente en h compute with k3
         //----------------------------------------------
         x = pos_ini.X + k3x*h;
         y = pos_ini.Y + k3y*h;
@@ -229,20 +229,20 @@ std::vector<double> GloNavigationSlot::runge_kutta_4(ECEFCoords pos_ini, ECEFCoo
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
-// L'argument pseudorange permet de déduire le temps de propagation du signal
+// computation d'une position de satellite  partir d'un slot de donnes de rinex .nav
+// L'argument pseudorange permet de dduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 ECEFCoords GloNavigationSlot::computeSatellitePos(GPSTime time, double pseudorange){
 
-    // Calcul du temps orbital
+    // computation du temps orbital
     double t0 = time - this->getTime() - pseudorange/Utils::C;
 
-    // Calcul heure sidérale
+    // computation heure sidrale
     double TSL0 = this->getTime().gast();
 
     TSL0 = 22.94054032666641;                          // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    // Transformation des positions/vitesses dans le repère ECI
+    // transformation des positions/vitesses in le repre ECI
     double theta_g0 = TSL0*PI/12 + Utils::dOMEGAe*900;
 
     ECEFCoords pxyz_eci(this->x   , this->y   , this->z);
@@ -261,21 +261,21 @@ ECEFCoords GloNavigationSlot::computeSatellitePos(GPSTime time, double pseudoran
     vxyz_eci.X -= Utils::dOMEGAe*pxyz_eci.Y;
     vxyz_eci.Y += Utils::dOMEGAe*pxyz_eci.X;
 
-    // Intégration numérique RK4
+    // Intgration numrique RK4
     std::vector<double> pv = runge_kutta_4(pxyz_eci, vxyz_eci, a_ms_eci, t0, RUNGE_KUTTA_INTEGRATION_STEP);
     ECEFCoords  sat(pv.at(0), pv.at(1), pv.at(2));
     ECEFCoords vsat(pv.at(3), pv.at(4), pv.at(5));
 
-    // Retour en coordonnées ECEF PZ90
+    // Retour en coordonnes ECEF PZ90
     theta_g0 += Utils::dOMEGAe*t0;
     sat.rotate(+theta_g0);
 
-    // Transformation PZ90 -> WGS84
+    // transformation PZ90 -> WGS84
     sat.X += -0.36;
     sat.Y +=  0.08;
     sat.Z +=  0.18;
 
-    // Rotation dans l'ECI
+    // rotation in l'ECI
     sat.shiftECEFRef(pseudorange/Utils::C);
 
 	return sat;
@@ -283,7 +283,7 @@ ECEFCoords GloNavigationSlot::computeSatellitePos(GPSTime time, double pseudoran
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
+// computation d'une position de satellite  partir d'un slot de donnes de rinex .nav
 // -------------------------------------------------------------------------------
 ECEFCoords GloNavigationSlot::computeSatellitePos(GPSTime time){
 	return computeSatellitePos(time, 0);
@@ -291,20 +291,20 @@ ECEFCoords GloNavigationSlot::computeSatellitePos(GPSTime time){
 
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite GLONASS
-// L'argument pseudorange permet de déduire le temps de propagation du signal
+// computation de l'error d'horloge d'un satellite GLONASS
+// L'argument pseudorange permet de dduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 double GloNavigationSlot::computeSatelliteClockError(GPSTime time, double pseudorange){
 
-     // Calcul du temps orbital
+     // computation du temps orbital
     double t0 = time - this->getTime() - pseudorange/Utils::C;
 
-    // Calcul heure sidérale
+    // computation heure sidrale
     double TSL0 = this->getTime().gast();
 
     TSL0 = 22.94054032666641;                          // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    // Transformation des positions/vitesses dans le repère ECI
+    // transformation des positions/vitesses in le repre ECI
     double theta_g0 = TSL0*PI/12 + Utils::dOMEGAe*900;
 
     ECEFCoords pxyz_eci(this->x   , this->y   , this->z);
@@ -323,15 +323,15 @@ double GloNavigationSlot::computeSatelliteClockError(GPSTime time, double pseudo
     vxyz_eci.X -= Utils::dOMEGAe*pxyz_eci.Y;
     vxyz_eci.Y += Utils::dOMEGAe*pxyz_eci.X;
 
-    // Intégration numérique RK4
+    // Intgration numrique RK4
     std::vector<double> pv = runge_kutta_4(pxyz_eci, vxyz_eci, a_ms_eci, t0, RUNGE_KUTTA_INTEGRATION_STEP);
     ECEFCoords  sat(pv.at(0), pv.at(1), pv.at(2));
     ECEFCoords vsat(pv.at(3), pv.at(4), pv.at(5));
 
-    // Calcul de la correction relativiste due à l'excentricité
+    // computation de la correction relativiste due  l'excentricit
     double dtr = -2*sat.dot(vsat)/(Utils::C*Utils::C);
 
-    // Calcul de la correction totale
+    // computation de la correction totale
     double error = dtr + this->SvClockBias + this->SvRelFreqBias*t0;
 
     return -error;
@@ -340,7 +340,7 @@ double GloNavigationSlot::computeSatelliteClockError(GPSTime time, double pseudo
 
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite GLONASS
+// computation de l'error d'horloge d'un satellite GLONASS
 // -------------------------------------------------------------------------------
 double GloNavigationSlot::computeSatelliteClockError(GPSTime time){
     return computeSatelliteClockError(time, 0);

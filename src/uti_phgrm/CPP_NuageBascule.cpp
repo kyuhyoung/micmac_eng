@@ -393,7 +393,7 @@ int  NuageBascule_main(int argc,char ** argv)
 /*
                 ELISE_ASSERT(false,"No bloc OK : probable bascule with empty mask !!!");
 */
-           // Modif MPD 05/01/2014 : compte tenu du filtrage en prog dyn, sur l'etirement, il peut arriver de maniere normale que
+           // Modif MPD 05/01/2014 : compte tenu du filtrage en prog dyn, on l'etirement, il peut arriver de maniere normale que
            // le masque soit vide
                 PurgeBlock(mVBl);
                 return EXIT_SUCCESS;
@@ -521,7 +521,7 @@ int  NuageBascule_main(int argc,char ** argv)
                      );
 
                    // ===== Modif 2/10/2013 MPD : tenir compte du fait que le ZBuffer est incomplet car par dalles,
-                   // donc on n'ecrase que si on est au dessus !!!
+                   // donc on n'ecrase que if on est au dessus !!!
                      ELISE_COPY
                      (
                          aIMasqLoc.all_pts(),
@@ -633,7 +633,7 @@ int  NuageBascule_main(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -649,17 +649,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

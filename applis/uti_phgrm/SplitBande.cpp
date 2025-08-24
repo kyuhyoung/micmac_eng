@@ -105,7 +105,7 @@ class cSplitBande
 
 double  cSplitBande::TMoy()
 {
-    // Calcul du temps moyen
+    // computation du temps moyen
 
     std::vector<double> aVDif;
     for (int aK=1 ; aK<mNbSom ; aK++)

@@ -1,7 +1,7 @@
 #include "Statistics.h"
 
 // ---------------------------------------------------------------
-// Moyenne d'un vecteur
+// Moyenne d'un vector
 // ---------------------------------------------------------------
 double Statistics::mean(std::vector<double> X){
     double m = 0;
@@ -10,7 +10,7 @@ double Statistics::mean(std::vector<double> X){
 }
 
 // ---------------------------------------------------------------
-// Moyenne L1 d'un vecteur
+// Moyenne L1 d'un vector
 // ---------------------------------------------------------------
 double Statistics::meanAbs(std::vector<double> X){
     double m = 0;
@@ -19,7 +19,7 @@ double Statistics::meanAbs(std::vector<double> X){
 }
 
 // ---------------------------------------------------------------
-// Erreur MSE d'un vecteur
+// error MSE d'un vector
 // ---------------------------------------------------------------
 double Statistics::mse(std::vector<double> X){
     double mse = 0;
@@ -28,14 +28,14 @@ double Statistics::mse(std::vector<double> X){
 }
 
 // ---------------------------------------------------------------
-// Erreur RMSE d'un vecteur
+// error RMSE d'un vector
 // ---------------------------------------------------------------
 double Statistics::rmse(std::vector<double> X){
     return sqrt(Statistics::mse(X));
 }
 
 // ---------------------------------------------------------------
-// Ecart-type d'un vecteur
+// Ecart-type d'un vector
 // ---------------------------------------------------------------
 double Statistics::sd(std::vector<double> X){
     double bias = Statistics::mean(X);
@@ -46,7 +46,7 @@ double Statistics::sd(std::vector<double> X){
 }
 
 // ---------------------------------------------------------------
-// Minimum d'un vecteur
+// Minimum d'un vector
 // ---------------------------------------------------------------
 double Statistics::min(std::vector<double> X){
     double min = X.at(0);
@@ -57,7 +57,7 @@ double Statistics::min(std::vector<double> X){
 }
 
 // ---------------------------------------------------------------
-// Maximum d'un vecteur
+// Maximum d'un vector
 // ---------------------------------------------------------------
 double Statistics::max(std::vector<double> X){
     double max = X.at(0);
@@ -68,7 +68,7 @@ double Statistics::max(std::vector<double> X){
 }
 
 // ---------------------------------------------------------------
-// Argument du minimum d'un vecteur
+// Argument du minimum d'un vector
 // ---------------------------------------------------------------
 int Statistics::argmin(std::vector<double> X){
     double min = X.at(0); int idx = 0;
@@ -82,7 +82,7 @@ int Statistics::argmin(std::vector<double> X){
 }
 
 // ---------------------------------------------------------------
-// Argument du maximum d'un vecteur
+// Argument du maximum d'un vector
 // ---------------------------------------------------------------
 int Statistics::argmax(std::vector<double> X){
     double max = X.at(0); int idx = 0;
@@ -98,7 +98,7 @@ int Statistics::argmax(std::vector<double> X){
 
 
 // ---------------------------------------------------------------
-// Moyenne d'un ensemble de coordonnées
+// Moyenne d'un ensemble de coordonnes
 // ---------------------------------------------------------------
 ECEFCoords Statistics::mean(std::vector<ECEFCoords> pts){
     ECEFCoords mean;
@@ -112,7 +112,7 @@ ECEFCoords Statistics::mean(std::vector<ECEFCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Moyenne L1 d'un ensemble de coordonnées
+// Moyenne L1 d'un ensemble de coordonnes
 // ---------------------------------------------------------------
 ECEFCoords Statistics::meanAbs(std::vector<ECEFCoords> pts){
     ECEFCoords mean;
@@ -126,7 +126,7 @@ ECEFCoords Statistics::meanAbs(std::vector<ECEFCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Erreur MSE d'un ensemble de coordonnées
+// error MSE d'un ensemble de coordonnes
 // ---------------------------------------------------------------
 ECEFCoords Statistics::mse(std::vector<ECEFCoords> pts){
     ECEFCoords mse;
@@ -140,7 +140,7 @@ ECEFCoords Statistics::mse(std::vector<ECEFCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Erreur RMSE d'un ensemble de coordonnées
+// error RMSE d'un ensemble de coordonnes
 // ---------------------------------------------------------------
 ECEFCoords Statistics::rmse(std::vector<ECEFCoords> pts){
     ECEFCoords rmse = Statistics::mse(pts);
@@ -151,7 +151,7 @@ ECEFCoords Statistics::rmse(std::vector<ECEFCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Ecart-type d'un ensemble de coordonnées
+// Ecart-type d'un ensemble de coordonnes
 // ---------------------------------------------------------------
 ECEFCoords Statistics::sd(std::vector<ECEFCoords> pts){
     ECEFCoords bias = Statistics::mean(pts);
@@ -175,7 +175,7 @@ ECEFCoords Statistics::sd(std::vector<ECEFCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Minimum d'un ensemble de coordonnées
+// Minimum d'un ensemble de coordonnes
 // ---------------------------------------------------------------
 ECEFCoords Statistics::min(std::vector<ECEFCoords> pts){
     ECEFCoords min;
@@ -192,7 +192,7 @@ ECEFCoords Statistics::min(std::vector<ECEFCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Maximum d'un ensemble de coordonnées
+// Maximum d'un ensemble de coordonnes
 // ---------------------------------------------------------------
 ECEFCoords Statistics::max(std::vector<ECEFCoords> pts){
     ECEFCoords max;
@@ -209,7 +209,7 @@ ECEFCoords Statistics::max(std::vector<ECEFCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Moyenne d'un ensemble de coordonnées planes
+// Moyenne d'un ensemble de coordonnes planes
 // ---------------------------------------------------------------
 ENUCoords Statistics::mean(std::vector<ENUCoords> pts){
     ENUCoords mean;
@@ -225,7 +225,7 @@ ENUCoords Statistics::mean(std::vector<ENUCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Moyenne L1 d'un ensemble de coordonnées planes
+// Moyenne L1 d'un ensemble de coordonnes planes
 // ---------------------------------------------------------------
 ENUCoords Statistics::meanAbs(std::vector<ENUCoords> pts){
     ENUCoords mean;
@@ -241,7 +241,7 @@ ENUCoords Statistics::meanAbs(std::vector<ENUCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Erreur MSE d'un ensemble de coordonnées planes
+// error MSE d'un ensemble de coordonnes planes
 // ---------------------------------------------------------------
 ENUCoords Statistics::mse(std::vector<ENUCoords> pts){
     ENUCoords mse;
@@ -257,7 +257,7 @@ ENUCoords Statistics::mse(std::vector<ENUCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Erreur RMSE d'un ensemble de coordonnées planes
+// error RMSE d'un ensemble de coordonnes planes
 // ---------------------------------------------------------------
 ENUCoords Statistics::rmse(std::vector<ENUCoords> pts){
     ENUCoords rmse = Statistics::mse(pts);
@@ -268,7 +268,7 @@ ENUCoords Statistics::rmse(std::vector<ENUCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Ecart-type d'un ensemble de coordonnées planes
+// Ecart-type d'un ensemble de coordonnes planes
 // ---------------------------------------------------------------
 ENUCoords Statistics::sd(std::vector<ENUCoords> pts){
     ENUCoords bias = Statistics::mean(pts);
@@ -291,7 +291,7 @@ ENUCoords Statistics::sd(std::vector<ENUCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Minimum d'un ensemble de coordonnées planes
+// Minimum d'un ensemble de coordonnes planes
 // ---------------------------------------------------------------
 ENUCoords Statistics::min(std::vector<ENUCoords> pts){
     ENUCoords min;
@@ -308,7 +308,7 @@ ENUCoords Statistics::min(std::vector<ENUCoords> pts){
 }
 
 // ---------------------------------------------------------------
-// Maximum d'un ensemble de coordonnées planes
+// Maximum d'un ensemble de coordonnes planes
 // ---------------------------------------------------------------
 ENUCoords Statistics::max(std::vector<ENUCoords> pts){
     ENUCoords max;

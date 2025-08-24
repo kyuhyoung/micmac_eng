@@ -296,7 +296,7 @@ void ElHoughSubPixellaire::compute_contrib(INT IG_Teta,REAL G_Teta)
             Pt2di G_Pt(iX,iY);
             Pt2dr S_Pt = G2S_XY(Pt2dr(G_Pt));
 
-          // pt1-pt2-pt3-pt4 defini le contour du pixel dans le
+          // pt1-pt2-pt3-pt4 defini le contour du pixel in le
           // repere lies a teta
 
             Pt2dr pt1 =  InTetaCoord(S_Pt+Pt2dr(-0.5,-0.5));

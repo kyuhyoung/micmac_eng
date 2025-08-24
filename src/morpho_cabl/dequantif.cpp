@@ -465,7 +465,7 @@ Im2D_REAL4 RecursiveImpaint
        Im2D_REAL8 aDblMasqk(aSz.x,aSz.y);
 
        ELISE_COPY(aFlIm.all_pts(),aFlMaskInit.in(),aDblMasqk.out());
-       // On met dans le masq uniquement les bords
+       // On met in le masq uniquement les bords
        ELISE_COPY
        (
             select(aDblMasqk.all_pts(), erod_d4(aDblMasqk.in(0)>0.5,1)),

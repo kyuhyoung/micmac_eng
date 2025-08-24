@@ -366,7 +366,7 @@ tPoseR  cNodeArborTriplets::PoseRelEdge(int aI0Loc,int aI1Loc) const
 
     t3GOP_Edge & aE01 =  *aV0.EdgeOfSucc(aV1);  // the corresponding edge
     
-    // [2]  Extract the "Reference" pose *
+    // [2]  Extract the "reference" pose *
     tPoseR  aResult = aE01.AttrSym().mPoseRef2to1;
     //and eventually correct from sens
     if (!aE01.IsDirInit())
@@ -672,7 +672,7 @@ tSim3dR cNodeArborTriplets::EstimateSimTransfert
            for (int aKIn3=0 ; aKIn3<3 ; aKIn3++)
            {
                tPoseR aPIK_to_W0;  // Pose Im-> W0
-               int aNumImG = anAttr.m3V.at(aKIn3)->Attr().mKIm  ;  //  Num Image Glob
+               int aNumImG = anAttr.m3V.at(aKIn3)->Attr().mKIm  ;  //  Num image Glob
                int aLocNum0 = aN0.mTabGlob2LocInd.at(aNumImG); // Num in W0
                if (aLocNum0>=0)
                    aPIK_to_W0 = aN0.mLocSols.at(aLocNum0).mPose;

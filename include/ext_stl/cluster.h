@@ -152,7 +152,7 @@ template <class Type,class TAttrLnk> class cMergingNode
      private :
             int               mNum;
             tPtrMN            mFils[TheNbFils];
-            tSetN             mFathers; // N'est construit que pour les cluster existant et tant qu'ils sont "top"
+            tSetN             mFathers; // N'est construit que for les cluster existant and tant qu'ils sont "top"
 
             double            mGain;
             Type *            mVal;
@@ -269,7 +269,7 @@ template <class Type,class TAttrLnk,class TParam>
    int aNbSupr = (int)mRoots.erase(anAdopted);
    ELISE_ASSERT(aNbSupr==1,"Chek failed in mRoots.erase/UpdateAdoption");
 
-   int aNbPereGot = 0;  // Pour checker
+   int aNbPereGot = 0;  // for checker
    const tSetN & aLF = anAdopted->Fathers () ;
    for (typename tSetN::const_iterator itF=aLF.begin(); itF!=aLF.end() ; itF++)
    {
@@ -311,7 +311,7 @@ template <class Type,class TAttrLnk,class TParam>
 
         tNode * aNew=0;
         if (! mHeap.pop(aNew))
-           return;  // Plus de merge possible, on sort avec une foret
+           return;  // Plus de merge possible, on sort with une foret
 
        // On a trouve un nouveau noeud
 

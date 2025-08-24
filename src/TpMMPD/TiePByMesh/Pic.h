@@ -5,7 +5,7 @@
 #include "Triangle.h"
 #include <iterator>
 
-/* ** PlyFile.h est maintenante inclus dans StdAfx.f du MicMac, dans include/general */
+/* ** PlyFile.h est maintenante inclus in StdAfx.f du MicMac, in include/general */
 /*
  * *IL FAULT MISE INCLUDE DU OPENCV AVANT INCLUDE DU StdAfx.h
  * IL FAULT DESACTIVE L'OPTION WITH_HEADER_PRECOMP DANS MICMAC CMAKE
@@ -30,9 +30,9 @@ class pic
 public:
     pic (    const string * nameImg, string nameOri,
              cInterfChantierNameManipulateur * aICNM,
-             int indexInListPic);                     //definir pic avec orientation
+             int indexInListPic);                     //definir pic with orientation
 
-    bool checkInSide(Pt2dr aPoint,int aRab=0);                   //verifie si point est dans pic
+    bool checkInSide(Pt2dr aPoint,int aRab=0);                   //verifie if point est in pic
     string getNameImgInStr(){return mNameImg->c_str();}
     void AddPtsToPack(pic* Pic2nd, const Pt2dr &Pts1, const Pt2dr &Pts2);
     void AddVectorPtsToPack(pic* Pic2nd, vector<Pt2dr> & Pts1, vector<Pt2dr> & Pts2);
@@ -53,7 +53,7 @@ public:
     CamStenope * mOriPic;                                                                    //orientation
     cInterfChantierNameManipulateur * mICNM;                                   //name manipulator
     const string * mNameImg;
-    vector<triangle*> allTriangle;     //tout les triangle dans le mesh
+    vector<triangle*> allTriangle;     //tout les triangle in le mesh
 
     Pt2di mImgSz;
     Tiff_Im *mPicTiff;
@@ -66,6 +66,6 @@ public:
     vector<triangle*>triVisible;
     vector<double> triVisibleInd;
 private:
-    //vector<Rect> mDesGrill;             //des grill d'image et index des rectangles dans chaque grill
+    //vector<Rect> mDesGrill;             //des grill d'image and index des rectangles in chaque grill
 };
 #endif

@@ -820,7 +820,7 @@ int CmpMAF_main(int argc,char ** argv)
 		{
 			//if(iT1->NameIm().compare(iT2->NameIm()) == 0)
 			//{
-				//std::cout << "Same Image = " << iT1->NameIm() << " | " << iT2->NameIm() << std::endl;
+				//std::cout << "Same image = " << iT1->NameIm() << " | " << iT2->NameIm() << std::endl;
 				std::list<cOneMesureAF1I> & aMes1 = iT1->OneMesureAF1I();
 				std::list<cOneMesureAF1I> & aMes2 = iT2->OneMesureAF1I();
 				

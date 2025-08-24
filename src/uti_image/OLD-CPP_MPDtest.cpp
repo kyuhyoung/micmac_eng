@@ -512,14 +512,14 @@ void TestAdEx()
 
 extern bool TransFormArgKey (
          std::string & aName ,
-         bool AMMNoArg,  // Accept mismatch si DirExt vide
+         bool AMMNoArg,  // Accept mismatch if DirExt vide
          const std::vector<std::string> & aDirExt
      );
 
 
 void TestTransFormArgKey(
          std::string  aName ,
-         bool AMMNoArg,  // Accept mismatch si DirExt vide
+         bool AMMNoArg,  // Accept mismatch if DirExt vide
          const std::vector<std::string> & aDirExt
       )
 {

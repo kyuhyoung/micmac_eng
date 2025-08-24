@@ -42,7 +42,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 #include "StdAfx.h"
 
-// MPD => me demande si cette librairie ne devrait pas plutot faire  partie d'Apero ?
+// MPD => me demande if cette librairie ne devrait pas plutot faire  partie d'Apero ?
 #include "../../uti_phgrm/Apero/cCameraRPC.h"
 
 //  cPushB_GeomLine :  Class for the geometry of one line
@@ -100,7 +100,7 @@ class cPushB_GeomLine
         cElPlan3D               mPlanRay;
         Pt3dr                   mAxeX;  // satellite displacement 
         Pt3dr                   mAxeY;  // sensor aligned
-        Pt3dr                   mAxeZ;  // Point to vertical, to the earth
+        Pt3dr                   mAxeZ;  // point to vertical, to the earth
         std::vector<double>     mCalib;  // Inside the plane the vector (1,mCalib[aK]) is the Dir
         // std::vector<Pt3dr>      mDirs;
 };
@@ -151,7 +151,7 @@ class cPushB_PhysMod
         std::vector<cPushB_GeomLine *>  mLinesPB;
         double                          mMoyRay;
         double                          mMoyAlt;
- // Indicateur des ecarts entre la modelisation physique et le RPC ou autre; max et moyen
+ // Indicateur des ecarts between la modelisation physique and le RPC or autre; max and moyen
         double                          mMoyRes;    // Residu d'intersection des lignes
         double                          mMaxRes;
         double                          mMoyPlan;   // Residu des directions d'un plan
@@ -170,10 +170,10 @@ class cRPC_PushB_PhysMod : public cPushB_PhysMod
 {
     public :
         static cRPC_PushB_PhysMod * NewRPC_PBP(const cRPC & aRPC,eModeRefinePB,const Pt2di &aSzGeoL);
- //  LatLon  <-> Image
+ //  LatLon  <-> image
         Pt2dr RPC_LlZ2Im(const Pt3dr & aLlZ) const;
         Pt3dr RPC_ImAndZ2LlZ(const Pt2dr & aPIm,const double & aZ) const;
- //  Geo Centrique <-> Image
+ //  Geo Centrique <-> image
         ElSeg3D Im2GeoC_Init(const Pt2dr & aPIm) const; 
 
         Pt2dr   GeoC2Im_Init   (const Pt3dr & aP)   const;

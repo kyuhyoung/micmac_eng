@@ -79,7 +79,7 @@ struct const_Param_Cor_MS
 	/// taille du terrain
     uint2   _dimTerrain;
 
-	///	Nombre d'echelle pour un image
+	///	number d'scale for un image
     ushort  aNbScale;
 
 	///
@@ -89,7 +89,7 @@ struct const_Param_Cor_MS
 
 	///
 	/// \brief mAhDefCost
-	/// Cout intrinsèque par défaut
+	/// Cout intrinsque par dfaut
     float   mAhDefCost;
 
 	///
@@ -119,12 +119,12 @@ struct const_Param_Cor_MS
 
 	///
 	/// \brief mDyRegGpu
-	/// Indique si la régularisation est aussi calculer par gpugpu
+	/// Indique if la rgularisation est aussi compute par gpugpu
 	bool	mDyRegGpu;
 
     ///
     /// \brief mNbByPix
-    /// nombre de phase par pixel
+    /// number de phase par pixel
     ushort  mNbByPix;
 
     ///
@@ -134,11 +134,11 @@ struct const_Param_Cor_MS
 
     ///
     /// \brief mDim3Cache
-    /// dimension du cache preparatoire au calcul de correlation multi-echelle
+    /// dimension du cache preparatoire au computation de correlation multi-scale
     uint3   mDim3Cache;
 
 	///
-	/// \brief init Initialidation des paramètres
+	/// \brief init Initialidation des paramtres
 	/// \param aVV
 	/// \param aVPds
 	/// \param offset0
@@ -182,7 +182,7 @@ struct const_Param_Cor_MS
 
 	///
 	/// \brief dealloc
-	/// Désallocation de la mémoire
+	/// Dsallocation de la mmoire
     void dealloc();
 
 };
@@ -238,33 +238,33 @@ struct dataCorrelMS
 	template<class T>
 	///
 	/// \brief pDeviceCost
-	/// \return Le pointeur sur le volume des couts de correlation
+	/// \return Le pointeur on le volume des couts de correlation
 	///
 	T* pDeviceCost(){return NULL;}
 
 	///
 	/// \brief _dt_MaskErod
-	/// Texture du masque erodée
+	/// Texture du masque erode
     ImageGpGpu<pixel,cudaContext>           _dt_MaskErod[NBEPIIMAGE];
 	///
 	/// \brief _dt_Image
-	/// Groupe de textures des images épipolaries
+	/// Groupe de textures des images pipolaries
     ImageLayeredGpGpu<float,cudaContext>    _dt_Image[NBEPIIMAGE];
 
 	///
 	/// \brief _texImage
-	/// Rédérence sur les textures d'images
+	/// Rdrence on les textures d'images
     textureReference*           _texImage[NBEPIIMAGE];
 
 	///
 	/// \brief _texMaskErod
-	/// Références sur les textures des masques érodées
+	/// Rfrences on les textures des masques rodes
     textureReference*           _texMaskErod[NBEPIIMAGE];
 
 	///
 	/// \brief transfertImage Transfert des images de l'hote vers le device
 	/// \param sizeImage taille des images
-	/// \param dataImage Pointeur sur les données des images dans l'hote
+	/// \param dataImage Pointeur on les donnes des images in l'hote
 	/// \param id
 	///
     void    transfertImage(uint2 sizeImage, float ***dataImage , int id);
@@ -274,8 +274,8 @@ struct dataCorrelMS
 	/// \brief transfertMask Transfert des masques de l'hote vers le device
 	/// \param dimMask0 taille du masque 0
 	/// \param dimMask1 taille du masque 1
-	/// \param mImMasqErod_0 Pointeur source des données du masque 0
-	/// \param mImMasqErod_1 Pointeur source des données du masque 1
+	/// \param mImMasqErod_0 Pointeur source des donnes du masque 0
+	/// \param mImMasqErod_1 Pointeur source des donnes du masque 1
 	///
 	void    transfertMask(uint2 dimMask0, uint2 dimMask1, pixel **mImMasqErod_0, pixel **mImMasqErod_1);
 
@@ -293,13 +293,13 @@ struct dataCorrelMS
 
 	///
 	/// \brief syncDeviceData
-	/// Synchronisation des données entre hote et device
+	/// Synchronisation des donnes between hote and device
     void    syncDeviceData();
 
 
 	///
 	/// \brief dealloc
-	/// Désallocation de la mémoire hote et device
+	/// Dsallocation de la mmoire hote and device
     void    dealloc();
 
 	///
@@ -327,7 +327,7 @@ private:
 
 ///
 /// \brief The GpGpu_Interface_Cor_MS class
-/// Classe de gestion des processus pour le lancement de calcul GPGPU pour la corrélation multiscale
+/// class de gestion des processus for le lancement de computation GPGPU for la corrlation multiscale
 class GpGpu_Interface_Cor_MS : public CSimpleJobCpuGpu< bool>
 {
 public:
@@ -337,16 +337,16 @@ public:
 
 	///
 	/// \brief freezeCompute
-	/// Suspendre le calcul
+	/// Suspendre le computation
     virtual void    freezeCompute(){}
 
 	///
 	/// \brief Job_Correlation_MultiScale
-	/// Lancer une correlation par pair en géométrie épipolaire
+	/// Lancer une correlation par pair en gomtrie pipolaire
     void            Job_Correlation_MultiScale();
 
 	///
-	/// \brief transfertImageAndMask Transfert des images  et des masques
+	/// \brief transfertImageAndMask Transfert des images  and des masques
 	/// \param sI0
 	/// \param sI1
 	/// \param dataImg0
@@ -363,7 +363,7 @@ public:
 			pixel **mask1);
 
 	///
-	/// \brief init Initialisation des paramètres
+	/// \brief init Initialisation des paramtres
 	/// \param terrain
 	/// \param aVV
 	/// \param aVPds
@@ -422,12 +422,12 @@ public:
 	///
 	T* getCost(uint2 pt);
 
-	/// Désallocation de la mémoire
+	/// Dsallocation de la mmoire
     void dealloc();
 
 	///
 	/// \brief param
-	/// \return Les paramètres de corrélation
+	/// \return Les paramtres de corrlation
 	///
 	const_Param_Cor_MS& param(){return _cDataCMS;}
 

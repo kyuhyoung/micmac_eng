@@ -59,13 +59,13 @@ bool IsPTest(const Pt2di & aP) {return aP == Pt2di(40,40);}
 
 
         Z = 13 ->    Delta = [-2,2]   // aucune contrainte
-        Z = 18 ->    Delta = [-2,1]   // Pour que ca reste dans I0
-        Z = 25 ->    Delta = [-6,-6]  //  Pour que l'intersection soit non vide avec I0
-        Z = 10 ->    Delta = [-5,-1]  // principe de symetrie, dans l'autre sens                                      // les points [5,9] de I0 devront etre connecte a 10
+        Z = 18 ->    Delta = [-2,1]   // for que ca reste in I0
+        Z = 25 ->    Delta = [-6,-6]  //  for que l'intersection soit non vide with I0
+        Z = 10 ->    Delta = [-5,-1]  // principe de symetrie, in l'autre sens                                      // les points [5,9] de I0 devront etre connecte a 10
 
 */
 
-/// brief Calcul le Z min et max.
+/// brief computation le Z min and max.
 static inline void LocComputeIntervaleDelta
 (
         INT & aDzMin,
@@ -86,7 +86,7 @@ static inline void LocComputeIntervaleDelta
     if (aZ != aZ1Max-1)
         ElSetMin(aDzMax,MaxDeltaZ);
 
-    // Si les intervalles sont vides, on relie
+    // if les intervalles sont vides, on relie
     // les bornes des intervalles a tous les points
     if (aDzMin > aDzMax)
     {
@@ -189,7 +189,7 @@ void cGBV2_ProgDynOptimiseur::gLocal_SetCout(Pt2di aPTer, ushort* aCost)
 
 void cGBV2_ProgDynOptimiseur::BalayageOneSens
 (
-        const std::vector<Pt2di> &   aVPt,     // vecteur de points
+        const std::vector<Pt2di> &   aVPt,     // vector de points
         cGBV2_CelOptimProgDyn::eSens aSens,    // sens du parcourt
         int                          anIndInit,// premier point
         int                          aDelta,   // delta incremenation de progression
@@ -197,9 +197,9 @@ void cGBV2_ProgDynOptimiseur::BalayageOneSens
         )
 {
 
-    // Initialisation des couts sur les premieres valeurs
+    // Initialisation des couts on les premieres valeurs
     {
-        // Matrice des cellules
+        // matrix des cellules
         tCGBV2_tMatrCelPDyn &  aMat0 = mMatrCel[aVPt[anIndInit]];
 
         // Le rectangle
@@ -244,7 +244,7 @@ void cGBV2_ProgDynOptimiseur::BalayageOneSens
         for (aP0.y=aBox0._p0.y ; aP0.y<aBox0._p1.y ; aP0.y++)
         {
             int aDyMin,aDyMax;
-            // Calcul du delta sur Y
+            // computation du delta on Y
             LocComputeIntervaleDelta
                     (
                         aDyMin,
@@ -259,7 +259,7 @@ void cGBV2_ProgDynOptimiseur::BalayageOneSens
             for (aP0.x=aBox0._p0.x ;  aP0.x<aBox0._p1.x ; aP0.x++)
             {
                 int aDxMin,aDxMax;
-                // Calcul du delta sur X
+                // computation du delta on X
                 LocComputeIntervaleDelta
                         (
                             aDxMin,
@@ -275,7 +275,7 @@ void cGBV2_ProgDynOptimiseur::BalayageOneSens
                 // Cellule courante
                 cGBV2_CelOptimProgDyn & aCel0 = aMat0[aP0];
 
-                // Parcours des cellules dans l'intervalle des Deltas
+                // Parcours des cellules in l'intervalle des Deltas
                 for (int aDy=aDyMin ; aDy<=aDyMax; aDy++)
                 {
                     for (int aDx=aDxMin ; aDx<=aDxMax; aDx++)
@@ -285,7 +285,7 @@ void cGBV2_ProgDynOptimiseur::BalayageOneSens
                                 (
                                     aCel0,                                               // cellule colonne courante
                                     aSens,                                               // Sens de parcours
-                                    mTabCost[0].Cost(aDx) + mTabCost[1].Cost(aDy)        // Tabulation des p�nalit�s ou cout de transition
+                                    mTabCost[0].Cost(aDx) + mTabCost[1].Cost(aDy)        // Tabulation des pnalits or cout de transition
                                 );                                                                                 // mCostActu[0]*ElAbs(aDx)+mCostActu[1]*ElAbs(aDy)
                     }
                 }
@@ -297,9 +297,9 @@ void cGBV2_ProgDynOptimiseur::BalayageOneSens
 
 void cGBV2_ProgDynOptimiseur::BalayageOneSensGpu(const std::vector<Pt2di> &aVPt, cGBV2_CelOptimProgDyn::eSens aSens, int anIndInit, int aDelta, int aLimite)
 {
-    // Initialisation des couts sur les premieres valeurs -------------------
+    // Initialisation des couts on les premieres valeurs -------------------
 
-    // Matrice des cellules
+    // matrix des cellules
     tCGBV2_tMatrCelPDyn &  aMat0 = mMatrCel[aVPt[anIndInit]];
 
     // Le rectangle
@@ -332,13 +332,13 @@ void cGBV2_ProgDynOptimiseur::BalayageOneSensGpu(const std::vector<Pt2di> &aVPt,
         for (aP0.x=aBox0._p0.x ;  aP0.x<aBox0._p1.x ; aP0.x++)
         {
             int aDxMin,aDxMax;
-            // Calcul du delta sur X
+            // computation du delta on X
             LocComputeIntervaleDelta(aDxMin,aDxMax,aP0.x, mMaxEc[0],aBox0._p0.x, aBox0._p1.x, aBox1._p0.x,aBox1._p1.x);
 
             // Cellule courante
             cGBV2_CelOptimProgDyn & aCel0 = aMat0[aP0];
 
-            // Parcours des cellules dans l'intervalle des Deltas
+            // Parcours des cellules in l'intervalle des Deltas
             for (int aDx=aDxMin ; aDx<=aDxMax; aDx++)
                 aMat1[aP0+Pt2di(aDx,0)].UpdateCost(aCel0, aSens, mTabCost[0].Cost(aDx));
 
@@ -350,7 +350,7 @@ void cGBV2_ProgDynOptimiseur::BalayageOneSensGpu(const std::vector<Pt2di> &aVPt,
 
 void cGBV2_ProgDynOptimiseur::BalayageOneLine(const std::vector<Pt2di> & aVPt)
 {
-    // 1er Parcour dans un sens
+    // 1er Parcour in un sens
     // aVPt         : ensemble des points
     // eAvant       : Sens de parcours
     // 0            : Premier point
@@ -358,18 +358,18 @@ void cGBV2_ProgDynOptimiseur::BalayageOneLine(const std::vector<Pt2di> & aVPt)
     // aVPt.size()  : limite du parcours
     BalayageOneSens(aVPt,cGBV2_CelOptimProgDyn::eAvant,0,1,(int) aVPt.size());
 
-    // 2eme Parcour dans un sens inverse
+    // 2eme Parcour in un sens inverse
     // aVPt         : ensemble des points
     // eArriere     : Sens de parcours
     // aVPt.size()-1: on part du dernier point
-    // -1           : delta incrementation invers�
+    // -1           : delta incrementation invers
     // -1           : limite du parcours
     BalayageOneSens(aVPt,cGBV2_CelOptimProgDyn::eArriere,(int) (aVPt.size())-1,-1,-1);
 
-    // on parcours la ligne
+    // on parcours la line
     for (int aK=0 ; aK<int(aVPt.size()) ; aK++)
     {
-        // Matrice des cellules
+        // matrix des cellules
         tCGBV2_tMatrCelPDyn &  aMat = mMatrCel[aVPt[aK]];
         // rectancle
         const Box2di &  aBox = aMat.Box();
@@ -378,7 +378,7 @@ void cGBV2_ProgDynOptimiseur::BalayageOneLine(const std::vector<Pt2di> & aVPt)
         // Cout infini
         tCost aCoutMin = tCost(1e9);
 
-        //recherche du cout minimum dans le le rectangle
+        //recherche du cout minimum in le le rectangle
         for (aP.y = aBox._p0.y ; aP.y<aBox._p1.y; aP.y++)
             for (aP.x = aBox._p0.x ; aP.x<aBox._p1.x ; aP.x++)
                 ElSetMin(aCoutMin,aMat[aP].CostPassageForce());
@@ -432,10 +432,10 @@ void cGBV2_ProgDynOptimiseur::BalayageOneLineGpu(const std::vector<Pt2di> &aVPt)
     BalayageOneSensGpu(aVPt,cGBV2_CelOptimProgDyn::eAvant,0,1,(int) aVPt.size());
     BalayageOneSensGpu(aVPt,cGBV2_CelOptimProgDyn::eArriere,(int) (aVPt.size())-1,-1,-1);
 
-    // on parcours la ligne
+    // on parcours la line
     for (int aK=0 ; aK<int(aVPt.size()) ; aK++)
     {
-        // Matrice des cellules
+        // matrix des cellules
         tCGBV2_tMatrCelPDyn &  aMat = mMatrCel[aVPt[aK]];
         // rectancle
         const Box2di &  aBox = aMat.Box();
@@ -443,7 +443,7 @@ void cGBV2_ProgDynOptimiseur::BalayageOneLineGpu(const std::vector<Pt2di> &aVPt)
         // Cout infini
         tCost aCoutMin = tCost(1e9);
 
-        //recherche du cout minimum dans le le rectangle
+        //recherche du cout minimum in le le rectangle
         for (aP.x = aBox._p0.x ; aP.x<aBox._p1.x ; aP.x++)
             ElSetMin(aCoutMin,aMat[aP].CostPassageForce());
 
@@ -607,7 +607,7 @@ void cGBV2_ProgDynOptimiseur::copyCells_Stream2Mat(Pt2di aDirI, Data2Optimiz<CuH
 
 		const uint  lenghtLine		= aVPt->size();
 		const uint3 param			= d2Opt.param(idBuf)[idLine];
-		const uint  piTStream_Alti	= param.y;											// Position dans le stream des altitudes/defCor
+		const uint  piTStream_Alti	= param.y;											// Position in le stream des altitudes/defCor
 		const uint*	forCo			= d2Opt.s_ForceCostVol(idBuf).pData() + param.x ;
 
         for (uint aK= 0 ; aK < lenghtLine; aK++)
@@ -656,7 +656,7 @@ Pt2di cGBV2_ProgDynOptimiseur::direction(int aNbDir, int aKDir)
 {
     double teta = (double)((double)aKDir*PI)/(double)aNbDir;
 
-//    BUG cos double retourne NaN en Jp2 avec GCC pas avec Clang!!!!!!!!!!!!!!!!
+//    BUG cos double retourne NaN en Jp2 with GCC pas with Clang!!!!!!!!!!!!!!!!
 //    double c    = std::cos(teta);
 //    double s    = std::sin(teta);
     double c    = std::cos((float)teta);
@@ -788,7 +788,7 @@ void cGBV2_ProgDynOptimiseur::writePoint(FILE* aFP,  Pt3dr            aP,Pt3di  
 void cGBV2_ProgDynOptimiseur::Local_SolveOpt(Im2D_U_INT1 aImCor)
 {
 
-	// TODO ATTENTION BUG QUAND PAS DE param AUTOMASK DANS LE FICHIER XML (voir revision 4858)
+	// TODO ATTENTION BUG when PAS DE param AUTOMASK in LE file XML (voir revision 4858)
 
 	mImCor = &aImCor;
     // double aVPentes[theDimPxMax];
@@ -966,7 +966,7 @@ cSurfaceOptimiseur * cSurfaceOptimiseur::AllocAlgoTestGPU
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -978,21 +978,21 @@ sur le site "http://www.cecill.info".
 En contrepartie de l'accessibilité au code source et des droits de copie,
 de modification et de redistribution accordés par cette licence, il n'est
 offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
-seule une responsabilité restreinte p�?se sur l'auteur du programme,  le
+seule une responsabilité restreinte p?se sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
-sécurité de leurs syst�?mes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
+sécurité de leurs syst?mes et ou de leurs données et, plus généralement,
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

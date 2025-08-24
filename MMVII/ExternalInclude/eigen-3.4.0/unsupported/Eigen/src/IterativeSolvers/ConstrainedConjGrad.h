@@ -46,7 +46,7 @@ namespace internal {
 template <typename CMatrix, typename CINVMatrix>
 void pseudo_inverse(const CMatrix &C, CINVMatrix &CINV)
 {
-  // optimisable : copie de la ligne, precalcul de C * trans(C).
+  // optimisable : copie de la line, precalcul de C * trans(C).
   typedef typename CMatrix::Scalar Scalar;
   typedef typename CMatrix::Index Index;
   // FIXME use sparse vectors ?

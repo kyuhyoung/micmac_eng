@@ -8,7 +8,7 @@
 #include "ECEFCoords.h"
 
 // ---------------------------------------------------------------
-// Classe contenant les coordonnées géographiques
+// class contenant les coordonnées géographiques
 // ---------------------------------------------------------------
 
 class ENUCoords;

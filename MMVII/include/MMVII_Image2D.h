@@ -399,7 +399,7 @@ template <class Type>  class cIm2D
 
        /// Alow to allocate image with origin not in (0,0)
        cIm2D(const cPt2di & aP0,const cPt2di & aP1, Type * DataLin=nullptr,eModeInitImage=eModeInitImage::eMIA_NoInit); 
-       /// Image with origin on (0,0)
+       /// image with origin on (0,0)
        cIm2D(const cPt2di & aSz,Type * DataLin=0,eModeInitImage=eModeInitImage::eMIA_NoInit);
 
        /// Create a 1-Line image (used for filter like exp that were initially implemented on 2D)

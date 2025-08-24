@@ -228,7 +228,7 @@ template <class > class Smart_Pointer;
 
 /********************************************************/
 
-/*    Remarques generales sur les "Smart_Pointer" :
+/*    Remarques generales on les "Smart_Pointer" :
 
   [1]
       Cela semble un peu dommage d'iplanter toute la genericite  a base de template,
@@ -273,10 +273,10 @@ class Smart_Pointer_Gen
       // utilitaires  
 
          void bit_copy(const Smart_Pointer_Gen & p2);
-            // renvoie le debut du segment memoire si le pointeur est initialise, non nul et
-            // que la zone est non liberee. Sinon genere une "Fatale_Erreur".
+            // renvoie le debut du segment memoire if le pointeur est initialise, non nul and
+            // que la zone est non liberee. else genere une "Fatale_Erreur".
          void * smp_mem_nn(void) const;
-            // == smp_mem_nn mais ne genere pas d'erreur avec le pointeur null
+            // == smp_mem_nn but ne genere pas d'error with le pointeur null
          void * smp_mem_nul(void) const;
 
          void incr_ref(void) const ;
@@ -306,15 +306,15 @@ template <class Type> class Smart_Pointer  : public Smart_Pointer_Gen
 
 
          // constructeurs + destructeur
-              // Pour memoriser que le pointeur est non initialise
+              // for memoriser que le pointeur est non initialise
          Smart_Pointer(void): Smart_Pointer_Gen(){};
 
              // ce constructeur ne sert qu'a creer le pointeur null
-             // pour que, en mode debug ou non debug, on puisse toujours
+             // for que, en mode debug or non debug, on puisse toujours
              // ecrire  UChar_p (0)
          Smart_Pointer (INT4 nb) : Smart_Pointer_Gen(nb){};
              // static car l'expansion de la macro new tab doit appeler
-             // la methode sans qu'il y ait d'objet associe.
+             // la method without qu'il y ait d'object associe.
          static Smart_Pointer<Type>   new_tab(INT4);
          static Smart_Pointer<Type>   new_vect(INT4,INT4);
 
@@ -338,9 +338,9 @@ template <class Type> class Smart_Pointer  : public Smart_Pointer_Gen
 
           //************ arithmetique ************************
 
-              // dans 3 + Ptr, "+" ne peut etre definie que comme friend
-              // et pas comme operateur. Par homogeneite on defini alors "+"
-              // et "-" comme des friend. 
+              // in 3 + Ptr, "+" ne peut etre definie que comme friend
+              // and pas comme operateur. Par homogeneite on defini then "+"
+              // and "-" comme des friend. 
 
               // arithmetique simple
          friend  Smart_Pointer<Type> operator + (const Smart_Pointer<Type> &,INT4);
@@ -373,8 +373,8 @@ template <class Type> class Smart_Pointer  : public Smart_Pointer_Gen
            INT4  operator!= (const Smart_Pointer<Type> &);      
 
 
-              // le ! qui apparament fait partie des operateurs sur
-              // les pointeurs, avec la semantique (! p) <=> (p == 0)
+              // le ! qui apparament fait partie des operateurs on
+              // les pointeurs, with la semantique (! p) <=> (p == 0)
 
            INT4  operator! ();
 
@@ -416,7 +416,7 @@ template <class Type> Smart_Pointer<Smart_Pointer<Type> >   new_matr(Pt2di,Pt2di
 template <class Type> void delete_matr (Smart_Pointer<Smart_Pointer<Type> >, Pt2di,Pt2di);
 
 
-/* Les macros ou types a redefinir si DEBUG = 0 */
+/* Les macros or types a redefinir if DEBUG = 0 */
 
 
 
@@ -542,7 +542,7 @@ template <class Type> Type * new_vecteur_init(INT x0,INT x1,Type v);
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -558,17 +558,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

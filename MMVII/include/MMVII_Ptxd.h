@@ -227,9 +227,9 @@ const std::vector<cPt2di> & Alloc4Neighbourhood();
 template <const int Dim>  const std::vector<std::vector<cPtxd<int,Dim>>> & TabGrowNeigh(int aDistMax);
 
 /// Return pixel between two radius, the order make them as sparse as possible (slow method in N^3) => To implement ???? No longer know what I wanted to do ???
-//std::vector<cPt2di> SparsedVectOfRadius(const double & aR0,const double & aR1); // > R0 et <= R1
+//std::vector<cPt2di> SparsedVectOfRadius(const double & aR0,const double & aR1); // > R0 and <= R1
 /// Implemented
-std::vector<cPt2di> SortedVectOfRadius(const double & aR0,const double & aR1,bool IsSym=false); // > R0 et <= R1
+std::vector<cPt2di> SortedVectOfRadius(const double & aR0,const double & aR1,bool IsSym=false); // > R0 and <= R1
 
 /// IsSym  means that there is only one out of 2 between -P and P
 std::vector<cPt2di> VectOfRadius(const double & aR0,const double & aR1,bool IsSym=false) ;

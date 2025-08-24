@@ -9,15 +9,15 @@
 
 
 //-----------------------------------------------------------------------------
-// Donne l'espace disque disponible dans un repertoire
+// Donne l'espace disque disponible in un directory
 //-----------------------------------------------------------------------------
 double CSystemInfo::GetDiskFreeSpace(CString path)
 {
 	typedef BOOL (CALLBACK* LPFNDLLFUNC1)(LPCTSTR, PULARGE_INTEGER,
 				  PULARGE_INTEGER , PULARGE_INTEGER );
 
-	HINSTANCE hDLL;               // Handle sur la DLL
-	LPFNDLLFUNC1 lpfnDllFunc1;    // Pointeur de fonction
+	HINSTANCE hDLL;               // Handle on la DLL
+	LPFNDLLFUNC1 lpfnDllFunc1;    // Pointeur de function
 	double diskSpace = 0.0;
 
 	hDLL = LoadLibrary("Kernel32.dll");
@@ -34,7 +34,7 @@ double CSystemInfo::GetDiskFreeSpace(CString path)
 			diskSpace = (double)(NumberOfFreeClusters * BytesPerSector * SectorsPerCluster);
 			diskSpace /= 1048576.0;
 		}
-	} else { //La fonction GetDiskFreeSpaceEx est connue
+	} else { //La function GetDiskFreeSpaceEx est connue
 		ULARGE_INTEGER FreeBytesAvailableToCaller,TotalNumberOfBytes,TotalNumberOfFreeBytes;
 		if (lpfnDllFunc1(LPCTSTR(path),&FreeBytesAvailableToCaller, 
 						&TotalNumberOfBytes, &TotalNumberOfFreeBytes ) == TRUE) {
@@ -50,7 +50,7 @@ double CSystemInfo::GetDiskFreeSpace(CString path)
 }
 
 //-----------------------------------------------------------------------------
-// Permet de chercher un repertoire
+// Permet de chercher un directory
 //-----------------------------------------------------------------------------
 CString CSystemInfo::BrowseForFolder(LPCSTR lpszTitle, UINT nFlags)
 {
@@ -96,19 +96,19 @@ CString CSystemInfo::BrowseForFolder(LPCSTR lpszTitle, UINT nFlags)
 }
 
 //-----------------------------------------------------------------------------
-// Permet de tester l'existence d'un fichier
+// Permet de tester l'existence d'un file
 //-----------------------------------------------------------------------------
 bool CSystemInfo::FindFile(const char* filename)
 {
 	WIN32_FIND_DATA findData;
 	HANDLE file = FindFirstFile(filename, &findData);
 	if (file == INVALID_HANDLE_VALUE)
-		return false;	// Le fichier n'existe pas
+		return false;	// Le file n'existe pas
 	FindClose(file);
 	return true;
 }
 //-----------------------------------------------------------------------------
-// Permet de tester l'existence d'un répertoire
+// Permet de tester l'existence d'un rpertoire
 //-----------------------------------------------------------------------------
 bool CSystemInfo::FindFolder(std::string folder)
 {
@@ -119,7 +119,7 @@ bool CSystemInfo::FindFolder(std::string folder)
 
 	WIN32_FIND_DATA findData;
 	HANDLE file = FindFirstFile(folder.c_str(), &findData);
-	if (file == INVALID_HANDLE_VALUE)// Le repertoire n'existe pas
+	if (file == INVALID_HANDLE_VALUE)// Le directory n'existe pas
 		return false;	
 	FindClose(file);
 
@@ -127,7 +127,7 @@ bool CSystemInfo::FindFolder(std::string folder)
 }
 
 //-----------------------------------------------------------------------------
-// Copie du contenu d'un repertoire dans un autre
+// Copie du contenu d'un directory in un autre
 //-----------------------------------------------------------------------------
 bool CSystemInfo::CopyDirContent(const char* src, const char* dst)
 {
@@ -166,7 +166,7 @@ bool CSystemInfo::CopyDirContent(const char* src, const char* dst)
 
 
 //-----------------------------------------------------------------------------
-// Renvoie true si le fichier existe avec sa taille
+// Renvoie true if le file existe with sa taille
 //-----------------------------------------------------------------------------
 bool CSystemInfo::GetFileSize(const char* src, double &size)
 {

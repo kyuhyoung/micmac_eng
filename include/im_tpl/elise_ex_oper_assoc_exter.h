@@ -146,7 +146,7 @@ template <class Type,class TypeBase> void Binarise(Im2D<Type,TypeBase> anIm)
 }
 
 
-// Image doit etre > 0, pour que la fonction soit valide (on teste le !=0 de la somme);
+// image doit etre > 0, for que la function soit valide (on teste le !=0 de la somme);
 template <class Type,class TypeBase> void  Dilate
                                            (
                                                  Im2D<Type,TypeBase> anIm,
@@ -186,7 +186,7 @@ template <class Type,class TypeBase> void  SelfDilate(Im2D<Type,TypeBase> anIm, 
 }
 
 
-// Image doit etre binarise, pour que la fonction soit valide (on teste somme = (1+2Nb)^2 
+// image doit etre binarise, for que la function soit valide (on teste somme = (1+2Nb)^2 
 template <class Type,class TypeBase> void  SelfErode(Im2D<Type,TypeBase> anIm,const Pt2di &aSzV,const Box2di & aBox,TypeBase aDef=0)
 {
 

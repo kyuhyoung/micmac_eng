@@ -1025,7 +1025,7 @@ void  OneBench_CMI(double aCMaxRel,bool IsFraserMode)
     for (int aCptPoint=0 ; aCptPoint<aNbTest ; aCptPoint++)
     {
         cPt2dr aPOut = aSBS.GeneratePointInside(); // P In Out Space      
-        cPt2dr aPIn = aMapInv->Value(aPOut);       // Image By invert Maping
+        cPt2dr aPIn = aMapInv->Value(aPOut);       // image By invert Maping
         cPt2dr aPOut2 = aTargetFunc->Value(aPIn);  // Bck to Out Space
         double anEcart = Norm2(aPOut-aPOut2);      // should be the same as it's Map (Map-1)
         anEcartMax = std::max(anEcart,anEcartMax);

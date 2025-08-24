@@ -62,9 +62,9 @@ class cAppliDevideo;
 // ffmpeg -i MVI_0247.MOV Im_0247_%5d_Ok.png
 
 // Im*_Ok => OK
-// Im*_Nl => Image Nulle (eliminee)
+// Im*_Nl => image Nulle (eliminee)
 
-// POUR L'INSTANT LES IMAGES DOIVENT AVOIR UN NOM FIGE AVEC Im_0000_
+// for L'INSTANT LES IMAGES DOIVENT AVOIR UN NOM FIGE with Im_0000_
 
 // ffmpeg -i MVI_0101.MOV Im_0000_%5d_Ok.png
 
@@ -159,7 +159,7 @@ int  CalcAutoCorrel_main(int argc,char ** argv)
 //=================================================
 
 
-static const int  TheSzDecoup = 300; // Taille de decoupe pour limiter taille et temps de Fenetre de temps
+static const int  TheSzDecoup = 300; // Taille de decoupe for limiter taille and temps de Fenetre de temps
 static const double ThePropRechPiv = 0.1;
 
 
@@ -470,7 +470,7 @@ int cOneImageVideo::DifTime(const cOneImageVideo & anOIV) const
 }
 
 
-// Lie au calcul du chemin opt
+// Lie au computation du chemin opt
 
 
 
@@ -682,7 +682,7 @@ cAppliDevideo::cAppliDevideo(int argc,char ** argv) :
         }
     }
 
-    // Preselection d'un pourcentage a priori sur le numero des images
+    // Preselection d'un pourcentage a priori on le numero des images
     {
         // std::cout << "AAAAAAAAAAAAA\n"; getchar();
         int aNbSel = round_up((aSetImExisting.size()* mPercImInit) /100.0);
@@ -727,7 +727,7 @@ cAppliDevideo::cAppliDevideo(int argc,char ** argv) :
         std::cout << "   Devideo :: Done XmlXif \n";
 
         Pt2dr aSomSz;
-        // Calcul des noms dans l'intervalle
+        // computation des noms in l'intervalle
         {
             const std::vector<std::string> * aVN = mEASF.mICNM->Get(aMMPatImOk);
             int aK0 = ElMax(0,mMinMax.x);
@@ -786,7 +786,7 @@ cAppliDevideo::cAppliDevideo(int argc,char ** argv) :
     std::cout << "   Devideo :: Done Dev \n";
 
 
-    // calcul des parametres d'autocorrelation
+    // computation des parameters d'autocorrelation
     {
         std::list<std::string> aLComAC;
         for (int aK=0 ; aK<int(mVIms.size()) ; aK++)
@@ -802,13 +802,13 @@ cAppliDevideo::cAppliDevideo(int argc,char ** argv) :
     std::cout << "   Devideo :: Done AutoCorr \n";
 
 
-    // lecture de ces parametres
+    // lecture de ces parameters
     for (int aK=0 ; aK<int(mVIms.size()) ; aK++)
     {
         mVIms[aK]->LoadAutoCorrel();
     }
 
-    // lecture de ces parametres
+    // lecture de ces parameters
     for (int aK=1 ; aK<int(mVIms.size()) ; aK++)
     {
         mVIms[aK]->CalcRec(mVIms[aK-1]);
@@ -816,7 +816,7 @@ cAppliDevideo::cAppliDevideo(int argc,char ** argv) :
     std::cout << "   Devideo :: Done Cover \n";
 
 
-    // Calcul d'un score relatif (pour quil ait une influence equilibree sur tout le chemin)
+    // computation d'un score relatif (for quil ait une influence equilibree on tout le chemin)
     for (int aK=0 ; aK<int(mVIms.size()) ; aK++)
     {
         mVIms[aK]->CalcScoreAutoCorrel(mVIms,round_up(5*mStdJump));
@@ -862,7 +862,7 @@ cAppliDevideo::cAppliDevideo(int argc,char ** argv) :
     //  ============= On modifie les pivots extremes
 
 
-    // ============= optimisation dans chaque intervalle ===
+    // ============= optimisation in chaque intervalle ===
 
     mVIms[aPiv0]->SetLongPred(0);
     for (int aK=1 ; aK<= mNbInterv ; aK++)
@@ -1043,30 +1043,30 @@ int Devideo_main(int argc,char ** argv)
 Ce logiciel est un programme informatique servant ?  la mise en
 correspondances d'images pour la reconstruction du relief.
 
-Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
+Ce logiciel est rgi par la licence CeCILL-B soumise au droit franais et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
-de la licence CeCILL-B telle que diffusée par le CEA, le CNRS et l'INRIA
+de la licence CeCILL-B telle que diffuse par le CEA, le CNRS et l'INRIA
 sur le site "http://www.cecill.info".
 
-En contrepartie de l'accessibilité au code source et des droits de copie,
-de modification et de redistribution accordés par cette licence, il n'est
-offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
-seule une responsabilité restreinte pèse sur l'auteur du programme,  le
-titulaire des droits patrimoniaux et les concédants successifs.
+En contrepartie de l'accessibilit au code source et des droits de copie,
+de modification et de redistribution accords par cette licence, il n'est
+offert aux utilisateurs qu'une garantie limite.  Pour les mmes raisons,
+seule une responsabilit restreinte pse sur l'auteur du programme,  le
+titulaire des droits patrimoniaux et les concdants successifs.
 
-A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  ?  l'utilisation,  ?  la modification et/ou au
-développement et ?  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe ?
-manipuler et qui le réserve donc ?  des développeurs et des professionnels
-avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités ?  charger  et  tester  l'adéquation  du
+A cet gard  l'attention de l'utilisateur est attire sur les risques
+associs au chargement,  ?  l'utilisation,  ?  la modification et/ou au
+dveloppement et ?  la reproduction du logiciel par l'utilisateur tant
+donn sa spcificit de logiciel libre, qui peut le rendre complexe ?
+manipuler et qui le rserve donc ?  des dveloppeurs et des professionnels
+avertis possdant  des  connaissances  informatiques approfondies.  Les
+utilisateurs sont donc invits ?  charger  et  tester  l'adquation  du
 logiciel ?  leurs besoins dans des conditions permettant d'assurer la
-sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-?  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+scurit de leurs systmes et ou de leurs donnes et, plus gnralement,
+?  l'utiliser et l'exploiter dans les mmes conditions de scurit.
 
-Le fait que vous puissiez accéder ?  cet en-tête signifie que vous avez
-pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
+Le fait que vous puissiez accder ?  cet en-tte signifie que vous avez
+pris connaissance de la licence CeCILL-B, et que vous en avez accept les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

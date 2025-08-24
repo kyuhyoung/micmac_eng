@@ -102,7 +102,7 @@ void dataCorrelMS::transfertNappe(int mX0Ter, int mX1Ter, int mY0Ter, int mY1Ter
 
 	uint size = 0;
 
-	// TODO Attention deja fait dans optimisation GPU!!!
+	// TODO Attention deja fait in optimisation GPU!!!
     for (int anX = mX0Ter ; anX <  mX1Ter ; anX++)
     {
         int X = anX - mX0Ter;
@@ -238,7 +238,7 @@ void const_Param_Cor_MS::setTerrain(Rect zoneTerrain)
 
 void const_Param_Cor_MS::dealloc()
 {
-    // TODO A Faire avec la liberation de symbole GPU
+    // TODO A Faire with la liberation de symbole GPU
 }
 
 GpGpu_Interface_Cor_MS::GpGpu_Interface_Cor_MS():

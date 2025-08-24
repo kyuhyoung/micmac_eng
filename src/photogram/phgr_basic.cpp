@@ -135,7 +135,7 @@ void InvY(std::list<Appar23> & aLAp,Pt2dr aSzIm,bool InvX)
 /*************************************************/
 
 cNupletPtsHomologues::cNupletPtsHomologues(int aNb,double aPds) :
-    mPts (aNb),   // De taille aNb avec N element par defaut
+    mPts (aNb),   // De taille aNb with N element par defaut
     mPds (aPds),
     mFlagDr (0)
 {
@@ -1952,9 +1952,9 @@ cBasicGeomCap3D * cBasicGeomCap3D::StdGetFromFile(const std::string & aName,int 
     #ifdef REG_EMPTY
         static cElRegex  ThePattMMCS(".*Ori-.*/(UnCorMM-Orientation|Orientation).*xml",10); // MacOS X does not accept empty (sub)expresions
     #else
-        static cElRegex  ThePattMMCS(".*Ori-.*/(UnCorMM-|)Orientation.*xml",10);  // Its a stenope Camera created using MicMac
+        static cElRegex  ThePattMMCS(".*Ori-.*/(UnCorMM-|)Orientation.*xml",10);  // Its a stenope camera created using MicMac
     #endif
-    static cElRegex  ThePattGBMM(".*Ori-.*/GB-Orientation-.*xml",10);  // Its a Generik Bundle Camera created using MicMac
+    static cElRegex  ThePattGBMM(".*Ori-.*/GB-Orientation-.*xml",10);  // Its a Generik Bundle camera created using MicMac
 
     static cElRegex  ThePattSatelit(".*Ori-.*/UnCorExtern-Orientation-(eTIGB_[a-z,A-Z,0-9]*)-.*xml",10);  // Its a copy for generik
 
@@ -2252,7 +2252,7 @@ bool    ElCamera::PIsVisibleInImage   (const Pt3dr & aPTer,cArgOptionalPIsVisibl
 
 
 
-   // Si "vraie" camera et scannee il est necessaire de faire le test maintenant
+   // if "vraie" camera and scannee il est necessaire de faire le test maintenant
    // car IsZoneUtil est en mm
 
    if ( (!GetZoneUtilInPixel()) && ( ! IsInZoneUtile(aPF0)))
@@ -2759,8 +2759,8 @@ Pt2dr ElCamera::DistInverse(Pt2dr aP) const
 /*
    static int aCpt=0; aCpt++;
    // std::cout << "aCPpppt " <<  aCpt << "\n";
-   bool Bug =    (aCpt==149927) || ((aCpt>=159927) && (aCpt<=159930));  //  Avec 1500
-   // bool Bug = (aCpt==242400) || ((aCpt>=252400) && (aCpt<=252403));  //  Avec -1
+   bool Bug =    (aCpt==149927) || ((aCpt>=159927) && (aCpt<=159930));  //  with 1500
+   // bool Bug = (aCpt==242400) || ((aCpt>=252400) && (aCpt<=252403));  //  with -1
    if (Bug)
    {
        NS_ParamChantierPhotogram::cOrientationConique  aCO = StdExportCalibGlob();
@@ -3249,7 +3249,7 @@ void TestCamCHC(ElCamera & aCam)
 }
 
 
-// Dans cEq12Param.cpp
+// in cEq12Param.cpp
 extern void AffinePose(ElCamera & aCam,const std::vector<Pt2dr> & aVIm,const std::vector<Pt3dr> & aVPts);
 
 /*   
@@ -3264,7 +3264,7 @@ extern void AffinePose(ElCamera & aCam,const std::vector<Pt2dr> & aVIm,const std
 void ElCamera::ChangeSys(const std::vector<ElCamera *> & aVCam, const cTransfo3D & aTransfo3D,bool ForceRot,bool AtGroundLevel)
 {
 
-    // Pour l'instant, pas encore ecrit la fonction  qui transform l'eq aux 12 param en  param physique ....
+    // for l'instant, pas encore ecrit la function  qui transform l'eq aux 12 param en  param physique ....
     //
     //if (! ForceRot)
     {
@@ -4007,7 +4007,7 @@ double CamStenope::ResolutionAngulaire() const
 {
    double aEps = 1e-3;
    // double aEps = 1e-5;
-/*  Ne marche pas avec les cameras de type epipolair quand la vertical local est hor image
+/*  Ne marche pas with les cameras de type epipolair when la vertical local est hor image
    double aEps = 1e-5;
    Pt2dr aP0 = L3toF2(Pt3dr(0,0,1));
    Pt2dr aP1 = L3toF2(Pt3dr(aEps,0,1));
@@ -4020,7 +4020,7 @@ double CamStenope::ResolutionAngulaire() const
 
 
 
-   // Ci dessus ne marche pas avec point hors image
+   // Ci dessus ne marche pas with point hors image
 // std::cout << "Szzz " << Sz() << "\n"; getchar();
    // Pt2dr aMil = Pt2dr(Sz()) /2.0;
 
@@ -4033,7 +4033,7 @@ double CamStenope::ResolutionAngulaire() const
    // std::cout << "Dif Ray = " << F2toDirRayonR3(aMil) -F2toDirRayonR3(aMil2) << "\n";
    // std::cout << "Dif Ray = " << F2toDirRayonL3(aMil) -F2toDirRayonL3(aMil2) << "\n";
 
-   // Pt3dr aQ0 = ImEtProf2Terrain(aMil,1.0);    NE MARCHE PAS AVEC GRDE COORDONNEES SUR LES CENTRES
+   // Pt3dr aQ0 = ImEtProf2Terrain(aMil,1.0);    NE MARCHE PAS with GRDE coordinates on LES CENTRES
    // Pt3dr aQ1 = ImEtProf2Terrain(aMil2,1.0);
 
 
@@ -5533,7 +5533,7 @@ CamStenope * CamCompatible_doublegrid(const std::string & aNameFile)
 
 /************************************************************************/
 /*                                                                      */
-/*          Camera Ortho - Proj Ident                                   */
+/*          camera Ortho - Proj Ident                                   */
 /*                                                                      */
 /************************************************************************/
 
@@ -5672,7 +5672,7 @@ Pt3dr  cCameraOrtho::OrigineProf() const
 
 bool  cCameraOrtho::HasOrigineProf() const
 {
-    // Modif MPD le 17/06/2014 ; semle + logique comme cela et est utilise dans ElCamera::PIsVisibleInImage
+    // Modif MPD le 17/06/2014 ; semle + logique comme cela and est utilise in ElCamera::PIsVisibleInImage
     return false;
 }
 

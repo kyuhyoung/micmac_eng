@@ -453,7 +453,7 @@ Pt2dr cTriangulFormelle::Direct(Pt2dr  aP) const
 void  cTriangulFormelle::Diff(ElMatrix<REAL> & aMat,Pt2dr aP) const
 {
      AssertD2();
-    // Pas Tres Optimise mais bon ....
+    // Pas Tres Optimise but bon ....
     const cTFI_Triangle & aTri = GetTriFromP(aP);
 
     Pt2dr aP0 = ToPt(aTri.InterpolVals(aP));
@@ -716,7 +716,7 @@ void cTriangulFormelleImplem::SetTolMax(REAL aTol)
 
     //=================================================================
     //
-    //    Classe support a la triangulation
+    //    class support a la triangulation
     //    cTFI_Fpt
     //    cTFIDelauAct
     //

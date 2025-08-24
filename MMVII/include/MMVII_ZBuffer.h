@@ -155,7 +155,7 @@ class  cZBuffer
           cBox3dr          mBoxIn;     ///< Box in input space, not sure usefull, but ....
           cBox3dr          mBoxOut;    ///< Box in output space, usefull for xy, not sure for z , but ...
           cHomot2D<tREAL8> mROut2Pix;  ///<  Mapping Out Coord -> Pix Coord
-          tIm              mZBufIm;    ///<  Image storing the Z buffer its (max or min depending on mZF_SameOri)
+          tIm              mZBufIm;    ///<  image storing the Z buffer its (max or min depending on mZF_SameOri)
           tImSign          mImSign;   ///< sign of normal  1 or -1 , 0 if uninit
           cPt2di           mSzPix;      ///<  sz of pixels images (sign, zbuf)
 

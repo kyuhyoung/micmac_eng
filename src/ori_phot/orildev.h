@@ -59,22 +59,22 @@ typedef struct
 
 typedef struct or_orientation
     {
-	/* mode de calcul de la mise en place */
+	/* mode de computation de la mise en place */
 	int distor ;    /*   !=0 ? on prend en compte des distortions
 				   refraction et/ou distortion chambre
-				   et/ou distortion scanner  */
-	/* pour info */
+				   and/or distortion scanner  */
+	/* for info */
 	int refraction ;
 	char chambre[8] ;
 	/* donnees temporelles */
 	int	jour, mois, annee, heure, minute, seconde ;
-	/* pour la correction atmospherique : altitude moyenne du sol */
+	/* for la correction atmospherique : altitude moyenne du sol */
 	double	altisol ;
-	double	mProf ; // Remplacera altisol en terrestre, <0 quand non def
-	/* coordonnees Lambert de l'origine du repere Euclidien local */
+	double	mProf ; // Remplacera altisol en terrestre, <0 when non def
+	/* coordinates Lambert de l'origine du repere Euclidien local */
 	double origine[2] ;
 	int    lambert ;	/* numero de la zone lambert */
-	/* coordonnees en metres dans le repere euclidien local */
+	/* coordinates en metres in le repere euclidien local */
 	double sommet[3] ;	/* sommet de prise de vue */
 	double focale ;		/* en metres */
 	double vi[3] ;		/* vecteurs definissant le plan image */
@@ -83,7 +83,7 @@ typedef struct or_orientation
 	double pix[2] ;		/* pas d'echantillonnage */
 	/* taille de l'image associee */
 	int ins, inl ;
-	/* coordonnees pixel du point principal */
+	/* coordinates pixel du point principal */
 	double ipp[2] ;		/* coord pixels point principal 
 		(offset en pixels par rapport a l'origine de l'image) */
 	or_grille gt2p ;
@@ -91,9 +91,9 @@ typedef struct or_orientation
 
 	cOrientationConique * mOC;
 	// cDbleGrid                                      * mCorrDistM2C; // 
-	//  MODIF MPD, pour des camera commme les fishe eye, une grille standard ne
-	//  peut pas faire l'affaire. Pour l'instant on remplace simplement par
-	//  la classe mere cDbleGrid => ElDistortion22_Gen et on verifie que ca ne
+	//  MODIF MPD, for des camera commme les fishe eye, une grille standard ne
+	//  peut pas faire l'affaire. for l'instant on remplace simplement par
+	//  la class mere cDbleGrid => ElDistortion22_Gen and on verifie que ca ne
 	//  pose pas de pb
 	//
 	ElDistortion22_Gen                                      * mCorrDistM2C; // 
@@ -117,21 +117,21 @@ typedef struct or_orientation
 
 typedef struct
     {
-	/* mode de calcul de la mise en place */
+	/* mode de computation de la mise en place */
 	int distor ;    /*   !=0 ? on prend en compte des distortions
 				   refraction et/ou distortion chambre
-				   et/ou distortion scanner  */
-	/* pour info */
+				   and/or distortion scanner  */
+	/* for info */
 	int refraction ;
 	char chambre[8] ;
 	/* donnees temporelles */
 	int	jour, mois, annee, heure, minute, seconde ;
-	/* pour la correction atmospherique : altitude moyenne du sol */
+	/* for la correction atmospherique : altitude moyenne du sol */
 	double	altisol ;
-	/* coordonnees Lambert de l'origine du repere Euclidien local */
+	/* coordinates Lambert de l'origine du repere Euclidien local */
 	double origine[2] ;
 	int    lambert ;	/* numero de la zone lambert */
-	/* coordonnees en metres dans le repere euclidien local */
+	/* coordinates en metres in le repere euclidien local */
 	double sommet[3] ;	/* sommet de prise de vue */
 	double focale ;		/* en metres */
 	double vi[3] ;		/* vecteurs definissant le plan image */
@@ -140,7 +140,7 @@ typedef struct
 	double pix[2] ;		/* pas d'echantillonnage */
 	/* taille de l'image associee */
 	int ins, inl ;
-	/* coordonnees pixel du point principal */
+	/* coordinates pixel du point principal */
 	double ipp[2] ;		/* coord pixels point principal 
 		(offset en pixels par rapport a l'origine de l'image) */
     } or_file_orientation ;
@@ -169,21 +169,21 @@ int orecrit_fic_orientation (const	char* 		/*fic*/,
 void orinters_SM_photo ( 	void** 		/*phot*/, 
 				double* 	/*SM[3]*/, 
 			   	double* 	/*colonne*/, 
-				double* 	/*ligne*/ ) ;
+				double* 	/*line*/ ) ;
 
 void orDirLoc_to_photo ( 	void** 		/*phot*/, 
 				double* 	/*SM[3]*/, 
 			   	double* 	/*colonne*/, 
-				double* 	/*ligne*/ ) ;
+				double* 	/*line*/ ) ;
 
 void orSM ( 			void** 		/*phot*/, 
 				double* 	/*colonne*/, 
-				double* 	/*ligne*/, 
+				double* 	/*line*/, 
 				double* 	/*SM[3]*/ ) ;
 
 void orPhoto_to_DirLoc (        void** 		/*phot*/, 
 				double* 	/*colonne*/, 
-				double* 	/*ligne*/, 
+				double* 	/*line*/, 
 				double* 	/*SM[3]*/ ) ;
 
 

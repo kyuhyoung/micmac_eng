@@ -217,8 +217,8 @@ Pt3dr  cApply_CreateEpip_main::Tang(bool IsI1,const Pt3dr & aPTer,double & aDist
     cBasicGeomCap3D *  aG2 = IsI1 ?  mGenI2 : mGenI1;
 
     Pt2dr aPIm1 = aG1->Ter2Capteur(aPTer);  // Proj in I1
-    Pt3dr aOTer = aG1->ImEtZ2Terrain(aPIm1,aPTer.z - aDZ);  // Point allong bundle
-    Pt3dr aQTer = aG1->ImEtZ2Terrain(aPIm1,aPTer.z + aDZ);  // Point allong bundle
+    Pt3dr aOTer = aG1->ImEtZ2Terrain(aPIm1,aPTer.z - aDZ);  // point allong bundle
+    Pt3dr aQTer = aG1->ImEtZ2Terrain(aPIm1,aPTer.z + aDZ);  // point allong bundle
 
     Pt2dr aOIm2 = aG2->Ter2Capteur(aOTer); 
     Pt2dr aQIm2 = aG2->Ter2Capteur(aQTer);
@@ -280,7 +280,7 @@ void  cApply_CreateEpip_main::IntervZAddIm(cBasicGeomCap3D * aGeom)
            // mZMin= ElMin(mZMin,aPZ.x);
            // mZMax= ElMax(mZMax,aPZ.y);
 
-           // Modif MPD : sinon interv Z par union depasse 
+           // Modif MPD : else interv Z par union depasse 
            mZMin= ElMax(mZMin,aPZ.x);
            mZMax= ElMin(mZMax,aPZ.y);
            ELISE_ASSERT(mZMin<mZMax,"Empty Z Intervall");
@@ -317,7 +317,7 @@ std::cout << "XXXX  " << aG1->AltisSolIsDef() << " " <<  ForXFitHom << "\n";
  
 
     Pt2dr aSomDir(0,0);
-    // On le met tres petit, ce qui a priori n'est pas genant et evite 
+    // On le met tres petit, ce qui a priori n'est pas genant and evite 
     // d'avoir des point hors zone
     //  GetVeryRoughInterProf est une proportion
 
@@ -356,7 +356,7 @@ std::cout << "XXXX  " << aG1->AltisSolIsDef() << " " <<  ForXFitHom << "\n";
             // Barrycentrik weighting, 
             double aPdsY = ForCheck ? NRrandom3() : (aKY/double(aNbY));
             aPdsY = ElMax(aEps,ElMin(1-aEps,aPdsY));
-            // Point in image 1 on regular gris
+            // point in image 1 on regular gris
 
             // Pt2dr aPIm1 = aSz.mcbyc(Pt2dr(aPdsX,aPdsY));
             Pt2dr aPIm1 = aBoxIm1.FromCoordLoc(Pt2dr(aPdsX,aPdsY));
@@ -437,7 +437,7 @@ std::cout << "XXXX  " << aG1->AltisSolIsDef() << " " <<  ForXFitHom << "\n";
                 {
                     Pt2dr aDir2 = vunit(aVPIm2.back()-aVPIm2[0]);
                     aSomDir = aSomDir +  aDir2; 
-                    //aSomTens2 = aSomTens2 + aDir2 * aDir2; // On double l'angle pour en faire un tenseur
+                    //aSomTens2 = aSomTens2 + aDir2 * aDir2; // On double l'angle for en faire un tenseur
 		    if  (scal(aSomDir,aDir2)<0)
                         aPbDirNonStable = true;
 
@@ -591,7 +591,7 @@ cTmpReechEpip::cTmpReechEpip
     cInterpolateurIm2D<REAL4> * aPtrSCI = 0;
 
 
-    // Calcul de l'interpolateur
+    // computation de l'interpolateur
     if (aNumKer==0)
     {
         aPtrSCI = new cInterpolBilineaire<REAL4>;
@@ -616,7 +616,7 @@ cTmpReechEpip::cTmpReechEpip
 
     cInterpolateurIm2D<REAL4> & aSCI = *aPtrSCI;
 
-    // Si aPackCheck, calcul des statistique de px sur X et Y apres correction
+    // if aPackCheck, computation des statistique de px on X and Y after correction
     if (aPackCheck && aPackCheck->size())
     {
         {
@@ -947,7 +947,7 @@ Pt2dr  cApply_CreateEpip_main::OhNextPOnCurvE(const Pt2dr aPIm1,bool Im1,bool Fo
   if (!Im1)
      ElSwap(aG1,aG2);
 
-  if (Im1!=Forward)  // a priori pour que la variation soit ds le meme sens il faut intervertir pour Im2
+  if (Im1!=Forward)  // a priori for que la variation soit ds le meme sens il faut intervertir for Im2
      ElSwap(aZ1,aZ2);
 
 
@@ -983,7 +983,7 @@ void cApply_CreateEpip_main::DoOh(Pt2dr aC1,const ElPackHomologue & aPackCheck,C
      Pt2dr aInfIn2(1e20,1e20),aSupIn2(-1e20,-1e20);
      Pt2dr aInfOut(1e20,1e20),aSupOut(-1e20,-1e20);
 
-     // Calcul centre Image 2
+     // computation centre image 2
      ELISE_ASSERT (mIntervZIsDef,"No IntervZ in Oh test");
      Box2dr aBox1 (Pt2dr(0,0),Pt2dr(mGenI1->SzBasicCapt3D()));
      Box2dr aBox2 (Pt2dr(0,0),Pt2dr(mGenI2->SzBasicCapt3D()));
@@ -997,8 +997,8 @@ void cApply_CreateEpip_main::DoOh(Pt2dr aC1,const ElPackHomologue & aPackCheck,C
      Pt2dr  aDirEpi1 = vunit(aPForw-aPBckw) ;
      Pt2dr  aDirOrth = aDirEpi1  * Pt2dr(0,1) * aDist;
 
-     // Calcul des point "centraux" debut des courves epip
-     // parcourt la direction ortho a droit et a gauche
+     // computation des point "centraux" debut des courves epip
+     // parcourt la direction ortho a droit and a gauche
      std::vector<cOhEpipPt>  aVSeedOh; // seed of epipolar point
      for (int aSens=-1 ; aSens<=1 ; aSens+=2)
      {
@@ -1020,7 +1020,7 @@ void cApply_CreateEpip_main::DoOh(Pt2dr aC1,const ElPackHomologue & aPackCheck,C
      // std::cout << "NbSeedOh=" <<  aVSeedOh.size() << "\n";
      ELISE_ASSERT(!aVSeedOh.empty(),"Empty Oh seed");
 
-     // Calcul des courbes epipolaires et memo des corresp 
+     // computation des courbes epipolaires and memo des corresp 
      double aMaxDif=0.0;  // Chekc that point are homolologues with MicMac epip
      double aSomDif=0.0;
      double aNbDif = 0;
@@ -1145,7 +1145,7 @@ void cApply_CreateEpip_main::DoEpipGen(bool DoIm)
       }
       else
       {
-          // MPD : c'est la qu'on intervient pour le calcul du modele epipolaiez
+          // MPD : c'est la qu'on intervient for le computation du modele epipolaiez
           aPack = mICNM->StdPackHomol(mNameHom,mName1,mName2);
           if (EAMIsInit(&mNbCalcAutoDir))
           {
@@ -1562,7 +1562,7 @@ if (!MMVisualMode)
          else 
          {
             mDegre = mWithOri ? 9 : 2;
-            // fix nbellaiche 2021/06/17: initialisation du vecteur
+            // fix nbellaiche 2021/06/17: initialisation du vector
             if (mVecIterDeg.empty())  mVecIterDeg = std::vector<int>({mDegre});
          }
                     // << EAM(mVecIterDeg,"VecIterDeg",true,"Vector of degree in case of iterative approach")

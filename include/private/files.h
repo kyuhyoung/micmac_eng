@@ -55,7 +55,7 @@ class cGlobXmlGen
 {
     public :
        cGlobXmlGen();
-       INT1   mPrec;  // Gere la precision dans l'ecriture des fichiers
+       INT1   mPrec;  // Gere la precision in l'ecriture des fichiers
 };
 
 class cElXMLTree;
@@ -67,7 +67,7 @@ std::list<std::string>  ListFileMatch
                                const std::string & aDir,
                                const std::string & aPattern,
                                INT NivMax,
-                               bool NameComplet = true // Si Oui inclu la dir dans les noms de fichier
+                               bool NameComplet = true // if Oui inclu la dir in les noms de file
                         );
 
 std::list<std::string>  RegexListFileMatch
@@ -75,7 +75,7 @@ std::list<std::string>  RegexListFileMatch
                                const std::string & aDir,
                                const std::string & aPattern,
                                INT NivMax,
-                               bool NameComplet = true // Si Oui inclu la dir dans les noms de fichier a matcher sur le pattern
+                               bool NameComplet = true // if Oui inclu la dir in les noms de file a matcher on le pattern
                         );
 
 
@@ -137,7 +137,7 @@ class  ELISE_fp
 
        public :
 
-         FILE * FP() ; // DEBUG, sinon a eviter absolument , court-circuite tout ...
+         FILE * FP() ; // DEBUG, else a eviter absolument , court-circuite tout ...
          typedef enum
          {
                READ        = 0,
@@ -181,7 +181,7 @@ class  ELISE_fp
          
          static bool lastModificationDate(const std::string &i_filename, cElDate &o_date ); // returns if the date could be retrieved
 
-	 static void RmFileIfExist(const std::string &);  // evite les erreurs qd fichier inexistant
+	 static void RmFileIfExist(const std::string &);  // evite les erreurs qd file inexistant
 	 static void RmFile(const std::string &);
 	 static void MvFile(const std::string & aFile,const std::string & aDest);
 	 static void CpFile(const std::string & aFile,const std::string & aDest);
@@ -189,7 +189,7 @@ class  ELISE_fp
 	 static void RmDir(const std::string &);
 	 static void PurgeDirGen(const std::string &,bool Recurs);
 	 static void PurgeDirRecursif(const std::string &);
-         static int  CmpFiles(const std::string & aF1,const std::string & aF2); // return -1, 0 ou 1 
+         static int  CmpFiles(const std::string & aF1,const std::string & aF2); // return -1, 0 or 1 
       
          ~ELISE_fp();
          ELISE_fp(eModeBinTxt ModeBin=eTxtOnPremierLigne);
@@ -258,7 +258,7 @@ class  ELISE_fp
 	 ElMatrix<REAL> read(ElMatrix<REAL> *);
 	 ElRotation3D   read(ElRotation3D *);
 
-          // En gal, les ptr ne sont pas utilise (sert pour les tpl)
+          // En gal, les ptr ne sont pas utilise (sert for les tpl)
 	 Polynome2dReal   read(Polynome2dReal *);
 	 REAL8            read(REAL8 *);
 	 INT4            read(INT4 *);
@@ -344,7 +344,7 @@ class  ELISE_fp
           bool fgets( std::string &s, bool & endof );
           //bool fgets(char *,INT sz_buf,bool & endof,bool svp = false); TEST_OVERFLOW
 
-          // Renvoie false en fin de fichier, renvoie un ligne ascii "standard" (Tab-> space ..)
+          // Renvoie false en fin de file, renvoie un line ascii "standard" (Tab-> space ..)
           // Buf a 2000
           char * std_fgets();
 
@@ -535,7 +535,7 @@ class Packed_Flux_Of_Byte : public Mcheck
           virtual void  AseekFp(tFileOffset nb) ; 
              //   !!!!!!!!
              // absolute seek of File * in byte, not in number of el
-             // def value => Erreur fatale
+             // def value => error fatale
              // rather sad (break the abstraction) but needed for
              // some things like run over  padding 
 
@@ -1263,8 +1263,8 @@ class Std_Bitm_Fich_Im_2d : public Fich_Im2d
            GenIm           _gi;
            DataGenIm *     _bim;
 
-           // _spec_transf est utilisee pour les format ou un simple
-           // stripping est insuffisant pour passer du pacquet de valeurs
+           // _spec_transf est utilisee for les format or un simple
+           // stripping est insuffisant for passer du pacquet de valeurs
            // a la representation binaire des donnees;
            //
            //  par exemple : TGA 16 bits, TGA 32 bits,
@@ -1358,7 +1358,7 @@ class ElDataGenFileIm :  public  RC_Object
           bool       _integral;
           int        _nbbits;
 
-          // carateristique d'organisation du fichier
+          // carateristique d'organisation du file
           int *      _sz_tile;
           bool       _compressed;
 
@@ -1552,8 +1552,8 @@ class cArgCreatXLMTree
 
           cArgCreatXLMTree (const cArgCreatXLMTree &) ; // N.I.
           std::map<std::string,cElXMLTree *> mDico;
-          std::list<std::string> mAddedFiles;   // Pour  ne pas les mettre plusieurs fois
-          std::list<cElXMLTree *> mAddedTree;   // Pour  ne pas les mettre plusieurs fois
+          std::list<std::string> mAddedFiles;   // for  ne pas les mettre plusieurs fois
+          std::list<cElXMLTree *> mAddedTree;   // for  ne pas les mettre plusieurs fois
 
           bool                               mModifTree;
           bool                               mModifDico;
@@ -1569,7 +1569,7 @@ class cElXMLFileIn
 		cElXMLFileIn(const std::string &);
 		~cElXMLFileIn();
  
-                // Interface entre nouvelle (cElXMLTree) et ancienne bibliotheque
+                // Interface between nouvelle (cElXMLTree) and ancienne bibliotheque
                 void PutTree (cElXMLTree *);
 
                 void PutMonome
@@ -1602,7 +1602,7 @@ class cElXMLFileIn
 		void SensorPutDbleGrid
                      (
 		          Pt2di aSzIm,
-		          bool XMLAutonome, // Si true les donnees binaires sont incluse dans le XML
+		          bool XMLAutonome, // if true les donnees binaires sont incluse in le XML
                           cDbleGrid &,
                           const char * ThomFile = 0,
                           const char * aNameXMMLCapteur = 0,
@@ -1668,8 +1668,8 @@ class cVirtStream
       virtual int my_eof() = 0;
       virtual void my_ungetc(int)=0;
 
-       virtual const char * Ending(); // Permet pour les string-file de reprendre 
-                                      // la lecture la ou elle s'est arretee
+       virtual const char * Ending(); // Permet for les string-file de reprendre 
+                                      // la lecture la or elle s'est arretee
 
       virtual void fread(void *dest,int aNbOct);
 
@@ -1748,7 +1748,7 @@ class cElXMLTree
           const std::string & ValAttr(const std::string &,
                                       const std::string & Def) const;
 
-          // Return true si valeur nouvelle
+          // Return true if value nouvelle
           bool SetAttr(const std::string & aSymb,const std::string & aVal);
           
           // 
@@ -1766,7 +1766,7 @@ class cElXMLTree
                       );
 	   cElXMLTree(const std::string & ,cArgCreatXLMTree * Arg = 0,bool DoFileInclu = true);
            ~cElXMLTree();
-           // si isTermOnLine met les terminaux sur la meme ligne
+           // if isTermOnLine met les terminaux on la meme line
            void ShowAscendance(FILE * aFile);
            void ShowOpeningTag(FILE * aFile);
 
@@ -1830,7 +1830,7 @@ class cElXMLTree
 
           bool  HasFilsPorteeGlob(const std::string &);
           const std::string & ValTag() const;
-          // Renvoit le contenu du Fils qui doit etre unique et branche
+          // Renvoit le contenu du Fils qui doit etre unique and branche
           const std::string & Contenu() const;
           std::string & NCContenu() ;
 	  bool  IsVide() const;
@@ -2238,7 +2238,7 @@ template <class Type> Type * OptionalGetObjFromFile_WithLC
 
 std::string  GetValLC(int,char **,const std::string & aKey, const std::string & aDef);
 
-cElXMLTree * ToXMLTree(const Pt3dr &      anObj);  // Pour CPP_GrapheHom.cpp
+cElXMLTree * ToXMLTree(const Pt3dr &      anObj);  // for CPP_GrapheHom.cpp
 cElXMLTree * ToXMLTree(const std::string & aNameTag,const bool   &      anObj);
 cElXMLTree * ToXMLTree(const std::string & aNameTag,const double &      anObj);
 cElXMLTree * ToXMLTree(const std::string & aNameTag,const int    &      anObj);
@@ -2293,7 +2293,7 @@ template <class Type>
 void AddFileXML(const Type & anObj,const std::string & aName)
 {
    cElXMLTree * aTree = new cElXMLTree(aName);
-    cElXMLTree *  aFils = aTree->GetUniqueFils();  // Pour virer le noeud de fichier
+    cElXMLTree *  aFils = aTree->GetUniqueFils();  // for virer le noeud de file
    aFils->AddFils(ToXMLTree(anObj));
    aFils->StdShow(aName);
    delete aTree;

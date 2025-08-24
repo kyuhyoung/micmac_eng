@@ -57,7 +57,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 int TD_Exo0(int argc,char ** argv)
 {
-    std::string aNameIm; // Chaine de caractere pour nom du fichier
+    std::string aNameIm; // string de caractere for nom du file
 
     ElInitArgMain
     (
@@ -66,9 +66,9 @@ int TD_Exo0(int argc,char ** argv)
         LArgMain()  
     );
 
-    // Maintenant aNameIm contient le premier argument de la ligne de commande
+    // Maintenant aNameIm contient le premier argument de la line de commande
 
-    // Cree une image en ram a partir du fichier
+    // Cree une image en ram a partir du file
     cTD_Im aIm = cTD_Im::FromString(aNameIm);
 
     // Affiche la taille de l'image
@@ -79,17 +79,17 @@ int TD_Exo0(int argc,char ** argv)
     // Cree une image vide de la meme taille
     cTD_Im aImRes(aIm.Sz().x,aIm.Sz().y);
 
-    double aVMax = (1<<16) -1; // Valeur Max sur 16 Bits
+    double aVMax = (1<<16) -1; // value Max on 16 Bits
     // Parcours tous les pixels
     for (int aX=0 ; aX<aIm.Sz().x ; aX++)
     {
         for (int aY=0 ; aY<aIm.Sz().y ; aY++)
         {
-            double aVal = aIm.GetVal(aX,aY); // Recupere la valeur
+            double aVal = aIm.GetVal(aX,aY); // Recupere la value
             aImRes.SetVal(aX,aY,aVMax-aVal); // L'inverse
         }
     }
-    // Sauvegarde dans Neg
+    // Sauvegarde in Neg
     aImRes.Save("Neg.tif");
 
     return EXIT_SUCCESS;
@@ -97,7 +97,7 @@ int TD_Exo0(int argc,char ** argv)
 
 int TD_Exo1(int argc,char ** argv)
 {
-    std::string aNameIm; // Chaine de caractere pour nom du fichier
+    std::string aNameIm; // string de caractere for nom du file
 
     ElInitArgMain
     (
@@ -106,9 +106,9 @@ int TD_Exo1(int argc,char ** argv)
         LArgMain()  
     );
 
-    // Maintenant aNameIm contient le premier argument de la ligne de commande
+    // Maintenant aNameIm contient le premier argument de la line de commande
 
-    // Cree une image en ram a partir du fichier
+    // Cree une image en ram a partir du file
     cTD_Im aIm = cTD_Im::FromString(aNameIm);
 
     // Affiche la taille de l'image
@@ -134,7 +134,7 @@ int TD_Exo1(int argc,char ** argv)
             aImB.SetVal(aX,aY,aIm.GetVal(2*aX+1,2*aY+1));
         }
     }
-    // Sauvegarde dans Neg
+    // Sauvegarde in Neg
     aImR.SaveRGB("RGB.tif",aImV,aImB);
 
     aImR.Save("R.tif");
@@ -156,9 +156,9 @@ float DiffVignette(const cTD_Im & aIm1,const cTD_Im & aIm2,double aRatio,Pt2di a
     {
         for (int aDy=-aSzW ; aDy<=aSzW ; aDy++)  // Parcour la vignette en y
         {
-            Pt2di aPIm1 = aC1 + Pt2di(aDx,aDy);  // pt de la vignette dans I1
+            Pt2di aPIm1 = aC1 + Pt2di(aDx,aDy);  // pt de la vignette in I1
             Pt2di aPIm2 = aC2 + Pt2di(aDx,aDy);
-            if (aIm1.Ok(aPIm1.x,aPIm1.y) && aIm2.Ok(aPIm2.x,aPIm2.y)) // Si les 2 pts sont ds l'image
+            if (aIm1.Ok(aPIm1.x,aPIm1.y) && aIm2.Ok(aPIm2.x,aPIm2.y)) // if les 2 pts sont ds l'image
             {
                 aSomI1 += aIm1.GetVal(aPIm1);
                 aSomDif += std::abs(aIm1.GetVal(aPIm1) - aRatio*aIm2.GetVal(aPIm2));
@@ -173,8 +173,8 @@ float DiffVignette(const cTD_Im & aIm1,const cTD_Im & aIm2,double aRatio,Pt2di a
 
 int TD_Exo2(int argc,char ** argv)
 {
-    std::string aNameIm1; // Chaine de caractere pour nom du fichier 1
-    std::string aNameIm2; // Chaine de caractere pour nom du fichier 2
+    std::string aNameIm1; // string de caractere for nom du file 1
+    std::string aNameIm2; // string de caractere for nom du file 2
     int         aSzW;
     double      aRatio;
     Pt2di       aDec;
@@ -190,23 +190,23 @@ int TD_Exo2(int argc,char ** argv)
         LArgMain()  
     );
 
-    // Cree une image en ram a partir du fichier
+    // Cree une image en ram a partir du file
     cTD_Im aIm1 = cTD_Im::FromString(aNameIm1);
     cTD_Im aIm2 = cTD_Im::FromString(aNameIm2);
     Pt2di aSz = aIm1.Sz();
 
-    cTD_Im aImDif(aSz.x,aSz.y);  // Image resultante des differences
+    cTD_Im aImDif(aSz.x,aSz.y);  // image resultante des differences
 
     for (int aX=0 ; aX<aSz.x ;aX++) // parcours toute l'image
     {
         for (int aY=0 ; aY<aSz.y ;aY++)
         {
-             Pt2di aP(aX,aY);  // Pt dans l'image 1
+             Pt2di aP(aX,aY);  // Pt in l'image 1
              float aDif = DiffVignette(aIm1,aIm2,aRatio,aP,aP+aDec,aSzW);
              aImDif.SetVal(aX,aY,aDif);
         }
     }
-    // Sauve avec un nom qui depend du decalage
+    // Sauve with un nom qui depend du decalage
     aImDif.Save("Dif_"+ ToString(aDec.x) + "_" + ToString(aDec.y) + ".tif");
 
     return EXIT_SUCCESS;
@@ -214,8 +214,8 @@ int TD_Exo2(int argc,char ** argv)
 
 int TD_Exo3(int argc,char ** argv)
 {
-    std::string aNameIm1; // Chaine de caractere pour nom du fichier 1
-    std::string aNameIm2; // Chaine de caractere pour nom du fichier 2
+    std::string aNameIm1; // string de caractere for nom du file 1
+    std::string aNameIm2; // string de caractere for nom du file 2
     int         aSzW;
     double      aRatio;
     int         aDecMax;
@@ -231,19 +231,19 @@ int TD_Exo3(int argc,char ** argv)
         LArgMain()  
     );
 
-    // Cree une image en ram a partir du fichier
+    // Cree une image en ram a partir du file
     cTD_Im aIm1 = cTD_Im::FromString(aNameIm1);
     cTD_Im aIm2 = cTD_Im::FromString(aNameIm2);
     Pt2di aSz = aIm1.Sz();
 
-    cTD_Im aImDecX(aSz.x,aSz.y);  // Image resultante des differences
-    cTD_Im aImDecY(aSz.x,aSz.y);  // Image resultante des differences
+    cTD_Im aImDecX(aSz.x,aSz.y);  // image resultante des differences
+    cTD_Im aImDecY(aSz.x,aSz.y);  // image resultante des differences
 
     for (int aX=0 ; aX<aSz.x ;aX++) // parcourt toute l'image
     {
         for (int aY=0 ; aY<aSz.y ;aY++)
         {
-             Pt2di aP(aX,aY);  // Pt dans l'image 1
+             Pt2di aP(aX,aY);  // Pt in l'image 1
              float aDifMin = 1e10;
              int aDxMin=0,aDyMin=0;
              for (int aDecX=-aDecMax ; aDecX<=aDecMax ; aDecX++)  // Parcourt tout les decalage
@@ -251,8 +251,8 @@ int TD_Exo3(int argc,char ** argv)
                  for (int aDecY=-aDecMax ; aDecY<=aDecMax ; aDecY++)
                  {
                       float aDif = DiffVignette(aIm1,aIm2,aRatio,aP,aP+Pt2di(aDecX,aDecY),aSzW);
-                      if (aDif < aDifMin) // Si la dif est meilleure
-                      {   // Sauve dif et decalage
+                      if (aDif < aDifMin) // if la dif est meilleure
+                      {   // Sauve dif and decalage
                           aDifMin = aDif;
                           aDxMin = aDecX;
                           aDyMin = aDecY;
@@ -263,7 +263,7 @@ int TD_Exo3(int argc,char ** argv)
              aImDecY.SetVal(aX,aY,aDyMin);
         }
     }
-    // Sauve avec un nom qui depend du decalage
+    // Sauve with un nom qui depend du decalage
     aImDecX.Save("DecX.tif");
     aImDecY.Save("DecY.tif");
 

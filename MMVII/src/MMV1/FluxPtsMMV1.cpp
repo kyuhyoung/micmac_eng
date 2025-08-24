@@ -274,7 +274,7 @@ void cCurveBySet::ResearchFrontier()
 
 void cCurveBySet::InitFirstDir()
 {
-     // Point must be (conventionnaly) on side >0
+     // point must be (conventionnaly) on side >0
      if (mIn0>0)
      {
          mCurPt  = mP0;    

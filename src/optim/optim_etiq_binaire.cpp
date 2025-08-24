@@ -44,7 +44,7 @@ class cOptimLabelBinaire
 {
     public :
 
-        // Les couts sont entre 0 et 1
+        // Les couts sont between 0 and 1
         cOptimLabelBinaire(Pt2di aSz,double aDefCost,double aRegul);
 
         static cOptimLabelBinaire * CoxRoy(Pt2di aSz,double aDefCost,double aRegul);
@@ -61,8 +61,8 @@ class cOptimLabelBinaire
         static U_INT1 ToCost(double aCost);
 
         Pt2di              mSz;
-        Im2D_U_INT1        mCost;  // Memorise les couts entre 0 et 1
-        TIm2D<U_INT1,INT>  mTCost;  // Memorise les couts entre 0 et 1
+        Im2D_U_INT1        mCost;  // Memorise les couts between 0 and 1
+        TIm2D<U_INT1,INT>  mTCost;  // Memorise les couts between 0 and 1
         double             mRegul;
         
         
@@ -146,7 +146,7 @@ Im2D_Bits<1> cCoxRoyOLB::Sol()
 /*                                                                 */
 /*******************************************************************/
 
-// L'attribut auxilaire qui sera memorise dans les nappes completes
+// L'attribut auxilaire qui sera memorise in les nappes completes
 class cNoValPrgD
 {
 };
@@ -165,16 +165,16 @@ class cProgDOLB : public cOptimLabelBinaire
 {
 
     public :
-     // Ce qui est necessaire pour cProg2DOptimiser<cProgDOLB>
+     // Ce qui est necessaire for cProg2DOptimiser<cProgDOLB>
          typedef cNoValPrgDTmp            tArgCelTmp;
          typedef cNoValPrgD            tArgNappe;
-         typedef cProgDOLB             tArgGlob;  // Afin de "se connaitre" dans le calcul
+         typedef cProgDOLB             tArgGlob;  // Afin de "se connaitre" in le computation
 
          
-      // Pas pre-requis mais aide
+      // Pas pre-requis but aide
          typedef  cTplCelNapPrgDyn<tArgNappe>    tCelNap;
          typedef  cTplCelOptProgDyn<tArgCelTmp>  tCelOpt;
-      // Call back pre requis dans Optim
+      // Call back pre requis in Optim
          void DoConnexion
               (
                  const Pt2di & aPIn, const Pt2di & aPOut,
@@ -189,7 +189,7 @@ class cProgDOLB : public cOptimLabelBinaire
         Im2D_Bits<1> Sol();
     private :
         // les couts sont signe <0 => label 0, >0 => label 1; 
-        // Le fait de les "redynamiser" fait que la valeur entre 0 et 1 n'est plus vraiment possible
+        // Le fait de les "redynamiser" fait que la value between 0 and 1 n'est plus vraiment possible
         Im2D_REAL4 ImCost( Im2D_REAL4 aCostIn,int aNbDir,double aTeta0);
         
 
@@ -238,7 +238,7 @@ Im2D_REAL4 cProgDOLB::ImCost(Im2D_REAL4 aCostIn,int aNbDir,double aTeta0)
    cProg2DOptimiser<cProgDOLB> mOpt(*this,mZMin,mZMax,0,1);
 
    
-   // On transfere les cout dans la nappe ; avec les convention A- qu'un des deux couts est nul
+   // On transfere les cout in la nappe ; with les convention A- qu'un des deux couts est nul
    // B- que les cout <0 signifie que l'on privilegie 0
 
    tCelNap *** aNaps = mOpt.Nappe().Data();
@@ -250,7 +250,7 @@ Im2D_REAL4 cProgDOLB::ImCost(Im2D_REAL4 aCostIn,int aNbDir,double aTeta0)
        {
            double aCost = aTCostIn.get(aP);
            aSigmaIn += ElAbs(aCost);
-           int IndCost = (aCost<0) ; // Si cout negatif, c'est la couche 1 qui est penalisee
+           int IndCost = (aCost<0) ; // if cout negatif, c'est la couche 1 qui est penalisee
            aNaps[aP.y][aP.x][IndCost].SetOwnCost(round_ni(ElAbs(aCost)*mMul));
            aNaps[aP.y][aP.x][1-IndCost].SetOwnCost(0);
        }

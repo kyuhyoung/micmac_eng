@@ -60,7 +60,7 @@ ElMatrix<double> OriMatrixConvertion(CamStenope * aCS)
     ElMatrix<double> RotMM2CV(4,3,0.0);	//External orientation matrix
     ElMatrix<double> P(4,3,0.0);		//Orientation (int & ext) matrix in the CV system
     ElMatrix<double> F(3,3,0.0);		//Internal orientation matrix
-    ElMatrix<double> Rot(3,3,0.0);		//Rotation matrix between photogrammetry and CV systems
+    ElMatrix<double> Rot(3,3,0.0);		//rotation matrix between photogrammetry and CV systems
     ElMatrix<double> Rotx(3,3,0.0);		//180° rotation matrix along the x axis
 
     Rotx(0,0)=1;
@@ -157,7 +157,7 @@ void Apero2PMVS(string aFullPattern, string aOri)
         fclose(f);
 
         delete aCS;
-        // delete anICNM; => OBJET A NE PAS DETRUIRE ...
+        // delete anICNM; => object A NE PAS DETRUIRE ...
     }//end of "for each image"
 
     //Undistorting the images with Drunk

@@ -142,7 +142,7 @@ cAppliMergeCloud::cAppliMergeCloud(int argc,char ** argv) :
         bool InMAP = false;
         //  std::string aNameNuXml = NameFileInput(true,anIma,".xml");
         std::string aNameNuXml = mMMIN->NameFileXml(eTMIN_Depth,aNameIm);
-        // Possible aucun nuage si peu de voisins et mauvaise config epip
+        // Possible aucun nuage if peu de voisins and mauvaise config epip
 
         if (ELISE_fp::exist_file(aNameNuXml))
         {
@@ -175,12 +175,12 @@ cAppliMergeCloud::cAppliMergeCloud(int argc,char ** argv) :
    {
         mVAttr[0]->TestDifProf(*(mVAttr[1]));
    }
-   // Calcul connexion
+   // computation connexion
    CreateGrapheConx();
 
 
 std::cout << "CCcccccccccccc\n";
-   // Calcul image de quality + Stats
+   // computation image de quality + Stats
    for (int aK=0 ; aK<int(mVSoms.size()) ; aK++)
    {
        std::cout << mVSoms[aK]->attr()->IMM()->mNameIm << " Resol=" <<  mVSoms[aK]->attr()->Resol() << "\n";
@@ -248,7 +248,7 @@ std::cout << "CCcccccccccccc\n";
    }
    // aNivMin = eQC_GradFaibleC2;
    if (aNivMin>mGlobMaxNivH) {
-       // jo 2018 09; tentative de faire foncitonne pims2ply sur image go pro
+       // jo 2018 09; tentative de faire foncitonne pims2ply on image go pro
        std::cout << "Warning : NivMin = " << aNivMin << ", Niv Gob max is "<< mGlobMaxNivH << "\n";
        aNivMin=mGlobMaxNivH-1;
        std::cout << "I change value of NivMin to " << aNivMin <<"\n";
@@ -335,7 +335,7 @@ void cAppliMergeCloud::OneStepSelection()
                if (! aBestA->IsSelected())
                   mNbImSelected++;
                aBestA->SetSelected(mCurNivSelSom,mCurNivElim,aBestSom);
-               // std::cout << "One Image Selected " << aBestA->NivSelected() << "\n"; getchar();
+               // std::cout << "One image Selected " << aBestA->NivSelected() << "\n"; getchar();
            }
 
       }

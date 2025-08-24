@@ -21,7 +21,7 @@ cImgZBuffer::cImgZBuffer(cAppliZBufferRaster * anAppli , const std::string & aNa
     mCntTriValab (0),
     mCntTriTraite (0)
 {
-    mTriValid.resize(mAppli->VTri().size(), false);    //initializer vector avec taille et valeur default
+    mTriValid.resize(mAppli->VTri().size(), false);    //initializer vector with taille and value default
     if (mAppli->Reech() != 1.0)
     {
        mSzIm = mImZ.sz();
@@ -95,7 +95,7 @@ void cImgZBuffer::LoadTri(cTri3D aTri3D)
     }
     if (mAppli->Reech() != TT_SCALE_1)
     {
-        //Reech coordonee dans aTri2D
+        //Reech coordonee in aTri2D
         aTri.SetReech(mAppli->Reech());
     }
 

@@ -67,11 +67,11 @@ void InitVPairComp(std::vector<cNOCompPair> & aV,const ElPackHomologue & aPackH)
     }
 }
 
-//   Rot C2 =>C1; donc Rot( P(0,0,0)) donne le vecteur de Base dans C1
-//   aRot  : M2C pour cam2
+//   Rot C2 =>C1; donc Rot( P(0,0,0)) donne le vector de Base in C1
+//   aRot  : M2C for cam2
 //   U1
 //
-//  Formule exacte et programmation simple et claire pour bench
+//  Formule exacte and programmation simple and claire for bench
 //
 
 #define FONC_EXACT_COST ProjCostMEP
@@ -220,7 +220,7 @@ const cElemMepRelCoplan * StdSolutionPlane(ElPackHomologue  & aPack,bool Debug, 
     {
        Pt3dr aK = aSol.Rot().ImVect(Pt3dr(0,0,1.0));
        Pt3dr aTr = aSol.Rot().ImAff(Pt3dr(0,0,0));
-       Pt3dr aPErr =  ModeSimil ? Pt3dr(aK.x,aK.y,aTr.z) : Pt3dr(0,0,aTr.z) ; // Ideal aK=(0,0,1) aTr(A,B,0) pour homol K ne compte pas
+       Pt3dr aPErr =  ModeSimil ? Pt3dr(aK.x,aK.y,aTr.z) : Pt3dr(0,0,aTr.z) ; // Ideal aK=(0,0,1) aTr(A,B,0) for homol K ne compte pas
        double aErr = euclid(aPErr);
        if (Debug)
           std::cout << "Sol Plane , K=" << aK << " Tr= " << vunit(aTr) << "\n";
@@ -326,7 +326,7 @@ void OriRelBase(bool ModeSimil,ElPackHomologue & aPack,Pt3dr aGps1,Pt3dr  aGps2,
 
 
 
-    // Verifie convention pour centre optique
+    // Verifie convention for centre optique
     ELISE_ASSERT( euclid(aRInit1_C2M.ImAff(Pt3dr(0,0,0)) - aCamInit1.VraiOpticalCenter()) <1e-5,"OriRelBase Copt");
     ELISE_ASSERT( euclid(aRInit2_C2M.ImAff(Pt3dr(0,0,0)) - aCamInit2.VraiOpticalCenter()) <1e-5,"OriRelBase Copt");
     Pt3dr aCOI1 = aCamInit1.VraiOpticalCenter();
@@ -363,7 +363,7 @@ void OriRelBase(bool ModeSimil,ElPackHomologue & aPack,Pt3dr aGps1,Pt3dr  aGps2,
     aCamGps1.SetOrientation(aRGps1_C2M.inv());
     aCamGps2.SetOrientation(aRGps2_C2M.inv());
 
-    // On verifie que aCamGps1 et aCamGps2 ont toujours une bonne intersection
+    // On verifie que aCamGps1 and aCamGps2 ont toujours une bonne intersection
     for (ElPackHomologue::const_iterator itP=aPackSim.begin() ; itP!=aPackSim.end() ; itP++)
     {
          double aDist;
@@ -450,11 +450,11 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
    mTestC2toC1  (aTestedSol),
    // Plus utilise
    mPackPDist   (ToStdPack(mMergePH,true,mPdsSingle)),
-   //  Representation sous la classe habituelle ToStdPack
+   //  Representation under la class habituelle ToStdPack
    mPackPStd    (ToStdPack(mMergePH,false,mPdsSingle)),
    mPInfI1      (1e5,1e5),
    mPSupI1      (-1e5,-1e5),
-   //  On va cree un sous echantillonage des points, en cherchant a conserver
+   //  On va cree un under echantillonage des points, en cherchant a conserver
    //  la distribution initiale
    // mPackStdRed => contiendra au max 500 points choisis "intelligemmennt" parmi
    // 1500 pris completement au hasard
@@ -563,7 +563,7 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
    {
       std::cout << "NbPts " << mPackPStd.size() << " RED " << mPackStdRed.size() << "\n";
    }
-   if (mXml.NbPts()<5) // => Strict Min pour homographie
+   if (mXml.NbPts()<5) // => Strict Min for homographie
    {
         if (mForHom)
             mXml.Geom().SetVal(aXCmp);
@@ -676,7 +676,7 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
 
 
 
-    // Calcul d'une similitude
+    // computation d'une similitude
     if (1)
     {
         // IdentFromType cElMap2D::IdentFromType(int,const std::vector<std::string>* =0)
@@ -689,15 +689,15 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
 
    //  AmelioreSolLinear, appellee plusieurs fois, fait :
    //     * Optimisation de la solution par bundle "rapide" qui linearise directement les equation
-   //     * memorisation si meilleure que la derniere solution enregistree
+   //     * memorisation if meilleure que la derniere solution enregistree
 
    // = T00 ============== Test Patch Plan,
-   // on recherche dans l'image des zone plane
+   // on recherche in l'image des zone plane
    double aTimeAdj=0;
    cInterfBundle2Image * aBundle = mQuick ? mRedPvIBI  :  mFullPvIBI;
    double anErr=-1;
 
-   if (! aInOri)  // Si on est pas en mode ou une Orient Init est imposee
+   if (! aInOri)  // if on est pas en mode or une Orient Init est imposee
    {
          {
             ElTimer aChrono;
@@ -712,7 +712,7 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
          }
   
          // = T0 ============== Nouveau test par Ransac minimal a 8 points  + ME
-         // Initialisation par matrice essentielle, version a 8 point .
+         // Initialisation par matrix essentielle, version a 8 point .
          // Hypothes bcp d'oulier, peu de bruit
           {
              ElTimer aChrono;
@@ -731,7 +731,7 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
           }
          // = T1 ============== Nouveau test par Ransac + ME
   
-          // Deuxieme essai  de la matrice essentielle , en faisant des tirage
+          // Deuxieme essai  de la matrix essentielle , en faisant des tirage
           // a plus de point, hypothese peu d'oulier, bcp de bruit
           {
              ElTimer aChrono;
@@ -744,7 +744,7 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
           }
   
           // = T2 ==============   Test par Matrices essentielles  "classique"
-          //  Matrice  essentielle sur tout les points, estimation L1 puis  L2
+          //  matrix  essentielle on tout les points, estimation L1 puis  L2
           for (int aL2 = 0 ; aL2 < 2 ; aL2++)
           {
               ElTimer aChrono;
@@ -763,7 +763,7 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
   
           //  = T3 ============  Test par  homographie plane "classique" (i.e. globale)
   
-          // Test par homographoe globale (mais avec estimation robuste)
+          // Test par homographoe globale (but with estimation robuste)
           {
              bool ShowDetailHom = mShow && false;
              ElTimer aChrono;
@@ -794,12 +794,12 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
              aTiming.TimeHomStd() = aChrono.uval();
           }
   
-          // == T4 ===========  Test Rotation pure
+          // == T4 ===========  Test rotation pure
   
-          // Test rotation pure, plus ou moins une branche momentanement morte
+          // Test rotation pure, plus or moins une branche momentanement morte
           // Adapatee au cas des rotations pures, idee :
-          //   * 1- calculer la rotation pure 
-          //   * 2- s'en servir pour trouver la rotation globale
+          //   * 1- compute la rotation pure 
+          //   * 2- s'en servir for trouver la rotation globale
           // 
   
           {
@@ -832,7 +832,7 @@ cNewO_OrInit2Im::cNewO_OrInit2Im
                 return;
           }
   
-          // Jusqu'a present les solutions ont ete optimisee avec un bundle approximatif
+          // Jusqu'a present les solutions ont ete optimisee with un bundle approximatif
           // (directement lineaire). La on va faire du "vrai" bundle
   
           // Affinage solution plus precis 
@@ -973,7 +973,7 @@ class cNO_AppliOneCple : public cCommonMartiniAppli
          std::vector<cNewO_OneIm *>  mVI;
          std::string          mNameOriTest;
          bool                 mHPP;
-         // Structure pour creer la representation explicite sous forme de points multiples
+         // Structure for creer la representation explicite under forme de points multiples
          tMergeLPackH         mMergeStr;
          ElRotation3D *       mTestSol;
          ElRotation3D *       mRotInOri;
@@ -1018,10 +1018,10 @@ cNO_AppliOneCple::cNO_AppliOneCple(int argc,char **argv)  :
 
    if (MMVisualMode) return;
 
-   // Class cNewO_NameManager classe qui permet d'acceder a tous les nom de fichier
-   // crees dans Martini
+   // Class cNewO_NameManager class qui permet d'acceder a tous les nom de file
+   // crees in Martini
 
-   // MPD MODIF SINON PAS TRANSMISSION DES COMMON APPLI
+   // MPD MODIF else PAS TRANSMISSION DES COMMON APPLI
    // mNM = new cNewO_NameManager(mExtName,mPrefHom,mQuick,DirOfFile(mNameIm1),mNameOriCalib,mExpTxt ? "txt" : "dat");
 
 /*
@@ -1045,8 +1045,8 @@ cNO_AppliOneCple::cNO_AppliOneCple(int argc,char **argv)  :
    mVI.push_back(mIm1);
    mVI.push_back(mIm2);
 
-   // NOMerge_AddAllCams : Mets dans mMergeStr les points, cree les liens multiples,
-   // et transforme les points en "points photgorammetrique" (t.q (x  y 1) est une direction
+   // NOMerge_AddAllCams : Mets in mMergeStr les points, cree les liens multiples,
+   // and transforme les points en "points photgorammetrique" (t.q (x  y 1) est une direction
    // de rayon
    //
    //  Par la suite tout le code martini, lira ces points directement
@@ -1075,7 +1075,7 @@ cNO_AppliOneCple::cNO_AppliOneCple(int argc,char **argv)  :
       // aCam2->Orient() : M =>C2  ;  aCam1->Orient().inv() :  C1=>M
       // Donc la aRot = C1=>C2
       ElRotation3D aRot = (aCam2->Orient() *aCam1->Orient().inv());
-      //   Maintenat Rot C2 =>C1; donc Rot( P(0,0,0)) donne le vecteur de Base
+      //   Maintenat Rot C2 =>C1; donc Rot( P(0,0,0)) donne le vector de Base
       aRot = aRot.inv();
       mTestSol = new ElRotation3D(aRot);
    }
@@ -1092,7 +1092,7 @@ ElRotation3D *  cNO_AppliOneCple::OrientationRelFromExisting(std::string & aName
    // aCam2->Orient() : M =>C2  ;  aCam1->Orient().inv() :  C1=>M
    // Donc la aRot = C1=>C2
    ElRotation3D aRot = (aCam2->Orient() *aCam1->Orient().inv());
-   //   Maintenat Rot C2 =>C1; donc Rot( P(0,0,0)) donne le vecteur de Base
+   //   Maintenat Rot C2 =>C1; donc Rot( P(0,0,0)) donne le vector de Base
    aRot = aRot.inv();
    aRot.tr() = vunit(aRot.tr());
 
@@ -1157,11 +1157,11 @@ int TestNewOriImage_main(int argc,char ** argv)
    BenchNewFoncRot();
    // Bench_NewOri();
 
-   // Classe qui prepare les donnees
+   // class qui prepare les donnees
    cNO_AppliOneCple anAppli(argc,argv);
    anAppli.Show();
   
-   // Classe qui fait le calcul 
+   // class qui fait le computation 
    cNewO_OrInit2Im * aCple = anAppli.CpleIm();
    const cXml_Ori2Im &  aXml = aCple->XmlRes() ;
 
@@ -1216,7 +1216,7 @@ int TestAllNewOriImage_main(int argc,char ** argv)
 
    if (!aModeIm1)
    {
-       // Branche ou va lance un process par image
+       // Branche or va lance un process par image
        MakeXmlXifInfo(anEASF.mPat,anEASF.mICNM);
        // cExeParalByPaquets => parallelise avev message d'avancement
        cExeParalByPaquets aExePaq("NewOri of One Image",aVIm->size());
@@ -1240,7 +1240,7 @@ int TestAllNewOriImage_main(int argc,char ** argv)
    }
    else
    {
-       // Mode ou on execute vraiment pour une image
+       // Mode or on execute vraiment for une image
        std::string aKeySub = "NKS-Set-HomolOfOneImage@"+ aCMA.mPrefHom + "@"+ aInHomol +"@" + aNameIm1;
        const cInterfChantierNameManipulateur::tSet *   aVH = anICNM->Get(aKeySub);
        std::string aKeyH = "NKS-Assoc-CplIm2Hom@"+ aCMA.mPrefHom  + "@"+ aInHomol ;
@@ -1267,10 +1267,10 @@ int TestAllNewOriImage_main(int argc,char ** argv)
 
 // std::cout << "N2=" << aNameIm2 << " " << aSetName->SetBasicIsIn(aNameIm2) << "\n";
 
-           if (    ((aNameIm1<aNameIm2) || (aCMA.mAcceptUnSym  && (!ELISE_fp::exist_file(aDir+aNameHomReciproque))) )  // Pour ne faire le calcul que dans un sens
-                && (ELISE_fp::exist_file(aDir+aNameIm2))  //  Precaution si qqun a detruit
-                // && (anAutom.Match(aNameIm2))   // Pour que l'image soit dans le pattern
-                && (BoolFind(*aSetGlob,aNameIm2))   // Pour que l'image soit dans le pattern
+           if (    ((aNameIm1<aNameIm2) || (aCMA.mAcceptUnSym  && (!ELISE_fp::exist_file(aDir+aNameHomReciproque))) )  // for ne faire le computation que in un sens
+                && (ELISE_fp::exist_file(aDir+aNameIm2))  //  Precaution if qqun a detruit
+                // && (anAutom.Match(aNameIm2))   // for que l'image soit in le pattern
+                && (BoolFind(*aSetGlob,aNameIm2))   // for que l'image soit in le pattern
               )
            {
 
@@ -1280,12 +1280,12 @@ int TestAllNewOriImage_main(int argc,char ** argv)
 
 
                std::string aNamOri = aDir + aNM->NameXmlOri2Im(aNameCalc1,aNameCalc2,true);
-               // Sans doute le  IMGP7029.JPG/OriRel-IMGP7030.JPG
-               // Pour ne pas refaire le calcul si deja fait
+               // without doute le  IMGP7029.JPG/OriRel-IMGP7030.JPG
+               // for ne pas refaire le computation if deja fait
                if (! ELISE_fp::exist_file(aNamOri))
                {
                     // std::string aNameH21 = aDir +  anEASF.mICNM->Assoc1To2(aKeyH,aNameIm2,aNameIm1,true);
-                    // Lance la commande qui va vraiment faire le calcul 
+                    // Lance la commande qui va vraiment faire le computation 
                     // if (ELISE_fp::exist_file(aNameH21)   || aCMA.mAcceptUnSym)
                     {
                         std::string aCom =   MM3dBinFile("TestLib NO_Ori2Im") + " " + aNameCalc1 + " " + aNameCalc2 + " ";
@@ -1383,7 +1383,7 @@ int TestAllNewOriImage_main(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1399,17 +1399,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

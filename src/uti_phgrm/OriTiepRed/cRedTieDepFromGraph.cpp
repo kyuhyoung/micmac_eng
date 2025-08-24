@@ -60,7 +60,7 @@ class cRealDecoupageInterv2D
      public :
           cRealDecoupageInterv2D(const Box2dr & aBox,const Pt2dr & aSzMax,const Box2dr & aBord);
 
-      // Avec Bord par defaut
+      // with Bord par defaut
           Box2dr  KthIntervIn(int aK) const;
           Box2dr KthIntervOut(int aK) const;
           int NbInterv() const;
@@ -385,7 +385,7 @@ bool cAppliGrRedTieP::OneItereSelection()
 {
 
      mFiloCur.clear();
-     // Pour S0, on prend le non selec le + proche (recouvert) des deja selec
+     // for S0, on prend le non selec le + proche (recouvert) des deja selec
      tSomGRTP * aS0 = 0;
      for (int aKs=0 ; aKs<mNbSom ; aKs++)
      {
@@ -672,8 +672,8 @@ void cAppliGrRedTieP::DoExport()
 {
     mMergeStruct = new tMergeStrRat(mNbSom,true);
 
-    // Lit les hom et les met ds une structur de merge
-    // On passe par la structure merge pour supprimer d'eventuelles incoherences
+    // Lit les hom and les met ds une structur de merge
+    // On passe par la structure merge for supprimer d'eventuelles incoherences
     for (int aKS=0 ; aKS<int(mVSom.size()) ; aKS++)
     {
         tSomGRTP & aS1 = *(mVSom[aKS]);
@@ -802,7 +802,7 @@ cAppliGrRedTieP::cAppliGrRedTieP(int argc,char ** argv) :
     mMulVonGruber    (2),
     mLimFullTieP     (3),
     mInParal         (true),
-    mDoCompleteArc   (false), // Pour l'instant comprends pas pourquoi cela genere probleme dans Tapas ?
+    mDoCompleteArc   (false), // for l'instant comprends pas pourquoi cela genere probleme in Tapas ?
     mUsePrec         (true),
     mProbaSel        (10.0)
 {
@@ -893,7 +893,7 @@ cAppliGrRedTieP::cAppliGrRedTieP(int argc,char ** argv) :
     }
      
 // ttttttt
-   // Calcul du nombre de connexion max
+   // computation du number de connexion max
 
     for (tIterSomGRTP itS=mGr.begin(mSubAll);itS.go_on();itS++)
     {
@@ -919,7 +919,7 @@ std::cout << "MMMP Name= " <<   aS1.attr()->Name()  << "\n";
         MakeFileXML(aXRS,mNoNM->NameRatafiaSom(aName,false));
     }
 
-   // Calcul du taux de recouvrement de chaque arc
+   // computation du taux de recouvrement de chaque arc
     for (tIterSomGRTP itS=mGr.begin(mSubAll);itS.go_on();itS++)
     {
         tSomGRTP & aS1 = (*itS);
@@ -947,7 +947,7 @@ std::cout << "MMMP Name= " <<   aS1.attr()->Name()  << "\n";
         MakeFileXML(aXRIT,mAppliTR->NameXmlOneIm(aName,false));
     }
 
-    // On calcule la partition
+    // On compute la partition
     while(OneItereSelection());
 
 

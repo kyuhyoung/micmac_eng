@@ -64,14 +64,14 @@ Header-MicMac-eLiSe-25/06/2007*/
 #ifndef _ELISE_GENERAL_CORREL_H_
 #define _ELISE_GENERAL_CORREL_H_
 
-class EliseCorrelation  // + ou - name space
+class EliseCorrelation  // + or - name space
 {
     public :
 
-	 // Permet de rajouter du flou dans les images
+	 // Permet de rajouter du flou in les images
           static Fonc_Num FoncLissee(Fonc_Num ,Pt2di aSz,REAL  FactLissage,INT aNbStep,bool aUseVou,INT  aVout);
 
-         // Pour rechecher au hasard, en aveugle une translation approximative
+         // for rechecher au hasard, en aveugle une translation approximative
 
          static  Pt2di RechTransMaxCorrel
                             (
@@ -163,14 +163,14 @@ class EliseCorrel2D
 	   typedef REAL4  tElem;
 	   typedef U_INT1 tElInit;
 	   typedef INT    tBaseElInit;
-   // Calcule le deplacement qui envoie l'image 2 dans Image 1
+   // compute le deplacement qui envoie l'image 2 in image 1
            EliseCorrel2D
            (
                  Fonc_Num f1,
                  Fonc_Num f2,
                  Pt2di aSz,
                  INT   aSzVgn,
-                 bool  aUseVOut,   // Faut-il utiliser le param aVOut comme valeur d'exclusion de la correl init
+                 bool  aUseVOut,   // Faut-il utiliser le param aVOut comme value d'exclusion de la correl init
                  INT   aVOut,
                  bool  WithPreCompute,
                  bool  WithDec
@@ -234,8 +234,8 @@ class EliseCorrel2D
            void RaffineFromVois     
                 (
                    INT anIncert,
-                   Pt2di aDecGlob,  // Utilise pour : zone de recherche + optimiser,
-                                    // en conjonction avec incert,  la taille du Set de point (TabuledCollecPt2di)
+                   Pt2di aDecGlob,  // Utilise for : zone de recherche + optimiser,
+                                    // en conjonction with incert,  la taille du Set de point (TabuledCollecPt2di)
 	           EliseDecCor2D  &  mDecOut,
 	           const EliseDecCor2D  &  mDecIn,
                    INT aNbVoisRech,  
@@ -296,7 +296,7 @@ class EliseCorrel2D
            tElem **          mDataS22;
 
 
-  // im1 en geom 2 (compte tenu de la correlation) avec
+  // im1 en geom 2 (compte tenu de la correlation) with
   // correction affine de la radiometrie
            Im2D<tElem,REAL>  mI1GeomRadiomI2;
            tElem **                 mD1GRI2;

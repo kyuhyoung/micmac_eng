@@ -197,7 +197,7 @@ void SurfLayer::calculerReponsesHessian(BufferImage<double> const &imageIntegral
             }
             for(int c=minC/_pas;c<maxC/_pas;++c)
             {
-                // Position dans l'image
+                // Position in l'image
 
                 double Dxx =    ((*ptrDxx1a1) + (*ptrDxx1b2) - (*ptrDxx1a2) - (*ptrDxx1b1)) -
                 ((*ptrDxx2a1) + (*ptrDxx2b2) - (*ptrDxx2a2) - (*ptrDxx2b1))*3;
@@ -342,7 +342,7 @@ void Surf::appariement(std::vector<SurfPoint> const &v1, std::vector<SurfPoint> 
     bool verbose = false;
     if (verbose) std::cout << "appariement"<<std::endl;
     vApp.clear();
-    // On calcule toutes les distances
+    // On compute toutes les distances
     int N1 = (int)v1.size();
     int N2 = (int)v2.size();
     if ((N1==0)||(N2==0)) return;
@@ -353,7 +353,7 @@ void Surf::appariement(std::vector<SurfPoint> const &v1, std::vector<SurfPoint> 
     for(int i=0;i<N1;++i)
         distance[i] = new double[N2];
 
-    // Pour chaque point de v1 on cherche le point le plus proche dans v2
+    // for chaque point de v1 on cherche le point le plus proche in v2
     std::vector<int> v12;
     if (verbose) std::cout << "Recherche directe"<<std::endl;
     for(int i=0;i<N1;++i)
@@ -377,7 +377,7 @@ void Surf::appariement(std::vector<SurfPoint> const &v1, std::vector<SurfPoint> 
         //if (verbose) std::cout << "distance min 1->2 : "<<i<<" -> "<<idmin<<std::endl;
         v12.push_back(idmin);
     }
-    // Pour chaque point de v2 on cherche le point le plus proche dans v1
+    // for chaque point de v2 on cherche le point le plus proche in v1
     if (verbose) std::cout << "Verification Retour"<<std::endl;
     for(int j=0;j<N2;++j)
     {
@@ -408,7 +408,7 @@ void Surf::appariement(std::vector<SurfPoint> const &v1, std::vector<SurfPoint> 
     /*
     std::vector<SurfHomologue> vAppF;
 
-    // Estimation d'un modele affine pour le filtrage
+    // Estimation d'un modele affine for le filtrage
     double S = 1.;
     std::vector<double> affine;
     double r = modelisationAffine(vApp,affine,S);
@@ -457,13 +457,13 @@ Surf::Surf(BufferImage<unsigned short> const &imageIn,
     NC = (int)imageIn.numCols();
     NL = (int)imageIn.numLines();
 
-    // nombre de resolutions de calcul des reponses de Hessian
+    // number de resolutions de computation des reponses de Hessian
     _num_echelles=CST_Table_Filtres [_octaves-1][_intervals-1]+1;
 
-    // Pour des questions de memoire il faut traiter l'image par bloc de lignes
-    // Pour assurer la bonne repartition des points il faut aussi traiter l'image par pave
+    // for des questions de memoire il faut traiter l'image par bloc de lignes
+    // for assurer la bonne repartition des points il faut aussi traiter l'image par pave
 
-    // On estime la taille des paves de pixel pour assurer la repartition homogene des points
+    // On estime la taille des paves de pixel for assurer la repartition homogene des points
     int taillePave = 0;
     int nbPointsParPave = 0;
     if (nbPoints)
@@ -471,7 +471,7 @@ Surf::Surf(BufferImage<unsigned short> const &imageIn,
         nbPointsParPave = std::max(1,nbPoints/100);
         int nbPaves = nbPoints/nbPointsParPave;
         taillePave = (int)(std::sqrt((double)(NC*NL)/(double)nbPaves));
-        // Si les paves sont trop petits on prend au min 100 pixels
+        // if les paves sont trop petits on prend au min 100 pixels
         if (taillePave<128)
             taillePave = 128;
         nbPaves = (NC*NL)/(taillePave*taillePave);
@@ -479,14 +479,14 @@ Surf::Surf(BufferImage<unsigned short> const &imageIn,
         if (verbose) std::cout << "Il faut en moyenne "<<nbPointsParPave<<" points pour chaque zone de "<<taillePave<<" x "<<taillePave<<" (pixel)"<<std::endl;
     }
 
-    // On estime la taille de bloc de lignes pour le traitement
+    // On estime la taille de bloc de lignes for le traitement
     int nbMaxLignesUtiles = 2048/*3322*//*1024*/;
     if (verbose) std::cout << "taille de la zone utile des blocs de lignes : "<<nbMaxLignesUtiles<<std::endl;
     int marge = CST_Marge_SURF[_num_echelles-1];
     int nbMaxLignes = nbMaxLignesUtiles + 2*marge;
     if (verbose) std::cout << "taille de la zone avec les marges necessaires au calcul : "<<nbMaxLignes<<std::endl;
 
-    // Il faut maintenant fixer la taille des paves pour qu'ils rentrent bien dans les blocs de lignes
+    // Il faut maintenant fixer la taille des paves for qu'ils rentrent bien in les blocs de lignes
     int taillePaveL = nbMaxLignesUtiles;
     if (taillePave)
     {
@@ -510,24 +510,24 @@ Surf::Surf(BufferImage<unsigned short> const &imageIn,
         int nbl_Image = std::min(nbMaxLignes+lBloc-l0_Image,NL-l0_Image);
         if (verbose) std::cout << "Zone de l'image complete a traiter : "<<l0_Image<<" "<<nbl_Image+l0_Image<<std::endl;
 
-        // Zone utile dans le crop
-        int l0_Crop = marge+lBloc-l0_Image;// coord dans le bloc du debut de la zone utile
-        int nbl_Crop = std::min(nbMaxLignesUtiles,nbl_Image-l0_Crop);// nombre de lignes utiles a traiter
+        // Zone utile in le crop
+        int l0_Crop = marge+lBloc-l0_Image;// coord in le bloc du debut de la zone utile
+        int nbl_Crop = std::min(nbMaxLignesUtiles,nbl_Image-l0_Crop);// number de lignes utiles a traiter
         if (verbose) std::cout << "Zone utile dans le crop : "<<l0_Crop+l0_Image<<" "<<nbl_Crop+l0_Crop+l0_Image<<std::endl;
 
         // Preparation de l'image integrale
         BufferImage<double> imageIntegrale;
-        //std::cout << "Calcul de l'image integrale"<<std::endl;
+        //std::cout << "computation de l'image integrale"<<std::endl;
         computeIntegral(imageIn,imageIntegrale,l0_Image,nbl_Image);
         //std::cout << "Taille de l'image Integrale : "<<imageIntegrale.numCols()<<" x "<<imageIntegrale.numLines()<<std::endl;
         //std::cout << "fin"<<std::endl;
 
-        //std::cout << "Allocation de l espace memoire pour le calcul des derivees.."<<std::endl;
-        // Allocation de l'espace memoire pour le calcul des "derivees"
+        //std::cout << "Allocation de l espace memoire for le computation des derivees.."<<std::endl;
+        // Allocation de l'espace memoire for le computation des "derivees"
         if (verbose) std::cout << "_layers.size() avant : "<<_layers.size()<<std::endl;
         for(int i=0;i<_num_echelles;i++)
         {
-            //std::cout << "Preparation Hessian pour echelle : "<<i+1<<" / "<<_num_echelles<<std::endl;
+            //std::cout << "Preparation Hessian for scale : "<<i+1<<" / "<<_num_echelles<<std::endl;
             int pas = CST_Pas_SURF[i]*_pas_surf;
             _layers.push_back(new SurfLayer(pas,CST_Lobe_SURF[i],CST_Marge_SURF[i],CST_Taille_Filtres[i],NC/pas,nbl_Image/pas));
             _layers[i]->calculerReponsesHessian(imageIntegrale);
@@ -544,7 +544,7 @@ Surf::Surf(BufferImage<unsigned short> const &imageIn,
             for(int bc=0;(bc*taillePaveC)<NC;++bc)
             {
                 // Traitement du pave bc,bl
-                // Recherche des nbPointsParPave premiers extrema dans la zone utile
+                // Recherche des nbPointsParPave premiers extrema in la zone utile
                 std::multiset<SurfPoint> sPts;
 
                 for(int oct=0;oct<_octaves;++oct)
@@ -557,16 +557,16 @@ Surf::Surf(BufferImage<unsigned short> const &imageIn,
                         SurfLayer const & Ech_n = *(_layers[CST_Table_Filtres [oct][inter+2] ]);
                         for(int l=0;l<nbLignesATraiter;l+=Ech_n.pas())
                         {
-                            // Position dans le crop
+                            // Position in le crop
                             int lCrop = l+bl*taillePaveL+l0_Crop;
 
                             //std::cout << "l : "<<l<<std::endl;
                             for(int c=0;c<taillePaveC;c+=Ech_n.pas())
                             {
-                                // Position dans le crop
+                                // Position in le crop
                                 int cCrop = c+bc*taillePaveC;
 
-                                // Position dans l'image complete
+                                // Position in l'image complete
                                 //int lImage = lCrop+l0_Image;
                                 //int cImage = cCrop;
 
@@ -578,7 +578,7 @@ Surf::Surf(BufferImage<unsigned short> const &imageIn,
                                     bool ok = true;
                                     if ((sPts.size()>=(size_t)nbPointsParPave) && ( nbPointsParPave>0))
                                     {
-                                        // On teste la valeur
+                                        // On teste la value
                                         if (val<(*sPts.begin()).hessian())
                                             ok=false;
                                         else
@@ -593,7 +593,7 @@ Surf::Surf(BufferImage<unsigned short> const &imageIn,
                                         if (interpoleExtremum(cCrop/Ech_n.pas(), lCrop/Ech_n.pas(), Ech_p, Ech_c, Ech_n,Pt))
                                         {
                                             calculerDescripteur(imageIntegrale,Pt);
-                                            //std::cout << "Point : "<<Pt.x()<<" "<<Pt.y()+l0_Image<<std::endl;
+                                            //std::cout << "point : "<<Pt.x()<<" "<<Pt.y()+l0_Image<<std::endl;
                                             Pt.y()+=l0_Image;
                                             sPts.insert(Pt);
                                         }
@@ -603,7 +603,7 @@ Surf::Surf(BufferImage<unsigned short> const &imageIn,
                         }
                     }
                 }
-                //std::cout << "Nombre de point pour le pave "<<bc<<" x "<<bl<<" : "<<sPts.size()<<std::endl;
+                //std::cout << "number de point for le pave "<<bc<<" x "<<bl<<" : "<<sPts.size()<<std::endl;
                 std::multiset<SurfPoint>::const_iterator it,fin=sPts.end();
                 for(it=sPts.begin();it!=fin;++it)
                 {
@@ -639,7 +639,7 @@ void Surf::computeIntegral(BufferImage<unsigned short> const &imageIn,BufferImag
 
     imageIntegral.initialize(NC,NL,1);
 
-    // Traitement de la premiere ligne
+    // Traitement de la premiere line
     int k=0;
     {
         double somme = 0.;
@@ -685,13 +685,13 @@ Surf::Surf(BufferImage<unsigned char> const &imageIn,
     NC = (int)imageIn.numCols();
     NL = (int)imageIn.numLines();
 
-    // nombre de resolutions de calcul des reponses de Hessian
+    // number de resolutions de computation des reponses de Hessian
     _num_echelles=CST_Table_Filtres [_octaves-1][_intervals-1]+1;
 
-    // Pour des questions de memoire il faut traiter l'image par bloc de lignes
-    // Pour assurer la bonne repartition des points il faut aussi traiter l'image par pave
+    // for des questions de memoire il faut traiter l'image par bloc de lignes
+    // for assurer la bonne repartition des points il faut aussi traiter l'image par pave
 
-    // On estime la taille des paves de pixel pour assurer la repartition homogene des points
+    // On estime la taille des paves de pixel for assurer la repartition homogene des points
     int taillePave = 0;
     int nbPointsParPave = 0;
     if (nbPoints)
@@ -699,7 +699,7 @@ Surf::Surf(BufferImage<unsigned char> const &imageIn,
         nbPointsParPave = std::max(1,nbPoints/100);
         int nbPaves = nbPoints/nbPointsParPave;
         taillePave = (int)(std::sqrt((double)(NC*NL)/(double)nbPaves));
-        // Si les paves sont trop petits on prend au min 100 pixels
+        // if les paves sont trop petits on prend au min 100 pixels
         if (taillePave<128)
             taillePave = 128;
         nbPaves = (NC*NL)/(taillePave*taillePave);
@@ -707,14 +707,14 @@ Surf::Surf(BufferImage<unsigned char> const &imageIn,
         if (verbose) std::cout << "Il faut en moyenne "<<nbPointsParPave<<" points pour chaque zone de "<<taillePave<<" x "<<taillePave<<" (pixel)"<<std::endl;
     }
 
-    // On estime la taille de bloc de lignes pour le traitement
+    // On estime la taille de bloc de lignes for le traitement
     int nbMaxLignesUtiles = 2048/*3322*//*1024*/;
     if (verbose) std::cout << "taille de la zone utile des blocs de lignes : "<<nbMaxLignesUtiles<<std::endl;
     int marge = CST_Marge_SURF[_num_echelles-1];
     int nbMaxLignes = nbMaxLignesUtiles + 2*marge;
     if (verbose) std::cout << "taille de la zone avec les marges necessaires au calcul : "<<nbMaxLignes<<std::endl;
 
-    // Il faut maintenant fixer la taille des paves pour qu'ils rentrent bien dans les blocs de lignes
+    // Il faut maintenant fixer la taille des paves for qu'ils rentrent bien in les blocs de lignes
     int taillePaveL = nbMaxLignesUtiles;
     if (taillePave)
     {
@@ -738,23 +738,23 @@ Surf::Surf(BufferImage<unsigned char> const &imageIn,
         int nbl_Image = std::min(nbMaxLignes+lBloc-l0_Image,NL-l0_Image);
         if (verbose) std::cout << "Zone de l'image complete a traiter : "<<l0_Image<<" "<<nbl_Image+l0_Image<<std::endl;
 
-        // Zone utile dans le crop
-        int l0_Crop = marge+lBloc-l0_Image;// coord dans le bloc du debut de la zone utile
-        int nbl_Crop = std::min(nbMaxLignesUtiles,nbl_Image-l0_Crop);// nombre de lignes utiles a traiter
+        // Zone utile in le crop
+        int l0_Crop = marge+lBloc-l0_Image;// coord in le bloc du debut de la zone utile
+        int nbl_Crop = std::min(nbMaxLignesUtiles,nbl_Image-l0_Crop);// number de lignes utiles a traiter
         if (verbose) std::cout << "Zone utile dans le crop : "<<l0_Crop+l0_Image<<" "<<nbl_Crop+l0_Crop+l0_Image<<std::endl;
 
         // Preparation de l'image integrale
         BufferImage<double> imageIntegrale;
-        //std::cout << "Calcul de l'image integrale"<<std::endl;
+        //std::cout << "computation de l'image integrale"<<std::endl;
         computeIntegral(imageIn,imageIntegrale,l0_Image,nbl_Image);
         //std::cout << "Taille de l'image Integrale : "<<imageIntegrale.numCols()<<" x "<<imageIntegrale.numLines()<<std::endl;
         //std::cout << "fin"<<std::endl;
 
-        //std::cout << "Allocation de l espace memoire pour le calcul des derivees.."<<std::endl;
-        // Allocation de l'espace memoire pour le calcul des "derivees"
+        //std::cout << "Allocation de l espace memoire for le computation des derivees.."<<std::endl;
+        // Allocation de l'espace memoire for le computation des "derivees"
         for(int i=0;i<_num_echelles;i++)
         {
-            //std::cout << "Preparation Hessian pour echelle : "<<i+1<<" / "<<_num_echelles<<std::endl;
+            //std::cout << "Preparation Hessian for scale : "<<i+1<<" / "<<_num_echelles<<std::endl;
             int pas = CST_Pas_SURF[i]*_pas_surf;
             _layers.push_back(new SurfLayer(pas,CST_Lobe_SURF[i],CST_Marge_SURF[i],CST_Taille_Filtres[i],NC/pas,nbl_Image/pas));
             _layers[i]->calculerReponsesHessian(imageIntegrale);
@@ -770,7 +770,7 @@ Surf::Surf(BufferImage<unsigned char> const &imageIn,
             for(int bc=0;(bc*taillePaveC)<NC;++bc)
             {
                 // Traitement du pave bc,bl
-                // Recherche des nbPointsParPave premiers extrema dans la zone utile
+                // Recherche des nbPointsParPave premiers extrema in la zone utile
                 std::multiset<SurfPoint> sPts;
 
                 for(int oct=0;oct<_octaves;++oct)
@@ -783,16 +783,16 @@ Surf::Surf(BufferImage<unsigned char> const &imageIn,
                         SurfLayer const & Ech_n = *(_layers[CST_Table_Filtres [oct][inter+2] ]);
                         for(int l=0;l<nbLignesATraiter;l+=Ech_n.pas())
                         {
-                            // Position dans le crop
+                            // Position in le crop
                             int lCrop = l+bl*taillePaveL+l0_Crop;
 
                             //std::cout << "l : "<<l<<std::endl;
                             for(int c=0;c<taillePaveC;c+=Ech_n.pas())
                             {
-                                // Position dans le crop
+                                // Position in le crop
                                 int cCrop = c+bc*taillePaveC;
 
-                                // Position dans l'image complete
+                                // Position in l'image complete
                                 //int lImage = lCrop+l0_Image;
                                 //int cImage = cCrop;
 
@@ -804,7 +804,7 @@ Surf::Surf(BufferImage<unsigned char> const &imageIn,
                                     bool ok = true;
                                     if ((sPts.size()>=(size_t)nbPointsParPave) && ( nbPointsParPave>0))
                                     {
-                                        // On teste la valeur
+                                        // On teste la value
                                         if (val<(*sPts.begin()).hessian())
                                             ok=false;
                                         else
@@ -819,7 +819,7 @@ Surf::Surf(BufferImage<unsigned char> const &imageIn,
                                         if (interpoleExtremum(cCrop/Ech_n.pas(), lCrop/Ech_n.pas(), Ech_p, Ech_c, Ech_n,Pt))
                                         {
                                             calculerDescripteur(imageIntegrale,Pt);
-                                            //std::cout << "Point : "<<Pt.x()<<" "<<Pt.y()+l0_Image<<std::endl;
+                                            //std::cout << "point : "<<Pt.x()<<" "<<Pt.y()+l0_Image<<std::endl;
                                             Pt.y()+=l0_Image;
                                             sPts.insert(Pt);
                                         }
@@ -829,7 +829,7 @@ Surf::Surf(BufferImage<unsigned char> const &imageIn,
                         }
                     }
                 }
-                //std::cout << "Nombre de point pour le pave "<<bc<<" x "<<bl<<" : "<<sPts.size()<<std::endl;
+                //std::cout << "number de point for le pave "<<bc<<" x "<<bl<<" : "<<sPts.size()<<std::endl;
                 std::multiset<SurfPoint>::const_iterator it,fin=sPts.end();
                 for(it=sPts.begin();it!=fin;++it)
                 {
@@ -865,7 +865,7 @@ void Surf::computeIntegral(BufferImage<unsigned char> const &imageIn,BufferImage
 
     imageIntegral.initialize(NC,NL,1);
 
-    // Traitement de la premiere ligne
+    // Traitement de la premiere line
     int k=0;
     {
         double somme = 0.;
@@ -1038,7 +1038,7 @@ bool Surf::calculerDescripteur(BufferImage<double> const &imageIntegrale,SurfPoi
 bool Surf::interpoleExtremum(int c,int l,SurfLayer const & Ech_p,SurfLayer const & Ech_c,SurfLayer const & Ech_n, SurfPoint &Pt)
 {
     //std::cout << "Surf::interpoleExtremum : "<<c<<" "<<l<<std::endl;
-    // Position dans l'image en pleine resolution
+    // Position in l'image en pleine resolution
     int col = c*Ech_n.pas();
     int lig = l*Ech_n.pas();
     //std::cout << "Coord en pleine resolution : "<<col<<" "<<lig<<std::endl;
@@ -1133,7 +1133,7 @@ bool Surf::isExtremum(int c, int l, SurfLayer const &Ech_p,SurfLayer const &Ech_
         return false;
     }
 
-    // Position dans l'image en pleine resolution
+    // Position in l'image en pleine resolution
     int col = c*Ech_n.pas();
     int lig = l*Ech_n.pas();
 

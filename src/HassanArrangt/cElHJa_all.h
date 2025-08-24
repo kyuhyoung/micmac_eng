@@ -54,8 +54,8 @@ class cElHJaAttrSomPlani
         void SetCurvD(REAL);
     private  :
          Pt2dr mPt;
-         REAL  mACurvE;  // Abscisse Curv sur Emprise
-         REAL  mACurvD;  // Abscisse Curv sur Droite
+         REAL  mACurvE;  // Abscisse Curv on Emprise
+         REAL  mACurvD;  // Abscisse Curv on Droite
 };
 
 class cElHJaAttrArcPlani
@@ -75,8 +75,8 @@ class cElHJaAttrArcPlani
     private  :
 	INT             mCpt;
         cElHJaFacette * mFac;
-        tArcGrPl *      mArcHom;  // Arc homologue dans l'autre plan si facette
-                                  // D'intersections, sinon 0
+        tArcGrPl *      mArcHom;  // Arc homologue in l'autre plan if facette
+                                  // D'intersections, else 0
 };
 
 class cFullSubGrWithP : public tFullSubGrPl
@@ -93,7 +93,7 @@ class cFullSubGrWithP : public tFullSubGrPl
 	 SegComp  mSeg;
 };
 
-// Dans meme fichier que cFullSubGrWithP
+// in meme file que cFullSubGrWithP
 class cSubGrSol : public tFullSubGrPl
 {
     public :

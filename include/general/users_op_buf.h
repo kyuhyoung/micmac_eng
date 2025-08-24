@@ -178,7 +178,7 @@ template <class  Type> class Simple_OP_BIN : public RC_Object
 {
     public :
 		// A REDEFINIR IMPERATIVEMENT
-		// devrait etre 0; mais Visual 6 ....
+		// devrait etre 0; but Visual 6 ....
         virtual void  calc_buf
                       (
                            Type ** output,
@@ -295,28 +295,28 @@ class Simple_OPBuf_Gen : public RC_Object
        friend class Simple_Buffered_Op_Comp<REAL,REAL>;
 
 
-     //  caracteristique de la fonction :
+     //  caracteristique de la function :
 
          INT      dim_in() const { return _dim_in;}
          INT      dim_out()  const { return _dim_out;}
          bool     integral () const { return _integral;}
 
-     // valeurs evolaunt avec y 
+     // valeurs evolaunt with y 
 
-        // valeur liees au y absolu
+        // value liees au y absolu
            INT  ycur ()      const  { return _ycur;}
            bool first_line()  const { return _first_line;}
 
         //  Certain filtres "sophistique", tel que le skel, on besoin
         //  de fonctionner par paquet de lignes afin d'etres efficaces
-        // valeur liees au y dans un paquet
+        // value liees au y in un paquet
 
             INT   y_in_pack ()  const       { return  _y_in_pack;}
             bool first_line_in_pack() const {  return  _y_in_pack == 0;}
             INT   nb_pack_y ()  const { return   _nb_pack_y;}
 
 
-      // rectangle sur lequel est renvoye  le filtre
+      // rectangle on lequel est renvoye  le filtre
 
        INT  x0   ()  const   {return _x0;}
        INT  x1   ()  const   {return _x1;}
@@ -334,7 +334,7 @@ class Simple_OPBuf_Gen : public RC_Object
        INT  dy1 ()  const    {return _dy1;};
 
 
-    // rectangle sur lequel  la fonction en entree 
+    // rectangle on lequel  la function en entree 
     // est definie 
 
        INT  x0Buf ()  const  {return _x0Buf;}   ; // _x0 + _dx0
@@ -396,14 +396,14 @@ template <class  Tout,class Tin> class Simple_OPBuf1 : public Simple_OPBuf_Gen
 {
     public :
 
-		// Methode virtuelle pure en toute logique, on lui donne une
-		// valeur pour contourner un Warning de Visual 6
+		// method virtuelle pure en toute logique, on lui donne une
+		// value for contourner un Warning de Visual 6
        virtual void  calc_buf (Tout ** output,Tin *** input);
 
-       // Necessaire si l'objet doit allouer des ressource temporaire dont la taille depend
+       // Necessaire if l'object doit allouer des ressource temporaire dont la taille depend
        // du rectangle d'application (contexte compile). Par defaut renvoie this, ce qui
-       // ne pose pas de pb de desallocation (verifie que l'objet est detruit une seule fois
-       // si methode non definie et deux fois sinon, voir ex cOmbrageKL
+       // ne pose pas de pb de desallocation (verifie que l'object est detruit une seule fois
+       // if method non definie and deux fois else, voir ex cOmbrageKL
 
        virtual Simple_OPBuf1<Tout,Tin> * dup_comp();
        virtual ~Simple_OPBuf1();
@@ -413,11 +413,11 @@ template <class  Tout,class Tin> class Simple_OPBuf1 : public Simple_OPBuf_Gen
        Tout **   _out;
        Tin  ***  _in;
 
-	// Fait "pointer' une image elise "Normale" (sans DataLin)
+	// Fait "pointer' une image elise "Normale" (without DataLin)
 	   typedef typename El_CTypeTraits<Tin>::tBase  tBaseIn;
 	   
 	   void SetImageOnBufEntry(Im2D<Tin,tBaseIn>,Tin**);
-	   // Images sans Data lin, faite pour etre mappee par SetImageOnBufEntry :
+	   // Images without Data lin, faite for etre mappee par SetImageOnBufEntry :
 	   Im2D<Tin,tBaseIn>  AllocImageBufIn(); 
 
 
@@ -517,21 +517,21 @@ Fonc_Num rle_som_masq_binaire
 Fonc_Num label_maj (Fonc_Num label,INT vmax,Box2di,Fonc_Num f = 1);
 Fonc_Num dilate_label (Fonc_Num label,const Chamfer& chamf,INT dmax);
 
-// Permet de definir une fonction qui est egale a f, sauf en
-// certain point ou les valeurs sont tabulees dans une liste
-// (les deux premier coordonnes sont x et y, les autre la valeur associees)
+// Permet de definir une function qui est egale a f, sauf en
+// certain point or les valeurs sont tabulees in une list
+// (les deux premier coordonnes sont x and y, les autre la value associees)
 
 Fonc_Num fonc_a_trou(Fonc_Num f,Liste_Pts<INT,INT> l);
 Fonc_Num fonc_a_trou(Fonc_Num f,Liste_Pts<U_INT2,INT> l);
 Fonc_Num fonc_a_trou(Fonc_Num f,Liste_Pts<INT2,INT> l);
 
-// Soit une fonction f de dim 2 en sortie, soient (rho,teta) les valeur
-//  renvoie 1 si rho est un maxima dans la dierction de teta 
-//  (Typiquement rho et teta sont norme et direction du gradient)
+// Soit une function f de dim 2 en sortie, soient (rho,teta) les value
+//  renvoie 1 if rho est un maxima in la dierction de teta 
+//  (Typiquement rho and teta sont norme and direction du gradient)
 //    
-//    OuvAng : indique le cone angulaire sur lequel on exige le maximum
-//    Si OrientedMaxLoc = false, on regarde dans les deux direction
-//    RhoCalc => donne la distance au pixel pour evaluer les valeur voisines
+//    OuvAng : indique le cone angulaire on lequel on exige le maximum
+//    if OrientedMaxLoc = false, on regarde in les deux direction
+//    RhoCalc => donne la distance au pixel for evaluer les value voisines
 
 #define MaxLocDir_Def_OrientedMaxLoc  false
 #define MaxLocDir_Def_RhoCalc 1.0
@@ -583,7 +583,7 @@ Fonc_Num  create_op_buf_simple_tpl
           );
 
 
-    // Changement d'echelle, une utilisation hors norme
+    // Changement d'scale, une utilisation hors norme
     // des op-buf , Defaut -> Bicubique
     //  ISCAL[XY] = IOri[Direct(XY)]
     // double Direct(double aV)   const { return  aV*mSc + mTr; }

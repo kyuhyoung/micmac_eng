@@ -73,16 +73,16 @@ class cMMSpecArg
         // l'argument a-t-il ete initialise
         bool IsInit() const;
 
-        // S'agit-il d'un booleen (ajout pour lever l'ambiguite integer 0/1)
+        // S'agit-il d'un booleen (ajout for lever l'ambiguite integer 0/1)
         bool IsBool() const;
 
         // S'agit-il d'une puissance de 2
         bool IsPowerOf2() const;
 
-        // S'agit-il d'un repertoire
+        // S'agit-il d'un directory
         bool IsDir() const;
 
-        // S'agit-il d'un pattern descriptif de fichier
+        // S'agit-il d'un pattern descriptif de file
         bool IsPatFile() const;
 
         // S'agit-il d'une directory d'orientation existante
@@ -91,13 +91,13 @@ class cMMSpecArg
         // S'agit-il d'une directory d'orientation en sortie
         bool IsOutputDirOri() const;
 
-        // S'agit-il d'un fichier existant
+        // S'agit-il d'un file existant
         bool IsExistFile() const;
 
-        // S'agit-il d'un fichier existant avec un chemin relatif au chantier
+        // S'agit-il d'un file existant with un chemin relatif au chantier
         bool IsExistFileWithRelativePath() const;
 
-        // S'agit-il d'un fichier en sortie
+        // S'agit-il d'un file en sortie
         bool IsOutputFile() const;
 
         // S'agit-il d'une box2d a normaliser
@@ -109,19 +109,19 @@ class cMMSpecArg
         // Nom du type
         std::string NameType() const;
 
-        // Nom de l'argument (quand optionnel)
+        // Nom de l'argument (when optionnel)
         std::string NameArg() const;
 
         // Commentaire eventuel
         std::string Comment() const;
 
-        // Numero de l'argument dans la specification (pas vraiment utile ??)
+        // Numero de l'argument in la specification (pas vraiment utile ??)
         int NumArg() const;
 
-        // Initialise la variable a partir d'une chaine de caractere
+        // Initialise la variable a partir d'une string de caractere
         void Init(const std::string &);
 
-        // Liste des valeurs possibles si enumerees, renvoie liste vide sinon
+        // list des valeurs possibles if enumerees, renvoie list vide else
         const std::list<std::string>  & EnumeratedValues() const;
 
         eArgMainBaseType Type() const;

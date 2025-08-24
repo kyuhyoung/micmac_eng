@@ -131,9 +131,9 @@ typedef  cSmallMatrixOrVar<cCelOptimProgDyn>   tMatrCelPDyn;
 
 
         Z = 13 ->    Delta = [-2,2]   // aucune contrainte
-        Z = 18 ->    Delta = [-2,1]   // Pour que ca reste dans I0
-        Z = 25 ->    Delta = [-6,-6]  //  Pour que l'intersection soit non vide avec I0
-        Z = 10 ->    Delta = [-5,-1]  // principe de symetrie, dans l'autre sens                                      // les points [5,9] de I0 devront etre connecte a 10
+        Z = 18 ->    Delta = [-2,1]   // for que ca reste in I0
+        Z = 25 ->    Delta = [-6,-6]  //  for que l'intersection soit non vide with I0
+        Z = 10 ->    Delta = [-5,-1]  // principe de symetrie, in l'autre sens                                      // les points [5,9] de I0 devront etre connecte a 10
 
 */
 
@@ -159,7 +159,7 @@ void ComputeIntervaleDelta
       if (aZ != aZ1Max-1)
          ElSetMin(aDzMax,MaxDeltaZ);
 
-       // Si les intervalles sont vides, on relie
+       // if les intervalles sont vides, on relie
        // les bornes des intervalles a tous les points
        if (aDzMin > aDzMax)
        {
@@ -418,7 +418,7 @@ void cProgDynOptimiseur::BalayageOneSens
 {
 //ElTimer aChrono;
 //static int aCpt=0; aCpt++;
-   // Initialisation des couts sur les premieres valeurs
+   // Initialisation des couts on les premieres valeurs
    {
       tMatrCelPDyn &  aMat0 = mMatrCel[aVPt[anIndInit]];
       const Box2di & aBox0 = aMat0.Box();
@@ -603,10 +603,10 @@ void cProgDynOptimiseur::SolveOneEtape(const cEtapeProgDyn & anEt)
 
        Pt2dr aP = Pt2dr::FromPolar(100.0,aTeta);
        // On le met la parce que en toute rigueur ca depend de la 
-       // direction, mais pour l'instant on ne gere pas cette dependance
+       // direction, but for l'instant on ne gere pas cette dependance
        for (int aKP=0 ; aKP<mNbPx ; aKP++)
        {
-       // Au cas ou la regularisation varie suivant les etapes
+       // Au cas or la regularisation varie suivant les etapes
             const tVGI_VDouble & aV =      (aKP==0)              ?
                                            mEtPrg.Px1MultRegul() :
                                            mEtPrg.Px2MultRegul() ;
@@ -782,7 +782,7 @@ cSurfaceOptimiseur * cSurfaceOptimiseur::AllocPrgDyn
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -798,17 +798,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

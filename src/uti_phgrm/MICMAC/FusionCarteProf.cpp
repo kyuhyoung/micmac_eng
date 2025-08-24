@@ -71,7 +71,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 // static bool  LocBug=false;
 
-// Type est le type de stockage des cartes : apparemment sur des float par defaut
+// Type est le type de stockage des cartes : apparemment on des float par defaut
 
 double DynCptrFusDepthMap=10;
 
@@ -82,11 +82,11 @@ class cElPilePrgD;  // Element minimaliste sauvgarder lors de la prog dyn
 
 // Au depart on se sait pas quelle sera la taille de la nappe (nb de cluster/ x,y)
 // , on sauvegarde toute l'information 
-// necessaire dans une liste de vecteur de cElTmp0Pile; ensuite one reparcourir la liste dans le
-// meme ordre pour remplir la structure de programmation dynamique
+// necessaire in une list de vector de cElTmp0Pile; ensuite one reparcourir la list in le
+// meme ordre for remplir la structure de programmation dynamique
 class cElTmp0Pile;  
 
-class cTmpPile; // Utilise pour le premier filtrage (gaussien etc) avant reduction du nombre
+class cTmpPile; // Utilise for le premier filtrage (gaussien etc) before reduction du number
 
     //=================================
 
@@ -111,7 +111,7 @@ class cElPilePrgD
 
         const float & Z() const {return mZ;}
     private :
-        float mZ;   // C'est le Z "absolu" du nuage, corrige de l'offset et du pas, c'est a la sauvegarde qu'on le remet eventuellement au pas
+        float mZ;   // C'est le Z "absolu" du nuage, corrige de l'offset and du pas, c'est a la sauvegarde qu'on le remet eventuellement au pas
 };
 
 class cElTmp0Pile : public cElPilePrgD
@@ -148,8 +148,8 @@ class cTmpPile
 {
     public :
         cTmpPile(int aK,float aZ,float aPds,const cLoadedCP<float> * aLCP);
-        // Caclul entre deux cellule successive le poids exponentiel 
-       // qui sera utilise pour le filtrage recursif
+        // Caclul between deux cellule successive le poids exponentiel 
+       // qui sera utilise for le filtrage recursif
         void SetPPrec(cTmpPile &,float aExpFact);
         // double Pds() {return mPds0 / mNb0;}
         double ZMoy() {return mPds0 ? (mZP0/mPds0) : 0 ;}
@@ -161,16 +161,16 @@ class cTmpPile
          double mPInit;
          double mZP0;   // Z Pondere par le poids
          double mPds0;  // Poids 
-         double mNb0;   // si le PdsInit=1, alors mNb0==mPds0, compte le nombre de pt de chaque cluste
+         double mNb0;   // if le PdsInit=1, then mNb0==mPds0, compte le number de pt de chaque cluste
                         // (a une constante globale pres)
          const cLoadedCP<float> * mLCP;
 
-        // Variale pour le filtrage recursif "plus"
+        // Variale for le filtrage recursif "plus"
          double mNewZPp;
          double mNewPdsp;
          double mNewNbp;
 
-        // Variale pour le filtrage recursif "moins"
+        // Variale for le filtrage recursif "moins"
          double mNewZPm;
          double mNewPdsm;
          double mNewNbm;
@@ -276,13 +276,13 @@ template <class Type> class cFusionCarteProf
         typedef  typename El_CTypeTraits<tNum>::tBase  tNBase;
 
       //=================================================================
-      // Interface pour utiliser la prog dyn
+      // Interface for utiliser la prog dyn
       //=================================================================
          //-------- Pre-requis
             typedef  cElPilePrgD tArgCelTmp;
             typedef  cElPilePrgD tArgNappe;
 
-         //-------- Pas pre-requis mais aide a la declaration
+         //-------- Pas pre-requis but aide a la declaration
             typedef  cTplCelNapPrgDyn<tArgNappe>    tCelNap;
             typedef  cTplCelOptProgDyn<tArgCelTmp>  tCelOpt;
 
@@ -383,7 +383,7 @@ class cCmpPdsPile
 
 /*
 mK ;  // indexe initial
-mCpteur  ; //  rempli le cpt de cElTmp0Pile; no de voisins avec une fonctionne de ponder au dessous de seuil 
+mCpteur  ; //  rempli le cpt de cElTmp0Pile; no de voisins with une fonctionne de ponder au dessous de seuil 
 mPInit ; // poids initial
 mPds0;
 
@@ -420,7 +420,7 @@ void FiltrageAllerEtRetour(std::vector<cTmpPile> & aVTmp)
 {
      int aNb = (int)aVTmp.size();
 
-   // Propagation de la gauche vers la droite qui seront stockes dans mNewPdp etc..
+   // Propagation de la gauche vers la droite qui seront stockes in mNewPdp etc..
          // Initialistion de la gauche
      aVTmp[0].mNewPdsp = aVTmp[0].mPds0;
      aVTmp[0].mNewZPp  = aVTmp[0].mZP0;
@@ -450,7 +450,7 @@ void FiltrageAllerEtRetour(std::vector<cTmpPile> & aVTmp)
           aVTmp[aK].mNewNbm  = aVTmp[aK].mNb0  + aVTmp[aK+1].mNewNbm  * aVTmp[aK].mPNext;
      }
 
-     // Memorisation dans mZP0 etc.. du resultat (droite + gauche - VCentrale) , VCentrale a ete compte deux fois
+     // Memorisation in mZP0 etc.. du result (droite + gauche - VCentrale) , VCentrale a ete compte deux fois
      for (int aK=0 ; aK<int(aVTmp.size()) ; aK++)
      {
           aVTmp[aK].mZP0  = (aVTmp[aK].mNewZPp  + aVTmp[aK].mNewZPm  - aVTmp[aK].mZP0) / aVTmp.size();
@@ -553,7 +553,7 @@ std::vector<cElTmp0Pile>  ComputeExpEv(const std::vector<cElTmp0Pile> & aVPile,d
 
    }
 
-// On fait deux filtrage exponentiel ce qui fait + ou - un filtrage gaussien
+// On fait deux filtrage exponentiel ce qui fait + or - un filtrage gaussien
    FiltrageAllerEtRetour(aTmp);
 
    if (false) // (LocBug)
@@ -598,14 +598,14 @@ std::vector<cElTmp0Pile>  ComputeExpEv(const std::vector<cElTmp0Pile> & aVPile,d
        }
    }
 
-   // Si necessaire on ne garde que les NBMaxMaxLoc meilleurs element (selon Pds0)
+   // if necessaire on ne garde que les NBMaxMaxLoc meilleurs element (selon Pds0)
    cCmpPdsPile aCmp;
    std::sort(aResTmp.begin(),aResTmp.end(),aCmp);
    while (int(aResTmp.size()) > aFEv.NBMaxMaxLoc().Val())  aResTmp.pop_back();
 
 
-   // Compte pour les element selectionne les voisin avec un fonction de ponderation
-   // qui vaut 1 jusqu'a Seuil/2,  0 au de la Seuil, et raccord continue entre les deux
+   // Compte for les element selectionne les voisin with un function de ponderation
+   // qui vaut 1 jusqu'a Seuil/2,  0 au de la Seuil, and raccord continue between les deux
    for (int aI=0 ; aI<int(aResTmp.size()) ; aI++)
    {
          IncreCptr(aTmp,aResTmp[aI],aResTmp[aI].mK  ,aSCpt,-1,            -1);
@@ -615,7 +615,7 @@ std::vector<cElTmp0Pile>  ComputeExpEv(const std::vector<cElTmp0Pile> & aVPile,d
 
 
 
-  // Export sous forme d'un pile minimaliste
+  // Export under forme d'un pile minimaliste
    std::vector<cElTmp0Pile> aRes;
    for (int aK=0 ; aK<int(aResTmp.size()) ; aK++)
    {
@@ -1176,7 +1176,7 @@ template <class Type> void cFusionCarteProf<Type>::DoOneBloc(int aKB,const Box2d
                       aNbOk ++;
                    }
                }
-               aTIm0.oset(aQ0,-1); // Bug dans prog dyn si nappes vides
+               aTIm0.oset(aQ0,-1); // Bug in prog dyn if nappes vides
                aTImNb.oset(aQ0,aNbOk);
            }
       }
@@ -1219,7 +1219,7 @@ template <class Type> void cFusionCarteProf<Type>::DoOneBloc(int aKB,const Box2d
             {
                 for (int aKP=0 ; aKP < int(aPCel.size()) ; aKP++)
                 {
-                    // On veut pour des question de normalisation que la moyenne des poids sur
+                    // On veut for des question de normalisation que la moyenne des poids on
                     // x,y donne soit egale a 1
                     aPCel[aKP].SetPdsPile(aPCel[aKP].P() * (aPCel.size()/aSomP));
                 }
@@ -1250,13 +1250,13 @@ template <class Type> void cFusionCarteProf<Type>::DoOneBloc(int aKB,const Box2d
    if (ShowTime)
       std::cout << " Init Cost time= " << aChrono.uval() << "\n";
 
-   // Cas ou on fait de programmation dynamique
+   // Cas or on fait de programmation dynamique
    if (1)
    {
-       // 1- Remplir la nappe avec les cellules
+       // 1- Remplir la nappe with les cellules
        double aDefPds =   mFNoVal ?  mFNoVal->CostNoVal() :0.5  ;
        cElPilePrgD aPDef(0);
-       cProg2DOptimiser<cFusionCarteProf>  * aPrgD = new cProg2DOptimiser<cFusionCarteProf>(*this,aTIm0._the_im,aTImNb._the_im,0,1); // 0,1 => Rab et Mul
+       cProg2DOptimiser<cFusionCarteProf>  * aPrgD = new cProg2DOptimiser<cFusionCarteProf>(*this,aTIm0._the_im,aTImNb._the_im,0,1); // 0,1 => Rab and Mul
        {
            cDynTplNappe3D<cTplCelNapPrgDyn<cElPilePrgD> > & aNap = aPrgD->Nappe();
            std::list<std::vector<cElTmp0Pile> >::const_iterator anIt =  aLVP.begin();
@@ -1366,7 +1366,7 @@ if (aPk.P()>MaxP)
         TIm2DBits<1>       aTIm1(aIm1);
         ComplKLipsParLBas (aImMasq, aIm1,aImFus,1.0);
    }
-   // Une fois que l'on a detecte les zone a pb potentiel et leur a affecte une valeur par extrapolation
+   // Une fois que l'on a detecte les zone a pb potentiel and leur a affecte une value par extrapolation
    // on les remet en NDG STD afin de boucher les trous d'orthos
    aImMasq = aImMasq0;
 
@@ -1436,7 +1436,7 @@ template <class Type>   void cFusionCarteProf<Type>::DoConnexion
             double aDZ = ElAbs(aPIn.Z()-aPOut.Z())/mResolPlaniEquiAlt;
             if ((mFNoVal==0) || (aDZ < mFNoVal->PenteMax()))
             {
-            // Fonction concave, nulle et de derivee 1 en 0
+            // function concave, nulle and de derivee 1 en 0
                  double aCost = (sqrt(1+aDZ/aSig0)-1) * 2*aSig0 * mFPrgD->Regul();
                  anOut.UpdateCostOneArc(anInp,aSens,ToICost(aCost));
             }
@@ -1619,7 +1619,7 @@ int SimpleFusionCarte_main(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1635,17 +1635,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

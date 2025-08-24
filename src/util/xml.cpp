@@ -150,7 +150,7 @@ const std::vector<cOpPolI> & OpPolI()
 
 
 // ATTENTION isblank non defini !!!  == >>  EN FAIT PAS VRAIMENT  :
-//  sous linux  :    isblank defini ,  ISBLANK non defini
+//  under linux  :    isblank defini ,  ISBLANK non defini
 //
  bool PolIBlank(int aC) {return (ElIsBlank(aC)) || (aC=='"');}
 //bool PolIBlank(int aC) {return ((aC) == ' ' || (aC) == '\t') || (aC=='"');}
@@ -330,7 +330,7 @@ char XML_fgetcNN(cVirtStream * aFp)
 int XML_passer_blanc(cVirtStream * aFp)
 {
 	int aC=' ';
-	while (isspace(aC)|| (aC==0x0A))// retour arriere MPD : ca plante sous Linux ?? 
+	while (isspace(aC)|| (aC==0x0A))// retour arriere MPD : ca plante under Linux ?? 
 		// while (std::isspace(aC, std::locale("C")))/* || (aC==0x0A)*/ //GILLES:en fait 0A correspond au retour chariot; il faut au moins modifier cela en 0x0A
 	{
 		while (XML_PasserCommentaire(aFp));
@@ -900,7 +900,7 @@ void cArgCreatXLMTree::SetDico(const std::string & aKey,std::string  aVal,bool I
 		}
 	}
 
-	// Pour l'instant, on ne modifie pas  les symbole micmac
+	// for l'instant, on ne modifie pas  les symbole micmac
 	if (mSymbMMCall.find(aKey)!=mSymbMMCall.end())
 	{
 		return;
@@ -914,7 +914,7 @@ void cArgCreatXLMTree::SetDico(const std::string & aKey,std::string  aVal,bool I
 
 	/*
 	// std::cout << "DICO ; " << aKey << " => " << aVal << "\n";
-	// Si la vale commence par @, cela signifie ne modifier que si nouveau
+	// if la vale commence par @, cela signifie ne modifier que if nouveau
 	if (aVal[0]=='@')
 	{
 	if (! DicBoolFind(mDicSubst,aKey))
@@ -1113,7 +1113,7 @@ void TestSpecialTags(const std::string & aMes,cElXMLTree * aTree,cVirtStream * a
 
 	if (aTree->ValTag()=="ExitOnBrkp")
 	{
-		TheExitOnBrkp =true;  // A priori si on l'a modifie c'est pour le changer
+		TheExitOnBrkp =true;  // A priori if on l'a modifie c'est for le changer
 		TheExitOnBrkp = BoolVAl(aTree->GetUniqueVal());
 	}
 
@@ -1127,7 +1127,7 @@ void TestSpecialTags(const std::string & aMes,cElXMLTree * aTree,cVirtStream * a
 
 		// std::cout << aMes  << aVal << " => " << aSymb << "\n"; getchar();
 
-		//GERALD ATTENTION PLANTE SI PAS VALEUR PAR DEFAUT DANS Apero-Glob.xml!!!!
+		//GERALD ATTENTION PLANTE if PAS value PAR DEFAUT in Apero-Glob.xml!!!!
 		if(aVal.size()!=0)
                 {
                   if (IsEvSymb&&anArg.ModifTree())
@@ -1322,7 +1322,7 @@ cElXMLTree::cElXMLTree
 					mFils.push_back(*it2);
 					(*it2)->mPere = this;
 				}
-				aPetitFils.mFils.clear(); // sinon il vont etre detruits
+				aPetitFils.mFils.clear(); // else il vont etre detruits
 			}  
 			delete aFils;
 		}
@@ -2179,8 +2179,8 @@ bool SplitIn2ArroundCar
 	char                  aSpliCar,
 	std::string  &  aBefore,
 	std::string  &  aAfter,
-	bool            AcceptNoCar  // Est on OK pour ne pas trouver aSpliCar
-	// dans ce cas  aAfter est vide
+	bool            AcceptNoCar  // Est on OK for ne pas trouver aSpliCar
+	// in ce cas  aAfter est vide
 	)
 {
 	bool aGot = SplitIn2ArroundEqSvp(a2Stplit,aSpliCar,aBefore,aAfter);
@@ -2296,7 +2296,7 @@ std::string  GetValLC
 }
 
 
-// Modification par ligne de commande
+// Modification par line de commande
 
 void cElXMLTree::ModifLC(char * anArg,cElXMLTree * aSpecif)
 {

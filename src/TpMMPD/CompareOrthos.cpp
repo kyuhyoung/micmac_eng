@@ -173,7 +173,7 @@ int CmpOrthos_main(int argc,char ** argv)
 	
 	ELISE_ASSERT(aPoints1.size() == aPoints2.size(),"Problem with Tapioca step, number of tie points can't be different");
 	
-    //give to tie points reel coordinates with MTDOrtho.xml
+    //give to tie points real coordinates with MTDOrtho.xml
 	std::vector<Pt2dr> aPtsIm1;
 	std::vector<Pt2dr> aPtsIm2;
 	std::vector<Pt2dr> aDelta;

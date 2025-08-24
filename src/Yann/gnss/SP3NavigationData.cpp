@@ -9,7 +9,7 @@
 #include <assert.h>
 
 // -------------------------------------------------------------------------------
-// Calcul de l'interpolateur de lagrange des données (X,Y) au point x
+// computation de l'interpolateur de lagrange des données (X,Y) au point x
 // -------------------------------------------------------------------------------
 double SP3NavigationData::lagrange_interpolation(double x, std::vector<double>& X, std::vector<double>& Y){
 
@@ -70,7 +70,7 @@ std::vector<int> SP3NavigationData::select_indices_for_lagrange(GPSTime time){
 }
 
 // -------------------------------------------------------------------------------
-// Méthode pour tester si le PRN appartient aux données (pas de temps nécessaire)
+// Méthode for tester if le PRN appartient aux données (pas de temps nécessaire)
 // -------------------------------------------------------------------------------
 bool SP3NavigationData::hasEphemeris(std::string prn){
     std::vector<std::string> PRN = this->slots.at(0).PRN;
@@ -81,7 +81,7 @@ bool SP3NavigationData::hasEphemeris(std::string prn){
 }
 
 // -------------------------------------------------------------------------------
-// Méthode privée de récupération de l'indice de ligne d'un PRN
+// Méthode privée de récupération de l'indice de line d'un PRN
 // Cette méthode suppose que tous les slots sont ordonnancés de la même manière
 // -------------------------------------------------------------------------------
 int SP3NavigationData::lineIndexFromPRN(std::string prn, std::vector<std::string> PRN){
@@ -98,9 +98,9 @@ int SP3NavigationData::lineIndexFromPRN(std::string prn, std::vector<std::string
 
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge (en s) du satellite prn à partir d'un slot sp3
+// computation de l'error d'horloge (en s) du satellite prn à partir d'un slot sp3
 // L'argument pseudorange permet de déduire le temps de propagation du signal
-// Le calcul est effectué par interpolation lagrangienne d'ordre ORDER_LAGRANGE.
+// Le computation est effectué par interpolation lagrangienne d'ordre ORDER_LAGRANGE.
 // -------------------------------------------------------------------------------
 double SP3NavigationData::computeSatelliteClockError(std::string prn_code, GPSTime time, double pseudorange){
 
@@ -110,7 +110,7 @@ double SP3NavigationData::computeSatelliteClockError(std::string prn_code, GPSTi
 	std::vector<int> indices = this->select_indices_for_lagrange(time);
 
 	// --------------------------------------------------------
-	// Récupération du numéro de ligne du PRN
+	// Récupération du numéro de line du PRN
 	// --------------------------------------------------------
     int prn = lineIndexFromPRN(prn_code, this->slots.at(0).PRN);
 
@@ -166,8 +166,8 @@ double SP3NavigationData::computeSatelliteClockError(std::string prn_code, GPSTi
 }
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge du satellite prn à partir d'un slot sp3
-// Le calcul est effectué par interpolation lagrangienne d'ordre ORDER_LAGRANGE.
+// computation de l'error d'horloge du satellite prn à partir d'un slot sp3
+// Le computation est effectué par interpolation lagrangienne d'ordre ORDER_LAGRANGE.
 // -------------------------------------------------------------------------------
 double SP3NavigationData::computeSatelliteClockError(std::string prn_code, GPSTime time){
 	return computeSatelliteClockError(prn_code, time, 0);
@@ -175,9 +175,9 @@ double SP3NavigationData::computeSatelliteClockError(std::string prn_code, GPSTi
 
 
 // -------------------------------------------------------------------------------
-// Calcul de la position du satellite prn à partir d'un slot de données sp3
+// computation de la position du satellite prn à partir d'un slot de données sp3
 // L'argument pseudorange permet de déduire le temps de propagation du signal
-// Le calcul est effectué par interpolation lagrangienne d'ordre ORDER_LAGRANGE.
+// Le computation est effectué par interpolation lagrangienne d'ordre ORDER_LAGRANGE.
 // -------------------------------------------------------------------------------
 ECEFCoords SP3NavigationData::computeSatellitePos(std::string prn_code, GPSTime time, double pseudorange){
 
@@ -189,7 +189,7 @@ ECEFCoords SP3NavigationData::computeSatellitePos(std::string prn_code, GPSTime 
 	std::vector<int> indices = this->select_indices_for_lagrange(time);
 
 	// --------------------------------------------------------
-	// Récupération du numéro de ligne du PRN
+	// Récupération du numéro de line du PRN
 	// --------------------------------------------------------
     int prn = lineIndexFromPRN(prn_code, this->slots.at(0).PRN);
 
@@ -221,7 +221,7 @@ ECEFCoords SP3NavigationData::computeSatellitePos(std::string prn_code, GPSTime 
 	xyz.Z = lagrange_interpolation(t, T, Z)*1e3;
 
 	// --------------------------------------------------------
-	// Rotation dans le repère ECI
+	// rotation in le repère ECI
 	// --------------------------------------------------------
 	xyz.shiftECEFRef(pseudorange/Utils::C);
 
@@ -231,8 +231,8 @@ ECEFCoords SP3NavigationData::computeSatellitePos(std::string prn_code, GPSTime 
 
 
 // -------------------------------------------------------------------------------
-// Calcul de la position du satellite prn à partir d'un slot de données sp3
-// Le calcul est effectué par interpolation lagrangienne d'ordre ORDER_LAGRANGE.
+// computation de la position du satellite prn à partir d'un slot de données sp3
+// Le computation est effectué par interpolation lagrangienne d'ordre ORDER_LAGRANGE.
 // -------------------------------------------------------------------------------
 ECEFCoords SP3NavigationData::computeSatellitePos(std::string prn, GPSTime time){
 	return this->computeSatellitePos(prn, time, 0);

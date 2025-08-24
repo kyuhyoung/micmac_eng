@@ -445,7 +445,7 @@ public:
 
 							if (mapCameras.size() > 2)
 							{
-								//algo brute force (à améliorer)
+								//algo brute force ( amliorer)
 								for (size_t aK = 0; aK < nObs(); ++aK)
 								{
 									TiePointASTER* TP = dynamic_cast<TiePointASTER*> (vObs[aK]);
@@ -509,13 +509,13 @@ public:
 		nbMes = 0;
 		double sumRes = 0.;
 
-		//pour chaque point de liaison
+		//for chaque point de liaison
 		for (size_t aK = 0; aK < nObs(); ++aK)
 		{
 			ObservationASTER* TP = vObs[aK];
 			Pt3dr PT = TP->getCoord();
 
-			//pour chaque image ou le point de liaison est vu
+			//for chaque image or le point de liaison est vu
 			for (size_t i = 0; i<TP->vImgMeasure.size(); ++i, ++nbMes)
 			{
 				Pt2dr D = TP->computeImageDifference((int)i, PT);
@@ -556,8 +556,8 @@ public:
 		cout << "res= " << res << " numObs= " << numObs << endl;
 
 
-		//ecriture dans un fichier des coefficients en vue d'affiner la grille
-		//consommateur en temps => todo: stocker les parametres de l'iteration n-1
+		//ecriture in un file des coefficients en vue d'affiner la grille
+		//consommateur en temps => todo: stocker les parameters de l'iteration n-1
 		map<int, AffCameraASTER *>::const_iterator iter = mapCameras.begin();
 
 		if (numObs)
@@ -764,7 +764,7 @@ public:
 		for (int bK = 0; bK < C.Sz().y; bK++)
 			_N(aK, bK) += C(aK, bK);
 
-		//2 - Ajout de C1 et C1t
+		//2 - Ajout de C1 and C1t
 
 		if (verbose) cout << "cam->mIndex : " << pos << endl;
 
@@ -793,7 +793,7 @@ public:
 				_N((pos - 1)*(int)numUnk + 3 + aK, (pos - 1)*(int)numUnk + 3 + bK) += N1(aK, bK);
 		}
 
-		//pour Y
+		//for Y
 		ElMatrix <double> Y1 = obs.transpose()*res*pdt;
 		ElMatrix <double> C2 = ccc.transpose()*res*pdt;
 
@@ -824,7 +824,7 @@ public:
 		for (int bK = 0; bK < C.Sz().y; bK++)
 			_N(aK, bK) += C(aK, bK);
 
-		//pour Y
+		//for Y
 		ElMatrix <double> C2 = ccc.transpose()*res*pdt;
 
 		for (int aK = 0; aK<C2.Sz().y; ++aK)
@@ -854,7 +854,7 @@ public:
 				_N((pos - 1)*(int)numUnk + 3 + aK, (pos - 1)*(int)numUnk + 3 + bK) += N1(aK, bK);
 		}
 
-		//pour Y
+		//for Y
 		ElMatrix <double> Y1 = obs.transpose()*res*pdt;
 
 		if (pos > 0)
@@ -874,7 +874,7 @@ public:
 
 		if (verbose) cout << "solveFirstGroup : " << endl;
 
-		//matrice 3,3 pivot, l'inverser -> c-1 ElSubMat(0,0,3,3)
+		//matrix 3,3 pivot, l'inverser -> c-1 ElSubMat(0,0,3,3)
 		ElMatrix <double> C = _N.sub_mat(0, 0, 3, 3);
 
 		if (verbose)   printMatrix(C, "C");
@@ -883,15 +883,15 @@ public:
 
 		if (verbose)   printMatrix(Cinv, "Cinv");
 
-		//matrice 3,1 pivotY, > Y0 ElSubMat(0,0,3,1)
+		//matrix 3,1 pivotY, > Y0 ElSubMat(0,0,3,1)
 		ElMatrix <double> Y0 = _Y.sub_mat(0, 0, 1, 3);
 
 		if (verbose)   printMatrix(Y0, "Y0");
 
-		//pour ligne k : extraire ElSubMat(0,k*6+3,6,3) = Dk :
-		//si = 0 rien, ligne suivante
-		//sinon, extraire de Y sub(0,6*k..,6,1) puis Y -= Dk*C-1*Y0
-		//       extraire pour tout col dans vPos sub(ligne k,vPos[k],6,6) puis N -= Dk*C-1*N(0,vPos[k],3,6)
+		//for line k : extraire ElSubMat(0,k*6+3,6,3) = Dk :
+		//if = 0 rien, line suivante
+		//else, extraire de Y sub(0,6*k..,6,1) puis Y -= Dk*C-1*Y0
+		//       extraire for tout col in vPos sub(line k,vPos[k],6,6) puis N -= Dk*C-1*N(0,vPos[k],3,6)
 
 		const int numUnk_int = (int)numUnk;
 		for (size_t k = 0; k < vpos.size(); ++k)
@@ -930,7 +930,7 @@ public:
 			}
 		}
 
-		//RAZ des 1eres lignes et colonnes (3)
+		//RAZ des 1eres lignes and colonnes (3)
 		for (int aK = 0; aK<_N.Sz().x; ++aK)
 		{
 			for (int bK = 0; bK <3; ++bK)
@@ -1063,7 +1063,7 @@ public:
 			_N = ElMatrix<double>(matSz, matSz);
 			_Y = ElMatrix<double>(1, matSz);
 
-			//pour chaque ObservationASTER
+			//for chaque ObservationASTER
 			for (size_t aK = 0; aK < nObs(); aK++)
 			{
 				ObservationASTER* aObs = vObs[aK];
@@ -1073,7 +1073,7 @@ public:
 
 				Pt3dr pt = aObs->getCoord();
 
-				//pour chaque image où le point de liaison est vu
+				//for chaque image o le point de liaison est vu
 				for (size_t bK = 0; bK < vMes.size(); ++bK)
 				{
 					Pt2dr D = aObs->computeImageDifference((int)bK, pt);
@@ -1081,7 +1081,7 @@ public:
 
 					double pdt = 1.; //1./sqrt(1. + ecart2);
 
-					//todo : strategie d'elimination d'ObservationASTERs / ou ponderation
+					//todo : strategie d'elimination d'ObservationASTERs / or ponderation
 
 					ElMatrix<double> obs(numUnk_int, 1);
 					ElMatrix<double> ccc(3, 1);

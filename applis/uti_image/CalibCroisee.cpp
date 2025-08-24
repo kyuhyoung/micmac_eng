@@ -274,7 +274,7 @@ cAppliCalibCroisee::cAppliCalibCroisee
     }
 
 
-    // Initialisation des parametres intrinseques
+    // Initialisation des parameters intrinseques
     {
         mPPInit  = aSzTest / 2.0;
         mFocaleInit = mGr->Focale() /  mRatioRef ;

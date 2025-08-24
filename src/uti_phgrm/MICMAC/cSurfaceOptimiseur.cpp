@@ -145,7 +145,7 @@ cSurfaceOptimiseur::cSurfaceOptimiseur
       mImRes.push_back(mLTCur->KthNap(aK).mPxRes);
       mDataImRes.push_back(mImRes.back().data());
    }
-   // Rajouter la mise a niveau de min et max
+   // Rajouter la mise a niveau de min and max
    INT2 ** mDXMin = mLTCur->KthNap(0).mImPxMin.data();
    INT2 ** mDXMax = mLTCur->KthNap(0).mImPxMax.data();
    INT2 ** mDYMin = (mDimPx>1) ? mLTCur->KthNap(1).mImPxMin.data() : 0;
@@ -402,7 +402,7 @@ Fonc_Num  OneItereFiltrageImMicMac
 
 	 Fonc_Num fSom = Virgule(sM,sM*sF,sM*Square(sF));
 	 for (int aKIter=0 ; aKIter< aParam.NbItereIntern().Val() ;aKIter++)
-             fSom = rect_som(fSom,aSzI)/ElSquare(1.0+2.0*aSzI);  // Pour Eviter les divergences
+             fSom = rect_som(fSom,aSzI)/ElSquare(1.0+2.0*aSzI);  // for Eviter les divergences
          Symb_FNum  S012 (fSom);
 
          Symb_FNum s0 (S012.v0());
@@ -533,8 +533,8 @@ Im2D_Bits<1>   cSurfaceOptimiseur::MaskCalc()     {return mMaskCalc;}
 void cSurfaceOptimiseur::SolveOpt()
 {
      mMaskCalcDone = false;
-     // Si c'est le cas il faut utiliser le comptage pour normaliser
-     // Corr en fonction de Cpt puis transferer par Local_SetCout
+     // if c'est le cas il faut utiliser le comptage for normaliser
+     // Corr en function de Cpt puis transferer par Local_SetCout
      {
          Pt2di aPTer;
          int aPxMin[theDimPxMax] = {0,0};
@@ -562,7 +562,7 @@ void cSurfaceOptimiseur::SolveOpt()
 			          aCost = mDefCost;
 			          aCpt  = 1;
 			      }
-                              // Ce cas est rare mais tout a fait possible
+                              // Ce cas est rare but tout a fait possible
                               else if (aCpt ==0)
                               {
                                    aCpt = 1;
@@ -600,7 +600,7 @@ void cSurfaceOptimiseur::SolveOpt()
      const cTplValGesInit< cPostFiltragePx > & aPF = mEtape.EtapeMEC().PostFiltragePx();
      if (aPF.IsInit())
      {
-         // ELISE_ASSERT (mMemoCorrel==0, "Filtrage-et-Resultat-Correl incompatibles");
+         // ELISE_ASSERT (mMemoCorrel==0, "Filtrage-and-result-Correl incompatibles");
          const tLPFP & aLPFP = aPF.Val().OneFitragePx();
          for (int aK=0 ; aK<int(mImRes.size()) ; aK++)
          {
@@ -626,7 +626,7 @@ void cSurfaceOptimiseur::SolveOpt()
          }
      }
 
-     // Sinon il faut remettre la solution reduite a la
+     // else il faut remettre la solution reduite a la
      // resolution initiale
 
      if  (mWithEQ)
@@ -930,7 +930,7 @@ cSurfaceOptimiseur * cSurfaceOptimiseur::AllocCoxRoy
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -946,17 +946,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

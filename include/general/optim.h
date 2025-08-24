@@ -94,7 +94,7 @@ class cParamCalcVarUnkEl
 class NROptF1vND;
 class NROptF1vDer;
 
-// NROptF1vND : Num Recipes Optimisation de Fonction d'1 var, Non Derivable 
+// NROptF1vND : Num Recipes Optimisation de function d'1 var, Non Derivable 
 
 class NROptF1vND
 {
@@ -117,7 +117,7 @@ class NROptF1vND
 
                // Appelle une eventuelle redifinition de Brent
                // (cas derivable), fait le bracketing initial
-               // sur les valeur 0,1,2 
+               // on les value 0,1,2 
                Pt2dr  brent (bool ForBench=false);
 
           //++++++++++++++++++++++++++++++++++++++++++++++++
@@ -139,7 +139,7 @@ class NROptF1vND
      private :
 
           // precondition :
-          // f(ax) > f(bx), f(cx) > f(bx),  bx entre ax et cx 
+          // f(ax) > f(bx), f(cx) > f(bx),  bx between ax and cx 
           virtual REAL PrivBrent
                   (
                     REAL ax,REAL bx,REAL cx,
@@ -150,7 +150,7 @@ class NROptF1vND
 
 };
 
-// NROptF1vDer : Num Recipes Optimisation de Fonction d'1 var, Derivable 
+// NROptF1vDer : Num Recipes Optimisation de function d'1 var, Derivable 
 
 class NROptF1vDer : public NROptF1vND
 {
@@ -169,7 +169,7 @@ class NROptF1vDer : public NROptF1vND
           REAL rtsafe(REAL ax,REAL bx,REAL tol,INT ITMAX=100);
 
      private :
-          REAL PrivBrent  // Retourne la valeur de F au min
+          REAL PrivBrent  // Retourne la value de F au min
                (
                    REAL ax,REAL bx,REAL cx,
                    REAL tol,
@@ -316,12 +316,12 @@ class AllocateurDInconnues
 };
 
 
-// Classe pour gerer rapidement des ensemble entier;
-// Permet de cumuler les avantages d'un "std::set" et 
+// class for gerer rapidement des ensemble integer;
+// Permet de cumuler les avantages d'un "std::set" and 
 // d'un "std::vector<bool> du point de vue ajout, consultation
 // par contre, pas de suppression
 // 
-// On essaye d'avoir le max de compatibilite avec les set de 
+// On essaye d'avoir le max de compatibilite with les set de 
 // la stl.
 
 class ElGrowingSetInd 
@@ -337,12 +337,12 @@ class ElGrowingSetInd
             ElGrowingSetInd
             (
                  INT aCapa, 
-                 REAL aRatioEncombr = 0.1 // Pour dimensionner mIndexes, Pas Fondamental.
+                 REAL aRatioEncombr = 0.1 // for dimensionner mIndexes, Pas Fondamental.
             );
             ~ElGrowingSetInd();
             /// ElGrowingSetInd(const ElGrowingSetInd &); => en private, non implante
 
-         // Pour parcourir un ElGrowingSetInd
+         // for parcourir un ElGrowingSetInd
             const_iterator begin() const  {return mIndexes.begin();}
             const_iterator end()   const  {return mIndexes.end();}
 
@@ -368,7 +368,7 @@ class ElGrowingSetInd
          std::vector<INT>  mIndexes;
          Im2D_Bits<1>      mBuzyIndexes;
 
-         // void erase(const INT&);  a definir dans une classe derivee, "non growing"
+         // void erase(const INT&);  a definir in une class derivee, "non growing"
 };
 
 class ElSignedGrowingSetInd 
@@ -392,19 +392,19 @@ class cElMatCreuseGen
 
         virtual void Test();
 
-        // true si sait inverser non iterativement (cas cholesky),
+        // true if sait inverser non iterativement (cas cholesky),
        // Defaut false
         virtual bool DirectInverse(const tSysCho *,tSysCho *);
 
       //========= Optimisations possibles =======================
 
-                 // Indique si l'opt est geree
+                 // Indique if l'opt est geree
           virtual bool IsOptForEcrireInMatr() const;
           virtual bool IsOptForSousP3x3() const;
           virtual bool IsOptForQuadSet0() const;
           virtual bool IsOptForAddEqIndexee() const;
 
-                 // Optimise , defaut erreur
+                 // Optimise , defaut error
          virtual void Indexee_EcrireDansMatrWithQuad
 	      (   ElMatrix<tSysCho> &aMatr,
                   const std::vector<cSsBloc> &  aVx,
@@ -474,7 +474,7 @@ class cElMatCreuseGen
                            const std::vector<INT> & aVInd,
 		           REAL aPds,REAL ** aMat
                         );
-          virtual void PrecCondQuad(double *); // Def erreur
+          virtual void PrecCondQuad(double *); // Def error
 
           virtual void PrepPreCond();
           virtual void  VPCDo(double * out,double * in);
@@ -530,14 +530,14 @@ class cGenSysSurResol
 
           virtual double CoeffNorm() const;
 
-//  FONCTION LIEES AU DEBUG DES  VALEUR <0 DANS CHOLESKY SUR PIAZZABRA
+//  function LIEES AU DEBUG DES  value <0 in CHOLESKY on PIAZZABRA
           void VerifGlob(const std::vector<cSsBloc> &,bool doCheck,bool doSVD,bool doV0);
           void BasicVerifMatPos(const std::vector<cSsBloc> &,int );
 
           void VerifMatPos(ElMatrix<tSysCho>,ElMatrix<tSysCho>  aLambda,cTestPbChol & aTPC,const std::vector<cSsBloc> &);
           void VerifMatPos(const ElMatrix<tSysCho> & ,const ElMatrix<tSysCho> & aLambda,cTestPbChol & aTPC,const std::vector<cSsBloc> &,const std::vector<cSsBloc> &);
 
- // Mode 0 =  Null ou non   *-
+ // Mode 0 =  Null or non   *-
          void ShowGSR(int aMode);
 
          virtual void VerifGSS(const std::string & aMes) ;
@@ -562,31 +562,31 @@ class cGenSysSurResol
                    REAL aPds,
                    REAL * aCoeff,
                    REAL aB,
-                   double * aCoordCur  // Pour les contra univ, peut etre NULL
+                   double * aCoordCur  // for les contra univ, peut etre NULL
                );
 
-     //  Pour resoudre, de maniere  simplifiee, une equation 
-     //   en Ax et B de la forme
+     //  for resoudre, de maniere  simplifiee, une equation 
+     //   en Ax and B de la forme
      //       Ax* Xi + B = Yi
-     //   Typiquement pour fitter une droite
+     //   Typiquement for fitter une droite
 	void GSSR_Add_EqFitDroite(REAL aXi,REAL aYi,REAL aPds=1.0);
 	void GSSR_SolveEqFitDroite(REAL & aAx,REAL &aB,bool * Ok=0);
 
-     //  Pour resoudre, de maniere  simplifiee, une equation 
-     //   en Ax et By et C de la forme
+     //  for resoudre, de maniere  simplifiee, une equation 
+     //   en Ax and By and C de la forme
      //       Ax* Xi + By * Yi + C = Zi
-     //   Typiquement pour fitter un plan
+     //   Typiquement for fitter un plan
 	void GSSR_Add_EqFitPlan(REAL aXi,REAL aYi,REAL aZi,REAL aPds=1.0);
 	void GSSR_SolveEqFitPlan(REAL & aAx,REAL &aB,REAL & aC,bool * Ok=0);
 
 
-     // Pour calculer des pseudo-intersection de droite ou de plan 3D
+     // for compute des pseudo-intersection de droite or de plan 3D
 	 Pt3dr Pt3dSolInter(bool * Ok=0);
 
 
-	 //  Ajoute une contrainte, sous la forme aC. X = aE 
-	 //  sous laquelle sera resolu le systeme
-	 //  L'ensemble des contrainte doit forme un systeme libre
+	 //  Ajoute une contrainte, under la forme aC. X = aE 
+	 //  under laquelle sera resolu le system
+	 //  L'ensemble des contrainte doit forme un system libre
          // void GSSR_AddContrainte (REAL * aC,REAL aE);
          void GSSR_AddContrainteIndexee (const std::vector<int> & aVI,REAL * aC,REAL aE);
 
@@ -627,7 +627,7 @@ class cGenSysSurResol
                                         const std::vector<INT> & aVInd ,
 			                REAL aPds,REAL * aCoeff,REAL aB,cParamCalcVarUnkEl *);
 
-         // Def = Erreur fatale, n'a pas de sens pout systeme L1
+         // Def = error fatale, n'a pas de sens pout system L1
          virtual tSysCho   GetElemQuad(int i,int j) const;
          virtual void  SetElemQuad(int i,int j,const tSysCho& );
          virtual tSysCho  GetElemLin(int i) const;
@@ -655,9 +655,9 @@ class cGenSysSurResol
 
           
          virtual void LVM_Mul(const tSysCho& aLambda) ;  // Levenberg Marquad modif
-         virtual void LVM_Mul(const tSysCho& aLambda,int aK) ;  // Levenberg Marquad modif sur une seule inconnue
+         virtual void LVM_Mul(const tSysCho& aLambda,int aK) ;  // Levenberg Marquad modif on une seule inconnue
 
-	 // Pour ces 4 Fon, Def, utilise GetElemQuad-GetElemLin
+	 // for ces 4 Fon, Def, utilise GetElemQuad-GetElemLin
 
 /*
          virtual void Indexee_EcrireDansMatrColWithLin
@@ -725,7 +725,7 @@ class cGenSysSurResol
 		           REAL aPds,REAL ** aMat,
 			   REAL * aVect,REAL aCste
                       );
-	 // Def = erreur fatale
+	 // Def = error fatale
 	 virtual void V_GSSR_AddNewEquation_Indexe
 		      ( 
                         const std::vector<cSsBloc> * aVSB,
@@ -741,7 +741,7 @@ class cGenSysSurResol
 
 
          bool  mCstrAssumed;
-// Si mOptSym est true , c'est la partie "superieure" des matrice qui est remplie,
+// if mOptSym est true , c'est la partie "superieure" des matrix qui est remplie,
 
          bool  mOptSym;
          bool  mGereNonSym;
@@ -785,7 +785,7 @@ class cVectMatMul
        virtual void VMMDo(Im1D_REAL8 in,Im1D_REAL8 out) = 0;
        virtual ~cVectMatMul();
 };
-// Meme classe a priori que cVectMatMul, mais comme les matrice doivent en heriter deux fois ....
+// Meme class a priori que cVectMatMul, but comme les matrix doivent en heriter deux fois ....
 class cVectPreCond
 {
     public :
@@ -1030,7 +1030,7 @@ class L2SysSurResol : public cGenSysSurResol
  
 
      private :
-          void SetNum(INT4 * mDataInvNum,INT4 *  mDNumNonTmp,const std::vector<cSsBloc> &  aBlTmp,bool SetNum /* ou UnSet*/);
+          void SetNum(INT4 * mDataInvNum,INT4 *  mDNumNonTmp,const std::vector<cSsBloc> &  aBlTmp,bool SetNum /* or UnSet*/);
 
 
 	  virtual void V_GSSR_AddNewEquation_Indexe
@@ -1072,8 +1072,8 @@ class L2SysSurResol : public cGenSysSurResol
         double       mSomR2Pds;
 };
 
-// Classe Adaptee au contexte bcp d'equations, (relativement) peu de variable
-// avec necessite de memoriser ttes les equation (parceque, par exemple)
+// class Adaptee au contexte bcp d'equations, (relativement) peu de variable
+// with necessite de memoriser ttes les equation (parceque, par exemple)
 // resolution L1-barrodale, our resolution par moindre carres ponderes.
 //
 // En fait, typiquement tout ce qui est estimateur robuste
@@ -1114,7 +1114,7 @@ class  SystLinSurResolu : public cGenSysSurResol  // Herite en tant que Solveur 
                              );
 
 			Im1D_REAL8  L1Solve();
-			// Si Ok ==0, matrice sing => erreur fatale
+			// if Ok ==0, matrix sing => error fatale
 			Im1D_REAL8  L2Solve(bool *Ok); 
 
 			// Non Pondere, signe
@@ -1152,7 +1152,7 @@ class  SystLinSurResolu : public cGenSysSurResol  // Herite en tant que Solveur 
 			REAL8 *      mDataPds;
 
 
-			// variables tempo pour  L1 Barrodale
+			// variables tempo for  L1 Barrodale
 			Im1D_REAL8   mBarodA;
 			REAL8 *      mDataBarodA;
 			Im1D_REAL8   mBarodB;
@@ -1162,8 +1162,8 @@ class  SystLinSurResolu : public cGenSysSurResol  // Herite en tant que Solveur 
 			Im1D_REAL8   mBarodRESIDU;
 			REAL8 *      mDataBarodRESIDU;
 		
-			// variables tempo pour  L2-Gaussj
-			// Pour resoudre au moindre carre
+			// variables tempo for  L2-Gaussj
+			// for resoudre au moindre carre
 			// Li X = bi
 
                          L2SysSurResol mL2;
@@ -1230,7 +1230,7 @@ class Optim_L1FormLin
 {
      public :
 
-        // Soit N le nombre de variable et M le nombre de contrainte
+        // Soit N le number de variable and M le number de contrainte
         // Flin de taille (N+1,M)
 
 
@@ -1317,7 +1317,7 @@ class Optim_L1FormLin
 
 
 
-        // Pour le bench "dur" sur les minimum  locaux 
+        // for le bench "dur" on les minimum  locaux 
 
         void SubsetOfFlags(ElFilo<INT> & Subset,INT flag);
 
@@ -1418,8 +1418,8 @@ class cAMD_Interf
          cAMD_Interf(int aNumberInc);
          void AddArc(int aN1,int aN2,bool VerifDup=false);
 
-     // Renvoie un vecteur qui indique le rang de chaque indexe
-     //  si V[0]=3, 0 est le troisiem el (et non, 3 est le premier)
+     // Renvoie un vector qui indique le rang de chaque indexe
+     //  if V[0]=3, 0 est le troisiem el (and non, 3 est le premier)
          std::vector<int> DoRank(bool Show=false) ;
     private :
          void VerifN(int aN) const;
@@ -1496,7 +1496,7 @@ class cEq12Parametre
 
         void ComputeOneObs(const Pt3dr & aPGround,const Pt2dr & aPPhgr,const double&  aPds);
 
-        // Indexe et valeur permettant de fixer l'arbitraire
+        // Indexe and value permettant de fixer l'arbitraire
         int    mIndFixArb;
         double mValueFixArb;
 };

@@ -88,7 +88,7 @@ template <> Pack_Of_Pts::type_pack Fonc_Num_Comp_TPL<REAL>::class_pack_out = Pac
 /*                                                             */
 /*             FNC_Computed                                    */
 /*                                                             */
-/*   (= fonction numeric constant, computed)                   */
+/*   (= function numeric constant, computed)                   */
 /*                                                             */
 /***************************************************************/
 
@@ -139,7 +139,7 @@ template <class Type> bool FNC_Computed<Type>::icste(INT * v)
 /*                                                             */
 /*             FNC_Not_Comp                                    */
 /*                                                             */
-/*   (= fonction numeric constant, not computed)               */
+/*   (= function numeric constant, not computed)               */
 /*                                                             */
 /***************************************************************/
 
@@ -810,7 +810,7 @@ Fonc_Num  clip_def
 /*                                                             */
 /*             FNC_Computed                                    */
 /*                                                             */
-/*   (= fonction numeric constant, computed)                   */
+/*   (= function numeric constant, computed)                   */
 /*                                                             */
 /***************************************************************/
 
@@ -885,7 +885,7 @@ template <class Type> bool FN_KTH_proj<Type>::icste(INT * v)
 /*                                                             */
 /*             FN_Permut_NComp                                 */
 /*                                                             */
-/*   (= fonction numeric constant, not computed)               */
+/*   (= function numeric constant, not computed)               */
 /*                                                             */
 /***************************************************************/
 

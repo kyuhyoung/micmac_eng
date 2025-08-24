@@ -460,7 +460,7 @@ class cMMVIIUnivDist
            }
 
            //  Generate power of R^2 in a vector
-           tScal aX2 = aVMonX.at(2) ; // Not sur its better than xIn * xIn
+           tScal aX2 = aVMonX.at(2) ; // Not on its better than xIn * xIn
            tScal aY2 = aVMonY.at(2);
            tScal aXY = xIn * yIn;
            tScal aRho2 = aX2 + aY2;

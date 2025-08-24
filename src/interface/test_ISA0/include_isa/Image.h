@@ -34,7 +34,7 @@ private:
 	std::string nomImg;
 	std::string chemin;
 	int nbPts;
-	int adressePt;//pointeur vers le premier point de l'image dans listInit (optimisation de la recherche d'homologues)
+	int adressePt;//pointeur vers le premier point de l'image in listInit (optimisation de la recherche d'homologues)
 	int nbPaires;
 };
 

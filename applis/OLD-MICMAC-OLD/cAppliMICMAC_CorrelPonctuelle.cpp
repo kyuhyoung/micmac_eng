@@ -63,7 +63,7 @@ std::cout << "HHHHhjjj " << aBox._p0 << aBox._p1 << "\n";
    {
        for (int anY = mY0Ter ; anY < mY1Ter ; anY++)
        {
-           // est-on dans le masque des points terrains valide
+           // est-on in le masque des points terrains valide
            if ( IsInTer(anX,anY))
            {
                 int aZ = aPxRes.GetI(Pt2di(anX,anY));
@@ -81,7 +81,7 @@ std::cout << "HHHHhjjj " << aBox._p0 << aBox._p1 << "\n";
                        if (aGLI.IsVisible(anX,anY))
                        {
                            // On dequantifie la plani 
-                           // On projette dans l'image 
+                           // On projette in l'image 
                            Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);
 
                            if (aGLI.IsOk(aPIm.x,aPIm.y))
@@ -138,15 +138,15 @@ void cAppliMICMAC::DoCorrel2ImGeomImGen
            int aZMax = mTabZMax[anY][anX];
 
            Pt2dr aPTer  = DequantPlani(anX,anY);
-           // est-on dans le masque des points terrains valide
+           // est-on in le masque des points terrains valide
            if ( IsInTer(anX,anY))
            {
 
-               // on parcourt l'intervalle de Z compris dans la nappe au point courant
+               // on parcourt l'intervalle de Z compris in la nappe au point courant
                for (int aZInt=aZMin ;  aZInt< aZMax ; aZInt++)
                {
 
-                   // Pointera sur la derniere imagette OK
+                   // Pointera on la derniere imagette OK
                    // Statistique MICMAC
                    mNbPointsIsole++;
 
@@ -156,8 +156,8 @@ void cAppliMICMAC::DoCorrel2ImGeomImGen
 
                    int aNbImOk = 0;
 
-                   // On balaye les images  pour lire les valeur et stocker, par image,
-                   // un vecteur des valeurs voisine normalisees en moyenne et ecart type
+                   // On balaye les images  for lire les value and stocker, par image,
+                   // un vector des valeurs voisine normalisees en moyenne and ecart type
                    for (int aKIm=0 ; aKIm<mNbIm ; aKIm++)
                    {
                        cGPU_LoadedImGeom & aGLI = *(mVLI[aKIm]);
@@ -166,11 +166,11 @@ void cAppliMICMAC::DoCorrel2ImGeomImGen
        
                        
                        // En cas de gestion parties cachees, un masque terrain 
-                       // de visibilite a ete calcule par image
+                       // de visibilite a ete compute par image
                        if (aGLI.IsVisible(anX,anY))
                        {
                            // On dequantifie la plani 
-                           // On projette dans l'image 
+                           // On projette in l'image 
                            Pt2dr aPIm  = aGeom->CurObj2Im(aPTer,&aZReel);
 
                            if (aGLI.IsOk(aPIm.x,aPIm.y))
@@ -190,12 +190,12 @@ void cAppliMICMAC::DoCorrel2ImGeomImGen
                      double aV0 = Vals[0];
                      double aV1 = Vals[1] * aRatioI1I2;
                      double aCost = aPdsPonct  * (ElAbs(aV1-aV0)/(aV1+aV0));
-                     // On envoie le resultat a l'optimiseur pour valoir  ce que de droit
+                     // On envoie le result a l'optimiseur for valoir  ce que de droit
                      mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,aCost);
                    }
                    else
                    {
-                       // Si pas assez d'image, il faut quand meme remplir la case avec qq chose
+                       // if pas assez d'image, il faut when meme remplir la case with qq chose
                        mSurfOpt->SetCout(Pt2di(anX,anY),&aZInt,mAhDefCost);
                    }
                }
@@ -246,11 +246,11 @@ void cAppliMICMAC::DoCorrelMultiFen
            int aZMin = mTabZMin[anY][anX];
            int aZMax = mTabZMax[anY][anX];
 
-           // est-on dans le masque des points terrains valide
+           // est-on in le masque des points terrains valide
            if ( IsInTer(anX,anY))
            {
 
-               // on parcourt l'intervalle de Z compris dans la nappe au point courant
+               // on parcourt l'intervalle de Z compris in la nappe au point courant
                for (int aZInt=aZMin ;  aZInt< aZMax ; aZInt++)
                {
 
@@ -326,11 +326,11 @@ void cAppliMICMAC::DoCorrelRobusteNonCentree
            int aZMin = mTabZMin[anY][anX];
            int aZMax = mTabZMax[anY][anX];
 
-           // est-on dans le masque des points terrains valide
+           // est-on in le masque des points terrains valide
            if ( IsInTer(anX,anY))
            {
 
-               // on parcourt l'intervalle de Z compris dans la nappe au point courant
+               // on parcourt l'intervalle de Z compris in la nappe au point courant
                for (int aZInt=aZMin ;  aZInt< aZMax ; aZInt++)
                {
 

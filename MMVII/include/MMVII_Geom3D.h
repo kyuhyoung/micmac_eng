@@ -59,9 +59,9 @@ template<class Type>  cTriangle<Type,3> RandomTetraTriangRegul(Type aRegulMin,Ty
 
 /// Quaternion multiplication
 template<class T> cPtxd<T,4>  operator * (const cPtxd<T,4> & aP1,const cPtxd<T,4> & aP2); 
-/// Quaternion => Rotation
+/// Quaternion => rotation
 template<class T> cDenseMatrix<T>  Quat2MatrRot  (const cPtxd<T,4> & aPt);
-///  Rotation => Quaternion
+///  rotation => Quaternion
 template<class T> cPtxd<T,4>  MatrRot2Quat  (const cDenseMatrix<T> &);
 /*
 /// Quaternion => Matrix 4x4 , with isomorphisme between * on both
@@ -198,11 +198,11 @@ template <class Type> class cRotation3D
        /// extrecat Omega Phi Kapa from rotation
        tPt                       ToWPK() const;
 
-       /// Rotation arround X
+       /// rotation arround X
        static cDenseMatrix<Type> RotOmega(const tREAL8 & aOmega);
-       /// Rotation arround Y
+       /// rotation arround Y
        static cDenseMatrix<Type> RotPhi(const tREAL8 & aPhi);
-       /// Rotation arround Z
+       /// rotation arround Z
        static cDenseMatrix<Type> RotKappa(const tREAL8 & aKappa);
 
        ///  0-> Omega   1->Phi  2-> Kappa

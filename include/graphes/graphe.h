@@ -259,7 +259,7 @@ template <class AttrSom,class AttrArc> class ElArc
                   sym_flag_set_kth(k,!flag_kth(k));
             }
 
-            // Quand un choix arbitraire doit etre fait sur l'orientation
+            // when un choix arbitraire doit etre fait on l'orientation
             bool IsOrientedNumCroissant() const
             {
                  return _s1->num() < _s2->num();
@@ -366,10 +366,10 @@ template <class AttrSom,class AttrArc> class  ElSom
                  return res;
             }
 			
-			// => Erreur si aucun ou plusieur succ (pred)
+			// => error if aucun or plusieur succ (pred)
 			ElSom & uniq_succ(TSubGraphe & sub); 
 			ElSom & uniq_pred(TSubGraphe & sub);
-			// necessite graphe avec pt() et 1 seul succ et pred
+			// necessite graphe with pt() and 1 seul succ and pred
 			bool in_sect_angulaire(Pt2dr pt,TSubGraphe &); 
 
             TArcIter end(TSubGraphe & sub) { return TArcIter(sub,0);}
@@ -540,7 +540,7 @@ template <class AttrSom,class AttrArc> class ElSomIterator
 /*  Utilitaire  permettant de manipuler de maniere ensembliste des container de Type * gracea des flag
 */
 
-     // Deux adaptateurs sur les sommets
+     // Deux adaptateurs on les sommets
 
 template <class T1,class T2> inline bool ValFlag(ElSom<T1,T2> & aSom,int aFlagSom)
 {

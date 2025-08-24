@@ -248,7 +248,7 @@ class cLinkTripl
          tSomNSI *            S3() const;
 
 	 private:
-		 int mHeapIndex; //Heap index pour tirer le meilleur triplets
+		 int mHeapIndex; //Heap index for tirer le meilleur triplets
 
 };
 
@@ -298,8 +298,8 @@ class cNOSolIn_AttrASym
 		 int &              NumArc() {return mNumArc;}
 
      private :
-         std::vector<cLinkTripl>  mLnk3; // Liste des triplets partageant cet arc
-		 std::vector<cLinkTripl*> mLnk3Ptr; //Dirty trick pour faire marcher heap
+         std::vector<cLinkTripl>  mLnk3; // list des triplets partageant cet arc
+		 std::vector<cLinkTripl*> mLnk3Ptr; //Dirty trick for faire marcher heap
 	
 		 int                      mNumArc;
 };

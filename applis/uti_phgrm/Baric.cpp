@@ -45,9 +45,9 @@ Header-MicMac-eLiSe-25/06/2007*/
 //
 //   bin/Baric /media/SQP_/Calib/Canon-E0S-5D-Mark2/F100/Coul/ img_0075.cr2 Canon-100-Macro Exe=1
 //
-//   Pour l'instant, c'est assez lourd car pour une raison qui m'echappe, c'est batchable
+//   for l'instant, c'est assez lourd car for une raison qui m'echappe, c'est batchable
 //
-//   Appelle MICMAC pour chaque couple, qui appelle bin/ModeleRadial
+//   Appelle MICMAC for chaque couple, qui appelle bin/ModeleRadial
 //   qui genere un modele radiale qui est converit en grille par
 //   
 //

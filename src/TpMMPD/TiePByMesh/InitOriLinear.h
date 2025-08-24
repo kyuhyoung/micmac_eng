@@ -42,6 +42,6 @@ class SerieCamLinear
     vector<SerieCamLinear*> mSystem;
     Pt3dr mVecMouvement;
     vector< vector<string> >mSections;
-    vector<double> mMulF; //multipli factor pour le deplacement entre les sections
+    vector<double> mMulF; //multipli factor for le deplacement between les sections
 };
 #endif

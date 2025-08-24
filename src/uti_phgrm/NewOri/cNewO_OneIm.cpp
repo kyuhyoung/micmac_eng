@@ -45,7 +45,7 @@ CamStenope * DefaultCamera(const std::string & aName)
     cMetaDataPhoto aMDP = cMetaDataPhoto::CreateExiv2(aName);
     Pt2di aSz = aMDP.SzImTifOrXif(true);
     if (aSz.x <=0)
-       aSz = Pt2di(6000,4000); // N'importe quoi, mais ca risque de passer ....
+       aSz = Pt2di(6000,4000); // N'importe quoi, but ca risque de passer ....
 
     std::vector<double> aPAF;
 

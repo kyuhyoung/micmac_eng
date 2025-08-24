@@ -230,7 +230,7 @@ void cAppliTaskCorrel::ZBuffer()
     aAppliZBuf->NInt() = 0;
     aAppliZBuf->DistMax() = mDistMax;
     aAppliZBuf->Reech() = mRech;
-    aAppliZBuf->WithImgLabel() = true; //include calcul Image label triangle valab
+    aAppliZBuf->WithImgLabel() = true; //include computation image label triangle valab
     aAppliZBuf->SEUIL_SURF_TRIANGLE() = SEUIL_SURF_TRIANGLE();
     aAppliZBuf->Method() = MethodZBuf();
     aAppliZBuf->SetNameMesh(mNameMesh);
@@ -298,10 +298,10 @@ cImgForTiepTri *cAppliTaskCorrel::DoOneTri(cTriForTiepTri *aTri2D)
             }
         }
     }
-    sortDescendPt2drY(valEl_img);          // tri vecteur par valEllipse
-    // critere pour choisir image master
-    if (  valEl_img.size() > 1 &&          // il y a des images pour selectionner
-          imgMas!=NULL &&                  // il y a au moins 1 val ellipse calcule
+    sortDescendPt2drY(valEl_img);          // tri vector par valEllipse
+    // critere for choisir image master
+    if (  valEl_img.size() > 1 &&          // il y a des images for selectionner
+          imgMas!=NULL &&                  // il y a au moins 1 val ellipse compute
           cur_valElipse != -1.0 &&
           !std_isnan(cur_valElipse) &&     // => pourquoi il y a nan il val ellipse ? :(
           !std_isnan(valEl_img[0].y)
@@ -533,7 +533,7 @@ void cAppliTaskCorrel::ExportXML(string aDirXML, Pt3dr clIni)
         }
         if (mWithGCP && aImg->ImgWithGCP())
         {
-            // write xml file when Image have GCP point
+            // write xml file when image have GCP point
             string fileXML_WithGCP = mICNM->Dir() + aDirXML + "_GCP/" + mVImgs[aKI]->Name() + ".xml";
             MakeFileXML(aImg->TaskWithGCP(), fileXML_WithGCP);
         }

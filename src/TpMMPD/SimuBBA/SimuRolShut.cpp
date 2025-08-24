@@ -445,7 +445,7 @@ int SimuRolShut_main(int argc, char ** argv)
             //std::cout << aPInter3D << endl;
 
 
-            // reproject aPInter3D sur tout les images dans aVCamInter
+            // reproject aPInter3D on tout les images in aVCamInter
             std::vector<Pt2dr> aVP2d;
             std::vector<CamStenope *> aVCamInterVu;
             std::vector<int> aVIdImInterVu;
@@ -850,7 +850,7 @@ int ReechRolShutV1_main(int argc, char ** argv)
                 Pt2dr aPt = aOneMes.PtIm();
                 std::cout << aOneMes.NamePt() << " before:" << aOneMes.PtIm();
                 Pt2dr aNewPt = Pt2dr(aPt.x,aPt.y*aMapReechScale[aNameIm]);
-                // aOneMes.SetPtIm(aNewPt); ==> MPD D'OU VIENT CETTE FONCTION ??? COMPILE PAS
+                // aOneMes.SetPtIm(aNewPt); ==> MPD D'or VIENT CETTE function ??? COMPILE PAS
                 aOneMes.PtIm() = aNewPt;
                 std::cout << " after:" << aOneMes.PtIm() << endl;
             }

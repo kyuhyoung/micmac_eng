@@ -26,7 +26,7 @@ template <class TGraph>   class cActionOnCycle
           typedef typename TGraph::tVertex        tVertex;
           typedef cAlgoEnumCycle<TGraph>          tAlgoEnum;
 
-          virtual void OnCycle(const tAlgoEnum&) = 0;  ///< virtual methode called on cycle detection
+          virtual void OnCycle(const tAlgoEnum&) = 0;  ///< virtual method called on cycle detection
 };
 
 /** Class for enumerating all the cycles with lengh < to given threshold */

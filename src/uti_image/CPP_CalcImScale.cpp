@@ -111,7 +111,7 @@ void  cCalcImScale::AddFoncInd(Fonc_Num aF,int aK)
    if (aK>=2)
    {
       // K=0 pas de max loc
-      // K=1 max loc , calculable a K=2, et utilisable a partir de K=2 aussi
+      // K=1 max loc , calculable a K=2, and utilisable a partir de K=2 aussi
       // puisque la max lox "barre" la route aux suivants
       ELISE_COPY
       (

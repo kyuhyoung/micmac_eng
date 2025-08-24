@@ -9,7 +9,7 @@ class cAppli_Block
 {
    public :
         // CamStenope * CamSOfName(const std::string & aName) {return  mICNM->StdCamStenOfNames(aName,mOriIn);}
-        CamStenope * CamSOfName(const std::string & aName) {return  mICNM->StdCamStenOfNamesSVP(aName,mOriIn);} // Corrige une possible regression qui generait une erreur si non existe
+        CamStenope * CamSOfName(const std::string & aName) {return  mICNM->StdCamStenOfNamesSVP(aName,mOriIn);} // Corrige une possible regression qui generait une error if non existe
         typedef std::pair<std::string,std::string>  t2Str;
         t2Str  TimGrp(const std::string & aName)
         {
@@ -19,7 +19,7 @@ class cAppli_Block
         void Compile();
 
     // === Input parameters
-        std::string mPatIm;  // Liste of all images
+        std::string mPatIm;  // list of all images
         std::string mOriIn;  // input orientation
         std::string mNameBlock;  // name of the block-blini
 
@@ -34,11 +34,11 @@ class cAppli_Block
 
 
 class cGS_Cam;
-class cGS_1BlC; //  1 Bloc Camera
+class cGS_1BlC; //  1 Bloc camera
 class cGS_Appli;  //  Application
 
 
-class cGS_Cam //  1 Camera
+class cGS_Cam //  1 camera
 {
     public :
         cGS_Cam(CamStenope * aCamS, const std::string &aName, const std::string &aGrp,cGS_1BlC * aBl) :
@@ -49,14 +49,14 @@ class cGS_Cam //  1 Camera
         {
         }
         cGS_Cam(const cGS_Cam&) = delete;
-        CamStenope * mCamS;  // Camera
+        CamStenope * mCamS;  // camera
         std::string  mName;  // Name Im
         std::string  mGrp;   // Groupe in the block
         cGS_1BlC *   mBlock;
 };
 
 
-class cGS_1BlC //  1 Bloc Camera
+class cGS_1BlC //  1 Bloc camera
 {
     public :
       double DistLine(const cGS_1BlC & aBl2) const;
@@ -90,7 +90,7 @@ class cGS_Appli : public cAppli_Block //  Application
         {
             eGraphe,
             eCheckRel,    // Check Relative Orientation
-            eComputeBlini // Analyse Traj et Blini
+            eComputeBlini // Analyse Traj and Blini
         } eModeAppli;
 
          cGS_Appli(int,char**,eModeAppli);

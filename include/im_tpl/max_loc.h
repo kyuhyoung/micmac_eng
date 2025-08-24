@@ -148,7 +148,7 @@ class GenMaxLoc
 {
     public :
     protected :
-      // z=1 => pts tq y<0 ou y=0 et x<0
+      // z=1 => pts tq y<0 or y=0 and x<0
       // ie les pts qui sont favorise en cas d'eglite
       std::vector<Pt3di> & OrdVois(Pt2di);
       GenMaxLoc();

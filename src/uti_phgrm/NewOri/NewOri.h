@@ -48,25 +48,25 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 //================ SEUILS ==============
 
-// Nombre de point pour echantillonner le recouvrt / homogr
+// number de point for echantillonner le recouvrt / homogr
 #define NbRecHom 40
-// Nombre de point minimum pour etudier un couple
+// number de point minimum for etudier un couple
 #define NbMinPts2Im 20
 #define NbMinPts2Im_AllSel 10
 
 
-//  Sur les triplets
+//  on les triplets
 
 #define  TNbCaseP1  6  // Nombre de case sur lesquelle on discretise
 #define  TQuant     30 // Valeur de quantification
 #define  TQuantBsH  100 // Valeur de quantification
 #define  TBSurHLim  0.15  // Valeur d'attenuation du gain en B/H
-//  #define  TNbMinPMul 8  // Nombre de point triple minimal pour un triplet
+//  #define  TNbMinPMul 8  // number de point triple minimal for un triplet
 #define  TAttenDens 3.0
 
-//#define TNbMinTriplet 8    // Nombre de point triple minimal pour un triplet // er: added to cCommonMartiniAppli class
-//#define TStdNbMaxTriplet 20   // Nombre maximal de triplet calcule  // er:  added to cCommonMartiniAppli class
-//#define TQuickNbMaxTriplet 3   // Nombre maximal de triplet calcule // er:  added to cCommonMartiniAppli class
+//#define TNbMinTriplet 8    // number de point triple minimal for un triplet // er: added to cCommonMartiniAppli class
+//#define TStdNbMaxTriplet 20   // number maximal de triplet compute  // er:  added to cCommonMartiniAppli class
+//#define TQuickNbMaxTriplet 3   // number maximal de triplet compute // er:  added to cCommonMartiniAppli class
 #define TGainSeuil    5e-3
 
 #define NbMaxATT 100000
@@ -296,8 +296,8 @@ class cNewO_NameManager : public cVirtInterf_NewO_NameManager
      public :
            cNewO_NameManager
            (
-               const std::string  & anExt, // => mis en premier pour forcer la re-compile
-               const std::string  & aPrefHom, // => mis en premier pour forcer la re-compile
+               const std::string  & anExt, // => mis en premier for forcer la re-compile
+               const std::string  & aPrefHom, // => mis en premier for forcer la re-compile
                bool  Quick,
                const std::string  & aDir,
                const std::string  & anOri,
@@ -334,7 +334,7 @@ class cNewO_NameManager : public cVirtInterf_NewO_NameManager
            std::string Dir3POneImage(const std::string & aName,bool WithMakeDir=false) const;
 
 
-           // Liste des image tels que  N3-N1 et N3-N2 soient oriente
+           // list des image tels que  N3-N1 and N3-N2 soient oriente
            std::list<std::string > ListeCompleteTripletTousOri(const std::string & aN1,const std::string & aN2) const;
 
 
@@ -354,7 +354,7 @@ class cNewO_NameManager : public cVirtInterf_NewO_NameManager
            std::pair<CamStenope*,CamStenope*> CamOriRel(const std::string & aN1,const std::string & aN2) const;
 
            cResVINM  ResVINM(const std::string &,const std::string &) const;
-           // L'orientation Cam2Monde de 2 sur 1
+           // L'orientation Cam2Monde de 2 on 1
            ElRotation3D OriCam2On1(const std::string & aN1,const std::string & aN2,bool &OK) const;
            std::string NameListeCpleOriented(bool Bin) const;
            std::string NameListeCpleConnected(bool Bin) const;

@@ -147,7 +147,7 @@ template<class Type> cDenseMatrix<Type> EigenSolveCholeskyarseFromV3
    //std::cout<<"System matrix:\n"<<aDenseMat<<std::endl;
 
    cConst_EigenMatWrap<Type> aEWM (aMat);
-   // cConst_EigenColVectWrap  aWVec(aVec);
+   // cConst_EigenColVectWrap  aWVec(with);
 
    cDenseMatrix<Type> aRes(aMat.Sz());
    cNC_EigenMatWrap<Type> aWRes(aRes);

@@ -100,7 +100,7 @@ Im2D_REAL8  cAppli_RTI::OneItereRecalRadiom
                int aY0 = (aSz.y * aCy) / aNbCase;
                int aY1 = (aSz.y * (aCy+1)) / aNbCase;
 
-                // Calcul des moyennes sur le rectangle
+                // computation des moyennes on le rectangle
                 Pt2dr aSomPts(0,0);
                 double aSomPds = 0;
                 double aSomIm = 0;

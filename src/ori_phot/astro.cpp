@@ -39,7 +39,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 
-/* Formules astronomiques classiques - equinoxe moyen 1900 - precession et nutation
+/* Formules astronomiques classiques - equinoxe moyen 1900 - precession and nutation
    non prises en compte ; 
    
  validees par comparaison des azimut et hauteur obtenus avec les valeurs publiees
@@ -54,7 +54,7 @@ Header-MicMac-eLiSe-25/06/2007*/
  
 	Echantillon de reference (source 3615 BDL) :
 	--------------------------------------------
-	Lieu du calcul : Paris (-2¡20',48¡50')
+	Lieu du calcul : Paris (-220',4850')
 	Annee du calcul: 1996
 	Jour  du calcul: 15 de chaque mois
 	Heure du calcul: 10h00 (TU)
@@ -64,18 +64,18 @@ Header-MicMac-eLiSe-25/06/2007*/
 	Donnees BDL :
 			Mois		Azimut Est		Hauteur
 			
-			1			28¡49'			15¡5'
-			2			33¡8'			22¡28'
-			3			36¡26'			33¡2'
-			4			40¡6'			44¡47'
-			5			45¡16'			53¡12'
-			6			50¡40'			56¡24'
-			7			50¡42'			54¡8'
-			8			44¡5'			47¡50'
-			9			34¡46'			38¡47'
-			10			27¡24'			28¡44'
-			11			23¡56'			19¡21'
-			12			24¡59'			14¡10'
+			1			2849'			155'
+			2			338'			2228'
+			3			3626'			332'
+			4			406'			4447'
+			5			4516'			5312'
+			6			5040'			5624'
+			7			5042'			548'
+			8			445'			4750'
+			9			3446'			3847'
+			10			2724'			2844'
+			11			2356'			1921'
+			12			2459'			1410'
 	Pour les deux angles, emq = 0.25 minutes d'arc sur l'echantillon ci-dessus (compatible
 	avec la simple erreur de quantification)
 	
@@ -89,7 +89,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "StdAfx.h"
 #include "all_phot.h"
 
-/* Les deux Soleils programmes S1 et S2 donnent pratiquement les memes resultats 
+/* Les deux Soleils programmes S1 and S2 donnent pratiquement les memes resultats 
    S2 semble legerment plus precis */
 #define _SOLEILS2_
 
@@ -145,7 +145,7 @@ ASCalculeSoleil ( JourJulien, &Sun ) ;
 LgEclSoleil = - Sun.LambdaApp ;
 if ( LgEclSoleil < 0.0 ) LgEclSoleil = LgEclSoleil + 2.0*Pi_ ;
 
-/* 2) Ascension Droite et declinaison soleil */
+/* 2) Ascension Droite and declinaison soleil */
 *AlphaSoleil = cos(Sun.EpsilonApp)*tan(LgEclSoleil) ;
 if ( (*AlphaSoleil > -1.0)&&(*AlphaSoleil<1.0) )
 	{ *AlphaSoleil = atan (*AlphaSoleil) ; }
@@ -167,7 +167,7 @@ else
 void	ASAlphaDeltaToAzHt ( double TempsSideralMoyen, double LatitudeNord, 
 								double AscensionDroite, double Declinaison, 
 								double *AzimutNord, double *Hauteur )
-/* tout en radians ; les azimuts par rapport au Nord et vers l'Est */
+/* tout en radians ; les azimuts par rapport au Nord and vers l'Est */
 {
 double Teta ;
 const double Pi_ = 4.0*atan(1.0) ;
@@ -199,7 +199,7 @@ else
 if ( vecteur[1] < 0 ) { *AzimutNord = Pi_ - *AzimutNord ; }
 if ( vecteur[0] < 0 ) { *AzimutNord = - *AzimutNord ; }
 
-/* Hauteur avec correction de refraction */
+/* Hauteur with correction de refraction */
 if ( vecteur[2] < 0.707 )
 	{ *Hauteur = asin (vecteur[2]) ; }
 else
@@ -208,7 +208,7 @@ else
 }
 /*-----------------------------------------------------------------------------------*/
 double ASCorrectionHoraire ( TPositionSoleil *Sun )
-/* Retourne la valeur a rajouter a l'heure vraie pour obtenir l'heure moyenne 
+/* Retourne la value a rajouter a l'heure vraie for obtenir l'heure moyenne 
    Equation du Temps p. 55
  */
 {
@@ -217,7 +217,7 @@ double ET ;
 /* en Secondes */
 ET = 459.74*sin((*Sun).M) + 4.80*sin(2.0*(*Sun).M) - 
 	 591.89*sin(2.0*((*Sun).L)) + 12.74*sin(4.0*((*Sun).L)) ;
-/*printf ( "\n------> Correction horaire en minutes = %lf", ET/60.0 ) ;
+/*printf ( "\n------> Correction horaire en minutes = %lf", and/60.0 ) ;
  En Heures */
 ET = ET/3600.0 ;
 return ET ;
@@ -226,7 +226,7 @@ return ET ;
 double ASTempsSideralMoyen ( double JourJulien0Heure, double HmsTU,
 							 double LongitudeOuestEnHeures )
 {
-/* methode n.2 p.58 - temps sideral rapporte a l'equinoxe moyen 1900 */
+/* method n.2 p.58 - temps sideral rapporte a l'equinoxe moyen 1900 */
 double T0, Sideral ;
 
 T0 = ASSiecleJulien ( JourJulien0Heure ) ;
@@ -234,7 +234,7 @@ T0 = ASSiecleJulien ( JourJulien0Heure ) ;
 Sideral = 6.64606556 + 2400.051262*T0 + 0.0000258*T0*T0 ;
 if ( abs((int)Sideral)>=24 ) { Sideral = Sideral - (double)(24*(int)(Sideral/24.0)) ; }
 /* Prise en compte de la longitude Ouest du lieu :
-LA LONGITUDE EST PRISE EN COMPTE SI ON DONNE L'HEURE A GREENWITCH */
+LA LONGITUDE EST PRISE EN COMPTE if ON DONNE L'HEURE A GREENWITCH */
 Sideral = Sideral - LongitudeOuestEnHeures + HmsTU*1.0027379093 ;
 if ( abs((int)Sideral)>=24 ) { Sideral = Sideral - (double)(24*(int)(Sideral/24.0)) ; }
 if ( Sideral < 0.0 ) Sideral = Sideral + 24.0 ;
@@ -260,11 +260,11 @@ unsigned long FullDate ;
 int NJours ;
 double JJ ;
 
-/* Nombre de jours ecoules  */
+/* number de jours ecoules  */
 NJours = ElapsedDays[Mois-1] ;
 if ( (4*(Annee/4)==Annee) && (Mois<=2) ) NJours = NJours - 1 ;
 
-/* selection de la methode de calcul */
+/* selection de la method de computation */
 FullDate = Jour + 32*Mois + 32*16*Annee ;
 if ( FullDate < SpecialDay )
 	{
@@ -288,7 +288,7 @@ const double Pi_ = 4.0*atan(1.0) ;
 /* Excentricite */
 (*Sun).e = 0.01675104 - 0.0000418*(*Sun).T*(*Sun).T 
 			- 0.000000126*(*Sun).T*(*Sun).T*(*Sun).T ;
-/* Parametres */
+/* parameters */
 (*Sun).L = 279.696668 + 36000.76892*(*Sun).T + 0.0003025*(*Sun).T*(*Sun).T ;
 (*Sun).L = (*Sun).L - (double)(360*(int)((*Sun).L/360.0)) ;
 (*Sun).M = 358.475830 + 35999.04975*(*Sun).T - 0.00015*(*Sun).T*(*Sun).T
@@ -301,7 +301,7 @@ const double Pi_ = 4.0*atan(1.0) ;
 /* Anomalie Vraie */
 UU = (*Sun).M ;
 XX = UU - (*Sun).e*sin(UU) ;
-while ( abs(1000000.0*((*Sun).M-XX)) > 5.0 )		/* pour une precis. de l'ordre de la seconde d'arc */
+while ( abs(1000000.0*((*Sun).M-XX)) > 5.0 )		/* for une precis. de l'ordre de la seconde d'arc */
 	{
 	UU = UU + ((*Sun).M-XX)/(1.0-(*Sun).e*cos(UU)) ;
 	XX = UU - (*Sun).e*sin(UU) ;
@@ -331,7 +331,7 @@ const double Pi_ = 4.0*atan(1.0) ;
 /* Excentricite */
 (*Sun).e = 0.01675104 - 0.0000418*(*Sun).T*(*Sun).T 
 			- 0.000000126*(*Sun).T*(*Sun).T*(*Sun).T ;
-/* Parametres */
+/* parameters */
 (*Sun).L = 279.696668 + 36000.76892*(*Sun).T + 0.0003025*(*Sun).T*(*Sun).T ;
 (*Sun).L = (*Sun).L - (double)(360*(int)((*Sun).L/360.0)) ;
 (*Sun).M = 358.475830 + 35999.04975*(*Sun).T - 0.00015*(*Sun).T*(*Sun).T

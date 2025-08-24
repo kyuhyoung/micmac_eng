@@ -273,7 +273,7 @@ cAppli_NewRechPH::cAppli_NewRechPH(int argc,char ** argv,bool ModeVisu) :
        }
    }
 
-   // Calcul maintenant de la taille pour regler le NBS
+   // computation maintenant de la taille for regler le NBS
    {
       int aSzMin = 10;
       cMetaDataPhoto aMDP = cMetaDataPhoto::CreateExiv2(mName);
@@ -307,7 +307,7 @@ cAppli_NewRechPH::cAppli_NewRechPH(int argc,char ** argv,bool ModeVisu) :
    {
       mPlyC = new cPlyCloud;
    }
-   std::string aNameFileTest; // Pour voir si process ok
+   std::string aNameFileTest; // for voir if process ok
 
    if (mModeTest!=0)
    {
@@ -384,7 +384,7 @@ cAppli_NewRechPH::cAppli_NewRechPH(int argc,char ** argv,bool ModeVisu) :
 
    int aPowDecim =1;
    // bool DecimBegun = false;  
-   // Variables utilisee pour traiter
+   // Variables utilisee for traiter
    int  KLastDecim=-11000;
 
    double aTimeLecture = TimeAndReset(aChrono);
@@ -439,7 +439,7 @@ cAppli_NewRechPH::cAppli_NewRechPH(int argc,char ** argv,bool ModeVisu) :
               mVILowR[aK]->SiftMakeDif(mVILowR[aK+1]);
 
            bool aDoDifHS =      mVIHighR[aK]->SameDecim(*mVIHighR[aK+1])  // Il faut que les Hs soient compatible
-                           && ( (mVILowR[aK]!= mVIHighR[aK]) || (mVILowR[aK+1]!= mVIHighR[aK+1]) ); // et que cela apport qqch
+                           && ( (mVILowR[aK]!= mVIHighR[aK]) || (mVILowR[aK+1]!= mVIHighR[aK+1]) ); // and que cela apport qqch
            if (aDoDifHS)
               mVIHighR[aK]->SiftMakeDif(mVIHighR[aK+1]);
 
@@ -448,7 +448,7 @@ cAppli_NewRechPH::cAppli_NewRechPH(int argc,char ** argv,bool ModeVisu) :
        }
        for (int aK=1 ; aK<mNbS-2 ; aK++)
        {
-         // Regarde si le calcul peut se faire avec LowResol comme valeur centrale
+         // Regarde if le computation peut se faire with LowResol comme value centrale
             // Recherche un a la meme resol au dessus
             cOneScaleImRechPH *  aILsUp   = mVILowR[aK]->GetSameDecimSiftMade(mVILowR[aK-1],mVIHighR[aK-1]);
             // Recherche un a la meme resol au dessous
@@ -460,7 +460,7 @@ cAppli_NewRechPH::cAppli_NewRechPH(int argc,char ** argv,bool ModeVisu) :
             }
             else
             {
-             // Regarde si le calcul peut se faire avec HighResol comme valeur centrale
+             // Regarde if le computation peut se faire with HighResol comme value centrale
                 cOneScaleImRechPH *  aIHsUp   = mVIHighR[aK]->GetSameDecimSiftMade(mVILowR[aK-1],mVIHighR[aK-1]);
                 cOneScaleImRechPH *  aIHsDown = mVIHighR[aK]->GetSameDecimSiftMade(mVILowR[aK+1],mVIHighR[aK+1]);
                 if ((aIHsUp!=0) && (aIHsDown!=0))
@@ -509,7 +509,7 @@ cAppli_NewRechPH::cAppli_NewRechPH(int argc,char ** argv,bool ModeVisu) :
    {
    }
 
-   // Pour verifier qu'ils ne sont plus utilises
+   // for verifier qu'ils ne sont plus utilises
    mVIHighR.clear();
 
    double aTimeTopo = TimeAndReset(aChrono);
@@ -677,7 +677,7 @@ void cAppli_NewRechPH::ComputeContrast()
    }
    
 
-   // Calcul d'une valeur  moyenne robuste
+   // computation d'une value  moyenne robuste
    std::vector<double> aVC;
    int aStep = 2*mSzContrast+1;
    for (int aX0=0 ; aX0<mSzIm.x ; aX0+= aStep)
@@ -686,7 +686,7 @@ void cAppli_NewRechPH::ComputeContrast()
       {
           int aX1 = ElMin(aX0+aStep,mSzIm.x);
           int aY1 = ElMin(aY0+aStep,mSzIm.y);
-          // Calcul de la moyenne par carre
+          // computation de la moyenne par carre
           double aSom = 0.0;
           double aSomF = 0.0;
           for (int aX=aX0 ; aX<aX1; aX++)
@@ -739,7 +739,7 @@ void cAppli_NewRechPH::ComputeContrast()
    std::cout << "MOY = " << aMoy << "\n";
 
 
-   // Pb si lance en //, si necessaire le mettre en option
+   // Pb if lance en //, if necessaire le mettre en option
    if (mExportAll)
    {
       Tiff_Im::CreateFromIm(aImC0,"ImC0.tif");
@@ -751,8 +751,8 @@ void cAppli_NewRechPH::ComputeContrast()
 
 void cAppli_NewRechPH::AdaptScaleValide(cOnePCarac & aPC)
 {
-    // Pour le faire bien il faut suivre le point, on le fait direct
-    // pour les point max-min topo, et pour sift on verra
+    // for le faire bien il faut suivre le point, on le fait direct
+    // for les point max-min topo, and for sift on verra
     ELISE_ASSERT(false,"cAppli_NewRechPH::AdaptScaleValide"); 
 /*
    aPC.ScaleNature() = aPC.Scale();
@@ -961,7 +961,7 @@ class cAimeApprentissage
 
 void cAimeApprentissage::CD(const std::string & aDir)
 {
-// Pas sur que ce soit portable, et comme cela ne tournera que sur ma machine ...
+// Pas on que ce soit portable, and comme cela ne tournera que on ma machine ...
 #ifdef _WIN32
 #elif __APPLE__
 #else

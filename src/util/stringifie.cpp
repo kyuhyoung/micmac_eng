@@ -185,7 +185,7 @@ void AddEntryStringifie(const std::string & aKey,const char ** aVal,bool formal)
     // std::cout << aKey << "\n";
     InitEntryStringifie();
 
-   // Fuck, fuck and refuck to Visual-Microsoft et ses limites sur
+   // Fuck, fuck and refuck to Visual-Microsoft and ses limites on
    // les char static !!!!
 
    if (theDicoStringification[aKey]==0)
@@ -295,8 +295,8 @@ class cIStStrVirstream : public cVirtStream
 /*******************************************************/
 
 // Simplification MPD a la correction de bug GM2, il n'y a pas besoin de
-// memoriser  dans le getc puisque c'est l'appelant qui se paye le boulot
-// (ungetc passe la valeur a rebufferiser)
+// memoriser  in le getc puisque c'est l'appelant qui se paye le boulot
+// (ungetc passe la value a rebufferiser)
          
 class cFILEVirtStream : public cVirtStream
 {

@@ -242,7 +242,7 @@ int MakeMultipleXmlXifInfo_main(int argc,char ** argv)
 
 /**************************************************************/
 /*                                                            */
-/*               Dico Camera                                  */
+/*               Dico camera                                  */
 /*                                                            */
 /**************************************************************/
 
@@ -1892,7 +1892,7 @@ const std::string & ExprMetaSurvey()
 	static std::string V = ",";
 	static std::string aRes =
 		EntrePar(ExprRegEntierPos())  // Num
-		+ Repeat(6,V +EntrePar(ExprRegEntierPos())) // Y M D H M S (S sur 4 Ch)
+		+ Repeat(6,V +EntrePar(ExprRegEntierPos())) // Y M D H M S (S on 4 Ch)
 		+ Repeat(3,V+ EntrePar(ExprFlottant()))     // Angles
 		+ Repeat(2,V +EntrePar(ExprRegEntierPos()))  // X,Y
 		+ Repeat(2,V+EntrePar(ExprFlottant()))     // Z1 Z2, a priori redondant
@@ -1989,7 +1989,7 @@ std::list<cMetaDataPhoto>  LMDP_Survey_FromFile(const std::string & aNameFile)
 	{
 		if ( aFile.fgets(aBuf,endof) )//if (aFile.fgets(aBuf,1000,endof)) TEST_OVERFLOW
 		{
-			// C'est des fichier texte Windaube, donc gaffe !
+			// C'est des file texte Windaube, donc gaffe !
 			if ( aBuf.length()!=0 ) // if (strlen(aBuf) !=0) TEST_OVERFLOW
 				aRes.push_back(MDP_Survey_FromString(aBuf));
 		}

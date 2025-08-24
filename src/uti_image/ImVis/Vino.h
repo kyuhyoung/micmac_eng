@@ -44,7 +44,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 
-//  =======   Pour visualiser les points carac new
+//  =======   for visualiser les points carac new
 #include "../NewRechPH/cParamNewRechPH.h"
 #include "../NewRechPH/ExternNewRechPH.h"
 #include "../NewRechPH/NewRechPH.h"
@@ -55,7 +55,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 // cSetPCarac * LoadStdSetCarac(const std::string & aNameIm);
 
 
-//  =======   Pour visualiser les points carac new
+//  =======   for visualiser les points carac new
 #include "../Sift/Sift.h"
 
 #if (ELISE_X11)
@@ -220,7 +220,7 @@ class cAppli_Vino : public cXml_EnvVino,
         friend class cAppli_Vino_TplChgDyn<double,double>;
 
 
-        bool Floutage() {return false;} // A mettre dans cXml_EnvVino,
+        bool Floutage() {return false;} // A mettre in cXml_EnvVino,
         cAppli_Vino(int,char **,const std::string & anIm,cAppli_Vino * aMother ); // If anIm == "" => read from argv
         void PostInitVirtual();
         void  Boucle();
@@ -384,7 +384,7 @@ class cAppli_Vino : public cXml_EnvVino,
         std::string    mExtImNewP;
         int            mSzSift;
         std::string    mImSift;
-        double         mSSF;  // Sift Scale Factor => car a bas niveau calcule sur image reduite
+        double         mSSF;  // Sift Scale Factor => car a bas niveau compute on image reduite
         std::string    mNameSift;
         int            mWithPCarac;
         cSetPCarac *   mSPC;

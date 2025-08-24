@@ -136,9 +136,9 @@ typedef  cSmallMatrixOrVar<cCelOptimProgDyn>   tMatrCelPDyn;
 
 
         Z = 13 ->    Delta = [-2,2]   // aucune contrainte
-        Z = 18 ->    Delta = [-2,1]   // Pour que ca reste dans I0
-        Z = 25 ->    Delta = [-6,-6]  //  Pour que l'intersection soit non vide avec I0
-        Z = 10 ->    Delta = [-5,-1]  // principe de symetrie, dans l'autre sens                                      // les points [5,9] de I0 devront etre connecte a 10
+        Z = 18 ->    Delta = [-2,1]   // for que ca reste in I0
+        Z = 25 ->    Delta = [-6,-6]  //  for que l'intersection soit non vide with I0
+        Z = 10 ->    Delta = [-5,-1]  // principe de symetrie, in l'autre sens                                      // les points [5,9] de I0 devront etre connecte a 10
 
 */
 
@@ -164,7 +164,7 @@ void ComputeIntervaleDelta
       if (aZ != aZ1Max-1)
          ElSetMin(aDzMax,MaxDeltaZ);
 
-       // Si les intervalles sont vides, on relie
+       // if les intervalles sont vides, on relie
        // les bornes des intervalles a tous les points
        if (aDzMin > aDzMax)
        {
@@ -423,7 +423,7 @@ void cProgDynOptimiseur::BalayageOneSens
 {
 //ElTimer aChrono;
 //static int aCpt=0; aCpt++;
-   // Initialisation des couts sur les premieres valeurs
+   // Initialisation des couts on les premieres valeurs
    {
       tMatrCelPDyn &  aMat0 = mMatrCel[aVPt[anIndInit]];
       const Box2di & aBox0 = aMat0.Box();
@@ -608,10 +608,10 @@ void cProgDynOptimiseur::SolveOneEtape(const cEtapeProgDyn & anEt)
 
        Pt2dr aP = Pt2dr::FromPolar(100.0,aTeta);
        // On le met la parce que en toute rigueur ca depend de la 
-       // direction, mais pour l'instant on ne gere pas cette dependance
+       // direction, but for l'instant on ne gere pas cette dependance
        for (int aKP=0 ; aKP<mNbPx ; aKP++)
        {
-       // Au cas ou la regularisation varie suivant les etapes
+       // Au cas or la regularisation varie suivant les etapes
             const tVGI_VDouble & aV =      (aKP==0)              ?
                                            mEtPrg.Px1MultRegul() :
                                            mEtPrg.Px2MultRegul() ;

@@ -107,14 +107,14 @@ class cFiltrageDepthByProgDyn
         Pt2di              mSz;
         Im2D_U_INT1        mImLabel;  // 0 => Rien, 1= > OK, 2=> trou bouche
         TIm2D<U_INT1,INT>  mTLab;
-        Im2D_REAL4         mImDepth;   // image dequant et trous bouches
+        Im2D_REAL4         mImDepth;   // image dequant and trous bouches
         TIm2D<REAL4,REAL>  mTDetph;
-        // Cout de reference 1 pour etre non affecte, 0 pour etre conserve
+        // Cout de reference 1 for etre non affecte, 0 for etre conserve
         double             mParamCostNonAf;
         double             mParamCostTrans;
         double             mParamCostRegul;
-        double             mPasDZ;  // Pour simplifier le parametrage compte tenu du fait que la dynamique est tres variable
-        double             mMaxDZ;  // Au dela d'une certain valeur ajoute pas en irreg
+        double             mPasDZ;  // for simplifier le parametrage compte tenu du fait que la dynamique est tres variable
+        double             mMaxDZ;  // Au dela d'une certain value ajoute pas en irreg
         int                mNbDir;
         Im2D_Bits<1>       mResult;
 };
@@ -130,7 +130,7 @@ void cFiltrageDepthByProgDyn::DoConnexion
     int aLabIn = mTLab.get(aPIn);
     int aLabOut = mTLab.get(aPOut);
 
-    bool WithUndef = (aLabIn==0) || (aLabOut==0) ; // Aucune communication avec le reste des que un outside
+    bool WithUndef = (aLabIn==0) || (aLabOut==0) ; // Aucune communication with le reste des que un outside
 
     for (int aZIn=0 ; aZIn<aInZMax ; aZIn++)
     {
@@ -148,7 +148,7 @@ void cFiltrageDepthByProgDyn::DoConnexion
                  else if (aCelIn.mInside  && aCelOut.mInside)
                  {
                     double aDZ = ElAbs(mTDetph.get(aPIn)-mTDetph.get(aPOut)) * mPasDZ ;
-                    // Fonction concave, derivee nulle en zero,  assympote en mMaxDZ
+                    // function concave, derivee nulle en zero,  assympote en mMaxDZ
                     // aDZ =  (sqrt(1+aDZ/mMaxDZ)-1) * 2*mMaxDZ ;
                     aDZ =  (mMaxDZ * aDZ) / (mMaxDZ + aDZ);
                     aCost =  mParamCostRegul * aDZ;
@@ -159,7 +159,7 @@ void cFiltrageDepthByProgDyn::DoConnexion
             double aDZ = ElAbs(aPIn.Z()-aPOut.Z())/mResolPlaniEquiAlt;
             if ((mFNoVal==0) || (aDZ < mFNoVal->PenteMax()))
             {
-            // Fonction concave, nulle et de derivee 1 en 0
+            // function concave, nulle and de derivee 1 en 0
                  double aCost = (sqrt(1+aDZ/aSig0)-1) * 2*aSig0 * mFPrgD->Regul();
                  anOut.UpdateCostOneArc(anInp,aSens,ToICost(aCost));
             }
@@ -210,11 +210,11 @@ cFiltrageDepthByProgDyn::cFiltrageDepthByProgDyn(Im2D_REAL4 aImDepth,Im2D_U_INT1
            }
            else
            {
-                // Cout 1.0 arbitraire  pour etre refute
+                // Cout 1.0 arbitraire  for etre refute
                 aTabP[0].ArgAux() = cElemFDBPD(false);
                 aTabP[0].SetOwnCost(ToICost( (aLab==2) ? mParamCostNonAf : 1.0));
 
-                // Cout 0 pour etre garde
+                // Cout 0 for etre garde
                 aTabP[1].ArgAux() = cElemFDBPD(true);
                 aTabP[1].SetOwnCost(ToICost(0));
            }
@@ -439,7 +439,7 @@ template <class tNum,class tNBase>  Im2D_REAL4   TplFReduceImageProf
               int aXI1 = ElMin(aSzIn.x-2,aXInCentreI+aSzCC);
               int aYI1 = ElMin(aSzIn.y-2,aYInCentreI+aSzCC);
 
-              // 1 calcul du barrycentre
+              // 1 computation du barrycentre
               Pt2dr aBar(0,0);
               double aSomP=0;
               Pt2di aPIn;
@@ -588,7 +588,7 @@ template <class tNum,class tNBase>  Im2D_REAL4   TplProlongByCont
     double aDCum = 0;
     while ((aNbProl>0)  && (!aVCur.empty()))
     {
-         // Calcul la moyenne
+         // computation la moyenne
          for (int aTime=0 ; aTime<5 ; aTime++)
          {
              std::vector<float> aVNewVals;
@@ -615,7 +615,7 @@ template <class tNum,class tNBase>  Im2D_REAL4   TplProlongByCont
              {
                  Pt2di aP = aVCur[aKP];
                  aTRes.oset(aP,aVNewVals[aKP]+aDistAdd);
-                 aTMC.oset(aP,1);  // apres la 1ere itere les dernier point sont inclus
+                 aTMC.oset(aP,1);  // after la 1ere itere les dernier point sont inclus
              }
          }
 
@@ -694,7 +694,7 @@ Im2D_REAL4 ReduceImageProf(Im2D_REAL4 aImPds,Im2D_Bits<1> aIMasq,Im2D_INT2 aImPr
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -710,17 +710,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

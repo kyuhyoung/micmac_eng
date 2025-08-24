@@ -3,8 +3,8 @@
 cERO_Appli::cERO_Appli(int argc, char** argv)
 {
     mDebug=false;
-    mMinOverX_Y=60; // recouvrement minimum entre 2 images, calculé séparément pour axe y et x.
-    mMinOverX_Y_fichierCouple=20; // si le couple est renseigné dans un fichier, on est moins exigent
+    mMinOverX_Y=60; // recouvrement minimum between 2 images, calculé séparément for axe y and x.
+    mMinOverX_Y_fichierCouple=20; // if le couple est renseigné in un file, on est moins exigent
     mPropPixRec=33 ; // recouvrement minimum effectif (no data enlevée) en proportion de pixels, 1/mPropPixRec
     mDirOut="EROS/" ;
     mDir="./";
@@ -22,7 +22,7 @@ cERO_Appli::cERO_Appli(int argc, char** argv)
                     << EAM(mSaveSingleOrtho,"ExportSO",true,"Export Single ortho corrected, def false")
                     << EAM(mDirOut,"Dir",true,"Directory where to store all intermediate results, default 'EROS/'. If Debug==0, this directory is purged at the end of the process.")
     );
-    // to do: corriger mDirOut si pas de "/" à la fin
+    // to do: corriger mDirOut if pas de "/" à la fin
 
     SplitDirAndFile(mDir,mPatOrt,mFullName);
     MakeFileDirCompl(mDirOut);
@@ -32,7 +32,7 @@ cERO_Appli::cERO_Appli(int argc, char** argv)
     // create the list of images starting from the regular expression (Pattern)
     mLFile = mICNM->StdGetListOfFile(mPatOrt);
 
-    // suppression du directory si il existe, en cas de relance de la commande plusieurs fois on nettoie les résultats précédents
+    // suppression du directory if il existe, en cas de relance de la commande plusieurs fois on nettoie les résultats précédents
     if(ELISE_fp::IsDirectory(mDirOut))
     {
        std::cout << "Purge of directory " << mDirOut << "\n";
@@ -54,23 +54,23 @@ cERO_Appli::cERO_Appli(int argc, char** argv)
         std::cout << "Cannot load the file of image pairs " << mFileClpIm << "\n";
     }
 
-    // soit on ouvre le fichier de couples, soit on calcule les couples
+    // soit on ouvre le file de couples, soit on compute les couples
     if (ELISE_fp::exist_file(mFileClpIm) && EAMIsInit(&mFileClpIm))
     {
-        // charge le fichier de couples et controle que les images soient biens chargées également et avec un minimun d'overlap
+        // charge le file de couples and controle que les images soient biens chargées également and with un minimun d'overlap
         std::cout << "Load Ortho couples file and inspect couples \n";
         loadImPair();
 
     } else {
-        // détermine les couples en chargeant les orthos et en regardant si elles se recouvrent.
+        // détermine les couples en chargeant les orthos and en regardant if elles se recouvrent.
         std::cout << "Determine images couples \n";
         computeImCplOverlap();
     }
 
-    // CALCUL un modèle d'égalisation pour chacun des couples
+    // computation un modèle d'égalisation for chacun des couples
     computeModel4EveryPairs();
 
-    // moyenne les différents modèles pour chacunes des images
+    // moyenne les différents modèles for chacunes des images
     moyenneModelPerOrt();
 
     saveModelsGlob();
@@ -98,7 +98,7 @@ void cERO_Appli::applyRE()
     int it(0);
     for (auto & ortho : mLIm)
     {
-        // meme nom que l'ortho mais dans un sous dossier
+        // meme nom que l'ortho but in un under folder
         std::string filename(mDirOut+ortho.Name());
         std::cout << "Apply radiometric egalization on ortho " << ortho.Name() << ", save result in directory " << mDirOut <<"\n";
         Im2D_REAL4 aIm(ortho.applyRE(mL2Dmod.at(it)));
@@ -117,7 +117,7 @@ void cERO_Appli::applyRE()
             */
 
 
-        // très peu approprié de mettre ça ici, mais mon jeu test sont les images thermiques de variocam
+        // très peu approprié de mettre ça ici, but mon jeu test sont les images thermiques de variocam
         /*
         Im2D_U_INT1 out(aIm.sz().x,aIm.sz().y);
         int minRad(27540), rangeRad(2546.0);
@@ -127,7 +127,7 @@ void cERO_Appli::applyRE()
         255*(aIm.in()-minRad)/rangeRad,
         out.out()
         );
-        // je sais pas pourquoi j'ai besoin de ça mais si non, effet de bord
+        // je sais pas pourquoi j'ai besoin de ça but if non, effet de bord
         ELISE_COPY
         (
         select(aIm.all_pts(), aIm.in()==0),
@@ -155,7 +155,7 @@ void cERO_Appli::moyenneModelPerOrt()
 {
     for (auto & ortName : mLFile)
     {
-       // charge les modèles pour cette orthos et calcule la droite "moyenne"
+       // charge les modèles for cette orthos and compute la droite "moyenne"
        std::cout << "Compute one linear model of egalization for ortho " << ortName << "\n";
        loadEROSmodel4OneIm(ortName);
     }
@@ -171,7 +171,7 @@ void cERO_Appli::loadImPair()
     {
         // vérifie qu'il est besoin d'un préfix
         if (cple.N1().substr(0,3)!="Ort_")  cple = cple.AddPrePost("Ort_","");
-        // vérifie que les orthos sont bien renseignées dans le pattern d'entrée, et vérification d'un overlap effectif entre orthos
+        // vérifie que les orthos sont bien renseignées in le pattern d'entrée, and vérification d'un overlap effectif between orthos
         cImGeo * pt1(0), * pt2(0);
 
         for (auto & im: mLIm) {
@@ -185,7 +185,7 @@ void cERO_Appli::loadImPair()
             // au minimum 5% de recouvrement
             if (pt1->overlap(pt2,mMinOverX_Y_fichierCouple))
             {
-                // on vérifier que le couple n'est pas déjà dans la liste des couples
+                // on vérifier que le couple n'est pas déjà in la list des couples
                 bool doublon=false;
 
                 for (auto &cpleOK: mSNR.Cple()) if (cpleOK==cple || cple==cCpleString(cpleOK.N2(),cpleOK.N1())) doublon=true;
@@ -250,7 +250,7 @@ void cERO_Appli::computeModel4EveryPairs()
                                 + mDir +cple.N2()
                                 + " Debug=" + ToString(mDebug)
                                 + " Dir=" + mDirOut
-                                + " W1=1 W2=1 WIncid=1" // poid des images, test avec poid egal toutes les images
+                                + " W1=1 W2=1 WIncid=1" // poid des images, test with poid egal toutes les images
                                 ;
          aLCom.push_back(aCom);
          if (mDebug) std::cout << aCom << "\n";
@@ -258,7 +258,7 @@ void cERO_Appli::computeModel4EveryPairs()
     cEl_GPAO::DoComInParal(aLCom);
 }
 
-// charger les modeles et calculer mod moyen
+// charger les modeles and compute mod moyen
 void cERO_Appli::loadEROSmodel4OneIm(std::string aNameOrt)
 {
 
@@ -299,14 +299,14 @@ void cERO_Appli::loadEROSmodel4OneIm(std::string aNameOrt)
     LSQ_mod.adjustModelL2();
     if (mDebug) LSQ_mod.affiche();
 
-    // sauve le modèle dans la liste des modèles
+    // sauve le modèle in la list des modèles
     mL2Dmod.push_back(LSQ_mod.getModel());
-    // exporte le modèle pour utilisation ultérieure
+    // exporte le modèle for utilisation ultérieure
     }
     else
     {
         std::cout<< "Error While opening file" << file << '\n';
-        // modèle "unité" pour cette image, pas de correction radiometrique donc - solution temporaire
+        // modèle "unité" for cette image, pas de correction radiometrique donc - solution temporaire
         mL2Dmod.push_back(c2DLineModel(0,1));
     }
 }

@@ -42,8 +42,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 #ifndef _ELISE_TRAITEMENT_RADIOM_  // general
 #define _ELISE_TRAITEMENT_RADIOM_
 
-// Classe d'interface, les classe "concrete" derivee sont definie dans
-// un ".cpp".  Pour creer un objet il faut passer
+// class d'interface, les class "concrete" derivee sont definie in
+// un ".cpp".  for creer un object il faut passer
 // par les allocateur static
 
 
@@ -121,7 +121,7 @@ class cER_MesureNIm
 {
     public :
         friend class cER_OneIm;
-        //Abs et norm n'ont pas forecement de raison d'etre, mais selon le 
+        //Abs and norm n'ont pas forecement de raison d'etre, but selon le 
         // principe 1 seul consctructeur
         cER_MesureNIm(eTypeERGMode,const Pt3df& aPAbs,const Pt3df & aPNorm);
 
@@ -187,7 +187,7 @@ class cER_OneIm
              Pt2di aSz,
              const std::string & aName
          );
-          // Les points sont normalises pour limiter la taille des
+          // Les points sont normalises for limiter la taille des
           // coefficients
           Pt2dr   ToPNorm(const Pt2df & aPIm) const;
 
@@ -198,7 +198,7 @@ class cER_OneIm
          void  write(ELISE_fp &) const;
          static cER_OneIm * read(ELISE_fp & aFP,cER_Global *);
 
-         // retourne l'adresse de l'element de deg 1 en rad et 0 en xy
+         // retourne l'adresse de l'element de deg 1 en rad and 0 en xy
          int InitObs(const Pt2df & aPI,double aV0,const cER_ParamOneSys & aParam);
          void MakeVecVals(std::vector<double>&Vals,const Pt2df&aPI,double aV0,const cER_ParamOneSys&aParam);
 
@@ -358,7 +358,7 @@ class cER_Global
                const std::string &                aPatAdjustGlob,
                bool  ComputL1Cple
            );
-           // DIM = nombre de cannaux
+           // DIM = number de cannaux
            cER_OneIm * AddIm(const std::string &,const Pt2di &);
 
 

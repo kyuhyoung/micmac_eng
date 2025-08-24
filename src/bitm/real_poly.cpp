@@ -62,7 +62,7 @@ Header-MicMac-eLiSe-25/06/2007*/
      en valeur absolue
 */
 
-// Racine d'un reel supose >= 0
+// Racine d'un real supose >= 0
 REAL IRoots(REAL val,INT exp)
 {
     switch (exp)

@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #define _NH_CPTOFCORREL_H_
 
 
-//=================================== Critere type fast pour selectionner les points favorables à la correl
+//=================================== Critere type fast for selectionner les points favorables à la correl
 
 /*
 class cNH_FastCriterCompute
@@ -84,7 +84,7 @@ template <class TIm> Pt2dr  FastQuality(TIm anIm,Pt2di aP,cNH_FastCriterCompute 
    for (int aK=0 ; aK<aNbPts ; aK++)
    {
        typename TIm::tValueElem aVal = anIm.get(aP+aVPt[aK],aDef) * aSign;
-       aVVals.push_back(aVal); //valeur des voisins
+       aVVals.push_back(aVal); //value des voisins
        aCrit.FRA().In(aK) = aVal;
    }
    typename TIm::tValueElem aV0 = anIm.getproj(aP)*aSign;

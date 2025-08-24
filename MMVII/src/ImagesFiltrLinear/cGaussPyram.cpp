@@ -72,7 +72,7 @@ template <class Type> void cGP_OneImage<Type>::SetBestEquiv(int aKMaj,tGPIm * aB
 }
 
 
-     //  === Image processing methods
+     //  === image processing methods
 
 template <class Type> void cGP_OneImage<Type>::ComputGaussianFilter()
 {

@@ -45,8 +45,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 /***********************************************************************/
 /***********************************************************************/
 
-// NbReservCompat entier vide ecrits apres le majic
-// number pour compatibilite ulterieure
+// NbReservCompat integer vide ecrits after le majic
+// number for compatibilite ulterieure
 
 
 static const INT NbReservCompat = 100;

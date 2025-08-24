@@ -167,12 +167,12 @@ void cCmpOriOneSom::SetPrec(const cCmpOriOneSom & aSPrec)
 {
     mNum = aSPrec.mNum + 1;
     mAbsCurv = aSPrec.mAbsCurv+ euclid(mC1-aSPrec.mC1);
-    // Calcul des orientations relatives / � image prec pour 1 et 2
+    // computation des orientations relatives /  image prec for 1 and 2
     ElRotation3D aCurToPrec1 =  aSPrec.mRC1ToM.inv()  * mRC1ToM ;  
     ElRotation3D aCurToPrec2 =  aSPrec.mRC2ToM.inv()  * mRC2ToM ;  
 
-    // Calcul des difference en rotation et centres pour ces orientations relatives
-    mDMatRel = sqrt(aCurToPrec1.Mat().L2(aCurToPrec2.Mat()))  ;  // plus ou moin homogene a des radians
+    // computation des difference en rotation and centres for ces orientations relatives
+    mDMatRel = sqrt(aCurToPrec1.Mat().L2(aCurToPrec2.Mat()))  ;  // plus or moin homogene a des radians
     mDCRel   = euclid(aCurToPrec1.tr()-aCurToPrec2.tr()) ;
 
     // They are similar but different 
@@ -521,7 +521,7 @@ cAppli_CmpOriCam::cAppli_CmpOriCam(int argc, char** argv) :
    }
    cPlyCloud aPlyC, aPlyO;
 
-   // Calcul de la structure de sommets fusionnant les 2 orientations
+   // computation de la structure de sommets fusionnant les 2 orientations
    for (int aK=0 ; aK<int(mVSoms.size()) ; aK++)
    {
        cImaMM * anIm = mVSoms[aK]->attr().mIma;
@@ -531,7 +531,7 @@ cAppli_CmpOriCam::cAppli_CmpOriCam(int argc, char** argv) :
        mVCmp.push_back(cCmpOriOneSom(anIm->mNameIm,aCam1,aCam2));
    }
 
-   // Calcul des orientation relatives, des abscisses etc ...
+   // computation des orientation relatives, des abscisses etc ...
    std::vector<double>      aVDMatRel;
    for (int aK=1 ; aK<int(mVCmp.size()) ; aK++)
    {
@@ -629,7 +629,7 @@ int CPP_CmpOriCam_main(int argc, char** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -645,17 +645,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

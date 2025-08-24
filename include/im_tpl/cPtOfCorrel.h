@@ -40,9 +40,9 @@ Header-MicMac-eLiSe-25/06/2007*/
 #ifndef _CPTOFCORREL_H_
 #define _CPTOFCORREL_H_
 
-// Classe pour calculer des points "favorables a la correlation 2D",
-//  c'est a dire des point qui n'auto-correlent pas avec leur
-// translate et qui ont du contraste
+// class for compute des points "favorables a la correlation 2D",
+//  c'est a dire des point qui n'auto-correlent pas with leur
+// translate and qui ont du contraste
 
 class cQAC_XYV;
 class cQAC_Stat_XYV;
@@ -97,9 +97,9 @@ class cPtOfCorrel
        double                 mSeuilEcart;
 };
 
-//  Classe pour reparti les points d'interet en respectant les criteres
+//  class for reparti les points d'interet en respectant les criteres
 //  suivants :
-//       - pas de points dans le masque
+//       - pas de points in le masque
 //       - un point par cellule
 
 
@@ -147,7 +147,7 @@ class cRepartPtInteret
        Im2D_REAL4  mLastImPond;
 };
 
-//=================================== Critere type fast pour selectionner les points favorables à la correl
+//=================================== Critere type fast for selectionner les points favorables à la correl
 
 class cFastCriterCompute
 {
@@ -189,7 +189,7 @@ template <class TIm> Pt2dr  FastQuality(TIm anIm,Pt2di aP,cFastCriterCompute & a
    for (int aK=0 ; aK<aNbPts ; aK++)
    {
        typename TIm::tValueElem aVal = anIm.get(aP+aVPt[aK],aDef) * aSign;
-       aVVals.push_back(aVal); //valeur des voisins
+       aVVals.push_back(aVal); //value des voisins
        aCrit.FRA().In(aK) = aVal;
    }
    typename TIm::tValueElem aV0 = anIm.getproj(aP)*aSign;
@@ -361,7 +361,7 @@ template <class TypeIm> class cCutAutoCorrelDir : public cAutoCorrelDir<TypeIm>
                Pt2dr aRhoTeta = Pt2dr::polar(Pt2dr(mVPt[aKMax]),0.0);
 
                double aStep0 = 1/this->mRho;
-               //  Pt2dr aRes1 =  this->DoItOneStep(aRhoTeta.y,aStep0*0.5,2);  BUG CORRIGE VERIF AVEC GIANG
+               //  Pt2dr aRes1 =  this->DoItOneStep(aRhoTeta.y,aStep0*0.5,2);  BUG CORRIGE VERIF with GIANG
                Pt2dr aRes1 =  this->DoItOneStep(aRhoTeta.y,2,aStep0*0.5);
 
                if (aRes1.y>aSeuilAccept)   
@@ -377,7 +377,7 @@ template <class TypeIm> class cCutAutoCorrelDir : public cAutoCorrelDir<TypeIm>
                   return false;
                }
 
-               // Pt2dr aRes2 =  this->DoItOneStep(aRes1.x,aStep0*0.2,2); BUG CORRIGE VERIF AVEC GIANG
+               // Pt2dr aRes2 =  this->DoItOneStep(aRes1.x,aStep0*0.2,2); BUG CORRIGE VERIF with GIANG
                Pt2dr aRes2 =  this->DoItOneStep(aRes1.x,2,aStep0*0.2);
 
                if (aPtrRes) 

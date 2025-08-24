@@ -325,7 +325,7 @@ cComputeMergeMulTieP * AllocStdFromMTP
 
 
 
-   // cDirsPhProj     DPPointsMeasures;  ///<  For GCP measures  Image + Grounds
+   // cDirsPhProj     DPPointsMeasures;  ///<  For GCP measures  image + Grounds
    // cDirsPhProj     DPTieP;            ///<  For Homologous point
    // cDirsPhProj     DPMulTieP;         //
 

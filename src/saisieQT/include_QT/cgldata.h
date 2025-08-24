@@ -195,7 +195,7 @@ private:
 
     QVector<cCamGL*>      _vCams;
 
-    //! Point list for polygonal selection
+    //! point list for polygonal selection
     QVector<cPolygon*>  _vPolygons;
 
     int         _currentPolygon;

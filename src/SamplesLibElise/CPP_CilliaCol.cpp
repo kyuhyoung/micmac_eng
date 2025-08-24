@@ -96,7 +96,7 @@ int ImgCol_main(int argc, char ** argv)
    
    
 
-/** Calcuel de transformation et insertion de la 2 em image**/
+/** Calcuel de transformation and insertion de la 2 em image**/
           XmlOutFile="Homot.xml" ;
           aCom1= MMBinFile("mm3d CalcMapAnalytik ")
                        + aImge1 +BLANK
@@ -115,7 +115,7 @@ int ImgCol_main(int argc, char ** argv)
          system_call(aCom2.c_str());
 
 
-/** Calcuel de transformation et insertion de la 3 em image**/
+/** Calcuel de transformation and insertion de la 3 em image**/
 
 
          XmlOutFile1="Homot1.xml" ;
@@ -148,7 +148,7 @@ int ImgCol_main(int argc, char ** argv)
          system_call(aCom4.c_str());
          
     
-/***Calcule de transformation et insertion de la 4 eme image**/
+/***compute de transformation and insertion de la 4 eme image**/
 
          XmlOutFile2="Homot3.xml" ;
          aCom5= MMBinFile("mm3d CalcMapAnalytik ")
@@ -200,7 +200,7 @@ case 2 :
          system_call(aCom2.c_str());
 
 
-/** Calcuel de transformation et insertion de la 3 em image**/
+/** Calcuel de transformation and insertion de la 3 em image**/
 
 
          XmlOutFile1="Simil1.xml" ;
@@ -233,7 +233,7 @@ case 2 :
 
 
 
-/***Calcule de transformation et insertion de la 4 eme image**/
+/***compute de transformation and insertion de la 4 eme image**/
 
          XmlOutFile2="Simil3.xml" ;
          aCom5= MMBinFile("mm3d CalcMapAnalytik ")
@@ -285,7 +285,7 @@ case 3:
          system_call(aCom2.c_str());
 
 
-/** Calcuel de transformation et insertion de la 3 em image**/
+/** Calcuel de transformation and insertion de la 3 em image**/
 
 
          XmlOutFile1="Affine1.xml" ;
@@ -317,7 +317,7 @@ case 3:
          system_call(aCom4.c_str());
 
 
-/***Calcule de transformation et insertion de la 4 eme image**/
+/***compute de transformation and insertion de la 4 eme image**/
 
    
          XmlOutFile2="Affine3.xml" ;

@@ -876,7 +876,7 @@ cElHomographie  ToImRedr(const std::string & aNameIdent,std::string & aNameIm,Pa
     Tiff_Im aTifInit(aNameInit.c_str());
     Pt2di aSz = aTifInit.sz();
 
-    // Partie a changer si autre chose que 180
+    // Partie a changer if autre chose que 180
     ElPackHomologue aPack; 
     Pt2dr aP0(0,0); 
     Pt2dr aP1(aSz.x-1,aSz.y-1);

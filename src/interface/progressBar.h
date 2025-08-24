@@ -14,7 +14,7 @@ class Progression : public QThread
 {
    Q_OBJECT
 
-//calcul du pourcentage de travail effectué par un thread de calcul et affichage dans la progressDialog
+//computation du pourcentage de travail effectué par un thread de computation and affichage in la progressDialog
 	public:
 		Progression();
 		~Progression();

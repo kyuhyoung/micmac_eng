@@ -67,17 +67,17 @@ int ANCIEN_TD_EXEMPLE_main(int argc,char ** argv)
         LArgMain()  << EAM(toto,"toto",true,"Do no stuff")
     );
 
-	//On créé un objet camera (aCam) et un objet liste de points d'appui (aSetGCP)
+	//On créé un object camera (aCam) and un object list de points d'appui (aSetGCP)
     cTD_Camera aCam(aNameCam);
     cTD_SetAppuis aSetGCP(aNameAppuis);
 
-	//Pour chaque point d'appui, on calcul la distance entre la coordonnée image données par le fichier et la coordonnée image projetée à partir du point 3D et des infos de camera
+	//for chaque point d'appui, on computation la distance between la coordonnée image données par le file and la coordonnée image projetée à partir du point 3D and des infos de camera
     for (int aKP=0 ; aKP<int(aSetGCP.PTer().size()) ; aKP++)
     {
-         Pt3dr aPTer = aSetGCP.PTer()[aKP];//Point 3D
-         Pt2dr aPIm  = aSetGCP.PIm()[aKP];//Point image
+         Pt3dr aPTer = aSetGCP.PTer()[aKP];//point 3D
+         Pt2dr aPIm  = aSetGCP.PIm()[aKP];//point image
 
-         Pt2dr aPProj = aCam.Ter2Image(aPTer);//Point projeté
+         Pt2dr aPProj = aCam.Ter2Image(aPTer);//point projeté
 
          std::cout  << "dist[" << aKP << "]= " << euclid (aPIm,aPProj) << "\n";
     }
@@ -86,7 +86,7 @@ int ANCIEN_TD_EXEMPLE_main(int argc,char ** argv)
     int aK1,aK2,aK3;
     std::cout << "ENTER K1 K2 K3 \n";
     cin >>  aK1 >> aK2 >>  aK3;
-	//Avec ces 3 points, on calcule les positions et orientations possibles de la caméra
+	//with ces 3 points, on compute les positions and orientations possibles de la caméra
 	
     std::vector<cTD_Camera> aSols = aCam.RelvtEspace
                                     (
@@ -95,7 +95,7 @@ int ANCIEN_TD_EXEMPLE_main(int argc,char ** argv)
                                           aSetGCP.PTer()[aK3], aSetGCP.PIm()[aK3]
                                     );
 
-	//Pour chaque solution, on calcul la distance entre la coordonnée image données par le fichier et la coordonnée image projetée à partir du point 3D et des infos calculées
+	//for chaque solution, on computation la distance between la coordonnée image données par le file and la coordonnée image projetée à partir du point 3D and des infos calculées
     for (int aKS=0 ; aKS<int(aSols.size()) ; aKS++)
     {
          for (int aKP=0 ; aKP<int(aSetGCP.PTer().size()) ; aKP++)
@@ -275,7 +275,7 @@ int TD_CorrelQuick(int argc,char ** argv)
     int aTy =  min(aIm1.Sz().y,aIm2.Sz().y);
     int aTx2 = aIm2.Sz().x;
 
-    // [1] Calcul des images moyennes 
+    // [1] computation des images moyennes 
     cTD_Im  aMoy1 = aIm1.ImageMoy(aSzW,1);
     cTD_Im  aMoy2 = aIm2.ImageMoy(aSzW,1);
 
@@ -283,11 +283,11 @@ int TD_CorrelQuick(int argc,char ** argv)
      // aMoy1.Save(Out+"MOY1.tif");
      // aIm1.Save(Out+"IM1.tif");
 
-    // [2] Calcul des moyennes des carres 
+    // [2] computation des moyennes des carres 
     cTD_Im aSq11(aTx1,aTy);
     cTD_Im aSq22(aTx2,aTy);
 
-         // [2.1] Calcule les carres
+         // [2.1] compute les carres
     for (int anY=0 ; anY<aTy ; anY++)
     {
          for (int aX1=0 ; aX1<aTx1 ; aX1++)
@@ -311,22 +311,22 @@ int TD_CorrelQuick(int argc,char ** argv)
     }
 
 
-    // [3] Calcul des paralaxes
+    // [3] computation des paralaxes
 
-         // [3.1] => Initialise Image de Pax et Image de similiarite
+         // [3.1] => Initialise image de Pax and image de similiarite
     cTD_Im aPaxOpt(aTx1,aTy);
     cTD_Im aImSim(aTx1,aTy);
 
     for (int anY=0 ; anY<aTy ; anY++)
          for (int aX1=0 ; aX1<aTx1 ; aX1++)
          {
-             aPaxOpt.SetVal(aX1,anY,aIntPx+1);  // Valeur en dehors du domaine
+             aPaxOpt.SetVal(aX1,anY,aIntPx+1);  // value en dehors du domaine
              aImSim.SetVal(aX1,anY,1e20);         // + l'infini
          }
 
     for (int aPax=-aIntPx ; aPax <= aIntPx ;aPax++)
     {
-        // calclul dans aMoy12 de moyenne de  I1*( I2 decalee )
+        // calclul in aMoy12 de moyenne de  I1*( I2 decalee )
         cTD_Im aIm12(aTx1,aTy);  
         for (int anY=0 ; anY<aTy ; anY++)
         {

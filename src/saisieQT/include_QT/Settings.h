@@ -3,7 +3,7 @@
 
 #include "Elise_QT.h"
 
-typedef enum // Attention repercutions sur QT ... TODO à regler
+typedef enum // Attention repercutions on QT ... TODO  regler
 {
   qNSM_GeoCube,
   qNSM_Plaquette,
@@ -26,10 +26,10 @@ float zoomClip(float val);
 
 //! Interface mode
 enum APP_MODE { BOX2D,          /**< BOX 2D mode **/
-                MASK2D,         /**< Image mask mode  **/
-                MASK3D,         /**< Point cloud mask **/
-                POINT2D_INIT,	/**< Points in Image (SaisieAppuisInit) - uses cAppli_SaisiePts **/
-                POINT2D_PREDIC, /**< Points in Image (SaisieAppuisPredic) - uses cAppli_SaisiePts **/
+                MASK2D,         /**< image mask mode  **/
+                MASK3D,         /**< point cloud mask **/
+                POINT2D_INIT,	/**< Points in image (SaisieAppuisInit) - uses cAppli_SaisiePts **/
+                POINT2D_PREDIC, /**< Points in image (SaisieAppuisPredic) - uses cAppli_SaisiePts **/
                 BASC            /**< 2 lines and 1 point (SaisieBasc) - uses cAppli_SaisiePts **/
 };
 typedef enum
@@ -149,7 +149,7 @@ private:
     int         _radius;
     float       _shiftStep;
 
-    //! Point creation mode
+    //! point creation mode
     qTypePts			_eType;
     eNavigationType _eNavigation;
     double      _sz;

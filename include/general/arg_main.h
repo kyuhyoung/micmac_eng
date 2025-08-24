@@ -82,10 +82,10 @@ extern std::string GlobArcArgv;
 
 
 
-// Remet dans la commande les option commancant par "-"
+// Remet in la commande les option commancant par "-"
 void AddMinuToArgs(std::string & aCom,int  argc,char** argv);
 
-class ElGramArgMain  // classe contenant la "grammaire" rudimentaire
+class ElGramArgMain  // class contenant la "grammaire" rudimentaire
 {
     public :
         ElGramArgMain(char,int,char,bool aAnyEqual);
@@ -259,7 +259,7 @@ class GenElArgMain
 
         virtual void show(bool named) const =0;
 
-          // Ensemble de patch pour rajouter des arguments inutilises a la volee
+          // Ensemble de patch for rajouter des arguments inutilises a la volee
         bool IsActif() const;
 
         static const char * ActifStr(bool);
@@ -418,7 +418,7 @@ class LArgMain
         INT  Init(int argc,char ** argv) const;
                 void  InitIfMatchEq
                       (
-                          std::vector<char *> *,  // Si !=0, empile les args non consommes
+                          std::vector<char *> *,  // if !=0, empile les args non consommes
                           int argc,char ** argv,const ElGramArgMain & Gram,
                           bool VerifInit=true,bool AccUnK=false
                       ) const;
@@ -451,8 +451,8 @@ class LArgMain
 #define EIAM_AccUnK false
 #define EIAM_NbArgGlobGlob -1
 
-// Var glob, rajoutee pour indiquer que MICMAC est en mode visuel
-// initialisee dans GenMain, utilisee dans ElInitArgMain
+// Var glob, rajoutee for indiquer que MICMAC est en mode visuel
+// initialisee in GenMain, utilisee in ElInitArgMain
 extern bool MMVisualMode;
 
 // Ch.M: MMRunVisualMode is now a pointer to function which is statically

@@ -71,7 +71,7 @@ void std_sobel
     INT y1 = ElMin3(Iout.ty()-1,Iin.ty()-1,p1.y);
     INT x0 = ElMax(1,p0.x);
     INT y0 = ElMax(1,p0.y);
-// pour eviter les overflow
+// for eviter les overflow
     TyBase vmax = Iout.vmax()-1;
     for (INT x=x0; x<x1 ; x++)
         for (INT y=y0; y<y1 ; y++)
@@ -185,7 +185,7 @@ int  main(int,char **)
 
 
       // voir la deinifition de moy en tete
-      // de fichier
+      // de file
        ELISE_COPY
        (
            W.all_pts(),

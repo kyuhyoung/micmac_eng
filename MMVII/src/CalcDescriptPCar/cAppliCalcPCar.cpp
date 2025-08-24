@@ -36,7 +36,7 @@ template <class Type> class  cTplAppliCalcDescPCar
         tREAL4 ToStored(const tREAL4 aV)   {return (aV-mVC) *mDyn;}
         tREAL4 FromStored(const tREAL4 aV) {return aV/mDyn + mVC;}
 
-        cAppliCalcDescPCar & mAppli;   ///< Reference the application
+        cAppliCalcDescPCar & mAppli;   ///< reference the application
         bool                 mIsFloat; ///< Known from type
         tSP_Pyr              mPyr;     ///< Pointer on gaussian pyramid
         tSP_Pyr              mPyrLapl;     ///< Pointer to laplacian pyramids
@@ -89,7 +89,7 @@ class cAppliCalcDescPCar : public cMMVII_Appli
         double      mSDON;  ///< Scale 4 Orig Normalized
         double      mCI0;   ///<  Convol Im0
         double      mCC0;   ///<  Convol Corner0
-        std::string mPrefixOut; ///< Prefix 4 Out, is constructed from Image and CarPOut (inherited from Appli)
+        std::string mPrefixOut; ///< Prefix 4 Out, is constructed from image and CarPOut (inherited from Appli)
         cFilterPCar          mFPC;
 };
 
@@ -203,7 +203,7 @@ template<class Type>  void cTplAppliCalcDescPCar<Type>::ExeOneBox(const cPt2di &
     }
     mPyr->SaveInFile(0,mAppli.mSaveIms);
 
-    // Compute Normalized Original Image required
+    // Compute Normalized Original image required
     if (mAppli.mDoOriNorm)
     {
        {

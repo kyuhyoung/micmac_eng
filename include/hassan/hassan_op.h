@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 /////////////////////////////////////////////////////////////////////////////
-/*    correlation  entre deux images                                       */
+/*    correlation  between deux images                                       */
 /***************************************************************************/
 
 class H_Oper_Correl_Im : public Simple_OPBuf1<REAL,REAL>
@@ -59,7 +59,7 @@ class H_Oper_Correl_Im : public Simple_OPBuf1<REAL,REAL>
 
 
 /////////////////////////////////////////////////////////////////////////////
-/*    correlation avec une contriante de region de l'image gauche          */
+/*    correlation with une contriante de region de l'image gauche          */
 /***************************************************************************/
 
 class H_Oper_Correl : public Simple_OPBuf1<REAL,REAL>
@@ -76,7 +76,7 @@ class H_Oper_Correl : public Simple_OPBuf1<REAL,REAL>
 };
 
 /////////////////////////////////////////////////////////////////////////////
-/*    correlation avec une contriante de region de l'image gauche          */
+/*    correlation with une contriante de region de l'image gauche          */
 /***************************************************************************/
 
 class H_Oper_Correl_Cont : public Simple_OPBuf1<REAL,REAL>
@@ -93,7 +93,7 @@ class H_Oper_Correl_Cont : public Simple_OPBuf1<REAL,REAL>
 };
 
 /////////////////////////////////////////////////////////////////////////////
-/*    filtrage selon les moindres carrees avec une contrainte de region    */
+/*    filtrage selon les moindres carrees with une contrainte de region    */
 /***************************************************************************/
 
 class H_Oper_Md_Car : public Simple_OPBuf1<REAL,REAL>
@@ -152,7 +152,7 @@ class Moind_Car
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-/*    filtrage selon les moindres carrees avec une contrainte de region et poid de coef de corr  */
+/*    filtrage selon les moindres carrees with une contrainte de region and poid de coef de corr  */
 /*************************************************************************************************/
 
 class H_Oper_Md_Car_Poid : public Simple_OPBuf1<REAL,REAL>

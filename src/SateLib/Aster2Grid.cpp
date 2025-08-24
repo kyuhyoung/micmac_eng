@@ -173,7 +173,7 @@ vector<vector<Pt3dr> > ReadLatticeGeo_OLD(string aTxtLong, string aTxtLat)
 		aMatGeo[i][8].y = atan(tan(L9 *M_PI / 180) / WGSCorFact) * 180 / M_PI;
 		aMatGeo[i][9].y = atan(tan(L10 *M_PI / 180) / WGSCorFact) * 180 / M_PI;
 		aMatGeo[i][10].y = atan(tan(L11 *M_PI / 180) / WGSCorFact) * 180 / M_PI;
-		//std::cout << "Ligne " << i << " : " << aMatGeo[i] << endl;
+		//std::cout << "line " << i << " : " << aMatGeo[i] << endl;
 		i++;
 	}
 
@@ -404,7 +404,7 @@ int Aster2Grid_main(int argc, char ** argv)
 	////Testing the reconstructed RPC
 	//Pt3dr aPtTestGeo(aMatPtsGeo[3][3].x, aMatPtsGeo[3][3].y, 0);
 	//Pt3dr aPtTestIma(aMatPtsIm[3][3].x, aMatPtsIm[3][3].y, 0);
-	////cout << "Point Test Geo    : " << aPtTest4 << endl;
+	////cout << "point Test Geo    : " << aPtTest4 << endl;
 	//double noRefine[] = { 0, 1, 0, 0, 0, 1 };
 	//vector<double> vRefineCoef;
 	//for (int i = 0; i<6; i++)

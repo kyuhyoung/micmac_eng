@@ -90,7 +90,7 @@ void TransCoder::filecoder(const char *str)
      char buf[nb_buf];
      while(1)
      {
-        // si ligne trop grande, pas un fichier texte
+        // if line trop grande, pas un file texte
         bool endof;
         if (! fp.fgets(buf,nb_buf,endof,true))
         {

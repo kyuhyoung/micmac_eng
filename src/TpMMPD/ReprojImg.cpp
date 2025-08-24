@@ -76,7 +76,7 @@ class cReprojColor
 
 //----------------------------------------------------------------------------
 
-// Image class
+// image class
 class cImReprojImg
 {
   public:

@@ -18,7 +18,7 @@ void NavigationData::addNavigationSlot(NavigationSlot &slot){
 
 
 // -------------------------------------------------------------------------------
-// Test si les éphémérides contiennent une données respectant les 3 conditions :
+// Test if les éphémérides contiennent une données respectant les 3 conditions :
 //  (1) Le PRN correspond
 //  (2) La date du paquet est < à la date requise
 //  (3) La date du paquet est la plus récente possible
@@ -49,7 +49,7 @@ bool NavigationData::hasEphemeris(int PRN, GPSTime time){
 }
 
 // -------------------------------------------------------------------------------
-// Test si les éphémérides contiennent une données respectant les 3 conditions :
+// Test if les éphémérides contiennent une données respectant les 3 conditions :
 //  (1) Le PRN correspond
 //  (2) La date du paquet est < à la date requise
 //  (3) La date du paquet est la plus récente possible
@@ -97,7 +97,7 @@ NavigationSlot& NavigationData::getNavigationSlot(int PRN, GPSTime time){
 }
 
 // -------------------------------------------------------------------------------
-// Calcul des positions des satellite à partir d'un slot de données de rinex .nav
+// computation des positions des satellite à partir d'un slot de données de rinex .nav
 // L'argument pseudorange permet de déduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 std::vector<ECEFCoords> NavigationData::computeSatellitePos(std::vector<std::string> PRN, GPSTime t, std::vector<double> psr){
@@ -109,7 +109,7 @@ std::vector<ECEFCoords> NavigationData::computeSatellitePos(std::vector<std::str
 }
 
 // -------------------------------------------------------------------------------
-// Calcul des erreur d'horloge de tous les satellites
+// computation des error d'horloge de tous les satellites
 // L'argument pseudorange permet de déduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 std::vector<double> NavigationData::computeSatelliteClockError(std::vector<std::string> PRN, GPSTime t, std::vector<double> psr){
@@ -131,7 +131,7 @@ NavigationSlot& NavigationData::getNavigationSlot(std::string PRN, GPSTime time)
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
+// computation d'une position de satellite à partir d'un slot de données de rinex .nav
 // L'argument pseudorange permet de déduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 ECEFCoords NavigationData::computeSatellitePos(int PRN, GPSTime time, double pseudorange){
@@ -139,7 +139,7 @@ ECEFCoords NavigationData::computeSatellitePos(int PRN, GPSTime time, double pse
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
+// computation d'une position de satellite à partir d'un slot de données de rinex .nav
 // L'argument pseudorange permet de déduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 ECEFCoords NavigationData::computeSatellitePos(std::string PRN, GPSTime time, double pseudorange){
@@ -147,21 +147,21 @@ ECEFCoords NavigationData::computeSatellitePos(std::string PRN, GPSTime time, do
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
+// computation d'une position de satellite à partir d'un slot de données de rinex .nav
 // -------------------------------------------------------------------------------
 ECEFCoords NavigationData::computeSatellitePos(int PRN, GPSTime time){
 	return this->computeSatellitePos(PRN, time, 0);
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
+// computation d'une position de satellite à partir d'un slot de données de rinex .nav
 // -------------------------------------------------------------------------------
 ECEFCoords NavigationData::computeSatellitePos(std::string PRN, GPSTime time){
 	return this->computeSatellitePos(std::stoi(PRN.substr(1,2)), time);
 }
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
+// computation de l'error d'horloge d'un satellite
 // L'argument pseudorange permet de déduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 double NavigationData::computeSatelliteClockError(int PRN, GPSTime time, double pseudorange){
@@ -169,7 +169,7 @@ double NavigationData::computeSatelliteClockError(int PRN, GPSTime time, double 
 }
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
+// computation de l'error d'horloge d'un satellite
 // L'argument pseudorange permet de déduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 double NavigationData::computeSatelliteClockError(std::string PRN, GPSTime time, double pseudorange){
@@ -177,7 +177,7 @@ double NavigationData::computeSatelliteClockError(std::string PRN, GPSTime time,
 }
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
+// computation de l'error d'horloge d'un satellite
 // -------------------------------------------------------------------------------
 double NavigationData::computeSatelliteClockError(int PRN, GPSTime time){
     return this->computeSatelliteClockError(PRN, time, 0);
@@ -185,7 +185,7 @@ double NavigationData::computeSatelliteClockError(int PRN, GPSTime time){
 
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
+// computation de l'error d'horloge d'un satellite
 // -------------------------------------------------------------------------------
 double NavigationData::computeSatelliteClockError(std::string PRN, GPSTime time){
     return this->computeSatelliteClockError(std::stoi(PRN.substr(1,2)), time);
@@ -208,7 +208,7 @@ ECEFCoords NavigationData::computeSatelliteSpeed(std::string PRN, GPSTime time){
 	// Différence finie en O(h)	
 	ECEFCoords sat_pos_median = this->computeSatellitePos(PRN, time);	
 		
-	// Différence avant 
+	// Différence before 
 	if (this->hasEphemeris(PRN, time.addSeconds(+1))){
 		ECEFCoords sat_pos_fwd = this->computeSatellitePos(PRN, time.addSeconds(+1));
 		ECEFCoords speed = sat_pos_fwd - sat_pos_median;

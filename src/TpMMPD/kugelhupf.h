@@ -23,9 +23,9 @@ class cQuickCorrelPackIm
           Pt2di               mSzMarq;  // Taille de la ss res en fft, interet a ce que ce soit une puis de 2
           double              mResol;
 
-          TIm2D<REAL4,REAL8>  mTIm;   // Buffer pour l'image
-          TIm2D<REAL4,REAL8>  mTRef;  // Buffer pour la marque fid
-          TIm2D<REAL4,REAL8>  mTMasq;   // Buffer pour le masque
+          TIm2D<REAL4,REAL8>  mTIm;   // Buffer for l'image
+          TIm2D<REAL4,REAL8>  mTRef;  // Buffer for la marque fid
+          TIm2D<REAL4,REAL8>  mTMasq;   // Buffer for le masque
           double              mSomPds;
           Video_Win * mW;
 
@@ -76,8 +76,8 @@ class cQuickCorrelOneFidMark
           Pt2di  mSzBuf;    // Taille des zones memoires a charger
           int    mSzSsResFFT;  // Taille de la ss res en fft, interet a ce que ce soit une puis de 2
           double mSsRes;    // Ss resolution
-          int    mNbNiv;    // MbNiveau dans la pyramide
-          double mSsResByNiv;  // Dif resol entre 2 niveau de pyramide
+          int    mNbNiv;    // MbNiveau in la pyramide
+          double mSsResByNiv;  // Dif resol between 2 niveau de pyramide
 
           std::vector<cQuickCorrelPackIm> mPyram;
 
@@ -138,7 +138,7 @@ class cAppli_FFTKugelhupf_main :  public cAppliWithSetImage
 
 static const double TheDefCorrel = -2.0;
 
-//Image for correlation class
+//image for correlation class
 //all images for correlation have the same size
 class cCorrelImage
 {

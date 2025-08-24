@@ -159,7 +159,7 @@ int Digeo_main( int argc, char **argv )
     list<DigeoPoint> total_list;
     for (int aKBox = 0 ; aKBox<appli.NbInterv() ; aKBox++)
     {
-        appli.LoadOneInterv(aKBox);  // Calcul et memorise la pyramide gaussienne
+        appli.LoadOneInterv(aKBox);  // computation and memorise la pyramide gaussienne
 
         if ( !appli.doComputeCarac() ) continue;
 
@@ -242,7 +242,7 @@ int Digeo_main( int argc, char **argv )
 
    En contrepartie de l'accessibilite au code source et des droits de copie,
    de modification et de redistribution accordes par cette licence, il n'est
-   offert aux utilisateurs qu'une garantie limitee.  Pour les mêmes raisons,
+   offert aux utilisateurs qu'une garantie limitee.  Pour les mmes raisons,
    seule une responsabilite restreinte pese sur l'auteur du programme,  le
    titulaire des droits patrimoniaux et les concedants successifs.
 

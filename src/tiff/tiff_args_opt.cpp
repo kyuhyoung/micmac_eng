@@ -180,7 +180,7 @@ class Data_Atiff_Pt2di : public Data_Arg_Tiff
                _mode(mode) 
         {}
 
-// Pour  INT et double, on stocke les 2, par compat avec apparition tardive de double
+// for  INT and double, on stocke les 2, par compat with apparition tardive de double
         Data_Atiff_Pt2di(INT v,mode_modif mode) : 
                 _pt  (v,0), 
                 _ptr  (v,0), 

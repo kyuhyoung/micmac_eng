@@ -102,10 +102,10 @@ double * cElCompiledFonc::FoncSetVarAdr()
 /*                                                            */
 /**************************************************************/
 
-// Foncteur pour 
+// Foncteur for 
 //   Xind1 - XInd2 = Cste
 //   Par defaut Cste = 0
-//   On peut fixer la valeur de Cste  par FoncSetVarAdr()
+//   On peut fixer la value de Cste  par FoncSetVarAdr()
 
 cElCompiledFonc * cElCompiledFonc::FoncSetValsEq
                   (

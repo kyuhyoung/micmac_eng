@@ -68,7 +68,7 @@ class cEqOneHomogFormelle : public  cNameSpaceEqF ,
                 bool Code2Gen
           );
 
-         // WithD2 : avec derivees secondes
+         // WithD2 : with derivees secondes
           REAL AddLiaisonP1P2(Pt2dr P1, Pt2dr aP2, REAL aPds,bool WithD2);
           Pt2dr StdAddLiaisonP1P2(Pt2dr P1,Pt2dr P2,REAL aPds,bool WithD2); // Version moderne type camera
           REAL ResiduNonSigneP1P2(Pt2dr aP1,Pt2dr aP2);
@@ -761,7 +761,7 @@ void cLEqHomOneDist::PondereFromErreur(REAL aDCut)
 
 REAL  cLEqHomOneDist::NStepOpt(INT aNb,bool CentreFiged)
 {
-	// Pour initialiser correctement la dist
+	// for initialiser correctement la dist
    REAL aRes = 20.0;
    mCentreFige = CentreFiged;
    mDRF->SetCentreFige(CentreFiged);

@@ -45,7 +45,7 @@ template <class Obj>  class ElSlist : public  Mcheck
 {
       private :
 
-         // pour l'instant pas besoin de copie, donc private
+         // for l'instant pas besoin de copie, donc private
          ElSlist(const ElSlist &);
 
       public :

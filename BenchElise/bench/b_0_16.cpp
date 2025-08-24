@@ -44,7 +44,7 @@ template <class Type,class TypeBase> void  test_interpole_im1d
 
     REAL dif;
 
-    // VERIF INTERPOLATION SUR LES BITMAPS 
+    // VERIF INTERPOLATION on LES BITMAPS 
     ELISE_COPY
     (
         b1.all_pts(),
@@ -59,7 +59,7 @@ template <class Type,class TypeBase> void  test_interpole_im1d
     BENCH_ASSERT(dif < epsilon);
 
 
-    // VERIF CLIP  POUR LES BITMAPS  AVEC PTS REELS
+    // VERIF CLIP  for LES BITMAPS  with PTS REELS
 
     ELISE_COPY(b1.all_pts(),1,b1.out());
 
@@ -95,7 +95,7 @@ template <class Type,class TypeBase> void  test_interpole_im2d
 
     REAL dif;
 
-    // VERIF INTERPOLATION SUR LES BITMAPS 
+    // VERIF INTERPOLATION on LES BITMAPS 
 
     Fonc_Num f2bil = (bilin) ?  ((FX/fx+dx)* (FY/fy+dy)) : Fonc_Num(0);
     ELISE_COPY
@@ -111,7 +111,7 @@ template <class Type,class TypeBase> void  test_interpole_im2d
 
     BENCH_ASSERT(dif < epsilon);
 
-    // VERIF FONCTIONS COORDONNEES   POUR LES FLUX REELS
+    // VERIF FONCTIONS coordinates   for LES FLUX REELS
     ELISE_COPY
     (
         rectangle(Pt2di(0,0),Pt2di(tx,ty)),
@@ -125,7 +125,7 @@ template <class Type,class TypeBase> void  test_interpole_im2d
     BENCH_ASSERT(dif < epsilon);
 
 
-    // VERIF CLIP  POUR LES BITMAPS  AVEC PTS REELS
+    // VERIF CLIP  for LES BITMAPS  with PTS REELS
 
     ELISE_COPY(b1.all_pts(),1,b1.out());
 

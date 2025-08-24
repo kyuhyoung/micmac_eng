@@ -614,7 +614,7 @@ void MainWindow::tapas(){
             qApp->processEvents(QEventLoop::WaitForMoreEvents);
             
         }
-        // Ligne à ajouter dans toutes les fonctions qui changeront le résidu
+        // line à ajouter in toutes les fonctions qui changeront le résidu
         OriResidu = tapas->sendOri();
         //+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°°°+°+°+°+°+°+°+°+°°
 
@@ -623,7 +623,7 @@ void MainWindow::tapas(){
         if(word!=""){
             lab->setText(word);
             dockUpdate();
-            // Ligne à ajouter dans toutes les fonctions qui changeront le résidu
+            // line à ajouter in toutes les fonctions qui changeront le résidu
             writeResiduOri(OriResidu);
             //+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°+°°°+°+°+°+°+°+°+°+°°
 
@@ -1559,7 +1559,7 @@ void MainWindow::confirm(){
         std::string path_expor = pathProject.toStdString()+"/"+name_file.toStdString()+".txt";
         const char *path = path_expor.c_str()
                 ;
-        ofstream otherPath(path, ios::out | ios::trunc);  // ouverture en écriture avec effacement du pathProject ouvert
+        ofstream otherPath(path, ios::out | ios::trunc);  // ouverture en écriture with effacement du pathProject ouvert
         if(otherPath)
         {
             
@@ -1686,7 +1686,7 @@ qDebug() << "YES";
 
                     }
 
-                    //Création d'un pathProject xml avec tous les noms des images
+                    //Création d'un pathProject xml with tous les noms des images
                     aLON.Name()=aList;
                     MakeFileXML(aLON,pathProject.toStdString()+"/listeimages.xml");
 
@@ -1714,7 +1714,7 @@ qDebug() << "YES";
                     }
 
 
-                    //Création d'un pathProject xml avec tous les noms des images
+                    //Création d'un pathProject xml with tous les noms des images
                     aLONC.Name()=aListC;
                     MakeFileXML(aLONC,pathProject.toStdString()+"/listeimageschecked.xml");
 
@@ -1803,7 +1803,7 @@ void MainWindow::loadExistingProject1()
 
                 }
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLON.Name()=aList;
                 MakeFileXML(aLON,pathProject.toStdString()+"/listeimages.xml");
 
@@ -1831,7 +1831,7 @@ void MainWindow::loadExistingProject1()
                 }
 
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLONC.Name()=aListC;
                 MakeFileXML(aLONC,pathProject.toStdString()+"/listeimageschecked.xml");
 
@@ -1923,7 +1923,7 @@ void MainWindow::loadExistingProject2()
 
                 }
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLON.Name()=aList;
                 MakeFileXML(aLON,pathProject.toStdString()+"/listeimages.xml");
 
@@ -1951,7 +1951,7 @@ void MainWindow::loadExistingProject2()
                 }
 
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLONC.Name()=aListC;
                 MakeFileXML(aLONC,pathProject.toStdString()+"/listeimageschecked.xml");
 
@@ -2043,7 +2043,7 @@ void MainWindow::loadExistingProject3()
 
                 }
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLON.Name()=aList;
                 MakeFileXML(aLON,pathProject.toStdString()+"/listeimages.xml");
 
@@ -2071,7 +2071,7 @@ void MainWindow::loadExistingProject3()
                 }
 
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLONC.Name()=aListC;
                 MakeFileXML(aLONC,pathProject.toStdString()+"/listeimageschecked.xml");
 
@@ -2166,7 +2166,7 @@ void MainWindow::loadExistingProject4()
 
                 }
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLON.Name()=aList;
                 MakeFileXML(aLON,pathProject.toStdString()+"/listeimages.xml");
 
@@ -2194,7 +2194,7 @@ void MainWindow::loadExistingProject4()
                 }
 
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLONC.Name()=aListC;
                 MakeFileXML(aLONC,pathProject.toStdString()+"/listeimageschecked.xml");
 
@@ -2289,7 +2289,7 @@ void MainWindow::loadExistingProject5()
 
                 }
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLON.Name()=aList;
                 MakeFileXML(aLON,pathProject.toStdString()+"/listeimages.xml");
 
@@ -2317,7 +2317,7 @@ void MainWindow::loadExistingProject5()
                 }
 
 
-                //Création d'un pathProject xml avec tous les noms des images
+                //Création d'un pathProject xml with tous les noms des images
                 aLONC.Name()=aListC;
                 MakeFileXML(aLONC,pathProject.toStdString()+"/listeimageschecked.xml");
 
@@ -2359,7 +2359,7 @@ void MainWindow::loadExistingProject5()
 }
 
 
-// Fonctions qui permettent d'ouvrir rapidement les projets récents (ouverture/écriture dans les fichiers)
+// Fonctions qui permettent d'ouvrir rapidement les projets récents (ouverture/écriture in les fichiers)
 void MainWindow::writePaths(QString pathToWrite){
 
 
@@ -2406,7 +2406,7 @@ void MainWindow::writePaths(QString pathToWrite){
                 fichier.close();
 
             }
-            else  // sinon
+            else  // else
                 cerr << "Erreur à l'ouverture !" << endl;}
         else
         { std::cout << "ALREADY EXISTING" << std::endl;}
@@ -2449,7 +2449,7 @@ QList<QString> MainWindow::readPaths(){
 }
 
 
-// Fonction qui rafraichit le dock
+// function qui rafraichit le dock
 void MainWindow::refreshInterface(){
 
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2881,7 +2881,7 @@ void MainWindow::ajoutf()
                         
                         aList.push_back(name.toStdString().c_str());
                         
-                        //Création d'un pathProject xml avec tous les noms des images
+                        //Création d'un pathProject xml with tous les noms des images
                         aLON.Name()=aList;
                         MakeFileXML(aLON,pathProject.toStdString()+"/listeimages.xml");
                         
@@ -3014,12 +3014,12 @@ void MainWindow::setTextFileReader(){
     if(otherPath && ((imgDDockPath.find(".txt")<10000) ||
                      (imgDDockPath.find(".xml")<10000) ||
                      (imgDDockPath.find(".TXT")<10000) ||
-                     (imgDDockPath.find(".XML")<10000)))  // si l'ouverture a fonctionné
+                     (imgDDockPath.find(".XML")<10000)))  // if l'ouverture a fonctionné
 
     {
         onglets->setCurrentWidget(ongletFileReader);
-        std::string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
-        while(getline(otherPath, contenu))  // tant que l'on peut mettre la ligne dans "contenu"
+        std::string contenu;  // déclaration d'une chaîne qui contiendra la line lue
+        while(getline(otherPath, contenu))  // tant que l'on peut mettre la line in "contenu"
 
         {
             cout << contenu << endl;
@@ -3034,7 +3034,7 @@ void MainWindow::setTextFileReader(){
 
 
 
-    else if(otherPath && (imgDDock.find("Ori-")<10000))  // si l'ouverture a fonctionné
+    else if(otherPath && (imgDDock.find("Ori-")<10000))  // if l'ouverture a fonctionné
 
     {
         std::string OriWord = imgDDock.erase(0,4);
@@ -3089,7 +3089,7 @@ void MainWindow::vino2click(){
                      (imgDDockPath.find(".BMP")<10000) ||
                      (imgDDockPath.find(".TIF")<10000) ||
                      (imgDDockPath.find(".tif")<10000))
-            && (imgDDockPath.find(".tif.xml")>10000))  // si l'ouverture a fonctionné
+            && (imgDDockPath.find(".tif.xml")>10000))  // if l'ouverture a fonctionné
 
     {
 
@@ -3099,7 +3099,7 @@ void MainWindow::vino2click(){
     }
 
     if(otherPath && ((imgDDockPath.find(".ply")<10000) ||
-                     (imgDDockPath.find(".PLY")<10000)))  // si l'ouverture a fonctionné
+                     (imgDDockPath.find(".PLY")<10000)))  // if l'ouverture a fonctionné
 
     {
 
@@ -3215,7 +3215,7 @@ void MainWindow::writeResiduOri(std::string OriResidu){
 
     qDebug() << "writeResiduOri";
     std::string pathResidu = pathProject.toStdString()+"/.residu.txt";
-    ofstream txtFileResidu(pathResidu.c_str(), ios::out | ios::trunc);  // ouverture en écriture avec effacement du pathProject ouvert
+    ofstream txtFileResidu(pathResidu.c_str(), ios::out | ios::trunc);  // ouverture en écriture with effacement du pathProject ouvert
     if(txtFileResidu)
     {
 
@@ -3236,16 +3236,16 @@ std::string MainWindow::readResiduOri(){
 
     qDebug() << "readResiduOri";
 
-    string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
+    string contenu;  // déclaration d'une chaîne qui contiendra la line lue
 
 
     std::string pathResidu = pathProject.toStdString()+"/.residu.txt";
-    ifstream fichier(pathResidu.c_str(), ios::in);  // on ouvre le fichier en lecture
+    ifstream fichier(pathResidu.c_str(), ios::in);  // on ouvre le file en lecture
 
     if(fichier)
     {
 
-        getline(fichier, contenu);  // on met dans "contenu" la ligne
+        getline(fichier, contenu);  // on met in "contenu" la line
 
 
     }

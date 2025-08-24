@@ -8,7 +8,7 @@
 #include "ECEFCoords.h"
 
 // ---------------------------------------------------------------
-// Classe contenant les coordonnées planes dans un repère RTL
+// class contenant les coordonnées planes in un repère RTL
 // ---------------------------------------------------------------
 
 class ECEFCoords;

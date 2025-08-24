@@ -107,7 +107,7 @@ template <class Type> class Hough_Mappped_Comp : public  Simple_OPBuf1<INT,Type>
          ElHough::tModeAccum mModeH;
          INT                 mDimHough;
 
-         ElHoughFiltSeg *  mScore;    // L'un ou l'autre suivant les cas
+         ElHoughFiltSeg *  mScore;    // L'un or l'autre suivant les cas
 
          std::vector<Im2D<Type,INT> >   mImGlobTmp;
          std::vector<Im2D<U_INT1,INT> >  mImHough;
@@ -759,9 +759,9 @@ void HoughMapFromFoncNum
 
 void HoughMapFromImage
      (
-          unsigned char ** im ,    int Tx, int Ty,  // PARAMETRE IMAGE
+          unsigned char ** im ,    int Tx, int Ty,  // parameter image
           const ComplexI & p0, const ComplexI & p1 ,     // rectangle image
-          HoughMapedParam & aParam,      // Parametre de detection de segment
+          HoughMapedParam & aParam,      // parameter de detection de segment
           HoughMapedInteractor & aHMI // Interacteur 
      )
 {
@@ -785,9 +785,9 @@ void HoughMapFromImage
 
 void HoughMapFromFile
      (
-          const std::string & aName,    // NOM DU FICHIER
+          const std::string & aName,    // NOM DU file
           const ComplexI & p0, const ComplexI & p1 ,     // rectangle image
-          HoughMapedParam & aParam,      // Parametre de detection de segment
+          HoughMapedParam & aParam,      // parameter de detection de segment
           HoughMapedInteractor & aHMI  // Interacteur 
      )
 {

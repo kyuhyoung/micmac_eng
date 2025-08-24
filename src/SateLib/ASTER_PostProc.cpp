@@ -372,7 +372,7 @@ int ASTERProjAngle_main(int argc, char ** argv)
 
 /*
 
-// On cree un fichier de points geographiques pour les transformer avec proj4
+// On cree un file de points geographiques for les transformer with proj4
 {
 std::ofstream fic("processing/direct_ptGeo.txt");
 fic << std::setprecision(15);
@@ -384,7 +384,7 @@ for (int l = 0; l<nbLine; ++l)
 for (int c = 0; c<nbSamp; ++c)
 {
 Pt3dr Pimg(ulcSamp + c * stepPixel, ulcLine + l * stepPixel, altitude);
-//pour affiner les coordonnees
+//for affiner les coordinates
 Pt3dr PimgRefined = ptRefined(Pimg, vRefineCoef);
 
 Pt3dr Pgeo = DirectRPC(PimgRefined);

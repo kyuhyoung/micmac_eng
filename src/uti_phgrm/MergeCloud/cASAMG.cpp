@@ -338,7 +338,7 @@ std::string  cASAMG::ExportMiseAuPoint()
 {
     if (! IsSelected()) return"";
 
-    // On genere les export a sous resol (surtout pour visualisation tempo)
+    // On genere les export a under resol (surtout for visualisation tempo)
     cXML_ParamNuage3DMaille aParam = mStdN->Params();
 
     Fonc_Num  aFOK = NFoncDilatCond
@@ -420,7 +420,7 @@ std::string  cASAMG::ExportMiseAuPoint()
           aComPly = aComPly + " Center=true";
     }
     */
-    // GIANG For Paul TS 23/11/2017 . export centre optique dans C3DC Nuage.
+    // GIANG For Paul TS 23/11/2017 . export centre optique in C3DC Nuage.
     else if (mAppli->NormaleByCenter())
     {
           aComPly = aComPly + " NormByC=2";

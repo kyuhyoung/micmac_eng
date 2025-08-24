@@ -428,7 +428,7 @@ void ELISE_fp::InterneMkDirRec(const  std::string  & aName )
 	struct stat status;
    std::string ms = aName;
 
-// même technique que dans MkDirSvp, a modifier par la suite
+// même technique que in MkDirSvp, a modifier par la suite
 #if (ELISE_windows)
 	if ((*ms.rbegin() == '/') || (*ms.rbegin() == '\\'))
 	ms.resize(ms.size()-1);
@@ -2065,7 +2065,7 @@ void RequireBin
 	const std::string & LeMake
 	)
 {
-	// Version minimaliste pour l'instant
+	// Version minimaliste for l'instant
 	launchMake(LeMake, LautreBin, 2);
 }
 
@@ -2084,7 +2084,7 @@ INT sizeofile (const char * nom)
 #define STD_MANGL(aType) std::string Mangling(aType *) {return #aType;}
 
 /******************************************************************/
-/*  Quand c'est possible on passe par l'interface standard des Fp */
+/*  when c'est possible on passe par l'interface standard des Fp */
 /******************************************************************/
 
 #define  STD_ElFp_Dump(aType)\
@@ -2115,7 +2115,7 @@ STD_ElFp_DumpUndump(std::string)
 
 
 /********************************************************/
-/*  Pour les type a taille fixe on fait du fwrite fread */
+/*  for les type a taille fixe on fait du fwrite fread */
 /********************************************************/
 
 #define Raw_ElFp_Dump(aType)\
@@ -2140,7 +2140,7 @@ Raw_ElFp_DumpUndump(Box2dr)
 Raw_ElFp_DumpUndump(Box2di)
 
 /********************************************************/
-/* Pour les container on passe par des template         */
+/* for les container on passe par des template         */
 /********************************************************/
 
 template <class tCont> void TplContDumpInFile(ELISE_fp & aFp,const tCont & aCont)

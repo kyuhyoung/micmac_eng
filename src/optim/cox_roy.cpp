@@ -94,21 +94,21 @@ Modification : Marc PIERROT DESEILLIGNY
 
 void  ExempleUtilisationCoxRoy 
       (
-          signed short ** aZRes,  // Tableau de resultat
-          int aSzX, int aSzY,     // Taille en X et en Y du rectangle
+          signed short ** aZRes,  // array de result
+          int aSzX, int aSzY,     // Taille en X and en Y du rectangle
           signed short ** aZmin,  // Borne Inf de la nappe
           signed short ** aZmax,  // Borne Sup de la nappe
-          int   (* aPtrFuncCost) (int,int,int), // Fonction indiquant le cout d'un pt x,y,z
+          int   (* aPtrFuncCost) (int,int,int), // function indiquant le cout d'un pt x,y,z
           double aCoefLin,double aCoefCst       // Coefficients de regularisation
       )
 {
-   // [1] On cree l'objet
+   // [1] On cree l'object
     cInterfaceCoxRoyAlgo *  aCRAlgo = cInterfaceCoxRoyAlgo::NewOne
                                       (
                                           aSzX,aSzY,
                                           aZmin,aZmax,
                                           false,          // on choisit la  4 Conne-xite
-                                          true            // Stocke sur UCHAR
+                                          true            // Stocke on UCHAR
                                       );
 
     // [2] On fixe les couts des arcs verticaux (couts d'attache aux donnees)
@@ -507,7 +507,7 @@ template <class cCRNode> class cTplCoxRoyAlgo : public cInterfaceCoxRoyAlgo
            int TopMaxFlowStd(short **Sol);
 
 
-           inline int NbEdges() const {return eNbEdges;} // 6 ou 10 suivant la conne-xite
+           inline int NbEdges() const {return eNbEdges;} // 6 or 10 suivant la conne-xite
            inline bool Cnx8() const {return NbEdges() == 10;}
 
 

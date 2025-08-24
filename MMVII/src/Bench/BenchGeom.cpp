@@ -400,7 +400,7 @@ template<class Type> void TplBenchIsometrie(cParamExeBench & aParam)
 	 //  StdOut() << aSim.Value(aTri.Pt(aK)) <<   aSim.Value(aTri.Pt((aK+1)%3)) << std::endl; 
 
 	 cPtxd<Type,3> aN = NormalUnit(aTri);
-	 cPtxd<Type,3> aImN = aSim.Value(aN) - aSim.Value(cPtxd<Type,3>(0,0,0)) ;  // Image of normal as vector
+	 cPtxd<Type,3> aImN = aSim.Value(aN) - aSim.Value(cPtxd<Type,3>(0,0,0)) ;  // image of normal as vector
 	 cPtxd<Type,3> aVecK(0,0,1); // we dont have aImN==aVK because scaling, BUT colinear and same orient, test cosinus then
 
 	 MMVII_INTERNAL_ASSERT_bench( std::abs(Cos(aImN,aVecK) -1) <aEps,"Simil Tri3D  P1");

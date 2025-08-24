@@ -313,7 +313,7 @@ void cAppliApero::ExportPose(const cExportPose & anEP,const std::string & aPref)
               if (anEP.ChC().IsInit())
               {
                   // ELISE_ASSERT(false,"CHC in Apero, inhibed : use ad-hoc command\n");
-                 // On modifie, donc on travaille sur un dupl
+                 // On modifie, donc on travaille on un dupl
                    CamStenope *aCS2 = aPC->DupCurCam();
                    aCS2->UnNormalize();
                    aCS2->SetProfondeur(aP);
@@ -628,11 +628,11 @@ void cAppliApero::ExportRepereLoc(const cExportRepereLoc & anERL)
        AjustNormalSortante(true,aVZ,aCS1,aP1);
 
        aVY = vunit(aVZ ^ aVX);
-       aVX = aVY ^aVZ ;   // Sans doute inutile, mais bon  ....
+       aVX = aVY ^aVZ ;   // without doute inutile, but bon  ....
 
        aVX = vunit(aVX*anAxe.x + aVY * anAxe.y);
        aVY = vunit(aVZ ^ aVX);
-       aVX = aVY ^aVZ ;   // Sans doute inutile, mais bon  ....
+       aVX = aVY ^aVZ ;   // without doute inutile, but bon  ....
 
        aVP.clear();
        aVP.push_back(aPose1);

@@ -143,7 +143,7 @@ class cAppli_BasculeRobuste
        std::map<std::string,cPointBascRobust *>     mDicoPt;
        std::vector<cPointBascRobust *>              mVecPt;
  
-       //  Pour biaiser le tirage mets un point autant de fois qu'il a de (N-1) points
+       //  for biaiser le tirage mets un point autant de fois qu'il a de (N-1) points
        std::vector<cPointBascRobust *>              mDecupVecPt;
 
 
@@ -173,7 +173,7 @@ double cPointBascRobust::DistReproj(const Pt3dr & aPLoc,double aMaxEr,double Exp
        // double aDStd = euclid(mPtIms[aKI],mIms[aKI]->mCam->Ter2Capteur(aPLoc));
        double aD3 = euclid(vunit(aPLoc-mIms[aKI]->mC)-mTgtN[aKI]) /  mIms[aKI]->mRA;
 
-       double aD = aD3; // Ou DStd, au choix
+       double aD = aD3; // or DStd, au choix
        aD = aD *aMaxEr /(aD +aMaxEr);
        aD = pow(aD,Exp);
        aSomRes += aD;
@@ -345,7 +345,7 @@ cAppli_BasculeRobuste::cAppli_BasculeRobuste(int argc,char ** argv)  :
      FILE * aFP = FopenNN(mSetFile.mDir+"ResulBar.txt","w","cAppli_BasculeRobuste");
 
      // double aMed = 0;
-     // Premiere fois pour avoir les stats, deuxieme pour les sortir
+     // Premiere fois for avoir les stats, deuxieme for les sortir
      Pt3dr aSomEcAbs(0,0,0);
      Pt3dr aSomEc(0,0,0);
      int aNbPtsOk=0;

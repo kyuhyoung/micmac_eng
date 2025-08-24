@@ -103,8 +103,8 @@ class SegComp : public Seg2d
     //  c = - _p1. _normale
 
 
-//  Le repere de la droite (quand on parle abscisse et ordonnees)
-//  est le repere Ortho Normee direct d'origine p1 et de 1ere dir p1p2
+//  Le repere de la droite (when on parle abscisse and ordonnees)
+//  est le repere Ortho Normee direct d'origine p1 and de 1ere dir p1p2
 
      public :
 
@@ -119,16 +119,16 @@ class SegComp : public Seg2d
         }  ModePrim;
 
 
-        // Constructeur par defaut, necessaire pour creer des vector,
-        //  ElFilo etc... A ne jamais utiliser sinon (etat douteux)
+        // Constructeur par defaut, necessaire for creer des vector,
+        //  ElFilo etc... A ne jamais utiliser else (etat douteux)
         SegComp();
         SegComp(Pt2dr p1,Pt2dr p2);
         SegComp(const Seg2d &);
 
 
-        // tel que Cx X + Cy Y + C0 est la fonction ordonnee
-    // qui prend une valeur 1 en P, utile pour calculer
-    // une "matrice" de coeeficent bary dans un triangle
+        // tel que Cx X + Cy Y + C0 est la function ordonnee
+    // qui prend une value 1 en P, utile for compute
+    // une "matrix" de coeeficent bary in un triangle
         void CoeffFoncOrdonnee
          (
               const Pt2dr& aP,
@@ -139,12 +139,12 @@ class SegComp : public Seg2d
 
 
         REAL ordonnee(Pt2dr pt) const;
-        REAL ordonnee(Pt3dr pt) const;  // Point Projectif
-        Fonc_Num ordonnee(Pt3d<Fonc_Num> pt) const;  // Point Projectif Formel
+        REAL ordonnee(Pt3dr pt) const;  // point Projectif
+        Fonc_Num ordonnee(Pt3d<Fonc_Num> pt) const;  // point Projectif Formel
         REAL  abscisse(Pt2dr pt) const;
 
-        REAL  abscisse_proj_seg(Pt2dr pt) const;  // clippee dans [0 lenght]
-        REAL  recouvrement_seg(const Seg2d &) const;  // clippee dans [0 lenght]
+        REAL  abscisse_proj_seg(Pt2dr pt) const;  // clippee in [0 lenght]
+        REAL  recouvrement_seg(const Seg2d &) const;  // clippee in [0 lenght]
 
         Pt2dr to_rep_loc(Pt2dr) const;
         Pt2dr from_rep_loc(Pt2dr) const;
@@ -177,15 +177,15 @@ class SegComp : public Seg2d
    //=========   DISTANCES DE HAUSSDORF   ==============
 
         // la 1ere primitive est tjs consideree comme un segment
-        // (sinon Haussdorf = infini, hors paralellisme notoire)
-        // dans les version assym, il s'agit de la dist du point de la premiere
+        // (else Haussdorf = infini, hors paralellisme notoire)
+        // in les version assym, il s'agit de la dist du point de la premiere
         // le pus loin de la deuxieme.
 
         REAL  square_haussdorf_seg_assym(const SegComp &) const;
         REAL  square_haussdorf_seg_sym(const SegComp &) const;
         REAL  square_haussdorf_droite_assym(const SegComp &) const;
 
-              // max de "square_haussdorf_droite_assym" dans
+              // max de "square_haussdorf_droite_assym" in
               // les 2 sens, donc pas vraiment une distance de haussdorf
               //  au sens mathematique du terme
 
@@ -221,7 +221,7 @@ class SegComp : public Seg2d
         REAL  _length;
         Pt2dr _normale;
         REAL  _c;
-        REAL  _a1;   // abscisse p1, dans le repere de la droite
+        REAL  _a1;   // abscisse p1, in le repere de la droite
 
         REAL   _square_dist(ModePrim m1,const SegComp & s2,ModePrim m2) const;
         void   proj_ortho
@@ -249,9 +249,9 @@ class cElTriangleComp
         Pt2dr P1() const;
         Pt2dr P2() const;
 
-           // Renvoie une matrice telle que pour
+           // Renvoie une matrix telle que for
        //  un point (x,y) on trouve ses trois
-       //  coordonnees bary a partir de
+       //  coordinates bary a partir de
        //
        //
        //    | X |   |  Coeff P1
@@ -544,7 +544,7 @@ class  IntervDisjoint
 
 /*****************************************************************/
 /*                                                               */
-/*        Classes pour QTree                                     */
+/*        Classes for QTree                                     */
 /*                                                               */
 /*****************************************************************/
 
@@ -715,7 +715,7 @@ class ElSeg3D
                            bool * aOK=0,
                            const cRapOnZ *      aRAZ = 0,
                            cResOptInterFaisceaux * = 0,
-                           const std::vector<Pt3dr> *  aVPts =0// Si existe doit etre pair et c'est une alternance pts/inc
+                           const std::vector<Pt3dr> *  aVPts =0// if existe doit etre pair and c'est une alternance pts/inc
                );
      private :
 
@@ -731,14 +731,14 @@ class cElPlan3D
           // qu'ils definissent le meme plan
           cElPlan3D(Pt3dr aP0,Pt3dr aP1,Pt3dr aP2);
 
-              // Plan au moindre carres; si Pds=0 -> Pds[aK] = 1
+              // Plan au moindre carres; if Pds=0 -> Pds[aK] = 1
               cElPlan3D(const std::vector<Pt3dr> &,const std::vector<double>*,ElSeg3D * aBestSeg=0);
 
           Pt3dr Inter(const cElPlan3D&,const cElPlan3D &,bool &OK) const;
           Pt3dr Inter(const ElSeg3D &,bool *OK=0) const;
               ElSeg3D Inter(const cElPlan3D&,bool &OK) const;
 
-          // Plante si Plan Vertical
+          // Plante if Plan Vertical
           REAL   ZOfXY(Pt2dr aP) const;
           Pt3dr  AddZ(Pt2dr aP) const;
 
@@ -807,8 +807,8 @@ Fonc_Num    FN_SurfIER
             );
 
 // A partir de l'image d'un repere orthonorme V0,V1
-// calcule les parametres A,B,C d'une ellipse
-// passant par V0 et V1
+// compute les parameters A,B,C d'une ellipse
+// passant par V0 and V1
 
 void ImRON2ParmEllipse
      (
@@ -821,7 +821,7 @@ void ImRON2ParmEllipse
 
 Box2dr BoxEllipse(Pt2dr aCenter,REAL A,REAL B,REAL C);
 
-     // return faux si pas Ellispe physique (ie pas deux VP pos)
+     // return faux if pas Ellispe physique (ie pas deux VP pos)
 bool EllipseEq2ParamPhys
      (
         REAL  & V1,
@@ -893,7 +893,7 @@ class cGridNuageP3D
         Im2D_U_INT1   ImShade();
         Im2D_INT1     ImCpt();
 
-        // Profondeur dans la direction moyenne
+        // Profondeur in la direction moyenne
         Fonc_Num FProfDMoyH();
 
         Tiff_Im   TifFile(const std::string & aShortName);
@@ -1017,7 +1017,7 @@ class cElPolygone
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1033,17 +1033,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

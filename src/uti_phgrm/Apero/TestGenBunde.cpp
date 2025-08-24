@@ -292,7 +292,7 @@ void cTest_PBGC3M2DF::OneIterBundle()
 
        double aSomD,aSomRot;
        // aCF.TestRot(Pt2di(0,0),aCF.SzCell(),aSomD,aSomRot,0);
-       // Avec forcage, les resultat sont "bons"
+       // with forcage, les result sont "bons"
        aCF.TestRot(Pt2di(0,0),aCF.SzCell(),aSomD,aSomRot,&(mVCT[aKC]->mMatPert));
        ElTimer aT;
 

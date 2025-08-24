@@ -190,7 +190,7 @@ int GenerateTP_main(int argc,char ** argv)
             }
 
 
-            // reproject aPInter3D sur tout les images dans aVCamInter
+            // reproject aPInter3D on tout les images in aVCamInter
             std::vector<Pt2dr> aVP2d;
             std::vector<CamStenope *> aVCamInterVu;
             std::vector<int> aVIdImInterVu;

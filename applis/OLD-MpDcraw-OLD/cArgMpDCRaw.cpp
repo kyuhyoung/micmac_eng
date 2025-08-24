@@ -49,7 +49,7 @@ cArgMpDCRaw::cArgMpDCRaw(int argc,char ** argv) :
     (
         argc,argv,
 	2,   // Trois argument obligatoires
-        1,   // 1 Argument est un fichier
+        1,   // 1 Argument est un file
         "MpDCraw"
      ),
      mCons16Bits (1),

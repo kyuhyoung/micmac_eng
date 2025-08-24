@@ -289,7 +289,7 @@ class cRadialCRS ;            // class for "standard" model : radial function
 class cCalibRadiomIma ;     //  base class  for representing a calib
 class cCalRadIm_Pol ;       // class for standar model :   Cste + Sensor
 
-     // ================  Ground & Image measures of points ========
+     // ================  Ground & image measures of points ========
     
       // without reference to name  of point or image
 struct  cPair2D3D;   //  correspondance between a 2D point and a 3D Poitnt

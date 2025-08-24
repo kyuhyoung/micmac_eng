@@ -62,7 +62,7 @@ void  cAppliMergeCloud::CreateGrapheConx()
            tMCSom * aS1 = SomOfName(aPair.first);
            tMCSom * aS2 = SomOfName(aPair.second);
            // if ((aS1!=0) && (aS2!=0) && (sizeofile(aNameFile.c_str())>mParam.MinSzFilHom().Val()))
-           // MPD : redondant + erreur car pas aFullNF 
+           // MPD : redondant + error car pas aFullNF 
            if ((aS1!=0) && (aS2!=0) )
            {
               tMCArc *  anArc = TestAddNewarc(aS1,aS2);
@@ -85,7 +85,7 @@ void  cAppliMergeCloud::CreateGrapheConx()
        aVAddCur = aVAddNew;
    }
 
-   // Calcul des voisins proches (contenu dans Apero ChImSec)
+   // computation des voisins proches (contenu in Apero ChImSec)
    for (int aK=0 ; aK<int(mVSoms.size()) ; aK++)
    {
        tMCSom * aS1 =  mVSoms[aK];

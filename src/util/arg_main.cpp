@@ -291,7 +291,7 @@ void MemoArg(int argc,char** argv)
     MemoArgc = argc;
     MemoArgv = argv;
     // GlobArcArgv = MakeStrFromArgcARgv(argc,argv,true);
-    // MODIF MPD car sinon les pattern reconnu par le shell ne sont pas quote 
+    // MODIF MPD car else les pattern reconnu par le shell ne sont pas quote 
      GlobArcArgv = MakeStrFromArgcARgvWithSubst(argc, argv, -1, "", true,true);
 }
 
@@ -943,7 +943,7 @@ INT ThomInitArgs
         L1,
         '*',
         // false
-        true  // Maintenant on accepte et ignore les tag thom inconnus
+        true  // Maintenant on accepte and ignore les tag thom inconnus
         );
 }
 
@@ -997,7 +997,7 @@ int System(const std::string & aComOri,bool aSVP,bool AddOptGlob,bool UseTheNbIt
     if (aNbIter > 1) aSVP = true;
 
 
-    // Pour que les args de contextes soient automatiquement passes aux process fils
+    // for que les args de contextes soient automatiquement passes aux process fils
     if (AddOptGlob)
     {
        aCom += TheStringMemoArgOptGlob ;
@@ -1008,7 +1008,7 @@ int System(const std::string & aComOri,bool aSVP,bool AddOptGlob,bool UseTheNbIt
     int aRes = 0;
     for (int aKIter = 0 ;  aKIter < aNbIter ; aKIter++)
     {
-        if (aKIter>0) SleepProcess(1); // Pour pouvoir plus facilement arreter par ^C
+        if (aKIter>0) SleepProcess(1); // for pouvoir plus facilement arreter par ^C
 
     #if (ELISE_windows)
         if ( aCom.size()!=0 && aCom[0]=='\"' )
@@ -1026,8 +1026,8 @@ int System(const std::string & aComOri,bool aSVP,bool AddOptGlob,bool UseTheNbIt
     #endif
     if ((aRes != 0) && (!aSVP))
     {
-            // Modif MPD : sur de gros chantier avec un max de  MicMac en paral, il faut savoir quelle commande a plante
-            // sans avoir a inspecter un terminal sature
+            // Modif MPD : on de gros chantier with un max de  MicMac en paral, il faut savoir quelle commande a plante
+            // without avoir a inspecter un terminal sature
 
 /*
             std::string aFileName = Dir2Write() + GetUnikId() + ".txt";

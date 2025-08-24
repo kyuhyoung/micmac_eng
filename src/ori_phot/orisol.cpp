@@ -74,7 +74,7 @@ JJ0h = ASJourJulien ( Year, *mois, *jour ) ;
 HmsTU = (double)*heure+ ((double)*minute) / 60.0 ;
 HmsTU = ASTempsUniversel ( JJ0h, HmsTU, - *longitude/15.0, FUSEAU ) ;
 
-/* 2) Ascension droite et declinaison du soleil */
+/* 2) Ascension droite and declinaison du soleil */
 JJ = JJ0h + HmsTU/24.0 ;
 ASAlphaDeltaSoleil ( JJ, &AlphaSol, &DeltaSol ) ;
 
@@ -82,10 +82,10 @@ ASAlphaDeltaSoleil ( JJ, &AlphaSol, &DeltaSol ) ;
 TS = ASTempsSideralMoyen ( JJ0h, HmsTU, - *longitude/15.0 ) ;
 TS = TS*Pi_ / 12.0 ;
 
-/* 4) Azimut et Hauteur dans le repere local */
+/* 4) Azimut and Hauteur in le repere local */
 ASAlphaDeltaToAzHt ( TS, *latitude * Pi_/180.0, AlphaSol, DeltaSol, &AzNord, &Hauteur ) ;
 
-/* 5) Vecteur en coordonnees cartesiennes */
+/* 5) vector en coordinates cartesiennes */
 soleil[2] = - sin ( Hauteur ) ;
 soleil[1] = - cos ( Hauteur ) * cos ( AzNord ) ;
 soleil[0] = - cos ( Hauteur ) * sin ( AzNord ) ;

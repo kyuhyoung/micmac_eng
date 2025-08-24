@@ -44,8 +44,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 namespace NS_ParamMICMAC
 {
 
-       // Classe template permettant
-       // de recuperer la deuxieme plus petite valeur
+       // class template permettant
+       // de recuperer la deuxieme plus petite value
        // d'une serie
 
 template <class Type> class cGetSec

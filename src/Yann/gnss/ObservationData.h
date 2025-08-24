@@ -10,7 +10,7 @@
 #include "ObservationSlot.h"
 
 // ---------------------------------------------------------------
-// Classe contenant les données d'observations GPS
+// class contenant les données d'observations GPS
 // ---------------------------------------------------------------
 class ObservationData {
 

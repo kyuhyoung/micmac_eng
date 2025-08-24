@@ -46,7 +46,7 @@ extern bool ERupnik_MM();
 {
 	eBBA,      //bundle block adjustment  ie Tapas
 	eSBBA,     //structure-less BBA 	  ie Martini
-	eSBBAFus   //SBBA and BBA intertwined ie Martini et Tapas
+	eSBBAFus   //SBBA and BBA intertwined ie Martini and Tapas
 
 }eTypeOriVid;
 */

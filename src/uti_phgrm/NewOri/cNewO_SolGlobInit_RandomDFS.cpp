@@ -665,7 +665,7 @@ void cSolGlobInit_NRandom::NumeroteCC()
             std::vector<cNOSolIn_Triplet*> * aCC3 = &(aNewCC3S->mTri); // Quick acces to vec of tri in the CC
             std::vector<tSomNSI *> * aCCS = &(aNewCC3S->mSoms); // Quick accessto som
 
-            // Calcul des triplets
+            // computation des triplets
             aCC3->push_back(aTri0);  // Add triplet T0
             aTri0->Flag().set_kth_true(mFlag3CC);// Mark it as explored
             aTri0->NumCC() = aNumCC;  // Put  right num to T0
@@ -1269,7 +1269,7 @@ void  cSolGlobInit_NRandom::DoOneRandomDFS(bool UseCoherence)
 
 	
 
-    // Calcul des triplets 
+    // computation des triplets 
     aCC3->push_back(aTri0);  // Add triplet T0
 
     //aTri0->Flag().set_kth_true(mFlag3CC);// Mark it as explored

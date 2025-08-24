@@ -44,7 +44,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 /*              cGenGaus3D                             */
 /*                                                     */
 /*******************************************************/
-// valeur correctif du fait que la fonction erf est une approximation
+// value correctif du fait que la function erf est une approximation
 static const double A = 0.147;
 
 //              -  x
@@ -163,7 +163,7 @@ void cGenGaus3D::GetDistribGaus(std::vector<Pt3dr> & aVPts,int aN1,int aN2,int a
  * */
 void cGenGaus3D::GetDistr5PointsFromVP(Pt3dr aFact1,Pt3dr aFact2,Pt3dr aFact3,std::vector<Pt3dr> & aVPts)
 {
-    // InvErrFoncRationel : probability that the fonction takes a value <-1/aMult, 1/aMult> (lim <-.5,.5>) 
+    // InvErrFoncRationel : probability that the function takes a value <-1/aMult, 1/aMult> (lim <-.5,.5>) 
     //                      on normalised values, i.e. mean=0 and variance=0.5
     
 	aVPts.clear();
@@ -442,7 +442,7 @@ void cGenGaus2D::GetDistr3Points(std::vector<Pt2dr> & aVPts)
 
     getchar();
 
-    // InvErrFoncRationel : probability that the fonction takes a value <-1/aMult, 1/aMult>
+    // InvErrFoncRationel : probability that the function takes a value <-1/aMult, 1/aMult>
     Pt2dr aP;
     aP = mCDG + aFact1 * InvErrFoncRationel(1,aMult)
               + aFact2 * InvErrFoncRationel(1,aMult); //Inv(p/q)
@@ -475,11 +475,11 @@ cGenGaus3D::cGenGaus3D(const cXml_Elips3D & anEl)  :
     aMCov(0,2) = aMCov(2,0) =  anEl.Sxz();
     aMCov(1,2) = aMCov(2,1) =  anEl.Syz();
 
-    //decomposition en vecteurs et valeurs propres +
-    // renvoie la liste des indices croissantes de valeurs propres
+    //decomposition en vecteurs and valeurs propres +
+    // renvoie la list des indices croissantes de valeurs propres
     std::vector<int>  aIVP = jacobi_diag(aMCov,aValP,aVecP);
 
-    //mise � jours de vecteurs/valeurs propres dans mVecP/mVP
+    //mise  jours de vecteurs/valeurs propres in mVecP/mVP
     //les trois valeurs correspondent aux vecteurs ex, ey, ez
     for (int aK=0 ; aK<3 ; aK++)
     {
@@ -791,7 +791,7 @@ void TestEllips_0()
    double aNewVp2 = aGG1.ValP(1);
    double aNewVp3 = aGG1.ValP(2);
 
-   // Verifie DerEF est intregale de gaussienne et InvErrFonc * DerEF = Id
+   // Verifie DerEF est intregale de gaussienne and InvErrFonc * DerEF = Id
    if (0)
    {
      for (int aK=1 ; aK<=30 ; aK++)
@@ -886,7 +886,7 @@ void TestEllips()
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -902,17 +902,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

@@ -664,7 +664,7 @@ void cMMVII_BundleAdj::SetViscosity(const tREAL8& aViscTr,const tREAL8& aViscAng
 }
 
     /* ---------------------------------------- */
-    /*             Reference Pose               */
+    /*             reference Pose               */
     /* ---------------------------------------- */
 
 void cMMVII_BundleAdj::AddConstrainteRefPose()

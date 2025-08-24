@@ -163,7 +163,7 @@ vector<AbreHomol> creatAbreFromPattern(vector<string> aSetImages, string aNameHo
                 bool isPresent = (it1 != Abre[k1].ImgBranch.end());
                 if (isPresent)
                 {
-                    ColImg3eme.push_back(Abre[k1].ImgBranch[p1]);//common img entre Abre[k1] and Abre[p]
+                    ColImg3eme.push_back(Abre[k1].ImgBranch[p1]);//common img between Abre[k1] and Abre[p]
                 }
             }
             Abre[k1].Img3eme.push_back(ColImg3eme);
@@ -247,13 +247,13 @@ vector<bool> FiltreDe3img(string aNameImg1, string aNameImg2, string aNameImg3, 
     for (ElPackHomologue::const_iterator itP=aPackIn1_2.begin(); itP!=aPackIn1_2.end() ; itP++)
     {
 
-        Pt2dr aP1 = itP->P1();  //Point img1
-        Pt2dr aP2 = itP->P2();  //Point img2
+        Pt2dr aP1 = itP->P1();  //point img1
+        Pt2dr aP2 = itP->P2();  //point img2
         double d;
         bool pass_reproj;
         //=================verifier par reprojeter============
-        Pt3dr PInter1_2= aCam1->ElCamera::PseudoInter(aP1, *aCam2, aP2, &d);	//use Point img1 & 2 to search point 3d
-        Pt2dr PReproj3 = aCam3->ElCamera::R3toF2(PInter1_2);					//use point 3d to search Point img3
+        Pt3dr PInter1_2= aCam1->ElCamera::PseudoInter(aP1, *aCam2, aP2, &d);	//use point img1 & 2 to search point 3d
+        Pt2dr PReproj3 = aCam3->ElCamera::R3toF2(PInter1_2);					//use point 3d to search point img3
         //double dist_centre = sqrt(pow((PReproj3.x - centre_img.x),2) + pow((PReproj3.y - centre_img.y),2));
         //bool inside = (dist_centre < 0.67*diag/2) ? true : false;
         //chercher triplet
@@ -318,7 +318,7 @@ void creatHomolFromPair(string aNameImg1, string aNameImg2, string aNameHomol, s
     else
         {cout<<"Homol "<< aNameImg1<< "++" <<aNameImg2<<" not existed!"<<endl;}
 
-    //creat name of homomologue file dans 2 sens
+    //creat name of homomologue file in 2 sens
     ElPackHomologue Pair1_2, Pair1_2i;
     std::string NameHomolPair1 = aICNM->Assoc1To2(aKHOut, aNameImg1, aNameImg2, true);
     std::string NameHomolDatPair1 = aICNM->Assoc1To2(aKHOutDat, aNameImg1, aNameImg2, true);
@@ -428,7 +428,7 @@ vector<AbreHomol> VerifParRepr::creatAbre()
                 bool isPresent = (it1 != Abre[k1].ImgBranch.end());
                 if (isPresent)
                 {
-                    ColImg3eme.push_back(Abre[k1].ImgBranch[p1]);//common img entre Abre[k1] and Abre[p]
+                    ColImg3eme.push_back(Abre[k1].ImgBranch[p1]);//common img between Abre[k1] and Abre[p]
                 }
             }
             Abre[k1].Img3eme.push_back(ColImg3eme);
@@ -555,13 +555,13 @@ vector<bool> VerifParRepr::FiltreDe3img(string aNameImg1, string aNameImg2, stri
     for (ElPackHomologue::const_iterator itP=aPackIn1_2.begin(); itP!=aPackIn1_2.end() ; itP++)
     {
 
-        Pt2dr aP1 = itP->P1();  //Point img1
-        Pt2dr aP2 = itP->P2();  //Point img2
+        Pt2dr aP1 = itP->P1();  //point img1
+        Pt2dr aP2 = itP->P2();  //point img2
         double d;
         bool pass_reproj;
         //=================verifier par reprojeter============
-        Pt3dr PInter1_2= aCam1->ElCamera::PseudoInter(aP1, *aCam2, aP2, &d);	//use Point img1 & 2 to search point 3d
-        Pt2dr PReproj3 = aCam3->ElCamera::R3toF2(PInter1_2);					//use point 3d to search Point img3
+        Pt3dr PInter1_2= aCam1->ElCamera::PseudoInter(aP1, *aCam2, aP2, &d);	//use point img1 & 2 to search point 3d
+        Pt2dr PReproj3 = aCam3->ElCamera::R3toF2(PInter1_2);					//use point 3d to search point img3
         //chercher triplet
         const ElCplePtsHomologues  * aTriplet2_3 = aPackIn2_3.Cple_Nearest(aP2,true);
         const ElCplePtsHomologues  * aTriplet1_3 = aPackIn1_3.Cple_Nearest(aP1,true);
@@ -620,7 +620,7 @@ void VerifParRepr::creatHomolFromPair(string aNameImg1, string aNameImg2, vector
      cout<<"Verif creatHomolFromPair "<<decision.size()<<" "<<aPackIn1_2.size();
     }
 
-    //creat name of homomogue file dans 2 sens
+    //creat name of homomogue file in 2 sens
     ElPackHomologue Pair1_2, Pair1_2i;
     std::string NameHomolPair1 = aICNM->Assoc1To2(aKHOut, aNameImg1, aNameImg2, true);
     std::string NameHomolDatPair1 = aICNM->Assoc1To2(aKHOutDat, aNameImg1, aNameImg2, true);
@@ -666,7 +666,7 @@ void VerifParRepr::FiltragePtsHomo()
             for(uint l=0; l<aAbre[i].Img3eme[k].size(); l++)
             {
                 cout<<"   + Com + "<<aAbre[i].Img3eme[k][l]<<endl;
-                //====Triplet Image==========//
+                //====Triplet image==========//
                 aNameImg1 = aAbre[i].ImgRacine;
                 aNameImg2 = aAbre[i].ImgBranch[k];
                 string aNameImg3 = aAbre[i].Img3eme[k][l];
@@ -747,10 +747,10 @@ Pt2dr RepereImagette::uv2img(Pt2dr coorOrg)
     coorInImgB.y = (this->centre.y) - coorOrg.y*this->dirX.y - coorOrg.y*this->dirY.y;
     return coorInImgB;
 }
-//   R3 : "reel" coordonnee initiale
-//   L3 : "Locale", apres rotation
-//   C2 :  camera, avant distortion
-//   F2 : finale apres Distortion
+//   R3 : "real" coordonnee initiale
+//   L3 : "Locale", after rotation
+//   C2 :  camera, before distortion
+//   F2 : finale after Distortion
 //
 //       Orientation      Projection      Distortion
 //   R3 -------------> L3------------>C2------------->F2
@@ -792,13 +792,13 @@ CplImg::CplImg(string aNameImg1, string aNameImg2, string aNameHomol, string aOr
 
 
  //===========================================================
-    //====lire Img1 et Img2=====//
+    //====lire Img1 and Img2=====//
     cout<<aNameImg1<< " ++ "<<aNameImg2<<endl;
     //Tiff_Im aTiffImg1(aNameImg1.c_str());
     //Tiff_Im aTiffImg2(aNameImg2.c_str());
     Tiff_Im aTiffImg1( Tiff_Im::StdConvGen(this->mDirImages+"/"+aNameImg1,1,false));
     Tiff_Im aTiffImg2( Tiff_Im::StdConvGen(this->mDirImages+"/"+aNameImg2,1,false));
-    //====lire Cam1 et Cam2====//
+    //====lire Cam1 and Cam2====//
 
         std::string aOri1 = aICNM->Assoc1To1("NKS-Assoc-Im2Orient@-"+ aOri, aNameImg1, true);
         CamStenope * aCam1 = CamOrientGenFromFile(aOri1 , aICNM);
@@ -843,7 +843,7 @@ vector<bool> CplImg::CalVectorSurface(string m3emeImg, string ModeSurf)
     CamStenope * aCam1 = this->mCam1;
     CamStenope * aCam2 = this->mCam2;
     bool displayVignette = this->mdisplayVignette;
-    //====Import collection 3eme Image====//
+    //====Import collection 3eme image====//
     string aNameImg3 = m3emeImg;
     std::string aOri3 = aICNM->Assoc1To1("NKS-Assoc-Im2Orient@-"+ this->mOri, aNameImg3, true);
     CamStenope * aCam3 = CamOrientGenFromFile(aOri3 , aICNM);
@@ -932,12 +932,12 @@ vector<bool> CplImg::CalVectorSurface(string m3emeImg, string ModeSurf)
         bool decide;
         Pt2dr aP1 = itP->P1();
         Pt2dr aP2 = itP->P2();
-        //======Profondeur a partir de cam 1 et cam 2======
+        //======Profondeur a partir de cam 1 and cam 2======
         double d;
-        Pt3dr Pt_pseudointer= aCam1->ElCamera::PseudoInter(aP1, *aCam2, aP2, &d);	//use Point img1 & 2 to search point 3d
-        //====== calcul profondeur correspondant avec direction viseur de cam 1 =====
+        Pt3dr Pt_pseudointer= aCam1->ElCamera::PseudoInter(aP1, *aCam2, aP2, &d);	//use point img1 & 2 to search point 3d
+        //====== computation profondeur correspondant with direction viseur de cam 1 =====
         double prof_d = aCam1->ProfInDir(Pt_pseudointer,aCam1->DirK());
-        Pt3dr Pt_H = aCam1->ImEtProf2Terrain(aP1, prof_d);  //pt3d intersection entre point img 1 et 2 mais se situe dans la direction viseur de cam 1
+        Pt3dr Pt_H = aCam1->ImEtProf2Terrain(aP1, prof_d);  //pt3d intersection between point img 1 and 2 but se situe in la direction viseur de cam 1
         Pt2dr aP3 = aCam3->R3toF2(Pt_H);
         Pt2dr aP3_o=aP3;
         //====== chercher autour pts d' img 3 ========
@@ -949,7 +949,7 @@ vector<bool> CplImg::CalVectorSurface(string m3emeImg, string ModeSurf)
                 aP3 = aP3_o + Pt2dr(ii,jj);
                 if( IsInside(aP3, mTiffImg3, 1) )
                 {
-                    //=== 3) Calcul vector direction de surface Hu et Hv (descripteur d'imagette 1) dans l'espace ===
+                    //=== 3) computation vector direction de surface Hu and Hv (descripteur d'imagette 1) in l'espace ===
                     Pt2dr SupDirX = aP1+Pt2dr(1,0);
                     Pt2dr SupDirY = aP1+Pt2dr(0,1);
                     Pt3dr Pt_Hu, Pt_Hv;
@@ -978,15 +978,15 @@ vector<bool> CplImg::CalVectorSurface(string m3emeImg, string ModeSurf)
                         Pt_Hu = aCam1->ImEtProf2Terrain(SupDirX, prof_SupDirX);
                         Pt_Hu = aCam1->ImEtProf2Terrain(SupDirX, prof_d);
                     }
-                    //=== 4) ReProjecte Hu et Hv de l'espace a img 3 =====
+                    //=== 4) ReProjecte Hu and Hv de l'espace a img 3 =====
                     Pt2dr Pt_Hu_dansImg3 = aCam3->R3toF2(Pt_Hu);
                     Pt2dr Pt_Hv_dansImg3 = aCam3->R3toF2(Pt_Hv);
                     //=== 5) Vector direction de surface d'img 3 ===
                     Pt2dr DirX = aP3 - Pt_Hu_dansImg3;
                     Pt2dr DirY = aP3 - Pt_Hv_dansImg3;
                     VectorSurface aDirSurfImg3(DirX,DirY);
-                    //=== 6) Calcul coordonne des autres point dans l'imagette d'img 1 correspondant avec img 3 ===
-                    //prendre imagette 1 et imagette 3 origin
+                    //=== 6) computation coordonne des autres point in l'imagette d'img 1 correspondant with img 3 ===
+                    //prendre imagette 1 and imagette 3 origin
                     cCorrelImage::setSzW(sizeVignette);
                     cCorrelImage Imgette1;
                     cCorrelImage Imgette3_o;
@@ -1013,11 +1013,11 @@ vector<bool> CplImg::CalVectorSurface(string m3emeImg, string ModeSurf)
                                     Pt2dr aP3Test;
                                     aP3Test.x = ceil(pixelCorrImg3.x);
                                     aP3Test.y = ceil(pixelCorrImg3.y);
-                                    //si pixels se situe dans l'img 3
+                                    //if pixels se situe in l'img 3
                                     if (IsInside( aP3Test , mTiffImg3, this->mPropDiag))
                                     {
                                         INT4 val = mTIm2DImg3.getr(pixelCorrImg3, -1);
-                                        /*== ecrire dans un pixel d'image ====*/
+                                        /*== ecrire in un pixel d'image ====*/
                                         mTIm2DImgette3.oset_svp(aVois+Pt2di(sizeVignette,sizeVignette),val);
                                         out = false;
                                     }
@@ -1065,7 +1065,7 @@ vector<bool> CplImg::CalVectorSurface(string m3emeImg, string ModeSurf)
                     {
                         decide=false;
                     }
-                } //(pts img3 dans l'image)
+                } //(pts img3 in l'image)
                 else
                 {
                     decide=false;
@@ -1120,7 +1120,7 @@ int PHO_MI_main(int argc,char ** argv)
     ELISE_fp::AssertIsDirectory(aNameHomol);
     std::string aDirImages, aPatImages, aDirImages_NotTif, aPatImages_NotTif, aFullPatternImages_NotTif;
     std::vector<std::string> aSetImages, aSetImages_NoTif;
-    //===========Modifier ou chercher l'image si l'image ne sont pas tif============//
+    //===========Modifier or chercher l'image if l'image ne sont pas tif============//
        std::size_t found = aFullPatternImages.find_last_of(".");
        std::cout << " extension: " << aFullPatternImages.substr(found+1) << '\n';
        std::cout << " chercher dans Tmp-MM-Dir pour fichier tif: "<< '\n';
@@ -1177,7 +1177,7 @@ int PHO_MI_main(int argc,char ** argv)
                 for(uint l=0; l<aAbre[i].Img3eme[k].size(); l++)
                 {
                     cout<<"   + Com + "<<aAbre[i].Img3eme[k][l]<<endl;
-                    //====Triplet Image==========//
+                    //====Triplet image==========//
                     aNameImg1 = aAbre[i].ImgRacine;
                     aNameImg2 = aAbre[i].ImgBranch[k];
                     string aNameImg3 = aAbre[i].Img3eme[k][l];
@@ -1252,7 +1252,7 @@ int PHO_MI_main(int argc,char ** argv)
                     for(uint l=0; l<aAbre[i].Img3eme[k].size(); l++)
                     {
                         cout<<"   + Com + "<<aAbre[i].Img3eme[k][l]<<endl;
-                        //====Triplet Image==========//
+                        //====Triplet image==========//
                         aImg1 = aAbre[i].ImgRacine;
                         aImg2 = aAbre[i].ImgBranch[k];
                         string aImg3 = aAbre[i].Img3eme[k][l];

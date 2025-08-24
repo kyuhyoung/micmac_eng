@@ -177,7 +177,7 @@ typedef struct VML          /* Element of a vector/matrix list        */
                                                   /* list             */
 
 #define LISTE    ((vmltyp *)vmblock)              /* for abbreviation */
-/*.IX{LISTE}*/
+/*.IX{list}*/
 #define MAGIC    410                              /* used to mark a   */
 /*.IX{MAGIC}*/
                                                   /* valid anchor     */
@@ -211,15 +211,15 @@ void *vminit         /* create an empty vector/matrix list ...........*/
 ***********************************************************************/
 
 {
-  vmltyp *liste;             /* pointer to anchor element of list     */
+  vmltyp *list;             /* pointer to anchor element of list     */
 
 
-  if ((liste = VMALLOC) == NULL)  /* allocate memory for the anchor   */
+  if ((list = VMALLOC) == NULL)  /* allocate memory for the anchor   */
     return NULL;                  /* unsuccessful? => report error    */
-  liste->vmzeiger = NULL;         /* to make vmfree() error free      */
-  liste->typ      = MAGIC;        /* mark a valid anchor element      */
-  liste->groesse  = 0;            /* no lack of memory as yet         */
-  liste->naechst  = NULL;         /* no next element                  */
+  list->vmzeiger = NULL;         /* to make vmfree() error free      */
+  list->typ      = MAGIC;        /* mark a valid anchor element      */
+  list->groesse  = 0;            /* no lack of memory as yet         */
+  list->naechst  = NULL;         /* no next element                  */
 
 
   return (void *)liste;
@@ -456,14 +456,14 @@ void *vmalloc        /* create a dynamic vector or matrix ............*/
   vmltyp *element;                  /* pointer to new element in list */
 
 
-  if (LISTE      == NULL   ||       /* invalid list?                  */
-      LISTE->typ != MAGIC)          /* invalid starting element?      */
+  if (list      == NULL   ||       /* invalid list?                  */
+      list->typ != MAGIC)          /* invalid starting element?      */
     return NULL;                    /* report error                   */
 
 
   if ((element = VMALLOC) == NULL)  /* ask for a new element          */
   {                                 /* no success? =>                 */
-    LISTE->groesse = 1;             /* indicate lack of memory        */
+    list->groesse = 1;             /* indicate lack of memory        */
     return NULL;                    /* report error                   */
   }
 
@@ -510,14 +510,14 @@ void *vmalloc        /* create a dynamic vector or matrix ............*/
   }
 
   if (element->vmzeiger == NULL)       /* no memory for the object?   */
-    LISTE->groesse = 1;                /* Let's note that down.       */
+    list->groesse = 1;                /* Let's note that down.       */
 
   element->typ = typ;                  /* note kind of data structure */
                                        /* in the list element         */
-  element->naechst = LISTE->naechst;   /* insert new element before   */
+  element->naechst = list->naechst;   /* insert new element before   */
                                        /* the first existing element, */
 
-  LISTE->naechst = element;            /* but behind the anchor       */
+  list->naechst = element;            /* but behind the anchor       */
                                        /* element                     */
 
   return element->vmzeiger;            /* return new vector/matrix    */
@@ -571,10 +571,10 @@ void vmfree          /* free the memory for a vektor/matrix list .....*/
   vmltyp *hilf;                  /* aux variable for value of pointer */
 
 
-  if (LISTE == NULL)                     /* invalid list?             */
+  if (list == NULL)                     /* invalid list?             */
     return;                              /* do nothing                */
 
-  if (LISTE->typ != MAGIC)               /* invalid anchor element?   */
+  if (list->typ != MAGIC)               /* invalid anchor element?   */
     return;                              /* do nothing again          */
 
 
@@ -597,8 +597,8 @@ void vmfree          /* free the memory for a vektor/matrix list .....*/
                              LISTE->groesse, LISTE->spalten);
     }
 
-    hilf = LISTE->naechst;               /* save pointer to successor */
-    free(LISTE);                         /* free list element         */
+    hilf = list->naechst;               /* save pointer to successor */
+    free(list);                         /* free list element         */
   }
 }
 

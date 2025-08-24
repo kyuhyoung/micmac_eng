@@ -11,7 +11,7 @@
 #include "Observation.h"
 
 // ---------------------------------------------------------------
-// Classe contenant un paquet d'observations GPS
+// class contenant un paquet d'observations GPS
 // ---------------------------------------------------------------
 class ObservationSlot {
 

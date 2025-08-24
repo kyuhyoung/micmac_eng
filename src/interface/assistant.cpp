@@ -196,7 +196,7 @@ void Options::setCpu(int c) { cpu = c; }
 bool Options::updateSettings(QSettings& settings) const {
 	settings.setValue("dossierMicmac", micmacDir);
 	settings.setValue("cpu", cpu);
-	settings.setValue("langue", QLocale::languageToString(langue));	//on ne peut pas faire de traduction dynamique, il faudrait renommer chaque label de chaque classe
+	settings.setValue("langue", QLocale::languageToString(langue));	//on ne peut pas faire de traduction dynamique, il faudrait renommer chaque label de chaque class
 	BDCamera bdCamera;
 	return bdCamera.ecrire(cameras);
 }
@@ -254,7 +254,7 @@ bool Options::readMicMacInstall(QString& micmacDossier, int& cpuLu) {
 	
 	// we can no longer consider micmac being launched from source directory
 	/*
-	//lecture du fichier de paramètres ; retourne false s'il y a un problème
+	//lecture du file de paramètres ; retourne false s'il y a un problème
 	if (!QFile(micmacDossier+micmacInstallFile).exists()) return false;
 	cMicMacConfiguration aMF = StdGetObjFromFile<cMicMacConfiguration> ( (micmacDossier+micmacInstallFile).toStdString(), StdGetFileXMLSpec("ParamChantierPhotogram.xml"), "MicMacConfiguration", "MicMacConfiguration" );
 	
@@ -285,7 +285,7 @@ InterfOptions::InterfOptions(QWidget* parent, Assistant* help, const QSettings& 
 	setWindowModality(Qt::ApplicationModal);
 	oldlanguage = options.getLangue();
 
-	//dossier micmac
+	//folder micmac
 	QLabel* micmacLabel = new QLabel(conv(tr("Binary directory micmac : ")));
 	micmacEdit = new QLineEdit;
 	micmacEdit->setMinimumWidth(150);
@@ -325,10 +325,10 @@ InterfOptions::InterfOptions(QWidget* parent, Assistant* help, const QSettings& 
 	langueBox->setAlignment(Qt::AlignLeft);
 	langueBox->setLayout(langueLayout);
 
-	//nombre maximal de processeurs à utiliser
+	//number maximal de processeurs à utiliser
 	QLabel* cpuLabel = new QLabel(tr("Max cpu : "));
 	cpuSpin = new QSpinBox;
-	cpuSpin->setMaximum(Interface::getCpuCount());	//est calculé dès l'ouverture de l'interface et avant l'ouverture de la fenêtre des options
+	cpuSpin->setMaximum(Interface::getCpuCount());	//est calculé dès l'ouverture de l'interface and before l'ouverture de la fenêtre des options
 	cpuSpin->setMinimum(1);
 	cpuSpin->setValue(options.getCpu());
 	cpuSpin->setMaximumWidth(50);
@@ -418,7 +418,7 @@ InterfOptions::InterfOptions(QWidget* parent, Assistant* help, const QSettings& 
 InterfOptions::~InterfOptions() {}
 
 void InterfOptions::micmacClicked() {
-	//sélection du dossier micmac
+	//sélection du folder micmac
 	FileDialog fileDialog(this, conv(tr("Micmac directory")), options.getMicmacDir());
 	fileDialog.setFilter(QDir::Dirs);
 	fileDialog.setFileMode(QFileDialog::Directory);
@@ -441,7 +441,7 @@ void InterfOptions::micmacClicked() {
 	}
 	micmacEdit->setText(dir);
 	options.setMicmacDir(micmacEdit->text());
-	optChanged = true;	//NB : le dossier micmac est validé même si tous les binaires n'y sont pas
+	optChanged = true;	//NB : le folder micmac est validé même if tous les binaires n'y sont pas
 }
 
 void InterfOptions::langueClicked() {
@@ -488,7 +488,7 @@ void InterfOptions::okClicked() {
 	if (oldlanguage!=options.getLangue())
 		qMessageBox(this, tr("Information"), conv(tr("The language switch will be considered at the next startup of the GUI.")));
 	//MicMacConfig.xml
-	if (optChanged) options.writeMicMacInstall(options.getMicmacDir(), options.getCpu());	//NB : le dossier micmac est validé même si les paramètres de micmac n'ont pas été enregistrés		
+	if (optChanged) options.writeMicMacInstall(options.getMicmacDir(), options.getCpu());	//NB : le folder micmac est validé même if les paramètres de micmac n'ont pas été enregistrés		
 	//caméras
 	options.modifCameras().clear();
 	for (int i=0; i<camList->topLevelItemCount(); i++) {

@@ -55,10 +55,10 @@ Header-MicMac-eLiSe-25/06/2007*/
 //RPC2Grid transforms a loaded RPC to a .GRI (and GRIBin) file
 int RPC::RPC2Grid(int nbLayers, double altiMin, double altiMax, std::string refineCoef, std::string aNameIm, double stepPixel, double stepCarto, std::string targetSyst, std::string inputSyst, bool binaire)
 {
-    //Creation d'un dossier pour les fichiers intermediaires
+    //Creation d'un folder for les fichiers intermediaires
     ELISE_fp::MkDirSvp("processing");
 
-    // fichier GRID en sortie
+    // file GRID en sortie
     std::string aNameFileGrid = StdPrefix(aNameIm) + ".GRI";
 
     std::vector<double> vAltitude;
@@ -71,13 +71,13 @@ int RPC::RPC2Grid(int nbLayers, double altiMin, double altiMax, std::string refi
 	{
 		refineCoef = "processing/refineCoef.txt";
 
-		//Creation du fichier de coef par defaut (grille non affinee)
+		//Creation du file de coef par defaut (grille non affinee)
 		std::ofstream ficWrite(refineCoef.c_str());
 		ficWrite << std::setprecision(15);
 		ficWrite << 0 << " " << 1 << " " << 0 << " " << 0 << " " << 0 << " " << 1 << " " << std::endl;
 	}
 
-    //recuperation des coefficients pour affiner le modele
+    //recuperation des coefficients for affiner le modele
     std::vector<double> vRefineCoef;
     std::ifstream ficRead(refineCoef.c_str());
     while (!ficRead.eof() && ficRead.good())
@@ -99,7 +99,7 @@ int RPC::RPC2Grid(int nbLayers, double altiMin, double altiMax, std::string refi
     << " " << vRefineCoef[3] << " " << vRefineCoef[4] << " " << vRefineCoef[5] << " " << std::endl;
 
 
-    //Test si le modele est affine pour l'appellation du fichier de sortie
+    //Test if le modele est affine for l'appellation du file de sortie
     bool refine = false;
     double noRefine[] = { 0, 1, 0, 0, 0, 1 };
 
@@ -111,7 +111,7 @@ int RPC::RPC2Grid(int nbLayers, double altiMin, double altiMax, std::string refi
 
     if (refine)
     {
-        //Effacement du fichier de coefficients (affinite=identite) par defaut
+        //Effacement du file de coefficients (affinite=identite) par defaut
         if (ifstream(refineCoef.c_str())) ELISE_fp::RmFile(refineCoef.c_str());
 
         //New folder
@@ -135,7 +135,7 @@ int RPC::RPC2Grid(int nbLayers, double altiMin, double altiMax, std::string refi
     return EXIT_SUCCESS;
 }
 
-//From Image coordinates to geographic
+//From image coordinates to geographic
 Pt3dr RPC::DirectRPC(Pt3dr Pimg)const
 {
     Pt3dr PimgNorm;
@@ -475,7 +475,7 @@ vector<Pt2dr> RPC::empriseCarto(vector<Pt2dr> Pgeo, std::string targetSyst, std:
 
 Pt3dr RPC::ptRefined(Pt3dr Pimg, std::vector<double> vRefineCoef)const
 {
-    //Pour calculer les coordonnees affinees d'un point
+    //for compute les coordinates affinees d'un point
     Pt3dr pImgRefined;
 	//Test for applying 5th degree polynomials
 	/*double aPXx2 = 1.68917122212249e-007, aPXx3 = 1.45693052459939e-010, aPXx4 = -5.24280302379418e-014, aPXx5 = 4.68073194617742e-018;
@@ -504,7 +504,7 @@ void RPC::createDirectGrid(double ulcSamp, double ulcLine,
     std::vector<double> vRefineCoef)const
 {
     vPtCarto.clear();
-    // On cree un fichier de points geographiques pour les transformer avec proj4
+    // On cree un file de points geographiques for les transformer with proj4
     {
 		std::ofstream fic("processing/direct_ptGeo.txt");
         fic << std::setprecision(15);
@@ -516,7 +516,7 @@ void RPC::createDirectGrid(double ulcSamp, double ulcLine,
 				for (int c = 0; c<nbSamp; ++c)
                 {
                     Pt3dr Pimg(ulcSamp + c * stepPixel, ulcLine + l * stepPixel, altitude);
-                    //pour affiner les coordonnees
+                    //for affiner les coordinates
                     Pt3dr PimgRefined = ptRefined(Pimg, vRefineCoef);
 
                     Pt3dr Pgeo = DirectRPC(PimgRefined);
@@ -598,7 +598,7 @@ void RPC::createGrid(std::string const &nomGrid, std::string const &nomImage,
     double lastSamp = last_col;
     double lastLine = last_row;
 
-    //Direct nbr Lignes et colonnes + step last ligne et colonne
+    //Direct nbr Lignes and colonnes + step last line and colonne
     int nbLine, nbSamp;
     nbLine = (lastLine - firstLine) / stepPixel + 1;
     nbSamp = (lastSamp - firstSamp) / stepPixel + 1;
@@ -619,13 +619,13 @@ void RPC::createGrid(std::string const &nomGrid, std::string const &nomImage,
     Pt2dr llc(anEmpriseCarto[0].x, anEmpriseCarto[0].y);
     std::cout << "Corners of the area : " << llc << " " << urc << std::endl;
 
-    //inverse nbr Lignes et colonnes + step last ligne et colonne
+    //inverse nbr Lignes and colonnes + step last line and colonne
     int nbrLine, nbrSamp;
     nbrSamp = (urc.x - llc.x) / stepCarto + 1;
     nbrLine = (urc.y - llc.y) / stepCarto + 1;
 
     std::vector<Pt3dr> vPtImg;
-    //Calcul des coefficients de l'affinite pour la transformation inverse
+    //computation des coefficients de l'affinite for la transformation inverse
     std::vector<double> vRefineCoefInv;
 
     double A0 = vRefineCoef[0];
@@ -1266,7 +1266,7 @@ vector<vector<Pt3dr> > RPC::GenerateNormLineOfSightGrid(int nbLayers, double aHM
 	for (u_int i = 0; i < ASTERPtsIm.size(); i++){
 		//if (i==58)
 		//	continue;
-			//Image point 3D coordinates object created (identical for all grid levels)
+			//image point 3D coordinates object created (identical for all grid levels)
 		Pt3dr aPtIm; aPtIm.x = ASTERPtsIm[i].x; aPtIm.y = ASTERPtsIm[i].y;
 
 			//Line of Sight LOS computed
@@ -1349,7 +1349,7 @@ vector<vector<Pt3dr> > RPC::GenerateNormLineOfSightGrid(int nbLayers, double aHM
 				aVectPtsGeo.push_back(aPtGeo);
 				*/
 
-				//Image point 3D coordinates are recorded
+				//image point 3D coordinates are recorded
 				aPtIm.z = aPtGeo.z;
 				aVectPtsIm.push_back(aPtIm);
 			}
@@ -3308,7 +3308,7 @@ Pt3dr RPC2D::InversePreRPCNorm(Pt3dr aPtGeoNorm, vector<vector<Pt3dr> > aMatPtsG
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         bool Ok;
 	Pt3dr aSatPosProj = InterSeg(aVPtsPlaneECEF[0], aPtECEFDodgeAngle, aSatPosLoc, aSatPosLoc - aNormal,Ok);
-        // MPD : maintenant InterSeg indique si l'intersection est degeneree, il convient sand doute de mieux gere cette erreur ....
+        // MPD : maintenant InterSeg indique if l'intersection est degeneree, il convient sand doute de mieux gere cette error ....
         ELISE_ASSERT(Ok,"Bad intersection in RPC2D::InversePreRPCNorm");
 	//cout << "aSatPosProj = " << aSatPosProj << endl;
 
@@ -3452,7 +3452,7 @@ int RPC_main(int argc, char ** argv)
 		//<< EAMC(Y, "Y coordinate of point (latitude or row of image)")
 		//<< EAMC(Z, "X coordinate of point"),
 		LArgMain()
-		//caracteristique du systeme geodesique saisies sans espace (+proj=utm +zone=10 +north +datum=WGS84...)
+		//caracteristique du system geodesique saisies without espace (+proj=utm +zone=10 +north +datum=WGS84...)
 		<< EAM(doDirect, "Direct", true, "Direct (def=true, im2geo) or inverse (geo2im)")
 	);
 
@@ -3475,7 +3475,7 @@ int RPC_main(int argc, char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -3491,17 +3491,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

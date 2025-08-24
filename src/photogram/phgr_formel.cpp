@@ -671,7 +671,7 @@ void cSetEqFormelles::NumeroteBloc()
    for (int aK=0 ; aK<int(mBlocsIncSolve.size()); aK++)
    {
       // std::cout << "  BIS " << mBlocsIncSolve[aK]->NumBlocAlloc() << " " <<  mBlocsIncSolve[aK]->IsTmp() << "\n";
-       // Pour initialiser une ordre identite en cas de non init
+       // for initialiser une ordre identite en cas de non init
        mBlocsIncSolve[aK]->SetOrder(mBlocsIncSolve[aK]->Order()+ aK/1e9);
       double aOrder = mBlocsIncSolve[aK]->Order();
       if (TestPermutVar)

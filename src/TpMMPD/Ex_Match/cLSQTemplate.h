@@ -48,7 +48,7 @@ class cImgMatch
 class cLSQMatch
 {
 	public:
-        cLSQMatch(cImgMatch * aTemplate, cImgMatch * aImg);	// match an Template "aTemplate" with an Image "aImg"
+        cLSQMatch(cImgMatch * aTemplate, cImgMatch * aImg);	// match an Template "aTemplate" with an image "aImg"
         cParamLSQMatch & Param() {return mParam;}
         bool DoMatchbyLSQ();
         bool DoMatchbyCorel();
@@ -66,13 +66,13 @@ class cLSQMatch
         Pt2dr & PtMinErr() {return mPtMinErr;}
         cInterpolateurIm2D<double>  * Interpol(){return mInterpol;}
 	private:
-		Pt2dr mPM;	// Point matched
+		Pt2dr mPM;	// point matched
 		cImgMatch * mTemplate;
 		cImgMatch * mImg;		
         cInterfChantierNameManipulateur * mICNM;
         cInterpolateurIm2D<double>  * mInterpol;
         double mcurrErr;
-        tIm2DM  mImRes;              // Image de residue
+        tIm2DM  mImRes;              // image de residue
 
         Video_Win * mWTemplate;
         Video_Win * mWTarget;

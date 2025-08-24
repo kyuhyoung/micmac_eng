@@ -56,7 +56,7 @@ qreal realDistance(const QPointF& P);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//classes mères pour toutes les interfaces d'affichage (avec possibilité d'afficher N images en même temps => N RenderArea) ; n'est jamais instanciée
+//classes mères for toutes les interfaces d'affichage (with possibilité d'afficher N images en même temps => N RenderArea) ; n'est jamais instanciée
 
 class PaintInterf;
 class RenderArea : public QWidget
@@ -105,7 +105,7 @@ class RenderArea : public QWidget
 		virtual void setPoint(const QPoint& P);
 
 	signals :
-		//void sigParam(RenderArea::ParamDisplay,int);	//paramètres d'affichage de l'image (utile pour les segments entre 2 RenderArea)
+		//void sigParam(RenderArea::ParamDisplay,int);	//paramètres d'affichage de l'image (utile for les segments between 2 RenderArea)
                 void updated(int);	//npos-1
 
 	public slots:
@@ -113,7 +113,7 @@ class RenderArea : public QWidget
 
 	protected:
 		virtual void paintEvent(QPaintEvent*);		//dessin de l'image
-		void resizeEvent(QResizeEvent* event);	//redimensionnement de l'image si resize utilisateur
+		void resizeEvent(QResizeEvent* event);	//redimensionnement de l'image if resize utilisateur
 		virtual void mousePressEvent(QMouseEvent* event);	//navigation
 		virtual void mouseMoveEvent(QMouseEvent* event);	//navigation
 		virtual void mouseReleaseEvent(QMouseEvent*);	//navigation
@@ -126,14 +126,14 @@ class RenderArea : public QWidget
 
 		QString 		 fichierImage;
 		QImage 			 refImage;			// image initiale
-		int 			 num;				// si plusieurs images sont affichées, nombre d'images
-		int 			 npos;				// si plusieurs images sont affichées, position de l'image (1 à N)
+		int 			 num;				// if plusieurs images sont affichées, number d'images
+		int 			 npos;				// if plusieurs images sont affichées, position de l'image (1 à N)
 		ToolMode 		 toolMode;			// outil utilisé par paintInterf
-		ToolMode 		 oldToolMode;		// sauvegarde du type d'outil de dessin (Draw ou Cut)
-		QPointF 		 center;			// centre du zoom dans image
+		ToolMode 		 oldToolMode;		// sauvegarde du type d'outil de dessin (Draw or Cut)
+		QPointF 		 center;			// centre du zoom in image
 		qreal 			 currentScale; 		// >=1  : échelle du zoom supplémentaire
-		qreal 			 painterScale;		// <=1 si l'image est grande  : échelle du painter pour redimensionnement à la taille de la fenêtre
-		QPointF 		 dragStartPosition;	// position initiale pour l'outil de déplacement
+		qreal 			 painterScale;		// <=1 if l'image est grande  : échelle du painter for redimensionnement à la taille de la fenêtre
+		QPointF 		 dragStartPosition;	// position initiale for l'outil de déplacement
 		bool 			 dragging;			// outil de déplacement en cours d'utilisation
 		PaintInterf		*parentWindow;		// accès à la barre d'outil de paintInterf
 		QSize 			 currentSize;		// taille de l'image affichée (de image en fait)
@@ -155,7 +155,7 @@ class PaintInterf : public QDialog
 		RenderArea::ParamDisplay getPosImg(int num) const;	//position d'une image par rapport à l'autre (cas de 2 images uniquement)
 		bool getDone() const;
 
-		//virtual void createRenderArea(QStringList* imageFiles);	//création des RenderArea (en fait ne sert pas puisque toujours sous-classée)
+		//virtual void createRenderArea(QStringList* imageFiles);	//création des RenderArea (en fait ne sert pas puisque toujours under-classée)
 		virtual void setLastPoint(int n);
 		virtual std::pair<QPoint,QPoint> getSegment() const;
 		virtual int getNbPoint(int n) const;
@@ -220,7 +220,7 @@ class VisuHomologues : public RenderArea
 		virtual void paintEvent(QPaintEvent* event);
 
 	/*signals :
-		void sigParam(RenderArea::ParamDisplay,int);*/	//paramètres d'affichage de l'image (utile pour les segments entre 2 RenderArea)
+		void sigParam(RenderArea::ParamDisplay,int);*/	//paramètres d'affichage de l'image (utile for les segments between 2 RenderArea)
 
 	private:
 		virtual void mousePressEvent(QMouseEvent* event);	//navigation
@@ -228,7 +228,7 @@ class VisuHomologues : public RenderArea
 		virtual void mouseReleaseEvent(QMouseEvent*);	//navigation
 
 		const QList<std::pair<Pt2dr,Pt2dr> >* points;	//points homologues à tracer
-		int num;	//position de l'image (1 ou 2)	
+		int num;	//position de l'image (1 or 2)	
 		QRect marquise;
 };
 
@@ -285,7 +285,7 @@ class VueHomologues : public PaintInterf
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//classe mère pour toutes les interfaces de dessin 2D ; n'est jamais instanciée
+//class mère for toutes les interfaces de dessin 2D ; n'est jamais instanciée
 
 class DrawInterf;
 class DrawArea : public RenderArea
@@ -302,7 +302,7 @@ class DrawArea : public RenderArea
 				~Polygone();
 
 				Polygone& operator=(const Polygone& polygone);
-				Polygone clone() const;	//polygone vide de même outil et de même type
+				Polygone clone() const;	//polygone vide de même outil and de même type
 
 				const ToolMode& getTmode() const;
 				bool getFerme() const;
@@ -334,14 +334,14 @@ class DrawArea : public RenderArea
 		virtual void mousePressEvent(QMouseEvent* event);
 		virtual QPolygon* continuePolygone (QList<Polygone>& conteneur, int rad);
 
-		QImage 			refImageClean;	//image de sauvegarde sur laquelle on ne dessine pas le masque précédent du RenderAreaPlan (sert pour le gradient et le Cut)
+		QImage 			refImageClean;	//image de sauvegarde on laquelle on ne dessine pas le masque précédent du RenderAreaPlan (sert for le gradient and le Cut)
 		QList<Polygone> masque;			//masque en cours de dessin à l'échelle initiale (coordonnées refImage) : le dernier est le plus récent
-		QList<Polygone> sauvegarde;		//sauvegarde des dessins supprimés (pour les outils undo-redo)
-		int 			updateBuffer;	//buffer pour mettre à jour partiellement le painter autour du dernier dessin
-		QList<int> 		undoCompteur;	//sauvegarde du nombre de points dessinés pour l'outil undo : le premier est le plus récent
-		QList<int> 		redoCompteur;	//idem pour redo
+		QList<Polygone> sauvegarde;		//sauvegarde des dessins supprimés (for les outils undo-redo)
+		int 			updateBuffer;	//buffer for mettre à jour partiellement le painter autour du dernier dessin
+		QList<int> 		undoCompteur;	//sauvegarde du number de points dessinés for l'outil undo : le premier est le plus récent
+		QList<int> 		redoCompteur;	//idem for redo
 		bool 			withGradTool;	//outil d'aide à la saisie en cours d'utilisation (false ici)
-		int 			maxPoint;		//nombre mawimum de points possibles pour cette image (cas segment)
+		int 			maxPoint;		//number mawimum de points possibles for cette image (cas segment)
 };
 
 
@@ -372,7 +372,7 @@ class DrawInterf : public PaintInterf
 		QAction *clearAct;
 
 	private:
-		int num;	//nombre d'images
+		int num;	//number d'images
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -477,8 +477,8 @@ class PaintInterfSegment : public DrawInterf
 		virtual ~PaintInterfSegment();
 
 		virtual std::pair<QPoint,QPoint> getSegment() const;
-		virtual int getNbPoint(int n) const;	//nb de points saisis dans l'autre image
-		bool ptSauvegarde(int n) const;	//s'il y a des points sauvegardés dans l'autre image
+		virtual int getNbPoint(int n) const;	//nb de points saisis in l'autre image
+		bool ptSauvegarde(int n) const;	//s'il y a des points sauvegardés in l'autre image
 		virtual void setLastPoint(int n);
 
 	public slots:
@@ -487,7 +487,7 @@ class PaintInterfSegment : public DrawInterf
 
 	private slots:
 		virtual void helpClicked();
-                void sgtCompleted(bool completed);	//true : le nb max de points saisissables est atteint pour une image
+                void sgtCompleted(bool completed);	//true : le nb max de points saisissables est atteint for une image
 
 	private:
 		virtual void createActions();
@@ -497,7 +497,7 @@ class PaintInterfSegment : public DrawInterf
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//saisie d'un masque pour un plan
+//saisie d'un masque for un plan
 
 class PaintInterfPlan;
 class RenderAreaPlan : public DrawArea
@@ -532,10 +532,10 @@ class RenderAreaPlan : public DrawArea
 
 		QString					 maskPred;		// masque précédent (ouvert)
 		QImage					 masqPrec;		// masque précédent (ouvert)
-		std::pair<QImage,QImage> gradient;		// gradient de refImage pour l'aide à la saisie
+		std::pair<QImage,QImage> gradient;		// gradient de refImage for l'aide à la saisie
 		float 					 regul;			// coefficient de régularité de l'outil d'aide à la saisie : cout(i) = gradient(i) + regul * dist(i,doite)
 		bool					 autoRegul;		// regul calculé automatiquement
-		std::pair<QImage,QImage> tempoImages; 	// images rééchantillonnées pour le calcul du gradient
+		std::pair<QImage,QImage> tempoImages; 	// images rééchantillonnées for le computation du gradient
 		bool					 refPainted;
 };
 
@@ -546,7 +546,7 @@ class PaintInterfPlan : public DrawInterf
 	Q_OBJECT
 
 	public:
-		PaintInterfPlan(const QString& imageFile, const ParamMain* pMain, Assistant* help, QWidget* parent, bool plan=true, const QString& masquePrec=QString(), bool filtre=false);	//plan toujours true sauf si lancé par PaintInterfCorrel
+		PaintInterfPlan(const QString& imageFile, const ParamMain* pMain, Assistant* help, QWidget* parent, bool plan=true, const QString& masquePrec=QString(), bool filtre=false);	//plan toujours true sauf if lancé par PaintInterfCorrel
 		virtual ~PaintInterfPlan();
 
 		virtual Tiff_Im* getMaskImg();
@@ -571,16 +571,16 @@ class PaintInterfPlan : public DrawInterf
 
 		Tiff_Im *maskImg;
 		QString  masqPrec;
-		bool	 filtrage;	//activé si interface de dessin de Nuage2Ply (juste pour le titre)
+		bool	 filtrage;	//activé if interface de dessin de Nuage2Ply (juste for le titre)
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//saisie d'un masque pour la corrélation (+ masque automatique)
+//saisie d'un masque for la corrélation (+ masque automatique)
 
 
 class AutoMask
 {
-//calcul du masque automatique
+//computation du masque automatique
 	public :
 
 		AutoMask();

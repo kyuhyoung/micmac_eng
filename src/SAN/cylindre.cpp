@@ -461,7 +461,7 @@ std::vector<cInterSurfSegDroite>  cCylindreRevolution::InterDroite(const ElSeg3D
 
 
     // std::cout << "DELTA " << aDelta << "\n";
-// Si aDelta <0 on prend le point qui minise l'ecart, donc aDelta=0
+// if aDelta <0 on prend le point qui minise l'ecart, donc aDelta=0
 
 
     double aSqrtDelta = sqrt(ElMax(0.0,aDelta));
@@ -585,7 +585,7 @@ Pt3dr cCylindreRevolution::SegAndL(const ElSeg3D & aSeg,double aZ0,int & aNbVrai
 
 
     // std::cout << "DELTA " << aDelta << "\n";
-// Si aDelta <0 on prend le point qui minise l'ecart, donc aDelta=0
+// if aDelta <0 on prend le point qui minise l'ecart, donc aDelta=0
 
     if (aDelta> 0) 
        aNbVraiSol = 2;
@@ -649,9 +649,9 @@ Pt3dr cCylindreRevolution::E2UVL(const Pt3dr & aP) const
     double aZ = scal(aPP0,mW);
     Pt2dr aRhoTeta = Pt2dr::polar(Pt2dr(aX,aY),0);  // Rho teta
 
-    // On renvoie Teta-Z-Rho pour : 
+    // On renvoie Teta-Z-Rho for : 
     //   1 etre direct
-    //   2 que Rho soit en dernier (et  donc 
+    //   2 que Rho soit en dernier (and  donc 
     return Pt3dr
            (
                mSign* aRhoTeta.y*mRay,

@@ -118,7 +118,7 @@ int cAppli_ImportOrgi::Exe()
         }
 
         //  Read the 2D measures of GCP
-        //  Fichier  APPUIS.TXT  (ORGI)
+        //  file  APPUIS.TXT  (ORGI)
         std::map<int,cSetMesPtOf1Im> aMapMesIm;
         {
              cReadFilesStruct aFileAppuis(mOrgiFolder+mNameFileAppui,"EEXY",0,-1,'#');

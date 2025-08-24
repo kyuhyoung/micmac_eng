@@ -56,7 +56,7 @@ cTapioca_IDR::cTapioca_IDR(int argc, char** argv):
         if (ELISE_fp::exist_file(mPatOrFile)  )
         {
             mICNM=cInterfChantierNameManipulateur::BasicAlloc("./");
-            // récupère une liste d'image
+            // récupère une list d'image
             cSauvegardeNamedRel aSNR = StdGetFromPCP(mPatOrFile,SauvegardeNamedRel);
             for
                     (

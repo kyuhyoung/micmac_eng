@@ -323,7 +323,7 @@ void test_write_pckb
           f,
           Image.out()  | (W.odisc() << (f%8))
       );
-      // Image.show();
+      // image.show();
 
       // getchar();
 

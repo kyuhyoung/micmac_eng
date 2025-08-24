@@ -50,9 +50,9 @@ m_Nomfic(nomfic)
     m_Source.read_header();
     codestream.create(m_Input);
 
-    // Ajout de code pour verifier l'encodage avec/ou sans perte
+    // Ajout de code for verifier l'encodage with/or without perte
     kdu_params *root = codestream.access_siz();
-    // les attributs Ckernels et Creversible sont dans le cluster 5
+    // les attributs Ckernels and Creversible sont in le cluster 5
     int idx = 5;
     kdu_params * prms = root->access_cluster(idx);
     bool reversible, trouveReversible,trouveKernel;
@@ -67,7 +67,7 @@ m_Nomfic(nomfic)
     }
 
     // remplissage de metadonnees
-    //TODO : ajouter les autres attributs , en fonction des besoins
+    //TODO : ajouter les autres attributs , en function des besoins
     if(trouveReversible)
     {
         // on affecte au membre
@@ -152,7 +152,7 @@ m_Nomfic(nomfic)
 
 
     // Debug Greg
-    // On exporte la pyramide d'image pour controler les sous ech
+    // On exporte la pyramide d'image for controler les under ech
     //exportPyramide(nomfic,1,32);
     // Fin Debug Greg
 
@@ -174,7 +174,7 @@ void JP2ImageLoader::LoadNCanaux(const std::vector<sLowLevelIm<short unsigned in
     int precision = 16;
     bool signe = false;
 
-    // si l'image d'origine est sur 8 bits il faudra corriger la dynamique en sortie
+    // if l'image d'origine est on 8 bits il faudra corriger la dynamique en sortie
     bool corrDyn =  (m_Type == eUnsignedChar);
 
     jp2_source              m_Source;
@@ -206,9 +206,9 @@ void JP2ImageLoader::LoadNCanaux(const std::vector<sLowLevelIm<short unsigned in
     //std::cout << "reDeZoom : "<<reDeZoom<<std::endl;
 
     kdu_dims dims,mdims;
-    // Position de l'origine en coord fichier (cad plein resolution)
+    // Position de l'origine en coord file (cad plein resolution)
     dims.pos=kdu_coords(aP0File.real()*aDeZoom,aP0File.imag()*aDeZoom);
-    // Taille de la zone en coord fichier (cad pleine resolution)
+    // Taille de la zone en coord file (cad pleine resolution)
     dims.size=kdu_coords(aSz.real()*aDeZoom,aSz.imag()*aDeZoom);
     codestream.map_region(0,dims,mdims);
     int premier_canal = -1;
@@ -268,7 +268,7 @@ void JP2ImageLoader::LoadNCanaux(const std::vector<sLowLevelIm<short unsigned in
         decompressor.pull_stripe(stripe_bufs,stripe_heights,sample_gaps,row_gaps,precisions,is_signed);
 
         // Par defaut Kakadu adapte la dynamique des valeurs en sortie a la precision demande
-        // donc si l'image d'origine est sur 8 bits, il faut corriger la dynamique
+        // donc if l'image d'origine est on 8 bits, il faut corriger la dynamique
         if (corrDyn)
         {
             for(n=0;n<num_components;++n)
@@ -322,12 +322,12 @@ void JP2ImageLoader::LoadNCanaux(const std::vector<sLowLevelIm<float> > & aVImag
     int precision = 16;
     bool signe = false;
 
-    // si l'image d'origine est sur 8 bits il faudra corriger la dynamique en sortie
+    // if l'image d'origine est on 8 bits il faudra corriger la dynamique en sortie
     float dyn = 1.;
     if (m_Type == eUnsignedChar)
         dyn = 1./256.;
 
-    // si l'image d'origine est sur 8 bits il faudra corriger la dynamique en sortie
+    // if l'image d'origine est on 8 bits il faudra corriger la dynamique en sortie
     jp2_source              m_Source;
     kdu_compressed_source * m_Input;
     jp2_family_src          jp2_ultimate_src;
@@ -360,9 +360,9 @@ void JP2ImageLoader::LoadNCanaux(const std::vector<sLowLevelIm<float> > & aVImag
     if (verbose) std::cout << "reDeZoom : "<<reDeZoom<<std::endl;
 
     kdu_dims dims,mdims;
-    // Position de l'origine en coord fichier (cad plein resolution)
+    // Position de l'origine en coord file (cad plein resolution)
     dims.pos=kdu_coords(aP0File.real()*aDeZoom,aP0File.imag()*aDeZoom);
-    // Taille de la zone en coord fichier (cad pleine resolution)
+    // Taille de la zone en coord file (cad pleine resolution)
     dims.size=kdu_coords(aSz.real()*aDeZoom,aSz.imag()*aDeZoom);
     codestream.map_region(0,dims,mdims);
     if (verbose) std::cout << "mdims : "<<mdims.pos.x<<" "<<mdims.pos.y<<" "<<mdims.size.x<<" "<<mdims.size.y<<std::endl;

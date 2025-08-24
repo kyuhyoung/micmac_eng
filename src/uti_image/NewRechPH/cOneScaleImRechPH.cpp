@@ -88,7 +88,7 @@ double cOneScaleImRechPH::QualityScaleCorrel(const Pt2di & aP0,int aSign,bool Im
         if (aVal != aDef)
         {
            double aGausVal = mGaussVal.at(aKV);
-           // Pour l'instant, un peu au pif, on met le poids egal a la gaussienne, 
+           // for l'instant, un peu au pif, on met le poids egal a la gaussienne, 
            aMat.add_pt_en_place(aVal,aGausVal,aGausVal);
         }
    }
@@ -164,7 +164,7 @@ cOneScaleImRechPH* cOneScaleImRechPH::FromScale
 
      cOneScaleImRechPH * aRes = new cOneScaleImRechPH(anAppli,aSzRes,aSigma,anIm.mNiv+1,aScaldec);
 
-     // Pour reduire le temps de calcul, si deja plusieurs iters la fon de convol est le resultat
+     // for reduire le temps de computation, if deja plusieurs iters la fon de convol est le result
      // de plusieurs iters ...
      int aNbIter = 4;
      if (!anAppli.TestDirac())
@@ -193,7 +193,7 @@ cOneScaleImRechPH* cOneScaleImRechPH::FromScale
      {
         aRes->mIm.dup(anIm.mIm);
      }
-     // Passe au filtrage gaussien le sigma cible et le sigma actuel, il se debrouille ensuite
+     // Passe au filtrage gaussien le sigma cible and le sigma actuel, il se debrouille ensuite
      // std::cout << "FILTRAGE " << aScaleInit << " => " << aRes->mScalePix << "\n";
      FilterGaussProgr(aRes->mIm,aRes->mScalePix,aScaleInit,aNbIter);
 
@@ -210,13 +210,13 @@ cOneScaleImRechPH* cOneScaleImRechPH::FromScale
      return aRes;
 }
 
-// Indique si tous les voisins se compare a la valeur cible aValCmp
-// autrement dit est un max ou min local
+// Indique if tous les voisins se compare a la value cible aValCmp
+// autrement dit est un max or min local
 
 bool   cOneScaleImRechPH::SelectVois(const Pt2di & aP,const std::vector<Pt2di> & aVVois,int aValCmp)
 {
     tElNewRechPH aV0 =  mTIm.get(aP);
-    tElNewRechPH aVDef = aV0 - aValCmp; // Si c'est Max, aValCmp=1, donc neutre
+    tElNewRechPH aVDef = aV0 - aValCmp; // if c'est Max, aValCmp=1, donc neutre
     for (int aKV=0 ; aKV<int(aVVois.size()) ; aKV++)
     {
         const Pt2di & aVois = aVVois[aKV];
@@ -400,7 +400,7 @@ void cOneScaleImRechPH::CalcPtsCarac(bool Basic)
         }
    }
 
-   // Ne pas supprimer, stat utile sur les cols
+   // Ne pas supprimer, stat utile on les cols
    if (0)
    {
       std::cout << "  ====================  "
@@ -436,7 +436,7 @@ void cOneScaleImRechPH::Export(cSetPCarac & aSPC,cPlyCloud *  aPlyC)
        cPtRemark & aP = **itIPM;
        double aDistZ = mAppli.DZPlyLay();
 
-       // On est sur de regarder que les tetes d'arbres puisque on exige qu'il n'y ait pas de pere
+       // On est on de regarder que les tetes d'arbres puisque on exige qu'il n'y ait pas de pere
        if (!aP.LowR())
        {
           cBrinPtRemark * aBr = new cBrinPtRemark(&aP,mAppli);
@@ -533,7 +533,7 @@ void cOneScaleImRechPH::Show(Video_Win* aW)
    );
 }
 
-// Initialise la matrice des pt remarquable, en Init les met, sinon les supprime
+// Initialise la matrix des pt remarquable, en Init les met, else les supprime
 void cOneScaleImRechPH::InitBuf(const eTypePtRemark & aType, bool Init)
 {
    for (std::list<cPtRemark *>::iterator itP=mLIPM.begin() ; itP!=mLIPM.end() ; itP++)
@@ -555,7 +555,7 @@ void cOneScaleImRechPH::CreateLink(cOneScaleImRechPH & aHR,const eTypePtRemark &
    int aRatio = mPowDecim / aHR.mPowDecim;
    cOneScaleImRechPH & aLR = *this;
 
-   // Initialise la matrice haute resolution
+   // Initialise la matrix haute resolution
    aLR.InitBuf(aType,true);
    double aDist = (mScalePix * 6.0 + 0.5) ;
 
@@ -681,7 +681,7 @@ bool cOneScaleImRechPH::ComputeDirAC(cOnePCarac & aP)
       return false;
    }
 
-   // std::cout << "CALCUL ComputeDirAC " << isAC  << " " << aR<< "\n";
+   // std::cout << "computation ComputeDirAC " << isAC  << " " << aR<< "\n";
    return true;
 }
 

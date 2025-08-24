@@ -166,7 +166,7 @@ void cBlockEtal::TestMultiRot(INT K1,INT K2)
      {
 	     ElRotation3D R1 = E1->GetBestRotEstim(*itC);
 	     ElRotation3D R2 = E2->GetBestRotEstim(*itC);
-	     // Matrice de passage R2 vers R1
+	     // matrix de passage R2 vers R1
 	     ElRotation3D R = R1 * R2.inv();
 	     ElRotation3D RDif = R0 * R.inv();
 	     cout << "Name " << *itC 

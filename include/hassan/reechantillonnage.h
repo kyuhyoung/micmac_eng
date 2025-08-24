@@ -53,7 +53,7 @@ namespace Reechantillonnage
 
 /************************************************************************************/
 
-   template<class Type> Type biline (Type** im, INT tx, INT ty, Pt2dr p)//tx ty la taille de l'image en x et y
+   template<class Type> Type biline (Type** im, INT tx, INT ty, Pt2dr p)//tx ty la taille de l'image en x and y
    {
       INT x_min = (INT)(p.x);
       INT y_min = (INT)(p.y);
@@ -80,7 +80,7 @@ namespace Reechantillonnage
 
    template<class Type> Type bicube (Type** im, INT tx, INT ty, Pt2dr p)
    {
-                                                           //attention la valeur peut etre negative : probleme apres casting
+                                                           //attention la value peut etre negative : probleme after casting
       if(     (p.x < 1.0) || (p.x >= (REAL)(tx - 2))
            || (p.y < 1.0) || (p.y >= (REAL)(ty - 2))
         )
@@ -102,14 +102,14 @@ namespace Reechantillonnage
       REAL coefc2 =   dc * (1 + dc -  dc2);
       REAL coefc3 =   -dc2 * (1 - dc);
 
-                                        // interpolation sur les colonnes
+                                        // interpolation on les colonnes
       int yv = yc - 1;
       REAL valcol0 = coefc0 * im[yv][xc__1]     + coefc1 * im[yv][xc] + coefc2 * im[yv][xc_1] + coefc3 * im[yv][xc_2];
       REAL valcol1 = coefc0 * im[(++yv)][xc__1] + coefc1 * im[yv][xc] + coefc2 * im[yv][xc_1] + coefc3 * im[yv][xc_2];
       REAL valcol2 = coefc0 * im[(++yv)][xc__1] + coefc1 * im[yv][xc] + coefc2 * im[yv][xc_1] + coefc3 * im[yv][xc_2];
       REAL valcol3 = coefc0 * im[(++yv)][xc__1] + coefc1 * im[yv][xc] + coefc2 * im[yv][xc_1] + coefc3 * im[yv][xc_2];
 
-                                       // interpolation sur la ligne
+                                       // interpolation on la line
 
 
       REAL somme =   (   -dl * (1 - dl) * (1 - dl) * valcol0

@@ -350,7 +350,7 @@ ChoixParmiCaseGPUMT::ChoixParmiCaseGPUMT
      Fonc_Num aFTrue,
      Fonc_Num aFFalse,
      INT      anId,
-     ChoixParmiCaseGPUMT * oneExcluing  // 0 pour la premiere
+     ChoixParmiCaseGPUMT * oneExcluing  // 0 for la premiere
 )   :
    CaseGPUMT      (aGridMenu,aName,anInd,(oneExcluing==0) ? aFTrue: aFFalse),
    mId            (anId),

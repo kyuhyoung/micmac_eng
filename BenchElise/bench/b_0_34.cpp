@@ -46,7 +46,7 @@ void bench_som_rel_flag
 
 
     //=========================================================
-    // Bench sur un sel_flag simple 
+    // Bench on un sel_flag simple 
     //=========================================================
 
     Fonc_Num sflag = 0;
@@ -75,7 +75,7 @@ void bench_som_rel_flag
 
 
     //=========================================================
-    // Bench sur un sel_flag compose avec un sel fonc 
+    // Bench on un sel_flag compose with un sel fonc 
     //=========================================================
 
     Fonc_Num som_sel_flag = 0;
@@ -99,7 +99,7 @@ void bench_som_rel_flag
     BENCH_ASSERT(dif<epsilon);
 
     //=========================================================
-    // Bench sur un sel fonc  compose avec un sel_flag
+    // Bench on un sel fonc  compose with un sel_flag
     //=========================================================
 
     ELISE_COPY

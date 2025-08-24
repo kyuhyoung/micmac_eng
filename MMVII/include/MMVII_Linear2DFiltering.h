@@ -91,7 +91,7 @@ template <class Type> class cGP_OneImage : public cMemCheck
         void SetBestEquiv(int,tGPIm *);///< "Post-Construction", can be done one pyramid is complete
 
 
-              // =======   Image processing for creation
+              // =======   image processing for creation
         void  ComputGaussianFilter();  ///< Generate computation of gauss image
         void  MakeDiff(const tGPIm & ); ///< Put in this the difference between anIm and anIm.mDown
         void  MakeCorner(); ///< Compute an indice of corner image 
@@ -99,7 +99,7 @@ template <class Type> class cGP_OneImage : public cMemCheck
 
               // =======   Description
         void SaveInFile() const;  ///< Save image on file, tuning/teaching
-        void Show() const;  ///< Show Image in text format, test and debug
+        void Show() const;  ///< Show image in text format, test and debug
  
               // =======   Utilitaries
         std::string  ShortId() const;  ///< Helper to create Id avoid 
@@ -179,7 +179,7 @@ template <class Type> class cGP_OneOctave : public cMemCheck
         //  ====  Accessors  ===========
         tPyr*          Pyram() const ;      ///< Accessor to Pyram
         const cPt2di &  SzIm() const;       ///<  mSzIm
-        const double &  Scale0Abs() const;  ///< Scale of Top Image
+        const double &  Scale0Abs() const;  ///< Scale of Top image
         tOct *          Up() const;         ///< Possible octave up in the pyramid, 0 if dont exist
         const int &     NumInPyr() const;   ///< Number inside Pyram
         const std::vector<tSP_GPIm>& VIms()const ;       ///< Images of the Pyramid
@@ -276,7 +276,7 @@ struct cGP_Params
          cGP_Params(const cPt2di & aSzIm0,int aNbOct,int aNbLevByOct,int aOverlap,const cMMVII_Appli *,bool is4TieP);
 
       // Parameters having no def values
-         cPt2di mSzIm0;    ///< Sz of Image at full resol
+         cPt2di mSzIm0;    ///< Sz of image at full resol
          int  mNbOct;      ///< Number of octave
          int  mNbLevByOct;  ///< Number of level per octave (dont include overlap)
          int  mNbOverlap;   ///< Number of overlap

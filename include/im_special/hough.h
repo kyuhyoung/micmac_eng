@@ -61,7 +61,7 @@ class ElHough : public Mcheck
 
 
 
-		// Fonction relativement couteuses car font appel a des transfo de
+		// function relativement couteuses car font appel a des transfo de
 		// hough
 
 		virtual REAL DynamicModeValues() = 0;
@@ -96,10 +96,10 @@ class ElHough : public Mcheck
                              (
                                   Pt2di Sz,     // taille en XY
                                   REAL StepRho,  // Pas en pixel
-                                  REAL StepTeta, // Pas en equiv pixel pour la diag
+                                  REAL StepTeta, // Pas en equiv pixel for la diag
                                   Mode,          // mode d'accum
-                                  REAL RabRho,   // rab en pixel sur l'accum
-                                  REAL RabTeta   // rab en radian sur l'accum
+                                  REAL RabRho,   // rab en pixel on l'accum
+                                  REAL RabTeta   // rab en radian on l'accum
                               );
             static ElHough * NewOne(const ElSTDNS string &);
 
@@ -108,11 +108,11 @@ class ElHough : public Mcheck
             virtual void write_to_file(const std::string & name) const = 0 ;
 
 
-            // ON PASSE L'IMAGE de POIDS CA RETOURNE L'ACCUMULATEUR
+            // ON PASSE L'image de POIDS CA RETOURNE L'ACCUMULATEUR
             virtual Im2D_INT4 Pds(Im2D_U_INT1) =0;
 
-            // ON PASSE L'IMAGE CA RETOURNE L'ACCUMULATEUR, CA UTILISE l'ANGLE DU GRAD, il
-            // doit etre reetale entre 0 et 256
+            // ON PASSE L'image CA RETOURNE L'ACCUMULATEUR, CA UTILISE l'ANGLE DU GRAD, il
+            // doit etre reetale between 0 and 256
             //
             virtual Im2D_INT4 PdsAng(Im2D_U_INT1 aImPds,Im2D_U_INT1 aImTeta,REAL Incert,bool IsGrad=true) =0;
 
@@ -198,7 +198,7 @@ class ElHoughFiltSeg // : public ElHoughFiltSeg
 
 
 
-		  // Marche pour Im2D_U_INT1 et Im2D_INT1, car fait appel OptimSeg ...
+		  // Marche for Im2D_U_INT1 and Im2D_INT1, car fait appel OptimSeg ...
           Seg2d ExtendSeg(SegComp s0,REAL DeltaMin,Im2DGen & Im);
 
           REAL Step() const {return mStep;}

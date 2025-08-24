@@ -91,7 +91,7 @@ ElTmplSpecNull REAL  ElStdTypeScal<REAL>::RTtoT(REAL v) ; // { return v;}
 
 class Fonc_Num;
 class Symb_FNum;
-// Fonctions a Effets de bords sur Fonc_Num => Erreurs Fatales
+// Fonctions a Effets de bords on Fonc_Num => Erreurs Fatales
 template <>  void ElSetMax (Fonc_Num & v1,Fonc_Num v2);
 template <>  void ElSetMin (Fonc_Num & v1,Fonc_Num v2);
 Fonc_Num operator += (Fonc_Num &,const Fonc_Num &);
@@ -129,14 +129,14 @@ void pt_set_min_max(Pt2d<Type> & p0,Pt2d<Type> & p1);
 template <class Type> class TCompl
 {
     public :
-        // definition par defaut debile, faite pour Fonc_Num
+        // definition par defaut debile, faite for Fonc_Num
         typedef double  TypeCompl;
 };
 
 template <> class TCompl<Fonc_Num>
 {
     public :
-    // A priori inutile, pour eviter un overlaod
+    // A priori inutile, for eviter un overlaod
         typedef double  TypeCompl;
         static Fonc_Num FromC(double aV);// {return aV;}
 };
@@ -323,8 +323,8 @@ template <class Type> class Pt2d : public  ElStdTypeScal<Type>
 
             // tertiaire
 
-     // in_sect_angulaire :  est que le pt est dans le secteur partant de p1
-     // et defini par un parcourt trigo jusqu'a p2
+     // in_sect_angulaire :  est que le pt est in le secteur partant de p1
+     // and defini par un parcourt trigo jusqu'a p2
      bool in_sect_angulaire(const Pt2d<Type> & p1,const Pt2d<Type> & p2) const;
 
      // Ceux-ci n'ont aucun interet a etre iniline
@@ -479,9 +479,9 @@ class cElMap2D
          virtual int Type() const = 0;
          virtual ~cElMap2D(){}
          virtual cElMap2D * Map2DInverse() const;
-         virtual cElMap2D * Simplify() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
-         virtual cElMap2D * Duplicate() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
-         virtual cElMap2D * Identity() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
+         virtual cElMap2D * Simplify() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
+         virtual cElMap2D * Duplicate() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
+         virtual cElMap2D * Identity() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
 
          virtual int   NbUnknown() const;
          virtual void  AddEq(Pt2dr & aCste,std::vector<double> & anEqX,std::vector<double> & anEqY,const Pt2dr & aP1,const Pt2dr & aP2 ) const;
@@ -495,9 +495,9 @@ class cElMap2D
           // Not yet commented
           void Affect(const cElMap2D &);
           virtual std::vector<double> Params() const;  // "Inverse" de InitFromParams
-          virtual std::vector<std::string> ParamAux() const;  // Pour eventuellement param sec de Polyn
+          virtual std::vector<std::string> ParamAux() const;  // for eventuellement param sec de Polyn
         private :
-           virtual bool Compatible(const cElMap2D *) const; // Pour l'affectation, peut faire un down cast 
+           virtual bool Compatible(const cElMap2D *) const; // for l'affectation, peut faire un down cast 
 };
 
 class cComposElMap2D : public cElMap2D
@@ -515,7 +515,7 @@ class cComposElMap2D : public cElMap2D
 
          virtual Pt2dr operator () (const Pt2dr & p) const ;
          virtual cElMap2D * Map2DInverse() const;
-         virtual cElMap2D * Simplify() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
+         virtual cElMap2D * Simplify() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
          virtual cXml_Map2D    ToXmlGen() ; // Peuvent renvoyer 0
      public :
          std::vector<cElMap2D *> mVMap;
@@ -536,8 +536,8 @@ class ElHomot : public cElMap2D
 
          virtual int Type() const ;
          virtual  cElMap2D * Map2DInverse() const;
-         virtual cElMap2D * Duplicate() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
-         virtual cElMap2D * Identity() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
+         virtual cElMap2D * Duplicate() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
+         virtual cElMap2D * Identity() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
          virtual cXml_Map2D    ToXmlGen() ; // Peuvent renvoyer 0
          ElHomot inv () const;
 
@@ -610,8 +610,8 @@ class ElSimilitude : public cElMap2D
 
          virtual int Type() const ;
          virtual  cElMap2D * Map2DInverse() const;
-         virtual cElMap2D * Duplicate() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
-         virtual cElMap2D * Identity() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
+         virtual cElMap2D * Duplicate() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
+         virtual cElMap2D * Identity() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
          virtual cXml_Map2D    ToXmlGen() ; // Peuvent renvoyer 0
          ElSimilitude inv () const
          {
@@ -654,12 +654,12 @@ class ElAffin2D : public cElMap2D
         static ElAffin2D Id();
         static ElAffin2D trans(Pt2dr aTr);  // Ajoute Tr
 
-  // Soit une image I1, que l'on Crop de Tr, puis que l'on sous echantillone
-  // a d'une resolution aResol, pour avoir une image I2 renvoie la transfo qui donne les coordonnees
-  // de l'homologue de I1 dans I2
+  // Soit une image I1, que l'on Crop de Tr, puis que l'on under echantillone
+  // a d'une resolution aResol, for avoir une image I2 renvoie la transfo qui donne les coordinates
+  // de l'homologue de I1 in I2
   //
-  //  Si aSzInOut est donne, on rajoute une eventuelle translation pour que l'image
-  //  de la box est son coin en 0,0. La taille est modifiee et contient la taille finale
+  //  if aSzInOut est donne, on rajoute une eventuelle translation for que l'image
+  //  de la box est son coin en 0,0. La taille est modifiee and contient la taille finale
   //
   //
         static ElAffin2D TransfoImCropAndSousEch(Pt2dr aTr,Pt2dr aResol,Pt2dr * aSzInOut=0);  // Ajoute Tr
@@ -694,7 +694,7 @@ class ElAffin2D : public cElMap2D
        virtual  cElMap2D * Map2DInverse() const;
        virtual int Type() const ;
        virtual cElMap2D * Duplicate() ;  
-       virtual cElMap2D * Identity() ;  // En gal retourne this, mais permet au vecteur a 1 de se simplifier
+       virtual cElMap2D * Identity() ;  // En gal retourne this, but permet au vector a 1 de se simplifier
        virtual cXml_Map2D    ToXmlGen() ; // Peuvent renvoyer 0
 
        Pt2dr I00() const {return mI00;}
@@ -802,18 +802,18 @@ template <class Type> void assert_not_nul(const Pt2d<Type> &){}
 #endif
 
 
-// angle avec vecteur (1,0), compris entre -pi et pi
-// par ex (0,1) => pi / 2, si deux arg angle de p1 vers p2
+// angle with vector (1,0), compris between -pi and pi
+// par ex (0,1) => pi / 2, if deux arg angle de p1 vers p2
 // en fait juste encapsulation de atan2
 REAL  angle(const Pt2dr & p);
 REAL  angle(const Pt2dr & p1,const Pt2dr & p2);
 
 
-// La fonction polar est maintenant dans la classe Pt2d !!!
+// La function polar est maintenant in la class Pt2d !!!
 // Pt2dr polar(const Pt2dr & p,REAL AngDef);
 
-// angle de droite (entre -pi/2 et pi/2),
-//  angle de droite non oriente (entre 0 et pi/2, symetrique)
+// angle de droite (between -pi/2 and pi/2),
+//  angle de droite non oriente (between 0 and pi/2, symetrique)
 
 REAL  angle_de_droite(const Pt2dr & p);
 REAL  angle_de_droite(const Pt2dr & p1,const Pt2dr & p2);
@@ -822,9 +822,9 @@ REAL  angle_de_droite_nor(const Pt2dr & p1,const Pt2dr & p2);
 
 
 
-// Fonction assez lentes , a utiliser pour memoriser
+// function assez lentes , a utiliser for memoriser
 std::vector<Pt2di> PointInCouronne(int aD8Min,int aD8Max);
-    // Par ex dist [2,5,9] et recuper (0-1) + (2-4) + (5-8)
+    // Par ex dist [2,5,9] and recuper (0-1) + (2-4) + (5-8)
     // AddD4First mets les 4 voisin d'abord
 std::vector<std::vector<Pt2di> > PointOfCouronnes(const std::vector<int> &Dist,bool AddD4First);
 
@@ -974,7 +974,7 @@ Type Det(const Pt3d<Type> & p1,const Pt3d<Type> & p2,const Pt3d<Type> & p3)
 }
 
 
-Pt3dr OneDirOrtho(const Pt3dr &);  // Vecteur unitaire
+Pt3dr OneDirOrtho(const Pt3dr &);  // vector unitaire
 
 template <class Type> inline Pt2d<Type> Proj(Pt3d<Type> aP) {return Pt2d<Type>(aP.x,aP.y);}
 
@@ -1037,7 +1037,7 @@ template <class Type> class Pt4d
 
      private :
 //          void Verif_adr_xy();
-// Methode jamais ecrite
+// method jamais ecrite
 };
 
 
@@ -1153,8 +1153,8 @@ template <class Type> class Box2d
      std::vector<Pt2d<Type> >   Contour() const;
 
 
-     // + ou - dilatation signee, en fait equivalent avec la
-     // definition actuelle de dilate (mais le cote algebrique de
+     // + or - dilatation signee, en fait equivalent with la
+     // definition actuelle de dilate (but le cote algebrique de
      // de dilate n'est pas acquis a 100%)
      Box2d<Type>  AddTol(const Box2d<Type> &) const;
      Box2d<Type>  AddTol(const Pt2d<Type> &) const;
@@ -1239,7 +1239,7 @@ Pt2di  RandomlyGenereInside(const Box2di &) ;
 
 Box2dr  I2R(const Box2di &);
 Box2di  R2I(const Box2dr &);   // Par round_ni
-Box2di  R2ISup(const Box2dr &);   // Par down et sup
+Box2di  R2ISup(const Box2dr &);   // Par down and sup
 
 ostream & operator << (ostream & ofs,const Box2di  &aBox);
 ostream & operator << (ostream & ofs,const Box2dr  &aBox);
@@ -1282,7 +1282,7 @@ class cDecoupageInterv2D
           Box2di KthIntervOut(int aK) const;
           Pt2di  IndexOfKBox(int aKBOx) const;
 
-      // Avec Bord par defaut
+      // with Bord par defaut
           Box2di  KthIntervIn(int aK) const;
           Box2di  KthIntervIn(int aK, const Box2di   & aSzBord) const;
        // Majorant de la taille des boites
@@ -1308,7 +1308,7 @@ class cMetaDataPhoto
         bool  IsNoMTD() const;
 
 
-        // Valeur par laquelle il faut mulpitlier elle meme pour egaliser Ref
+        // value par laquelle il faut mulpitlier elle meme for egaliser Ref
         double MultiplierEqual(const cMetaDataPhoto &,bool * AllOk) const;
 
         // static const cMetaDataPhoto &  CreateExiv2(const std::string &,const char * aNameTest=0);
@@ -1434,7 +1434,7 @@ class cSysCoord
 
 
          // Au moins un des deux ToGeoC doit etre defini, car les version par defaut definissent l'un par rapport
-         // a l'autre, d'ou possible recursion infinie ....
+         // a l'autre, d'or possible recursion infinie ....
          virtual Pt3dr ToGeoC(const Pt3dr &) const ;
          virtual std::vector<Pt3dr> ToGeoC(const std::vector<Pt3dr> &) const ;
 
@@ -1454,7 +1454,7 @@ class cSysCoord
          virtual cSystemeCoord ToXML() const = 0;
 
           virtual Pt3dr OdgEnMetre() const = 0;  // Ordre dde grandeir en metre
-                                                 //  tq. p.x est la valeur donnant en ordre de grandeur un dep de 1
+                                                 //  tq. p.x est la value donnant en ordre de grandeur un dep de 1
 
           static cSysCoord * GeoC();
           static cSysCoord * WGS84();
@@ -1581,7 +1581,7 @@ class cGeoRefRasterFile
         static cGeoRefRasterFile * FromFile(const std::string & aNF,const std::string & aTag="XmlGeoRefFile");
 
         Pt3dr File2Loc(const Pt3dr & ) const;
-        Pt3dr File2Loc(const Pt2dr & ) const;  // Valide si ZMoyen
+        Pt3dr File2Loc(const Pt2dr & ) const;  // Valide if ZMoyen
         Pt3dr File2GeoC(const Pt3dr & ) const;
         Pt3dr File2GeoC(const Pt2dr & ) const;
 

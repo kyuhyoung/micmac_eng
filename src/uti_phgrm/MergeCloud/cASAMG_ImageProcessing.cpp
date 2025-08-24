@@ -63,7 +63,7 @@ class cCCMaxNbStep  : public cCC_NoActionOnNewPt
        int mNbMaxStep;
 };
 
-//================= INCIDENCE EN IMAGE =============================
+//================= INCIDENCE EN image =============================
 
 
 class cCalcPlanImage : public cCCMaxNbStep
@@ -271,7 +271,7 @@ void cASAMG::ComputeIncidKLip(Fonc_Num fMasq,double aPenteInPixel,int aNumQual)
    Im2D_U_INT1 aImOmbr(mSz.x,mSz.y);
    ELISE_COPY(aImOmbr.all_pts(),Min(255,round_ni(aOmbrGlob*aDynStore)),aImOmbr.out());
 
-   // 0 Out,  1 Ok,  2 Ok mais pentre forte, 3 voisin de 2, 4 retracte
+   // 0 Out,  1 Ok,  2 Ok but pentre forte, 3 voisin de 2, 4 retracte
    ELISE_COPY(aImLabel.all_pts(),fMasq + (aImOmbr.in()>0),aImLabel.out());
    ELISE_COPY(aImLabel.border(1),0,aImLabel.out());
 
@@ -279,7 +279,7 @@ void cASAMG::ComputeIncidKLip(Fonc_Num fMasq,double aPenteInPixel,int aNumQual)
    TIm2DBits<1> aTMarq (aMarq);
 
 
-    // Supprime les CC de point "rouge" (=2) touchant du 0 et < 20 pts
+    // Supprime les CC de point "rouge" (=2) touchant du 0 and < 20 pts
 
     Pt2di aP;
     for (aP.x=1 ; aP.x<(mSz.x-1) ; aP.x++)

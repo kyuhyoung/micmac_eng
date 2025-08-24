@@ -48,7 +48,7 @@ class cImageRadiomData : public cMemCheck
 {
    public :
         typedef size_t               tIndex;
-        typedef cPt2df               tPtMem;     ///< Point are store on float (4 byte) 
+        typedef cPt2df               tPtMem;     ///< point are store on float (4 byte) 
         typedef std::vector<tPtMem>  tVPt;       ///< vector of  pts 
         typedef tU_INT2              tRadiom;    ///< Type of integer on which we store each radiometry
 	typedef std::vector<tRadiom> tVRadiom;   ///< Radiometry 

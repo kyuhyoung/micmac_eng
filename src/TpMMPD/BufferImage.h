@@ -9,7 +9,7 @@
 #include <memory>
 
 
-///\brief Classe proposee pour gerer les images en memoire
+///\brief class proposee for gerer les images en memoire
 template < class T >
 class BufferImage {
 public:
@@ -17,30 +17,30 @@ public:
     ///\brief Constructeur par defaut: buffer de taille nulle*/
     BufferImage();
     
-    ///\brief Destructeur avec liberation de la memoire*/
+    ///\brief Destructeur with liberation de la memoire*/
     virtual				~BufferImage();
     
     ///\brief Constructeur a  partir d'un buffer memoire deja  existant
     /// attention le buffer n'est pas recopie: on utilise directement le pointeur data
-    ///comme le pointeur a ete fourni en entree il n'est pas sous la responsabilite de cette classe
-    ///et il ne sera pas desalloue dans le destructeur
+    ///comme le pointeur a ete fourni en entree il n'est pas under la responsabilite de cette class
+    ///and il ne sera pas desalloue in le destructeur
     BufferImage(int nXSize, int nYSize, int nBands);
     
     BufferImage(int nXSize,int nYSize, int nNBands,
                 T* data, int nPixelSpace, int nLineSpace, int nBandSpace);
     
     
-    /////////////METHODES HERITEES DE IMAGE/////////////
+    /////////////METHODES HERITEES DE image/////////////
     ///\brief taille du buffer
     std::pair<size_t,size_t>						size(int aDeZoom=1)const;
-    ///\brief nombre de colonnes
+    ///\brief number de colonnes
     size_t							numCols()const;
-    ///\brief nombre de lignes
+    ///\brief number de lignes
     size_t							numLines()const;
-    ///\brief Nombre de bandes
+    ///\brief number de bandes
     size_t							numBands()const;
 
-    /////////////METHODES PROPRES A LA CLASSE/////////////
+    /////////////METHODES PROPRES A LA class/////////////
     ///\brief Modifier la taille du buffer: attention les donnees sont reinitialisees
     void							initialize(int NRows, int NLines, int NBands, const T& defaultValue);
     ///\brief Modifier la taille du buffer: attention les donnees ne sont pas reinitialisee
@@ -51,15 +51,15 @@ public:
     T*								getPtr();
     ///\brief Pointeur vers le debut du bloc memoire
     T const *						getPtr()const;
-    ///\brief decalage memoire pour passer d'un pixel au suivant (typiquement NBands)*/
+    ///\brief decalage memoire for passer d'un pixel au suivant (typiquement NBands)*/
     int								getPixelSpace()const;
-    ///\brief decalage memoire pour passer d'une ligne a  la suivante (typiquement NRows*NBands)*/
+    ///\brief decalage memoire for passer d'une line a  la suivante (typiquement NRows*NBands)*/
     int								getLineSpace()const;
-    ///\brief decalage memoire pour passer d'un canal au suivant (typiquement 1)*/
+    ///\brief decalage memoire for passer d'un canal au suivant (typiquement 1)*/
     int								getBandSpace()const;
-    ///\brief pointeur vers le debut de la ligne L
+    ///\brief pointeur vers le debut de la line L
     T*								getLinePtr(int L);
-    ///\brief pointeur vers le debut de la ligne L
+    ///\brief pointeur vers le debut de la line L
     T const *						getLinePtr(int L)const;
     
     
@@ -71,34 +71,34 @@ public:
     ///\brief acces a  un pixel
     T &								operator ()(int C,int L, int Band=0);
     
-    ///\brief Operateur de comparaison (taille et pixel a pixel)
+    ///\brief Operateur de comparaison (taille and pixel a pixel)
     bool							operator ==(BufferImage<T> const &other)const;
     
-    ///\brief Operation sur l'ensemble des pixels
+    ///\brief Operation on l'ensemble des pixels
     BufferImage<T>&					operator /= (double val);
     
-    ///\brief Operation sur l'ensemble des pixels
+    ///\brief Operation on l'ensemble des pixels
     BufferImage<T>&					operator *= (double val);
     
-    ///\brief Operation sur l'ensemble des pixels
+    ///\brief Operation on l'ensemble des pixels
     BufferImage<T>&					operator += (T val);
     
-    ///\brief Operation sur l'ensemble des pixels
+    ///\brief Operation on l'ensemble des pixels
     BufferImage<T>&					operator -= (T val);
     
-    ///\brief Operation sur l'ensemble des pixels
+    ///\brief Operation on l'ensemble des pixels
     BufferImage<T>&					operator += (BufferImage<T> const &img);
     
-    ///\brief Operation sur l'ensemble des pixels
+    ///\brief Operation on l'ensemble des pixels
     BufferImage<T>&					operator -= (BufferImage<T> const &img);
     
-    ///\brief Operation sur l'ensemble des pixels
+    ///\brief Operation on l'ensemble des pixels
     BufferImage<T>&					operator *= (BufferImage<T> const &img);
     
-    ///\brief Operation sur l'ensemble des pixels
+    ///\brief Operation on l'ensemble des pixels
     BufferImage<T>&					operator /= (BufferImage<T> const &img);
     
-    ///\brief Operation sur l'ensemble des pixels
+    ///\brief Operation on l'ensemble des pixels
     BufferImage<T>&					operator = (T val);
     
     ///\brief Recopie d'une image
@@ -109,7 +109,7 @@ protected:
     T*							_data;
     ///\brief taille de l'image en memoire
     std::pair<size_t,size_t>					_size;
-    ///\brief nombre de bandes de l'image
+    ///\brief number de bandes de l'image
     size_t						_numBands;
     ///\brief entrelacement des pixels
     int							_pixelSpace;

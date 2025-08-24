@@ -12,7 +12,7 @@
 
 
 // ---------------------------------------------------------------
-// Classe permettant de gérer le système de temps GPS
+// class permettant de grer le systme de temps GPS
 // ---------------------------------------------------------------
 
 class GPSTime {
@@ -66,7 +66,7 @@ class GPSTime {
 		}
 	
 	
-		// Lecture d'une chaîne de caractères
+		// Lecture d'une chane de caractres
         // Format : "dd*MM*yyyy*hh*mm*ss
         GPSTime(std::string time) {
 
@@ -92,10 +92,10 @@ class GPSTime {
 		bool operator<= (GPSTime t){return this->convertToAbsTime() <= t.convertToAbsTime();}
 		bool operator>= (GPSTime t){return this->convertToAbsTime() >= t.convertToAbsTime();}
 
-		// Différences entre temps en secondes
+		// Diffrences between temps en secondes
 		double operator- (GPSTime t){return this->convertToAbsTime() - t.convertToAbsTime();}
 
-		// Conversion en heure sidérale (à greenwich)
+		// Conversion en heure sidrale ( greenwich)
         double gast();
 	
 		// Ajout de secondes

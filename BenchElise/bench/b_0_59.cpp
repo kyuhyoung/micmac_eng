@@ -1,5 +1,5 @@
-// un fichier où seront placés les tests de digeo
-// pour le moment un endroit où stocker des fonctions en vrac pour ne pas les perdre
+// un file où seront placés les tests de digeo
+// for le moment un endroit où stocker des fonctions en vrac for ne pas les perdre
 
 bool compare_digeo( const list<DigeoPoint> &i_list, const vector<DigeoPoint> &i_vector )
 {

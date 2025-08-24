@@ -301,7 +301,7 @@ template <class TObj> class GenScaleIm
 		INT         _nb_chan;
 		enum {RAB = 4};
 
-		     // Structure pour le coupage en morceau des pixels en zoom reduit
+		     // Structure for le coupage en morceau des pixels en zoom reduit
 
 
 
@@ -1057,7 +1057,7 @@ template <class Type> class Data_PackB_IM :	public	RC_Object
 
 
 		~Data_PackB_IM();
-		// per <0, convention pour ne pas initialiser avec Fonc_Num
+		// per <0, convention for ne pas initialiser with Fonc_Num
 		Data_PackB_IM (INT tx,INT ty,Fonc_Num,INT per =128);
 
 

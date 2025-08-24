@@ -39,7 +39,7 @@ Canny_Deriche_Param::Canny_Deriche_Param(tREAL8 alpha)
    mAmpl = (2*(b1-a-2*b2))/(1-b1+b2);
 }
 
-/* Merci a Canny, Rachid Deriche et Tuan Dang */
+/* Merci a Canny, Rachid Deriche and Tuan Dang */
 
 template <class TypeOut,class TypeIn>
    void deriche_ll                          // Deriche Low Level interface
@@ -67,7 +67,7 @@ template <class TypeOut,class TypeIn>
    const Canny_Deriche_Param p (alpha);
    
    /***********************************************/
-   /***** Derivation selon LIGNE : on fixe y  *****/       
+   /***** Derivation selon line : on fixe y  *****/       
    /***********************************************/
    /**** Filtrage de Gauche a Droite ****/
    for (int i=0; i< DY; i++) {     
@@ -89,7 +89,7 @@ template <class TypeOut,class TypeIn>
                      - p.b2 * YP[i*DX + j+2] ;        
       }
    }
-   /**** Derivee selon LIGNE ****/
+   /**** Derivee selon line ****/
    for (int i=0; i< DY; i++) {
      for (int j=0; j< DX; j++) {
           IGX[i*DX + j] = YP[i*DX + j] + YM[i*DX + j] ;
@@ -154,7 +154,7 @@ template <class TypeOut,class TypeIn>
      }
    }
    /******************************************************************/
-   /* Lissage suivant LIGNE --> composante en y du gradient  *****/       
+   /* Lissage suivant line --> composante en y du gradient  *****/       
    /******************************************************************/    
    /**** Filtrage de Gauche a Droite ****/   
 
@@ -176,7 +176,7 @@ template <class TypeOut,class TypeIn>
                       + p.b1 * YP[i*DX+j+1] - p.b2 * YP[i*DX+j+2];
         }
    }
-   /**** Lissage suivant LIGNE ****/       
+   /**** Lissage suivant line ****/       
    for (int i= 0; i< DY; i++) {
      for (int j= 0; j< DX; j++) {
           IGY[i*DX + j] = YP[i*DX + j] + YM[i*DX + j];

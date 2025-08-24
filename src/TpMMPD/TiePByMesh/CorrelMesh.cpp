@@ -264,7 +264,7 @@ Pt2dr CorrelMesh::correlPtsInteretInImaget(Pt2dr ptInt1,
     Pt2dr ptInt2(0,0);
     int areaSearch = mChain->mSzAreaCorr;
     int szPtCorr = mChain->mSzPtCorr;
-    cCorrelImage::setSzW(szPtCorr);    //taille fenetre correlation pour chaque pt = 3*3
+    cCorrelImage::setSzW(szPtCorr);    //taille fenetre correlation for chaque pt = 3*3
     Pt2dr P1_rlt = ptInt1 - imgetMaitre.ptOriginImaget;
     cCorrelImage * P1 = new cCorrelImage();
     cCorrelImage * P2 = new cCorrelImage();
@@ -356,7 +356,7 @@ Pt2dr CorrelMesh::correlPtsInteretInImaget_NEW(Pt2dr ptInt1,
     if(areaSearch >= szPtCorr)
     {
         //--parcourir la region de correlation---
-        cCorrelImage::setSzW(szPtCorr);    //taille fenetre correlation pour chaque pt = 3*3
+        cCorrelImage::setSzW(szPtCorr);    //taille fenetre correlation for chaque pt = 3*3
         cCorrelImage * P1 = new cCorrelImage();
         cCorrelImage * P2 = new cCorrelImage();
         P1->getFromIm(imgetMaitre.imaget->getIm(), P1_rlt.x, P1_rlt.y);
@@ -456,7 +456,7 @@ Pt2dr CorrelMesh::correlSubPixelPtsIntInImaget(Pt2dr ptInt1, ImgetOfTri imgetMai
         }
         ptIndScr.x++;
     }
-    //--chercher max correlation score pixel entier
+    //--chercher max correlation score pixel integer
     vector<double>::iterator max_corel = max_element(corelScore.begin(), corelScore.end());
     int ind = distance(corelScore.begin(), max_corel);
     point_temp = Pt2dr( (ind/counter)*pas + PtHG.x,  (ind%counter)*pas + PtHG.y) + Pt2dr(szPtCorr,szPtCorr);
@@ -874,7 +874,7 @@ void CorrelMesh::multiCorrel(int indTri, double angleF)
     {
         for (uint i=0; i<picVisible.size(); i++)
         {
-        //calcul prof image 1 to centre_geo triangle
+        //computation prof image 1 to centre_geo triangle
         pic * pic0 = picVisible[i];
         Pt3dr bariCtr = (som1+som2+som3)/3;
         CamStenope * camPic0 = pic0->mOriPic;

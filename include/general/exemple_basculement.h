@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #define  _EXEMPLE_BASCULEMENT_H_
 
 
-// D'autre classe de photogrammetrie, dont, entre autre le basculement
+// D'autre class de photogrammetrie, dont, between autre le basculement
 
 class cSolBasculeRig;
 class cRansacBasculementRigide;
@@ -50,8 +50,8 @@ class cL2EqObsBascult;
 
 /*****************************************************************************/
 /*                                                                           */
-/*     Classes pour resoudre le "baculement". Sont inconnues                 */
-/*   une Rot-Trans+ un facteur d'echelle                                     */
+/*     Classes for resoudre le "baculement". Sont inconnues                 */
+/*   une Rot-Trans+ un facteur d'scale                                     */
 /*                                                                           */
 /*****************************************************************************/
 
@@ -71,7 +71,7 @@ class cSolBasculeRig : public cTransfo3D
 
        static cSolBasculeRig SBRFromElems( const Pt3dr & aTr,const ElMatrix<double> & aRot,const double & aLambda );
        cSolBasculeRig Inv() const;
-       // VR1 et VR2 sont des orientation de Camera, sens Cam-> Monde, sans outlier
+       // VR1 and VR2 sont des orientation de camera, sens Cam-> Monde, without outlier
        // renvoie une solution type LSQ M2->M1
        static cSolBasculeRig SolM2ToM1(const std::vector<ElRotation3D> & aVR1, const std::vector<ElRotation3D> & aVR2);
 
@@ -81,7 +81,7 @@ class cSolBasculeRig : public cTransfo3D
                              (
                                    const std::vector<Pt3dr> & aV1,
                                    const std::vector<Pt3dr> & aV2,
-                                   const std::vector<double> * aVPds=0, // si 0 ts les pds valent 1
+                                   const std::vector<double> * aVPds=0, // if 0 ts les pds valent 1
                                    int   aNbRansac             = 200,
                                    int   aNbL2                 = 5
                              );
@@ -94,10 +94,10 @@ class cSolBasculeRig : public cTransfo3D
        const ElMatrix<double> & Rot() const;
        double           Lambda() const;
 
-        // Si B=cSolBasculeRig est telle que  P2=B(P1) permet de
-        // passer d'un systeme de coordonnee S1   a s2 alors
+        // if B=cSolBasculeRig est telle que  P2=B(P1) permet de
+        // passer d'un system de coordonnee S1   a s2 then
         // TransformC2M donne transforme des orientation externes (exprimee
-        // dans le sens Cam-> Monde) de S1 a S2
+        // in le sens Cam-> Monde) de S1 a S2
         // Assez elementaire.
         
        ElRotation3D TransformOriC2M(const ElRotation3D &) const;
@@ -115,7 +115,7 @@ class cSolBasculeRig : public cTransfo3D
         Pt3dr            mTr;
 };
 
-/* => Redondant avec TransformOriC2M 
+/* => Redondant with TransformOriC2M 
 cSolBasculeRig  BascFromVRot
                 (
                      const std::vector<ElRotation3D> & aVR1 ,
@@ -147,9 +147,9 @@ class cRansacBasculementRigide
 
         void AddExemple(const Pt3dr & aAvant,const Pt3dr & aApres,const Pt3dr * aSpeedApres,const std::string & aName);
 
-        // Clos et estim la position centrale par Barrycentre
+        // Clos and estim la position centrale par Barrycentre
         bool CloseWithTrGlob(bool Svp= false);
-        // Clos et estim la position centrale sur l'exemple K
+        // Clos and estim la position centrale on l'exemple K
         bool CloseWithTrOnK(int aK,bool Svp= false);
         int  CurK() const;
         const std::vector<Pt3dr>  & PAvant() const;

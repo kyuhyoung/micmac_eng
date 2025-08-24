@@ -254,7 +254,7 @@ void cAppli_Tapas_Campari::AddParamBloc(std::string & mCom,std::vector<std::stri
     ELISE_ASSERT(int(aVBL.size()) <= 4+IndRot,"Too many param in AddParamBloc");
 
 
-    // Gere le fait que ou Blox initialise une seule fois, ou alors toujours avec le meme nom
+    // Gere le fait que or Blox initialise une seule fois, or then toujours with le meme nom
     if (!mWithBlock)
     {
         mWithBlock = true;
@@ -450,7 +450,7 @@ class cAppli_Campari : public cAppli_Tapas_Campari
 */
 
        std::vector<double>   mPdsErrorGps;
-       std::string  mStrDebugVTP;  // Debug sur les tie points
+       std::string  mStrDebugVTP;  // Debug on les tie points
 
        int  mNumPtsAttrNewF;
        std::vector<std::string>  mROP;
@@ -697,7 +697,7 @@ cAppli_Campari::cAppli_Campari (int argc,char ** argv) :
        if (Viscos<=0) 
        {
           mCom  +=  " +UseSLM=false ";
-          Viscos = 1; // Pour eviter une / par 0 en xml
+          Viscos = 1; // for eviter une / par 0 en xml
        }
        if (EAMIsInit(&Viscos)) mCom  +=  " +Viscos=" + ToString(Viscos) + " ";
 

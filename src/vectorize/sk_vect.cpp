@@ -123,7 +123,7 @@ Br_Skel_Vect::Br_Skel_Vect
 
 Br_Skel_Vect::~Br_Skel_Vect()
 {
-    // A Optimiser + tard avec un vidage de liste direct
+    // A Optimiser + tard with un vidage de list direct
     while (! (_pts.empty()))
     {
         _pts.pop_front();
@@ -404,7 +404,7 @@ void  Vector_Skel::merge
          unidx(p);
      recycler(br2);
 
-     // nb_extre de br1 OK; p1 est comptee, p2 va l'etre si necessaire
+     // nb_extre de br1 OK; p1 est comptee, p2 va l'etre if necessaire
      index_br(br1,p);
 }
 

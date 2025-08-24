@@ -1010,7 +1010,7 @@ void MsdDetector::selectCorners(){
             for (int y(3); y < aSz.y-3 ; y++ ){
 
                 Pt2di pos(x,y);
-                // renvoi la som des diff d'intensité avec les voisins "FAST" 0 si pas un corners
+                // renvoi la som des diff d'intensité with les voisins "FAST" 0 if pas un corners
                 double aVal=Corner(pos,m_scaleSpace.at(r),thresh);
 
                 if (aVal>0) {
@@ -1369,7 +1369,7 @@ void MsdDetector::RefineKP( const Pt2di &i_p, Pt2dr &o_p , float * SaliencyMap, 
             break;
         }
     }
-    //Check if Point is not away from origin
+    //Check if point is not away from origin
     REAL8 xn,yn;
     //check for divergence:: keep original point if there is an issue with refinement
     //Distance between old and new point should not be bigger than 1 pixel

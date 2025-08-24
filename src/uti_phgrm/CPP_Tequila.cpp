@@ -47,7 +47,7 @@ void LoadTrScaleRotate
           const Pt2di & aP1Int,
           const Pt2di & aP2Int,
           const Pt2di & aP1Out,
-          double      aScale,  // Par ex 2 pour image 2 fois + petite
+          double      aScale,  // Par ex 2 for image 2 fois + petite
           int         aRot
      )
 {
@@ -85,7 +85,7 @@ void LoadTrScaleRotate
 }
 
 //update index in regions list, when a triangle is removed from mesh
-//TODO : faux : on ne d�cale plus d'un lorsqu'on supprime un triangle
+//TODO : faux : on ne dcale plus d'un lorsqu'on supprime un triangle
 /*void updateIndex(int triIdx, vector < cTextureBox2d > &regions)
 {
     for (unsigned int cK=0; cK < regions.size();++cK)
@@ -398,7 +398,7 @@ int Tequila_main(int argc,char ** argv)
                     Pt2dr v1n = v1 / norme;
                     Pt2dr v2n = v2 / norme;
 
-                    //coordonnees du point C dans le plan du triangle (repere orthonorm� defini par Ox = AB )
+                    //coordinates du point C in le plan du triangle (repere orthonorm defini par Ox = AB )
                     double x = scal(v1n, v2n);
                     double y = sin(acos(x));
 
@@ -424,7 +424,7 @@ int Tequila_main(int argc,char ** argv)
                     double aUV = scal(aU,aV);
 
                     // le coef d'etirement est sqrt((aU2+aV2+sqrt(ElSquare(aU2-aV2)+4*ElSquare(aUV)))/2)
-                    // mais on supprime les calculs superflus => sqrt et /2 strictement monotones
+                    // but on supprime les calculs superflus => sqrt and /2 strictement monotones
 
                     criter = aU2+aV2+sqrt(ElSquare(aU2-aV2)+4.f*ElSquare(aUV));
 
@@ -473,7 +473,7 @@ int Tequila_main(int argc,char ** argv)
         }
     }
 
-    set <int> index; //liste des index de cameras utilisees
+    set <int> index; //list des index de cameras utilisees
 
     int valDef = cTriangle::getDefTextureImgIndex();
 
@@ -506,7 +506,7 @@ int Tequila_main(int argc,char ** argv)
     cout << endl;
 
     Pt2di aSzMax;
-    vector <Tiff_Im> aVT;     //Vecteur contenant les images
+    vector <Tiff_Im> aVT;     //vector contenant les images
     int aNbCh = 0;
 
     set <int>::const_iterator it = index.begin();
@@ -612,7 +612,7 @@ int Tequila_main(int argc,char ** argv)
                             newImgIdx0 = aCam; //tri0->getBestImgIndexAfter(curImgIdx0);
                             newImgIdx1 = aCam; //tri1->getBestImgIndexAfter(curImgIdx1);
 
-                            curMean0 = tri0->meanTexture(ListCam[curImgIdx0], aVT[curImgIdx0]); //TODO: calculer une seule fois...
+                            curMean0 = tri0->meanTexture(ListCam[curImgIdx0], aVT[curImgIdx0]); //TODO: compute une seule fois...
                             curMean1 = tri1->meanTexture(ListCam[curImgIdx1], aVT[curImgIdx1]);
 
                             newMean0 = tri0->meanTexture(ListCam[newImgIdx0], aVT[newImgIdx0]);
@@ -690,13 +690,13 @@ int Tequila_main(int argc,char ** argv)
         {
             cTextureBox2d *region = &(regions[aK]);
             //cout << "region " << aK << " nb triangles = " << regions[aK].triangles.size() << endl;
-            //Calcul de la zone correspondante dans l'image
+            //computation de la zone correspondante in l'image
 
             int triIdx = region->triangles[0];
             cTriangle * Tri = myMesh.getTriangle(triIdx);
             int imgIdx = Tri->getBestImgIndex();
 
-            //cout << "Image index " << imgIdx << endl;
+            //cout << "image index " << imgIdx << endl;
 
             Pt2dr _min(DBL_MAX, DBL_MAX);
             Pt2dr _max;
@@ -841,7 +841,7 @@ int Tequila_main(int argc,char ** argv)
 
                     Fonc_Num Fonc = StdFoncChScale(aF0,Pt2dr(p0),Pt2dr(1.f/Scale,1.f/Scale));
                     Fonc = Max(0,Min(255,Fonc));
-                    //TODO: Si ce n'est pas une image sur 8 Bits, il est plus propre de lire les bornes avant de faire le max min
+                    //TODO: if ce n'est pas une image on 8 Bits, il est plus propre de lire les bornes before de faire le max min
                     //Fonc_Num Tronque(GenIm::type_el,Fonc_Num);
 
                     ELISE_COPY
@@ -850,7 +850,7 @@ int Tequila_main(int argc,char ** argv)
                             Fonc,
                             StdOut(aVOutInit)
                             );
-                    //erreur : segfault avec Sz=4096 Scale=0.24
+                    //error : segfault with Sz=4096 Scale=0.24
 
                     vector<Im2DGen *>   aVOutRotate;
                     for (int aK=0 ; aK<int(aVOutInit.size()) ; aK++)
@@ -920,9 +920,9 @@ int Tequila_main(int argc,char ** argv)
 
                 cTriangle *Triangle = myMesh.getTriangle(triIdx);
 
-                int idx = Triangle->getBestImgIndex();                //Liaison avec l'image correspondante
+                int idx = Triangle->getBestImgIndex();                //Liaison with l'image correspondante
 
-                //cout << "image pour le triangle " << i << " = " << idx << endl;
+                //cout << "image for le triangle " << i << " = " << idx << endl;
 
                 if (idx != valDef)
                 {
@@ -1089,7 +1089,7 @@ int Tequila_main(int argc,char ** argv)
             if (final_ZBufIm)
                 aZBufManager.freeFullZBuf(aK,final_ZBufIm);
 
-            /*   cout<<"Ligne : "<<ptK.y+1 << " Colonne : "<<ptK.x+1<<endl;
+            /*   cout<<"line : "<<ptK.y+1 << " Colonne : "<<ptK.x+1<<endl;
             cout<<"Position : "<< Coord.x <<" " << Coord.y <<endl;
             cout<<"Nombre d'images traitees : "<<aK+1<<"/"<<aVT.size()<<endl;
             cout<<endl;*/
@@ -1104,9 +1104,9 @@ int Tequila_main(int argc,char ** argv)
         {
             cTriangle * Triangle = myMesh.getTriangle(i);
 
-            int idx = Triangle->getBestImgIndex();                //Liaison avec l'image correspondante
+            int idx = Triangle->getBestImgIndex();                //Liaison with l'image correspondante
 
-            //cout << "image pour le triangle " << i << " = " << idx << endl;
+            //cout << "image for le triangle " << i << " = " << idx << endl;
 
             if (idx != valDef)
             {
@@ -1174,7 +1174,7 @@ int Tequila_main(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1190,17 +1190,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

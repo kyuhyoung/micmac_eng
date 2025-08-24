@@ -209,10 +209,10 @@ class cRPCSens : public cSensorImage
 
         // Internally the cRPCSens use dimap convention "Lat,long,H" and  "Line,Col";
         //  while MM-V2/V1  use XYZ direct (i.e Long,Lat,H) and    col,line
-        //  Not sur what we will do in the future, so we 
+        //  Not on what we will do in the future, so we 
         bool  mSwapXYGround;
         bool  mSwapIJImage;
-        //  For Image 2 Bundle, we need to know how we generate 
+        //  For image 2 Bundle, we need to know how we generate 
         tREAL8 mAmplZB;
         //  cPixelDomain
         cDataPixelDomain  mDataPixelDomain;
@@ -716,7 +716,7 @@ double cRPCSens::NormZ(const double aZ,bool Direct) const
 }
 
      // ====================================================
-     //     Image <-> Ground  transformation
+     //     image <-> Ground  transformation
      // ====================================================
 
 // cPt2dr cRPCSens::IO_PtIm(const cPt2dr&aPt) const {return mSwapIJImage?cPt2dr(aPt.y(),aPt.x()):aPt;}  

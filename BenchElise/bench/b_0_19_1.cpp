@@ -57,7 +57,7 @@ void bench_flag_vois_KD(Pt2di p1,Pt2di p2,Pt2di sz,Pt2di P0,Pt2di P1)
          I2.out() | r2.out() | t2.out()
      );
 
-     //  Calcul K-d
+     //  computation K-d
 
      ELISE_COPY
      (
@@ -119,7 +119,7 @@ void bench_flag_vois(Pt2di p1,Pt2di p2,Pt2di sz,Pt2di P0,Pt2di P1)
      );
 
 
-     // Calcul, dans r1, du flagage, par l'operateur flag_vois
+     // computation, in r1, du flagage, par l'operateur flag_vois
 
      ELISE_COPY
      (
@@ -128,7 +128,7 @@ void bench_flag_vois(Pt2di p1,Pt2di p2,Pt2di sz,Pt2di P0,Pt2di P1)
         r1.out()
      );
 
-     // Calcul, dans r2, du flagage, par formule brutale
+     // computation, in r2, du flagage, par formule brutale
 
      {
         Fonc_Num f0 = 0;
@@ -222,8 +222,8 @@ void verif_ss_Image_homot
                     Iinf.out() 
                 );
 
-            // [2] pour chaque cc de Iinf verif que la cd dans Isup
-            // dans laquelle elle est incluse, ne contient pas
+            // [2] for chaque cc de Iinf verif que la cd in Isup
+            // in laquelle elle est incluse, ne contient pas
             // d'autres point de Iinf
 
                 INT nb_inf;

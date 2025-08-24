@@ -91,7 +91,7 @@ template <class Type>  void ImPackBitsCompr1Block
                     cont = false;
                     i--;
                  }
-                 // si run de 2, entre deux run litteraux, on le saute
+                 // if run de 2, between deux run litteraux, on le saute
                  else if
                  (
                          (i+2<lim)
@@ -99,10 +99,10 @@ template <class Type>  void ImPackBitsCompr1Block
                       && (line[i+1]!=line[i+2])
                  )
                       i+=3;
-                 // si run de 2, juste avant 1 dernier element, on le saute
+                 // if run de 2, juste before 1 dernier element, on le saute
                  else if ( i+2 == lim)
                       i+=2;
-                 // sinon, run de 2= a coder en RLE
+                 // else, run de 2= a coder en RLE
                  else
                  {
                     cont = false;
@@ -481,7 +481,7 @@ template <class Type> class   DPIM_Out_Comp : public Output_Computed
 
 
 
-      // Var et methodes pour le mode special : 
+      // Var and methodes for le mode special : 
 
         DPIM_INLINE  void  ModeSpecUpdate(INT x0Loc,INT x1Loc);
 
@@ -674,7 +674,7 @@ template <class Type> void  DPIM_Out_Comp<Type>::ModeSpecUpdate
 
     SpecReplicatePartiel(0,x0Loc-mSpecX0Cur);
 
-    /* Si l'intervalle a modifier est compris dans une seule RUN */
+    /* if l'intervalle a modifier est compris in une seule RUN */
     if (x1Loc<=mSpecX1Cur)
     {
          SpecUpdatIntervalePartiel(x0Loc-mSpecX0Cur,x1Loc-mSpecX0Cur);

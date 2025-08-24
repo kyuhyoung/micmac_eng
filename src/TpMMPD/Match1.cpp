@@ -168,8 +168,8 @@ class cTD_Match3_main
 
 void cTD_Match3_main::DoConnexion
      (
-         const Pt2di & aPIn,   // Point of input column
-         const Pt2di & aPOut,  // Point of output column
+         const Pt2di & aPIn,   // point of input column
+         const Pt2di & aPOut,  // point of output column
          ePrgSens aSens,       // Is it forward or backwrad,  need to indicate it in udate
          int ,
          int ,

@@ -39,7 +39,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "Apero.h"
 
 
-// ModifDIST ==> Tag Provisoire des modifs a rajouter si dist
+// ModifDIST ==> Tag Provisoire des modifs a rajouter if dist
 
 // Return the cParamOrientSHC of a given name
 cParamOrientSHC * POriFromBloc(cStructBlockCam & aBloc,const std::string & aName,bool SVP)
@@ -56,13 +56,13 @@ cParamOrientSHC * POriFromBloc(cStructBlockCam & aBloc,const std::string & aName
     return nullptr;
 }
  
-// Return the Rotation that transformate from Cam Coord to Block coordinates (in fact coord of "first" cam)
+// Return the rotation that transformate from Cam Coord to Block coordinates (in fact coord of "first" cam)
 ElRotation3D  RotCamToBlock(const cParamOrientSHC & aPOS)
 {
     return  ElRotation3D(aPOS.Vecteur(),ImportMat(aPOS.Rot()),true);
 }
 
-// Return the Rotation that transformate from Cam1 Coord to Cam2 Coord
+// Return the rotation that transformate from Cam1 Coord to Cam2 Coord
 ElRotation3D  RotCam1ToCam2(const cParamOrientSHC & aPOS1,const cParamOrientSHC & aPOS2)
 {
     return  RotCamToBlock(aPOS2).inv() * RotCamToBlock(aPOS1);
@@ -80,15 +80,15 @@ ElRotation3D  RotCam1ToCam2(const cParamOrientSHC & aPOS1,const cParamOrientSHC 
 
 //class cIBC_ImsOneTime;  //  regroupe les pose acquise au meme temps T
 //class cIBC_OneCam;      //  contient les info partagee par la meme tete de camera
-                        //  par exemple la rotation (ou le point) inconnue du bloc de camera
+                        //  par exemple la rotation (or le point) inconnue du bloc de camera
 
 
 class cImplemBlockCam;  //  contient toutes les infos  relatives au meme bloc rigide
 class cEqObsBlockCam ;  //  implemante l'equation  Ri Rj(-1) = Li Lj(-1)
 class cEqOBCDistRef;    //  implemante la conservation des distances par rapport a une reference, a une similitude pres
 // cStructBlockCam      //  XML structure du bloc  camera
-// cLiaisonsSHC         //  XML structure, incluse dans cStructBlockCam, contient dans la geometrie
-// cParamOrientSHC       //  XML structure, incluse dans cLiaisonsSHC, contient la geometrie d'une camera
+// cLiaisonsSHC         //  XML structure, incluse in cStructBlockCam, contient in la geometrie
+// cParamOrientSHC       //  XML structure, incluse in cLiaisonsSHC, contient la geometrie d'une camera
 // cBlockGlobalBundle   //  XML structure de ParamApero.xml,  indique le rappel / a une calibration du bloc
 
 
@@ -145,7 +145,7 @@ extern bool AllowUnsortedVarIn_SetMappingCur;
 
 
 
-// Compute the parameter of the transformation of Point in L coordinate
+// Compute the parameter of the transformation of point in L coordinate
 // to point in R coordinates
 void CalcParamEqRel
      (
@@ -170,7 +170,7 @@ void CalcParamEqRel
 
     //  L to R = CamRi-1  CamLi (Left2Right=Left2Monde * Monde2Right)
     aMat = aRMatInv * aLMat;
-    // vector de Translation entre 2 centre optique s'exprime en "coordonne du monde"
+    // vector de translation between 2 centre optique s'exprime en "coordonne du monde"
     aTr = aRMatInv * (aRotL.COpt() - aRotR.COpt());
 
 }
@@ -210,7 +210,7 @@ class cEqObsBlockCam  : public cNameSpaceEqF,
         double  AddObsDist(const double & aPdsDist);
         void  DoAMD(cAMD_Interf * anAMD);
 
-        // Pas utile a priori pour l'equation, mais apparu quand on le met dans Tapas pour verifier que c'est initialise
+        // Pas utile a priori for l'equation, but apparu when on le met in Tapas for verifier que c'est initialise
         void SetCams(cGenPoseCam *,cGenPoseCam*,cGenPoseCam*,cGenPoseCam*); 
         bool CamIsInit() const;
      private  :
@@ -398,8 +398,8 @@ void cEqObsBlockCam::GenerateCode()
 
     cElCompileFN::DoEverything
     (
-        DIRECTORY_GENCODE_FORMEL,  // Directory ou est localise le code genere
-        mNameType,  // donne les noms de fichier .cpp et .h ainsi que les nom de classe
+        DIRECTORY_GENCODE_FORMEL,  // Directory or est localise le code genere
+        mNameType,  // donne les noms de file .cpp and .h ainsi que les nom de class
         aVF,  // expressions formelles 
         mLInterv  // intervalle de reference
     );
@@ -520,8 +520,8 @@ class cIBC_OneCam
           const int & CamNum() const;
           const std::string & NameCam() const;
           const bool & V0Init() const;
-          // L'initiation ne peut etre faite que quand toute les poses ont ete lues, donc pas
-          // complete dans le constructeur
+          // L'initiation ne peut etre faite que when toute les poses ont ete lues, donc pas
+          // complete in le constructeur
           void Init0(const cParamOrientSHC & aPSH,cSetEqFormelles &,const cBlockGlobalBundle *);
           void AddContraintes(bool Stricte);
           cRotationFormelle & RF();
@@ -529,12 +529,12 @@ class cIBC_OneCam
       private :
           std::string mNameCam;
           int               mCamNum;  // Numero arbitraire (0,1,2...) , 0=PIVOT
-          bool              mV0Init;  // Est ce que la position dans le bloc a une valeur initiale 
-          Pt3dr             mC0;      // Valeur initiale du centre
-          ElMatrix<double>  mMat0;    // Valeur initiale de l'orientation
+          bool              mV0Init;  // Est ce que la position in le bloc a une value initiale 
+          Pt3dr             mC0;      // value initiale du centre
+          ElMatrix<double>  mMat0;    // value initiale de l'orientation
           cSetEqFormelles *   mSetEq;
-          cRotationFormelle * mRF;       // Rotation inconnue
-          bool                mHasCstr;  // => L'image PIVOT dans un bloc, ou le premier bloc "virtuel"
+          cRotationFormelle * mRF;       // rotation inconnue
+          bool                mHasCstr;  // => L'image PIVOT in un bloc, or le premier bloc "virtuel"
           bool                mStricteCstr;  // 
 };
 
@@ -692,7 +692,7 @@ void cIBC_OneCam::Init0(const cParamOrientSHC & aPOS,cSetEqFormelles & aSet,cons
 
     mSetEq = & aSet;
 
-    // Si il y a une valeur de reference
+    // if il y a une value de reference
     if (aBGB)
     {
        bool aInitSigm   = aBGB->SigmaV0().IsInit();
@@ -701,13 +701,13 @@ void cIBC_OneCam::Init0(const cParamOrientSHC & aPOS,cSetEqFormelles & aSet,cons
        // ModifDIST
        mRF = aSet.NewRotation(cNameSpaceEqF::eRotFigee,ElRotation3D(mC0,mMat0,true));
 
-       if (mCamNum==NUMPIVOT)  // C'est la "premiere",  donc on la fige a sa valeur initiale (en general Id)
+       if (mCamNum==NUMPIVOT)  // C'est la "premiere",  donc on la fige a sa value initiale (en general Id)
        {
           mStricteCstr = true;
           mHasCstr     = true;
        }
-       else // Sinon il y a peut etre un rappel a la V0, 
-       {    // Si elle existe, elle est SOIT stricte , SOIT ponderee par un sigma
+       else // else il y a peut etre un rappel a la V0, 
+       {    // if elle existe, elle est SOIT stricte , SOIT ponderee par un sigma
           if (aInitSigm)
           {
               mHasCstr  = true;
@@ -797,7 +797,7 @@ cImplemBlockCam::cImplemBlockCam
     std::string aMasterGrp = aSBC.MasterGrp().ValWithDef("");
 
     // On initialise les camera
-    for (int anIter = 0 ; anIter<2 ; anIter++)  // Deux iter pour forcer le groupe maitre eventuellement
+    for (int anIter = 0 ; anIter<2 ; anIter++)  // Deux iter for forcer le groupe maitre eventuellement
     {
 
         for (int aKP=0 ; aKP<int(aVP.size()) ; aKP++)
@@ -808,9 +808,9 @@ cImplemBlockCam::cImplemBlockCam
             std::string aNameCam = aPair.second;
             // At first iter, we do it if  master, at second if not master
             bool Doit = (anIter==0) == (aNameCam==aMasterGrp);
-            if (Doit && (! DicBoolFind(mName2Cam,aNameCam))) // si aNameCam se trouve dans mName2Cam
+            if (Doit && (! DicBoolFind(mName2Cam,aNameCam))) // if aNameCam se trouve in mName2Cam
             {
-                cIBC_OneCam *  aCam = new cIBC_OneCam(aNameCam, (int)mNum2Cam.size()); // (name & index dans mNum2Cam)
+                cIBC_OneCam *  aCam = new cIBC_OneCam(aNameCam, (int)mNum2Cam.size()); // (name & index in mNum2Cam)
                 mName2Cam[aNameCam] = aCam;
                 mNum2Cam.push_back(aCam); 
             }
@@ -821,7 +821,7 @@ cImplemBlockCam::cImplemBlockCam
     mLSHC = mSBC.LiaisonsSHC().PtrVal();
     // mGlobCmp = mForCompens && 
 
-    // Initialiser les parametres & camera pour block compensation
+    // Initialiser les parameters & camera for block compensation
     if (mUFB)   // UFB=UseForBundle
     {
         ELISE_ASSERT(mLSHC!=0,"Compens without LiaisonsSHC");
@@ -861,7 +861,7 @@ cImplemBlockCam::cImplemBlockCam
 
 
 // ## 
-//    On peut avoir equation / a calib et  I/I+1 (pour model derive)
+//    On peut avoir equation / a calib and  I/I+1 (for model derive)
 
     if (mUFB) // UFB=UseForBundle
     {
@@ -874,7 +874,7 @@ cImplemBlockCam::cImplemBlockCam
                {
                    if (aKCam != NUMPIVOT)   // if it is not a 1er cam (1er time stamp in the Right)
                    {
-                       // Obs: Pour chaque cliches: 1 img L + 1 img R
+                       // Obs: for chaque cliches: 1 img L + 1 img R
                        // 1 img R de 1er cliches + 1 img L de 1er cliches
                        cIBC_OneCam *  aCamR =  mNum2Cam[NUMPIVOT]; // mNum2Cam[0]
                        cIBC_OneCam *  aCamL =  mNum2Cam[aKCam];
@@ -945,7 +945,7 @@ cImplemBlockCam::cImplemBlockCam
                {
                    if (aKCam != NUMPIVOT)
                    {   // Obs couple: Chaque temps (cliches): 1 image L + 1 image R
-                       // Prendre 2 cliches consecutives pour 1 equation
+                       // Prendre 2 cliches consecutives for 1 equation
                        cPoseCam * aPcR0 = aT0->Pose(NUMPIVOT);
                        cPoseCam * aPcL0 = aT0->Pose(aKCam);
                        cPoseCam * aPcR1 = aT1->Pose(NUMPIVOT);
@@ -969,12 +969,12 @@ cImplemBlockCam::cImplemBlockCam
                }
            }
        }
-// Creer les equation dans  cIBC_ImsOneTime 
+// Creer les equation in  cIBC_ImsOneTime 
     }
 
 }
 
-// Rajouter structure compens dans SectionObservation
+// Rajouter structure compens in SectionObservation
 
 void cImplemBlockCam::DoCompensationRot
      (

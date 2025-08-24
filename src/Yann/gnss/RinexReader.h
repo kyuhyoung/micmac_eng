@@ -12,8 +12,8 @@
 #include "GloNavigationData.h"
 
 // ---------------------------------------------------------------
-// Classe contenant les fonctions de lecture de fichiers rinex
-// (observations et navigation).
+// class contenant les fonctions de lecture de fichiers rinex
+// (observations and navigation).
 // ---------------------------------------------------------------
 class RinexReader {
 

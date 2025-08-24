@@ -159,7 +159,7 @@ class EL_API_VECTO
                 
                    // precision : + c'est fort, moins y'a de points
                    // anticipation : + c'est fort + c'est long (cpu) 
-                   //      et meilleure est la qualite du resultat
+                   //      and meilleure est la qualite du result
 
                    ParamApprox
                    (
@@ -200,15 +200,15 @@ class EL_API_VECTO
                 public :
 
 
-                   // si inferieur = true, considere l'image binaire des points
+                   // if inferieur = true, considere l'image binaire des points
                    // tels que  ValeurPixel < threshold
-                   // sinon ceux tels que ValeurPixel >= threshold
+                   // else ceux tels que ValeurPixel >= threshold
 
-                   // Pour la valeur par defaut de threshold , le seuil
-                   // correspond a la moitie de la valeur max theorique du fichier
-                   // tiff (typiquement 1 pour une image binaire, 128 pour
-                   // une image sur un octet) pour un fichier non signe
-                   // et a 0 pour un fichier signe
+                   // for la value par defaut de threshold , le seuil
+                   // correspond a la moitie de la value max theorique du file
+                   // tiff (typiquement 1 for une image binaire, 128 for
+                   // une image on un octet) for un file non signe
+                   // and a 0 for un file signe
 
                    enum {
                         DefThresh = -0x7fffffff
@@ -259,9 +259,9 @@ class EL_API_VECTO
                    int   max_dist = 256,
                    bool  LocCoord = true 
           );
-             // LocCoord :  Si true le point de vecto de
-             // coordonnees   0,0 correspond  l'origine
-             // des zones vecto, sinon a l'origine fichier
+             // LocCoord :  if true le point de vecto de
+             // coordinates   0,0 correspond  l'origine
+             // des zones vecto, else a l'origine file
 
 
           static const ComplexI  DefP0;
@@ -277,8 +277,8 @@ class EL_API_VECTO
                     ComplexI                 sz = DefSZ
                );
 
-          //  DefP0 => origine du fichier (0,0)
-          //  DefSZ => taille  du fichier
+          //  DefP0 => origine du file (0,0)
+          //  DefSZ => taille  du file
 
          
       private :
@@ -306,16 +306,16 @@ class HoughMapedParam
 {
      public :
 
-         // Les trois valeur a donner pour initialiser la structure de
+         // Les trois value a donner for initialiser la structure de
          // parametrisation sont approximatives.
 
 
           HoughMapedParam
           (
                const std::string  & NameHough,
-               double aLengthMinSeg,   // Valeur Min des segmen recherches [1]
-               double aLengthMaxSeg,   // Valeur Max des segmen recherches [1]
-               double aVminRadiom,    // typiquement 255 pour images  SAR, pre-filtree
+               double aLengthMinSeg,   // value Min des segmen recherches [1]
+               double aLengthMaxSeg,   // value Max des segmen recherches [1]
+               double aVminRadiom,    // typiquement 255 for images  SAR, pre-filtree
                bool aModeSar        // true : genre SAR, false genre gradient
           );
 
@@ -338,50 +338,50 @@ class HoughMapedParam
 
 
 
-      // Seuil pour le prefiltrage des images
+      // Seuil for le prefiltrage des images
 
 
-        // Parametre, specifiques au mode gradient qui
-        // permettent de faire aparaitre des 0 avant hough
-        // (Utile pour accelerer et, eventuellement, debruiter)
+        // parameter, specifiques au mode gradient qui
+        // permettent de faire aparaitre des 0 before hough
+        // (Utile for accelerer and, eventuellement, debruiter)
         // Les valeurs par defaut peuvent convenir
 
 
          double  mFactCaniche;    // Facteur de Canny-Deriche , Default = 1.0
-         bool    mGradUseFiltreMaxLocDir; // utilise-t-on le filtre "MaxLocDir" avant Hough , Def = true
-         bool    mGradUseSeuilPreFiltr; // utilise-t-on la valeur mGradSeuilPreFiltr comme seuil avant Hough; Def = true
+         bool    mGradUseFiltreMaxLocDir; // utilise-t-on le filtre "MaxLocDir" before Hough , Def = true
+         bool    mGradUseSeuilPreFiltr; // utilise-t-on la value mGradSeuilPreFiltr comme seuil before Hough; Def = true
          double    mGradSeuilPreFiltr;    // Def = mVminRadiom
 
 
-         // Parametre specifique au Mode Sar, 
-         // ** =  valeur par defaut devant  certainement etre reconsideree  par l'appli
-         // *  =  valeur par defaut devant probalement etre reconsideree  par l'appli
+         // parameter specifique au Mode Sar, 
+         // ** =  value par defaut devant  certainement etre reconsideree  par l'appli
+         // *  =  value par defaut devant probalement etre reconsideree  par l'appli
 
          int   mSAR_NbVoisMoyCFAR;   // ** defaut = 10
          int   mSAR_NbStepMoyCFAR;   // ** defaut = 4
          int   mSAR_NbVoisMedian;    // * defaut = 1
          double  mSAR_FactExpFilter;   // *  defaut = 0.4
          int   mSAR_BinariseSeuilBas;  // defaut = 180 
-               // Ces seuils sont a peu pres portable car ils operent sur des images normalisees
+               // Ces seuils sont a peu pres portable car ils operent on des images normalisees
          int   mSAR_BinariseSeuilHaut;  // defaut =  230
          int   mSAR_SzConnectedCompMin; // defaut = 2 *  aLengthMinSeg
 
 
-     // Seuils Utilise pour le filtrage classique des maxima de la transformee
+     // Seuils Utilise for le filtrage classique des maxima de la transformee
      // de Hough
 
 
-         // Taille des voisinage en Rho et Teta qui definissent les maxima locaux
+         // Taille des voisinage en Rho and Teta qui definissent les maxima locaux
          double    mVoisRhoMaxLocInit;    //  Def = 2.0
          double    mVoisTetaMaxLocInit;   //  en radian, Def = 0.1  
 
-        // Seuils utilise pour filtrer les maxima locaux
+        // Seuils utilise for filtrer les maxima locaux
          double    mSeuilAbsHough;   // aLengthMinSeg * aVminRadiom * 0.7
 
 
-    //  Seuils Utilises pour le filtrage supplementaire par "Bande-Connectee" 
+    //  Seuils Utilises for le filtrage supplementaire par "Bande-Connectee" 
 
-         bool  mUseBCVS;  // Def = true si mode grad  et false sinon (on ne fait pas de filtrage)
+         bool  mUseBCVS;  // Def = true if mode grad  and false else (on ne fait pas de filtrage)
 
          double  mFiltrBCVSFactInferior;  // Def = 0.5, on redescend juqu'a la moitie
          double  mVoisRhoMaxLocBCVS;      // Def =  mVoisRhoMaxLocInit * 2.5
@@ -389,7 +389,7 @@ class HoughMapedParam
 
 
 
-     // Seuil utilises pour la transformation des droites en segments 
+     // Seuil utilises for la transformation des droites en segments 
 
      //
          double mDistMinPrgDyn; //  LenthMinSeg
@@ -400,21 +400,21 @@ class HoughMapedParam
 
           // Specifique aux images de gradient
 
-         double    mHoughIncTeta;   // 1/2 largeur des intervalles angulaires  sur lesquels on accumule; Def=0.2
+         double    mHoughIncTeta;   // 1/2 largeur des intervalles angulaires  on lesquels on accumule; Def=0.2
          double    mFiltrIncTeta;   // Def = mHoughIncTeta * 1.5
          double    mFiltrEcMaxLoc;  // Cout En Pixel d'un ecart / au maxima local, Def = 1.0
 
 
-      // Seuil pour une post (pre) optimization de la geometrie des segment 
-      // (pre = avant decoupe par prg-dyn, post = tout a la fin)
+      // Seuil for une post (pre) optimization de la geometrie des segment 
+      // (pre = before decoupe par prg-dyn, post = tout a la fin)
          bool     mDoPreOptimSeg; // def = false, car a dangereux 
-                                  // (avant decoupe influence de l'environnement)
+                                  // (before decoupe influence de l'environnement)
          double     mPrecisionPreOptimSeg; //   def = 0.1
          bool     mDoPostOptimSeg; //         def = true
          double     mPrecisionPostOptimSeg; //  def = 0.01
 
 
-     //  Seuils utilises pour la suppression a posteriori des redondances
+     //  Seuils utilises for la suppression a posteriori des redondances
 
          double mLongFiltrRedond;   // LenthMinSeg
          double mLargFiltrRedond;   // LenthMinSeg
@@ -422,16 +422,16 @@ class HoughMapedParam
 
      // Divers
 
-         double mRatioRecouvrt; // Ratio de recouvrement entre les accumulations
-                              // Def = 0.5; (avec cette valeur chaque point passe par 4 accumulateurs)
+         double mRatioRecouvrt; // Ratio de recouvrement between les accumulations
+                              // Def = 0.5; (with cette value chaque point passe par 4 accumulateurs)
 
 
-     // Abscons et non commentes; La valeur par defaut doit le faire tres bien
+     // Abscons and non commentes; La value par defaut doit le faire tres bien
 
          double mDeltaMinExtension;      // Def = 1.0 
          double mFiltrBCVSFactTolGeom;   // Def = 2 
          double mStepInterpPrgDyn;       // Def = 1.0
-         double mWidthPrgDyn;            // Def = 3.0 (-> MPD ? voir si 1.0 le fait pas tres bien)
+         double mWidthPrgDyn;            // Def = 3.0 (-> MPD ? voir if 1.0 le fait pas tres bien)
 
     //  VARIABLE STATIC 
 
@@ -503,17 +503,17 @@ class HoughMapedInteractor
 
 void HoughMapFromFile
      (
-          const std::string &,    // NOM DU FICHIER
+          const std::string &,    // NOM DU file
           const ComplexI & p0, const ComplexI & p1,     // rectangle image
-          HoughMapedParam &,      // Parametre de detection de segment
+          HoughMapedParam &,      // parameter de detection de segment
           HoughMapedInteractor &  // Interacteur 
      );
 
 void HoughMapFromImage
      (
-          unsigned char ** im ,    int Tx, int Ty,  // PARAMETRE IMAGE
+          unsigned char ** im ,    int Tx, int Ty,  // parameter image
           const ComplexI & p0, const ComplexI & p1,     // rectangle image
-          HoughMapedParam &,      // Parametre de detection de segment
+          HoughMapedParam &,      // parameter de detection de segment
           HoughMapedInteractor &  // Interacteur 
      );
 

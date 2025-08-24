@@ -14,7 +14,7 @@
 	#include "MipmapHandler.h"
 #endif
 
-typedef enum // Attention repercutions sur QT ... TODO � regler
+typedef enum // Attention repercutions on QT ... TODO � regler
 {
   qEPI_NonSaisi,	// 0
   qEPI_Refute,		// 1
@@ -40,7 +40,7 @@ enum LINE_STYLE
 };
 
 
-// TODO GERER les etats avec des flags
+// TODO GERER les etats with des flags
 enum object_state {
     state_default,
     state_overed,

@@ -159,7 +159,7 @@ std::string StdFileCalibOfImage
 // std::cout << "AAA " << aPrefix << "#"<< aPrefix << "#" << aDef << "#" << aMDP.Cam(true) << "\n"; getchar();
 
    cCameraEntry * aCE = CamOfName(aMDP.Cam(true) );
-   // MPD => sinon blocage qd pas de camera ds xif
+   // MPD => else blocage qd pas de camera ds xif
    // cCameraEntry * aCE = CamOfName(aMDP.Cam() );
 
    if (aCE==0)
@@ -570,8 +570,8 @@ DATA_Tiff_Ifd::DATA_Tiff_Ifd
     _sz = sz;
     _nbb_ch0 = nbb_type_num(type);
 
-    // Quand elles sont equivalente, tjs preferer la
-    // compression reconnue dans le standard
+    // when elles sont equivalente, tjs preferer la
+    // compression reconnue in le standard
     if (_nbb_ch0 <= 8 && (compr== Tiff_Im::NoByte_PackBits_Compr))
        compr = Tiff_Im::PackBits_Compr;
 
@@ -746,7 +746,7 @@ DATA_Tiff_Ifd::DATA_Tiff_Ifd
 
 
 
-    // GESTION du DALLAGE de fichier
+    // GESTION du DALLAGE de file
 
     bool CreateSubTile = false;
     mUseFileTile = false;
@@ -758,7 +758,7 @@ DATA_Tiff_Ifd::DATA_Tiff_Ifd
 
        if (CreateSubTile)
        {
-            // Doivent etre pas superieur a taille du fichier
+            // Doivent etre pas superieur a taille du file
            mSzFileTile.SetInf(_sz);
             // Doivent etre multiple du dallage
            mSzFileTile.x = round_up(mSzFileTile.x,_sz_tile.x);
@@ -2493,7 +2493,7 @@ if (MPD_MM())
    int aNbChanIn = -1;
    bool Bits16 = RequireBits16 && (!IsPostfixedJPG(aFullNameOri));
 
-   if (isTiff)  // Si fichier tiff , le Bits16 sera calcule plus tard
+   if (isTiff)  // if file tiff , le Bits16 sera compute plus tard
    {
    }
    else
@@ -2695,7 +2695,7 @@ if (MPD_MM())
                            + std::string(" " + aNameCoul + aNameReech + "=1 ")
                            + (DoReech ?  std::string(" Cal=" + aNameCal + " ") : "")
                            + " NameOut=" + aNewName
-                           // MPD : je ne comprend plus pourquoi il faut anihiler le flat field dans ces conditions
+                           // MPD : je ne comprend plus pourquoi il faut anihiler le flat field in ces conditions
                            // + " UseFF="  + (  (Bits16||(aNbChanSpec==3)) ? "0" : "1")  // Flat Field en Gray-8Bits
                          ;
 
@@ -2772,7 +2772,7 @@ int TestDupBigTiff(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -2788,17 +2788,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

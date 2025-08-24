@@ -284,8 +284,8 @@ template class cElNuage3DMaille_FromImProf<float,double>;
 /*                                             */
 /***********************************************/
 
-   // Classe specialise dans le plus courant des nuages, celui
-   // la geometrie epip generalisee (geometrie image et dyn en
+   // class specialise in le plus courant des nuages, celui
+   // la geometrie epip generalisee (geometrie image and dyn en
    // 1/profondeur de champ)
 
 template <class Type,class TBase> 

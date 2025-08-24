@@ -199,7 +199,7 @@ std::list<Pt3dr>  cQuickCorrelPackIm::DecFFT()
         if (mW==0)
            mW = Video_Win::PtrWStd(Pt2di(512,512));
     }
-    if (false)  // mettre 1 si on veut visualiser les FFT
+    if (false)  // mettre 1 if on veut visualiser les FFT
     {
 
         ELISE_COPY(mW->all_pts(),Min(255,Max(0,mTIm._the_im.in(0))),mW->ogray());
@@ -342,7 +342,7 @@ cQuickCorrelOneFidMark::cQuickCorrelOneFidMark
     mSsResByNiv     (pow(mSsRes,1.0/(mNbNiv-1))),
     mDebug          (Debug)
 {
-    // Pour l'instant on met en dur une pyram a trois niveau
+    // for l'instant on met en dur une pyram a trois niveau
     
     for (int aK=0 ; aK<mNbNiv ; aK++)
     {
@@ -353,7 +353,7 @@ cQuickCorrelOneFidMark::cQuickCorrelOneFidMark
 
 cOneSol_QuickCor  cQuickCorrelOneFidMark::TestCorrel(const Pt2dr & aP0)
 {
-    // Calcul de l'offset de chargement
+    // computation de l'offset de chargement
     mCurDecRef = round_ni(aP0) + mBoxRef._p0;
     mCurDecIm = mCurDecRef -mIncLoc;
 
@@ -414,14 +414,14 @@ cOneSol_QuickCor  cQuickCorrelOneFidMark::TestCorrel(const Pt2dr & aP0)
 
 void cQuickCorrelOneFidMark::LoadIm()
 {
-    // On charge les fichiers images dans les buffer a pleine resol
+    // On charge les fichiers images in les buffer a pleine resol
     ELISE_COPY(mPyram[0].mTIm.all_pts() ,trans(mFoncFileIm,mCurDecIm),mPyram[0].mTIm.out());
     ELISE_COPY(mPyram[0].mTRef.all_pts(),trans(mFoncRef,mCurDecRef),mPyram[0].mTRef.out());
     ELISE_COPY(mPyram[0].mTMasq.all_pts(),trans(mFoncMasqRef,mCurDecRef),mPyram[0].mTMasq.out());
 
 
 
-    // calcule des images reduite
+    // compute des images reduite
    for (int aK=1 ; aK<mNbNiv ; aK++)
    {
         mPyram[aK].InitByReduce(mPyram[aK-1],pow(2.0,1.0/(mNbNiv-1)));
@@ -510,7 +510,7 @@ cAppli_FFTKugelhupf_main::cAppli_FFTKugelhupf_main(int argc,char ** argv) :
         mWithMasq = false;
      }
 
-     // Initialisation des resultats, calcul eventuel de la taille des vignettes
+     // Initialisation des resultats, computation eventuel de la taille des vignettes
     Pt2di  aCompTHSP(0,0);
     for 
     (
@@ -534,7 +534,7 @@ cAppli_FFTKugelhupf_main::cAppli_FFTKugelhupf_main(int argc,char ** argv) :
                TIm2DBits<1>  aTM(anIm);
                ELISE_COPY(anIm.all_pts(),trans(aTifM.in(0),aP0),anIm.out());
 
-               // Debordement des composantes connexes si taches autour des marques trop grandes
+               // Debordement des composantes connexes if taches autour des marques trop grandes
                ELISE_COPY(anIm.border(1),0,anIm.out());
 
                int aValC = aTM.get(aGerm);
@@ -609,7 +609,7 @@ void cAppli_FFTKugelhupf_main::DoResearch()
     cMesureAppuiFlottant1Im aRes;
     aRes.NameIm() = mNameIm2Parse;
     
-    // Recherche pour chaque point d'une ou plusieurs solutions
+    // Recherche for chaque point d'une or plusieurs solutions
     for 
     (
         std::list<cOneMesureAF1I>::const_iterator itM=mDico.OneMesureAF1I().begin() ;
@@ -631,7 +631,7 @@ void cAppli_FFTKugelhupf_main::DoResearch()
 
 
     mBestCostComb = 1e20;
-    // Recherche combinatoire avec approche de type Ransac
+    // Recherche combinatoire with approche de type Ransac
     for (int aKS1=0 ; aKS1<int(mVSols.size()) ; aKS1++)
     {
          for (int aKS2=aKS1+1 ; aKS2<int(mVSols.size()) ; aKS2++)

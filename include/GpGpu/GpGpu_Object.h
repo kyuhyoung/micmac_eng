@@ -17,7 +17,7 @@ using namespace std;
 /*@{*/
 
 /// \class CGObject
-/// \brief Classe de gestion des types
+/// \brief class de gestion des types
 class CGObject
 {
 public:
@@ -27,7 +27,7 @@ public:
 
     /// \brief  renvoie les caracteristiques de l objets en string
     std::string Id();
-    /// \brief  renvoie le nom de l objet en string
+    /// \brief  renvoie le nom de l object en string
     std::string	Name();
     /// \brief  affecte le nom
     /// \param  name : le nom a affecte
@@ -38,17 +38,17 @@ public:
 	/// \param id ajout identifiant
 	///
 	void		SetName(std::string name, int id);
-    /// \brief  renvoie le type de l objet en string
+    /// \brief  renvoie le type de l object en string
     std::string	Type();
-    /// \brief  affecte le type de l objet
+    /// \brief  affecte le type de l object
 	void		SetType(string type);
-    /// \brief  renvoie la classe du template de l objet en string
+    /// \brief  renvoie la class du template de l object en string
     std::string	ClassTemplate();
-    /// \brief  Affecte la classe du template de l objet
+    /// \brief  Affecte la class du template de l object
 	void		ClassTemplate(string classTemplate);
 
 
-    /// \brief  renvoie la classe T en string
+    /// \brief  renvoie la class T en string
     template<class T>
 	const char* StringClass(T* tt){ return "T";}
 
@@ -85,15 +85,15 @@ private:
     std::string _classTemplate;
 
 };
-/// \brief  renvoie la classe float en char*
+/// \brief  renvoie la class float en char*
 template<> inline const char* CGObject::StringClass( float* t ){return "float*";}
-/// \brief  renvoie la classe pixel en char*
+/// \brief  renvoie la class pixel en char*
 template<> inline const char* CGObject::StringClass( pixel* t ){return "pixel*";}
-/// \brief  renvoie la classe uint en char*
+/// \brief  renvoie la class uint en char*
 template<> inline const char* CGObject::StringClass( uint* t ){	return "uint*";}
-/// \brief  renvoie la classe float en char*
+/// \brief  renvoie la class float en char*
 template<> inline const char* CGObject::StringClass(struct float2* t ){	return "float2*";}
-/// \brief  renvoie la classe cudaArray en char*
+/// \brief  renvoie la class cudaArray en char*
 template<> inline const char* CGObject::StringClass(cudaArray* t ){	return "cudaArray*";}
 
 /// \cond
@@ -125,7 +125,7 @@ void CStructuring<CDimension>::setDimension(const CDimension &dimension)
 }
 
 /// \class struct2D
-/// \brief classe structure de donnees de dimension 2
+/// \brief class structure de donnees de dimension 2
 class struct2D
 {
 public:
@@ -145,7 +145,7 @@ public:
     /// \param  dimX : Dimension X d initialisation
     /// \param  dimY : Dimension Y d initialisation
     uint2		SetDimension(uint dimX,uint dimY);
-    /// \brief  Renvoie le nombre d elements de la structure
+    /// \brief  Renvoie le number d elements de la structure
     uint		GetSize();
     /// \brief  Sortie console de la structure
     void		Output();
@@ -181,7 +181,7 @@ private:
 
 
 /// \class struct2DLayered
-/// \brief classe pile de tableau 2D d elements
+/// \brief class pile de array 2D d elements
 class struct2DLayered : public struct2D
 {
 
@@ -189,15 +189,15 @@ public:
 
     struct2DLayered();
     ~struct2DLayered(){}
-    /// \brief Renvoie le nombre de tableau 2D
+    /// \brief Renvoie le number de array 2D
     uint        GetNbLayer();
-    /// \brief Initialise le nombre de tableau 2D
+    /// \brief Initialise le number de array 2D
     void        SetNbLayer(uint nbLayer);
-    /// \brief  Initialise la dimension de la structure 2D et le nombre de tableau
+    /// \brief  Initialise la dimension de la structure 2D and le number de array
     /// \param  dimension : Dimension d initialisation de la structure 2D
-    /// \param  nbLayer : nombre de tableau
+    /// \param  nbLayer : number de array
     void        SetDimension(uint2 dimension, uint nbLayer);
-    /// \brief  Initialise la dimension de la structure 2D et le nombre de tableau
+    /// \brief  Initialise la dimension de la structure 2D and le number de array
     /// \param  dimension : Dimension d initialisation de la structure 3D
     void        SetDimension(uint3 dimension);
     /// \brief  Renvoie la dimension de la structure 3D
@@ -217,7 +217,7 @@ public:
 protected:
 
 	///
-	/// \brief RefreshMaxSize rafraichir la valeur de la taille maximal
+	/// \brief RefreshMaxSize rafraichir la value de la taille maximal
 	///
     virtual     void RefreshMaxSize();
 

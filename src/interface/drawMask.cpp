@@ -24,7 +24,7 @@ qreal realDistance(const QPointF& P) { return sqrt(realDistance2(P)); }
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX//
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX//
-//classes mères pour toutes les interfaces d'affichage (avec possibilité d'afficher 2 images en même temps)
+//classes mères for toutes les interfaces d'affichage (with possibilité d'afficher 2 images en même temps)
 
 RenderArea::RenderArea(PaintInterf& parent, const ParamMain& pMain, int N, int n) : 
 	QWidget( &parent ),
@@ -102,7 +102,7 @@ void RenderArea::resizeEvent(QResizeEvent* event) {
 }
 
 void RenderArea::paintEvent(QPaintEvent*) {
-//appelée entre autres à chaque update()
+//appelée between autres à chaque update()
 //redessine l'image de fond
 	QRect rectangleSource;
 	QRect rectangleDestination(0,0,currentSize.width(),currentSize.height());
@@ -132,33 +132,33 @@ void RenderArea::changeCurrentScale(qreal cScale) {
 	currentScale = cScale;	
 }
 
-QPointF RenderArea::transfo(QPointF P) const {	//transforme le point cliqué en coordonnées souris en point sur l'image refImage
+QPointF RenderArea::transfo(QPointF P) const {	//transforme le point cliqué en coordonnées souris en point on l'image refImage
 	return QPointF(P-QPointF(currentSize.width(),currentSize.height())/2.0)/currentScale/painterScale + QPointF(center);
 }
 
-QPointF RenderArea::transfoInv(QPointF P) const {	//transforme le point sur l'image refImage en point en coordonnées souris 
+QPointF RenderArea::transfoInv(QPointF P) const {	//transforme le point on l'image refImage en point en coordonnées souris 
 	return QPointF(P-QPointF(center))*painterScale*currentScale + QPointF(currentSize.width(),currentSize.height())/2.0;
 }
 
-QPointF RenderArea::transfo(QPoint P) const {	//transforme le point cliqué en coordonnées souris en point sur l'image refImage
+QPointF RenderArea::transfo(QPoint P) const {	//transforme le point cliqué en coordonnées souris en point on l'image refImage
 	return transfo(QPointF(P));
 }
 
-QPointF RenderArea::transfoInv(QPoint P) const {	//transforme le point sur l'image refImage en point en coordonnées souris 
+QPointF RenderArea::transfoInv(QPoint P) const {	//transforme le point on l'image refImage en point en coordonnées souris 
 	return transfoInv(QPointF(P));
 }
 
-QRect RenderArea::transfoInv(QRect rect) const {	//transforme le point sur l'image refImage en point en coordonnées souris 
+QRect RenderArea::transfoInv(QRect rect) const {	//transforme le point on l'image refImage en point en coordonnées souris 
 	QPoint P1 = QPointF2QPoint(transfoInv( QPoint( rect.left(), rect.top() ) ));
 	QPoint P2 = QPointF2QPoint(transfoInv( QPoint( rect.right(), rect.bottom() ) ));
 	return QRect(P1,P2);
 }
 
 //rem : le clic souris event->pos() dépend de currentscale uniquement,
-// painter dépend de painterScale, center et currentSize aussi
-//les points du masque sont les coordonnées sur refImage
+// painter dépend de painterScale, center and currentSize aussi
+//les points du masque sont les coordonnées on refImage
 // refImage est fixe
-// currentscale dépend des outils mais pas de painterScale
+// currentscale dépend des outils but pas de painterScale
 // painterScale dépend de la taille de la fenêtre, réglée par l'utilisateur
 
 void RenderArea::mousePressEvent (QMouseEvent* event) { 
@@ -291,7 +291,7 @@ QSize PaintInterf::sizeHint2() const {
 }
 
 void PaintInterf::display() {
-//affichage des renderArea et connections signals/slots
+//affichage des renderArea and connections signals/slots
 	QHBoxLayout* renderLayout = new QHBoxLayout;
 	for (int i=0; i<renderArea.count(); i++) {
 		if (i>0) renderLayout->insertSpacing (1,maximumSizeHint().width());
@@ -402,7 +402,7 @@ RenderArea::ParamDisplay PaintInterf::getPosImg(int num) const {
 }
 
 void PaintInterf::updateAll(int pos) {
-//à chaque modification d'une renderArea, met aussi les autres à jour, pour déplacer les segments
+//à chaque modification d'une renderArea, met aussi les autres à jour, for déplacer les segments
 	/*for (int i=0; i<renderArea.count(); i++) {
 		if (i==pos) continue;
 		disconnect(renderArea.at(i), SIGNAL(updated(int)), this, SLOT(updateAll(int)));
@@ -494,9 +494,9 @@ void VisuHomologues::paintEvent(QPaintEvent* event) {
 			}
 			//coordonnées souris
 			QPoint p1 = QPointF2QPoint(transfoInv(QPointF(P1)));
-			QPointF p2bF = (QPointF(P2)-QPointF(posImg2.center))*posImg2.currentScale*posImg2.painterScale + QPointF(posImg2.size.width(),posImg2.size.height())/2.0;	//P2 dans l'image 2
+			QPointF p2bF = (QPointF(P2)-QPointF(posImg2.center))*posImg2.currentScale*posImg2.painterScale + QPointF(posImg2.size.width(),posImg2.size.height())/2.0;	//P2 in l'image 2
 			QPoint p2b(p2bF.x(),p2bF.y());
-			QPoint p2 = QPointF2QPoint((P2-posImg2.center)*posImg2.currentScale*posImg2.painterScale + QPoint(posImg2.size.width(),posImg2.size.height())/2 + posImg2.origine);	//P2 dans l'image 1
+			QPoint p2 = QPointF2QPoint((P2-posImg2.center)*posImg2.currentScale*posImg2.painterScale + QPoint(posImg2.size.width(),posImg2.size.height())/2 + posImg2.origine);	//P2 in l'image 1
 			//points à afficher
 			QRect rectangleSource(0, 0, currentSize.width(), currentSize.height());
 			if (!rectangleSource.contains(p1)) continue;
@@ -648,7 +648,7 @@ void VueHomologues::createToolBar() {
 	toolBar->addSeparator ();
 	toolBar->addAction(filtrAct);
 
-	//barre d'outils pour le filtrage des points homologues
+	//barre d'outils for le filtrage des points homologues
 	filtrBar->addAction(marquiseAct);
 	filtrBar->addAction(undoAct);
 	filtrBar->addAction(redoAct);
@@ -671,7 +671,7 @@ void VueHomologues::updateToolBar(const RenderArea::ToolMode& mode) {
 }
 
 void VueHomologues::liste1Clicked() {
-	//affichage des la liste des images 2 (couples) à chaque changement de l'image 1
+	//affichage des la list des images 2 (couples) à chaque changement de l'image 1
 	liste2->clear();
 	QString img1 = liste1->itemText(liste1->currentIndex());
 	for (int i=0; i<couples.count(); i++) {
@@ -823,7 +823,7 @@ void VueHomologues::saveClicked() {
 		}
 
 		ElSTDNS string s = paramMain->getDossier().toStdString()+nomFichiers.at(idx);
-		aPack.StdPutInFile(s);	//supprimer aussi dans -filtre et _init => dans ce cas il faut les lire et rechercher les bons couples
+		aPack.StdPutInFile(s);	//supprimer aussi in -filtre and _init => in ce cas il faut les lire and rechercher les bons couples
 	}
 	changed = false;
 	updateToolBar(renderArea.at(0)->getToolMode());
@@ -859,10 +859,10 @@ DrawArea::DrawArea(DrawInterf& parent, const ParamMain& pMain, const QString& im
 DrawArea::~DrawArea () {}
 
 //rem : le clic souris event->pos() dépend de currentscale uniquement,
-// painter dépend de painterScale, center et image.size() aussi
-//les points du masque sont les coordonnées sur image, ceux sur masque sont les coordonnées sur refImage
+// painter dépend de painterScale, center and image.size() aussi
+//les points du masque sont les coordonnées on image, ceux on masque sont les coordonnées on refImage
 // refImage est fixe
-// currentscale dépend des outils mais pas de painterScale
+// currentscale dépend des outils but pas de painterScale
 // painterScale dépend de la taille de la fenêtre, réglée par l'utilisateur
 
 void DrawArea::mousePressEvent (QMouseEvent * event) {
@@ -875,7 +875,7 @@ void DrawArea::mousePressEvent (QMouseEvent * event) {
 				return;
 			default : break;
 		}
-		//ajout du point au masque ou au segment
+		//ajout du point au masque or au segment
 		if (maxPoint!=-1 && masque.count()>0 && masque.at(0).getQpolygon().count()==maxPoint) return; //il y a déjà le maximum de points possibles (cas segment)
 		int rad = (1.0 / 2.0) + 2;
 		
@@ -906,7 +906,7 @@ QPolygon* DrawArea::continuePolygone (QList<Polygone>& conteneur, int rad) {
 		ToolMode otherTool = (toolMode==Draw) ? Cut : Draw;
 		Polygone* polyg = &(conteneur)[conteneur.count()-1];
 		ToolMode oldTmode = polyg->getTmode();
-		if (oldTmode==otherTool && !(polyg->getFerme())) {	//si le polygone précédent était utilisé avec l'autre outil et n'a pas été fermé, on le supprime
+		if (oldTmode==otherTool && !(polyg->getFerme())) {	//if le polygone précédent était utilisé with l'autre outil and n'a pas été fermé, on le supprime
 			QRect rect = polyg->getQpolygon().boundingRect();
 			polyg->modifQpolygon().clear();
 			polyg->setTmode(toolMode);
@@ -926,18 +926,18 @@ void DrawArea::paintEvent(QPaintEvent* event) {
 	//dessin de l'image
 	RenderArea::paintEvent(event);
 	if (masque.count()==0 || masque.at(0).getQpolygon().count()==0) return;
-	if (maxPoint==1) return; //cas particulier du segment à cheval sur 2 images
+	if (maxPoint==1) return; //cas particulier du segment à cheval on 2 images
 
 	QList<Polygone> masqueAlEchelle;
 	changeScale(masque, masqueAlEchelle);	///currentScale ?
 
-	QPainter painter(this);	 //on ne peut pas dessiner les polygones avec QPainter(refImage) car on veut que l'épaisseur de la ligne reste fixe (donc pas dans updateAllPolygones())
+	QPainter painter(this);	 //on ne peut pas dessiner les polygones with QPainter(refImage) car on veut que l'épaisseur de la line reste fixe (donc pas in updateAllPolygones())
 		//le dernier polygone est-il fermé ?
 		int itend=masque.count();
 		if (!(masque.at(masque.count()-1).getFerme()))
 			--itend;
 
-		//dessin polygones fermés sans les contours
+		//dessin polygones fermés without les contours
 		painter.setPen(Qt::NoPen);
 		QBrush brush(Qt::SolidPattern);
 		QRect rect(center.x()*painterScale*currentScale-currentSize.width()/2,center.y()*painterScale*currentScale-currentSize.height()/2,currentSize.width(),currentSize.height());
@@ -963,7 +963,7 @@ void DrawArea::paintEvent(QPaintEvent* event) {
 			painter.setPen(pen);
 			if (p->getQpolygon().count()==1) {
 				QPoint P = p->getQpolygon().at(0);
-				//painter.drawPoint(p->getQpolygon().at(0));	//on dessine plutôt une croix pour mieux le voir
+				//painter.drawPoint(p->getQpolygon().at(0));	//on dessine plutôt une croix for mieux le voir
 				painter.drawLine(P+QPoint(-10,-10),P+QPoint(10,10));
 				painter.drawLine(P+QPoint(-10,10),P+QPoint(10,-10));
 				if (dynamic_cast<PaintInterfAppui*>(parentWindow)!=0) {
@@ -980,7 +980,7 @@ void DrawArea::paintEvent(QPaintEvent* event) {
 }
 
 void DrawArea::changeScale(const QList<Polygone>& conteneur, QList<Polygone>& conteneurAlEchelle) const {
-//remet les dessins à l'échelle dans conteneurAlEchelle (conteneur est à l'échelle initiale)
+//remet les dessins à l'échelle in conteneurAlEchelle (conteneur est à l'échelle initiale)
 	if (conteneur.count()==0 || conteneur.at(0).getQpolygon().count()==0)  return;
 	conteneurAlEchelle.clear();
 	for (int i=0; i<conteneur.count(); i++) {
@@ -1088,7 +1088,7 @@ void DrawInterf::updateToolBar(const RenderArea::ToolMode& mode) {
 			cutAct->setEnabled(true);
 	}
 
-	switch (mode) {//ajouter le changement d'icône quand les boutons sont sélectionnés
+	switch (mode) {//ajouter le changement d'icône when les boutons sont sélectionnés
 		case RenderArea::Draw:
 			drawAct->setChecked(true); 
 			statusBar->showMessage (tr("Right click to close polygon"));
@@ -1161,7 +1161,7 @@ PaintInterfAppui::PaintInterfAppui(const ParamMain* pMain, Assistant* help, cons
 	//RenderAreaAppui
 	done = false;
 	QString img = paramMain->getCorrespImgCalib().at(0).getImageTif();
-	QPoint ptApp;	//on affiche par défaut le premier point d'appui de la liste
+	QPoint ptApp;	//on affiche par défaut le premier point d'appui de la list
 	int idx = getIndexPtApp(0);
 	if (idx!=-1) ptApp = ptsAppui.at(0).at(idx);
 	else ptApp = QPoint(-1,-1);
@@ -1181,7 +1181,7 @@ PaintInterfAppui::PaintInterfAppui(const ParamMain* pMain, Assistant* help, cons
 	connect(undoAct, SIGNAL(triggered()), this, SLOT(undoClicked()));
 	connect(redoAct, SIGNAL(triggered()), this, SLOT(redoClicked()));
 
-	//choix de l'image et du point GPS
+	//choix de l'image and du point GPS
 	QLabel* label1 = new QLabel(tr("Image"));
 	liste1 = new QComboBox;
 	for (int i=0; i<paramMain->getCorrespImgCalib().count(); i++)
@@ -1240,7 +1240,7 @@ void PaintInterfAppui::undoClicked() {
 	drawAct->setEnabled(true);
 	undoAct->setEnabled(false);
 	redoAct->setEnabled(true);
-	//suppression du point dans la bd
+	//suppression du point in la bd
 	ptsAppui[liste1->currentIndex()][liste2->currentIndex()] = QPoint(-1,-1);
 }
 void PaintInterfAppui::redoClicked() {
@@ -1252,7 +1252,7 @@ void PaintInterfAppui::ptClicked() {
 	drawAct->setEnabled(false);
 	undoAct->setEnabled(true);
 	redoAct->setEnabled(false);
-	//ajout du point dans la bd
+	//ajout du point in la bd
 	QPoint P = renderArea.at(0)->getPoint();
 	ptsAppui[liste1->currentIndex()][liste2->currentIndex()] = P;
 }
@@ -1262,7 +1262,7 @@ void PaintInterfAppui::helpClicked() { assistant->showDocumentation(assistant->p
 const QVector<QVector<QPoint> >& PaintInterfAppui::getPointsAppui() const { return ptsAppui; }
 
 int PaintInterfAppui::getIndexPtApp(int img) const {
-//index du premier point d'appu présent dans l'image courante
+//index du premier point d'appu présent in l'image courante
 	int idx = 0;
 	while (idx<ptsGPS->count() && ptsAppui.at(img).at(idx)==QPoint(-1,-1)) idx++;
 	if (idx==ptsGPS->count()) idx = -1;
@@ -1300,7 +1300,7 @@ void RenderAreaSegment::paintEvent(QPaintEvent* event) {
 
 	//dessin du segment
 	if (masque.count()==0 || masque.at(0).getQpolygon().count()==0) return;
-	if (maxPoint!=1) return; //cas de l'image unique pris en compte par DrawArea::paintEvent (segment et point)
+	if (maxPoint!=1) return; //cas de l'image unique pris en compte par DrawArea::paintEvent (segment and point)
 
 	//récupération du point
 	QPoint P1 = masque.at(0).getQpolygon().at(0);
@@ -1313,10 +1313,10 @@ void RenderAreaSegment::paintEvent(QPaintEvent* event) {
 	pen.setWidth(1);
 	painter.setPen(pen);
 
-	//2 possiblités : 1 point (sur cette image) ou 2 points dans 2 images => 2 demi-segments
+	//2 possiblités : 1 point (on cette image) or 2 points in 2 images => 2 demi-segments
 	//cas 1
 	if (parentWindow->getNbPoint(npos)==0) {
-		//painter.drawPoint(p1);	//on dessine plutôt une croix pour mieux le voir
+		//painter.drawPoint(p1);	//on dessine plutôt une croix for mieux le voir
 		painter.drawLine(p1+QPoint(-10,-10),p1+QPoint(10,10));
 		painter.drawLine(p1+QPoint(-10,10),p1+QPoint(10,-10));
 	//cas 2
@@ -1326,7 +1326,7 @@ void RenderAreaSegment::paintEvent(QPaintEvent* event) {
 			//récupération du 2nd point
 			QPoint P2 = (npos==1) ? parentWindow->getSegment().second : parentWindow->getSegment().first;
 			//coordonnées souris
-			QPointF p2bF = (QPointF(P2)-QPointF(posImg2.center))*posImg2.currentScale*posImg2.painterScale + QPointF(posImg2.size.width(),posImg2.size.height())/2.0;	//P2 dans l'image 2
+			QPointF p2bF = (QPointF(P2)-QPointF(posImg2.center))*posImg2.currentScale*posImg2.painterScale + QPointF(posImg2.size.width(),posImg2.size.height())/2.0;	//P2 in l'image 2
 			QPoint p2b(p2bF.x(),p2bF.y());
 			QPoint p2 = QPointF2QPoint((P2-posImg2.center)*posImg2.currentScale*posImg2.painterScale + QPoint(posImg2.size.width(),posImg2.size.height())/2 + posImg2.origine);
 			//point intermédiaire
@@ -1393,7 +1393,7 @@ QPoint RenderAreaSegment::getPoint() const { return masque.at(0).getQpolygon().a
 
 
 PaintInterfSegment::PaintInterfSegment(const ParamMain* pMain, Assistant* help, const pair<QString,QString>& images, QWidget* parent, bool planH, const QPoint& P1Prec, const QPoint& P2Prec) : 
-		DrawInterf(pMain,help,parent), lastPoint(1)	//planH : pour l'axe des abscisses, sinon c'est l'échelle
+		DrawInterf(pMain,help,parent), lastPoint(1)	//planH : for l'axe des abscisses, else c'est l'échelle
 {
 	//RenderAreaSegment
 	done = false;
@@ -1435,10 +1435,10 @@ void PaintInterfSegment::createActions() {
 
 void PaintInterfSegment::undoClicked() {
 	renderArea.at(lastPoint-1)->undoClicked();
-	lastPoint = (imageRef.count()==1)? lastPoint : 3-lastPoint;	//pour le prochain undo
+	lastPoint = (imageRef.count()==1)? lastPoint : 3-lastPoint;	//for le prochain undo
 }
 void PaintInterfSegment::redoClicked() {
-	lastPoint = (imageRef.count()==1)? lastPoint : 3-lastPoint;	//pour le prochain redo
+	lastPoint = (imageRef.count()==1)? lastPoint : 3-lastPoint;	//for le prochain redo
 	renderArea.at(lastPoint-1)->redoClicked();
 }
 
@@ -1463,7 +1463,7 @@ void PaintInterfSegment::setLastPoint(int n) { lastPoint = n; }
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX//
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX//
-//saisie d'un masque pour un plan
+//saisie d'un masque for un plan
 
 
 RenderAreaPlan::RenderAreaPlan(PaintInterfPlan& parent, const ParamMain& pMain, const QString& imageFile, const QString& masquePrec): 
@@ -1519,7 +1519,7 @@ void RenderAreaPlan::updateGradRegul(int n) {
 		regul = 1.0 / pow(10.0, maxVal - n);
 		autoRegul = false;
 	} else {
-		//regul = currentScale/10.0;	//n=1/10 sans zoom, 1 avec zoom max
+		//regul = currentScale/10.0;	//n=1/10 without zoom, 1 with zoom max
 		regul = 0.1f;
 		autoRegul = true;
 	}
@@ -1542,7 +1542,7 @@ void RenderAreaPlan::mousePressEvent (QMouseEvent* event) {
 		//dessin du segment suivant les contours
 		QPolygon* currentPolygone = &(masque[masque.count()-1].modifQpolygon());
 
-		if (currentPolygone->size()==0) return;	// inutile en fait : soit >0, soit ==0 et le point a déjà été intégré par DrawArea::mousePressEvent donc ==1
+		if (currentPolygone->size()==0) return;	// inutile en fait : soit >0, soit ==0 and le point a déjà été intégré par DrawArea::mousePressEvent donc ==1
 		QPoint endPoint=QPointF2QPoint(transfo(event->pos()));
 		QPoint lastPoint=currentPolygone->at(currentPolygone->count()-1);
 		if (endPoint==lastPoint || (endPoint-lastPoint).manhattanLength()<=1) return;
@@ -1562,7 +1562,7 @@ void RenderAreaPlan::mouseDoubleClickEvent (QMouseEvent* event) {
 	if (masque.size()==0) return;
 	Polygone* currentPolygone = &masque[masque.count()-1];
 	if (currentPolygone->getFerme()) return;	
-	if (currentPolygone->getQpolygon().count()<2) return;	//il faut au moins 3 points avec celui-ci pour faire un polygone
+	if (currentPolygone->getQpolygon().count()<2) return;	//il faut au moins 3 points with celui-ci for faire un polygone
 
 	if (withGradTool) {
 		QPolygon autoPath = findGradPath (currentPolygone->getQpolygon().at(currentPolygone->getQpolygon().count()-1), QPointF2QPoint(transfo(event->pos())));
@@ -1585,7 +1585,7 @@ void RenderAreaPlan::mouseDoubleClickEvent (QMouseEvent* event) {
 
 	update();
 	if (toolMode==Draw && masque.size()==1) {	//if (toolMode==Draw && masque.size()==1 && maskPred.isEmpty())
-		parentWindow->updateToolBar(toolMode);	//pour autoriser Cut
+		parentWindow->updateToolBar(toolMode);	//for autoriser Cut
 	}
 }
 
@@ -1602,7 +1602,7 @@ void RenderAreaPlan::paintEvent(QPaintEvent* event) {
 }
 
 void RenderAreaPlan::calculeGradient (const qreal& scale, const QRegion& region) {
-	//gradient de l'image restreinte à la zone region et réduite à 1/echelle (resultats dans gradient->first : gradient en x et gradient->second : gradient en y)
+	//gradient de l'image restreinte à la zone region and réduite à 1/scale (resultats in gradient->first : gradient en x and gradient->second : gradient en y)
 	if (region.isEmpty()) return;
 
 	int filtreX [9] = {-1,0,1, -2,0,2, -1,0,1};
@@ -1626,7 +1626,7 @@ void RenderAreaPlan::calculeGradient (const qreal& scale, const QRegion& region)
 		img = &tempoImages.second;
 	}
 
-	//calcul du gradient de refImage
+	//computation du gradient de refImage
 	for (int x=zone.left(); x<zone.right()+1; x++) {
 		if (x<=0 || x>=size.width()-1) continue;
 		for (int y=zone.top(); y<zone.bottom()+1; y++) {
@@ -1648,10 +1648,10 @@ void RenderAreaPlan::calculeGradient (const qreal& scale, const QRegion& region)
 }
 
 QPolygon RenderAreaPlan::plusCourtChemin (const QPoint& firstPoint, const QPoint& lastPoint, const QRegion& region, const qreal& scale, const QImage& distImg) {
-	//algorithme du plus court chemin de firstPoint à lastPoint dans la zone region (sur l'image réduite à 1/echelle)
+	//algorithme du plus court chemin de firstPoint à lastPoint in la zone region (on l'image réduite à 1/scale)
 	if (region.isEmpty()) return 0;
 
-	//nombre de points possibles
+	//number de points possibles
 	int N = 0;
 	QVector<QRect> V = region.rects();
 	for (int i=0; i<V.count(); i++)
@@ -1669,7 +1669,7 @@ QPolygon RenderAreaPlan::plusCourtChemin (const QPoint& firstPoint, const QPoint
 	QPoint A = firstPoint*scale;
 	QPoint B = lastPoint*scale;
 	coutTot[A.x()-zone.x()][A.y()-zone.y()] = 0;
-	QVector<QVector<QPoint> > prec(size.width(),QVector<QPoint>(size.height(),QPoint(-1,-1)));	//point précédent dans le chemin de firstPoint à lastPoint
+	QVector<QVector<QPoint> > prec(size.width(),QVector<QPoint>(size.height(),QPoint(-1,-1)));	//point précédent in le chemin de firstPoint à lastPoint
 
 	//paramètre de la droite (A,B) : ax+by+c=0 => contrainte chemin proche du segment
 	float a = B.y()-A.y();
@@ -1701,12 +1701,12 @@ QPolygon RenderAreaPlan::plusCourtChemin (const QPoint& firstPoint, const QPoint
 
 				float dist = (abs(J.x()*a+J.y()*b+c))*n;//-abs(I.x()*a+I.y()*b+c)
 
-				int Cj = Ci + int(sqrt((pow(double(i*(255-QColor(gradient.first.pixel(J)).value())),2)+pow(double(j*(255-QColor(gradient.second.pixel(J)).value())),2))/(i*i+j*j)));	//on cherche le chemin avec le gradient maximum = la frontière
+				int Cj = Ci + int(sqrt((pow(double(i*(255-QColor(gradient.first.pixel(J)).value())),2)+pow(double(j*(255-QColor(gradient.second.pixel(J)).value())),2))/(i*i+j*j)));	//on cherche le chemin with le gradient maximum = la frontière
 				Cj += (distImg.isNull()) ? dist*regul : QColor(distImg.pixel(J)).value();
 
 				if (Cj<coutTot[J.x()-zone.x()][J.y()-zone.y()]) {
 					coutTot[J.x()-zone.x()][J.y()-zone.y()] = Cj;
-					prec[J.x()-zone.x()][J.y()-zone.y()] = I;	//point précédent J dans le plus court chemin
+					prec[J.x()-zone.x()][J.y()-zone.y()] = I;	//point précédent J in le plus court chemin
 					if ( J!=B &&  Cj<coutTot[B.x()-zone.x()][B.y()-zone.y()] && !L2.contains(J)) {
 						L2.push_back(J);
 					}
@@ -1729,7 +1729,7 @@ QPolygon RenderAreaPlan::plusCourtChemin (const QPoint& firstPoint, const QPoint
 }
 
 QPolygon RenderAreaPlan::smoothPath (const QPoint& firstPoint, const QPolygon& polyg, int pas, float distance) {
-	// suppression de pas-1 points sur pas s'ils sont suffisamment alignés avec leurs voisins
+	// suppression de pas-1 points on pas s'ils sont suffisamment alignés with leurs voisins
 	QPolygon smoothPoly;
 	int i = 0;
 
@@ -1774,7 +1774,7 @@ QPolygon RenderAreaPlan::smoothPath (const QPoint& firstPoint, const QPolygon& p
 QPolygon RenderAreaPlan::findGradPath (const QPoint& firstPoint, const QPoint& lastPoint, const QImage& distImg) {
 	if (firstPoint==lastPoint) return 0;
 
-	//plus court chemin sur l'image réduite (échelle 1/2), dans le rectangle englobant (avec marges de gradientBuffer)
+	//plus court chemin on l'image réduite (échelle 1/2), in le rectangle englobant (with marges de gradientBuffer)
 	qreal scale1 = min(painterScale/currentScale,1.0)/2.0;
 	int gradientBuffer = 20.0/scale1;
 	QRegion region( QRect(firstPoint,lastPoint).normalized().adjusted(-gradientBuffer, -gradientBuffer, +gradientBuffer, +gradientBuffer) );
@@ -1784,13 +1784,13 @@ QPolygon RenderAreaPlan::findGradPath (const QPoint& firstPoint, const QPoint& l
 	QPolygon chemin = plusCourtChemin(firstPoint, lastPoint, region, scale1, distImg);
 	chemin.push_front(firstPoint);
 
-	//plus court chemin sur l'image taille réelle, dans la zone autour du chemin précédant (buffer de gradientBuffer2)
+	//plus court chemin on l'image taille réelle, in la zone autour du chemin précédant (buffer de gradientBuffer2)
 	qreal scale2 = min(painterScale/currentScale,1.0);
 	int gradientBuffer2 = 10.0/scale2;
 	region = QRegion();
 	for (int i=0; i<chemin.size(); i++) {
 		QPoint I =chemin.at(i);
-		region += ( QRect(I.x()-gradientBuffer2, I.y()-gradientBuffer2, 2*gradientBuffer2, 2*gradientBuffer2) );	//pour des cercles : RegionType t = QRegion::Ellipse
+		region += ( QRect(I.x()-gradientBuffer2, I.y()-gradientBuffer2, 2*gradientBuffer2, 2*gradientBuffer2) );	//for des cercles : RegionType t = QRegion::Ellipse
 	}
 	region &= refImage.rect();
 
@@ -1801,7 +1801,7 @@ QPolygon RenderAreaPlan::findGradPath (const QPoint& firstPoint, const QPoint& l
 }
 
 Tiff_Im* RenderAreaPlan::endPolygone () {
-	//enregistre le masque sous forme de QImage
+	//enregistre le masque under forme de QImage
 	QApplication::setOverrideCursor( Qt::WaitCursor );
 
 	//fermeture du polygone
@@ -1812,7 +1812,7 @@ Tiff_Im* RenderAreaPlan::endPolygone () {
 	}
 
 	//initialisation de l'image
-	QString tempofile = (maskPred.isEmpty())? applicationPath()+QString("/masquetempo.tif") : maskPred;	//fichier temporaire où est exporté le masque en attendant l'enregistrement
+	QString tempofile = (maskPred.isEmpty())? applicationPath()+QString("/masquetempo.tif") : maskPred;	//file temporaire où est exporté le masque en attendant l'enregistrement
 			//soit créé, soit maskPred est modifié
 	if (maskPred.isEmpty() && QFile(tempofile).exists()) QFile(tempofile).remove();
 	string fileMasq = tempofile.toStdString();
@@ -1822,7 +1822,7 @@ Tiff_Im* RenderAreaPlan::endPolygone () {
 	if (maskPred.isEmpty()) {	//tout en noir
 		imageMasq = new Tiff_Im( fileMasq.c_str(), Pt2di( refImage.width(), refImage.height() ), GenIm::bits1_msbf, Tiff_Im::No_Compr, Tiff_Im::BlackIsZero );
 		ELISE_COPY( imageMasq->all_pts(), 0, imageMasq->out() );	//fond noir
-	} else {	//avec le masque précédent
+	} else {	//with le masque précédent
 		char buf[200];
 		sprintf(buf,"%s", maskPred.toStdString().c_str() );
 		ELISE_fp fp;
@@ -1851,7 +1851,7 @@ Tiff_Im* RenderAreaPlan::endPolygone () {
 		}
 	}
 
-	//érosion : évite d'inclure les arrières-plans indésirables sur les bords du masque (! érode aussi l'image précédente)
+	//érosion : évite d'inclure les arrières-plans indésirables on les bords du masque (! érode aussi l'image précédente)
 	/*QImage erodeImg(tempofile);
 	for (int i=0; i<erodeImg.width(); i++) {
 	for (int j=0; j<erodeImg.height(); j++) {
@@ -1898,7 +1898,7 @@ Tiff_Im* RenderAreaPlan::endPolygone () {
 void RenderAreaPlan::continuePolygone (QList<Polygone>& conteneur, bool upDate) {
 	DrawArea::continuePolygone(conteneur,upDate);
 	if (conteneur.size()>0) {
-	//si le polygone précédent était utilisé avec l'autre outil et n'a pas été fermé, on le supprime
+	//if le polygone précédent était utilisé with l'autre outil and n'a pas été fermé, on le supprime
 		ToolMode otherTool = (toolMode==Draw) ? Cut : Draw;
 		Polygone* polyg = &(conteneur[conteneur.count()-1]);
 		//-- QRect rect = polyg->getQpolygon().boundingRect();
@@ -1920,13 +1920,13 @@ void RenderAreaPlan::continuePolygone (QList<Polygone>& conteneur, bool upDate) 
 }
 
 void RenderAreaPlan::undoClicked() {
-	int nb = undoCompteur.at(0);	//nombre de points du segment à supprimer
+	int nb = undoCompteur.at(0);	//number de points du segment à supprimer
 	int nb2=0;	//compteur des points que l'on supprime
 
 	//polygone de masque à vider
 	QPolygon* P = &masque[masque.count()-1].modifQpolygon();
 
-	//création d'un nouveau polygone dans sauvegarde
+	//création d'un nouveau polygone in sauvegarde
 	if ((sauvegarde.size()==0) || (masque[masque.count()-1].getFerme())) {
 		sauvegarde.push_back(masque[masque.count()-1].clone());
 	}
@@ -1941,11 +1941,11 @@ void RenderAreaPlan::undoClicked() {
 
 	//mise à jour du masque
 	masque[masque.count()-1].setFerme(false);	
-	if (P->count()==0)	//pas de polygone vide dans masque
+	if (P->count()==0)	//pas de polygone vide in masque
 		masque.removeAt(masque.count()-1);
 
 	//mise à jour de l'outil
-	if (masque.size()>0) toolMode = masque[masque.count()-1].getTmode();	//le mode de dessin devient le mode du dernier point affiché, Draw sinon
+	if (masque.size()>0) toolMode = masque[masque.count()-1].getTmode();	//le mode de dessin devient le mode du dernier point affiché, Draw else
 	else toolMode = Draw;
 
 	//mise à jour des compteurs
@@ -1957,18 +1957,18 @@ void RenderAreaPlan::undoClicked() {
 }
 
 void RenderAreaPlan::redoClicked() {
-	int nb = redoCompteur.at(0);	//nombre de points du segment à rajouter
+	int nb = redoCompteur.at(0);	//number de points du segment à rajouter
 	int nb2=0;	//compteur des points que l'on ajoute
 
 	//polygone de sauvegarde à vider
 	Polygone* currentPolygone = &sauvegarde[sauvegarde.count()-1];
 	QPolygon* P = &currentPolygone->modifQpolygon();
 
-	//création d'un nouveau polygone dans masque
+	//création d'un nouveau polygone in masque
 	if (masque.size()==0 || masque[masque.count()-1].getFerme()) {
 		masque.push_back(Polygone(currentPolygone->getTmode(), false));
 	}
-	if (currentPolygone->getFerme() && nb==P->count()) masque[masque.count()-1].setFerme(true);	//le nouveau polygone sera fermé si on ajoute tout les points d'un polygone à fermer
+	if (currentPolygone->getFerme() && nb==P->count()) masque[masque.count()-1].setFerme(true);	//le nouveau polygone sera fermé if on ajoute tout les points d'un polygone à fermer
 
 	//polygone de masque à remplir
 	QPolygon* P2 = &(masque[masque.count()-1].modifQpolygon());
@@ -1980,11 +1980,11 @@ void RenderAreaPlan::redoClicked() {
 	}
 
 	//mise à jour de la sauvegarde	
-	if (P->count()==0)	//pas de polygone vide dans la sauvegarde
+	if (P->count()==0)	//pas de polygone vide in la sauvegarde
 		sauvegarde.removeAt(sauvegarde.count()-1);
 
 	//mise à jour de l'outil
-	toolMode = masque[masque.count()-1].getTmode();	//le mode de dessin devient le mode du dernier point affiché, Draw sinon
+	toolMode = masque[masque.count()-1].getTmode();	//le mode de dessin devient le mode du dernier point affiché, Draw else
 
 	//mise à jour des compteurs
 	undoCompteur.push_front(nb);
@@ -2003,7 +2003,7 @@ void RenderAreaPlan::clearClicked() {
 		currentPolygone = &(masque[i]);
 		P = &(currentPolygone->getQpolygon());
 
-		//création d'un nouveau polygone dans sauvegarde
+		//création d'un nouveau polygone in sauvegarde
 		if ((sauvegarde.size()==0) || (currentPolygone->getFerme())) {
 			sauvegarde.push_back(currentPolygone->clone());
 		}
@@ -2037,7 +2037,7 @@ PaintInterfPlan::PaintInterfPlan(const QString& imageFile, const ParamMain* pMai
 	maskImg( 0 ),
 	masqPrec( masquePrec ),
 	filtrage( filtre )
-	//plan=true si masque du plan horizontal, false si masque de corrélation=>définition renderArea à part
+	//plan=true if masque du plan horizontal, false if masque de corrélation=>définition renderArea à part
 {
 	if (plan) createRenderArea(imageFile);
 }
@@ -2117,7 +2117,7 @@ bool PaintInterfPlan::masqueIsEmpty() const { return renderArea.at(0)->masqueIsE
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX//
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX//
-//saisie d'un masque pour la corrélation (+ masque automatique)
+//saisie d'un masque for la corrélation (+ masque automatique)
 
 
 RenderAreaCorrel::RenderAreaCorrel(PaintInterfCorrel& parent, const ParamMain& pMain, const QString& imageFile, const QString& masquePrec) : 
@@ -2127,7 +2127,7 @@ RenderAreaCorrel::RenderAreaCorrel(PaintInterfCorrel& parent, const ParamMain& p
 RenderAreaCorrel::~RenderAreaCorrel () {}
 
 void RenderAreaCorrel::autoClicked(int withHoles) {
-//calcule un masque automatiquement à partir des points de liaisons présents dans l'image
+//compute un masque automatiquement à partir des points de liaisons présents in l'image
 	//initialisation
 	QApplication::setOverrideCursor( Qt::WaitCursor );
 	if (masque.count()>0 && !masque.at(masque.count()-1).getFerme()) {
@@ -2170,7 +2170,7 @@ void RenderAreaCorrel::autoClicked(int withHoles) {
 		}
 
 		const CamStenope* cam = &cameras.at(0).getCamera();
-		//récupération des points 3D (a priori, ils sont dans le même ordre que les points 2D)
+		//récupération des points 3D (a priori, ils sont in le même ordre que les points 2D)
 		QList<pair<Pt3dr, QColor> > listPt3D;
 		QString err2 = VueChantier::getHomol3D (paramMain->getParamApero().getImgToOri().at(N), paramMain->getDossier(), listPt3D);
 		if (!err2.isEmpty()) {
@@ -2238,7 +2238,7 @@ void RenderAreaCorrel::paintEvent(QPaintEvent* event) {
 			penA.setWidth(7);
 			painterA.setPen(penA);
 			QPoint P(int(ptsLiais.at(i).first.x),int(ptsLiais.at(i).first.y));
-		//	painterA.drawPoint(QPointF2QPoint(transfoInv(P)));	//on dessine plutôt une croix pour mieux le voir
+		//	painterA.drawPoint(QPointF2QPoint(transfoInv(P)));	//on dessine plutôt une croix for mieux le voir
 			P = QPointF2QPoint(transfoInv(P));
 			painterA.drawLine(P+QPoint(-10,-10),P+QPoint(10,10));
 			painterA.drawLine(P+QPoint(-10,10),P+QPoint(10,-10));
@@ -2308,7 +2308,7 @@ const QList<Pt2dr>& PaintInterfCorrel::getPtsLiaison() {
 	imgCurrent = imgCurrent.left(imgCurrent.count()-1);
 	imgCurrent += QString(".tif");
 
-	//lecture des points de liaison dans le dossier Pastis
+	//lecture des points de liaison in le folder Pastis
 	pointsLiaison.clear();
 	cTplValGesInit<string>  aTpl;
 	char** argv = new char*[1];
@@ -2318,7 +2318,7 @@ const QList<Pt2dr>& PaintInterfCorrel::getPtsLiaison() {
 	cInterfChantierNameManipulateur* mICNM = cInterfChantierNameManipulateur::StdAlloc(1, argv, dir.toStdString(), aTpl );
 	const vector<string>* aVN = mICNM->Get("Key-Set-HomolPastisBin");
 
-		//fichier (*aVN)[aK]
+		//file (*aVN)[aK]
 	for (int aK=0; aK<signed(aVN->size()) ; aK++) {
 		if (QString((*aVN)[aK].c_str()).contains("init")) continue;
 		if (QString((*aVN)[aK].c_str()).contains("filtre")) continue;
@@ -2330,7 +2330,7 @@ const QList<Pt2dr>& PaintInterfCorrel::getPtsLiaison() {
 		if (aPack.size()==0) continue;
 		for (ElPackHomologue::const_iterator  itH=aPack.begin(); itH!=aPack.end() ; itH++) {				
 			//if (!liaisons->contains(itH->P1())) 
-				pointsLiaison.push_back(itH->P1());	//pour qu'il y ait le même nb de points 3D que de points 2D
+				pointsLiaison.push_back(itH->P1());	//for qu'il y ait le même nb de points 3D que de points 2D
 		}
 	}
 	delete [] argv[0];
@@ -2379,17 +2379,17 @@ AutoMask::AutoMask (const QList<Pt2dr>& liaisons, const QList<pair<Pt3dr, QColor
 	boites(QList<QList<Pt2dr> >()), distPtLiais(QImage(refImage.size(), refImage.format())), done(false), nullObject(false)
 {
 //4 étapes :
-//filtrage des points trop éloignés des autres pour ne conserver que ceux situés a priori sur l'objet principal :
+//filtrage des points trop éloignés des autres for ne conserver que ceux situés a priori on l'object principal :
 	//tri des points par profondeur
-	//conservation de la composante la plus proche de l'axe (on suppose que l'image est centrée sur l'objet, qu'il n'y a pas de masque au milieu, et que l'objet a suffisamment de points de liaisons sur sa partie la plus proche)
+	//conservation de la composante la plus proche de l'axe (on suppose que l'image est centrée on l'object, qu'il n'y a pas de masque au milieu, and que l'object a suffisamment de points de liaisons on sa partie la plus proche)
 	//tri des points par voisinage
-	//conservation de la plus grosse composante (on suppose que l'objet est en un seul morceau)
-//boite englobante convexe des points de liaison conservés pour définir le masque (et calcul d'une triangulation de Delaunay de ces points)
-//découpage dans cette boîte des triangles trop grands pour définir les trous et les concavités du masque :
+	//conservation de la plus grosse composante (on suppose que l'object est en un seul morceau)
+//boite englobante convexe des points de liaison conservés for définir le masque (and computation d'une triangulation de Delaunay de ces points)
+//découpage in cette boîte des triangles trop grands for définir les trous and les concavités du masque :
 	//recherche des triangles de côtés trop grands
 	//tri des triangles par voisinage (trous différents)
 	//définition d'un trou par la boîte englobant un lot de triangles contrainte par les triangles existants 
-//affinage des contours par la méthode du plus court chemin (pondérée avec la distance aux points de liaison)
+//affinage des contours par la méthode du plus court chemin (pondérée with la distance aux points de liaison)
 	done = false;
 for (int i=0; i<liaisons.count(); i++)
 ptsLiais.push_back( pair<Pt2dr,QColor>(liaisons.at(i),QColor(255,0,0)) );
@@ -2433,7 +2433,7 @@ ptsLiais.push_back( pair<Pt2dr,QColor>(liaisons.at(i),QColor(255,0,0)) );
 	double minDistAxe = numeric_limits<int>::max();
 	int bestCompo = -1;
 	for (int i=0; i<profCompo.count()-1; i++) {
-		if (profCompo.at(i+1)-profCompo.at(i)<4) continue;	//composante trop petite pour une triangulation
+		if (profCompo.at(i+1)-profCompo.at(i)<4) continue;	//composante trop petite for une triangulation
 		double currentDist = 0;
 		for (int j = profCompo.at(i); j<profCompo.at(i+1); j++) {
 			Pt2dr P = liaisons.at( profondeur2.at(j).second );
@@ -2474,7 +2474,7 @@ ptsLiais.push_back( pair<Pt2dr,QColor>(liaisons0.at(i),QColor(0,255,0)) );
 		//tri en composantes connexes
 	QList<QList<int> > compo;
 	for (int i=0; i<liaisons0.count(); i++) {
-		//on vérifie que ce point n'est pas déjà dans une composante
+		//on vérifie que ce point n'est pas déjà in une composante
 		QList<int>* p = 0;
 		bool b = false;
 		if (compo.count()>0) {
@@ -2523,7 +2523,7 @@ ptsLiais.push_back( pair<Pt2dr,QColor>(liaisons0.at(i),QColor(0,255,0)) );
 /*for (int i=0; i<liaisons2->count(); i++)
 ptsLiais.push_back( pair<Pt2dr,QColor>(liaisons2->at(i),QColor(0,0,255)) );*/
 
-	//triangulation et boîte englobante
+	//triangulation and boîte englobante
 	QList<Pt2dr> boite;
 	struct triangulateio triangulation;
 	if (!boiteEnglob (liaisons2, boite, triangulation)) return;
@@ -2531,9 +2531,9 @@ ptsLiais.push_back( pair<Pt2dr,QColor>(liaisons2->at(i),QColor(0,0,255)) );*/
 	if (numberoftriangles==0) return;
 	double aireTot = aireBoite(boite);
 
-	//récupération des triangles trop grands (trous dans la triangulation)
+	//récupération des triangles trop grands (trous in la triangulation)
 		//triangles
-	QList<QVector<int> > grandTriangles;	//int = index des points dans liaisons2
+	QList<QVector<int> > grandTriangles;	//int = index des points in liaisons2
 	QList<double> aires;
 	for (int i=0; i<numberoftriangles; i++) {
 		QVector<int> triangle;
@@ -2598,7 +2598,7 @@ ptsLiais.push_back( pair<Pt2dr,QColor>(liaisons2->at(i),QColor(0,0,255)) );*/
 		}
 	}
 
-	//tri des composantes par nombre de triangles
+	//tri des composantes par number de triangles
 	boites.push_back(boite);
 	if (composantes.count()>0) {
 		for (int i=0; i<composantes.count(); i++) {
@@ -2615,10 +2615,10 @@ ptsLiais.push_back( pair<Pt2dr,QColor>(liaisons2->at(i),QColor(0,0,255)) );*/
 		for (int i=0; i<composantes.count(); i++) {	//composante i
 	cout << "nb pt compo " << composantes.at(i).count() << "\n";
 			QList<pair<int,int> > frontiere;
-			QList<pair<int,int> > liste; //liste des segments n'appartenant pas à la limite
+			QList<pair<int,int> > liste; //list des segments n'appartenant pas à la limite
 			for (int j=0; j<composantes.at(i).count(); j++) {	//triangle j
 				for (int k=0; k<3; k++) {	//sommet k
-					//on vérifie que le segment est sur la limite (il n'appartient qu'à un seul triangle)
+					//on vérifie que le segment est on la limite (il n'appartient qu'à un seul triangle)
 					int point1 = grandTriangles->at(composantes.at(i).at(j)).at(k);
 					int l = (k==2) ? 0 : k+1;
 					int point2 = grandTriangles->at(composantes.at(i).at(j)).at(l);
@@ -2781,7 +2781,7 @@ void AutoMask::freeTriangulateio(struct triangulateio& triangulation) const {
 }
 
 bool AutoMask::compareTriangles(const QVector<int>& triangle1, const QVector<int>& triangle2) const {
-	//vérifie si les triangles sont voisins (arête commune)
+	//vérifie if les triangles sont voisins (arête commune)
 	bool a = false;
 	for (int i=0; i<3; i++) {
 		for (int j=0; j<3; j++) {
@@ -2794,11 +2794,11 @@ bool AutoMask::compareTriangles(const QVector<int>& triangle1, const QVector<int
 			return true;
 		}
 	}
-	return false;	//0 ou 1 point commun
+	return false;	//0 or 1 point commun
 }
 
 bool AutoMask::testTriangles(const QList<Pt2dr>& triangle, double critere) const {
-	//vérifie si le triangle a au moins 2 côtés trop grands
+	//vérifie if le triangle a au moins 2 côtés trop grands
 	bool a = false;
 	for (int i=0; i<3; i++) {
 		int j = (i==2)? 0 : i+1;
@@ -2811,13 +2811,13 @@ bool AutoMask::testTriangles(const QList<Pt2dr>& triangle, double critere) const
 }
 
 double AutoMask::aireTriangle(const QList<Pt2dr>& triangle) const {
-	//calcule l'aire d'un triangle <AB;AC>/2
+	//compute l'aire d'un triangle <AB;AC>/2
 	double a = (triangle.at(1).x-triangle.at(0).x)*(triangle.at(2).x-triangle.at(0).x) + (triangle.at(1).y-triangle.at(0).y)*(triangle.at(2).y-triangle.at(0).y);
 	return abs(a)/2.0;	
 }
 
 double AutoMask::aireBoite(const QList<Pt2dr>& boite) const {
-	//calcule l'aire d'une boite englobante
+	//compute l'aire d'une boite englobante
 	double a = 0;
 	for (int i=0; i<boite.count(); i++) {
 		int j = (i==boite.count()-1) ? 0 : i+1;

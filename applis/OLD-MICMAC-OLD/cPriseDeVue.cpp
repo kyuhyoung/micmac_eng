@@ -275,7 +275,7 @@ int  cPriseDeVue::Num() const {return mNum;}
 
 
 /*****************************************/
-/*  Gestion du fichier image             */
+/*  Gestion du file image             */
 /*****************************************/
 
 
@@ -583,7 +583,7 @@ cGeomImage & cPriseDeVue::Geom()
 
   if (aFaiscPrCh)
   {
-     /* La notion de profondeur de champs, et surtout l'interet de l'echantinnoner
+     /* La notion de profondeur de champs, and surtout l'interet de l'echantinnoner
         en 1/Z est etroitement liee a la prise de vue conique.  */
      if   (mAppli.GeomImages()== eGeomImageOri)
      {
@@ -629,8 +629,8 @@ cGeomImage & cPriseDeVue::Geom()
 
      if (mNum == 0)
      {
-        // En Geometrie image, les coordonnees
-        // objets sont toujours confondues avec
+        // En Geometrie image, les coordinates
+        // objets sont toujours confondues with
         // celles de la premiere image
         mGeom = cGeomImage::GeomId(mAppli,*this,SzIm(),aDim);
      }

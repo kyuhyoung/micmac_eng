@@ -31,7 +31,7 @@ class cAppli_Tapas_Campari
        std::map<std::string,int> & BlocCptTime() ;
        const std::string & StrParamBloc() const;
        int   NbInBloc() const;
-       int  LongestBloc(int aK0,int aK1);  // Plus grand sequence a time stamp = dans [K0,K1[
+       int  LongestBloc(int aK0,int aK1);  // Plus grand sequence a time stamp = in [K0,K1[
        std::string eModAutom;
 
        int  LocDegGen;

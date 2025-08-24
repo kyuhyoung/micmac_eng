@@ -255,8 +255,8 @@ class DATA_Tiff_Ifd : public ElDataGenFileIm
 
            // Bif tiff handling
            bool           BigTiff() const;
-           int MaxNbByteTagValNonDefer() const; // Taille max pour que la valeur ne soit pas dereferencee
-           int SzPtr() const; // Meme valeur que MaxNbByteTagValNonDefer , mais semantique un peu !=
+           int MaxNbByteTagValNonDefer() const; // Taille max for que la value ne soit pas dereferencee
+           int SzPtr() const; // Meme value que MaxNbByteTagValNonDefer , but semantique un peu !=
 
            U_INT8 LireNbTag(ELISE_fp & aFp) const;
            void WriteNbTag(ELISE_fp & aFp,U_INT8);
@@ -345,7 +345,7 @@ class DATA_Tiff_Ifd : public ElDataGenFileIm
                  Elise_colour                *,
                  INT                         nb,
                  L_Arg_Opt_Tiff              l = Tiff_Im::Empty_ARG,
-                 int *                       BigTif = &DefValueBigTif // -1 jamais , 0 si possible, 1 toujours
+                 int *                       BigTif = &DefValueBigTif // -1 jamais , 0 if possible, 1 toujours
            );
 
 
@@ -362,7 +362,7 @@ class DATA_Tiff_Ifd : public ElDataGenFileIm
            Pt2di                       _sz_tile;
 	   int                         mUseFileTile;
 	   Pt2di                       mSzFileTile;
-	   // Nombre de sous-dalle Tiff par dalle de fichier
+	   // number de under-dalle Tiff par dalle de file
 	   Pt2di                       mNbTTByTF;
 
               //  This three values are to be understood

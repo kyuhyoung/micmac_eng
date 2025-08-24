@@ -8,7 +8,7 @@
 typedef enum {nul=0,pos=1,neg=2}  DetSign;
 typedef Point1* ptrpt;
 
-//class BenchQdt<TypeFPRIM<Point>,Point>;
+//class BenchQdt<TypeFPRIM<point>,point>;
 class Filtre 
 		//fonctions de filtrage des points faux
 {

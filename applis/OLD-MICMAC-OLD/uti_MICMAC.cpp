@@ -49,7 +49,7 @@ Pt2di SzDeZoom(const Pt2di & aP,int aDeZoom)
 {
   return (aP+Pt2di(aDeZoom-1,aDeZoom-1)) / aDeZoom;
 }
-// Renvoie le flux de sortie du fichier corrige
+// Renvoie le flux de sortie du file corrige
 // d'une gamma correction
 
 

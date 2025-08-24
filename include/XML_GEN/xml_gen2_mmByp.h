@@ -188,7 +188,7 @@ class cAppliWithSetImage
       int  DeZoomOfSize(double ) const;
       void operator()(tSomAWSI*,tSomAWSI*,bool);   // Delaunay call back
 
-    // Remplace la commande argc-argc par N command avec les image indiv, aNumPat est necessaire car peut varier (TestLib ou non)
+    // Remplace la commande argc-argc par N command with les image indiv, aNumPat est necessaire car peut varier (TestLib or non)
       // Probably WithDir=true in most case, but for perfect backward compatibility set it to false
       std::list<std::pair<std::string,std::string> > ExpandCommand(int aNumPat,std::string ArgSup,bool Exe=false,bool WithDir=false);
 
@@ -216,7 +216,7 @@ class cAppliWithSetImage
       bool CAWSI_AcceptIm(const std::string & aName) const;
       bool CAWSI_AcceptCpleIm(const std::string & aN1,const std::string &  aN2) const;
       
-      // Si AnalysConexion = false, revoit juste le SET 
+      // if AnalysConexion = false, revoit juste le SET 
       void FilterImageIsolated(bool AnalysConexions=true);
       void Develop(bool EnGray,bool En16B);
       bool MasterSelected(const std::string & aName) const;
@@ -388,7 +388,7 @@ class cVirtInterf_NewO_NameManager
                                                             const std::string  & anOri,  // Dir where is stored calibration
                                                             bool  Quick  = true  // Mean that accelarated computation where done
                                                 );
-           // === surcharge method avant pour adapter avec suffix homologue =======
+           // === surcharge method before for adapter with suffix homologue =======
            static cVirtInterf_NewO_NameManager * StdAlloc(
                                                             const std::string  & aPrefHom,
                                                             const std::string  & aDir,   // Global Dir

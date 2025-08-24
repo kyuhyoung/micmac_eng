@@ -160,8 +160,8 @@ void bench_approx_poly
      }
 
 
-     // Approx tres fine, avec jump >= au seuil et step asse grand;
-     // on droit retomber sur les extres 
+     // Approx tres fine, with jump >= au seuil and step asse grand;
+     // on droit retomber on les extres 
      for (INT jmp = nb;  jmp < 3*nb; jmp += (1+nb/3))
      {
          arg  = ArgAPP(1e-2,jmp,ArgAPP::D2_droite,ArgAPP::Extre,false,1);

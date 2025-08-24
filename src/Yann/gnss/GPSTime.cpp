@@ -8,12 +8,12 @@ double GPSTime::convertToAbsTime(){
 
 	long days=0L;
 
-	// Nombre de jours depuis le 01/01/1970
+	// number de jours depuis le 01/01/1970
 	for (int i=TIME_T_BASE_YEAR; i<this->year; i++){
 		days += (i%4==0)?366:365;
 	}
 
-	// Nombre de jours de l'année courante
+	// number de jours de l'anne courante
 	for (int i=1; i<this->month; i++){
 		days += days_month[i-1];
 		if ((i == 2) && (this->year%4==0)){
@@ -21,7 +21,7 @@ double GPSTime::convertToAbsTime(){
 		}
 	}
 
-	// Nombre de jours du mois courant
+	// number de jours du mois courant
 	days += this->day-1;
 
 	// Conversion en secondes
@@ -29,7 +29,7 @@ double GPSTime::convertToAbsTime(){
 
 }
 
-// Conversion en heure sidérale (à greenwich)
+// Conversion en heure sidrale ( greenwich)
 double GPSTime::gast(){
     GPSTime ref(2000,01,01,12,00,00);
     double TSL0 = (*this - ref)*Utils::DJS + Utils::TSREF;

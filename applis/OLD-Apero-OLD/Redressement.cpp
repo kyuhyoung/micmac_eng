@@ -97,7 +97,7 @@ void cAppliApero::ExportRedressement(const cExportRedressement & anER,cPoseCam &
     double aScaleIm = anER.ScaleIm().Val();
     Pt2dr  aOffsIm = anER.OffsetIm().Val();
     
-    // Calcul de la boite Terrain
+    // computation de la boite Terrain
     Pt2dr aSzIn = Pt2dr(aTIn.sz());
     Box2dr aBoxIn(Pt2dr(0,0),aSzIn);
     Pt2dr aCorner[4];

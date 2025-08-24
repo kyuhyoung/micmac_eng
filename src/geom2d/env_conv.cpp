@@ -95,8 +95,8 @@ template <class TPt> class  Cmp_Vect_Then_Norm
 
           // lorsque un des points vaut down right,
           // le produit est nul, donc la comparaison se
-          // se fait sur les norme et c'est tjs down right le
-          // le + petit, donc c'est (arbitraire mais) coherent
+          // se fait on les norme and c'est tjs down right le
+          // le + petit, donc c'est (arbitraire but) coherent
 
            bool operator()(INT i1,INT i2)
            {
@@ -192,7 +192,7 @@ template <class TPt> class  Env_Conv
                 Cmp_Vect_Then_Norm<TPt> cmp_decrois(down_right,_pts,false);
 				STDSORT(_ind.tab()+k,_ind.tab()+nb_pts,cmp_decrois);
 
-                // si tout les poinst allignes, et env_min le test sup_iterm ne
+                // if tout les poinst allignes, and env_min le test sup_iterm ne
                 // fonctionne pas bien au niveau du rebroussement, donc on sort maintenant
                 if ((k==0) && _env_min)
                 {

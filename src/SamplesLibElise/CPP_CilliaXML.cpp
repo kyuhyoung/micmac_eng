@@ -65,7 +65,7 @@ int HomToXML_main( int argc , char ** argv)
        cOneMesureAF1I  aOM;
        cOneMesureAF1I  aOM1;       
       
-       //lecture du fichier.txt
+       //lecture du file.txt
        ELISE_fp aFIn(aFile1.c_str(),ELISE_fp::READ);
        char *  aLine;
        aLine = aFIn.std_fgets();

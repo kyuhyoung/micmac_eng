@@ -186,7 +186,7 @@ void cElHJaDroite::AddArcsInterieurInGraphe
 }
 
 
-// Structure provisoire pour la creation des arretes internes
+// Structure provisoire for la creation des arretes internes
 /*
 class cSomDrConstrGraphe
 {

@@ -77,7 +77,7 @@ ArgAPP::ArgAPP
    if (mcout==DMaxDroite)
    {
        mDMax = _prec;
-       _prec = 1.0;  // La precision n'a alors aucune importance tant que > 0
+       _prec = 1.0;  // La precision n'a then aucune importance tant que > 0
    }
 }
 

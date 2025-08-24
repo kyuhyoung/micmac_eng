@@ -52,7 +52,7 @@ inline INT set_sub_bit(INT v,INT new_v,INT k0,INT k1)
       INT masq = (1 << (k1-k0)) -1;
 
       return
-                (v & ~(masq << k0))  // efface les bits entre k0 et k1
+                (v & ~(masq << k0))  // efface les bits between k0 and k1
               | ((new_v&masq) << k0);
 }
 

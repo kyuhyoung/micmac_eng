@@ -137,7 +137,7 @@ static void OneBenchEditSet
     }
 
     // On utilise les ArgOpt  de l'appli que l'on modifie physiquement car : (1) c'est 
-    //  impose par ExeCallMMVII (2) A la fin il sont remis a zero, donc pas de pb pour  les
+    //  impose par ExeCallMMVII (2) A la fin il sont remis a zero, donc pas de pb for  les
     // reutiliser à chaque fois
 
     // Line bottom was used to chekc emptyness of StrOpt / StrObl

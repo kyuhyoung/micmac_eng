@@ -356,7 +356,7 @@ void MPD_Coeff(double   anX,double &A,double & B,double &C,double &D)
     // VERSION ON MAINTIENT l'ECART MOYEN
    //  L'ecar moyen vaut
    //  (1+x)A + x B + (1-x) C
-   // Cet ecart vaut 0.5 lorque x vaut 0.5 si on
+   // Cet ecart vaut 0.5 lorque x vaut 0.5 if on
    // se limite a deux pixels
 
    // donc A = (0.5 - 2x (1-x)) / (2-2x)
@@ -424,7 +424,7 @@ cTplCIKTabul<TypeEl,tTabulCIK>::cTplCIKTabul(INT aNBBVal,INT aNBBResol,REAL aA,e
 	 mDV[indX][2] = ElStdTypeScal<tTabulCIK>::RtoT(mNbVal * C);
 	 mDV[indX][3] = ElStdTypeScal<tTabulCIK>::RtoT(mNbVal * D);
 
-     // Pour assurer une somme rigoureusement egale a 1 (cas entier) on modifie le + gros
+     // for assurer une somme rigoureusement egale a 1 (cas integer) on modifie le + gros
          if (x < 0.5)
          {
               mDV[indX][1] = mNbVal - (mDV[indX][0] + mDV[indX][2] + mDV[indX][3]);
@@ -436,7 +436,7 @@ cTplCIKTabul<TypeEl,tTabulCIK>::cTplCIKTabul(INT aNBBVal,INT aNBBResol,REAL aA,e
 
 /*
 	 mDV[indX][2] = ElStdTypeScal<tTabulCIK>::RtoT(mNbVal * aCIK.Value(1-x));
-     // Pour assurer une somme rigoureusement egale a 1
+     // for assurer une somme rigoureusement egale a 1
 	 mDV[indX][3] = mNbVal - (mDV[indX][0] + mDV[indX][1] + mDV[indX][2]);
 */
 
@@ -448,7 +448,7 @@ cTplCIKTabul<TypeEl,tTabulCIK>::cTplCIKTabul(INT aNBBVal,INT aNBBResol,REAL aA,e
 
      }
 
-     // Pour assurer une somme rigoureusement egale a 1
+     // for assurer une somme rigoureusement egale a 1
 }
 
 template <class TypeEl,class tTabulCIK>
@@ -580,15 +580,15 @@ double cKernelInterpol1D::Interpole(const cFoncI2D & aFonc,const double & x,cons
     double * aDx0 = mDataPX-aX0;
     double * aDy0 = mDataPY-aY0;
 
- //  Pre-calcule des poids en x et y
-    double aSomPx = 0.0;  // Pour normaliser
+ //  Pre-compute des poids en x and y
+    double aSomPx = 0.0;  // for normaliser
     for (int anIx=aX0 ; anIx<aX1 ; anIx++)
     {
           double aV = Value(x-anIx);
           aDx0[anIx] = aV;
           aSomPx += aV;
     }
-    double aSomPy = 0.0;  // Pour normaliser
+    double aSomPy = 0.0;  // for normaliser
     for (int anIy=aY0 ; anIy<aY1 ; anIy++)
     {
           double aV = Value(y-anIy);
@@ -1062,9 +1062,9 @@ void computeTab(REAL *tab, unsigned int size, REAL frac, bool apodise)
 		if (apodise)
 			tab[i] *= gaussian(pos, size / 2.);
 			/// On ne se pose pas trop de questions de normalisation, 
-			/// parce qu'on le gère explicitement dans la suite...
+			/// parce qu'on le gère explicitement in la suite...
     }
-  /// Renormalisation pour que l'integrale vaille 1
+  /// Renormalisation for que l'integrale vaille 1
   REAL sum = 0;
   for (unsigned int i=0; i<doublesize; ++i)
     {
@@ -1146,7 +1146,7 @@ void TestSinc()
 		ligne[i] = data + i*10;
 
 //	for (unsigned int j=0; j<10;++j)
-//		ligne[0][j] = j*10;
+//		line[0][j] = j*10;
 
 	for (unsigned int i=0; i<10; ++i)
 		for (unsigned int j=0; j<10;++j)

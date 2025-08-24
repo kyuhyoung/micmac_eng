@@ -413,8 +413,8 @@ cMatEssential::tPose  cMatEssential::ComputePose(const cSetHomogCpleDir & aHom,t
           size_t aNbPU = 0;
           size_t aNbPV = 0;
 
-	  cPt3dr aPU(0,0,0); //Image center for first cam
-	  cPt3dr aPV(aSignPt,0,0); // Image center for second cam
+	  cPt3dr aPU(0,0,0); //image center for first cam
+	  cPt3dr aPV(aSignPt,0,0); // image center for second cam
 
           for (size_t aKP=0 ; aKP<aNbP ; aKP++)
           {

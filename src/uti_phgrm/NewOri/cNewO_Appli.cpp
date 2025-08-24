@@ -75,8 +75,8 @@ cCommonMartiniAppli::cCommonMartiniAppli() :
 
       (*mArg) 
               << EAM(mNameOriCalib,"OriCalib",true,"Orientation for calibration ", eSAM_IsExistDirOri)
-              << EAM(mPrefHom,"SH",true,"Prefix Homologue , Def=\"\"")  // SH par homogeneite avec autre commandes 
-              << EAM(mExtName,"ExtName",true,"User's added Prefix , Def=\"\"")  // SH par homogeneite avec autre commandes 
+              << EAM(mPrefHom,"SH",true,"Prefix Homologue , Def=\"\"")  // SH par homogeneite with autre commandes 
+              << EAM(mExtName,"ExtName",true,"User's added Prefix , Def=\"\"")  // SH par homogeneite with autre commandes 
               << EAM(mExpTxt,"ExpTxt",true,"Homol in text format? , Def=\"false\"")  
               << EAM(mNameNOMode,"ModeNO",true,"Mode Def=Std (TTK StdNoTTK OnlyHomogr)")  
               << EAM(mInOri,"InOri",true,"Existing orientation if any")  
@@ -235,7 +235,7 @@ void cAppli_Martini::Banniere(bool Quick)
 
 void cAppli_Martini::DoAll()
 {
-     // 1-  Calcul de toute les orientations relatives entre paires d'images
+     // 1-  computation de toute les orientations relatives between paires d'images
      // NO_AllOri2Im =>  cNewO_CpleIm.cpp => TestAllNewOriImage_main
      // mm3d TestLib  NO_AllOri2Im "IMGP70.*JPG" OriCalib=AllRel Quick=1 PrefHom=
      // 
@@ -249,14 +249,14 @@ void cAppli_Martini::DoAll()
      }
      
      // Homologues flottants
-     // StdCom("NO_AllHomFloat"); => Supprime, pris en compte dans NO_AllOri2Im
+     // StdCom("NO_AllHomFloat"); => Supprime, pris en compte in NO_AllOri2Im
 
-     // 2-  Generation des fichier de points homologues  triple hom  (flottants)
+     // 2-  Generation des file de points homologues  triple hom  (flottants)
      //  NO_AllImTriplet  => cNewO_PointsTriples.cpp  => CPP_GenAllImP3
-     // lance en parallele pour chaque image NO_OneImTriplet
+     // lance en parallele for chaque image NO_OneImTriplet
      // NO_OneImTriplet   => cNewO_PointsTriples.cpp  => CPP_GenOneImP3
-     //   CPP_GenOneImP3 cree un objet de la classe cAppli_GenPTripleOneImage
-     //   et appelle GenerateTriplets
+     //   CPP_GenOneImP3 cree un object de la class cAppli_GenPTripleOneImage
+     //   and appelle GenerateTriplets
      StdCom("NO_AllImTriplet");
 
      // 3-  Selection   des triplet
@@ -269,8 +269,8 @@ void cAppli_Martini::DoAll()
      StdCom("NO_AllImOptTrip");
 
 
-     // Solution initiale (et probablement definitive)
-     // CPP_NewSolGolInit_main  dans cNewO_SolGlobInit.cpp
+     // Solution initiale (and probablement definitive)
+     // CPP_NewSolGolInit_main  in cNewO_SolGlobInit.cpp
      StdCom("NO_SolInit3");
 }
 
@@ -444,7 +444,7 @@ int TestMartini_Main(int argc,char ** argv)
 Ce logiciel est un programme informatique servant a  la mise en
 correspondances d'images pour la reconstruction du relief.
 
-Ce logiciel est regi par la licence CeCILL-B soumise au droit français et
+Ce logiciel est regi par la licence CeCILL-B soumise au droit franais et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
 de la licence CeCILL-B telle que diffusee par le CEA, le CNRS et l'INRIA
@@ -452,7 +452,7 @@ sur le site "http://www.cecill.info".
 
 En contrepartie de l'accessibilite au code source et des droits de copie,
 de modification et de redistribution accordes par cette licence, il n'est
-offert aux utilisateurs qu'une garantie limitee.  Pour les mêmes raisons,
+offert aux utilisateurs qu'une garantie limitee.  Pour les mmes raisons,
 seule une responsabilite restreinte pese sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concedants successifs.
 
@@ -465,9 +465,9 @@ avertis possedant  des  connaissances  informatiques approfondies.  Les
 utilisateurs sont donc invites a  charger  et  tester  l'adequation  du
 logiciel a  leurs besoins dans des conditions permettant d'assurer la
 securite de leurs systemes et ou de leurs donnees et, plus generalement,
-a  l'utiliser et l'exploiter dans les mêmes conditions de securite.
+a  l'utiliser et l'exploiter dans les mmes conditions de securite.
 
-Le fait que vous puissiez acceder a  cet en-tête signifie que vous avez
+Le fait que vous puissiez acceder a  cet en-tte signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepte les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

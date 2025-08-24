@@ -119,12 +119,12 @@ class cTpP_HeapCompare
         {
               return aR1->Score() > aR2->Score();   // compare score correl global
         }
-        // est ce que objet 1 est meuilleur que 2
+        // est ce que object 1 est meuilleur que 2
 };
 
 class cFuncPtOfRMICPtr
 {   // argument du qauad tri
-    // comment à partir un objet, je recuper sa pt2D
+    // comment à partir un object, je recuper sa pt2D
       public :
          Pt2dr operator () (cResulMultiImRechCorrel * aRMIRC) {return Pt2dr(aRMIRC->PtMast());}
 };
@@ -212,28 +212,28 @@ if (0) // (MPD__MM())
    */
    for (int aK=0; aK <int(aVIn.size()) ; aK++)
    {
-       // calcul score global de correlation sur tout les coup image
-       // 1 pt Mas correl sur plsr pt 2nd
-       //     => calcul 1 score glob, mis a jour le score glob dans cResulMultiImRechCorrel aussi
+       // computation score global de correlation on tout les coup image
+       // 1 pt Mas correl on plsr pt 2nd
+       //     => computation 1 score glob, mis a jour le score glob in cResulMultiImRechCorrel aussi
        aVIn[aK]->CalculScoreAgreg(EpsilAggr,PowAggreg,aSign);  // Epsilon, power
-       aHeap.push(aVIn[aK]);    // mets l'objet dans heap <=> push_back
-       aQdt->insert(aVIn[aK]);  // mets l'objet dans le Quad-Tri
+       aHeap.push(aVIn[aK]);    // mets l'object in heap <=> push_back
+       aQdt->insert(aVIn[aK]);  // mets l'object in le Quad-Tri
    }
 
    cResulMultiImRechCorrel * aRM_1;
-   // Contient les scores en fonction des numeros d'images
+   // Contient les scores en function des numeros d'images
    std::vector<double> aVCorrel(mImSec.size(),TT_DefCorrel); // mImSec = all image 2nd of this tri
    Video_Win *  aW = mMasIm->W();
    while (aHeap.pop(aRM_1))
    {
-       // pop à partir un heap => recuper la "meuilleur" correlé point et l'enleve dans heap
-       // aRM_1 contient le point avec Score() meuilleur
+       // pop à partir un heap => recuper la "meuilleur" correlé point and l'enleve in heap
+       // aRM_1 contient le point with Score() meuilleur
        if (aW)
        {
            aW->draw_circle_loc(aFctr(aRM_1),aSeuilDist,aW->pdisc()(P8COL::cyan));
 
            // std::cout << "Mult " << aRM_1->VIndex() << "\n";
-           // dessine un cercle sur Img Master, au pt master, rayon TT_DefSeuilDensiteResul = 50
+           // dessine un cercle on Img Master, au pt master, rayon TT_DefSeuilDensiteResul = 50
        }
        aResult.push_back(aRM_1);
        const std::vector<int> &  aVI_1 = aRM_1->VIndex();
@@ -243,7 +243,7 @@ if (0) // (MPD__MM())
         * aVI_1 = vector<int> contient index de tout les pt correl dans aRM_1
         * aVC_1 = vector<cResulRechCorrel > contient tout les pt correl (mPt, mScore)
         */
-       // Mets a jour le score fonction du numero
+       // Mets a jour le score function du numero
 
 
 
@@ -253,15 +253,15 @@ if (0) // (MPD__MM())
        }
 
        std::set<cResulMultiImRechCorrel *> aSet;
-       // recuper tout les pts dans aSeuilDist (TT_DefSeuilDensiteResul = 50pxl) distance (region à filtrer)
+       // recuper tout les pts in aSeuilDist (TT_DefSeuilDensiteResul = 50pxl) distance (region à filtrer)
        aQdt->RVoisins(aSet,aFctr(aRM_1),aSeuilDist);
        for (std::set<cResulMultiImRechCorrel *>::iterator itS=aSet.begin(); itS!=aSet.end() ; itS++)
-       {   //== parcourir tout les point dans region à filtrer ==
+       {   //== parcourir tout les point in region à filtrer ==
            cResulMultiImRechCorrel * aRM_2 = *itS;
            if (aRM_1==aRM_2)
            {
               aQdt->remove(aRM_2);
-              // enleve le point dans le Quad-Tri (on a pop out de heap, mais il exist encore dans le Quad-Tri)
+              // enleve le point in le Quad-Tri (on a pop out de heap, but il exist encore in le Quad-Tri)
            }
            else
            {
@@ -272,8 +272,8 @@ if (0) // (MPD__MM())
                * aVI_2 = vector<int> contient index de tout les pt correl dans aRM_2
                * aVC_2 = vector<cResulRechCorrel > contient tout les pt correl (mPt, mScore)
                */
-              // === formule pour decider si on enleve un point ===
-              double aDist = euclid(aFctr(aRM_1)-aFctr(aRM_2)); // distance euclid entre 2 point master
+              // === formule for decider if on enleve un point ===
+              double aDist = euclid(aFctr(aRM_1)-aFctr(aRM_2)); // distance euclid between 2 point master
               double aRabCorrel = (1-pow(aDist/aSeuilDist,TT_FSExpoAtten)) * aGainCorrel;
               int aNbS0 = aRM_2->NbSel();
               for (int aK=0 ; aK<aNbI_2 ; aK++)
@@ -293,9 +293,9 @@ if (0) // (MPD__MM())
               }
               int aNbSelEnd = aRM_2->NbSel();
 
-              if (aNbS0!=aNbSelEnd) // au moins 1 point dans multiple aRM_2 est deselectione
+              if (aNbS0!=aNbSelEnd) // au moins 1 point in multiple aRM_2 est deselectione
               {
-                  // ==== Si rentrer ici, ca veut dire aRM_2 est modifie ====
+                  // ==== if rentrer ici, ca veut dire aRM_2 est modifie ====
                   aRM_2->CalculScoreAgreg(EpsilAggr,PowAggreg,aSign);  // Epsilon, power
                   if (aNbSelEnd==0)
                   {
@@ -306,7 +306,7 @@ if (0) // (MPD__MM())
                   else
                   {
                      aHeap.MAJ(aRM_2);  // ca veut dire il est moin multiple
-                     // mis à jour pour ne pas cassé la structure de heap
+                     // mis à jour for ne pas cassé la structure de heap
                   }
                   // if (aRM_2->NbSel()
               }

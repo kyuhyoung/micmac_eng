@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "StdAfx.h"
 
 
-/* Merci a Canny, Rachid Deriche et Tuan Dang */
+/* Merci a Canny, Rachid Deriche and Tuan Dang */
 
 //  Test commit
 //  Test commit New PSW 03/2010

@@ -268,7 +268,7 @@ void cMPLOG_Appli::WriteDtimeInFile(
         }
 }
 
-//generate .xml file of Image TimeMark
+//generate .xml file of image TimeMark
 void cMPLOG_Appli::GenrateImTmFile(
 								   std::vector<double> aVTM,
 								   std::vector<std::string> aVS,
@@ -310,9 +310,9 @@ pair<std::vector<Pt3dr>,std::vector<double> > cMPLOG_Appli::VTmPosFromCam(std::v
 		aVPos.push_back(aPt);
 		aVTm.push_back(aVCam[aP].GPSTime);
 	}
-    // 1 => semble pose probleme sous W (c.f Luc Girod)
-    // 2 =>  pose pb sous Linux 
-    // 3 semble ok, et ne vois pas la plus value de make pair
+    // 1 => semble pose probleme under W (c.f Luc Girod)
+    // 2 =>  pose pb under Linux 
+    // 3 semble ok, and ne vois pas la plus value de make pair
 	// return make_pair(aInd,aMax);	
 	//return make_pair<unsigned int,double>(aInd,aMax);
 	return std::pair<std::vector<Pt3dr>,std::vector<double> >(aVPos,aVTm);
@@ -376,9 +376,9 @@ pair<int,double> cMPLOG_Appli::GetIndicMax(std::vector<double> aVD)
 		}	
 	}
 
-    // 1 => semble pose probleme sous W (c.f Luc Girod)
-    // 2 =>  pose pb sous Linux 
-    // 3 semble ok, et ne vois pas la plus value de make pair
+    // 1 => semble pose probleme under W (c.f Luc Girod)
+    // 2 =>  pose pb under Linux 
+    // 3 semble ok, and ne vois pas la plus value de make pair
 	// return make_pair(aInd,aMax);	
 	//return make_pair<unsigned int,double>(aInd,aMax);
 	return std::pair<int,double>(aInd,aMax);

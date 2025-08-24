@@ -96,7 +96,7 @@ Pt2di getImageSz(std::string const &aName)
     // on teste l'extension
     if ((ext==std::string("jp2"))|| (ext==std::string("JP2")) || (ext==std::string("Jp2")))
     {
-        //std::cout<<"JP2 avec Jp2ImageLoader"<<std::endl;
+        //std::cout<<"JP2 with Jp2ImageLoader"<<std::endl;
         std_unique_ptr<cInterfModuleImageLoader> aRes(new JP2ImageLoader(aName, false));
         if (aRes.get())
         {
@@ -643,7 +643,7 @@ cAppliMalt::cAppliMalt(int argc,char ** argv) :
       bool hasNewGenImage =false;
       if (! mModePB)
       {
-          // MPD : Ajout le 22/05/2015; car peut creer pb  si l'utilisateur a purge la directory
+          // MPD : Ajout le 22/05/2015; car peut creer pb  if l'utilisateur a purge la directory
           MakeXmlXifInfo(mFullName,mICNM);
           for (int aKIm = 0; aKIm<mNbIm ; aKIm++)
           {
@@ -694,7 +694,7 @@ cAppliMalt::cAppliMalt(int argc,char ** argv) :
       bool ZMoyInit = EAMIsInit(&mZMoy)  && TypeForZInit;
       bool IncMaxInit = EAMIsInit(&mIncidMax)  && TypeForZInit;
 
-       // Si les deux sont definis on fixe d'abord ZMoy pour avoir une coherence
+       // if les deux sont definis on fixe d'abord ZMoy for avoir une coherence
       if (aNbAltiSolMinMax && TypeForZInit)
       {
           AltiSolMinMax = AltiSolMinMax / aNbAltiSolMinMax;
@@ -765,7 +765,7 @@ cAppliMalt::cAppliMalt(int argc,char ** argv) :
           if (mRep!="")
           {
               if (! EAMIsInit(&mZMoy))
-                  mZMoy=0; // MPD modif 06/02/2017 , si repere
+                  mZMoy=0; // MPD modif 06/02/2017 , if repere
           }
       }
       mUnAnam = mUnAnam && IsOrthoXCSte;
@@ -851,7 +851,7 @@ cAppliMalt::cAppliMalt(int argc,char ** argv) :
 
 
       mNbEtapeQ =    1   // Num premiere etape
-              + round_ni(log2(mZoomInit/ mZoomFinal))  // Si aucune dupl
+              + round_ni(log2(mZoomInit/ mZoomFinal))  // if aucune dupl
               + 1   //  Dulication de pas a la premiere
               + (mAffineLast ? 1 : 0)  ;  // Raffinement de pas;
 
@@ -1113,7 +1113,7 @@ cAppliMalt::cAppliMalt(int argc,char ** argv) :
 
          if (EAMIsInit(&a12PixParam))
          {
-               //  Je pensei pas de pb  pour admettre de de 0 a 5 arg, puisque  tous ont une val def raisonnable ?
+               //  Je pensei pas de pb  for admettre de de 0 a 5 arg, puisque  tous ont une val def raisonnable ?
                ELISE_ASSERT( ((a12PixParam.size()>=0) || (a12PixParam.size()<=5)) ,"if 12PixP option used must be of size at least three"); 
 
                if (a12PixParam.size()>=1)
@@ -1348,7 +1348,7 @@ cAppliMalt::cAppliMalt(int argc,char ** argv) :
                   +  std::string(" +ResolTerrain=") + ToString(aResolTerrain);
       }
 
-      //Prise en compte d'un DEM initial si celui-ci a ete mis en entree
+      //Prise en compte d'un DEM initial if celui-ci a ete mis en entree
       bool DEMInitIsInitXML = EAMIsInit(&aDEMInitXML);
       bool DEMInitIsInitIMG = EAMIsInit(&aDEMInitIMG);
       ELISE_ASSERT((DEMInitIsInitXML==DEMInitIsInitIMG),"Initialisation DEM : provide an input xml AND image");
@@ -1361,7 +1361,7 @@ cAppliMalt::cAppliMalt(int argc,char ** argv) :
       }
 
       {
-      //Prise en compte d'un DEM initial si celui-ci a ete mis en entree
+      //Prise en compte d'un DEM initial if celui-ci a ete mis en entree
            bool ZInfInit = EAMIsInit(&aEnvZInf);
            bool ZSupInit = EAMIsInit(&aEnvZSup);
            ELISE_ASSERT(ZInfInit==ZSupInit,"incohrence in ZInfInit/ZSupInit");
@@ -1425,7 +1425,7 @@ cAppliMalt::cAppliMalt(int argc,char ** argv) :
               return;
           }
 
-          //Ecriture en pt3d pour utiliser Ter2Capteur
+          //Ecriture en pt3d for utiliser Ter2Capteur
           Pt3dr PtSO, PtSE, PtNO, PtNE;
           PtSO.x = aBoxTerrainGeomIm._p0.x;  PtSO.y = aBoxTerrainGeomIm._p0.y;  PtSO.z = aZMin;
           PtNE.x = aBoxTerrainGeomIm._p1.x;  PtNE.y = aBoxTerrainGeomIm._p1.y;  PtNE.z = aZMin;

@@ -1,4 +1,4 @@
-/* assistant.h et assistant.cpp regroupent les classes utiles au menu Aide de l'interface (le sous-menu A propos est une simple QMessageBox).
+/* assistant.h and assistant.cpp regroupent les classes utiles au menu Aide de l'interface (le under-menu A propos est une simple QMessageBox).
 La classe Assistant permet d'afficher l'aide en ligne. Elle est appelée soit via le menu Aide -> Aide, soit via les boutons d'aide "?" répartis dans les différentes fenêtres de saisie de paramètres ; dans cas c'est la page concernant cette fenêtre qui est affichée.
 La classe InterfOptions correspond au menu Aide -> Options ; cette fenêtre permet de modifier la langue de l'interface ou le dossier micmac. La classe Options enregistre ces paramètres.
 La classe InterfVerifMicmac correspond au menu Aide -> Vérifier le calcul ; cette fenêtre, accessible uniquement pendant le calcul de Micmac, permet d'afficher un aperçu de la carte de profondeur en cours de calcul.
@@ -60,7 +60,7 @@ class Assistant
 /////////////////////////////////////////////////////////////////////////
 
 
-//options et paramètres globaux de l'interface
+//options and paramètres globaux de l'interface
 class Options
 {
 	public:
@@ -82,7 +82,7 @@ class Options
 		void setCpu(int c);
 
 		bool updateSettings(QSettings& settings) const;
-		static QStringList checkBinaries(const QString& micmacDossier);	//vérifie si les exécutables sont dans le dossier bin et renvoie tous les messages d'erreur
+		static QStringList checkBinaries(const QString& micmacDossier);	//vérifie if les exécutables sont in le folder bin and renvoie tous les messages d'error
 		static bool readMicMacInstall(QString& micmacDossier, int& cpuLu);
 		static void writeMicMacInstall(const QString& micmacDossier, int cpuFinal);
 
@@ -91,7 +91,7 @@ class Options
 
 		QString micmacDir;	//répertoire micmac
 		QLocale::Language langue;	//langue
-		int cpu;	//nombre maximal de processeurs à utiliser
+		int cpu;	//number maximal de processeurs à utiliser
 		static QString micmacInstallFile;
 		QList<std::pair<QString,double> > cameras;
 };
@@ -136,7 +136,7 @@ class InterfOptions : public QDialog
 
 /////////////////////////////////////////////////////////////////////////
 
-//vérification de la convergence du calcul de micmac
+//vérification de la convergence du computation de micmac
 class ParamMain;
 class InterfVerifMicmac : public QDialog
 {

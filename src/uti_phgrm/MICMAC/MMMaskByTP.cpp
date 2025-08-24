@@ -39,7 +39,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "StdAfx.h"
 #include "../src/uti_phgrm/MICMAC/MICMAC.h"
 #ifdef MAC
-// Modif Greg pour avoir le nom de la machine dans les log
+// Modif Greg for avoir le nom de la machine in les log
 #include <sys/utsname.h>
 #endif
 
@@ -222,13 +222,13 @@ class cMMTP
     public :
       cMMTP(const Box2di & aBoxInLoc,const Box2di &aBoxInGlob,const Box2di & aBoxOut,cAppliMICMAC &);
       void  ConputeEnveloppe(const cComputeAndExportEnveloppe &,const cXML_ParamNuage3DMaille & aCurNuage);
-      // Dequantifie et bouche, calcul les "petits"  trous et les bouches
+      // Dequantifie and bouche, computation les "petits"  trous and les bouches
       void ContAndBoucheTrou();
       void MaskProgDyn(const cParamFiltreDepthByPrgDyn & aParam);
       void MaskRegulMaj(const cParamFiltreDetecRegulProf & aParam);
       void FreeCel();
 
-      // Transform les rsultat du heap n tableua de prof et de masque
+      // Transform les rsultat du heap n tableua de prof and de masque
       void  ExportResultInit();
       bool Inside(const int & anX,const int & anY,const int & aZ)
       {
@@ -257,7 +257,7 @@ class cMMTP
       {
            mHeapCTP.MajOrAdd(&aCel);
       }
-      // Remplit aCPtr avec la meilleure cellule
+      // Remplit aCPtr with la meilleure cellule
       bool PopCel(cCelTiepPtr & aCPtr)
       {
          return mHeapCTP.pop(aCPtr);
@@ -270,10 +270,10 @@ class cMMTP
        Im2D_Bits<1> ImMasqFinal() {return mImMasqFinal;}
        Im2D_INT2    ImProfInit() {return mImProf;}
 
-       Im2D_REAL4   ImProfFinal() {return  mContBT;}   // image dequant et trous bouches
+       Im2D_REAL4   ImProfFinal() {return  mContBT;}   // image dequant and trous bouches
 
     private :
-        Tiff_Im FileEnv(const std::string & aPost ,bool Bin); // Si pas  Bin int2
+        Tiff_Im FileEnv(const std::string & aPost ,bool Bin); // if pas  Bin int2
         void DoOneEnv(Im2D_REAL4 anEnvRed,Im2D_Bits<1> aNewM,bool isMax,const cXML_ParamNuage3DMaille & aTargetNuage,const cXML_ParamNuage3DMaille & aCurNuage,double aFactRed);
 
 
@@ -297,14 +297,14 @@ class cMMTP
 
         Im2D_U_INT1        mImLabel;  // 0 => Rien, 1= > OK, 2=> trou bouche
         TIm2D<U_INT1,INT>  mTLab;
-        Im2D_REAL4         mContBT;   // image dequant et trous bouches
+        Im2D_REAL4         mContBT;   // image dequant and trous bouches
         TIm2D<REAL4,REAL>  mTCBT;
 
         Im2D_Bits<1>    mImMasquageInput;   // eventuel masq de contrainte initial
         TIm2DBits<1>    mTImMasquageInput;   
 
 
-        Im2D_Bits<1>    mImMasqFinal;   // resultat final si post filtrage
+        Im2D_Bits<1>    mImMasqFinal;   // result final if post filtrage
         TIm2DBits<1>    mTImMasqFinal;   
 
         Pt2dr mP0In;
@@ -321,7 +321,7 @@ class cMMTP
         // Fonc_Num fMasqBin;
 };
 
-Tiff_Im  cMMTP::FileEnv(const std::string & aPref,bool Bin) // Si pas  Bin int2
+Tiff_Im  cMMTP::FileEnv(const std::string & aPref,bool Bin) // if pas  Bin int2
 {
    std::string aNameRes  = DirOfFile(mNameTargetEnv) + aPref  + "_DeZoom" + ToString( mAppli.CurEtape()->DeZoomTer()) + ".tif";
    bool isNew;
@@ -506,7 +506,7 @@ void  cMMTP::ConputeEnveloppe(const cComputeAndExportEnveloppe & aCAEE,const cXM
 
     ElTimer aChrono;
 
-    int     aSeuilNbV = 2 * (1+2*aSzFiltrer); // Au moins une bande de 2 pixel pour inferer qqch
+    int     aSeuilNbV = 2 * (1+2*aSzFiltrer); // Au moins une bande de 2 pixel for inferer qqch
     Pt2di aSzRed = round_up(Pt2dr(mSzTiep)/aStepSsEch);
 
     Im2D_Bits<1>    aMasqRed(aSzRed.x,aSzRed.y,0);
@@ -518,7 +518,7 @@ void  cMMTP::ConputeEnveloppe(const cComputeAndExportEnveloppe & aCAEE,const cXM
     TIm2D<REAL4,REAL> aPMaxRed(aSzRed);
     TIm2D<REAL4,REAL> aPMinRed(aSzRed);
 
-    // Calcul du filtre de reduction
+    // computation du filtre de reduction
     Pt2di aPRed;
     for (aPRed.y = 0 ; aPRed.y<aSzRed.y ; aPRed.y++)
     {
@@ -621,7 +621,7 @@ void cMMTP::ContAndBoucheTrou()
    int aDist32Close = 6;
    int aNbErod = 6;
 
-   // 1- Quelques fitre morpho de base, pour calculer les points eligibles au bouche-trou
+   // 1- Quelques fitre morpho de base, for compute les points eligibles au bouche-trou
    int aLabelOut = 0;
    //int aLabelIn = 1;
    int aLabelClose = 2;
@@ -630,7 +630,7 @@ void cMMTP::ContAndBoucheTrou()
    ELISE_COPY(mImMasqInit.all_pts(),mImMasqInit.in(),mImLabel.out());
    ELISE_COPY(mImLabel.border(2),aLabelOut,mImLabel.out());
 
-      // 1.1 calcul des point dans le fermeture
+      // 1.1 computation des point in le fermeture
    ELISE_COPY
    (
           select
@@ -677,7 +677,7 @@ void cMMTP::ContAndBoucheTrou()
     }
     ELISE_COPY(select(mImLabel.all_pts(),mImLabel.in()==aLabelFront),0,mImLabel.out());
 
-    // Au cas ou on ferait un export premature
+    // Au cas or on ferait un export premature
     ELISE_COPY(mImMasqFinal.all_pts(),mImLabel.in()!=0,mImMasqFinal.out());
 
     int aSomMaskF;
@@ -702,7 +702,7 @@ void cMMTP::ContAndBoucheTrou()
     TIm2D<REAL4,REAL8> aTInterp(mContBT);
 
    // 3- Bouchage "fin" des trour par moinde L2
-          // 3.1 Valeur initial
+          // 3.1 value initial
 
                  // Filtrage gaussien
     Fonc_Num aFMasq = (mImLabel.in(0)==1);
@@ -719,14 +719,14 @@ void cMMTP::ContAndBoucheTrou()
          aFProf / Max(aFMasq,1e-9),
          mContBT.out()
     );
-                 // On remet la valeur init au point ayant un valeur propre
+                 // On remet la value init au point ayant un value propre
     ELISE_COPY
     (
          select(mContBT.all_pts(),mImLabel.in()==1),
          aProfCont.in(),
          mContBT.out()
     );
-             // Et rien en dehors de l'image
+             // and rien en dehors de l'image
     ELISE_COPY
     (
          select(mContBT.all_pts(),mImLabel.in()==0),
@@ -737,7 +737,7 @@ void cMMTP::ContAndBoucheTrou()
   
   
   
-       // 3.2 Iteration pour regulariser les points interpoles
+       // 3.2 Iteration for regulariser les points interpoles
     {
          std::vector<Pt2di> aVInterp;
          {
@@ -1015,18 +1015,18 @@ void cAppliMICMAC::CTPAddCell(const cMasqueAutoByTieP & aMATP,int anX,int anY,in
 
    // std::cout << "NBCCCEL " << aCel.NbCel() << " " << aZ << "\n";
 
-   // Pas le peine de perdre du temps si on est deja passe par la
+   // Pas le peine de perdre du temps if on est deja passe par la
    if (aCel.ZIsExplored(aZ)) 
       return;
    aCptR[3] ++;
    // Memoriser qu'on est deja passe par la
    aCel.SetZExplored(aZ);
 
-   // Calcul le cout  (par du CorMS ?)
+   // computation le cout  (par du CorMS ?)
    cResCorTP aCost = CorrelMasqTP(aMATP,anX,anY,aZ) ;
    // std::cout << "Cots " << aCost.CSom() << " " << aCost.CMax() << " " << aCost.CMed()  << "\n";
    double aCSom = aCost.CSom();
-   // Different type de seuil pour eliminer
+   // Different type de seuil for eliminer
    if (
          (     (aCSom > aMATP.SeuilSomCostCorrel()) 
             || (aCost.CMax() > aMATP.SeuilMaxCostCorrel()) 
@@ -1037,18 +1037,18 @@ void cAppliMICMAC::CTPAddCell(const cMasqueAutoByTieP & aMATP,int anX,int anY,in
       return ;
    }
    aCptR[4] ++;
-   // Si le cout est meilleur que le meilleur cout courrant on met a jour
+   // if le cout est meilleur que le meilleur cout courrant on met a jour
    if (aCSom < aCel.CostCorel())
    {
         aCel.SetCostCorel(aCSom);
         aCel.SetZ(aZ);
         ShowPoint(Pt2dr(anX,anY),aZ*10,1);
-        // Maj Or Ad => Ajoute si n'existe pas, Mise a jour sinon
+        // Maj Or Ad => Ajoute if n'existe pas, Mise a jour else
         mMMTP->MajOrAdd(aCel);
    }
 
 #if (ELISE_X11)
-  // Eventuelle generation d'images pour illustrer
+  // Eventuelle generation d'images for illustrer
   int aPer =  100000;
   static int aCpt=0; aCpt++;
   if ((aCpt%aPer)==0)
@@ -1068,7 +1068,7 @@ void cAppliMICMAC::CTPAddCell(const cMasqueAutoByTieP & aMATP,int anX,int anY,in
 
 void  cAppliMICMAC::MakeDerivAllGLI(int aX,int aY,int aZ)
 {
-   // Les derivees sont precalculees sur toutes les images
+   // Les derivees sont precalculees on toutes les images
    for (int aKIm=0 ; aKIm<int(mVLI.size()) ; aKIm++)
    {
        mVLI[aKIm]->MakeDeriv(aX,aY,aZ);
@@ -1127,7 +1127,7 @@ void  cAppliMICMAC::DoMasqueAutoByTieP(const Box2di& aBoxLoc,const cMasqueAutoBy
    ElTimer aChrono;
    mMMTP = new cMMTP(aBoxLoc,mBoxIn,mBoxOut,*this);
 
-    // Si il faut repartir d'un masque initial calcule a un de zool anterieur
+    // if il faut repartir d'un masque initial compute a un de zool anterieur
     if (aMATP.TiePMasqIm().IsInit())
     {
        int aDZ = aMATP.TiePMasqIm().Val().DeZoomRel();
@@ -1148,7 +1148,7 @@ void  cAppliMICMAC::DoMasqueAutoByTieP(const Box2di& aBoxLoc,const cMasqueAutoBy
        );
     }
 
-    // Si on active le filtre "anti-ciel"
+    // if on active le filtre "anti-ciel"
     if (aMATP.mmtpFilterSky().IsInit())
     {
          Im2D_REAL4 * anIm = mPDV1->LoadedIm().FirstFloatIm();
@@ -1162,7 +1162,7 @@ void  cAppliMICMAC::DoMasqueAutoByTieP(const Box2di& aBoxLoc,const cMasqueAutoBy
          Im2D_U_INT1 aImLabel(aSz.x,aSz.y);
          TIm2D<U_INT1,INT> aTLab(aImLabel);
 
-         // Fonction d'homogenite , est homogene si sur un voisinage le Min est superieur a une proportion du max
+         // function d'homogenite , est homogene if on un voisinage le Min est superieur a une proportion du max
          Fonc_Num FHGlob = FoncHomog(*anIm,aFS.SzKernelHom().Val(),aFS.PertPerPix().Val());
          ELISE_COPY(aImLabel.all_pts(),FHGlob,aImLabel.out());
          FiltrageCardCC(true,aTLab,1,2,aSeuilNbPts);
@@ -1177,7 +1177,7 @@ void  cAppliMICMAC::DoMasqueAutoByTieP(const Box2di& aBoxLoc,const cMasqueAutoBy
    if (aMATP.Visu().Val())
    {
        Pt2dr aSzW = Pt2dr(aBoxLoc.sz());
-       TheScaleW = ElMin(1000.0,ElMin(TheMaxSzW.x/aSzW.x,TheMaxSzW.y/aSzW.y));  // Pour l'instant on accepts Zoom>1 , donc => 1000
+       TheScaleW = ElMin(1000.0,ElMin(TheMaxSzW.x/aSzW.x,TheMaxSzW.y/aSzW.y));  // for l'instant on accepts Zoom>1 , donc => 1000
 
        // TheScaleW = 0.635;
        aSzW = aSzW * TheScaleW;
@@ -1198,10 +1198,10 @@ void  cAppliMICMAC::DoMasqueAutoByTieP(const Box2di& aBoxLoc,const cMasqueAutoBy
                               true
                            );
    // Lecture des germes de l'appariement, ce sont des points 3D genere a
-   // a partir des points homologues dans "AperoChImSecMM"
+   // a partir des points homologues in "AperoChImSecMM"
    mTP3d = StdNuage3DFromFile(WorkDir()+aNamePts);
 
-   // Filtre avec le masque 3D
+   // Filtre with le masque 3D
    cMasqBin3D * aMasq3D = 0;
    if (aMATP.Masq3D().IsInit())
    {
@@ -1225,12 +1225,12 @@ void  cAppliMICMAC::DoMasqueAutoByTieP(const Box2di& aBoxLoc,const cMasqueAutoBy
    // On rentre tous les germes
    {
        // On lit le nuage qui permet de faire les conversions geometriques
-       // pour "rasteriser" les points 3D
+       // for "rasteriser" les points 3D
        cElNuage3DMaille *  aNuage = cElNuage3DMaille::FromParam(mPDV1->Name(),aXmlN,FullDirMEC());
        if (aMasq3D)
        {
            mMMTP->SetMasq3D(aMasq3D,aNuage,Pt2dr(mBoxIn._p0));
-           // A priori ces deux la ne servent plus, mais ont ete utiles pour du debugage, on laisse
+           // A priori ces deux la ne servent plus, but ont ete utiles for du debugage, on laisse
            mGLOBMasq3D = aMasq3D;
            mGLOBNuage = aNuage;
        }
@@ -1244,7 +1244,7 @@ void  cAppliMICMAC::DoMasqueAutoByTieP(const Box2di& aBoxLoc,const cMasqueAutoBy
            int aYIm = round_ni(aPL2.y) - mBoxIn._p0.y;
            int aZIm = round_ni(aPL2.z) ;
 
-           // calclul les derivees par differences finies pour accelerer 
+           // calclul les derivees par differences finies for accelerer 
            // la geometrie
            MakeDerivAllGLI(aXIm,aYIm,aZIm);
            // Ajoute le point germe
@@ -1254,7 +1254,7 @@ void  cAppliMICMAC::DoMasqueAutoByTieP(const Box2di& aBoxLoc,const cMasqueAutoBy
        }
    }
 
-   // Fonction qui contient la boucle principale
+   // function qui contient la boucle principale
    OneIterFinaleMATP(aMATP,false);
    // Export ....
    mMMTP->ExportResultInit();
@@ -1301,12 +1301,12 @@ void  cAppliMICMAC::DoMasqueAutoByTieP(const Box2di& aBoxLoc,const cMasqueAutoBy
    ELISE_COPY(aImMasq0.all_pts(), aImMasq0.in(), Tiff_Im(aNameMasq.c_str()).out());
    
    std::string aNameImage = FullDirMEC() +aXmlN.Image_Profondeur().Val().Image();
-   // Pour forcer le resultat flotant 
+   // for forcer le result flotant 
    Tiff_Im::CreateFromIm(mMMTP->ImProfFinal(),aNameImage.c_str());
 /*
    ELISE_COPY(aImProf.all_pts(), aImProf.in(), Tiff_Im(aNameImage.c_str()).out());
 
-       Im2D_REAL4   ImProfFinal() {return  mContBT;}   // image dequant et trous bouches
+       Im2D_REAL4   ImProfFinal() {return  mContBT;}   // image dequant and trous bouches
 */
 
 

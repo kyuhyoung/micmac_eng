@@ -107,7 +107,7 @@ const cInterfSurfaceAnalytique *  cAppli_Casa::UsePts(const cInterfSurfaceAnalyt
    std::map<std::string,Pt3dr> aDico;
 
 
-   // 1 On fait le calcul des points a Surface 0
+   // 1 On fait le computation des points a Surface 0
 
 
    for 

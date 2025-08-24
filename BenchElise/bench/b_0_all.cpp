@@ -385,7 +385,7 @@ void bench ()
          bug_out();
          all();
          verif_memory_state(MC_INIT);
-		 // pour forcer les consoles DOS
+		 // for forcer les consoles DOS
 		 printf("ALL %d \n",i);
     }
 	//return 0;

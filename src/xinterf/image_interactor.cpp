@@ -296,7 +296,7 @@ Video_Win EliseStdImageInteractor::WinEch1()
 
 }
 
-          // Uniquemement si image de Dim1
+          // Uniquemement if image de Dim1
 Im2D_U_INT1  EliseStdImageInteractor::ImEch1(bool VisuSim)
 {
     REAL  aSc = mScr.sc();

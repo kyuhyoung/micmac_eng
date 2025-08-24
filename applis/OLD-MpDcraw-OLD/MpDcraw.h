@@ -92,8 +92,8 @@ class cArgMpDCRaw : public cAppliBatch
        bool  PGSpec () const;
        bool  NameOriIsPrefix() const;
        bool   Add16_8B() const;
-       double Gamma() const;  // A priori Gamma applicable sur le gris
-       double EpsLog() const;  // A priori Gamma applicable sur le gris
+       double Gamma() const;  // A priori Gamma applicable on le gris
+       double EpsLog() const;  // A priori Gamma applicable on le gris
        const std::string &  CamDist() const;
        const std::string &  HomolRedr()   const;
        const double &  ExpTimeRef() const;

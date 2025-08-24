@@ -3,7 +3,7 @@
 #include "SP3NavigationSlot.h"
 
 // ---------------------------------------------------------------
-// Fonction de lecture d'un fichier de navigation SP3
+// function de lecture d'un file de navigation SP3
 // ---------------------------------------------------------------
 SP3NavigationData SP3Reader::readNavFile(std::string nav_file_path){
 

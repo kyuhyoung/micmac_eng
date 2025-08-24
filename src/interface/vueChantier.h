@@ -52,13 +52,13 @@ class Pose
 		QString						nomImg;
 		const CamStenope				   *camera;
 		QList<pair<Pt3dr, QColor> > ptsAppui;
-		QList<pair<Pt3dr, QColor> > ptsAppui2nd;	//points d'appui qui ne seront tracés que si on cherche tous les points de cette caméra (infoButton)
+		QList<pair<Pt3dr, QColor> > ptsAppui2nd;	//points d'appui qui ne seront tracés que if on cherche tous les points de cette caméra (infoButton)
 		QVector<Pt3dr>				emprise;
 		QSize						imgSize;
 };
 
 class SelectCamBox : public QGroupBox
-//pour micmac (paramètres d'un masque) : permet de sélectionner l'image de référence ou les images utilisées pour la corrélation (ou pas d'affichage de la QGroupBox)
+//for micmac (paramètres d'un masque) : permet de sélectionner l'image de référence or les images utilisées for la corrélation (or pas d'affichage de la QGroupBox)
 {
 	Q_OBJECT
 
@@ -101,7 +101,7 @@ class SelectCamBox : public QGroupBox
 };
 
 class GeorefMNT
-//géoréférencement des cartes de profondeur, TA et orthoimages mosaïquées (fichiers Z_NumX_DeZoomY_GeomIm-N.xml)
+//géoréférencement des cartes de profondeur, TA and orthoimages mosaïquées (fichiers Z_NumX_DeZoomY_GeomIm-N.xml)
 {
 	public :
 		GeorefMNT();
@@ -177,7 +177,7 @@ class Nuage {
 
 		QVector<cElNuage3DMaille*> points;	//0 : peu précis, 5 : resolution 1
 		QVector<QString> correlation;	//images de corrélation correspondantes (indique la fiabilité de la corrélation)
-		QString carte;	//avec dossier !
+		QString carte;	//with folder !
 		QString imageCouleur;
                 Pose* pose; //pointeur vers GLParams.poses.at(?)
 		int focale;

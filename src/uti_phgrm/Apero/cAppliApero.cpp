@@ -180,7 +180,7 @@ cAppliApero::cAppliApero (cResultSubstAndStdGetFile<cParamApero> aParam) :
         CompileObsersvations();
 
 /*
-        if (! mDicoNewBDL.empty()) // Pour ne pas avoir d'interaction avec ce qui marche
+        if (! mDicoNewBDL.empty()) // for ne pas avoir d'interaction with ce qui marche
         {
            std::vector<cGenPDVFormelle *> aVEmpty;
            mGlobManiP3TI = new cManipPt3TerInc(mSetEq,0,aVEmpty,false);

@@ -91,7 +91,7 @@ void SaisieAppuisInit(int argc, char ** argv,
            aICNM->CorrecNameOrient(anOri);
         const cInterfChantierNameManipulateur::tSet  *  aSet = aICNM->Get(aName);
 
-        //std::cout << "Nb Image =" << aSet->size() << "\n";
+        //std::cout << "Nb image =" << aSet->size() << "\n";
         ELISE_ASSERT(aSet->size()!=0,"No image found");
 
         if (aNbFen.x<0)

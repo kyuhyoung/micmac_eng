@@ -622,7 +622,7 @@ template <class TypeMap> void OneBenchMapping(cParamExeBench & aParam)
     {
         tU_INT4 aSzV = RandUnif_N(50);
         std::vector<cPt2dLR>  aVIn;  // Vector of random input points
-        std::vector<cPt3dLR>  aVOut;  // Image of this point by the "Ground Truth"
+        std::vector<cPt3dLR>  aVOut;  // image of this point by the "Ground Truth"
         std::vector<cDenseMatrix<tREAL16>>  aVDif; // Differiential of these point with the ground truth
         for (tU_INT4 aKP=0 ; aKP<aSzV ; aKP++)
         {

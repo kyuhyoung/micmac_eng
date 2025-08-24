@@ -154,7 +154,7 @@ vector<vector<double> > CopyAndMergeMatchFile(string aNameDir, string aPattern, 
 		string aFullFileName=aFullSiftDir[i] + V_ImSift[i][j]; 
 		cout<<aFullFileName<<endl;
 		int k= Matrix_Index[i][j];
-		 //-------- !!! ----- Ne fonctionne qu'avec les fichiers .txt pour l'instant  ------ !!! ------ //
+		 //-------- !!! ----- Ne fonctionne qu'with les fichiers .txt for l'instant  ------ !!! ------ //
 		if (ExpTxt != 1)
 		{
                    ElPackHomologue aPack = ElPackHomologue::FromFile(aFullFileName);
@@ -219,7 +219,7 @@ vector<vector<double> > CorrectTiePoint(string aNameDir, string aPattern, string
 	//load the data from the previous function	
 	vector<vector<double> > aFullTabSift = CopyAndMergeMatchFile(aNameDir, aPattern, DirOut, ExpTxt);
 	int NBSift = (int)aFullTabSift[0].size();
-	//cout<<"Nombre de lignes/de mesures : "<<aFullTabSift[0].size()<<endl;
+	//cout<<"number de lignes/de mesures : "<<aFullTabSift[0].size()<<endl;
 	//Reading the list of input files
 	list<string> ListIm=RegexListFileMatch(aNameDir,aPattern,1,false);
     	int nbIm = (int)ListIm.size();
@@ -269,9 +269,9 @@ vector<vector<double> > CorrectTiePoint(string aNameDir, string aPattern, string
 		diffx2=abs(Valcompx2-Valrefx2);
 		diffy2=abs(Valcompy2-Valrefy2);
 			if(diffx1<1.0 && diffy1<1.0 && diffx2<1.0 && diffy2<1.0 )//condition to accept that is the same point
-			{aListPtDouble.push_back(m);//fill the vector of the n° of ligne of the double point
+			{aListPtDouble.push_back(m);//fill the vector of the n° of line of the double point
 			//aListPtDoubleIni.push_back(h);
-			//cout<<"Valeur de m : "<<m+1<<" pour le point : "<<h+1<<endl;
+			//cout<<"value de m : "<<m+1<<" for le point : "<<h+1<<endl;
 			}
 		}
 	}
@@ -326,7 +326,7 @@ vector<vector<double> > CorrectTiePoint(string aNameDir, string aPattern, string
 	aIndexImageM.push_back(NBSiftM);//add the last value
 	cout<<"size IndexIm : "<<aIndexImageM.size()<<endl;
 	
-	//----------------- Multiple  Point detection and cancellation-----------------//
+	//----------------- Multiple  point detection and cancellation-----------------//
 	//DETECTION PART
 	//Declare  vector which will contains the points who have the same coordinate
 	vector<double> aListPtMulti,aListPtMultiIni;
@@ -336,7 +336,7 @@ vector<vector<double> > CorrectTiePoint(string aNameDir, string aPattern, string
     	{
 	int Alimitinf=aIndexImageM[i];
 	int Alimitsup=aIndexImageM[i+1];
-	//fill the vector of the n° of ligne of the multiple point
+	//fill the vector of the n° of line of the multiple point
 	for (int h=Alimitinf;h<Alimitsup-1;h++)
 	{
 		int l=h+1;
@@ -352,7 +352,7 @@ vector<vector<double> > CorrectTiePoint(string aNameDir, string aPattern, string
 			if(diffx<1.0 && diffy<1.0 )
 			{aListPtMulti.push_back(l);
 			aListPtMultiIni.push_back(h);
-			//cout<<"Valeur de l : "<<l<<" & Valeur de h : "<<h<<endl;
+			//cout<<"value de l : "<<l<<" & value de h : "<<h<<endl;
 			}
 		l=l+1;
 		if(diffx<1.0 && diffy<1.0) break;//condition to accept that is the same point
@@ -386,16 +386,16 @@ vector<vector<double> > CorrectTiePoint(string aNameDir, string aPattern, string
 	int Q=0;
 	for (int i=0;i<N; i++)
 	{int L=aListPtMulti[i];
-	//cout<<"valeur de l "<<L<<endl;
+	//cout<<"value de l "<<L<<endl;
 		for (int j=0;j<N; j++)
 		{int H=aListPtMultiIni[j];
-		//cout<<"valeur de h "<<H<<endl;
+		//cout<<"value de h "<<H<<endl;
 		if (H==L)
 		{//cout<<"l'indice "<<i<<" vaut "<<j<<endl;
 		Q=Q+1;}
 		}
 	}
-	//cout<<"NB Quadruple ou plus : "<<Q<<endl;
+	//cout<<"NB Quadruple or plus : "<<Q<<endl;
 
 	int Q2=0;
 	for (int i=0;i<N; i++)
@@ -414,7 +414,7 @@ vector<vector<double> > CorrectTiePoint(string aNameDir, string aPattern, string
 	aFinalTabSift[IndReceiv].insert(it+6,aFinalTabSift[IndTaken].begin(),aFinalTabSift[IndTaken].end());
 
 		//push_back the value from aListPtMultiIni to aListPtMulti
-		//push_back ne fonctionne pas, erreur de memoire
+		//push_back ne fonctionne pas, error de memoire
 		/*for (int j=3;j>S; j++)
 		{
 		double Val2Put= aFinalTabSift[IndTaken][j];
@@ -476,7 +476,7 @@ vector<vector<double> > CorrectTiePoint(string aNameDir, string aPattern, string
     	{
 	int Alimitinf=aIndexImageN[i];
 	int Alimitsup=aIndexImageN[i+1];
-	//fill the vector of the n° of ligne of the multiple point
+	//fill the vector of the n° of line of the multiple point
 	//cout<<Alimitinf<<" & "<<Alimitsup<<endl;
 	double diff1=10;
 	double diff2=10;
@@ -520,10 +520,10 @@ vector<vector<double> > CorrectTiePoint(string aNameDir, string aPattern, string
 	int Q3=0;
 	for (int i=0;i<Z; i++)
 	{int L=aListSimple[i];
-	//cout<<"valeur de l "<<L<<endl;
+	//cout<<"value de l "<<L<<endl;
 		for (int j=0;j<Z; j++)
 		{int H=aListSimpleIni[j];
-		//cout<<"valeur de h "<<H<<endl;
+		//cout<<"value de h "<<H<<endl;
 		if (H==L)
 		{//cout<<"l'indice "<<i<<" vaut "<<j<<endl;
 		Q3=Q3+1;}
@@ -591,7 +591,7 @@ vector<vector<double> > GlobalCorrectionTiePoint(string aNameDir, string aPatter
     	{
 	int Alimitinf=aIndexImage[i];
 	int Alimitsup=aIndexImage[i+1];
-	//fill the vector of the n° of ligne of the multiple point
+	//fill the vector of the n° of line of the multiple point
 	//cout<<Alimitinf<<" & "<<Alimitsup<<endl;
 	double diff1=10;
 	double diff2=10;
@@ -642,10 +642,10 @@ vector<vector<double> > GlobalCorrectionTiePoint(string aNameDir, string aPatter
 	int Q=0;
 	for (int i=0;i<Z; i++)
 	{int L=aList[i];
-	//cout<<"valeur de l "<<L<<endl;
+	//cout<<"value de l "<<L<<endl;
 		for (int j=0;j<Z; j++)
 		{int H=aListIni[j];
-		//cout<<"valeur de h "<<H<<endl;
+		//cout<<"value de h "<<H<<endl;
 		if (H==L)
 		{//cout<<"l'indice "<<i<<" vaut "<<j<<endl;
 		Q=Q+1;}
@@ -734,8 +734,8 @@ vector<vector<double> > GlobalCorrectionTiePoint(string aNameDir, string aPatter
 		else
 		{aFinalTabSift[j][k*3+1]=ValX;
 		aFinalTabSift[j][k*3+2]=ValY;
-		//cout<<"Point ancien: "<<NewPt<<endl;
-		//cout<<"Point nouveau: "<<ptOut<<endl;
+		//cout<<"point ancien: "<<NewPt<<endl;
+		//cout<<"point nouveau: "<<ptOut<<endl;
 		P=P+1;}
 		}		
 	}
@@ -791,12 +791,12 @@ vector<double> LeastSquareSolv(vector<double> &centre1, vector<double> &Vdirecte
 
 	//resolution
 	N=Atr*A;
-	//calcul of the inverse
+	//computation of the inverse
 	double K=1/(N(0,0)*N(1,1)-(N(1,0)*N(0,1)));
 	//cout<<K<<endl;
 	Ninv(0,0)=N(1,1), Ninv(0,1)=-N(0,1),Ninv(1,1)=N(0,0), Ninv(1,0)=-N(1,0);
 	Ninv=Ninv*K;
-	//calcul of the residus
+	//computation of the residus
 	dX=Ninv*Atr*B;
 	//Vc=B-A*dX;
 	//Sig02=Vc'*Vc;
@@ -863,7 +863,7 @@ void Triangulation(string aNameDir, string aPattern, string aOri, string DirOut,
 	std::cout << "Com = " << aCom << "\n";
 	
 	//////UndistortIMing tie points
-	//////make list of centre and direction vector for each ligne
+	//////make list of centre and direction vector for each line
 	int NPt = (int)aFinalTabSift.size();
 	//int P=0;
 	//int R=0;
@@ -906,8 +906,8 @@ void Triangulation(string aNameDir, string aPattern, string aOri, string DirOut,
 			aTabDroite.push_back(vx-xc),aTabDroite.push_back(vy-yc),aTabDroite.push_back(vz-zc);
 			double Ind=indice;	
 			aTiePt.push_back(Ind),aTiePt.push_back(ValX),aTiePt.push_back(ValY);
-			//cout<<"Point ancien: "<<NewPt<<endl;
-			//cout<<"Point nouveau: "<<ptOut<<endl;
+			//cout<<"point ancien: "<<NewPt<<endl;
+			//cout<<"point nouveau: "<<ptOut<<endl;
 			}//P=P+1;
 		}
 		if (aTabDroite.size() >=12)//we keep if only tow or more new point are inside the box
@@ -1216,12 +1216,12 @@ void TransfORI_andWFile(string aNameDir, string aPattern, string aOri, string Di
 	Pt2di aSz=aTF.sz();
 	Pt2di aDSize=aSz/2;
 	aListDImSize.push_back (aDSize);
-	//cout<<"Valeur Demi Image : "<<aDSize.x<<" & "<<aDSize.y<<endl;
-	//get the Principal Point
+	//cout<<"value Demi image : "<<aDSize.x<<" & "<<aDSize.y<<endl;
+	//get the Principal point
 	Pt2dr PP=aCS->PP();
 	Pt2dr DeltaPP(PP.x+0.5-aDSize.x, PP.y+0.5-aDSize.y);
 	aListDeltaPP.push_back (DeltaPP);
-	//calcul adjustement between PP and image centre
+	//computation adjustement between PP and image centre
 	double F=pow(FocL*FocL+DeltaPP.x*DeltaPP.x+DeltaPP.y*DeltaPP.y,0.5);
 	aListFocalF.push_back(F);
 	Rotc=CorrectRotation (FocL, DeltaPP, KeepImC);
@@ -1250,7 +1250,7 @@ void TransfORI_andWFile(string aNameDir, string aPattern, string aOri, string Di
    		 U_INT1 ** aDataGOut = aImGOut.data();
    		 U_INT1 ** aDataBOut = aImBOut.data();
 
-    		//Parcours des points de l'image de sortie et remplissage des valeurs
+    		//Parcours des points de l'image de sortie and remplissage des valeurs
 		cout<<"Undistorting and shifting the image"<<endl;
    		Pt2dr ptOut;Pt2dr ptIn;
 		double x; double y;
@@ -1304,7 +1304,7 @@ void TransfORI_andWFile(string aNameDir, string aPattern, string aOri, string Di
 	Pt2dr aPtcentre(1000.0, 1000.0);
 	Pt3dr centre=aCS->ImEtProf2Terrain(aPtcentre,0.0);
 	aListPtCentre.push_back(centre);
-	//cout<<"centre Image "<<i<<" : "<<centre<<endl;
+	//cout<<"centre image "<<i<<" : "<<centre<<endl;
 	//get the quaternion
 	vector<double> aQuaternion=MakeQuaternion (aCS, Rotc);
 	alistQuaternion.push_back(aQuaternion);
@@ -1316,7 +1316,7 @@ void TransfORI_andWFile(string aNameDir, string aPattern, string aOri, string Di
 	int N = (int)aFullTabTiePoint.size();
 
 	//////-------------------Fabrication of the final file -------------------------//////
-	//if Point cloud Chosen initiate the ply file
+	//if point cloud Chosen initiate the ply file
 	string aApeCloud= aNameDir+ DirOut + "3D.ply"; 
 	if (ExpCloud ==1)
 	{
@@ -1375,7 +1375,7 @@ void TransfORI_andWFile(string aNameDir, string aPattern, string aOri, string Di
 	    fprintf(Plyf, "%-3.6f %-3.6f %-3.6f 128 128 128\n",n1,n2,n3);
 	    fclose(Plyf);
 	  }
-		//Add the measurement (0.5 pixel difference between the two Image system origin )
+		//Add the measurement (0.5 pixel difference between the two image system origin )
 		for (int j=0;j<Sz; j++)
 		{
 		int Indice=aFullTabTiePoint[i][3*j];

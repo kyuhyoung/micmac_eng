@@ -72,12 +72,12 @@ class cAppliMeshImageDevlp : public cMMVII_Appli
 	std::vector<cPt2dr>            mPtsCurIm; ///< projection of mesh vertex in image
 	std::vector<cPt2dr>            mPtsGlob;
 	cSetIntDyn                     mSetPCurIm;
-	cRGBImage                      mGlobIm;     ///<  Devloped  Image in RAM, has full size
+	cRGBImage                      mGlobIm;     ///<  Devloped  image in RAM, has full size
 	cIm2D<tINT2>                   mGrLabIm;
 	cRGBImage                      mRGBLabIm;
 
-	cIm2D<tINT1>                   mNormX;  ///< Image of X-normal, stored on 8-byte 
-	cIm2D<tINT1>                   mNormY;  ///< Image of X-normal, stored on 8-byte
+	cIm2D<tINT1>                   mNormX;  ///< image of X-normal, stored on 8-byte 
+	cIm2D<tINT1>                   mNormY;  ///< image of X-normal, stored on 8-byte
 	tREAL8                         mNormMult; ///< Multiplier of normal					
         bool                           mWithNorm; ///< Do we create an image of normal
 

@@ -76,7 +76,7 @@ const std::vector<int> * FlagOfNbb(int aNbBitTot,int aNbBitAct);
 // ===================================================
 
 extern const std::string NH_DirRefNuage;
-extern const std::string NH_DirRef_PC;  // Point caracteristique
+extern const std::string NH_DirRef_PC;  // point caracteristique
 
 
 void FilterHistoFlag(Im1D_REAL8 aH,int aNbConvol,double aFactConv,bool DoNorm);
@@ -173,8 +173,8 @@ template<class T1,class T2> Im2D_U_INT1 MakeFlagMontant(Im2D<T1,T2> anIm)
             {
                  Pt2di aV = TAB_8_NEIGH[aKV];
                  T1 aV2 = aTIm.get(aP+aV);
-                 // Comparaison des valeur et du voisinage en cas
-                 // d'egalite pour avoir une relation d'ordre stricte
+                 // Comparaison des value and du voisinage en cas
+                 // d'egalite for avoir une relation d'ordre stricte
                  if (CmpValAndDec(aV1,aV2,aV)==-1)
                  {
                     aFlag |= (1<<aKV);
@@ -240,7 +240,7 @@ class cStatBrin
       int mNbNivMin;
 };
 
-// Stucture de brins , suite de points sans embranchement
+// Stucture de brins , suite de points without embranchement
 class cBrinPtRemark
 {
     public :
@@ -269,7 +269,7 @@ class cBrinPtRemark
 
 typedef cPtRemark * tPtrPtRemark;
 
-// Nombre d'element a P parmi N
+// number d'element a P parmi N
 std::vector<std::vector<int> > CnP(int aP,int aN);
 
 // std::vector<Pt2di> SortedVoisinDisk(double aDistMin,double aDistMax,bool Sort);
@@ -357,7 +357,7 @@ class cCalcAimeImAutoCorr : public cAimeImAutoCorr
        TIm2D<INT1,INT>     mTImInit;
        bool                mL1Mode;
 
-       cOneICAIAC            mIR0; // Image Rad
+       cOneICAIAC            mIR0; // image Rad
        cOneICAIAC            mIGR;  // Im Gra Rad
        cOneICAIAC            mIGT;  // Im Gra Tan
 

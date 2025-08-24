@@ -50,7 +50,7 @@ cLoadedIm::cLoadedIm (cAppli_Ortho & anAppli,int anInd,Tiff_Im & aTF0,const Pt2d
      mImPC       (aSz.x,aSz.y),
      mTImPC      (mImPC),
      mIms        (aTF0.VecOfIm(aSz)),
-     mChCor      ((int)(mIms.size() /2)) // Ca fait V dans RVB ....
+     mChCor      ((int)(mIms.size() /2)) // Ca fait V in RVB ....
 {
 }
 
@@ -60,7 +60,7 @@ void cLoadedIm::TransfertIm(const std::vector<Im2DGen *> & aVIm,const Pt2di& aPL
 
      cER_OneIm * anERI = mCurOrtho->ERIPrinc();
 
-// TEST A ACTIVER POUR VERIF QUE EGAL PHYS EST BIEN CALC...
+// TEST A ACTIVER for VERIF QUE EGAL PHYS EST BIEN CALC...
 if (0)
 {
 static int aCpt=0; aCpt++;

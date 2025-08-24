@@ -70,7 +70,7 @@ InterfCartes8B::InterfCartes8B(const QString& dossier, const QString& dossierMic
 	modeOmbreBox = new QComboBox;
 	modeOmbreBox->addItems(QStringList("CielVu")<<"Local"<<"Mixte"<<"Med"<<"IGN espace");	//traduire ?
 	modeOmbreBox->setCurrentIndex(paramConvert8B.modeOmbre);
-	//nbdirBox->setToolTip(conv(tr("Nombre de sources de lumières réparties autour de la scène.")));
+	//nbdirBox->setToolTip(conv(tr("number de sources de lumières réparties autour de la scène.")));
 
 		//relief
 	QLabel* fzLabel = new QLabel(tr("Relief"));
@@ -228,7 +228,7 @@ void InterfCartes8B::showOptions() {
 }
 
 QString InterfCartes8B::checkParametres(int i) {
-//vérificiation de la validité des paramètres, enregistrement et aperçu
+//vérificiation de la validité des paramètres, enregistrement and aperçu
 	bool b = false;
 	double res;
 	QString t;
@@ -295,7 +295,7 @@ QString InterfCartes8B::checkParametres(int i) {
 }
 
 void InterfCartes8B::optionChanged(int n) {
-//vérificiation de la validité des paramètres, enregistrement et aperçu
+//vérificiation de la validité des paramètres, enregistrement and aperçu
 	cout << tr("Loading preview...").toStdString() << endl;
 	//vérification
 	QString err = checkParametres(n);
@@ -305,7 +305,7 @@ void InterfCartes8B::optionChanged(int n) {
 	}
 	if (n==0 || n==4) {
 		cout << "ok\n";
-		return; //modification de out ou visu => pas de nouvel aperçu
+		return; //modification de out or visu => pas de nouvel aperçu
 	}
 	//exécution
 	if (!paramConvert8B.getCommande(micmacDir, dir, listeCartes->at(0), dir+QString("tempofile.tif"), dir+QString("tempofile.txt"), false))  {
@@ -442,7 +442,7 @@ const QList<ParamConvert8B::carte8B>& ParamConvert8B::getImages() const {return 
 const QList<ParamConvert8B::carte8B>& ParamConvert8B::readImages() const {return images;}
 
 QString ParamConvert8B::getOutFile(const QString& dossier, const carte8B& image) {
-	//dossier
+	//folder
 dossier + QString("Geo[I|Ter]\'carte\' / Conversion / Z_Num\'numero\'_DeZoom\'dezoom\'_Geom-Im-\'carte\'_Shade\'parametres\'.tif");
 	QString dir = out.section("/",0,-2) + QString("/");
 	dir.replace("[I|Ter]", (image.getCarte16B().left(4)==QString("GeoI"))? "I" : "Ter");
@@ -455,7 +455,7 @@ dossier + QString("Geo[I|Ter]\'carte\' / Conversion / Z_Num\'numero\'_DeZoom\'de
 	nom.replace("\'carte\'",image.getNumCarte());
 	nom.replace("\'dezoom\'",QVariant(image.getDezoom()).toString());
 	nom.replace("\'numero\'",QVariant(image.getEtape()).toString());
-	//parametres
+	//parameters
 	QString param;
 	if (useMasque) param += QString("_Mask");
 	if (dequantifier && image.getEtape()!=7) param += QString("_Dequant");
@@ -486,8 +486,8 @@ dossier + QString("Geo[I|Ter]\'carte\' / Conversion / Z_Num\'numero\'_DeZoom\'de
 	return noBlank(dir)  + nom;
 }
 
-bool ParamConvert8B::getCommande(const QString& micmacDir, const QString& dir, const carte8B& image, const QString& outimage, const QString& outstd, bool holdvisu) {	//holdvisu=false permet de ne pas charger la fenêtre de visualisation pour l'aperçu
-//retrouve la commande de GrShade à partir des paramètres et l'exécute
+bool ParamConvert8B::getCommande(const QString& micmacDir, const QString& dir, const carte8B& image, const QString& outimage, const QString& outstd, bool holdvisu) {	//holdvisu=false permet de ne pas charger la fenêtre de visualisation for l'aperçu
+//retrouve la commande de GrShade à partir des paramètres and l'exécute
 	//image à l'échelle
 	QString imgRescaled;
 	if (otherOptions && withImg) {
@@ -506,7 +506,7 @@ bool ParamConvert8B::getCommande(const QString& micmacDir, const QString& dir, c
 	commande += QString(" Out=") + noBlank(outimage);
 	if (visualiser && holdvisu) commande += QString(" Visu=1");
 	if (useMasque) commande += QString(" Mask=") + noBlank(image.getMasque());
-	if (dequantifier && image.getEtape()!=7) commande += QString(" Dequant=1");	//l'étape 7 est déjà déquantifiée dans les données
+	if (dequantifier && image.getEtape()!=7) commande += QString(" Dequant=1");	//l'étape 7 est déjà déquantifiée in les données
 	if (otherOptions) {
 		if (fz!=1.0) commande += QString(" FZ=%1").arg(fz);
 		if (anisotropie!=0.95) commande += QString(" Anisotropie=%1").arg(anisotropie);
@@ -694,7 +694,7 @@ InterfModele3D::InterfModele3D(QWidget* parent, Assistant* help, ParamMain& para
 {
 	setWindowModality(Qt::ApplicationModal);
 
-	//liste de nuages
+	//list de nuages
 	QLabel* plyLabel = new QLabel(conv(tr("Select depth maps to convert :")));
 	treeWidget = new QTreeWidget;
 	treeWidget->setColumnCount(5);
@@ -895,7 +895,7 @@ void InterfModele3D::contextMenuEvent(QContextMenuEvent *event) {
 }
 
 void InterfModele3D::imgChoose() {
-	//image pour la texture
+	//image for la texture
 	FileDialog fileDialog(this, tr("Image loading"), dir, tr("Tif files (*.tif)") );
 	fileDialog.setFileMode(QFileDialog::ExistingFile);
 	fileDialog.setAcceptMode(QFileDialog::AcceptOpen);
@@ -913,7 +913,7 @@ void InterfModele3D::imgChoose() {
 		return;
 	}
 	QString carte = nuages.at(idx).getCarte();
-	//modification pour chaque étape
+	//modification for chaque étape
 	for (int i=0; i<nuages.count(); i++) {
 		if (nuages.at(i).getCarte()==carte) {
 			nuages[i].setCarte(fileNames.at(0));
@@ -925,7 +925,7 @@ void InterfModele3D::imgChoose() {
 		if (execute(commande)!=0)
 			qMessageBox(this, tr("Execution error"), conv(tr("Fail to convert image %1 to untiled tif format.")).arg(dir+texture));
 	}
-	if (treeWidget->topLevelItem(idx)->isSelected()) nuageChanged();	//pour remettre à jour l'image de BoiteArea
+	if (treeWidget->topLevelItem(idx)->isSelected()) nuageChanged();	//for remettre à jour l'image de BoiteArea
 }
 
 void InterfModele3D::dirPlyChoose() {
@@ -942,7 +942,7 @@ void InterfModele3D::dirPlyChoose() {
   	if (dirNames.size()!=1)
 		return;
 	QString saveDir = QDir(dir).relativeFilePath(dirNames.at(0)) + QString("/");
-	cout << saveDir.toStdString() << endl;		//laisser sinon pb de pointeur
+	cout << saveDir.toStdString() << endl;		//laisser else pb de pointeur
 	//nuage à modifier
 	int idx = treeWidget->indexOfTopLevelItem(treeWidget->itemAt(mouse));
 	if (idx==-1) {
@@ -950,7 +950,7 @@ void InterfModele3D::dirPlyChoose() {
 		return;
 	}
 	QString carte = nuages.at(idx).getCarte();
-	//modification pour chaque étape
+	//modification for chaque étape
 	for (int i=0; i<nuages.count(); i++) {
 		if (nuages.at(i).getCarte()==carte) {
 			QString fichierPly = nuages.at(i).getFichierPly().section("/",-1,-1);
@@ -981,7 +981,7 @@ void InterfModele3D::drawMaskFiltr() {
   	if (fileNames.size()>1) return;
 	else if (fileNames.size()==0) {
 		//désactivation du filtrage
-		for (int i=0; i<nuages.count(); i++) {	//affichage du masque dans le tableau
+		for (int i=0; i<nuages.count(); i++) {	//affichage du masque in le array
 			if (nuages.at(i).getNumCarte()==numCarte)
 				treeWidget->topLevelItem(i)->setText(4,QString());
 		}
@@ -1009,7 +1009,7 @@ void InterfModele3D::drawMaskFiltr() {
 		return;
 	}
 
-	//mise à l'échelle du masque (cas du TA où le masque est 8* trop petit pour l'image de corrélation ET pour Nuage2Ply)
+	//mise à l'échelle du masque (cas du TA où le masque est 8* trop petit for l'image de corrélation and for Nuage2Ply)
 	QSize corrSize = QImage(correlFile2).size();
 	QImage imgMasque = QImage(imgNontuilee(applicationPath()+QString("/masquetempo.tif")));
 	QSize maskSize = imgMasque.size();
@@ -1065,7 +1065,7 @@ void InterfModele3D::drawMaskFiltr() {
 	QFile(correlFile2).remove();
 	QFile(imgNontuilee(applicationPath()+QString("/masquetempo.tif"))).remove();
 
-		//masque non tuilé pour mise à l'échelle
+		//masque non tuilé for mise à l'échelle
 	err = MasqueWidget::convert2Rgba(masqueFiltre, false);
 	if (!err.isEmpty()) {
 		qMessageBox(this, conv(tr("Execution error")), err);
@@ -1077,7 +1077,7 @@ void InterfModele3D::drawMaskFiltr() {
 	masqueFiltre = QDir(dir).relativeFilePath(masqueFiltre);
 	if (masqueFiltre.left(2)==QString("./")) masqueFiltre = masqueFiltre.right(masqueFiltre.count()-2);
 
-		//affichage du masque dans le tableau
+		//affichage du masque in le array
 	for (int i=0; i<nuages.count(); i++) {
 		if (nuages.at(i).getNumCarte()==numCarte) treeWidget->topLevelItem(i)->setText(4,masqueFiltre);
 		nuages[i].updateFileName(paramPly);
@@ -1156,7 +1156,7 @@ void InterfModele3D::optionChanged(int n) {
 }
 
 void InterfModele3D::calcClicked() {
-	//nuages à calculer
+	//nuages à compute
 	QList<QTreeWidgetItem *> l = treeWidget->selectedItems();
 	if (l.count()==0) {
 		reject();
@@ -1164,7 +1164,7 @@ void InterfModele3D::calcClicked() {
 	}
 	for (int i=0; i<l.count(); i++)
 		paramPly.modifNuages()[treeWidget->indexOfTopLevelItem(l.at(i))] = true;
-	//filtrage et fusion
+	//filtrage and fusion
 	if (checkFiltr->isChecked()) paramPly.modifMasques().clear();
 	//vérification
 	if (reliefEdit->text().isEmpty()) {
@@ -1244,8 +1244,8 @@ void ParamNuages::calcFileName(const QString& dossier) {
 	fichierXml = dossier + QString("Geo%1%2/NuageImProf_Geom-Im-%2_Etape_%3.xml").arg(paramMasque->getRepere()? QString("I") : QString("Ter")).arg(numCarte).arg(etape);
 }
 void ParamNuages::updateFileName(const ParamPly& paramPly) {
-//modifie les noms des fichiers en sorties en fonction du paramétrage (évite d'écraser les fichiers)
-	fichierPly = fichierPly.section("/",0,-2) + QString("/NuageImProf_Geom-Im-%1_Etape_%2").arg(numCarte).arg(etape);	//permet de conserver le dossier mais pas l'échelle
+//modifie les noms des fichiers en sorties en function du paramétrage (évite d'écraser les fichiers)
+	fichierPly = fichierPly.section("/",0,-2) + QString("/NuageImProf_Geom-Im-%1_Etape_%2").arg(numCarte).arg(etape);	//permet de conserver le folder but pas l'échelle
 	if (paramPly.getEchantInterval()!=1) fichierPly += QString("_scale%1").arg(paramPly.getEchantInterval());
 	if (paramPly.getDoBoite()) fichierPly += QString("_box");
 	if (!paramPly.getBinaire()) fichierPly += QString("_txt");
@@ -1459,7 +1459,7 @@ InterfOrtho::InterfOrtho(QWidget* parent, Assistant* help, ParamMain& param, QVe
 {
 	setWindowModality(Qt::ApplicationModal);
 
-	//liste de nuages
+	//list de nuages
 	QLabel* orthoLabel = new QLabel(conv(tr("Select orthoimage mosaic to compute :")));
 	listWidget = new QListWidget;
 	listWidget->setSelectionMode (QAbstractItemView::ExtendedSelection);
@@ -1506,7 +1506,7 @@ InterfOrtho::InterfOrtho(QWidget* parent, Assistant* help, ParamMain& param, QVe
 InterfOrtho::~InterfOrtho() {}
 
 void InterfOrtho::calcClicked() {
-	//orthos à calculer
+	//orthos à compute
 	QList<QListWidgetItem *> l = listWidget->selectedItems();
 	if (l.count()==0) {
 		qMessageBox(this, tr("Error"), conv(tr("No depth maps selected.")));

@@ -172,7 +172,7 @@ void Drunk(string aFullPattern,string aOri,string DirOut, bool Talk, bool RGB, B
     U_INT1 ** aDataGOut = aImGOut.data();
     U_INT1 ** aDataBOut = aImBOut.data();
 
-    //Parcours des points de l'image de sortie et remplissage des valeurs
+    //Parcours des points de l'image de sortie and remplissage des valeurs
     Pt2dr ptIn;
     for (int aY=0 ; aY<aSzOut.y  ; aY++)
     {

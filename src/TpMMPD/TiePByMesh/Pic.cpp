@@ -70,7 +70,7 @@ void pic::AddPtsToPack(pic* Pic2nd, const Pt2dr & Pts1, const Pt2dr& Pts2)
 }
 void pic::AddVectorPtsToPack(pic* Pic2nd, vector<Pt2dr> & Pts1, vector<Pt2dr> & Pts2)
 {
-    //Si P2 = (-1,-1) => not added
+    //if P2 = (-1,-1) => not added
     int count = 0;
     for (uint i=0; i<Pts1.size(); i++)
     {

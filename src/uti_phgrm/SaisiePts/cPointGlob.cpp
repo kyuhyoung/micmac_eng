@@ -89,7 +89,7 @@ void cSP_PointGlob::SetKilled()
        it->second->Saisie()->Etat() = aState;
     }
     // Ce qui precede n'est pas suffisant car il se peut qu'il existe
-    // des pointes non modifies car existant dans des images non chargees
+    // des pointes non modifies car existant in des images non chargees
     mAppli.GlobChangStatePointe(mPG->Name(),aState);
 }
 
@@ -144,7 +144,7 @@ Pt3dr cSP_PointGlob::Best3dEstim() const
       ELISE_ASSERT(mPG->Pt3DFromDico().IsInit(),"Pt3DFromDico :: cSP_PointGlob::Best3dEstim");
       return mPG->Pt3DFromDico().Val();
 */
-     // Modif MPD pour compatibilite avec anciens fichiers deja crees avant masq3D
+     // Modif MPD for compatibilite with anciens fichiers deja crees before masq3D
       if (mPG->Pt3DFromDico().IsInit())
       {
          return mPG->Pt3DFromDico().Val();
@@ -314,7 +314,7 @@ void cSP_PointGlob::ReCalculPoints()
             aVSeg.push_back(aCap3d->Capteur2RayTer(aPIm));
             if (aCap3d->HasPreciseCapteur2Terrain())
             {
-                 double aPrec = 2.0;  // Arbitraire, par rapport a precision sur seg
+                 double aPrec = 2.0;  // Arbitraire, par rapport a precision on seg
                  Pt3dr aPtPrec(aPrec,aPrec,aPrec);
                  aVPts.push_back(aCap3d->PreciseCapteur2Terrain(aPIm));
                  aVPts.push_back(aPtPrec);
@@ -396,7 +396,7 @@ void cSP_PointGlob::Rename(const std::string & aNewName)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -412,17 +412,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

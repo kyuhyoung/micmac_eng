@@ -42,7 +42,7 @@ std::vector<std::string >  AddPostFix(const std::vector<std::string>  & aV,const
 /* ************************************************* */
 
 
-// Prouve la pertinence du warning sur  mTable[*aPtr] = aC;
+// Prouve la pertinence du warning on  mTable[*aPtr] = aC;
 
 // static_assert( int(char(255)) != 255,"Bad char assert");
 // static_assert( int(char(-1)) == -1,"Bad char assert");

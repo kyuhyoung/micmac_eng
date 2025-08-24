@@ -80,7 +80,7 @@ bool Observation::hasChannel(std::string obs_type){
 
 // ---------------------------------------------------------------
 // Méthode permettant d'enregistrer la position d'un type donné 
-// d'observations dans une ligne d'observables.
+// d'observations in une line d'observables.
 // ---------------------------------------------------------------
 void Observation::setChannel(std::string obs_type, double value, int lli, int sgs){
 	
@@ -99,7 +99,7 @@ void Observation::setChannel(std::string obs_type, double value, int lli, int sg
 
 // ---------------------------------------------------------------
 // Méthode permettant d'enregistrer la position d'un type donné 
-// d'observations dans une ligne d'observables.
+// d'observations in une line d'observables.
 // ---------------------------------------------------------------
 void Observation::setChannel(std::string obs_type, double value){
 	setChannel(obs_type, value, -1, -1);

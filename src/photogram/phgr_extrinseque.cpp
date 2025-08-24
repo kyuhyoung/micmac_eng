@@ -242,7 +242,7 @@ const ElMatrix<Fonc_Num> & cRotationFormelle::MatFGL(int aKForceGL)
    {
        static std::vector<cMatr_Etat_PhgrF *> aVM;
        // for (int aK=0 ; aK<=aKForceGL ; aK++)
-       for (int aK=int(aVM.size()) ; aK<=aKForceGL ; aK++)  // MPD : sinon on augment a chaque fois
+       for (int aK=int(aVM.size()) ; aK<=aKForceGL ; aK++)  // MPD : else on augment a chaque fois
            aVM.push_back(new cMatr_Etat_PhgrF("GL_MK"+ToString(aKForceGL),3,3));
 
        return aVM[aKForceGL]->Mat();
@@ -280,7 +280,7 @@ void  cRotationFormelle::AddRappOnRot(const ElRotation3D &  aRot,const Pt3dr & a
     double aVVals[6];
 
     ELISE_ASSERT(mModeGL,"RotationFormelle::AddRappOnRot no Guibal lock");
-    // On veut , d'apres l'utilisation du Guimbal :
+    // On veut , d'after l'utilisation du Guimbal :
     // aRot = ElRotation3D(mCurCOpt.tr(),mMGL*mCurTeta01.Mat(),true);
     // Donc on impose :
     // mCurTeta01 = mMGL.tranp() * aRot
@@ -790,7 +790,7 @@ cCameraFormelle::cEqAppui::cEqAppui
     }
     else
     {
-          // Devrait pouvoir marcher, mas apres modif pour etre la differentiel en x,y,z ...
+          // Devrait pouvoir marcher, mas after modif for etre la differentiel en x,y,z ...
           if (! AFocalAcceptNoDist)
               mCam.mIntr.AssertNoAFocalParam("Cas sans dist pas encore gere");
           aP1 =  Pt2d<Fonc_Num>(aRay.x/aRay.z,aRay.y/aRay.z);
@@ -802,8 +802,8 @@ cCameraFormelle::cEqAppui::cEqAppui
 
      if (IsEqDroite)
      {
-        // Pour reutiliser au max "l'infrastructure" existante on prend la convention que
-        // aP2.x -> rho aP2.y -> Theta et que cela code l'equation normale de la droite 
+        // for reutiliser au max "l'infrastructure" existante on prend la convention que
+        // aP2.x -> rho aP2.y -> Theta and que cela code l'equation normale de la droite 
         // rho = cos(Teta) X + sin(Theta) Y
         Fonc_Num fEcart = (aP2.x -cos(aP2.y)*aP1.x - sin(aP2.y)* aP1.y) * mFScN;
         mEcarts.push_back(fEcart);
@@ -1079,7 +1079,7 @@ Pt2dr cCameraFormelle::AddEqAppuisInc(const Pt2dr & aPIm,double aPds,cParamPtPro
         Pt2dr aPLoc  = ProjStenope(mCameraCourante->R3toL3(aPPP.mTer));
 
         aPPP.mNDP0 =aCSG->L2toF2AndDer(aPLoc,aPPP.mNDdx,aPPP.mNDdy);
-        // Si on remonte jusqu'a PtImGrid::ValueAndDer, on voit que GradX est la derive de X selon x et y (et non la derive selon x de X et Y)
+        // if on remonte jusqu'a PtImGrid::ValueAndDer, on voit que GradX est la derive de X selon x and y (and non la derive selon x de X and Y)
         ElSwap(aPPP.mNDdx.y,aPPP.mNDdy.x);
         aPPP.mNDP0 = aPPP.mNDP0 - aPPP.mNDdx * aPLoc.x - aPPP.mNDdy * aPLoc.y;
 
@@ -1180,9 +1180,9 @@ cCameraFormelle::cEqAppui * cCameraFormelle::AddFctrEqAppuisInc(bool aGenCode,bo
            mEqAppuiDroite[aK] =  new cEqAppui(wDist,isGL,isProj,false,true,*this,aGenCode,true);
 
       return mEqAppuiDroite[aK];
-       // Avec ss dist
-       // Avec ss Proj
-       // Avec ss GL 
+       // with ss dist
+       // with ss Proj
+       // with ss GL 
   }
 
 
@@ -1945,7 +1945,7 @@ cAppuiGridEq::cAppuiGridEq
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1961,17 +1961,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

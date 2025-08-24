@@ -55,7 +55,7 @@ XERCES_CPP_NAMESPACE_USE
 #include "private/files.h"
 #endif
 
-// variable static de la classe
+// variable static de la class
 std::map<std::string, OrientationGrille*> OrientationRTO::dico_camera;
 
 double Polynome::Valeur(double x, double y, double z) const
@@ -300,7 +300,7 @@ void OrientationRTO::ImageAndPx2Obj(double c, double l, const double *z,
                     double &x, double &y)const
 {
   double cv=c,lv=l;
-  // Si besoin on corrige la distorsion
+  // if besoin on corrige la distorsion
   if (camera)
   {
      camera->ImageAndPx2Obj(c,l,z,cv,lv);
@@ -333,7 +333,7 @@ void OrientationRTO::Objet2ImageInit(double x, double y, const double *z,
   Z = (z[0]-CentreObjetZ)/CoefObjetZ;
   c = ObjetX.Valeur(X,Y,Z) * CoefImageX + CentreImageX;
   l = ObjetY.Valeur(X,Y,Z) * CoefImageY + CentreImageY;
-  // Si besoin on applique la correction de distorsion
+  // if besoin on applique la correction de distorsion
   if (camera)
   {
      double c2=c,l2=l;
@@ -448,7 +448,7 @@ void OrientationRTO::InitXml(std::string const &nom)
     n=n->getFirstChild();
   while(n)
   {
-// Recherche d'un fichier de camera dans le champ sub_code
+// Recherche d'un file de camera in le champ sub_code
           if (!XMLString::compareString(n->getNodeName(),XMLString::transcode("trans_coord")))
           {
                   DOMNode* sn = n->getFirstChild();
@@ -679,19 +679,19 @@ void OrientationRTO::InitXml(std::string const &nom)
   for(it=noeuds.begin();it!=fin;++it)
   {
     std::string name = (*it)->ValAttr("name");
-    if (name == std::string("x2")) // RTO donnant x en Objet en fonction de col,lig,Z
+    if (name == std::string("x2")) // RTO donnant x en object en function de col,lig,Z
     {
       ImageX.Init(*it);
     }
-    else if (name == std::string("y2")) // RTO donnant y en Objet en fonction de col,lig,Z
+    else if (name == std::string("y2")) // RTO donnant y en object en function de col,lig,Z
     {
       ImageY.Init(*it);
     }
-    else if (name == std::string("x1")) // RTO donnant col (image) en fonction de x,y,Z
+    else if (name == std::string("x1")) // RTO donnant col (image) en function de x,y,Z
     {
       ObjetX.Init(*it);
     }
-    else if (name == std::string("y1")) // RTO donnant lig (image) en fonction de x,y,Z
+    else if (name == std::string("y1")) // RTO donnant lig (image) en function de x,y,Z
     {
       ObjetY.Init(*it);
     }
@@ -704,7 +704,7 @@ void OrientationRTO::InitXml(std::string const &nom)
                 std::map<std::string, OrientationGrille*>::iterator it=dico_camera.find(nomCamera);
                 if (it==dico_camera.end())
                 {
-                        // recuperation du chemin de fichier 
+                        // recuperation du chemin de file 
                         std::string path;
                         {
                                 int placeSlash = -1;

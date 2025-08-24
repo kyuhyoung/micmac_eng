@@ -166,7 +166,7 @@ cOneLionPaw::cOneLionPaw(int argc,char ** argv):
 
         std::cout << "I will process data " << mDir << "\n";
 
-        // martini ne fonctionne que si on est dans le directory grrr
+        // martini ne fonctionne que if on est in le directory grrr
 
         std::string aPat("'.*.(jpg|JPG)'");
         std::string aCom("");
@@ -294,7 +294,7 @@ void cOneLionPaw::Restore(){
 
                  void cOneLionPaw::testMTD(){
 
-                 // il ne faut pas qu'il y en aie dans le répertroire "repetition1"
+                 // il ne faut pas qu'il y en aie in le répertroire "repetition1"
                  std::cout << "Test Metadata \n";
                  ELISE_fp::RmFileIfExist(mDir+"/MicMac-LocalChantierDescripteur.xml");
 
@@ -377,7 +377,7 @@ cTPM2GCPwithConstantZ::cTPM2GCPwithConstantZ(int argc,char ** argv)
             // retrieve IdIm
             cCelImTPM * ImTPM=mTPM->CelFromName(NameIm);
             if (ImTPM) {
-            // map of Camera is indexed by the Id of Image (cSetTiePMul)
+            // map of camera is indexed by the Id of image (cSetTiePMul)
             mCams[ImTPM->Id()]=CamOrientGenFromFile(aOri,mICNM);
             } else {
             std::cout << "No tie points found for image " << NameIm << ".\n";
@@ -473,15 +473,15 @@ cCoreg2Ortho::cCoreg2Ortho(int argc,char ** argv)
             // Dijkstra's single source shortest path algorithm
 
             mBoxOverlapTerrain=mO1->overlapBox(mO2);
-            // clip les 2 orthos sur cette box terrain
+            // clip les 2 orthos on cette box terrain
             Im2D_REAL4 o1 = mO1->clipImTer(mBoxOverlapTerrain);
             Im2D_REAL4 o2 = mO2->clipImTer(mBoxOverlapTerrain);
-            // determiner debut et fin de la ligne d'estompage
+            // determiner debut and fin de la line d'estompage
 
             Im2D_U_INT1 over(o1.sz().x,o2.sz().y,0);
             // carte des coût, varie de 0 à 1
             Im2D_REAL4 cost(o1.sz().x,o2.sz().y,1.0);
-            // pixels d'overlap sont noté 1, pixel sans overlap sont noté 0
+            // pixels d'overlap sont noté 1, pixel without overlap sont noté 0
             ELISE_COPY(select(over.all_pts(),  o1.in()!=0 && o2.in()!=0),
                        1,
                        over.out());
@@ -556,7 +556,7 @@ cOriTran_Appli::cOriTran_Appli(int argc,char ** argv)
 
     // je fais une bascule la dessus
 
-    // je vérifie également avec un oriexport que l'offset fonctionnne
+    // je vérifie également with un oriexport que l'offset fonctionnne
 
     aCom="cp Ori-"+mOriIn +"/AutoCal* Ori-"+mOriOut+"/";
     system_call(aCom.c_str());
@@ -577,7 +577,7 @@ cOriTran_Appli::cOriTran_Appli(int argc,char ** argv)
     }
 
 }
-//    Applique une homographie à l'ensemble des images thermiques pour les mettres dans la géométrie des images visibles prises simultanément
+//    Applique une homographie à l'ensemble des images thermiques for les mettres in la géométrie des images visibles prises simultanément
 
 class cTIR2VIS_Appli;
 class cTIR2VIS_Appli
@@ -599,7 +599,7 @@ class cTIR2VIS_Appli
     std::string mOri;
     std::string mPrefixReech;
     bool mOverwrite;
-    Pt2di mImSzOut;// si je veux découper mes images output, ex: homography between 2 sensors of different shape and size (TIR 2 VIS) but I want to have the same dimension as output
+    Pt2di mImSzOut;// if je veux découper mes images output, ex: homography between 2 sensors of different shape and size (TIR 2 VIS) but I want to have the same dimension as output
     Pt2di mRadiomRange;// If I want to change radiometry value, mainly to convert 16 bits to 8 bits
 };
 
@@ -688,7 +688,7 @@ void cTIR2VIS_Appli::ReechThermicIm(
 
                             if (EAMIsInit(&mPrefixReech)) {  aCom += " PrefixOut=" + T2Reech_imName(_SetIm.at(aK)) ; }
 
-                            //+ " Win=[3,3]";// taille de fenetre pour le rééchantillonnage, par défaut 5x5
+                            //+ " Win=[3,3]";// taille de fenetre for le rééchantillonnage, par défaut 5x5
 
                 bool Exist= ELISE_fp::exist_file(T2Reech_imName(_SetIm.at(aK)));
 
@@ -704,7 +704,7 @@ void cTIR2VIS_Appli::ReechThermicIm(
     cEl_GPAO::DoComInParal(aLCom);
 }
 
-// dupliquer l'orientation des images visibles de la variocam pour les images thermiques accociées
+// dupliquer l'orientation des images visibles de la variocam for les images thermiques accociées
 void cTIR2VIS_Appli::CopyOriVis(
                                       std::vector<std::string> _SetIm,
                                       std::string aOri
@@ -774,7 +774,7 @@ void cTIR2VIS_Appli::changeImSize(std::vector<std::string> aLIm)
                  Tiff_Im::No_Compr,
                  Tiff_Im::BlackIsZero
              );
-    // on écrase le fichier tif
+    // on écrase le file tif
    ELISE_COPY(im.all_pts(),im.in(),aTifOut.out());
     }
 }
@@ -831,7 +831,7 @@ void cTIR2VIS_Appli::changeImRadiom(std::vector<std::string> aLIm)
                  Tiff_Im::No_Compr,
                  Tiff_Im::BlackIsZero
              );
-    // on écrase le fichier tif
+    // on écrase le file tif
    ELISE_COPY(imOut.all_pts(),imOut.in(),aTifOut.out());
     }
 }
@@ -844,7 +844,7 @@ void cTIR2VIS_Appli::changeImRadiom(std::vector<std::string> aLIm)
 
 
 
-/*    comparaise des orthos thermiques pour déterminer un éventuel facteur de calibration spectrale entre 2 frame successif, expliquer pouquoi tant de variabilité spectrale est présente (mosaique moche) */
+/*    comparaise des orthos thermiques for déterminer un éventuel facteur de calibration spectrale between 2 frame successif, expliquer pouquoi tant de variabilité spectrale est présente (mosaique moche) */
 // à priori ce n'est pas ça du tout, déjà mauvaise registration TIR --> vis du coup les ortho TIR ne se superposent pas , du coup correction metrique ne peut pas fonctionner.
 int CmpOrthosTir_main(int argc,char ** argv)
 {
@@ -879,7 +879,7 @@ int CmpOrthosTir_main(int argc,char ** argv)
     }
     std::cout << mLFile.size() << " Ortho chargées.\n";
 
-    //  tester si l'overlap est suffisant
+    //  tester if l'overlap est suffisant
     int i(0);
     for (auto aCurrentImGeo: mLIm)
     {
@@ -893,7 +893,7 @@ int CmpOrthosTir_main(int argc,char ** argv)
         Pt2di aTr=aCurrentImGeo.computeTrans(&mLIm.at(j));
         //std::string aName="ratio"+std::to_string(j)+"on"+std::to_string(j+1)+".tif";
         std::string aName=aPrefix+aCurrentImGeo.Name()+"on"+mLIm.at(j).Name()+".tif";
-        // copie sur disque de l'image // pas très pertinent, je devrais plutot faire tout les calcul en ram puis sauver l'image à la fin avec un constructeur de cImGeo qui utilise une image RAM et les info du georef
+        // copie on disque de l'image // pas très pertinent, je devrais plutot faire tout les computation en ram puis sauver l'image à la fin with un constructeur de cImGeo qui utilise une image RAM and les info du georef
         cImGeo        aImGeo(& aCurrentImGeo, aName);
 
         aImGeo.applyTrans(aTr);
@@ -903,11 +903,11 @@ int CmpOrthosTir_main(int argc,char ** argv)
         Im2D_REAL4 aImEmpty(aIm.sz().x, aIm.sz().y);
         Im2D_REAL4 aIm3=mLIm.at(j).toRAM();
 
-        // l'image 1 n'as pas la meme taille, on la copie dans une image de meme dimension que l'im 0
+        // l'image 1 n'as pas la meme taille, on la copie in une image de meme dimension que l'im 0
         ELISE_COPY
                 (
                     aIm3.all_pts(),
-                    aIm3.in(),// l'image 1 n'as pas la meme taille, on la copie dans une image de meme dimension que l'im 0n(),
+                    aIm3.in(),// l'image 1 n'as pas la meme taille, on la copie in une image de meme dimension que l'im 0n(),
                     aIm2.oclip()
                     );
 
@@ -934,8 +934,8 @@ int CmpOrthosTir_main(int argc,char ** argv)
         select(aImEmpty.all_pts(),aImEmpty.in()==0),
         sel_func(V8,aImEmpty.in_proj()>0)
         ),
-        1000,// je me fous de la valeur c'est pour créer un flux de points surtout
-        aImEmpty.out() | l2 // il faut écrire et dans la liste de point, et dans l'image, sinon il va repecher plusieur fois le meme point
+        1000,// je me fous de la value c'est for créer un flux de points surtout
+        aImEmpty.out() | l2 // il faut écrire and in la list de point, and in l'image, else il va repecher plusieur fois le meme point
         );
         // j'enleve l'effet de bord , valleurs nulles
         ELISE_COPY
@@ -950,10 +950,10 @@ int CmpOrthosTir_main(int argc,char ** argv)
         } while (it<3);
 
         }
-        // je sauve mon image RAM dans mon image tif file
+        // je sauve mon image RAM in mon image tif file
         aImGeo.updateTiffIm(&aImEmpty);
 
-        // je calcule la moyenne du ratio
+        // je compute la moyenne du ratio
         int nbVal(0);
         double somme(0);
         for(int aI=0; aI<aImEmpty.sz().x; aI++)
@@ -965,7 +965,7 @@ int CmpOrthosTir_main(int argc,char ** argv)
                 if (aValue!=0) {
                     somme +=aValue;
                     nbVal++;
-                    //std::cout <<"Valeur:"<<aValue<< "\n";
+                    //std::cout <<"value:"<<aValue<< "\n";
                 }
             }
             //fprintf(aFP,"\n");
@@ -1014,7 +1014,7 @@ int ComputeStat_main(int argc,char ** argv)
                 aImRAM.out()
                 );
 
-    // je calcule la moyenne du ratio
+    // je compute la moyenne du ratio
     int nbVal(0);
     bool firstVal=1;
     double somme(0),min(1e30) /* MPD Warn uninit*/ ,max(0);
@@ -1045,7 +1045,7 @@ int ComputeStat_main(int argc,char ** argv)
     std::cout << "Min :" << min <<"\n";
     std::cout << "Dynamique (max-min) :" << max-min <<"\n";
 
-    // stat sur toutes les images
+    // stat on toutes les images
     if (mLFile.front()==aName)
     {
         aMin=min;
@@ -1064,9 +1064,9 @@ int ComputeStat_main(int argc,char ** argv)
 }
 
 
-// j'ai utilisé saisieAppui pour saisir des points homologues sur plusieurs couples d'images TIR VIS orienté
-// je dois manipuler le résulat pour le tranformer en set de points homologues pour un unique couple d'images
-// de plus, la saisie sur les im TIR est effectué sur des images rééchantillonnées, il faut appliquer une homographie inverse au points saisi
+// j'ai utilisé saisieAppui for saisir des points homologues on plusieurs couples d'images TIR VIS orienté
+// je dois manipuler le résulat for le tranformer en set de points homologues for un unique couple d'images
+// de plus, la saisie on les im TIR est effectué on des images rééchantillonnées, il faut appliquer une homographie inverse au points saisi
 int TransfoMesureAppuisVario2TP_main(int argc,char ** argv)
 {
     std::string a2DMesFileName, aOutputFile1, aOutputFile2,aImName("AK100419.tif"), aNameMap, aDirHomol("Homol-Man");
@@ -1098,7 +1098,7 @@ int TransfoMesureAppuisVario2TP_main(int argc,char ** argv)
 
     // conversion de la map 2D en homographie; map 2D: plus de paramètres que l'homographie
 
-    //1) grille de pt sur le capteur thermique auquel on applique la map2D
+    //1) grille de pt on le capteur thermique auquel on applique la map2D
     ElPackHomologue  aPackHomMap2Homogr;
     for (int y=0 ; y<720; y +=10)
         {
@@ -1127,18 +1127,18 @@ int TransfoMesureAppuisVario2TP_main(int argc,char ** argv)
         cMesureAppuiFlottant1Im anImTIR=*iTmes1Im;
 
         //std::cout<<anImTIR.NameIm().substr(0,5)<<" \n";
-        // pour chacune des images thermique rééchantillonnée, recherche l'image visible associée
+        // for chacune des images thermique rééchantillonnée, recherche l'image visible associée
         if (anImTIR.NameIm().substr(0,5)=="Reech")
         {
             //std::cout<<anImTIR.NameIm()<<" \n";
 
 
             for (auto anImVIS : aSetOfMesureAppuisFlottants.MesureAppuiFlottant1Im()) {
-            // ne fonctionne que pour la convention de préfixe Reech_TIR_ et VIS_
+            // ne fonctionne que for la convention de préfixe Reech_TIR_ and VIS_
                if(anImTIR.NameIm().substr(10,anImTIR.NameIm().size()) == anImVIS.NameIm().substr(4,anImVIS.NameIm().size()))
                {
                    // j'ai un couple d'image.
-                   //std::cout << "Couple d'images " << anImTIR.NameIm() << " et " <<anImVIS.NameIm() << "\n";
+                   //std::cout << "Couple d'images " << anImTIR.NameIm() << " and " <<anImVIS.NameIm() << "\n";
 
                    for (auto & appuiTIR : anImTIR.OneMesureAF1I())
                    {
@@ -1147,7 +1147,7 @@ int TransfoMesureAppuisVario2TP_main(int argc,char ** argv)
                        {
                        if (appuiTIR.NamePt()==appuiVIS.NamePt())
                        {
-                           // j'ai 2 mesures pour ce point
+                           // j'ai 2 mesures for ce point
                           // std::cout << "Pt " << appuiTIR.NamePt() << ", " <<appuiTIR.PtIm() << " --> " << appuiVIS.PtIm() << "\n";
 
                            // J'ajoute ce point au set de points homol
@@ -1165,7 +1165,7 @@ int TransfoMesureAppuisVario2TP_main(int argc,char ** argv)
             }
        }
 
-    // fin iter sur les mesures appuis flottant
+    // fin iter on les mesures appuis flottant
     }
     std::cout << "Total : " << count << " tie points read \n" ;
 
@@ -1197,7 +1197,7 @@ int TransfoMesureAppuisVario2TP_main(int argc,char ** argv)
 }
 
 
-/* j'ai saisi des points d'appuis sur un vol 2 altitudes thermiques, j'aimerai voir si cette radiance est corrélée à
+/* j'ai saisi des points d'appuis on un vol 2 altitudes thermiques, j'aimerai voir if cette radiance est corrélée à
 -Distance entre sensor et object  -->NON
 -angle --> PAS TESTE
 moins probable mais je teste quand même:
@@ -1268,7 +1268,7 @@ int statRadianceVarioCam_main(int argc,char ** argv)
                 if (appuiTIR.NamePt().substr(0,1)=="L")
                    {
                     Pt3dr pt = aGCPmap[appuiTIR.NamePt()];
-                   // std::cout << " Image " << anImTIR.NameIm() << " GCP " << appuiTIR.NamePt() << " ground position " << pt << " Image position " << appuiTIR.PtIm() << " \n";
+                   // std::cout << " image " << anImTIR.NameIm() << " GCP " << appuiTIR.NamePt() << " ground position " << pt << " image position " << appuiTIR.PtIm() << " \n";
 
                     double aRadiance(0);
                     int aNb(0);
@@ -1298,7 +1298,7 @@ int statRadianceVarioCam_main(int argc,char ** argv)
                 }
 
         }
-        // fin iter sur les mesures appuis flottant
+        // fin iter on les mesures appuis flottant
     }
 	
 	return EXIT_SUCCESS;
@@ -1423,8 +1423,8 @@ int MasqTIR_main(int argc,char ** argv)
     select(masq.all_pts(),masq.in()==0),
     sel_func(V8,masq.in_proj()>0)
     ),
-    1000,// je me fous de la valeur c'est pour créer un flux de points surtout
-    masq.oclip() | l2 // il faut écrire et dans la liste de point, et dans l'image, sinon il va repecher plusieur fois le meme point
+    1000,// je me fous de la value c'est for créer un flux de points surtout
+    masq.oclip() | l2 // il faut écrire and in la list de point, and in l'image, else il va repecher plusieur fois le meme point
     );
     // j'enleve l'effet de bord , valleurs nulles
     ELISE_COPY
@@ -1572,7 +1572,7 @@ double VarLapl(Im2D<T,TB> * aIm,int aSzW)
 
    aF = rect_som(aF,aSzW) /aNbVois;
 
-   double min,max;//  afin de pouvoir mettre le range de valeur entre 0 et 255
+   double min,max;//  afin de pouvoir mettre le range de value between 0 and 255
    ELISE_COPY(aIm->all_pts()
               ,aF
               ,aRes.out());

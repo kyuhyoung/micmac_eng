@@ -41,18 +41,18 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 // bool DebugVisb=false;
 
-//  Lorsque l'on veut ponderer des observation ponctuelle dans le plan, 
-//  si elles tombe toute au meme endroit, chacune doit avoir un poid proportionnel
-// a l'inverse du nombre d'observation;
-//  Ici cela est gere avec une certaine incertitude, les observation etant suposee
+//  Lorsque l'on veut ponderer des observation ponctuelle in le plan, 
+//  if elles tombe toute au meme endroit, chacune doit avoir un poid proportionnel
+// a l'inverse du number d'observation;
+//  Ici cela est gere with une certaine incertitude, les observation etant suposee
 // etre localisees selon une gaussienne
 
 
 /*
 */
 
-class cCombinPosCam;  // Un sous ensemble d'image secondaire
-class cSetCombPosCam;  // Contient toute les combinaison avec des moyens d'y acceder (via flag ou autre)
+class cCombinPosCam;  // Un under ensemble d'image secondaire
+class cSetCombPosCam;  // Contient toute les combinaison with des moyens d'y acceder (via flag or autre)
 class cCaseOcupIm;
 class cPCICentr;
 class cPoseCdtImSec ;
@@ -74,9 +74,9 @@ typedef REAL8 tBaseImOccup;
 int NbOccup = 50;
 
 // A Angle  , O Optimum
-//  La formule est faite pour que
+//  La formule est faite for que
 //   *  on ait un gain proportionnel a l'angle en 0
-//   *  un maximum pour Opt avec une derivee nulle
+//   *  un maximum for Opt with une derivee nulle
 //   *
 
 
@@ -418,7 +418,7 @@ class cCombinPosCam
        int mFlag;
        int mNbIm;
        std::vector<cPoseCam*> mVCam;
-       double mGainDir;   // Gain en direction sans tenir compte du fait que image ne se recouvrent pas
+       double mGainDir;   // Gain en direction without tenir compte du fait que image ne se recouvrent pas
        double mGainGlob;  // Gain pondere en tenant compte du fait que image ne se recouvrent pas
 
        cOneSolImageSec MakeSol(double aPenalCard);
@@ -655,7 +655,7 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
    }
    if (Test) ELISE_ASSERT(aP44!=0,"Cannot find P44");
 
-   // On cree un tableau de cases vides
+   // On cree un array de cases vides
 
    const CamStenope * aCS0 = aPC0->CurCam();
    Pt2di aSz = aCS0->Sz();
@@ -675,7 +675,7 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
        }
    }
 
-   // On compte le nombre de points de liaisons par case et par image
+   // On compte le number de points de liaisons par case and par image
    //      aVCase[aKY][aKX].AddPts(aPIm,aProf,1.0);
    //      aVP[aKPos]->CdtImSec()->mNbPts++
    
@@ -715,7 +715,7 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
 
 
 
-   // On finalise les cases : calcul 3D et  modulation de la fonction de poids
+   // On finalise les cases : computation 3D and  modulation de la function de poids
    {
        double aSomPds = SomPds(aVCase);
        double aSomMoy = aSomPds / (aNbCaseY * aNbCaseX);
@@ -733,7 +733,7 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
            }
        }
 
-       // Mis a somme de 1 le poids sur les cases
+       // Mis a somme de 1 le poids on les cases
        aSomPds = SomPds(aVCase);
        for (int aKY = 0 ; aKY < aNbCaseY ; aKY++)
        {
@@ -748,8 +748,8 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
 
     // Pre selection  (cChoixImMM : aCIM)
     // On 
-    //   - selectionne les images   sur un criteres purement geometrique (surtout pour limiter la combinatoire)
-    //   -  calcule (pondere par les cases) de la visibilite de  l'image principale dans chaque image secondair
+    //   - selectionne les images   on un criteres purement geometrique (surtout for limiter la combinatoire)
+    //   -  compute (pondere par les cases) de la visibilite de  l'image principale in chaque image secondair
 
     std::vector<cPoseCam*> aVPPres;
     for(int aKP=0 ; aKP<aNbPose ;aKP++)
@@ -770,7 +770,7 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
        }
     }
 
-   // Limitation du nombre si necessaire , on selectionne les K premiere images sur le critere
+   // Limitation du number if necessaire , on selectionne les K premiere images on le critere
    // Gain * Ratio  (Gain purement geom, Ratio recouvrement)
 
     cCmpImOnGainHom aCmp;
@@ -779,7 +779,7 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
     int aNbImAct = (int)aVPPres.size();
 
 
-    // Calcul de l'image d'occupation et de la matrice de recouvrement
+    // computation de l'image d'occupation and de la matrix de recouvrement
     for (int aKP=0 ; aKP<aNbImAct ;aKP++)
     {
         aVPPres[aKP]->CdtImSec()->MakeImageOccup();
@@ -809,7 +809,7 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
          GetSubset(aSubSub,aCard,aNbImAct);
          std::vector<cSetCdtCIMS> aVSetPond;
 
-         // On calcule un cout avec une formule approx Sigm(gain/Sigma(Rec))
+         // On compute un cout with une formule approx Sigm(gain/Sigma(Rec))
          for (int aKS = 0 ; aKS<int(aSubSub.size()) ; aKS++)
          {
               const std::vector<int> & aSet = aSubSub[aKS];
@@ -829,7 +829,7 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
               aVSetPond.push_back(cSetCdtCIMS(aKS,aSomGain*aCard));
          }
 
-         // On trie pour avoir les K meilleurs sur ce cout approx
+         // On trie for avoir les K meilleurs on ce cout approx
          std::sort(aVSetPond.begin(),aVSetPond.end());
          int aNbTest = ElMin(NbTestSetPrecis,int(aVSetPond.size()));
 
@@ -840,7 +840,7 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
          }
     }
 
-    // On calcul les cout exact
+    // On computation les cout exact
     aSetComb.SetNoAMBC();
 
     ElTimer aChrono;
@@ -865,11 +865,11 @@ bool  cAppliApero::ExportImSecMM(const cChoixImMM & aCIM,cPoseCam* aPC0,const cM
     }
 
 
-   // calcul de l'occupation de la sphere des direction
+   // computation de l'occupation de la sphere des direction
 
 
 
-   // Fin, on libere la mémoire tempo sur les cPoseCdtImSec
+   // Fin, on libere la mémoire tempo on les cPoseCdtImSec
    for(int aKP=0 ; aKP<aNbPose ;aKP++)
    {
        delete mVecPose[aKP]->CdtImSec() ;

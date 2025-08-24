@@ -51,7 +51,7 @@ template <class TIn,class TOut> class  cTImageChCoord
 	   typedef Im2D<TOut,tBaseOut>            tImOut;
 
 
-	   // Chgt de coordonnees , sans chercher a econimiser
+	   // Chgt de coordinates , without chercher a econimiser
 	   // les appels a Dist
 	   static void DoChcExactBilin
 		(

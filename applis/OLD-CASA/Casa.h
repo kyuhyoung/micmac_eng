@@ -60,7 +60,7 @@ using namespace NS_SuperposeImage;
 namespace NS_Casa
 {
 
-// Dans un faceton la normale est orientee dans le meme sens que les rayon camera
+// in un faceton la normale est orientee in le meme sens que les rayon camera
 class cFaceton
 {
      public :
@@ -75,8 +75,8 @@ class cFaceton
         // des ecarts quad a l'ensemble
         static int  GetIndMoyen(const std::vector<cFaceton> & aVF);
 
-     // Terminologie claire pour un cylindre, de maniere generale, est ce que la normale
-     // est dans le sens des z (de la coord anam)  decroissant 
+     // Terminologie claire for un cylindre, de maniere generale, est ce que la normale
+     // est in le sens des z (de la coord anam)  decroissant 
          bool IsFaceExterne(const cInterfSurfaceAnalytique &) const;
 
      private :
@@ -86,8 +86,8 @@ class cFaceton
          Pt3dr  mNormale;
 };
 
-// On accumule l'info dans le moment d'inertie. Le faceton
-// compile, est defini par son centre et sa normale (calcule
+// On accumule l'info in le moment d'inertie. Le faceton
+// compile, est defini par son centre and sa normale (compute
 // par diag de la mat d'inertie).  L'index est un point
 // moyen de l'image
 

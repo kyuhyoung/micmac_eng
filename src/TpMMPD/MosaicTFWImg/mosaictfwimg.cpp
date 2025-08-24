@@ -57,17 +57,17 @@ cGeoImg::cGeoImg(const string & aName) :
     mSzPxl = mTif.sz();
     cout<<"Import image : "<<mName<<endl;
 
-    // Calcul coordonnées 4 coins images sur terrain
+    // computation coordonnées 4 coins images on terrain
     Pt2dr aHGTer = Pxl2Ter(Pt2dr(0,0));
     Pt2dr aBGTer = Pxl2Ter(Pt2dr(0,mSzPxl.y));
     Pt2dr aHDTer = Pxl2Ter(Pt2dr(mSzPxl.x,0));
     Pt2dr aBDTer = Pxl2Ter(Pt2dr(mSzPxl));
-    // tirer le minXYTer et max XYTer
+    // tirer le minXYTer and max XYTer
     double maxX = ElMax4(aHGTer.x, aBGTer.x, aHDTer.x, aBDTer.x);
     double minY = ElMin4(aHGTer.y, aBGTer.y, aHDTer.y, aBDTer.y);
     double minX = ElMin4(aHGTer.x, aBGTer.x, aHDTer.x, aBDTer.x);
     double maxY = ElMax4(aHGTer.y, aBGTer.y, aHDTer.y, aBDTer.y);
-    // calculer la taille box terrain
+    // compute la taille box terrain
     mSzTer = Pt2dr(maxX, maxY) - Pt2dr(minX, minY);
     mSzTerInPxl = Pt2dr(abs(mSzTer.x / mGSD.x), abs(mSzTer.y / mGSD.y));
     cout<<" + SzImgRectifi(Pxl) "<<mSzPxl<<" + SzImTerrain(m) "<<mSzTer<<" + SzImTerrain(pxl) "<<mSzTerInPxl<<endl;
@@ -153,7 +153,7 @@ void cAppliMosaicTFW::CalculParamMaxMin()
     mOffsetGlobal = Pt2dr(mImOffsetMinX->Offset().x, mImOffsetMinY->Offset().y);
 
     // rectification direct sens image-terrain
-    // calcul taille d'image mosaic à partir de sz terrain
+    // computation taille d'image mosaic à partir de sz terrain
     Pt2di aSzMosaic(0,0);
     Pt2dr aSzMosaicTer = aPtMaxTerHD-mOffsetGlobal;
     cout<<endl<<"OffsetGlob : "<<mOffsetGlobal<<" -MaxTer : "<<aPtMaxTerHD<<" -SzTerBox "<<aSzMosaicTer<<endl;
@@ -172,7 +172,7 @@ void cAppliMosaicTFW::CalculParamMaxMin()
         {
             for (aPt.y=0; aPt.y<aImg->SzPxl().y; aPt.y++)
             {
-                // calcul pt3D
+                // computation pt3D
                 Pt2dr aPtTer = aImg->Pxl2Ter(Pt2dr(aPt));
                 // transfer from pt3d terrain to pt3d image
                 //Pt2dr aPtRec = aPtTer-mOffsetGlobal;

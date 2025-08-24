@@ -40,7 +40,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 class cAppliMMOnePair;  // Appli principale
-class cMMOnePair;  // Cree pour gerer l'ordre d'initialisatrion (a faire avant cAppliWithSetImage), afin de transformer en Pattern les 2 images
+class cMMOnePair;  // Cree for gerer l'ordre d'initialisatrion (a faire before cAppliWithSetImage), afin de transformer en Pattern les 2 images
 
 
 std::string Pair2PattWithoutDir(std::string & aDirRes,const std::string & aName1,const std::string & aName2);
@@ -327,7 +327,7 @@ cMMOnePair::cMMOnePair(int argc,char ** argv) :
 
 
 
-             // System(aCom);  //cMMOnePair Car sinon la non existence des epi, bloque le reste a cause a AppliWitSetImage
+             // System(aCom);  //cMMOnePair Car else la non existence des epi, bloque le reste a cause a AppliWitSetImage
              ExeCom(aCom);
        }
   }
@@ -449,7 +449,7 @@ cAppliMMOnePair::cAppliMMOnePair(int argc,char ** argv) :
            {
               MatchTwoWay(aStep,aStep+1);
            }
-           if ((aStep==1) && mCreateEpip)  // Mis ici pour Nuage2Ply
+           if ((aStep==1) && mCreateEpip)  // Mis ici for Nuage2Ply
            {
               GenerateMTDEpip(true);
               GenerateMTDEpip(false);
@@ -670,7 +670,7 @@ void cAppliMMOnePair::DoMasqReentrant(bool MasterIs1,int aStep,bool aLast)
                           + aNameInitA + aBlk
                           + aNameInitB + aBlk
                           + mNameOriInit + aBlk
-                          + " DoM=true"  // Pas utilise dans coher epip, et peu creer bug ...
+                          + " DoM=true"  // Pas utilise in coher epip, and peu creer bug ...
                           + " ByE="      + ToString(mModeEpip)
                           + " NumPx="    + ToString(aStep)
                           + " NumMasq="  + ToString(aLast ? (aStep-1) : aStep)
@@ -687,7 +687,7 @@ void cAppliMMOnePair::DoMasqReentrant(bool MasterIs1,int aStep,bool aLast)
 
      if (EAMIsInit(&mMM1PMasq3D)) aCom = aCom + " Masq3D=" +mMM1PMasq3D;
 
-     aCom = aCom + " RedM=1.0 ";   // Avec la prog dyn, pas de raison de ne pas faire ts le temps a full resol
+     aCom = aCom + " RedM=1.0 ";   // with la prog dyn, pas de raison de ne pas faire ts le temps a full resol
      if (aLast)
      {
         aCom = aCom + " ExpFin=true " ;

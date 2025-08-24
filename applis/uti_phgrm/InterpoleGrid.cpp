@@ -135,7 +135,7 @@ class cInterpoleGridCal
 	Box2dr          mBox;
 
         double           mFocaleInit;
-	Pt2dr            mPPCInit;  // PP et Centre Dist sont confondu
+	Pt2dr            mPPCInit;  // PP and Centre Dist sont confondu
         ElDistRadiale_PolynImpair mDist;
         cSetEqFormelles  mSetEq;
         cParamIFDistRadiale * mPIF;

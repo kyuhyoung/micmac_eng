@@ -214,7 +214,7 @@ template <class Type>  class cExtractDir
          double Score(const cPt2dr & ,double aTeta);
 
           tIm     mIm;  ///< smart pointer , will indicate that we need the object (no to free)
-          tDIm&   mDIm;  ///< reference pour acces rapide
+          tDIm&   mDIm;  ///< reference for acces rapide
           float   mRhoMin;  ///<  Rho Min for correlation
           float   mRhoMax;  ///< Rho max for radiom & correl
 
@@ -375,7 +375,7 @@ template <class Type> class cOptimSymetryOnImage : public cDataMapping<tREAL8,2,
         protected :
 
            cPt2dr                       mC0;     ///<   Centers , can be updated
-           const tDIm &                 mDIm;    ///< Image on which optimization os made
+           const tDIm &                 mDIm;    ///< image on which optimization os made
            const cDiffInterpolator1D &  mInterp; ///< Interpolator, used for sub-pixel refinement
            std::vector<cPt2dr>          mPtsOpt; ///< set of points used for computation
 };

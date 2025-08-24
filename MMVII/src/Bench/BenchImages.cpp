@@ -14,9 +14,9 @@ static double FoncTestIm(const cPt2di & aP)
    return aP.x() - 1.234 * aP.y() + 1.0 * (1 +pow(std::abs(aP.x()),0.9) + std::pow(std::abs(aP.y()),1.4));
 }
 
-/*====================== IMAGE BENCH ===========================================*/
-/*====================== IMAGE BENCH ===========================================*/
-/*====================== IMAGE BENCH ===========================================*/
+/*====================== image BENCH ===========================================*/
+/*====================== image BENCH ===========================================*/
+/*====================== image BENCH ===========================================*/
 
 /**  Test that an image do what an image must do, store the value of a pixel
    and restor them when we ask for it (i.e GetV and SetV)
@@ -98,7 +98,7 @@ template <class Type> void TestOneImage2D(const cPt2di & aP0,const cPt2di & aP1)
         }
     }
     cIm2D<Type> aIDup = aPIm.Dup();
-    // Test sur le flux itere
+    // Test on le flux itere
     MMVII_INTERNAL_ASSERT_bench(aNbX==(aP1.x()-aP0.x()),"Bench image error");
     MMVII_INTERNAL_ASSERT_bench(aNb==(aP1.x()-aP0.x())*(aP1.y()-aP0.y()),"Bench image error");
     MMVII_INTERNAL_ASSERT_bench(aSomX==SomIntI(aP0.x(),aP1.x()),"Bench image error");
@@ -361,7 +361,7 @@ template <class TypeImage,class tBase,class TypeFile>  void TplBenchFileImage(co
     // Check write image
     TplBenchReadGlobIm(aNameTiff,aDImDup);
  
-    // Ecriture avec des images origine en (0,0)
+    // Ecriture with des images origine en (0,0)
     for (int aK=0 ; aK<3 ; aK++)
     {
          double aDyn = aDyn0 * 2.0 * RandUnif_0_1();
@@ -378,7 +378,7 @@ template <class TypeImage,class tBase,class TypeFile>  void TplBenchFileImage(co
     }
     TplBenchReadGlobIm(aNameTiff,aDImDup);
 
-    // Ecriture avec des images origine variable
+    // Ecriture with des images origine variable
     for (int aK=0 ; aK<3 ; aK++)
     {
          double aDyn = aDyn0 * 2.0 * RandUnif_0_1();
@@ -394,7 +394,7 @@ template <class TypeImage,class tBase,class TypeFile>  void TplBenchFileImage(co
     }
     TplBenchReadGlobIm(aNameTiff,aDImDup);
 
-    // Lecture avec des image en (0,0)
+    // Lecture with des image en (0,0)
     for (int aK=0 ; aK<20 ; aK++)
     {
          double aDyn = (1/aDyn0) * 2.0 * RandUnif_0_1();
@@ -410,7 +410,7 @@ template <class TypeImage,class tBase,class TypeFile>  void TplBenchFileImage(co
          }
     }
 
-    // Lecture avec des image avec origine variable
+    // Lecture with des image with origine variable
     for (int aK=0 ; aK<20 ; aK++)
     {
          double aDyn = (1/aDyn0) * 2.0 * RandUnif_0_1();

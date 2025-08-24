@@ -105,7 +105,7 @@ void cAppliTestIsabelle::Test0()
 	Affichage a(&lstImg, param.dossierImg(), img0);
 	time_t timer1, timer2, timer3, timeri, timerf;
 
-	const std::vector<std::string> * aVN = mICNM->Get("Key-Set-HomolPastisBin");	//vecteur des noms des fichiers
+	const std::vector<std::string> * aVN = mICNM->Get("Key-Set-HomolPastisBin");	//vector des noms des fichiers
 	std::cout << aVN->size() << "\n";
 	timeri=time(NULL);
 	int nbFich= param.lastfichier().IsInit()? min(signed(aVN->size()),param.lastfichier().Val()) : aVN->size();
@@ -122,7 +122,7 @@ void cAppliTestIsabelle::Test0()
 
 		timer1=time(NULL);
 		
-			//nom des images du fichier (*aVN)[aK]
+			//nom des images du file (*aVN)[aK]
 		  	std::pair<std::string,std::string>  aPair = mICNM->Assoc2To1("Key-Assoc-CpleIm2HomolPastisBin", (*aVN)[aK],false);	
 			std::cout <<  (*aVN)[aK] << "\n";
 
@@ -153,7 +153,7 @@ void cAppliTestIsabelle::Test0()
 			PaireImg p12(numImg2, (*aVN)[aK]);
 			PaireImg* itp=lstImg.at(i1).AddPaire(p12);
 						
-			//lecture du fichier (*aVN)[aK]
+			//lecture du file (*aVN)[aK]
 			ElPackHomologue aPack = ElPackHomologue::FromFile(mDir+(*aVN)[aK]);
 		
 			int n=aPack.size();	
@@ -163,7 +163,7 @@ void cAppliTestIsabelle::Test0()
 			}
 			(*itp).SetNbPtsInit(n);
 	
-			//liste des paires de points homologues
+			//list des paires de points homologues
 			list<Point1> tempLstPt;
 			for (ElPackHomologue::const_iterator  itH=aPack.begin(); itH!=aPack.end() ; itH++)
 			{				
@@ -223,7 +223,7 @@ void cAppliTestIsabelle::Test0()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void cAppliTestIsabelle::Traitement (ListPt* lstPtInit, ListPt* lstPtFin, ListImg* lstImg, int imgpred, BenchQdt<TypeFPRIM<Point2>,Point2 >* bench, Affichage* a) {
-//traitement et affichage
+//traitement and affichage
 	(*lstPtFin).clear();
 	CalculsSurLesPoints(lstPtInit, &((*lstImg).at(imgpred)), bench);
 	for(list<Point2>::const_iterator  itP=(*lstPtInit).begin(); itP!=(*lstPtInit).end(); itP++){
@@ -260,7 +260,7 @@ void cAppliTestIsabelle::CalculsSurLesPoints (ListPt* lstPtInit, Image* img1, Be
 			(*itP).SetSelect(true); //le point est pris	
 			(*bench).insert(*itP);
 
-			//pour chaque homologue du point, mise à jour des informations sur la paire correspondante
+			//for chaque homologue du point, mise à jour des informations on la paire correspondante
 			for(list<Coord>::const_iterator  itC=(*itP).begin(); itC!=(*itP).end(); itC++){
 				int numImg2=(*itC).GetImg();
 				PaireImg* itp=&(*find((*img1).begin(),(*img1).end(),numImg2));
@@ -310,7 +310,7 @@ void cAppliTestIsabelle::CalculsSurLesPoints (ListPt* lstPtInit, Image* img1, Be
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void cAppliTestIsabelle::Sortie (ListPt* lstPtInit, Image* img) {
-//écriture des points retenus dans un fichier
+//écriture des points retenus in un file
 	ElPackHomologue *aPack = new ElPackHomologue[(*img).GetNbPaires()];
 	for(list<Point2>::iterator  itP=(*lstPtInit).begin(); itP!=(*lstPtInit).end(); itP++) {
 		if(!(*itP).GetSelect()) continue;
@@ -346,7 +346,7 @@ int main(int argc,char ** argv)
    );
 
 	std::cout << "ARGC " << argc << "\n";
-	for (int aK =0 ; aK< argc ; aK++) //verification de nombre d'arguments "in"
+	for (int aK =0 ; aK< argc ; aK++) //verification de number d'arguments "in"
 		std::cout << "ARGV[" << aK << "]=" << argv[aK] << "\n";
 	ELISE_ASSERT(argc>=2,"Pas assez d'arguments");
 	cParamFusionSift aPSF = StdGetObjFromFile<cParamFusionSift>

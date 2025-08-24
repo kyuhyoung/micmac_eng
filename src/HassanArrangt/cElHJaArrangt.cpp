@@ -194,7 +194,7 @@ void cElHJaArrangt::ConstruireAll()
     if (toShoTime)
         cout << "Time Inter  Emprise : " << aChrono.ValAndInit() << "\n";
 
-     // Construction des facettes dans chaque plan
+     // Construction des facettes in chaque plan
      for (tItPl itPl = mPlans.begin() ; itPl!=mPlans.end() ; itPl++)
          (*itPl)->AddArcEmpriseInGraphe();
 
@@ -207,7 +207,7 @@ void cElHJaArrangt::ConstruireAll()
     if (toShoTime)
         cout << "Time Facette  : " << aChrono.ValAndInit() << "\n";
 
-     // Construction des  relations entre facettes
+     // Construction des  relations between facettes
      
      for (tItFac itF = mFacettes.begin() ; itF!=mFacettes.end() ; itF++)
 	 (*itF)->MakeAdjacences();
@@ -339,7 +339,7 @@ void cElHJaArrangt::TestInteractif()
        aF2->Show(1.0,P8COL::blue,false);
        aF1->IsRecouvrt(aF2,true); 
    }
-   // Visu des relation d'adjacence avec incomp
+   // Visu des relation d'adjacence with incomp
    for (INT aK=0; true; aK++)
    {
        cElHJaFacette * aF = mVisu->GetFacette(mFacettes);

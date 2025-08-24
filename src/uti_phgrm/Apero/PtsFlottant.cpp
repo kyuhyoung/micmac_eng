@@ -277,9 +277,9 @@ double cOneAppuisFlottant::AddObs(const cObsAppuisFlottant & anObs,cStatObs & aS
 
 
 
-    // A verifier, mais probable que la methode de subsistution degenere
-    // si il n'y a que deux  points (Lambda non inversible)
-    //En fait, sans doute pas degeneree car attache au point !
+    // A verifier, but probable que la method de subsistution degenere
+    // if il n'y a que deux  points (Lambda non inversible)
+    //En fait, without doute pas degeneree car attache au point !
     if   (aNbContrainte<3) // (|| ((aNbOK==0) && ((mInc.x <=0)  || (mInc.y <=0) || (mInc.z <=0))))
     {
 
@@ -395,7 +395,7 @@ double cOneAppuisFlottant::AddObs(const cObsAppuisFlottant & anObs,cStatObs & aS
     int    aNbMes = 0;
     for (int aK=0 ; aK<int(mCams.size()) ; aK++)
     {
-        // mPdsIm[aK]>0 Modif MPD , erreur sur erreur Max et Moy
+        // mPdsIm[aK]>0 Modif MPD , error on error Max and Moy
         if (mCams[aK]->RotIsInit() && (mPdsIm[aK]>0))
         {
             Pt2dr anEc = aRes.mEcIm[aK];

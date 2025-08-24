@@ -302,7 +302,7 @@ template <class Type>
         aVCoord.push_back(aCoord);
         aNbElem /=  aCoord;
     }
-    // Favorize 2D vect because we can check with 2D Image
+    // Favorize 2D vect because we can check with 2D image
     cPt2di aSz2= cPt2di(10+RandUnif_N(50),10+RandUnif_N(50));
     if (RandUnif_0_1() < 0.3)
     {

@@ -87,7 +87,7 @@ void cParamPointeInit::ConvPointeImagePolygone(Pt2dr &)
 
 const cPolygoneEtal::tContCible & cParamPointeInit::CiblesInit() const
 {
-    // EN FAIT CETTE FONCTION, virtelle, n'est jamais appelee
+    // EN FAIT CETTE function, virtelle, n'est jamais appelee
      static cPolygoneEtal::tContCible aRes;
      return aRes;
 }
@@ -177,8 +177,8 @@ void cWPointe::Refresh()
 /*                                              */
 /************************************************/
 
-// mDirH et mDirV pas necessairement orthognaux
-// car projection des directions verticales et horizontales
+// mDirH and mDirV pas necessairement orthognaux
+// car projection des directions verticales and horizontales
 // Normale mDirH mDirV : repere directe
 
 
@@ -481,7 +481,7 @@ cParamEllipse cPointeInit::InitParamEllipe(const cCibleCalib & aCible,double aRa
 
    Pt3dr aC3 = aCible.Position();
    Pt2dr aC2 = mPPI.Norm2Im(mCam.R3toF2(aC3));
-   // Ce sont des diametre en mm , d'ou le / 2000
+   // Ce sont des diametre en mm , d'or le / 2000
    if (aRay < 0)
       aRay =  aCible.Rayons()[0] ;
    aRay /= (1000.0 * 2);

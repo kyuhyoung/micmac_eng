@@ -173,7 +173,7 @@ class cCamera_Param_Unif_Gen :  public CamStenope
 	// Redef de CamStenope
 	cParamIntrinsequeFormel * AllocParamInc(bool isDC2M,cSetEqFormelles &);
 
-        // A definir dans  cCamera_Param_Unif
+        // A definir in  cCamera_Param_Unif
 	virtual cPIF_Unif_Gen * PIF_Gen(bool isDistC2M,cSetEqFormelles &) = 0;
     private :
 };
@@ -199,12 +199,12 @@ template <class TDistR,class TDistF,const int NbVar,const int NbState>
                     const tParamAFocal  &,
 		    const std::vector<double> * Params=0,
 		    const std::vector<double> * State=0
-           );  // Sens C2M, Vars et States a 0
+           );  // Sens C2M, Vars and States a 0
 
 		   
            ~cCamera_Param_Unif();
 
-          // Version specifique, pour manipuler les param
+          // Version specifique, for manipuler les param
           tDist &  DistUnif();
           const tDist &  DistUnif() const;
 
@@ -212,7 +212,7 @@ template <class TDistR,class TDistF,const int NbVar,const int NbState>
 	  cDist_Param_Unif_Gen & DistUnifGen() ;
 	  const cDist_Param_Unif_Gen & DistUnifGen() const ;
 
-          // Version generique pour manipulation par CamStenope
+          // Version generique for manipulation par CamStenope
 	   ElDistortion22_Gen   &  Dist();
 	   const ElDistortion22_Gen   &  Dist() const;
 
@@ -623,7 +623,7 @@ template <class TPreC,const int NbRad,const int NbDec,const int NbPolyn,const in
          static Pt2d<tVal> GuessInv(const  Pt2d<tVal> &,const tVal * aVar,const tVal * aState) ;
 
         static ElDistortion22_Gen   *  DistPreCond(const double * aVar,const double *aState) ;
-// Les degres sont recalcule a chaque fois, c'est un perte de temps mineure mais un facilite de coherence
+// Les degres sont recalcule a chaque fois, c'est un perte de temps mineure but un facilite de coherence
          static int  mDegreRad[NBV ? NBV : 1];
          static int  mDegreDec[NBV ? NBV : 1];
          static int  mDegrePolyn[NBV ? NBV : 1];
@@ -654,7 +654,7 @@ typedef  cCamera_Param_Unif<cDistGen_FishEye_Generator<cFELinear_Precond<double>
 typedef  cPIF_Unif<cDistGen_FishEye_Generator<cFELinear_Precond<double>,5,2,2,NbV522>,cDistGen_FishEye_Generator<cFELinear_Precond<Fonc_Num>,5,2,2,NbV522>,NbV522,1> cPIFLin_FishEye_5_2_2;
 */
 
-// Nombre de variable calcule par TestFishEye
+// number de variable compute par TestFishEye
 
 typedef  cDist_Param_Unif<cDistGen_FishEye_Generator<cFELinear_Precond<double>,10,5,5,50>,cDistGen_FishEye_Generator<cFELinear_Precond<Fonc_Num>,10,5,5,50>,50,1> cDistLin_FishEye_10_5_5;
 typedef  cCamera_Param_Unif<cDistGen_FishEye_Generator<cFELinear_Precond<double>,10,5,5,50>,cDistGen_FishEye_Generator<cFELinear_Precond<Fonc_Num>,10,5,5,50>,50,1> cCamLin_FishEye_10_5_5;
@@ -750,7 +750,7 @@ typedef  cCamera_Param_Unif<cDistRadFour19x2_Generator<double>,cDistRadFour19x2_
 typedef  cPIF_Unif<cDistRadFour19x2_Generator<double>,cDistRadFour19x2_Generator<Fonc_Num>,17,3>          cPIF_RadFour19x2;
 
 
-// Methodes deplacees dans le header suite a des erreurs de compilation sous MacOS entre gcc4.0 et gcc4.2 (LLVM)
+// Methodes deplacees in le header suite a des erreurs de compilation under MacOS between gcc4.0 and gcc4.2 (LLVM)
 // du type : error: explicit specialization of 'TheType' after instantiation
 
 template <class TDistR,class TDistF,const int NbVar,const int NbState>

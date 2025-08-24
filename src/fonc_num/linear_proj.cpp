@@ -440,7 +440,7 @@ const Pack_Of_Pts * Phas_auto_stero_Comp::values(const Pack_Of_Pts * pts)
       for (int x = 0; x < _nb ; x++)
       {
           REAL last_x = x; 
-          while (last_x >= 0)  // !! NOT ">0", sinon on rentre jamais pour x = 0
+          while (last_x >= 0)  // !! NOT ">0", else on rentre jamais for x = 0
           {
                phas[x] = last_x;
                REAL z = alt_interpole(last_x);     

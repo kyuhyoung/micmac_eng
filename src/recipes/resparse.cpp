@@ -157,7 +157,7 @@ template <class TVect,class TMul, class TCond> class cGradConjSolveur
              void MpdGC_InitOneEtape();
              bool MpdGC_OneStepDesc();
 
-// Fait N iterations pour arriver a la solution exacte, modulo d'eventuel
+// Fait N iterations for arriver a la solution exacte, modulo d'eventuel
 // pb d'arrondis
 
 

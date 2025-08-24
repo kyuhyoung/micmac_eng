@@ -69,7 +69,7 @@ template <class TVal,class tFVal,class tFPds>
    if (aNb==0) return;
    if (aPds<=0) return;
  // std::cout << " SplitArrounKthValue " << aNb << " " << aKth << "\n";
-   // On calcule la moyenne
+   // On compute la moyenne
    TVal aMoy(0);
    U_INT8 aSomP=0;
 
@@ -83,7 +83,7 @@ template <class TVal,class tFVal,class tFPds>
 
    aMoy = aMoy / aSomP;
 
-   // On permut de maniere a ce que les valeur du debut soit < Moy  et celle de la fin >=Moy
+   // On permut de maniere a ce que les value du debut soit < Moy  and celle de la fin >=Moy
    int aK0 =0;
    int aK1 = aNb-1;
    U_INT8 aP0Moins = 0;
@@ -108,7 +108,7 @@ template <class TVal,class tFVal,class tFPds>
    ELISE_ASSERT(aK0==aK1,"Verif in SplitArrounKthValue");
    ELISE_ASSERT((aP0Moins+aP0Plus)==aSomP,"Verif in SplitArrounKthValue");
 
-   // Si le cas, on n'a pas progresse, toute les valeur sont egale
+   // if le cas, on n'a pas progresse, toute les value sont egale
    if  (aK0==0)
    {
        return;
@@ -677,7 +677,7 @@ void LoadTrScaleRotate
           const Pt2di & aP1Int,
           const Pt2di & aP2Int,
           const Pt2di & aP1Out,
-          double      aScale,  // Par ex 2 pour image 2 fois + petite
+          double      aScale,  // Par ex 2 for image 2 fois + petite
           int         aRot
      )
 {
@@ -901,7 +901,7 @@ void TestGridCam()
 }
 
 
-// Test de fit de courbe analytique sur un polynome 
+// Test de fit de courbe analytique on un polynome 
 class cTestCircleFit
 {
     public :

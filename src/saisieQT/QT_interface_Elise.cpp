@@ -222,7 +222,7 @@ cCaseNamePoint *cQT_Interface::GetIndexNamePoint()
         if (CNP)
 
             if(CNP->mFree)
-                _cNamePt = CNP;//new cCaseNamePoint(aName, eCaseSaisie); //fake pour faire croire à une saisie à la X11
+                _cNamePt = CNP;//new cCaseNamePoint(aName, eCaseSaisie); //fake for faire croire  une saisie  la X11
             else
                 _cNamePt = &mAppli->Interface()->GetCaseNamePoint(0);
         else
@@ -252,7 +252,7 @@ void cQT_Interface::SetInvisRef(bool aVal)
 {
     mRefInvis = aVal;
 
-    emit dataChanged(true);  //pour update des widgets (raccourci Ctrl+R)
+    emit dataChanged(true);  //for update des widgets (raccourci Ctrl+R)
 }
 
 void cQT_Interface::close()
@@ -280,7 +280,7 @@ void cQT_Interface::close()
 }
 
 
-// todo peut etre mis dans la partie metier
+// todo peut etre mis in la partie metier
 pair<int, string> cQT_Interface::IdNewPts(cCaseNamePoint *aCNP)
 {
     int aCptMax = mAppli->GetCptMax() + 1;

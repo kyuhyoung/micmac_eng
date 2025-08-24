@@ -5,7 +5,7 @@
 #include "StdAfx.h"
 #include "../kugelhupf.h"
 
-/* ** PlyFile.h est maintenante inclus dans StdAfx.f du MicMac, dans include/general */
+/* ** PlyFile.h est maintenante inclus in StdAfx.f du MicMac, in include/general */
 /*
  * *IL FAULT MISE INCLUDE DU OPENCV AVANT INCLUDE DU StdAfx.h
  * IL FAULT DESACTIVE L'OPTION WITH_HEADER_PRECOMP DANS MICMAC CMAKE
@@ -61,11 +61,11 @@ typedef struct ImgetOfTri {
 class triangle
 {
 public:
-    triangle(Face* aFace, vector<Vertex*> VertexList, int num_pic, int index);      //definir triangle par ELEMENT face et VERTEX list
+    triangle(Face* aFace, vector<Vertex*> VertexList, int num_pic, int index);      //definir triangle par ELEMENT face and VERTEX list
     void reproject(pic *aPic, bool &reprOK, Tri2d &result, int ind);    //reprojecter triangle 3d ver un pic
-    Pt3dr getSommet(int i) {return mSommet[i];}                     //get sommet i dans cette triangle (une triangle a 3 sommet)
-    //Vertex getSommetV(int i) {return *this->mPtrSommetV[i]; }             //get sommet i dans cette triangle sous type Vertex
-    Tri2d **getReprSurImg() {return mResultTriReprSurAllImg;}       //pointer vers bloque de memoire contient reprojection de cette triange sur tout les images.
+    Pt3dr getSommet(int i) {return mSommet[i];}                     //get sommet i in cette triangle (une triangle a 3 sommet)
+    //Vertex getSommetV(int i) {return *this->mPtrSommetV[i]; }             //get sommet i in cette triangle under type Vertex
+    Tri2d **getReprSurImg() {return mResultTriReprSurAllImg;}       //pointer vers bloque de memoire contient reprojection de cette triange on tout les images.
     ImgetOfTri create_Imagette_autour_triangle (pic* aPic);
     ImgetOfTri create_Imagette_autour_triangle_A2016 (pic* aPic);
     cCorrelImage* create_Imagette_adapt_triangle    ( pic * PicMaitre, Tri2d &triangle,
@@ -106,8 +106,8 @@ private:
 
     Pt3dr mSommet[3];                                                     //sommet du triangle en Pt3d
     //Vertex* mPtrSommetV[3];                                               //sommet du triangle en Vertex
-    //vector<Pt2dr*> resultAffine;                                         //matrix de affine transformation sur tout les pic
-    Tri2d ** mResultTriReprSurAllImg;                                     //pointer vers bloque de memoire contient reprojection de cette triange sur tout les images
+    //vector<Pt2dr*> resultAffine;                                         //matrix de affine transformation on tout les pic
+    Tri2d ** mResultTriReprSurAllImg;                                     //pointer vers bloque de memoire contient reprojection de cette triange on tout les images
     //vector<PtInteretInTriangle> mPtsInteret2DInImagetteDuTri;
 };
 /*
@@ -117,6 +117,6 @@ typedef struct Rect {
 }Rect;
 */
 
-/*======= Les fonction supplementaire =======*/
+/*======= Les function supplementaire =======*/
 
 #endif

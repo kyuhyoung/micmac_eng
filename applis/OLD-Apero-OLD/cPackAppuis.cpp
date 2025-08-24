@@ -778,7 +778,7 @@ cPackObserv1Im<TypeEngl,TGlob>::cPackObserv1Im
     }
     else
     {
-        // On rajoutera ici le cas ou fichier contient N Pack
+        // On rajoutera ici le cas or file contient N Pack
     }
 }
 

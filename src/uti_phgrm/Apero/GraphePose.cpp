@@ -116,7 +116,7 @@ bool MST_DEBUG = false &&  MPD_MM();
 
    std::vector<cPoseCam *> aVCible;
 
-   // Initialisation de aVGerms + calcul de flags
+   // Initialisation de aVGerms + computation de flags
    for (int aK=0 ; aK<int(mVecPose.size()) ; aK++)
    {
        if (mVecPose[aK]->PreInit())
@@ -206,7 +206,7 @@ if (MST_DEBUG && aBestCam)
     if (aTimes==0) getchar();
 }
 
-           // On calcule les pere-mere
+           // On compute les pere-mere
            if (aBestCam != 0)
            {
                std::vector<double> aVCost;
@@ -222,7 +222,7 @@ if (MST_DEBUG && aBestCam)
                            anExpNb
                      );
            }
-           else  // Si pas de meilleure cam, pb de connexion => erreur
+           else  // if pas de meilleure cam, pb de connexion => error
            {
                 for (int aKC=0 ; aKC<aNbC ; aKC++)
                 {
@@ -329,7 +329,7 @@ if (MST_DEBUG && aBestCam)
          }
          else
          {
-            // Forcement pas vide si on est la
+            // Forcement pas vide if on est la
             aVRigid2Init.pop_back();
             if (aVRigid2Init.empty())
                aLastRigidSeed = 0;

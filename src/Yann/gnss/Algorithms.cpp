@@ -4,7 +4,7 @@
 #include "AtmosphericModel.h"
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul de la vitesse (3D) du récepteur
+// Algorithme de computation de la vitesse (3D) du rcepteur
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimateSpeed(std::vector<double> doppler, std::vector<ECEFCoords> sat_pos, std::vector<ECEFCoords> sat_speed, ECEFCoords rcv, int freq){
 
@@ -13,7 +13,7 @@ Solution Algorithms::estimateSpeed(std::vector<double> doppler, std::vector<ECEF
 
     if (freq == 2) EMISSION_FREQ = L2_FREQ;
 
-    // Vecteur d'obs et matrice schéma
+    // vector d'obs and matrix schma
 	ElMatrix<REAL> A(4,n,0.0);
 	ElMatrix<REAL> B(1,n,0.0);
     for (unsigned i=0; i<n; i++){
@@ -26,7 +26,7 @@ Solution Algorithms::estimateSpeed(std::vector<double> doppler, std::vector<ECEF
         B(0,i) = -Utils::C*doppler.at(i)/EMISSION_FREQ + radial_speed;    // Signe  !!!!
     }
 
-    // Résolution
+    // Rsolution
     ElMatrix<REAL> X = gaussj(A.transpose()*A)*(A.transpose()*B);
 
     // Output
@@ -41,7 +41,7 @@ Solution Algorithms::estimateSpeed(std::vector<double> doppler, std::vector<ECEF
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul de la vitesse (3D) du récepteur
+// Algorithme de computation de la vitesse (3D) du rcepteur
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimateSpeed(ObservationSlot slot, NavigationData nav, ECEFCoords rcv, int freq){
 
@@ -52,7 +52,7 @@ Solution Algorithms::estimateSpeed(ObservationSlot slot, NavigationData nav, ECE
 
     for (unsigned i=0; i<sat_names.size(); i++){
 
-        // Constellations autorisées pour le calcul
+        // Constellations autorises for le computation
         if ((sat_names.at(i).substr(0,1) == "C")) continue;
         if ((sat_names.at(i).substr(0,1) == "J")) continue;
         if ((sat_names.at(i).substr(0,1) == "S")) continue;
@@ -60,10 +60,10 @@ Solution Algorithms::estimateSpeed(ObservationSlot slot, NavigationData nav, ECE
         if ((sat_names.at(i).substr(0,1) == "R") && (!GLONASS_CONST))  continue;
         if ((sat_names.at(i).substr(0,1) == "E") && (!GALILEO_CONST))  continue;
 
-        // Ephémérides disponibles
+        // Ephmrides disponibles
         if (!nav.hasEphemeris(sat_names.at(i), slot.getTimestamp())) continue;
 
-        // Test de cohérence du code
+        // Test de cohrence du code
         if (slot.getObservation(sat_names.at(i)).getC1() < PSR_ABERRANT) continue;
 
         // Doppler measurement
@@ -74,7 +74,7 @@ Solution Algorithms::estimateSpeed(ObservationSlot slot, NavigationData nav, ECE
             measure = slot.getObservation(sat_names.at(i)).getD2();
         }
 
-        // Test erreur doppler
+        // Test error doppler
         if (measure == 0) continue;
 
         doppler.push_back(measure);
@@ -97,7 +97,7 @@ Solution Algorithms::estimateSpeed(ObservationSlot slot, NavigationData nav, ECE
 }
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul du vecteur complet PVT du récepteur
+// Algorithme de computation du vector complet PVT du rcepteur
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimateState(ObservationSlot slot, NavigationData nav){
 
@@ -124,7 +124,7 @@ Solution Algorithms::estimateState(ObservationSlot slot, NavigationData nav){
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul d'une trajectoire complète
+// Algorithme de computation d'une trajectoire complte
 // -------------------------------------------------------------------------------
 Trajectory Algorithms::estimateTrajectory(ObservationData obs, NavigationData nav){
 
@@ -152,8 +152,8 @@ Trajectory Algorithms::estimateTrajectory(ObservationData obs, NavigationData na
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul d'une position approchée du récepteur sans tenir compte
-// des corrections atmosphériques. Prise en compte des pondérations.
+// Algorithme de computation d'une position approche du rcepteur without tenir compte
+// des corrections atmosphriques. Prise en compte des pondrations.
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimateApproxPosition(std::vector<double> psr, std::vector<ECEFCoords> sat_pos, ElMatrix<REAL> SIGMA){
 
@@ -164,7 +164,7 @@ Solution Algorithms::estimateApproxPosition(std::vector<double> psr, std::vector
     Solution solution;
     solution.setPosition(receiver);
 
-	// Matrice des pondérations
+	// matrix des pondrations
 	ElMatrix<REAL> P = gaussj(SIGMA);
 
     if (n < 4) return solution;
@@ -172,7 +172,7 @@ Solution Algorithms::estimateApproxPosition(std::vector<double> psr, std::vector
     // Initialisation
     ElMatrix<REAL> X(1,4,0.0);
 
-    // Itérations
+    // Itrations
     while (!convergence){
 
         // Design and obs matrices
@@ -192,7 +192,7 @@ Solution Algorithms::estimateApproxPosition(std::vector<double> psr, std::vector
 
         }
 
-        // Résolution
+        // Rsolution
         ElMatrix<REAL> dX = gaussj(A.transpose()*P*A)*(A.transpose()*P*B);
         X = X + dX;
 
@@ -215,7 +215,7 @@ Solution Algorithms::estimateApproxPosition(std::vector<double> psr, std::vector
 }
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul des indicateurs DOP d'une configuration sats - rcv
+// Algorithme de computation des indicateurs DOP d'une configuration sats - rcv
 // -------------------------------------------------------------------------------
 void Algorithms::computeDopIndices(Solution& solution, std::vector<ECEFCoords> sat_pos){
 
@@ -245,7 +245,7 @@ void Algorithms::computeDopIndices(Solution& solution, std::vector<ECEFCoords> s
 }
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul des résidus d'une solution GPS
+// Algorithme de computation des rsidus d'une solution GPS
 // -------------------------------------------------------------------------------
 std::vector<double> Algorithms::computeResiduals(Solution solution, std::vector<std::string> prn, ObservationSlot slot, NavigationData nav){
 	std::vector<double> residuals;
@@ -262,12 +262,12 @@ std::vector<double> Algorithms::computeResiduals(Solution solution, std::vector<
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul d'une position approchée du récepteur sans tenir compte
-// des corrections atmosphériques.
+// Algorithme de computation d'une position approche du rcepteur without tenir compte
+// des corrections atmosphriques.
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimateApproxPosition(std::vector<double> psr, std::vector<ECEFCoords> satellite_pos){
 
-    // Vecteur de poids
+    // vector de poids
     ElMatrix<REAL> W(static_cast<int>(psr.size()), static_cast<int>(psr.size()), 0.0);
     for (unsigned i=0; i<psr.size(); i++) W(i,i) = 1;
 
@@ -277,23 +277,23 @@ Solution Algorithms::estimateApproxPosition(std::vector<double> psr, std::vector
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul d'une position finale du récepteur
+// Algorithme de computation d'une position finale du rcepteur
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimatePosition(std::vector<std::string> sat_names,
                                       std::vector<double> pseudorange,
                                       std::vector<ECEFCoords> satellite_positions,
                                       AtmosphericModel atm){
 
-    // Solution approchée
+    // Solution approche
     ECEFCoords approx = estimateApproxPosition(pseudorange, satellite_positions).getPosition();
 
-    // Calcul des élévations
+    // computation des lvations
     std::vector<double> weights_elevation;
     for (unsigned i=0; i<pseudorange.size(); i++){
         weights_elevation.push_back(approx.elevationTo(satellite_positions.at(i)));
     }
 
-    // Masque d'élévation
+    // Masque d'lvation
     std::vector<double> psr_masked;
     std::vector<double> weights_masked;
     std::vector<ECEFCoords> sat_pos_masked;
@@ -308,7 +308,7 @@ Solution Algorithms::estimatePosition(std::vector<std::string> sat_names,
         }
     }
 
-    // Sécurité 1
+    // Scurit 1
     if (psr_masked.size() < 4) {
         psr_masked = pseudorange;
         sat_pos_masked = satellite_positions;
@@ -316,16 +316,16 @@ Solution Algorithms::estimatePosition(std::vector<std::string> sat_names,
         sat_names_masked = sat_names;
     }
 
-    // Corrections atmosphériques
+    // Corrections atmosphriques
     for (unsigned i=0; i<psr_masked.size(); i++){
         psr_masked.at(i) += atm.all_corrections(approx, sat_pos_masked.at(i));
     }
 
-    // Solution affinée
+    // Solution affine
     Solution solution = estimateApproxPosition(psr_masked, sat_pos_masked);
 	ECEFCoords position = solution.getPosition();
 
-    // Analyse des résidus
+    // Analyse des rsidus
     std::vector<double> E;
     for (unsigned i=0; i<psr_masked.size(); i++){
         E.push_back(position.distanceTo(sat_pos_masked.at(i)) - psr_masked.at(i) + solution.getDeltaTime()*Utils::C);
@@ -345,7 +345,7 @@ Solution Algorithms::estimatePosition(std::vector<std::string> sat_names,
         }
     }
 
-    // Sécurité 2
+    // Scurit 2
     if (psr_final.size() < 4) {
         psr_final = psr_masked;
         satellite_positions_final = sat_pos_masked;
@@ -354,13 +354,13 @@ Solution Algorithms::estimatePosition(std::vector<std::string> sat_names,
     }
 
 
-	// Elevation mapping function
+	//Elevation mapping function
 	std::vector<double> m;
 	for (unsigned i=0; i<weights_final.size(); i++){
 		m.push_back(0.8/sin(weights_final.at(i)));
 	}
 
-	// Calcul des poids de Gauss-Markov
+	// computation des poids de Gauss-Markov
 	ElMatrix<REAL> W(static_cast<int>(weights_final.size()), static_cast<int>(weights_final.size()), 0.0);
     for (unsigned i=0; i<weights_final.size(); i++) {
 		W(i,i) = WEIGHTED_OLS? m.at(i)*m.at(i):1.0;
@@ -372,7 +372,7 @@ Solution Algorithms::estimatePosition(std::vector<std::string> sat_names,
     output.setUsedSatellites(sat_names_final);
 
 	// ----------------------------------------------
-    // Calcul des indicateurs DOP
+    // computation des indicateurs DOP
     // ----------------------------------------------
     computeDopIndices(output, satellite_positions_final);
 
@@ -382,7 +382,7 @@ Solution Algorithms::estimatePosition(std::vector<std::string> sat_names,
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul d'une position finale du récepteur à partir de TAD
+// Algorithme de computation d'une position finale du rcepteur  partir de TAD
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav){
 
@@ -396,7 +396,7 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav){
 
     for (unsigned i=0; i<sat_names.size(); i++){
 
-        // Constellations autorisées pour le calcul
+        // Constellations autorises for le computation
         if ((sat_names.at(i).substr(0,1) == "C")) continue;
         if ((sat_names.at(i).substr(0,1) == "J")) continue;
         if ((sat_names.at(i).substr(0,1) == "S")) continue;
@@ -405,13 +405,13 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav){
         if ((sat_names.at(i).substr(0,1) == "E") && (!GALILEO_CONST))  continue;
 
 
-        // Ephémérides disponibles
+        // Ephmrides disponibles
         if (!nav.hasEphemeris(sat_names.at(i), slot.getTimestamp())) continue;
 
         // Mesure de pseudo-distance
         double measure = slot.getObservation(sat_names.at(i)).getC1();
 
-        // Test erreur de code
+        // Test error de code
         if (measure <= PSR_ABERRANT) continue;
 
         // Correction d'horloge
@@ -435,17 +435,17 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav){
         return solution;
     }
 
-    // Corrections atmosphériques
+    // Corrections atmosphriques
     AtmosphericModel atm(nav);
     atm.setTime(slot.getTimestamp());
 
-    // Calcul de la solution
+    // computation de la solution
     Solution solution =  estimatePosition(sat_candidates, psr, sats, atm);;
     solution.setTimestamp(slot.getTimestamp());
     solution.setNumberOfVisibleSatellites(static_cast<int>(sat_names.size()));
 
 	// ----------------------------------------------
-    // Calcul des résidus
+    // computation des rsidus
     // ----------------------------------------------
 	solution.setResiduals(computeResiduals(solution, solution.getUsedSatellites(), slot, nav));
 
@@ -455,7 +455,7 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav){
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul d'une position finale du récepteur à partir du sp3
+// Algorithme de computation d'une position finale du rcepteur  partir du sp3
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav, SP3NavigationData sp3_nav){
 
@@ -469,7 +469,7 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav, 
 
     for (unsigned i=0; i<sat_names.size(); i++){
 
-        // Constellations autorisées pour le calcul
+        // Constellations autorises for le computation
         if ((sat_names.at(i).substr(0,1) == "C")) continue;
         if ((sat_names.at(i).substr(0,1) == "J")) continue;
         if ((sat_names.at(i).substr(0,1) == "S")) continue;
@@ -479,10 +479,10 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav, 
 
         double measure = slot.getObservation(sat_names.at(i)).getC1();
 
-         // Test erreur de code
+         // Test error de code
         if (measure <= 0) continue;
 
-        // Ephémérides disponibles
+        // Ephmrides disponibles
         if (!nav.hasEphemeris(sat_names.at(i), slot.getTimestamp())) continue;
 
         // Correction d'horloge
@@ -505,11 +505,11 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav, 
         return solution;
     }
 
-    // Corrections atmosphériques
+    // Corrections atmosphriques
     AtmosphericModel atm(nav);
     atm.setTime(slot.getTimestamp());
 
-    // Calcul de la solution
+    // computation de la solution
     Solution solution =  estimatePosition(sat_candidates, psr, sats, atm);;
     solution.setTimestamp(slot.getTimestamp());
     solution.setNumberOfVisibleSatellites(static_cast<int>(sat_names.size()));
@@ -519,7 +519,7 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationData nav, 
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul d'une position finale du récepteur à partir du sp3
+// Algorithme de computation d'une position finale du rcepteur  partir du sp3
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationDataSet nav, AtmosphericModel atm){
 
@@ -533,7 +533,7 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationDataSet na
 
     for (unsigned i=0; i<sat_names.size(); i++){
 
-        // Constellations autorisées pour le calcul
+        // Constellations autorises for le computation
         if ((sat_names.at(i).substr(0,1) == "C")) continue;
         if ((sat_names.at(i).substr(0,1) == "J")) continue;
         if ((sat_names.at(i).substr(0,1) == "S")) continue;
@@ -543,10 +543,10 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationDataSet na
 
         double measure = slot.getObservation(sat_names.at(i)).getC1();
 
-         // Test erreur de code
+         // Test error de code
         if (measure <= 0) continue;
 
-        // Ephémérides disponibles
+        // Ephmrides disponibles
         if (!nav.hasEphemeris(sat_names.at(i), slot.getTimestamp())) continue;
 
 
@@ -566,10 +566,10 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationDataSet na
         return solution;
     }
 
-    // Corrections atmosphériques
+    // Corrections atmosphriques
     atm.setTime(slot.getTimestamp());
 
-    // Calcul de la solution
+    // computation de la solution
     Solution solution =  estimatePosition(sat_candidate, psr, sats, atm);
     solution.setTimestamp(slot.getTimestamp());
     solution.setNumberOfVisibleSatellites(static_cast<int>(sat_names.size()));
@@ -579,20 +579,20 @@ Solution Algorithms::estimatePosition(ObservationSlot slot, NavigationDataSet na
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul d'une position finale du récepteur en différentiel
+// Algorithme de computation d'une position finale du rcepteur en diffrentiel
 // -------------------------------------------------------------------------------
-// - rover: slot d'observation de la station à positionner
-// - base:  slot d'observation de la station de référence
-// - pos:   position ECEF de la station de référence
-// - nav:   données de navigation de l'une des deux stations
+// - rover: slot d'observation de la station  positionner
+// - base:  slot d'observation de la station de rfrence
+// - pos:   position ECEF de la station de rfrence
+// - nav:   donnes de navigation de l'une des deux stations
 // -------------------------------------------------------------------------------
-// Note : les 2 slots d'observations doivent être de dates proches
+// Note : les 2 slots d'observations doivent tre de dates proches
 // -------------------------------------------------------------------------------
 Solution Algorithms::estimateDifferentialPosition(ObservationSlot rover, ObservationSlot base, ECEFCoords pos, NavigationData nav){
 
      Solution output;
 
-    // Contrôle validité des timestamps
+    // Contrle validit des timestamps
     double time_diff = std::abs(rover.getTimestamp() - base.getTimestamp());
 
     if (time_diff > TIME_DIFF_TOLERANCE_DGPS){
@@ -644,7 +644,7 @@ Solution Algorithms::estimateDifferentialPosition(ObservationSlot rover, Observa
 
     double dt_rcv = solution_base.getDeltaTime();
 
-    // Calcul des corrections sur les pseudo-distances
+    // computation des corrections on les pseudo-distances
     std::vector<ECEFCoords> ephemeride;
     std::vector<double> corrected_psr;
     for (unsigned i=0; i<sat_base.size(); i++){
@@ -659,7 +659,7 @@ Solution Algorithms::estimateDifferentialPosition(ObservationSlot rover, Observa
 
     }
 
-     // Calcul des élévations
+     // computation des lvations
 	ElMatrix<REAL> W(static_cast<int>(sat_base.size()), static_cast<int>(sat_base.size()), 0.0);
     for (unsigned i=0; i<sat_base.size(); i++) {
 		W(i,i) = WEIGHTED_OLS? pow(sin(pos.elevationTo(ephemeride.at(i)))/0.8, 2):1.0;
@@ -672,7 +672,7 @@ Solution Algorithms::estimateDifferentialPosition(ObservationSlot rover, Observa
     output.setTimestamp(time_rover);
 
 	// ----------------------------------------------
-    // Calcul des indicateurs DOP
+    // computation des indicateurs DOP
     // ----------------------------------------------
     computeDopIndices(output, ephemeride);
 
@@ -682,7 +682,7 @@ Solution Algorithms::estimateDifferentialPosition(ObservationSlot rover, Observa
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de formation de la matrice des triples différences
+// Algorithme de formation de la matrix des triples diffrences
 // -------------------------------------------------------------------------------
 ElMatrix<REAL> Algorithms::makeTripleDifferenceMatrix(int nb_sats, int num_pivot){
 	ElMatrix<REAL> TD(4*nb_sats, nb_sats-1, 0.0);
@@ -700,13 +700,13 @@ ElMatrix<REAL> Algorithms::makeTripleDifferenceMatrix(int nb_sats, int num_pivot
 
 
 // -------------------------------------------------------------------------------
-// Algorithme de calcul d'une position finale du récepteur avec la phase en
-// mode différentiel et triple différences. Estimation par filtrage de Kalman.
+// Algorithme de computation d'une position finale du rcepteur with la phase en
+// mode diffrentiel and triple diffrences. Estimation par filtrage de Kalman.
 // -------------------------------------------------------------------------------
-// - rover: fichier d'observation de la station mobile
-// - base:  fichier d'observation de la station de référence
-// - nav:   dataset de navigation (contenant sp3 ou rinex .nav)
-// - pos:   positions ECEF de la station de référence
+// - rover: file d'observation de la station mobile
+// - base:  file d'observation de la station de rfrence
+// - nav:   dataset de navigation (contenant sp3 or rinex .nav)
+// - pos:   positions ECEF de la station de rfrence
 // -------------------------------------------------------------------------------
 Solution Algorithms::triple_difference_kalman(ObservationData rover,
                                               ObservationData base,
@@ -725,21 +725,21 @@ Solution Algorithms::triple_difference_kalman(ObservationData rover,
     double wavelength = Utils::C/L1_FREQ;
     std::string channel = "L1";
 
-    // Matrice identité I3
+    // matrix identit I3
     ElMatrix<REAL> I3(3,3,0.0);
     I3(0,0) = I3(1,1) = I3(2,2) = 1;
 
     // Solution initiale
 	ElMatrix<REAL> X0(1,3,0.0);
 
-    // Matrice de covariances a priori
+    // matrix de covariances a priori
 	ElMatrix<REAL> Pn(3,3,0.0);
     Pn(0,0) = Pn(1,1) = Pn(2,2) = 1e10;
 
     // Filtrage de Kalman
     for (unsigned k=1; k<rover.getNumberOfObservationSlots()-1; k++){
 
-        // Récupération des slots d'observation
+        // Rcupration des slots d'observation
         ObservationSlot base_slot1  =  base.getObservationSlots().at(k);
         ObservationSlot rover_slot1 = rover.getObservationSlots().at(k);
         ObservationSlot base_slot2  =  base.getObservationSlots().at(k+1);
@@ -761,7 +761,7 @@ Solution Algorithms::triple_difference_kalman(ObservationData rover,
 
             std::string sat_rover = rover_slot1.getSatellites().at(sr);
 
-            // Recherche dans la station de base à l'époque 1
+            // Recherche in la station de base  l'poque 1
             for (unsigned int i=0; i<base_slot1.getNumberOfObservations(); i++){
                 if (sat_rover == base_slot1.getSatellites().at(i)){
                     sb1 = i;
@@ -769,7 +769,7 @@ Solution Algorithms::triple_difference_kalman(ObservationData rover,
                 }
             }
 
-            // Recherche dans la station mobile à l'époque 2
+            // Recherche in la station mobile  l'poque 2
             for (unsigned int i=0; i<rover_slot2.getNumberOfObservations(); i++){
                 if (sat_rover == rover_slot2.getSatellites().at(i)){
                     sr2 = i;
@@ -777,7 +777,7 @@ Solution Algorithms::triple_difference_kalman(ObservationData rover,
                 }
             }
 
-            // Recherche dans la station de base à l'époque 2
+            // Recherche in la station de base  l'poque 2
             for (unsigned int i=0; i<base_slot2.getNumberOfObservations(); i++){
                 if (sat_rover == base_slot2.getSatellites().at(i)){
                     sb2 = i;
@@ -799,11 +799,11 @@ Solution Algorithms::triple_difference_kalman(ObservationData rover,
 
         int N = PRN.size();
 
-        // Matrice de triple différence
+        // matrix de triple diffrence
         ElMatrix<REAL> TD = makeTripleDifferenceMatrix(N, 0);
 
 
-        // Matrice de covariance des observations
+        // matrix de covariance des observations
         ElMatrix<REAL> P = TD*TD.transpose()*1e-10;
 
         // Observations brutes
@@ -816,19 +816,19 @@ Solution Algorithms::triple_difference_kalman(ObservationData rover,
             PHI(0,N*3+i) = base_slot2.getObservation(PRN.at(i)).getChannel(channel)*wavelength;
         }
 
-        // TD observées
+        // TD observes
         ElMatrix<REAL> O = TD*PHI;
 
-        // TD théoriques
+        // TD thoriques
         ElMatrix<REAL> G(1, PRN.size()*4, 0.0);
 
 
-        // Moindres carrés
+        // Moindres carrs
         for (unsigned iter=0; iter<50; iter++){
 
             ECEFCoords POS(X0(0,0), X0(0,1), X0(0,2));
 
-            // Observations théoriques des triples différences
+            // Observations thoriques des triples diffrences
             for (int i=0; i<N; i++){
                 G(0,N*0+i) = POS.distanceTo(EPH1.at(i));
                 G(0,N*1+i) = POS.distanceTo(EPH2.at(i));
@@ -838,7 +838,7 @@ Solution Algorithms::triple_difference_kalman(ObservationData rover,
 
             ElMatrix<REAL> F = TD*G;
 
-            // Matrice jacobienne en X0
+            // matrix jacobienne en X0
             ElMatrix<REAL> J(3, N-1, 0.0);
             for (int i=1; i<N; i++){
 
@@ -882,8 +882,8 @@ Solution Algorithms::triple_difference_kalman(ObservationData rover,
 }
 
 // -------------------------------------------------------------------------------
-// Algorithme de résolution des ambiüités sur une époque où la position de la
-// station mobile (et de la station de base) sont connues exactement.
+// Algorithme de rsolution des ambiits on une poque o la position de la
+// station mobile (and de la station de base) sont connues exactement.
 // -------------------------------------------------------------------------------
 double Algorithms::solve_ambiguity_ref(ObservationData rov, ObservationData bas, NavigationData nav, GPSTime time, std::string sat1, std::string sat2){
 
@@ -912,17 +912,17 @@ double Algorithms::solve_ambiguity_ref(ObservationData rov, ObservationData bas,
     double C1r = slot_r.getObservation(sat1).getC1(); double L1r = slot_r.getObservation(sat1).getL1();
     double C2r = slot_r.getObservation(sat2).getC1(); double L2r = slot_r.getObservation(sat2).getL1();
 
-    // Positions et distances théoriques
+    // Positions and distances thoriques
     ECEFCoords pos_sat1b = nav.computeSatellitePos(sat1, slot_b.getTimestamp(), C1b); double D1b = pos_b.distanceTo(pos_sat1b);
     ECEFCoords pos_sat2b = nav.computeSatellitePos(sat2, slot_b.getTimestamp(), C2b); double D2b = pos_b.distanceTo(pos_sat2b);
     ECEFCoords pos_sat1r = nav.computeSatellitePos(sat1, slot_r.getTimestamp(), C1r); double D1r = pos_r.distanceTo(pos_sat1r);
     ECEFCoords pos_sat2r = nav.computeSatellitePos(sat2, slot_r.getTimestamp(), C2r); double D2r = pos_r.distanceTo(pos_sat2r);
 
-    // Doubles différences observées et théoriques
+    // Doubles diffrences observes and thoriques
     double dd_obs = (L1b - L2b) - (L1r - L2r);
     double dd_thq = ((D1b - D2b) - (D1r - D2r))/L1;
 
-    // Résolution de l'ambigüité entière
+    // Rsolution de l'ambigit entire
     return  dd_obs - dd_thq;
 
 }

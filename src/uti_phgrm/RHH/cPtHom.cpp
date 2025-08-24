@@ -225,7 +225,7 @@ void cPtHom::ShowAll()
          itH++
    )
    {
-       const cPtHom & aH = **itH;  // Sinon recycle
+       const cPtHom & aH = **itH;  // else recycle
        if (aH.mCptArc)
        {
            int aNbS = (int)aH.mMesures.size();

@@ -33,7 +33,7 @@
 using namespace std;					// make std:: accessible
 
 //----------------------------------------------------------------------
-//	Point methods
+//	point methods
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
@@ -81,7 +81,7 @@ void annPrintPt(						// print a point
 }
 
 //----------------------------------------------------------------------
-//	Point allocation/deallocation:
+//	point allocation/deallocation:
 //
 //		Because points (somewhat like strings in C) are stored
 //		as pointers.  Consequently, creating and destroying

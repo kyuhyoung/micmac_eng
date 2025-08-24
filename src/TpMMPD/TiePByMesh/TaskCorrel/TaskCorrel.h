@@ -10,10 +10,10 @@
 
 
 const double TT_SEUIL_SURF_TRIANGLE = 100;   //min surface du triangle projecte en img
-// => Devenir MD_SEUIL_SURF_TRIANGLE, passer comme parametre d'entree
+// => Devenir MD_SEUIL_SURF_TRIANGLE, passer comme parameter d'entree
 
 const double TT_SEUIL_RESOLUTION = DBL_MIN;  //min resolution du triangle reprojecte on img
-const int TT_DEF_SCALE_ZBUF = 2;        //default deZoom pour calculer ZBuffer
+const int TT_DEF_SCALE_ZBUF = 2;        //default deZoom for compute ZBuffer
 
 
 class cAppliTaskCorrel;

@@ -124,7 +124,7 @@ void cASAMG::SetSelected(int aNivSel,int aNivElim,tMCSom * aSom)
     }
     ELISE_COPY(aMasq2Sel.border(1),0,aMasq2Sel.out());
 
-    // 2 - On cree un nuage raster des points a selectionner pour ne faire qu'une fois le passage au 3D
+    // 2 - On cree un nuage raster des points a selectionner for ne faire qu'une fois le passage au 3D
     cRawNuage aNuagMaster(mSz);
 
     for (aP.x=0 ; aP.x < mSz.x ; aP.x++)
@@ -251,7 +251,7 @@ void cASAMG::ProjectElim(cASAMG * aN2,Im2D_Bits<1> aMasq2Sel,const cRawNuage & a
     cRawNuage aNuagSec(mSz);
    
 
-    // On pre calcule les projections
+    // On pre compute les projections
 
     {
         Pt2di aP;

@@ -43,7 +43,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 #include "StdAfx.h"
 
-// MPD => me de demande si mCamRPC ne devrait pas etre plutot cBasicGeomCap3D
+// MPD => me de demande if mCamRPC ne devrait pas etre plutot cBasicGeomCap3D
 #include "../src/uti_phgrm/Apero/cCameraRPC.h"
 
 struct cMultiResPts;
@@ -136,7 +136,7 @@ class cImageTiepGeo
 
 		cAppliTiepGeo & mAppli;
 
-               // MPD => me de demande si mCamRPC ne devrait pas etre plutot cBasicGeomCap3D
+               // MPD => me de demande if mCamRPC ne devrait pas etre plutot cBasicGeomCap3D
 
                 CameraRPC * mCamRPC;
 		int         mNum;

@@ -116,7 +116,7 @@ void MatrixManager::translate(float tX, float tY, float tZ)
     translation[1] = tY;
     translation[2] = tZ;
 
-    MatrixInverse(_mvMatrix, NULL,translation); // on se place dans le repere
+    MatrixInverse(_mvMatrix, NULL,translation); // on se place in le repere
 
     m_translationMatrix[0] += translation[0];
     m_translationMatrix[1] += translation[1];
@@ -327,14 +327,14 @@ void MatrixManager::setArcBallCamera(float aDistance)
     _camPos.setY(_targetCamera.y() + posCamera[1]);
     _camPos.setZ( _targetCamera.z() + posCamera[2]);
 
-    mmLookAt(_camPos.x(),_camPos.y(),_camPos.z(),								// Camera position
+    mmLookAt(_camPos.x(),_camPos.y(),_camPos.z(),								// camera position
                   _targetCamera.x(), _targetCamera.y(), _targetCamera.z(),    // Look at point
                   up[0],up[1] ,up[2]);									// up
 
     resetTranslationMatrix();
 
     glGetDoublev(GL_MODELVIEW_MATRIX,  _mvMatrix);
-    glGetDoublev(GL_PROJECTION_MATRIX, _projMatrix); // TODO a placer pour le realiser une seule fois
+    glGetDoublev(GL_PROJECTION_MATRIX, _projMatrix); // TODO a placer for le realiser une seule fois
 }
 
 void MatrixManager::printVecteur(GLdouble* posCameraOut, const char* nameVariable)

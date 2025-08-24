@@ -445,7 +445,7 @@ void cAppliMICMAC::MakeExportAsModeleDist
    aMod.Pas().y = anEtape.KPx(1).Pas();
 
 // std::cout << aMod.Pas().x << " " << aMod.Pas().y << "\n";
-// std::cout << "VERIF INVERSION DANS SauvegardeMR2A !! \n";
+// std::cout << "VERIF INVERSION in SauvegardeMR2A !! \n";
    ELISE_ASSERT
    (
            aMod.SauvegardeMR2A().IsInit()

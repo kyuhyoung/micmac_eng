@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #define NoOperatorVirgule
 
 #if (0) // (ELISE_unix)
-// Pour les quelques fichiers (b_0_45.cpp par ex) qui generent des erreurs, a cause de "," dans la STL
+// for les quelques fichiers (b_0_45.cpp par ex) qui generent des erreurs, a cause de "," in la STL
 #ifndef NoTemplateOperatorVirgule
 template <class Type,class Type2>   Type operator , (Type,Type2)
 {
@@ -63,7 +63,7 @@ template <class Type>   Type operator , (Type,Type)
 
 #ifndef PI
 // const REAL PI =  3.14159265358979323846;
-// Je mets un define car j'ai un doute sur le fonctionnement quand
+// Je mets un define car j'ai un doute on le fonctionnement when
 // on initialise d'autres constantes a partir de PI
 #define PI  3.14159265358979323846
 #endif
@@ -142,7 +142,7 @@ extern Flux_Pts line_for_poly(ElList<Pt2di>);
 extern Flux_Pts polygone(ElList<Pt2di>,bool front = true);
 extern Flux_Pts quick_poly(ElList<Pt2di>);
 
-/*  Interface pour convertir les container standard en "vielle"
+/*  Interface for convertir les container standard en "vielle"
     liste elise.
 */
 template <class tContPts> ElList<Pt2di> ToListPt2di(const tContPts & aCont)
@@ -254,8 +254,8 @@ class Fonc_Num : public  PRC0
    public :
      REAL ValFoncGen(Pt2di) const;  
      REAL ValFoncGenR(Pt2dr) const;  
-          // valable qqsoit la fonction, assez long
-         // REAL ValFonc(const class PtsKD &) const; pour les fonction analytique
+          // valable qqsoit la function, assez long
+         // REAL ValFonc(const class PtsKD &) const; for les function analytique
 
      std::string NameCpp();
      bool        HasNameCpp();
@@ -280,12 +280,12 @@ class Fonc_Num : public  PRC0
      REAL ValFonc(const class PtsKD &) const;
      Fonc_Num deriv(INT kth) const;
      Fonc_Num deriv(class cVarSpec ) const;
-     INT DegrePoly() const; // retourne  conventionnellement -1 si pas polynome
+     INT DegrePoly() const; // retourne  conventionnellement -1 if pas polynome
 
      void VarDerNN(ElGrowingSetInd &) const; // Remplit l'indexe des variable a derivee non nulle
 	 REAL ValDeriv(const  PtsKD &  pts,INT k) const;
 	 INT  NumCoord() const; // En qq sorte la fonc inverse de kth_coord, 
-	                        // => Erreur si pas une fonc coord
+	                        // => error if pas une fonc coord
      void show(std::ostream & os) const;
      Fonc_Num Simplify() ;
      void inspect() const;  // debug
@@ -317,7 +317,7 @@ class Fonc_Num : public  PRC0
 
 
    //  Permet de comparer formellement deux expression formelle 
-   //  utilise pour gerer des dictionnaire d'expression
+   //  utilise for gerer des dictionnaire d'expression
    
 
        typedef enum {
@@ -579,7 +579,7 @@ class Histo_Kieme : public Mcheck
                         } mode_res;
 
                 static Histo_Kieme * New_HK(mode_h,INT max_vals);
-                // renvoit un pointeur sur une class derivee (BinTree_HK ou
+                // renvoit un pointeur on une class derivee (BinTree_HK or
                 // LastRank_HK)
                 static mode_h  Opt_HK(INT ty,INT max_vals);
                 static mode_h  Opt_HK(mode_h aModePref,INT ty,INT max_vals);
@@ -785,7 +785,7 @@ extern   Fonc_Num SuperiorStrict(Fonc_Num,Fonc_Num);
 extern   Fonc_Num NotEqual(Fonc_Num,Fonc_Num);
 
 
-// HYPER LENT POU MISE AU POINT
+// HYPER LENT POU MISE AU point
 double GETVALPT(Fonc_Num,Pt2di);
 
 
@@ -805,7 +805,7 @@ Fonc_Num PowI(Fonc_Num f,INT aDegre);
 
 extern   double Square(double);
 
-    // Operateur utile au devt en four des fonction radiale
+    // Operateur utile au devt en four des function radiale
 
 double CosRx(double);  // cos sqrt x
 Fonc_Num CosRx(Fonc_Num);  // cos sqrt x
@@ -820,7 +820,7 @@ double IsBadNum(double);  // boolean is it inf or nan ?
 Fonc_Num IsBadNum(Fonc_Num);  
 
 
-    // Operateur utile a la fonction de conversion des Fish Eye Linear
+    // Operateur utile a la function de conversion des Fish Eye Linear
 
 double AtRxSRx(double x);      // Atan(sqrt(x)) / sqrt(x)
 Fonc_Num AtRxSRx(Fonc_Num x);     
@@ -835,7 +835,7 @@ Fonc_Num DerAt2Rx(Fonc_Num x);
 double TgRxSRx(double x);      // Tang(sqrt(x)) / sqrt(x)
 Fonc_Num TgRxSRx(Fonc_Num x);      // Tang(sqrt(x)) / sqrt(x)
 
-    // Operateur utile a la fonction de conversion des Fish Eye equisolid
+    // Operateur utile a la function de conversion des Fish Eye equisolid
     //
     //  2 sin (At(X)/2)
     //
@@ -858,7 +858,7 @@ Fonc_Num Der_PrecStereographique(Fonc_Num f);
 Fonc_Num Der_SqM2CRx_StereoG(Fonc_Num f);
 
 
-    // Operateur utile a la fonction de conversion des Fish Eye Linear
+    // Operateur utile a la function de conversion des Fish Eye Linear
 
 double AtRxSRx(double x);      // Atan(sqrt(x)) / sqrt(x)
 Fonc_Num AtRxSRx(Fonc_Num x);     
@@ -873,7 +873,7 @@ Fonc_Num DerAt2Rx(Fonc_Num x);
 double TgRxSRx(double x);      // Tang(sqrt(x)) / sqrt(x)
 Fonc_Num TgRxSRx(Fonc_Num x);      // Tang(sqrt(x)) / sqrt(x)
 
-    // Operateur utile a la fonction de conversion des Fish Eye equisolid
+    // Operateur utile a la function de conversion des Fish Eye equisolid
     //
     //  2 sin (At(X)/2)
     //

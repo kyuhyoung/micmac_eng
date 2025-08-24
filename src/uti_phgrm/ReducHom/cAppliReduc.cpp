@@ -71,7 +71,7 @@ cAppliReduc::cAppliReduc(int argc,char ** argv) :
 {
     
     CreateIndex();
-   // Lecture bas niveau des parametres
+   // Lecture bas niveau des parameters
     ElInitArgMain
     (
         argc,argv,
@@ -86,7 +86,7 @@ cAppliReduc::cAppliReduc(int argc,char ** argv) :
 
    SplitDirAndFile(mDir,mName,mFullName);
 
-   // Creation noms et associations 
+   // Creation noms and associations 
    mICNM = cInterfChantierNameManipulateur::BasicAlloc(mDir);
    mSetNameIm = mICNM->Get(mName);
    // mKeyHomol = "NKS-Set-Homol@"+mExtHomol+"@"+(mImportTxt ?"txt" : "dat");
@@ -139,7 +139,7 @@ void cAppliReduc::ComputePts()
 
     bool SpaceInit = true;
 
-    // Init systeme equation
+    // Init system equation
     for (int aK=0 ; aK<int(mIms.size()) ; aK++)
     {
           cImagH * anI =  mIms[aK];

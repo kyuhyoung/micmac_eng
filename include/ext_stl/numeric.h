@@ -111,8 +111,8 @@ template <class Type> class cTplTripletByRef
 };
 
 
-// ElMedian directement pompes sur __median de G++-stl,
-// car je ne suis pas sur que ce soit standard
+// ElMedian directement pompes on __median de G++-stl,
+// car je ne suis pas on que ce soit standard
 
 template <class T>
 inline const T& ElMedian(const T& a, const T& b, const T& c) {
@@ -230,7 +230,7 @@ typename tGetVal::tValue     GenValPdsPercentile
    double aMul = 50.0 / aSom;
    double aLastP = aGetP(aVec[0]);
 
-   // double aPerc0 = (0.5 * (aGetP(aVec[0]) / aSom) ) * 100;
+   // double aPerc0 = (0.5 * (aGetP(with[0]) / aSom) ) * 100;
    double aPerc0  = aLastP * aMul;
 
    if (aPerc <= aPerc0)  
@@ -315,7 +315,7 @@ template <class TVal> void VerifData(TVal * Data,int aNb)
 /*
 */
 
-// Permute les valeur de telle maniere que les [0,K[  premiere soit inferieure ou 
+// Permute les value de telle maniere que les [0,K[  premiere soit inferieure or 
 // egale aux suivante
 template <class TVal> void SplitArrounKthValue(TVal * Data,int aNb,int aKth)
 {
@@ -323,14 +323,14 @@ template <class TVal> void SplitArrounKthValue(TVal * Data,int aNb,int aKth)
    if (aKth<=0) return;
    if (aKth>=aNb) return;
  // std::cout << " SplitArrounKthValue " << aNb << " " << aKth << "\n";
-   // On calcule la moyenne
+   // On compute la moyenne
    TVal aMoy(0);
 
    for (int aKv=0 ; aKv<aNb ; aKv++)
       aMoy = aMoy+Data[aKv];
    aMoy = aMoy / aNb;
 
-   // On permut de maniere a ce que les valeur du debut soit < Moy  et celle de la fin >=Moy
+   // On permut de maniere a ce que les value du debut soit < Moy  and celle de la fin >=Moy
    int aK0 =0;
    int aK1 = aNb-1;
    while (aK0 < aK1)
@@ -344,7 +344,7 @@ template <class TVal> void SplitArrounKthValue(TVal * Data,int aNb,int aKth)
    }
    ELISE_ASSERT(aK0==aK1,"Verif in SplitArrounKthValue");
 
-   // Si le cas, on n'a pas progresse, toute les valeur sont egale
+   // if le cas, on n'a pas progresse, toute les value sont egale
    if  (aK0==0)
    {
        return;
@@ -364,7 +364,7 @@ template <class TVal> void SplitArrounKthValue(TVal * Data,int aNb,int aKth)
       }
    }
 
-   // A la fin K0=K1 et elle sont bien splite autour de la moyenne
+   // A la fin K0=K1 and elle sont bien splite autour de la moyenne
    if (aK0 == aKth)  return;
 
 

@@ -59,7 +59,7 @@ Pt2di getImageSize(std::string const &aName)
     // on teste l'extension
     if ((ext==std::string("jp2"))|| (ext==std::string("JP2")) || (ext==std::string("Jp2")))
     {
-        //std::cout<<"JP2 avec Jp2ImageLoader"<<std::endl;
+        //std::cout<<"JP2 with Jp2ImageLoader"<<std::endl;
         std_unique_ptr<cInterfModuleImageLoader> aRes(new JP2ImageLoader(aName, false));
         if (aRes.get())
         {
@@ -97,7 +97,7 @@ void getImageInfo(std::string const &aName,Pt2di &Size,int &NbCanaux)
     // on teste l'extension
     if ((ext==std::string("jp2"))|| (ext==std::string("JP2")) || (ext==std::string("Jp2")))
     {
-        //std::cout<<"JP2 avec Jp2ImageLoader"<<std::endl;
+        //std::cout<<"JP2 with Jp2ImageLoader"<<std::endl;
         std_unique_ptr<cInterfModuleImageLoader> aRes(new JP2ImageLoader(aName, false));
         if (aRes.get())
         {
@@ -138,7 +138,7 @@ std::vector<TIm2D<Type,TyBase>* > createVTIm2DFromFile(std::string const &aName,
     // on teste l'extension
     if ((ext==std::string("jp2"))|| (ext==std::string("JP2")) || (ext==std::string("Jp2")))
     {
-        //std::cout<<"JP2 avec Jp2ImageLoader"<<std::endl;
+        //std::cout<<"JP2 with Jp2ImageLoader"<<std::endl;
         std_unique_ptr<cInterfModuleImageLoader> aRes(new JP2ImageLoader(aName, false));
         if (aRes.get()!=NULLPTR)
         {
@@ -196,7 +196,7 @@ TIm2D<Type,TyBase>* createTIm2DFromFile(std::string const &aName, Pt2di const &P
     // on teste l'extension
     if ((ext==std::string("jp2"))|| (ext==std::string("JP2")) || (ext==std::string("Jp2")))
     {
-        //std::cout<<"JP2 avec Jp2ImageLoader"<<std::endl;
+        //std::cout<<"JP2 with Jp2ImageLoader"<<std::endl;
         std_unique_ptr<cInterfModuleImageLoader> aRes(new JP2ImageLoader(aName, false));
         if (aRes.get()!=NULLPTR)
         {
@@ -278,7 +278,7 @@ std::vector<TIm2D<Type,TyBase>* > createVTIm2DFromFile(std::string const &aName)
     }
 #endif
     return vPtr;
-    // Attention la version FromFileStd ne fonctionne pas avec une image couleur??
+    // Attention la version FromFileStd ne fonctionne pas with une image couleur??
     //return new TIm2D<Type,TyBase>(Im2D<Type,TyBase>::FromFileStd(aName));
     //return new TIm2D<Type,TyBase>(Im2D<Type,TyBase>::FromFileBasic(aName));
 }
@@ -325,7 +325,7 @@ TIm2D<Type,TyBase>* createTIm2DFromFile(std::string const &aName)
         }
     }
 #endif
-    // Attention la version FromFileStd ne fonctionne pas avec une image couleur??
+    // Attention la version FromFileStd ne fonctionne pas with une image couleur??
     //return new TIm2D<Type,TyBase>(Im2D<Type,TyBase>::FromFileStd(aName));
     return new TIm2D<Type,TyBase>(Im2D<Type,TyBase>::FromFileBasic(aName));
 }
@@ -461,7 +461,7 @@ int TP2GCP(std::string const &aNameFileMNT,
         }
     }
 
-    // Chargement des points d'interet dans l'ortho
+    // Chargement des points d'interet in l'ortho
     vector<DigeoPoint> keypointsOrtho;
 
     if ( !DigeoPoint::readDigeoFile( aNameFilePOIOrtho, true, keypointsOrtho ) ){
@@ -470,7 +470,7 @@ int TP2GCP(std::string const &aNameFileMNT,
     }
     std::cout << "Nombre de points dans l'ortho : "<<keypointsOrtho.size()<<std::endl;
 
-    // Chargement des points d'interet dans l'image
+    // Chargement des points d'interet in l'image
     vector<DigeoPoint> keypointsImage;
 
     if ( !DigeoPoint::readDigeoFile( aNameFilePOIImage, true, keypointsImage ) ){
@@ -479,7 +479,7 @@ int TP2GCP(std::string const &aNameFileMNT,
     }
     std::cout << "Nombre de points dans l'image : "<<keypointsImage.size()<<std::endl;
 
-    // Chargement de la grille et de l'image
+    // Chargement de la grille and de l'image
     std_unique_ptr<TIm2D<U_INT1,INT4> > img(NULLPTR);
     Pt2di ImgSz = getImageSize(aNameFileImage);
     if (ImgSz.x * ImgSz.y < SzMaxImg)
@@ -492,7 +492,7 @@ int TP2GCP(std::string const &aNameFileMNT,
         }
     }
 
-    // Chargement de la grille et de l'image
+    // Chargement de la grille and de l'image
     ElAffin2D oriIntImaM2C;
     std_unique_ptr<ElCamera> aCamera(new cCameraModuleOrientation(new OrientationGrille(aNameFileGrid),ImgSz,oriIntImaM2C));
 
@@ -506,7 +506,7 @@ int TP2GCP(std::string const &aNameFileMNT,
     std::ofstream fic(aNameResult.c_str());
     fic << std::setprecision(15);
 
-    // Export sous forme de dico appuis et mesures
+    // Export under forme de dico appuis and mesures
     cSetOfMesureAppuisFlottants aSetDicoMesure;
 
     cMesureAppuiFlottant1Im aDicoMesure;
@@ -523,17 +523,17 @@ int TP2GCP(std::string const &aNameFileMNT,
     {
         DigeoPoint const &ptSift = (*it);
         // On estime la position 3D du point
-        // ToDo: ajouter l'interpolation de l'alti dans le mnt
+        // ToDo: ajouter l'interpolation de l'alti in le mnt
         Pt2dr ptOrtho(ptSift.x,ptSift.y);
-        //if (verbose) std::cout << "Point img dans l'ortho : "<<ptOrtho.x<<" "<<ptOrtho.y<<std::endl;
+        //if (verbose) std::cout << "point img in l'ortho : "<<ptOrtho.x<<" "<<ptOrtho.y<<std::endl;
         ptOrtho.x =  ptOrtho.x*aOrthoOri.ResolutionPlani().x + aOrthoOri.OriginePlani().x;
         ptOrtho.y =  ptOrtho.y*aOrthoOri.ResolutionPlani().y + aOrthoOri.OriginePlani().y;
-        //if (verbose) std::cout << "Point terrain 2D : "<<ptOrtho.x<<" "<<ptOrtho.y<<std::endl;
-        // Position dans le MNT
+        //if (verbose) std::cout << "point terrain 2D : "<<ptOrtho.x<<" "<<ptOrtho.y<<std::endl;
+        // Position in le MNT
         Pt2dr ptMnt;
         ptMnt.x = (ptOrtho.x-aMntOri.OriginePlani().x)/aMntOri.ResolutionPlani().x;
         ptMnt.y = (ptOrtho.y-aMntOri.OriginePlani().y)/aMntOri.ResolutionPlani().y;
-        //if (verbose) std::cout << "Point img dans le Mnt : "<<ptMnt.x<<" "<<ptMnt.y<<std::endl;
+        //if (verbose) std::cout << "point img in le Mnt : "<<ptMnt.x<<" "<<ptMnt.y<<std::endl;
         double alti = aMntImg->getr(ptMnt,NoData)*aMntOri.ResolutionAlti() + aMntOri.OrigineAlti();
         if (alti == NoData)
         {
@@ -542,11 +542,11 @@ int TP2GCP(std::string const &aNameFileMNT,
             break;
         }
         //if (verbose) std::cout << "Altitude Mnt : "<<alti<<std::endl;
-        // Position dans l'image
+        // Position in l'image
         Pt3dr pt3(ptOrtho.x,ptOrtho.y,alti);
-        //if (verbose) std::cout << "Point terrain : "<<pt3.x<<" "<<pt3.y<<" "<<pt3.z<<std::endl;
+        //if (verbose) std::cout << "point terrain : "<<pt3.x<<" "<<pt3.y<<" "<<pt3.z<<std::endl;
         Pt2dr pImg = aCamera->R3toF2(pt3);
-        //if (verbose) std::cout << "Point Image : "<<pImg.x<<" "<<pImg.y<<std::endl;
+        //if (verbose) std::cout << "point image : "<<pImg.x<<" "<<pImg.y<<std::endl;
 
 
         std::vector<double> fenOrtho;
@@ -582,13 +582,13 @@ int TP2GCP(std::string const &aNameFileMNT,
         }
         if (dmin>=0)
         {
-            // On valide le point avec la correlation
+            // On valide le point with la correlation
 
             std::vector<double> fenImage;
 
             if (img.get()!=NULL)
             {
-                // version sans crop
+                // version without crop
                 for(int dy=-SzW;dy<=SzW;++dy)
                 {
                     for(int dx=-SzW;dx<=SzW;++dx)
@@ -605,7 +605,7 @@ int TP2GCP(std::string const &aNameFileMNT,
             }
             else
             {
-                // version avec crop
+                // version with crop
                 std::vector<Pt2dr> vCoordImage;
                 double cmin = 0 ,cmax = 0 ,lmin = 0,lmax = 0;
                 for(int dy=-SzW;dy<=SzW;++dy)
@@ -736,7 +736,7 @@ int TP2GCP(std::string const &aNameFileMNT,
 */
     }
 
-    //on recupere le nom de sortie sans extension
+    //on recupere le nom de sortie without extension
     int placePoint = -1;
     for(int l=(int)(aNameResult.size()-1);(l>=0)&&(placePoint==-1);--l)
     {
@@ -781,7 +781,7 @@ Pt3dr Img2Terrain(ElCamera *aCamera, TIm2D<REAL4,REAL8> *mnt, cFileOriMnt const 
     {
         Pterr = aCamera->F2AndZtoR3(Pt2dr(Pimg.x,Pimg.y),Z);
         if (verbose) std::cout << "it: "<<it<<" Pterr: "<<Pterr.x<<" "<<Pterr.y<<" "<<Pterr.z<<std::endl;
-        // Position dans le MNT
+        // Position in le MNT
         Pmnt.x = (Pterr.x-ori.OriginePlani().x)/ori.ResolutionPlani().x;
         Pmnt.y = (Pterr.y-ori.OriginePlani().y)/ori.ResolutionPlani().y;
         if (verbose) std::cout << "Pmnt : "<<Pmnt<<std::endl;
@@ -823,7 +823,7 @@ int Ortho(std::string const &aNameFileMNT,
         return EXIT_FAILURE;
     }
     
-    // Chargement de la grille et de l'image
+    // Chargement de la grille and de l'image
     Pt2di ImgSz;
     int ImgNbC;
     getImageInfo(aNameFileImage,ImgSz,ImgNbC);
@@ -837,7 +837,7 @@ int Ortho(std::string const &aNameFileMNT,
     int tailleBuffer=8000;
     int margeBuffer=100;
     
-    // Chargement de la grille et de l'image
+    // Chargement de la grille and de l'image
     std::cout << "Chargement de la grille..."<<std::endl;
     ElAffin2D oriIntImaM2C;
     std_unique_ptr<ElCamera> aCamera(new cCameraModuleOrientation(new OrientationGrille(aNameFileGrid),ImgSz,oriIntImaM2C));
@@ -845,12 +845,12 @@ int Ortho(std::string const &aNameFileMNT,
     
     //	bool verbose=true;
     
-    // Recherche l'emprise de l'ortho a calculer
+    // Recherche l'emprise de l'ortho a compute
     
     double NoData = 0;
     double ZMoy = 0.;
     double xmin,ymin,xmax,ymax;
-    // Projection des coins de l'image pour trouver l'emprise
+    // Projection des coins de l'image for trouver l'emprise
     {
         Pt3dr Pterr = Img2Terrain(aCamera.get(),aMntImg.get(),aMntOri,ZMoy,Pt2di(0,0));
         xmin = Pterr.x;
@@ -917,18 +917,18 @@ int Ortho(std::string const &aNameFileMNT,
                 Pt3dr Pterr;
                 Pterr.x = P0Ortho.x + c * resolution;
                 Pterr.y = P0Ortho.y - l * resolution;
-                // Position dans le MNT
+                // Position in le MNT
                 Pt2dr Pmnt;
                 Pmnt.x = (Pterr.x-aMntOri.OriginePlani().x)/aMntOri.ResolutionPlani().x;
                 Pmnt.y = (Pterr.y-aMntOri.OriginePlani().y)/aMntOri.ResolutionPlani().y;
                 Pterr.z = aMntImg->getr(Pmnt,NoData)*aMntOri.ResolutionAlti() + aMntOri.OrigineAlti();
-                // Position dans l'image
+                // Position in l'image
                 Pt2dr Pimg = aCamera->R3toF2(Pterr);
                 
                 if ((Pimg.x<0)||(Pimg.y<0)||(Pimg.x>=ImgSz.x)||(Pimg.y>=ImgSz.y))
                     continue;
                 
-                // On regarde si le pixel demande est dans le buffer en memoire
+                // On regarde if le pixel demande est in le buffer en memoire
                 if ((vBuffer.size()==0)||
                     ((Pimg.x<bufferMin.x)||(Pimg.x>=bufferMax.x)||(Pimg.y<bufferMin.y)||(Pimg.y>=bufferMax.y)))
                 {
@@ -1039,18 +1039,18 @@ int Ortho(std::string const &aNameFileMNT,
                         Pt3dr Pterr;
                         Pterr.x = P0DalleOrtho.x + c * resolution;
                         Pterr.y = P0DalleOrtho.y - l * resolution;
-                        // Position dans le MNT
+                        // Position in le MNT
                         Pt2dr Pmnt;
                         Pmnt.x = (Pterr.x-aMntOri.OriginePlani().x)/aMntOri.ResolutionPlani().x;
                         Pmnt.y = (Pterr.y-aMntOri.OriginePlani().y)/aMntOri.ResolutionPlani().y;
                         Pterr.z = aMntImg->getr(Pmnt,NoData)*aMntOri.ResolutionAlti() + aMntOri.OrigineAlti();
-                        // Position dans l'image
+                        // Position in l'image
                         Pt2dr Pimg = aCamera->R3toF2(Pterr);
                         
                         if ((Pimg.x<0)||(Pimg.y<0)||(Pimg.x>=ImgSz.x)||(Pimg.y>=ImgSz.y))
                             continue;
                         
-                        // On regarde si le pixel demande est dans le buffer en memoire
+                        // On regarde if le pixel demande est in le buffer en memoire
                         if ((vBuffer.size()==0)||
                             ((Pimg.x<bufferMin.x)||(Pimg.x>=bufferMax.x)||(Pimg.y<bufferMin.y)||(Pimg.y>=bufferMax.y)))
                         {
@@ -1137,18 +1137,18 @@ int Ortho(std::string const &aNameFileMNT,
 int ServiceGeoSud_TP2GCP_main(int argc, char **argv) {
 
 
-    std::string aNameFileMNT;// un fichier xml de type FileOriMnt pour le MNT
-    std::string aNameFileOrtho;// un fichier xml de type FileOriMnt pour l'ortho
-    std::string aNameFilePOIOrtho;// un fichier dat de POI Ortho
+    std::string aNameFileMNT;// un file xml de type FileOriMnt for le MNT
+    std::string aNameFileOrtho;// un file xml de type FileOriMnt for l'ortho
+    std::string aNameFilePOIOrtho;// un file dat de POI Ortho
 
-    std::string aNameFileGrid;// un fichier GRID
-    std::string aNameFileImage;// un fichier image
-    std::string aNameFilePOIImage;// un fichier POI pour l'image associee a la GRID
+    std::string aNameFileGrid;// un file GRID
+    std::string aNameFileImage;// un file image
+    std::string aNameFilePOIImage;// un file POI for l'image associee a la GRID
 
     double seuilPixel=20;
     double seuilCorrel=0.7;
     int SzW=10;
-    std::string aNameResult="result.txt";// un fichier resultat
+    std::string aNameResult="result.txt";// un file result
 
     ElInitArgMain
     (
@@ -1171,11 +1171,11 @@ int ServiceGeoSud_TP2GCP_main(int argc, char **argv) {
 int ServiceGeoSud_Ortho_main(int argc, char **argv) {
 
 
-    std::string aNameFileMNT;// un fichier xml de type FileOriMnt pour le MNT
+    std::string aNameFileMNT;// un file xml de type FileOriMnt for le MNT
 
-    std::string aNameFileGrid;// un fichier GRID
-    std::string aNameFileImage;// un fichier image
-    std::string aNameResult;// un fichier resultat
+    std::string aNameFileGrid;// un file GRID
+    std::string aNameFileImage;// un file image
+    std::string aNameResult;// un file result
 
     double resolution;
 
@@ -1262,7 +1262,7 @@ int ServiceGeoSud_Surf_main(int argc, char **argv){
             for(size_t i=0;i<s.vPoints.size();++i)
             {
                 SurfPoint const &surfPt =s.vPoints[i];
-                //std::cout << "Point : "<<surfPt.x()+cmin<<" "<<surfPt.y()+lmin<<" "<<surfPt.descripteur.size()<<std::endl;
+                //std::cout << "point : "<<surfPt.x()+cmin<<" "<<surfPt.y()+lmin<<" "<<surfPt.descripteur.size()<<std::endl;
                 DigeoPoint pt;
                 pt.x =surfPt.x()+cmin;
                 pt.y =surfPt.y()+lmin;
@@ -1293,7 +1293,7 @@ int ServiceGeoSud_Surf_main(int argc, char **argv){
 
     // Verification
     {
-        // Chargement des points d'interet dans l'ortho
+        // Chargement des points d'interet in l'ortho
         vector<DigeoPoint> vPts;
 
         DigeoPoint::readDigeoFile( aNameOut, true, vPts );
@@ -1441,14 +1441,14 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
             std::cout << "fichier GRID : "<<aNameFileGrid<<std::endl;
             std::cout << "fichier POI : "<<aNameFilePOI<<std::endl;
 
-            // Chargement de la grille et de l'image
+            // Chargement de la grille and de l'image
             ElAffin2D oriIntImaM2C;
             std_unique_ptr<ElCamera> aCamera(new cCameraModuleOrientation(new OrientationGrille(aNameFileGrid),ImgSz,oriIntImaM2C));
 
 
             // On cherche l'emprise de l'image
             double xmin,ymin,xmax,ymax;
-            // Projection des coins de l'image pour trouver l'emprise
+            // Projection des coins de l'image for trouver l'emprise
             {
                 Pt3dr Pterr = aCamera->F2AndZtoR3(Pt2dr(0,0),ZMoy);
                 xmin = Pterr.x;
@@ -1528,7 +1528,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
 
 
 
-            // Chargement des points d'interet dans l'image
+            // Chargement des points d'interet in l'image
             vector<DigeoPoint> keypointsImage;
 
             if ( !DigeoPoint::readDigeoFile( aNameFilePOI, true, keypointsImage ) ){
@@ -1595,7 +1595,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
         return EXIT_FAILURE;
     }
 
-    // Calcul des points entre les images avec Ann
+    // computation des points between les images with Ann
     std::list<ElCamera*>::iterator itCamera = aLCamera.begin();
     int numImg1 = 1;
     for(it=aLFilePoi.begin();it!=aLFilePoi.end();++it)
@@ -1608,7 +1608,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
             std::string nomRes = "out.res";
             std::string cmdAnn="mm3d Ann "+(*it)+" "+(*it2)+" out.res";
             system(cmdAnn.c_str());
-            // Il faut exporter ces points de liaison en allant chercher le Z sur un MNT basse resolution (a 25m)
+            // Il faut exporter ces points de liaison en allant chercher le Z on un MNT basse resolution (a 25m)
             std::ifstream fic(nomRes.c_str());
             while(fic.good())
             {
@@ -1616,7 +1616,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
                 fic >> c1 >> l1 >> c2 >> l2;
                 if (fic.good())
                 {
-                    //std::cout << "Point de liaison "<<c1<<" "<<l1<<" | "<<c2<<" "<<l2<<std::endl;
+                    //std::cout << "point de liaison "<<c1<<" "<<l1<<" | "<<c2<<" "<<l2<<std::endl;
                     // On estime le Z
                     Pt3dr Pt3D = Img2Terrain(aCamera,aMntImg.get(),aMntOri,ZMoy,Pt2di(c1,l1));
                     // On exporte le point
@@ -1654,7 +1654,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
 
     std::cout << std::fixed << "Emprise du chantier : "<<xminChantier<<" "<<yminChantier<<" "<<xmaxChantier<<" "<<ymaxChantier<<std::endl;
 
-    // Si le chantier est trop grand, il faut daller
+    // if le chantier est trop grand, il faut daller
     int tailleDalle = 4000;
     int NbX = NC/tailleDalle;
     if (NbX*tailleDalle<NC)
@@ -1683,7 +1683,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
             double yminDalle = yminChantier + l*tailleDalle*resolution;
             double xmaxDalle = xminDalle + ncDalle*resolution;
             double ymaxDalle = yminDalle + nlDalle*resolution;
-            // Extraction de l'ortho si necessaire
+            // Extraction de l'ortho if necessaire
             FILE* fDalleOrtho = fopen(nomDalleOrtho.c_str(),"r");
             if (fDalleOrtho == NULL)
             {
@@ -1712,7 +1712,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
                 return EXIT_FAILURE;
             }
 
-            // On teste si l'image contient quelque chose (cas des bords de mer)
+            // On teste if l'image contient quelque chose (cas des bords de mer)
             bool empty = true;
             {
                 double min,max;
@@ -1763,7 +1763,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
             }
              */
 
-            // Chargement des points d'interet dans l'ortho
+            // Chargement des points d'interet in l'ortho
             vector<DigeoPoint> keypointsOrtho;
 
             if ( !DigeoPoint::readDigeoFile( nomDalle+"_ortho.dat", true, keypointsOrtho ) ){
@@ -1774,7 +1774,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
 
             double NoData = -9999.;
 
-            // Export sous forme de dico appuis et mesures
+            // Export under forme de dico appuis and mesures
             cSetOfMesureAppuisFlottants aSetDicoMesure;
             cDicoAppuisFlottant  aDicoAppuis;
 
@@ -1784,17 +1784,17 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
             {
                 DigeoPoint const &ptSift = (*itKP);
                 // On estime la position 3D du point
-                // ToDo: ajouter l'interpolation de l'alti dans le mnt
+                // ToDo: ajouter l'interpolation de l'alti in le mnt
                 Pt2dr ptOrtho(ptSift.x,ptSift.y);
-                //std::cout << "Point img dans l'ortho : "<<ptOrtho.x<<" "<<ptOrtho.y<<std::endl;
+                //std::cout << "point img in l'ortho : "<<ptOrtho.x<<" "<<ptOrtho.y<<std::endl;
                 ptOrtho.x =  ptOrtho.x*resolution + xminDalle;
                 ptOrtho.y =  -ptOrtho.y*resolution + ymaxDalle;
-                //std::cout << "Point terrain 2D : "<<ptOrtho.x<<" "<<ptOrtho.y<<std::endl;
-                // Position dans le MNT
+                //std::cout << "point terrain 2D : "<<ptOrtho.x<<" "<<ptOrtho.y<<std::endl;
+                // Position in le MNT
                 Pt2dr ptMnt;
                 ptMnt.x = (ptOrtho.x-aMntOri.OriginePlani().x)/aMntOri.ResolutionPlani().x;
                 ptMnt.y = (ptOrtho.y-aMntOri.OriginePlani().y)/aMntOri.ResolutionPlani().y;
-                //std::cout << "Point img dans le Mnt : "<<ptMnt.x<<" "<<ptMnt.y<<std::endl;
+                //std::cout << "point img in le Mnt : "<<ptMnt.x<<" "<<ptMnt.y<<std::endl;
                 double alti = aMntImg->getr(ptMnt,NoData)*aMntOri.ResolutionAlti() + aMntOri.OrigineAlti();
                 if (alti == NoData)
                 {
@@ -1803,9 +1803,9 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
                     break;
                 }
                 //std::cout << "Altitude Mnt : "<<alti<<std::endl;
-                // Position dans l'image
+                // Position in l'image
                 Pt3dr pt3(ptOrtho.x,ptOrtho.y,alti);
-                //std::cout << "Point terrain : "<<pt3.x<<" "<<pt3.y<<" "<<pt3.z<<std::endl;
+                //std::cout << "point terrain : "<<pt3.x<<" "<<pt3.y<<" "<<pt3.z<<std::endl;
 
                 bool usePt = false;
 
@@ -1818,7 +1818,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
                     {
                         double radio =OrthoImg->getr(Pt2dr((double)c+ptSift.x ,(double)l+ptSift.y),NoData);
                         fenOrtho.push_back(radio);
-                        //std::cout << "Point "<<(double)c+ptSift.x<<" "<<(double)l+ptSift.y<<" -> "<<c+SzW<<" "<<l+SzW<<" : "<<radio<<std::endl;
+                        //std::cout << "point "<<(double)c+ptSift.x<<" "<<(double)l+ptSift.y<<" -> "<<c+SzW<<" "<<l+SzW<<" : "<<radio<<std::endl;
                         //debugFenOrtho.oset(Pt2di(c+SzW,l+SzW),(int)radio);
                     }
                 }
@@ -1840,7 +1840,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
                     // taille de l'image
                     Pt2di ImgSz = getImageSize(*itLF);
 
-                    //std::cout << "Point Image : "<<pImg.x<<" "<<pImg.y<<std::endl;
+                    //std::cout << "point image : "<<pImg.x<<" "<<pImg.y<<std::endl;
 
                     cMesureAppuiFlottant1Im aDicoMesure;
                     //cout << "Img name: " << *itLF << endl;
@@ -1993,7 +1993,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
                         }
                     }
 #else
-                      // Chargement des points d'interet dans l'image
+                      // Chargement des points d'interet in l'image
                     vector<DigeoPoint> const &keypointsImage=(*itPoi);
 
 
@@ -2023,7 +2023,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
 
                     if (dmin>=0)
                     {
-                        // On valide le point avec la correlation
+                        // On valide le point with la correlation
                         std::vector<double> fenImage;
                         std::vector<Pt2dr> vCoordImage;
                         double cmin = 0 ,cmax = 0 ,lmin = 0,lmax = 0;
@@ -2081,7 +2081,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
                             std::cout << "Point Dmin : "<<ptHomoDmin.x<<" "<<ptHomoDmin.y<<" Correl="<<coef<<std::endl;
                             ficAppuis << idAmer <<" "<<numImg<<" "<<ptHomoDmin.y<<" "<<ptHomoDmin.x<<" 5.00e-01  5.00e-01 0"<<std::endl;
                             //TODO: a verifier greg: il manque usePt =true; ?
-                            //vraiment jamais utilisé a cause du #if ?
+                            //vraiment jamais utilis a cause du #if ?
 
                             if (aExportMM)
                             {
@@ -2157,7 +2157,7 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
      */
 
     /*
-    // Il faut convertir cette emprise en coordonnees geographique
+    // Il faut convertir cette emprise en coordinates geographique
     //    command = "cs2cs "+targetSyst+" +to +proj=latlon +datum=WGS84 +ellps=WGS84 -f %.12f -s  processing/indirect_ptCarto.txt >  processing/indirect_ptGeo.txt";
     //echo 368225.296078 6555181.166326 | cs2cs +init=IGNF:LAMB93 +to +proj=latlon +datum=WGS84
     //echo 368225.296078 6555181.166326 > tempCarto.txt
@@ -2201,9 +2201,9 @@ int ServiceGeoSud_GeoSud_main(int argc, char **argv){
 
     // Export des fichiers
     // PtAppuis.txt (NumPt,lon,lat,alti)
-    // Appuis.txt (NumPt,NumImage,ligne,colonne)
+    // Appuis.txt (NumPt,NumImage,line,colonne)
     // PtLiaisons.txt (NumPt,alti)
-    // Liaisons.txt (NumPt,NumImage,ligne,colonne)
+    // Liaisons.txt (NumPt,NumImage,line,colonne)
 
 
     return 0;

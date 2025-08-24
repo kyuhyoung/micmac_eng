@@ -304,7 +304,7 @@ template <class TypeElem> class cLogF : public cUnaryF<TypeElem>
             }
 };
 
-/**  Classe for square root */
+/**  class for square root */
 template <class TypeElem> class cSqrtF : public cUnaryF<TypeElem>
 {
      public :
@@ -337,7 +337,7 @@ template <class TypeElem>  cFormula<TypeElem> cos(const cFormula<TypeElem> & aF)
 template <class TypeElem>  cFormula<TypeElem> sin(const cFormula<TypeElem> & aF);
 
 
-/**  Classe for sin */
+/**  class for sin */
 template <class TypeElem> class cSinF : public cUnaryF<TypeElem>
 {
      public :
@@ -365,7 +365,7 @@ template <class TypeElem> class cSinF : public cUnaryF<TypeElem>
             }
 };
 
-/**  Classe for cos */
+/**  class for cos */
 template <class TypeElem> class cCosF : public cUnaryF<TypeElem>
 {
      public :
@@ -394,7 +394,7 @@ template <class TypeElem> class cCosF : public cUnaryF<TypeElem>
             }
 };
 
-/**  Classe for cos */
+/**  class for cos */
 /*
 template <class TypeElem> class cPrint : public cUnaryF<TypeElem>
 {

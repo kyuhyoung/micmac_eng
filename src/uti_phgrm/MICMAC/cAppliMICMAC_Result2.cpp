@@ -297,8 +297,8 @@ string replace( const std::string &i_src, const std::string &i_strToReplace, con
 
 // replace strings in the i_stringsToProtect list by their protected version (s -> protect_spaces(s))
 //
-// assez laid mais je ne vois pas d'autre solution sans specialiser/typer les parties sensibles des commandes (noms de fichiers ici, peut-�tre plus)
-// ca a le merite d'etre compatible avec les XML deja existants
+// assez laid but je ne vois pas d'autre solution without specialiser/typer les parties sensibles des commandes (noms de fichiers ici, peut-tre plus)
+// ca a le merite d'etre compatible with les XML deja existants
 void protect_spaces_in_strings( cCmdExePar &io_cmdExePar, const list<string> &i_stringsToProtect )
 {
    list<string>::const_iterator itString = i_stringsToProtect.begin();
@@ -624,11 +624,11 @@ void cAppliMICMAC::MakeResultOfEtape(cEtapeMecComp & anEtape)
 
 void cAppliMICMAC::MakeDequantSpecial()
 {
-   // MPD Modif , le dequant tel que implemante dans MicMac a pas mal d'effet de bord,
-   // pour les reduire efficacement, il faudraoit augmenter taille des recouvrt et 
-   // taille image mais ensite MicMac est couteux en memoire. Donc :
+   // MPD Modif , le dequant tel que implemante in MicMac a pas mal d'effet de bord,
+   // for les reduire efficacement, il faudraoit augmenter taille des recouvrt and 
+   // taille image but ensite MicMac est couteux en memoire. Donc :
    //    * on relance un Dequant "basique"
-   //    * on laisse ce qui est fait actuellement car il y a pas mal d'autre chose pour preparer
+   //    * on laisse ce qui est fait actuellement car il y a pas mal d'autre chose for preparer
    //      ortho etc .... donc on prend pas de risques ...
 
    if (!mCurEtape->IsOptDequant())
@@ -722,7 +722,7 @@ void cAppliMICMAC::MakeExportAsModeleDist
    aMod.Pas().y = anEtape.KPx(1).ComputedPas();
 
 // std::cout << aMod.Pas().x << " " << aMod.Pas().y << "\n";
-// std::cout << "VERIF INVERSION DANS SauvegardeMR2A !! \n";
+// std::cout << "VERIF INVERSION in SauvegardeMR2A !! \n";
    ELISE_ASSERT
    (
            aMod.SauvegardeMR2A().IsInit()
@@ -755,7 +755,7 @@ void cAppliMICMAC::MakeExportAsModeleDist
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -771,17 +771,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

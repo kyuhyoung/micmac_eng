@@ -577,7 +577,7 @@ void  cDico_SymbFN::AddF(Fonc_Num aF)
    cCelDico_SFN & aCel = mDic[aF];
 
    // Lorsque l'expression est marquee comme interessante,
-   // on force l'emission de symbole pour clarifier
+   // on force l'emission de symbole for clarifier
    if (aF.HasNameCpp())
       aCel.mNbRef++;
    aCel.mNbRef++;
@@ -733,8 +733,8 @@ void cElCompiledFonc::SetMappingCur
                 mMapComp2Real.at(I0Comp+aK) = I0Real+aK;
              }
         }
-        // Le 12/05/2014 : j'ai l'impression que la tri de mMapComp2Real est une erreur (subsiste des anciens ??)
-        // mais que jamais cree de pb car deja trie, le isSorted estfait pour verifier cela
+        // Le 12/05/2014 : j'ai l'impression que la tri de mMapComp2Real est une error (subsiste des anciens ??)
+        // but que jamais cree de pb car deja trie, le isSorted estfait for verifier cela
         bool isSorted = true;
         for (int aK=0 ; aK<int(mMapComp2Real.size()) ; aK++)
         {
@@ -752,12 +752,12 @@ void cElCompiledFonc::SetMappingCur
                 ElEXIT(-1,"INTERNAL ERROR IN MICMAC (cElCompiledFonc::SetMappingCur) : contact devlopment team");
             }
         }
-        // A PRIORI CETTE LIGNE EST NEFASTE (en general INUTILE) .... a verifier a l'usage
+        // A PRIORI CETTE line EST NEFASTE (en general INUTILE) .... a verifier a l'usage
         // std::sort(mMapComp2Real.begin(),mMapComp2Real.end());
      }
      // std::cout <<  "  ----SetMappingCur----   "  << aSet.size() << "\n";
 
-     // On compile les intervales, pour la gestion en block
+     // On compile les intervales, for la gestion en block
      {
          // 1 - on trie les intervalle de ref par ordre croissant d'indices
          std::vector<const cIncIntervale *> aVRef;
@@ -914,7 +914,7 @@ double * cElCompiledFonc::RequireAdrVarLocFromString(const std::string & aName)
 
 
 
-     // Allocation d'objet par nom
+     // Allocation d'object par nom
 cElCompiledFonc::cAutoAddEntry::cAutoAddEntry
 (
    const std::string & aStr,
@@ -1443,7 +1443,7 @@ void cElCompileFN::MakeFileCpp(std::vector<Fonc_Num> vFoncs,bool SpecFCUV)
    MakeFonc(vFoncs,1,SpecFCUV);
    MakeFonc(vFoncs,2,SpecFCUV);
 
-// Calcul des Fonction SetVar
+// computation des function SetVar
    (*this) << "\n";
    for (cECFN_SetString::const_iterator it = mNamesLoc->begin(); it!=mNamesLoc->end() ; it++)
    {
@@ -1453,7 +1453,7 @@ void cElCompileFN::MakeFileCpp(std::vector<Fonc_Num> vFoncs,bool SpecFCUV)
    (*this) << "\n\n\n";
 
 
-// Fonction AdrVarLocFromString : 
+// function AdrVarLocFromString : 
    (*this) << "double * " << mNameClass << "::AdrVarLocFromString(const std::string & aName)\n";
    (*this) << "{\n";
    {
@@ -1529,7 +1529,7 @@ Fonc_Num SimplifyFCUV(Fonc_Num aF)
 }
 
 
-// On met d'abord les fonction pour la derivees, ensuite les fonctions pour la valeur
+// On met d'abord les function for la derivees, ensuite les fonctions for la value
 
 #define MAKE_DER_SEC false
 void cElCompileFN::MakeFonc(std::vector<Fonc_Num> vFoncs,INT aDegDeriv,bool UseAccel) // 0, fonc , 1 deriv, 2 hessian
@@ -1584,7 +1584,7 @@ void cElCompileFN::MakeFonc(std::vector<Fonc_Num> vFoncs,INT aDegDeriv,bool UseA
     mFile = aSauvFile;
 
 
-// Calcul de la valeur
+// computation de la value
 
    (*this) << "void " << mNameClass << "::ComputeVal";
    if (aDegDeriv>=1) (*this) << "Deriv";
@@ -1599,7 +1599,7 @@ void cElCompileFN::MakeFonc(std::vector<Fonc_Num> vFoncs,INT aDegDeriv,bool UseA
        Fonc_Num aF0 =  SimplifyFCUV(vFoncs[aK]);
        (*this) << "  mVal["<<aK-aK0<<"] = " << aF0 << ";\n\n";
 
-        // Calcul des derivees 
+        // computation des derivees 
        if (aDegDeriv>=1)
        {
            for (INT aD = 0 ; aD<mNVMax ; aD++)
@@ -1609,7 +1609,7 @@ void cElCompileFN::MakeFonc(std::vector<Fonc_Num> vFoncs,INT aDegDeriv,bool UseA
            }
        }
 
-        // Calcul des derivees Seconde
+        // computation des derivees Seconde
        if (aDegDeriv>=2)
        {
            for (INT aD1 = 0 ; aD1<mNVMax ; aD1++)
@@ -1645,7 +1645,7 @@ void cElCompileFN::DoEverything
 
    cElCompileFN aECFN(aDir,aName,aListInterv);
 
- // On parcourt une premiere fois  pour generer les variables, a toutes fins utiles
+ // On parcourt une premiere fois  for generer les variables, a toutes fins utiles
    for (INT aK=0; aK<INT(vFoncs.size()) ; aK++)
    {
        Fonc_Num aF = SimplifyFCUV( vFoncs[aK]);

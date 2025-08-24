@@ -9,13 +9,13 @@ public:
 
     void computeImCplOverlap();
     void computeModel4EveryPairs();
-    // charge la liste de paire renseignée par l'utilisateur
+    // charge la list de paire renseignée par l'utilisateur
     void loadImPair();
     void applyRE();
 
    private:
      cInterfChantierNameManipulateur * mICNM;
-     // liste de couple d'images
+     // list de couple d'images
      cSauvegardeNamedRel mSNR ;
      std::string mFileClpIm, mDirOut,mDir,mFullName,mFileOutModels;
      std::list<std::string> mLFile;
@@ -23,7 +23,7 @@ public:
      std::string mPatOrt;
      std::string mPatPrio; // les images qu'on ne souhaite pas égaliser.
      std::vector<cImGeo> mLIm;
-     std::vector<c2DLineModel> mL2Dmod;// liste des modèles linéaires, un pour chaque images chargées.
+     std::vector<c2DLineModel> mL2Dmod;// list des modèles linéaires, un for chaque images chargées.
 
      int mMinOverX_Y,mMinOverX_Y_fichierCouple,mPropPixRec;
      void moyenneModelPerOrt();

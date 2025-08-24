@@ -44,8 +44,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 //------------------------------------------------------------------------
 // chronometre.h
 //------------------------------------------------------------------------
-// definition d'une classe de chronometre.
-// On peut le lancer, l'arreter, le relancer. Pour lire le temps, il faut
+// definition d'une class de chronometre.
+// On peut le lancer, l'arreter, le relancer. for lire le temps, il faut
 // d'abord arreter le chrono.
 //------------------------------------------------------------------------
 #include "time.h"

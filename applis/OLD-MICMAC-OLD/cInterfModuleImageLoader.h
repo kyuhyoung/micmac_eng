@@ -135,13 +135,13 @@ class cInterfModuleImageLoader
       virtual tPInt Sz(int aDeZoom)  const= 0;
       virtual int NbCanaux () const = 0;
 
-      // Pour que en cas d'execution paralelle, il 
+      // for que en cas d'execution paralelle, il 
       // y ait une preparation de la pyramide
       virtual void PreparePyram(int aDeZoom) =0;
 
 
-      // Par defaut genere une erreurs, utilise pour compatibilite
-      // avec d'anciens services tels que ValSpecNotImage
+      // Par defaut genere une erreurs, utilise for compatibilite
+      // with d'anciens services tels que ValSpecNotImage
       virtual std::string  NameTiffImage() const;
        
 
@@ -163,7 +163,7 @@ class cInterfModuleImageLoader
 /*                                               */
 /*************************************************/
 
-// A mettre dans le .h pour utilisation hors MICMAC
+// A mettre in le .h for utilisation hors MICMAC
 /*
     cInterfModuleImageLoader::cInterfModuleImageLoader() :
     mAppli (0)

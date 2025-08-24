@@ -60,7 +60,7 @@ template <class TFlux,class TFonc> class   cFluxSel
 /*=======================================================*/
 
 
-     /**   Image value "safe"  : do not generate error as when point is out,
+     /**   image value "safe"  : do not generate error as when point is out,
          give the value of projection inside de validity domai
      */
 template <class TypeIm> class cImInputProj

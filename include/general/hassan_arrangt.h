@@ -50,7 +50,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 #define ElHJAEpsilon 1e-5
 
-           // ******* Classe definie dans ce fichier
+           // ******* class definie in ce file
 
 class cElHJaSomEmpr;  // Un sommet de l'emprise plani
 class cElHJaPlan3D;          // Represente un plan support de facette
@@ -58,22 +58,22 @@ class cElHJaPoint;  // Represente un point, intersection de 3 cElHJaPlan3D
 class cElHJaDroite; // Represente une droite, intersection de 2 cElHJaPlan3D
 class cElHJaFacette;         // Facette d'un plan
 class cElHJaArrangt_Visu;    // Permet une visualisation
-class cElHJaArrangt;         // Classe contenant tous les objets
+class cElHJaArrangt;         // class contenant tous les objets
 
-                    // Pour representer un modele 3D solution
+                    // for representer un modele 3D solution
 		    // topologie "a la Trapu"
 class cTrapuFace;
 class cTrapuBat;
     // Anciennes
-class cElHJSom3D;     // Fichier cElHJSol3D.cpp
-class cElHJFac3D;     // Fichier cElHJSol3D.cpp
+class cElHJSom3D;     // file cElHJSol3D.cpp
+class cElHJFac3D;     // file cElHJSol3D.cpp
 class cElHJSol3D;
 
 typedef std::vector<cElHJaSomEmpr>  tEmprPlani;  // Type Emprise planimetrique
 typedef std::list<cElHJaFacette *> tBufFacette;
 
-          // ******* Classe d'implementation pure, defini en
-          // ******* interne pour ne pas surcharger
+          // ******* class d'implementation pure, defini en
+          // ******* interne for ne pas surcharger
           // *****   la compile (instanciation de template)
 
 
@@ -167,16 +167,16 @@ class cElHJaDroite
 {
      public :
          cElHJaDroite(const ElSeg3D & aSeg,cElHJaPlan3D & aP1,cElHJaPlan3D & aP2,INT aNbPl);
-	 // P1 et P2 pour verfier "temporairement" que l'on ne
-	 // s'est pas emmele sur l'ordre des plan, a part ca inutile
+	 // P1 and P2 for verfier "temporairement" que l'on ne
+	 // s'est pas emmele on l'ordre des plan, a part ca inutile
          void AddPoint(cElHJaPoint &,cElHJaPlan3D & aP3,
 			 tSomGrPl *s1,cElHJaPlan3D * aP1,
 			 tSomGrPl *s2,cElHJaPlan3D * aP2);
 	 ElSeg3D Droite();
 
-	 // Calcul les intersection de la droite (consideree plani)
-	 // avec l'emprise de l'arrangement, memorise les inter
-	 // et les "transmet: aux plans support
+	 // computation les intersection de la droite (consideree plani)
+	 // with l'emprise de l'arrangement, memorise les inter
+	 // and les "transmet: aux plans support
 	 void MakeIntersectionEmprise(const tEmprPlani &);
 
 	 void AddArcsInterieurInGraphe(const std::vector<Pt2dr> & aEmprInit);
@@ -217,7 +217,7 @@ class cElHJaPoint
          );
 	  //  retrouve les droites passant par le point
 	  //  est fait a posteriori car necessite que tout les droites
-	  //  soient construites et associees a leur plan
+	  //  soient construites and associees a leur plan
          void MakeDroites();
          Pt3dr Pt() const;
 
@@ -271,13 +271,13 @@ class cElHJaFacette
 	 bool IsIndeterminee();
 
 
-         // Toute les fonction de manipulation des facette
-         // renvoie true si il y a eu bloquage
+         // Toute les function de manipulation des facette
+         // renvoie true if il y a eu bloquage
          bool SetFacetteSure(tBufFacette *);
          bool SetFacetteImpossible(tBufFacette *);
 
 
-         // Si la facette est sure, propage l'incompatibilte
+         // if la facette est sure, propage l'incompatibilte
          // a toute les voisine
          bool PropageIncompEnDessous(tBufFacette *);
          bool PropageIncompVert(tBufFacette *);
@@ -286,9 +286,9 @@ class cElHJaFacette
 	 bool PropageIcompVois(tBufFacette *);
          static bool PropageVoisRecurs(tBufFacette *);
 
-	 // Si la facette est non refutee et que toute celle qui
-	 // l'intersecte sont refute, alors elle devient certaine
-	 //  A priori surtout pour mise au point
+	 // if la facette est non refutee and que toute celle qui
+	 // l'intersecte sont refute, then elle devient certaine
+	 //  A priori surtout for mise au point
 	 void SetSureIfPossible();
 	 const  std::vector<tArcGrPl *>  & Arcs();
          INT    NbThisEnDessous() const;
@@ -310,13 +310,13 @@ class cElHJaFacette
          cElHJaPlan3D * mPlan;
 
 	  std::vector<tArcGrPl *>  mVArcs;
-	  std::vector<Pt2dr>       mVPt; // Points pour requetes geom
+	  std::vector<Pt2dr>       mVPt; // Points for requetes geom
 
 	  Box2dr                       mBox; // Boite Englob
-	 // Pour un arc aCont[K]
-	 //   mVFAdjcMPl[K] est la facette adjacente dans le meme plan
-	 //   mVFAdjcComp[K] est la facette adjacente dans un autre plan
-	 //          mais compatible avec elle;
+	 // for un arc aCont[K]
+	 //   mVFAdjcMPl[K] est la facette adjacente in le meme plan
+	 //   mVFAdjcComp[K] est la facette adjacente in un autre plan
+	 //          but compatible with elle;
 	 //   mVFAdjcIncomp[K] Incompatible
 
 	 std::vector<cElHJaFacette *> mVFAdjcPl;
@@ -324,7 +324,7 @@ class cElHJaFacette
 	 std::vector<cElHJaFacette *> mVFAdjcIncomp;
 
 	 // mVFInterVert : Ensemble des facettes ayant une intersection
-	 // verticale non nulle avec elle
+	 // verticale non nulle with elle
 	 std::vector<cElHJaFacette *> mVFRecouvrt;
 	 std::vector<INT>             mThisIsEnDessus;
          INT                          mNbThisIsEnDessous;
@@ -441,7 +441,7 @@ GetEntreeNonVide(TDic & aDic,const std::string& aName,const std::string& aMes)
 
 
 
-// Je ne comprend pas pourquoi mais BoolFind ne marche pas avec les map
+// Je ne comprend pas pourquoi but BoolFind ne marche pas with les map
 
 template <class TVal,class TCont>
 bool DicBoolFind(const TCont & aCont,const TVal & aVal)
@@ -525,7 +525,7 @@ class cTrapuBat
 class cElImagesOfTrapu
 {
        public :
-	       // Si Dec = 0, calcule
+	       // if Dec = 0, compute
            cElImagesOfTrapu
            (const cTrapuBat & aBat,INT aRab,bool Sup,Pt2di *Dec);
 
@@ -623,7 +623,7 @@ class cElHJaArrangt
               tContPoint               mPoints;
 	      tContFac                 mFacettes;
               tEmprPlani               mEmprPl;  // Emprise planimetrique
-              std::vector<Pt2dr>       mEmprVPt2d; // Id prec, pour format PointInPoly
+              std::vector<Pt2dr>       mEmprVPt2d; // Id prec, for format PointInPoly
               std::vector<Pt2dr>        mEmptyEmprise; // Utilitaire
 	      INT                       mNbPl;
 	      std::vector<cStatistique> mStats;

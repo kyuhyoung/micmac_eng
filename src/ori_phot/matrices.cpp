@@ -58,7 +58,7 @@ int MATDiagInvert ( double**, int, int, double* ) ;
 /*----------------------------------------------------------------------------*/
 int MATSolve ( int dim, double *MM, double *YY, double *XX )
 {
-/* Resolution de MM.XX = YY, ou dim est la dimension du systeme */
+/* Resolution de MM.XX = YY, or dim est la dimension du system */
 double		**AA ;
 double		*Copie ;
 int			ii, jj ;
@@ -78,7 +78,7 @@ for ( jj = 0 ; jj < dim ; jj++ )
 /* Copie des donnees d'entree */
 for ( jj = 0 ; jj < dim ; jj++ )
 	{
-	/* Contenu de la matrice */
+	/* Contenu de la matrix */
 	for ( ii = 0 ; ii < dim ; ii++ ) { AA[jj][ii] = MM[ii+jj*dim] ; }
 	/* Second membre */
 	AA[jj][dim] = YY[jj] ;
@@ -91,7 +91,7 @@ for ( jj = 0 ; jj < dim ; jj++ )
 	if ( status != 1 ) { jj = dim ; } /* sortie de boucle en cas d'echec */
 	}
 
-/* Reduction a un systeme diagonal */
+/* Reduction a un system diagonal */
 if ( status == 1 ) 
 	{
 	for ( jj = 0 ; jj < dim-1 ; jj++ )
@@ -102,7 +102,7 @@ if ( status == 1 )
 		}
 	}
 
-/* Resolution du systeme diagonal */
+/* Resolution du system diagonal */
 if ( status == 1 ) 
 	{
 	for ( jj = dim-1 ; jj >= 0 ; jj-- )
@@ -119,7 +119,7 @@ return status ;
 /*----------------------------------------------------------------------------*/
 int MATDiagInvert ( double **AA, int dim, int pos, double *Result )
 {
-/* 	Result est deja rempli pour les lignes superieures a pos
+/* 	Result est deja rempli for les lignes superieures a pos
 	Les coef d'indice inferieur a pos sur la ligne pos sont nuls
  */
 double 		VV ;

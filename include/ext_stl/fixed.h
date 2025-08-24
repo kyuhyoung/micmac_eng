@@ -48,7 +48,7 @@ template <const INT b> class ElFixed
      public :
          enum
          {
-              b1 = b,  // Pour y acceder a partir du type par T::b1
+              b1 = b,  // for y acceder a partir du type par T::b1
               b2 = 2*(INT) b,
               Q  = 1 << (INT) b,
               QS2  = 1 << ((INT) b-1),
@@ -178,7 +178,7 @@ template <const INT b1,const INT b2>
 
 // Version qui evite les 
 // Error: Non-type template parameters are not allowed for function templates
-// sur les vieux compilos.
+// on les vieux compilos.
 
 /*
 template <class T1>

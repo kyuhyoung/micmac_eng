@@ -139,7 +139,7 @@ class Camera_V
                                                       _phi  = phi;
                                                     }
 
-                                        //parametre de camera
+                                        //parameter de camera
 
       inline void calcul_matrice() {   _m00 = -sin(_teta) * _zoom;
                                        _m01 =  cos(_teta) * _zoom;
@@ -166,7 +166,7 @@ class Camera_V
                                                );
                                }
 
-                                        // afficahge et desaffichage
+                                        // afficahge and desaffichage
 
    protected :
 

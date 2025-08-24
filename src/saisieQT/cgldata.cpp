@@ -403,7 +403,7 @@ int cGLData::polygonCount()
 
 void cGLData::initOptions(int appMode)
 {
-    //TODO: retirer BASC si on saisit des vraies lignes...
+    //TODO: retirer BASC if on saisit des vraies lignes...
     if ((appMode == POINT2D_INIT) || (appMode == POINT2D_PREDIC) || (appMode == BASC))
         _modePt = true;
     else
@@ -465,7 +465,7 @@ cGLData::~cGLData()
 	if(_pBbox != NULL) delete _pBbox;
 	if(_pGrid != NULL) delete _pGrid;
 
-	//pas de delete des pointeurs dans Clouds c'est Data qui s'en charge
+	//pas de delete des pointeurs in Clouds c'est Data qui s'en charge
 	_vClouds.clear();
 }
 
@@ -681,7 +681,7 @@ bool cGLData::position2DClouds(MatrixManager &mm, QPointF pos)
     {
 
 		float dist = std::numeric_limits<float>::max();
-        idx2 = -1; // TODO a verifier, pourquoi init a -1 , probleme si plus 2 nuages...
+        idx2 = -1; // TODO a verifier, pourquoi init a -1 , probleme if plus 2 nuages...
         QPointF proj;
 
         GlCloud *a_cloud = _vClouds[aK];

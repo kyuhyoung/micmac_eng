@@ -220,7 +220,7 @@ SegTournant::SegTournant(Pt2dr p1,Pt2dr p2,REAL step) :
 
 /**********************************************************/
 /*                                                        */
-/*        CLASSE D'OPTIMISATION GENERALE                  */
+/*        class D'OPTIMISATION GENERALE                  */
 /*                                                        */
 /**********************************************************/
 
@@ -430,7 +430,7 @@ void   Optim2DParam::optim_step_fixed (Pt2dr aPInit,int aNbMaxStep)
 
 /**********************************************************/
 /*                                                        */
-/*        CLASSE DEDIEE AU SEGMENT DE DROITE              */
+/*        class DEDIEE AU SEGMENT DE DROITE              */
 /*                                                        */
 /**********************************************************/
 

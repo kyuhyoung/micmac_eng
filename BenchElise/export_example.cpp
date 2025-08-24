@@ -97,7 +97,7 @@ unsigned char ** image(int tx,int ty)
 int main(int,char **)
 {
      //++++++++++++++++++++++++++++++++++++++++++
-     // Image creation
+     // image creation
      //++++++++++++++++++++++++++++++++++++++++++
 
 	int tx = 108;

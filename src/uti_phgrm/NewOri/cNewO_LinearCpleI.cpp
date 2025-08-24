@@ -156,13 +156,13 @@ void cNewO_OrInit2Im::AmelioreSolLinear(ElRotation3D  aRot,const std::string & a
        if (mTestC2toC1)
           std::cout << " DistRefInit " <<  DistRot(*mTestC2toC1,aRot) << "\n";
   }
-// Si V FIXED PAS DE LEVENBERG SUR ELLE
+// if V FIXED PAS DE LEVENBERG on ELLE
    ElTimer aChrono;
 
 
    cInterfBundle2Image * aBundle =  mQuick ? mBundleIBI150 : mBundleIBI;
    double aNbIterMax = mQuick ? 4 : 9;
-   mErStd =   aBundle->ErrInitRobuste(aRot,PropStdErDet);  // Version robuste, sans init
+   mErStd =   aBundle->ErrInitRobuste(aRot,PropStdErDet);  // Version robuste, without init
    mErStd =   aBundle->ResiduEq(aRot,mErStd);               // Version moindres carres
    
    
@@ -186,7 +186,7 @@ void cNewO_OrInit2Im::AmelioreSolLinear(ElRotation3D  aRot,const std::string & a
 
        if ((anAmelio >0) || (! UseLVM))
        {
-          // Si tres proche de la meilleur sol
+          // if tres proche de la meilleur sol
           if (mBestSolIsInit)
           {
               if (DistRot(aNewR,mBestSol) < 1e-4)
@@ -197,7 +197,7 @@ void cNewO_OrInit2Im::AmelioreSolLinear(ElRotation3D  aRot,const std::string & a
               }
           }
 
-          // Si tres proche de la solution precedente
+          // if tres proche de la solution precedente
           if (DistRot(aNewR,aRot) < 2e-5) 
           {
              aSqueeze = true;
@@ -299,7 +299,7 @@ double PdsLinear(const ElRotation3D & aRot,std::vector<cNOCompPair> & aVP)
 
 
 
-// Equation pour la base  simple    [U1,Base, R U2] = 0
+// Equation for la base  simple    [U1,Base, R U2] = 0
 //      [U1,Base, R0 U2] = 0     
 //      [U1,B0 + cC + d D , R0 U2] = 0     
 //      B0.(U1^R0U2) +  +c C.[U1,R0U2] + d D. [U1,R0U2] = 0

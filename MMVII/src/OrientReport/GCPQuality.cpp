@@ -43,7 +43,7 @@ class cAppli_CGPReport : public cMMVII_Appli
 
         std::string              mSpecImIn;   ///  Pattern of xml file
         cPhotogrammetricProject  mPhProj;
-	bool                     mIsGCP;  /// GCP vs Tie Point
+	bool                     mIsGCP;  /// GCP vs Tie point
 
 	std::vector<double>      mGeomFiedlVec;
 	std::vector<int>         mPropStat;

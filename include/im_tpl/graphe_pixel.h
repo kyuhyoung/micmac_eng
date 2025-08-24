@@ -331,7 +331,7 @@ template <class Type,class Type_Base,class PFixed>
      return getb2(im,pt) / (REAL) PFixed::Q2;
 }
 
-// Calcul rapide mais approches (nombre fixed sur 8 bits)
+// computation rapide but approches (number fixed on 8 bits)
 template <class Type,class TypeBase> REAL FixedSomSegDr(TIm2D<Type,TypeBase>& Tim,Pt2dr p1,Pt2dr p2,INT NBPts,REAL DefOut); 
 
 

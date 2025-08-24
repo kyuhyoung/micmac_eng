@@ -49,8 +49,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 namespace NS_TestOpBuf
 {
-  // Classe definissant une interface minimale sur une
-  // une image 2D, juste pour donner un exemple non trivial
+  // class definissant une interface minimale on une
+  // une image 2D, juste for donner un exemple non trivial
 
 typedef unsigned char tElImage;
 
@@ -71,20 +71,20 @@ class cInterfaceIm2D
     /*******************************************************/
 
 
-// Definie le type des entree necessaires au calcul
+// Definie le type des entree necessaires au computation
 struct  cVal2Image
 {
-   // Aucun Prerequis pour cette classe
+   // Aucun Prerequis for cette class
      tElImage mVIm1;
      tElImage mVIm2;
 };
 
-// Classe permettant de cumuler l'info
+// class permettant de cumuler l'info
 
 class cCumulVarCov
 {
     public :
-        // Constructeur sans Arg pour l'initialisation; Prerequis
+        // Constructeur without Arg for l'initialisation; Prerequis
         cCumulVarCov () :
             mNb    (0),
             mSom1  (0),
@@ -95,7 +95,7 @@ class cCumulVarCov
         {
         }
 
-        // Operation pour cumuler deux  Variance/Covariance  ; Prerequis
+        // Operation for cumuler deux  Variance/Covariance  ; Prerequis
         void AddCumul(int aSigne,const cCumulVarCov & aCVC)
         {
                mNb     += aSigne * aCVC.mNb;
@@ -106,7 +106,7 @@ class cCumulVarCov
                mCov12  += aSigne * aCVC.mCov12;
         }
 
-        //  Operation pour ajouter une nouvelle entree a la Var/Cov ; Pre requis
+        //  Operation for ajouter une nouvelle entree a la Var/Cov ; Pre requis
 
         void AddElem(int aSigne,const cVal2Image & anEl)
         {
@@ -129,19 +129,19 @@ class cCumulVarCov
 
 
 
-// La classe qui va permettre d'instancier cTplOpbBufImage
-// pour faire de la correlation rapide de 2 images
+// La class qui va permettre d'instancier cTplOpbBufImage
+// for faire de la correlation rapide de 2 images
 
 class cArgCorrelRapide2Im
 {
     public :
 
-       // Definition des types element d'entree et cumul : Prerequis
+       // Definition des types element d'entree and cumul : Prerequis
         typedef cVal2Image    tElem;
         typedef cCumulVarCov  tCumul;
 
 
-        // Fonction qui sera appelee a chaque nouvelle ligne,
+        // function qui sera appelee a chaque nouvelle line,
         // en general ne fait rien  : Prerequis
         void OnNewLine(int anY)
         {
@@ -149,12 +149,12 @@ class cArgCorrelRapide2Im
                 std::cout << "J'en suis a la ligne " << anY << "\n";
         }
 
-        // Fonction appelee , en "sortie" pour utiliser  le resultat
+        // function appelee , en "sortie" for utiliser  le result
         // Prerequis
         void UseAggreg(const std::complex<int> & aP,const cCumulVarCov & aCVC)
         {
-           // Formule classique pour calculer les moment d'ordre 2 centres
-           // a partir des moments d'ordre 0, 1 et 2
+           // Formule classique for compute les moment d'ordre 2 centres
+           // a partir des moments d'ordre 0, 1 and 2
             double aS1 = aCVC.mSom1   / (double) aCVC.mNb;
             double aS2 = aCVC.mSom2   / (double) aCVC.mNb;
             double aS11 = aCVC.mVar11 / (double) aCVC.mNb - aS1*aS1;
@@ -163,16 +163,16 @@ class cArgCorrelRapide2Im
 
             double anEct = aS11 * aS22;
             // Evite / 0, voir racine negative
-            //  si la variance est trop faible, 
+            //  if la variance est trop faible, 
             if (anEct < mEctMin)
                anEct = mEctMin;
-            // aCoefCorr = Le coefficient de correlation compris entre -1 et 1 
+            // aCoefCorr = Le coefficient de correlation compris between -1 and 1 
             double aCoefCorr = aS12 / std::sqrt(anEct);
 
             mImOut.SetValue(aP,int((1+aCoefCorr)*100.0));
         }
 
-        // Fonction appelee , en "entree" pour memoriser les entrees,
+        // function appelee , en "entree" for memoriser les entrees,
         // ici les entrees sont relativement triviales, PreRequis
 
         void Init(const std::complex<int> & aP,cVal2Image & anEl)
@@ -250,7 +250,7 @@ class cArgSommeRapide1Im
 {
     public :
 
-      // Definition des types element d'entree et cumul : Prerequis
+      // Definition des types element d'entree and cumul : Prerequis
         typedef tElImage     tElem;
         typedef cCumulSomIm  tCumul;
         void OnNewLine(int /*anY*/) {}
@@ -298,7 +298,7 @@ class cArgSommeRapideIteree
 {
     public :
 
-      // Definition des types element d'entree et cumul : Prerequis
+      // Definition des types element d'entree and cumul : Prerequis
         typedef int     tElem;
         typedef cCumulSomIm  tCumul;
         void OnNewLine(int /*anY*/) {}

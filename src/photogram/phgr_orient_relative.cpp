@@ -240,7 +240,7 @@ void cIncEnsembleCamera::ItereLineaire()
 /*
          mAlloc.SetVar(mAlloc.GetVar(aK)+anIm.data()[aK],aK);
 
-     // Met a jour les foncteur pour une nouvelle iteration
+     // Met a jour les foncteur for une nouvelle iteration
      for (tContFcteur::iterator itF=mLFoncteurs.begin(); itF!=mLFoncteurs.end() ; itF++)
      {
          (*itF)->SetCoordCur(mAlloc.ValsVar());

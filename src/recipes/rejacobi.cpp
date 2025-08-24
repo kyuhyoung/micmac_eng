@@ -251,7 +251,7 @@ static inline double  PYTHAG(const double & a,const double & b)
    double at=ElAbs(a);
    double bt=ElAbs(b);
 
-   // BUG NR => genere div/0 si a et b null
+   // BUG NR => genere div/0 if a and b null
    if ((at<1e-30) && (bt<1e-30))
       return sqrt(a*a+b*b);
    
@@ -287,7 +287,7 @@ void NR_svdcmp(double ** A,int m,int n,double * w,double ** V)
 	static ElFilo<REAL>  Frv1;  NR_InitVect(Frv1,n); REAL * rv1 = Frv1.tab();
 
 
-	//  Dans NR, la condition etait, (m >= n)
+	//  in NR, la condition etait, (m >= n)
 	for (i=1;i<=n;i++) {
 		l=i+1;
 		rv1[i]=scale*g;
@@ -844,7 +844,7 @@ ElMatrix<double> InvertCol(const ElMatrix<double> & aM0)
 
 
 
-/* Soit S la matrice (0 0 1)
+/* Soit S la matrix (0 0 1)
                      (0 1 0)
                      (1 0 0)
    On a InvertLine(A)  = S A

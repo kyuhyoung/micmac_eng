@@ -51,7 +51,7 @@ void cEqAppui_NoDist__PTInc_M2CDRad5::ComputeVal()
    double tmp31_ = tmp26_+tmp30_;
    double tmp32_ = tmp2_*tmp13_;
    double tmp33_ = tmp32_*(tmp19_);
-   double tmp34_ = tmp31_+tmp33_; // Sans doute le Z Cam
+   double tmp34_ = tmp31_+tmp33_; // without doute le Z Cam
    double tmp35_ = tmp4_*tmp2_;
    double tmp36_ = tmp35_*(tmp9_);
    double tmp37_ = tmp3_*tmp2_;

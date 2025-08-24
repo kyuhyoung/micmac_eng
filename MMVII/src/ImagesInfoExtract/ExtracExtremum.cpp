@@ -167,9 +167,9 @@ template <class Type,class FDist>  std::vector<Type>  SparseOrder(const std::vec
 } 
 */
 
-// std::vector<cPt2di> SparsedVectOfRadius(const double & aR0,const double & aR1) // > R0 et <= R1
+// std::vector<cPt2di> SparsedVectOfRadius(const double & aR0,const double & aR1) // > R0 and <= R1
 
-std::vector<cPt2di> VectOfRadius(const double & aR0,const double & aR1,bool IsSym) // > R0 et <= R1
+std::vector<cPt2di> VectOfRadius(const double & aR0,const double & aR1,bool IsSym) // > R0 and <= R1
 {
     std::vector<cPt2di> aRes;
 
@@ -194,7 +194,7 @@ std::vector<cPt2di> VectOfRadius(const double & aR0,const double & aR1,bool IsSy
 }
 
 
-std::vector<cPt2di> SortedVectOfRadius(const double & aR0,const double & aR1,bool IsSym) // > R0 et <= R1
+std::vector<cPt2di> SortedVectOfRadius(const double & aR0,const double & aR1,bool IsSym) // > R0 and <= R1
 {
     std::vector<cPt2di> aRes = VectOfRadius(aR0,aR1,IsSym);
     std::sort(aRes.begin(),aRes.end(),CmpN2<int,2>);
@@ -238,7 +238,7 @@ template <class Type> class cComputeExtrem1Im
              return aDP.y() >  0;
         }
 
-        const cDataIm2D<Type>  & mDIM;  ///< Image analysed
+        const cDataIm2D<Type>  & mDIM;  ///< image analysed
         cResultExtremum &    mRes;      ///< Storing of results
         double               mRadius;   ///< Size of neighboorhood
         std::vector<cPt2di>  mSortedNeigh;  ///< Neighooring point sorted by growing distance
@@ -289,8 +289,8 @@ template <class Type> class cComputeExtrem3Im : public cComputeExtrem1Im<Type>
              return  (mDIMBot.GetV(t1Im::mPCur+aDP)>t1Im::mVCur) ; 
          }
          
-         const cDataIm2D<Type>  & mDIMUp; ///< "Up" Image in the pyramid
-         const cDataIm2D<Type>  & mDIMBot; ///< "Bottom" Image in the pyramid
+         const cDataIm2D<Type>  & mDIMUp; ///< "Up" image in the pyramid
+         const cDataIm2D<Type>  & mDIMBot; ///< "Bottom" image in the pyramid
 };
 
 

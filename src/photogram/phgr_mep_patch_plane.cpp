@@ -324,7 +324,7 @@ class cOriPlanePatch
          void LocalRestimateHomogr();
          void LocalAmelRot(const ElRotation3D & aR);
 
-   // Appremment empire le resultat sur les rotation !!
+   // Appremment empire le result on les rotation !!
          void  EstimStatHom(const cElHomographie & aHom,const  std::vector<tSomOPP *> & aVS0,double &aMaxDist,double & aMoyDist);
          cElHomographie ReestimHom(const cElHomographie & aHom, const double & aSeuilDist,double & aSigmaDist);
 
@@ -837,7 +837,7 @@ void cOriPlanePatch::InitHeapDual(const std::vector<tSomDualOPP *> & aVInit)
    else
    {
       SolveHom();
-   // Sinon les parametre du sys ne sont pas bon
+   // else les parameter du sys ne sont pas bon
       if (mModeAff)
       {
          ReinitAll();
@@ -852,7 +852,7 @@ void cOriPlanePatch::InitHeapDual(const std::vector<tSomDualOPP *> & aVInit)
    for (int aKF=0 ; aKF<int(aVInit.size()) ; aKF++)
    {
        FaceEstimateEcH(aVInit[aKF],false);
-       aVInit[aKF]->attr().mEcHom = 0.0; // On triche pour qu'elle ressortent du tas en premier
+       aVInit[aKF]->attr().mEcHom = 0.0; // On triche for qu'elle ressortent du tas en premier
        mHeapF.push(aVInit[aKF]);
        SetExploredFace(aVInit[aKF]);
    }
@@ -897,7 +897,7 @@ void cOriPlanePatch::DualRecalculHom()
 bool cOriPlanePatch::MakeHomogrInitDual(std::vector<tSomDualOPP *> aVInit,bool aModeAff,bool aShow)
 {
   // Remise a zero des compteur globaux
-   aModeAff = aModeAff && (aVInit.size() !=1); // Si Taille 1, triangle et prise en charge directe
+   aModeAff = aModeAff && (aVInit.size() !=1); // if Taille 1, triangle and prise en charge directe
    ResetMakeHomDual(aModeAff);
 
 

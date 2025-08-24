@@ -60,7 +60,7 @@ void ShowMaskAuto(TIm2D<INT2,INT> aTZ,TIm2DBits<1>  aTM,const std::string & aFil
 }
 
 
-// Plus ou moins completion K Liptsi inf
+// Plus or moins completion K Liptsi inf
 
    //===============================================================================================
    //===============================================================================================
@@ -186,7 +186,7 @@ template <class Type,const int NbV> class cTabValI1Prg2DCelNap
     public :
 
        void InitCpleRadiom(tCRVal aR1,tCRVal aR2)  { }
-       // On laisse std::vector<Type>  pour que ca ne compile pas si !=  tMCPVal
+       // On laisse std::vector<Type>  for que ca ne compile pas if !=  tMCPVal
        void InitVecMCP(const  std::vector<Type> & aV)
        {
             ELISE_ASSERT(NbV==aV.size(),"Incoh in cTabValI1Prg2DCelNap");
@@ -285,12 +285,12 @@ template <class Type,const int NbV> class cTypeTabValArgPgr2D
 template <class TypeArg> class cMMNewPrg2D : public cSurfaceOptimiseur
 {
      public :
-      // Pre-requis (template instanciation)  pour  cProg2DOptimiser
+      // Pre-requis (template instanciation)  for  cProg2DOptimiser
         typedef typename TypeArg::tArgCelTmp tArgCelTmp;  
         typedef typename TypeArg::tArgNappe  tArgNappe;  
         typedef typename TypeArg::tArgGlob   tArgGlob;  
 
-        // Pas pre-requis mais aide
+        // Pas pre-requis but aide
         typedef  cTplCelNapPrgDyn<tArgNappe>    tCelNap;
         typedef  cTplCelOptProgDyn<tArgCelTmp>  tCelOpt;
 
@@ -305,7 +305,7 @@ template <class TypeArg> class cMMNewPrg2D : public cSurfaceOptimiseur
         void GlobInitDir(cProg2DOptimiser<cMMNewPrg2D> &);
         //  void GlobalInitialisation(cProg2DOptimiser<cMMNewPrg2D> &);
 
-      // Pre-requis (interface virtuelle) pour cSurfaceOptimiseur
+      // Pre-requis (interface virtuelle) for cSurfaceOptimiseur
         void Local_SetCout(Pt2di aPTer,int * aPX,REAL aCost,int aLabel) override;
         void Local_SolveOpt(Im2D_U_INT1) override;
 
@@ -340,7 +340,7 @@ template <class TypeArg> class cMMNewPrg2D : public cSurfaceOptimiseur
         cModulationProgDyn      mMod;
         cEtapeProgDyn           mEPG;
         const cEtapeMecComp &   mEtape;
-        int                     mNumNap;  // Pour l'instant seult zero, mais a voir ...
+        int                     mNumNap;  // for l'instant seult zero, but a voir ...
         const cOneNappePx &     mONP;
 
 
@@ -659,7 +659,7 @@ template <class Type>  void cMMNewPrg2D<Type>::Local_SolveOpt(Im2D_U_INT1 aImCor
 
 
         // Initialisation des cout d'etat de non correl
-        // les point en dehors du masque sont + ou - forces a etre en non correl (via mCostOut)
+        // les point en dehors du masque sont + or - forces a etre en non correl (via mCostOut)
         Pt2di aP;
         for (aP.x=0 ; aP.x<aSz.x ; aP.x++)
         {
@@ -667,8 +667,8 @@ template <class Type>  void cMMNewPrg2D<Type>::Local_SolveOpt(Im2D_U_INT1 aImCor
             {
                 tCelNap * aVCel = mCelsNap[aP.y][aP.x];
                 int aZMax = aDZmax[aP.y][aP.x] * mMulZ;
-                // Si on est en dehors du masque , on force a etre en etat
-                // de non correl, en donnant une valeur 0 a cet etat et tres grande
+                // if on est en dehors du masque , on force a etre en etat
+                // de non correl, en donnant une value 0 a cet etat and tres grande
                 // aux autres
                 if (!aTMask.get(aP))
                 {
@@ -884,7 +884,7 @@ cSurfaceOptimiseur * cSurfaceOptimiseur::AllocNewPrgDyn
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -900,17 +900,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

@@ -193,7 +193,7 @@ void bench_epipole_orilib()
           Pt2dr aE318 = Epi318->to_photo(aP);
           REAL aDy = ElAbs(aE317.y-aE318.y);
 
-         // Ce sont des systemes epipolaire si les points terrains se
+         // Ce sont des systemes epipolaire if les points terrains se
          // projettent au memes y
           BENCH_ASSERT(aDy < epsilon);
 
@@ -217,11 +217,11 @@ void bench_epipole_orilib()
           Pt2dr aZE318 = aSZ318.Epip()->to_photo(aP);
 
 
-          // le systeme homotetique, doit etre lui aussi epipolaire
+          // le system homotetique, doit etre lui aussi epipolaire
           aDy = ElAbs(aZE317.y-aZE318.y);
           BENCH_ASSERT(aDy < epsilon);
 
-          // est -ce que le systeme est homotetique
+          // est -ce que le system est homotetique
           Pt2dr aZPh318 = aSZ318.Phot()->to_photo(aP);
           Pt2dr aPh318 = Ori318.to_photo(aP);
           REAL aDist318 = euclid(aZPh318,aPh318 * aZ);
@@ -335,7 +335,7 @@ void bench_orilib()
 
      {
 
-         // BENCH SUR LES ECRITURES
+         // BENCH on LES ECRITURES
      
           O3a.write_txt(ELISE_BFI_DATA_DIR "o3a.txt");
           Ori3D_Std O3a_1(ELISE_BFI_DATA_DIR "o3a.txt");
@@ -361,7 +361,7 @@ void bench_orilib()
      }
 
      {
-         // BENCH SUR LES HOMOTHETIE
+         // BENCH on LES HOMOTHETIE
 
            REAL zoom = 0.5;
 

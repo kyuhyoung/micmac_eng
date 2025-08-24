@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 #include "StdAfx.h"
 
-// Classe generique , a rebalancer dans la future BB 
+// class generique , a rebalancer in la future BB 
 // d'optimisation generale
 
 #include <vector>
@@ -189,7 +189,7 @@ template <class Type> class  cNewResProfChamp
         Pt3d<Type>  mPb;
         Pt3d<Type>  mPc;
                
-        Pt3d<Type>  mVca;  // mPa - mPc  : "Vecteur CA"
+        Pt3d<Type>  mVca;  // mPa - mPc  : "vector CA"
         Pt3d<Type>  mVba;  // mPb - mPa
         Pt3d<Type>  mVcb;  // mPb - mPc
 
@@ -208,7 +208,7 @@ template <class Type> class  cNewResProfChamp
          // En utilisant RhoA = (mVba -b' mPb)^2  / (mVca-c' mPc) ^2
          //  b'^2  - 2 mBeta b' = 
          // On tire   b' = mBeta +- sqrt(Delta(c'))
-         //  avec
+         //  with
          //           mBeta = mSbab / mB2
          //   Delta(c') = mBeta ^2 + [ rhoA * (mCA2 - 2 c mScac + c^2  mC2) - mBA2  ] / mB2
 
@@ -850,7 +850,7 @@ void ShowSol(const std::string & aMes, const std::list<Pt3dr>  & aSol)
 
 void ElPhotogram::ProfChampsFromDist
      (
-                 ElSTDNS list<Pt3dr>&  res,  // liste de triplets de prof de champs
+                 ElSTDNS list<Pt3dr>&  res,  // list de triplets de prof de champs
                  Pt3dr A,Pt3dr B,Pt3dr C, // points de projection
                  REAL dAB, REAL dAC, REAL dBC
      )

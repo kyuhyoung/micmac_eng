@@ -45,23 +45,23 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include <list>
 
 
-//  La distorsion est-elle codee de maniere privilegiee dans le sens
-//  Monde->Cam (M2C,=true) ou Cam->Mond (C2M), jusqu'a present (mars 2008)
-//  c'etait dans le
-//  sens C2M car c'est le sens utile pour les point de liaison avec une
+//  La distorsion est-elle codee de maniere privilegiee in le sens
+//  Monde->Cam (M2C,=true) or Cam->Mond (C2M), jusqu'a present (mars 2008)
+//  c'etait in le
+//  sens C2M car c'est le sens utile for les point de liaison with une
 //  equation de coplanarite. Les convention hors elise sont plutot C2M
 //
-//  Avec l'introduction des residus terrain (point 3D subsitues), on
-//  peut faire l'un ou l'autre. Les avantage de M2C sont :
+//  with l'introduction des residus terrain (point 3D subsitues), on
+//  peut faire l'un or l'autre. Les avantage de M2C sont :
 //
-//    - coherence avec le reste du monde,
+//    - coherence with le reste du monde,
 //    - residu vraiment images
 //
 //  Les avantages de C2M :
 //
-//     - on sait a 100% que ca marche, puisque c'est le systeme actuel
+//     - on sait a 100% que ca marche, puisque c'est le system actuel
 //     - on peut continuer a utiliser l'equation de coplanarite
-//     (mais, est elle utile avec les points terrain ?)
+//     (but, est elle utile with les points terrain ?)
 //
 //
 //
@@ -73,7 +73,7 @@ extern bool NewBug;
 extern bool DoCheckResiduPhgrm;
 extern bool AcceptFalseRot;
 
-// Definis dans phgr_formel.h
+// Definis in phgr_formel.h
 class cSetEqFormelles;
 class cParamIntrinsequeFormel;
 class cParamIFDistStdPhgr;
@@ -143,7 +143,7 @@ class Appar23
     public :
         Pt2dr pim;
         Pt3dr pter;
-        int   mNum;  // Rajoutes pour gerer les cibles
+        int   mNum;  // Rajoutes for gerer les cibles
 
         Appar23 (Pt2dr PIM,Pt3dr PTER,int aNum=-1) ;
 
@@ -156,9 +156,9 @@ void InvY(std::list<Appar23> &,Pt2dr aSzIm,bool InvX=false);
 
 // extern bool BugSolveCstr;
 // extern bool BugCstr;
-extern bool BugFE; // pour debuguer les pb de non inversibilite des dist fortes
-extern bool BugAZL; // pour debuguer les pb d'AZL
-extern bool BugGL; // pour debuguer les pb de Guimbal Lock
+extern bool BugFE; // for debuguer les pb de non inversibilite des dist fortes
+extern bool BugAZL; // for debuguer les pb d'AZL
+extern bool BugGL; // for debuguer les pb de Guimbal Lock
 
 
 class cProjCple
@@ -231,8 +231,8 @@ class cNupletPtsHomologues
         void AssertD2() const;
         std::vector<Pt2dr> mPts;
         REAL  mPds;
-  // Gestion super bas-niveau avec des flag de bits pour etre compatible avec la structure physique faite
-  // quand on ne contenait que des points ....
+  // Gestion super bas-niveau with des flag de bits for etre compatible with la structure physique faite
+  // when on ne contenait que des points ....
         int   mFlagDr;
         void AssertIsValideFlagDr(int aK) const;
         bool IsValideFlagDr(int aK) const;
@@ -276,7 +276,7 @@ class cResolvAmbiBase
         cResolvAmbiBase
     (
          const ElRotation3D &  aR0,   // Orientation connue completement
-         const ElRotation3D &  aR1   // Orientation connue a un facteur d'echelle pres sur la base
+         const ElRotation3D &  aR1   // Orientation connue a un facteur d'scale pres on la base
     );
 
     void AddHom(const ElPackHomologue & aH12,const ElRotation3D & aR2);
@@ -297,7 +297,7 @@ std::vector<Pt3dr> * StdNuage3DFromFile(const std::string &);
 
 
 // Representation des points homologues comme images, utiles lorsqu'ils
-// sont denses et + ou - regulierement espaces avec une image maitresse
+// sont denses and + or - regulierement espaces with une image maitresse
 
 class cElImPackHom
 {
@@ -376,9 +376,9 @@ class ElPackHomologue : public cPackNupletsHom
          tCont::iterator  NearestIter(Pt2dr aP,bool P1 = true);
 
 
-        // utilise pour parametrer l'ajustement dans FitDistPolynomiale
+        // utilise for parametrer l'ajustement in FitDistPolynomiale
         // Par defaut resoud aux moindre L1, l'aspect virtuel permet
-        // de definir une classe ayant exactement le meme
+        // de definir une class ayant exactement le meme
         // comportement
           ElMatrix<REAL> SolveSys(const  ElMatrix<REAL> &);
 
@@ -433,10 +433,10 @@ class ElPackHomologue : public cPackNupletsHom
 
 
             // Optimise la mise en place relative par un algo generique
-            // (powel) de descente sur un critere L1
+            // (powel) de descente on un critere L1
             ElRotation3D OptimiseMEPRel(const ElRotation3D & );
 
-            // Teste la matrice essentielle et le plan et retient la meilleure
+            // Teste la matrix essentielle and le plan and retient la meilleure
             // Par defaut fait une optimisation , pas forcement opportune
             ElRotation3D MepRelGen(REAL LongBase,bool L2,double & aD);
             ElRotation3D MepRelGenSsOpt(REAL LongBase,bool L2,double & aD);
@@ -455,14 +455,14 @@ class ElPackHomologue : public cPackNupletsHom
 
             // renvoie les rotation qui permet, etant donne
             // un point en coordonnee camera1, d'avoir
-            // ses coordonnees en camera 2
+            // ses coordinates en camera 2
              std::list<ElRotation3D> MepRelStd(REAL LongBase,bool L2);
 
          // Phys : cherche a avoir le max de couples de rayons
-         // qui s'intersectent avec des Z positifs
+         // qui s'intersectent with des Z positifs
              ElRotation3D MepRelPhysStd(REAL LongBase,bool L2);
 
-         // Nombre de points ayant une intersection positive en Im1 et Im2
+         // number de points ayant une intersection positive en Im1 and Im2
          REAL SignInters
                   (
                        const ElRotation3D & aRot1to2,
@@ -472,7 +472,7 @@ class ElPackHomologue : public cPackNupletsHom
 
              tPairPt  PMed() const;
 
-             // Si tous les points sont coplanaires, ou presque,
+             // if tous les points sont coplanaires, or presque,
              //  la mise en place par l'algo standard est degenere,
              // on choisit donc un algo ad hoc
               cResMepRelCoplan   MepRelCoplan (REAL LongBase,bool HomEstL2);
@@ -481,14 +481,14 @@ class ElPackHomologue : public cPackNupletsHom
               // s'adapte a xml, tif , dat
           static ElPackHomologue   FromFile(const std::string &);
           ElPackHomologue   FiltreByFileMasq(const std::string &,double aVMin=0.5) const;
-        // Si Post = xml -> XML; si Post = dat -> Bin; sinon erreur
+        // if Post = xml -> XML; if Post = dat -> Bin; else error
           void StdPutInFile(const std::string &) const;
           void StdAddInFile(const std::string &) const;
               void Add(const ElPackHomologue &) ;
 
-          //  Les mise en place relatives levent l'ambiguite avec un parametre
+          //  Les mise en place relatives levent l'ambiguite with un parameter
           //  de distance, souvent il est plus naturel de fixer la profondeur
-          //  moyenne, c'est ce que permet de corriger cette fonction
+          //  moyenne, c'est ce que permet de corriger cette function
           //
           void SetProfondeur(ElRotation3D & aR,double aProf) const;
           double Profondeur(const ElRotation3D & aR) const;
@@ -502,7 +502,7 @@ class ElPackHomologue : public cPackNupletsHom
                         std::vector<double> & VProf,
                         const ElRotation3D & aR
                     ) const;
-             // Quasi equiv a la dist inter et (?) bcp + rapide
+             // Quasi equiv a la dist inter and (?) bcp + rapide
              double QuickDistInter
                     (
                          const ElRotation3D & aR,
@@ -535,7 +535,7 @@ class StatElPackH
 
 
 
-class ElPhotogram  // + ou - NameSpace
+class ElPhotogram  // + or - NameSpace
 {
     public :
        static  void bench_photogram_0();
@@ -546,7 +546,7 @@ class ElPhotogram  // + ou - NameSpace
 
         static void ProfChampsFromDist
              (
-                 ElSTDNS list<Pt3dr>&  res,  // liste de triplets de prof de champs
+                 ElSTDNS list<Pt3dr>&  res,  // list de triplets de prof de champs
                  Pt3dr p1,Pt3dr p2,Pt3dr p3, // points de projection
                  REAL d12, REAL d13, REAL d23
              );
@@ -555,14 +555,14 @@ class ElPhotogram  // + ou - NameSpace
 
 
 
-// Toutes les projections R3->R2 consideree  dans ElProj32
-// sont des projections avec rayon perspectif droits
+// Toutes les projections R3->R2 consideree  in ElProj32
+// sont des projections with rayon perspectif droits
 
 class ElProj32
 {
      public :
 
-     // Methodes de bases a redefinir pour chaque type de projection
+     // Methodes de bases a redefinir for chaque type de projection
 
         virtual Pt2dr Proj(Pt3dr) const = 0;
         virtual Pt3dr DirRayon(Pt2dr) const = 0;
@@ -656,7 +656,7 @@ class ElProjStenope : public ElProj32 ,
 class ElDistortion22_Gen
 {
      public :
-       // Rustine car les camera fraser basic ne savent s'esporter qu'avec leur camera  ToXmlStruct
+       // Rustine car les camera fraser basic ne savent s'esporter qu'with leur camera  ToXmlStruct
         ElCamera * CameraOwner();
         void SetCameraOwner(ElCamera*);
 
@@ -676,10 +676,10 @@ class ElDistortion22_Gen
         REAL DInfini(const ElDistortion22_Gen &,Pt2dr P0, Pt2dr P1,INT NbEch) const;
 
         virtual Pt2dr Direct(Pt2dr) const = 0 ;    //
-        Pt2dr Inverse(Pt2dr) const ; //  Pour inverser :
+        Pt2dr Inverse(Pt2dr) const ; //  for inverser :
                                     //    (1) On tente le OwnInverse
-                                   //    (2) Sinon on tente le  mPolynInv
-                                  //    (3) Sinon on applique le ComputeInvFromDirByDiff
+                                   //    (2) else on tente le  mPolynInv
+                                  //    (3) else on applique le ComputeInvFromDirByDiff
 
 
         ElMatrix<REAL> Diff(Pt2dr) const;  // Juste interf a "Diff(ElMatrix<REAL> &,..)"
@@ -701,28 +701,28 @@ class ElDistortion22_Gen
                               INT  aNbPts = -1
                         );
     //  aSc * Direct (aP/aSc*)
-        // Def renvoit un objet contenant un pointeur sur this
+        // Def renvoit un object contenant un pointeur on this
     virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const;
     virtual bool IsId() const; // Def false
 
-    // Fonction "ad hoc" de dynamic cast, par defaut return 0, strict change pour PhgStd qui
-    // ne se voit pas alors comme un cas particulier de DRad
+    // function "ad hoc" de dynamic cast, par defaut return 0, strict change for PhgStd qui
+    // ne se voit pas then comme un cas particulier de DRad
     virtual ElDistRadiale_PolynImpair * DRADPol(bool strict = false);
 
         Box2dr ImageOfBox(Box2dr,INT aNbPtsDisc=8 );
         Box2dr ImageRecOfBox(Box2dr,INT aNbPtsDisc=8  );
 
-       // Par defaut renvoie un objet contenant un pointeur sur this
-       // et redirigeant Direct sur inverse et Lycee de Versailles
+       // Par defaut renvoie un object contenant un pointeur on this
+       // and redirigeant Direct on inverse and Lycee de Versailles
         virtual ElDistortion22_Gen * CalcInverse() const;
         void SetParamConvInvDiff(INT aNbIter,REAL aEps);
 
     void SaveAsGrid(const std::string&,const Pt2dr& aP0,const Pt2dr& aP1,const Pt2dr& aStep);
 
-// Def erreur fatale
+// Def error fatale
         virtual Pt2dr  DirectAndDer(Pt2dr aP,Pt2dr & aGradX,Pt2dr & aGradY) const;
 
- // Est-ce que les distorsion savent se transformer  en F-1 D F ou F est une translation ou
+ // Est-ce que les distorsion savent se transformer  en F-1 D F or F est une translation or
  // une homotetie
         virtual  bool  AcceptScaling() const;
         virtual  bool  AcceptTranslate() const;
@@ -735,7 +735,7 @@ class ElDistortion22_Gen
 
 
        // ULTRA -DANGEREUX, rajoute a contre coeur, comme moyen d'inhiber la parie
-       // Tgt-Argt des fishe-eye afin qu'il puisse calcule des pseudo inverse
+       // Tgt-Argt des fishe-eye afin qu'il puisse compute des pseudo inverse
 
         void    SetDist22Gen_UsePreConditionner(bool) const;  // Tous sauf const !!
         const bool &   Dist22Gen_UsePreConditionner() const;
@@ -765,7 +765,7 @@ class ElDistortion22_Gen
 
 
 
-        // Defaut 0,0 pas forcement le meilleur choix mais
+        // Defaut 0,0 pas forcement le meilleur choix but
     // compatibilite anterieure
 
 public :
@@ -874,7 +874,7 @@ class cElHomographie  : public cElMap2D
           // Size = 1 , translation
           // Size = 2 , similitude
           // Size = 3 , affinite
-          // Size = 4 ou +, homographie reelle, ajuste par moindre L2  ou  L1
+          // Size = 4 or +, homographie reelle, ajuste par moindre L2  or  L1
 
           cElHomographie(const ElPackHomologue &,bool aL2);
           cElHomographie(const cXmlHomogr &);
@@ -911,7 +911,7 @@ class cElHomographie  : public cElMap2D
           const cElComposHomographie & HY() const;
           const cElComposHomographie & HZ() const;
 
-          // Renvoie sa representation matricielle en coordonnees homogenes
+          // Renvoie sa representation matricielle en coordinates homogenes
           ElMatrix<REAL>  MatCoordHom() const;
           static cElHomographie  RobustInit(double & anEcart,double * aQuality,const ElPackHomologue & aPack,bool & Ok ,int aNbTestEstim, double aPerc,int aNbMaxPts);
 
@@ -939,8 +939,8 @@ class cDistHomographie : public  ElDistortion22_Gen
     const cElHomographie & Hom() const;
       private :
 
-    virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; // Def erreur fatale
-        void  Diff(ElMatrix<REAL> &,Pt2dr) const ;  //  Erreur Fatale
+    virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; // Def error fatale
+        void  Diff(ElMatrix<REAL> &,Pt2dr) const ;  //  error Fatale
         cElHomographie mHDir;
         cElHomographie mHInv;
 };
@@ -955,7 +955,7 @@ class ElDistortion22_Triviale : public ElDistortion22_Gen
         void  Diff(ElMatrix<REAL> &,Pt2dr) const ;  // ** differentielle
         Pt2dr Direct(Pt2dr) const  ;     //  **
         static ElDistortion22_Triviale  TheOne;
-    virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; // Def erreur fatale
+    virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; // Def error fatale
     virtual bool IsId() const;
         virtual cCalibDistortion ToXmlStruct(const ElCamera *) const;
 
@@ -994,8 +994,8 @@ class ElDistRadiale : public ElDistortion22_Gen
 
         virtual REAL DistInverse(REAL R)  const;
                      // Par defaut les distortion sont
-                     // supposees faibles et la fontion inverse est
-                     // - la fonction directe
+                     // supposees faibles and la fontion inverse est
+                     // - la function directe
 
       protected  :
 
@@ -1008,8 +1008,8 @@ class ElDistRadiale : public ElDistortion22_Gen
 class ElDistRadiale_PolynImpair  : public ElDistRadiale // polynome en r de degre impair
 {
      public :
-      // Pour eviter les comportements sinuguliers
-      // si R > RMax on remplace par la differentielle en RMax
+      // for eviter les comportements sinuguliers
+      // if R > RMax on remplace par la differentielle en RMax
 
 
         ElDistRadiale_PolynImpair(REAL RMax,Pt2dr centre);
@@ -1050,7 +1050,7 @@ class ElDistRadiale_PolynImpair  : public ElDistRadiale // polynome en r de degr
       virtual ElDistRadiale_PolynImpair * DRADPol(bool strict = false);
 
       ElPolynome<REAL> PolynOfR();
-      // Rayon max a l'interieur duquel la fonction de
+      // Rayon max a l'interieur duquel la function de
       // distortion est bijective croissante
       REAL RMaxCroissant(REAL BorneInit);
 
@@ -1081,8 +1081,8 @@ class ElDistRadiale_Pol357  : public ElDistRadiale_PolynImpair // polynome en r 
 };
 
 
-// Implemante des deformations du type "D-1 o H o D" avec
-// D disrortion radiale polynomiale et H homographie
+// Implemante des deformations du type "D-1 o H o D" with
+// D disrortion radiale polynomiale and H homographie
 
 class cDistHomographieRadiale : public ElDistortion22_Gen
 {
@@ -1099,8 +1099,8 @@ class cDistHomographieRadiale : public ElDistortion22_Gen
         // aPt -> aChSacle * Direct (aPt / aChSacle)
         cDistHomographieRadiale MapingChScale(REAL aChSacle) const;
       private:
-    virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; // Def erreur fatale
-        void  Diff(ElMatrix<REAL> &,Pt2dr) const ;  //  Erreur Fatale
+    virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; // Def error fatale
+        void  Diff(ElMatrix<REAL> &,Pt2dr) const ;  //  error Fatale
     cElHomographie            mHom;
     cElHomographie            mHomInv;
     ElDistRadiale_PolynImpair mDist;
@@ -1111,9 +1111,9 @@ class cDistHomographieRadiale : public ElDistortion22_Gen
 
 
 
-// Classe de distortion par polynome de degre 2, Pas un interet fou
-// (elle sont un peu + rapide que si definies par polynomes generiques)
-// mais developpee pour tester rapidement certaine fonctionnalites
+// class de distortion par polynome de degre 2, Pas un interet fou
+// (elle sont un peu + rapide que if definies par polynomes generiques)
+// but developpee for tester rapidement certaine fonctionnalites
 // generiques
 //
 
@@ -1151,7 +1151,7 @@ class ElDistPolyDegre2 : public ElDistortion22_Gen
             REAL EpsilonInv
         );
 
-               // par defaut appel au fonctions "Quick" (ou Quasi)
+               // par defaut appel au fonctions "Quick" (or Quasi)
 
         virtual void  Diff(ElMatrix<REAL> &,Pt2dr) const;  // ** differentielle
 
@@ -1165,8 +1165,8 @@ class ElDistPolyDegre2 : public ElDistortion22_Gen
 
 class ElDistortionPolynomiale : public ElDistortion22_Gen
 {
-    // Pour les inverses et autres, on fait l'hypothese
-    // que les coeff, hors degres <=1, ont des valeur
+    // for les inverses and autres, on fait l'hypothese
+    // que les coeff, hors degres <=1, ont des value
     // tres faible
 
      public :
@@ -1185,13 +1185,13 @@ class ElDistortionPolynomiale : public ElDistortion22_Gen
 
            ElDistortionPolynomiale (REAL anAmpl,REAL anEpsilonInv = 1e-7) ;
 
-               // par defaut appel au fonctions "Quick" (ou Quasi)
+               // par defaut appel au fonctions "Quick" (or Quasi)
 
         virtual void  Diff(ElMatrix<REAL> &,Pt2dr) const;  // ** differentielle
 
         // aPt -> aChSacle * Direct (aPt / aChSacle)
         ElDistortionPolynomiale MapingChScale(REAL aChSacle) const;
-    virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; // Def erreur fatale
+    virtual ElDistortion22_Gen  * D22G_ChScale(REAL aS) const; // Def error fatale
 
      private :
              Polynome2dReal mDistX;
@@ -1223,17 +1223,17 @@ class EpipolaireCoordinate : public ElDistortion22_Gen
 
                 virtual Pt2dr Direct(Pt2dr) const ;
         virtual bool IsEpipId() const;
-                // Inverse est heritee  et fait appel a OwnInverse
+                // Inverse est heritee  and fait appel a OwnInverse
 
 
-                Pt2dr DirEpip(Pt2dr,REAL anEpsilon); // Calcul par difference finie !
+                Pt2dr DirEpip(Pt2dr,REAL anEpsilon); // computation par difference finie !
 
 
                 Pt2dr P0() const;
                 Pt2dr DirX() const;
                 Pt2dr TrFin() const;
 
-                virtual const PolynomialEpipolaireCoordinate * CastToPol() const ; // Down cast, Def = Erreur
+                virtual const PolynomialEpipolaireCoordinate * CastToPol() const ; // Down cast, Def = error
 
         //     P ->  aChSacle * Pol(P/aChSacle)
              virtual EpipolaireCoordinate *
@@ -1244,7 +1244,7 @@ class EpipolaireCoordinate : public ElDistortion22_Gen
 	     virtual std::vector<double>  ParamFitHom() const;
 
 
-             // Fait heriter les parametre globaux aP0, aDirX, aTrFin
+             // Fait heriter les parameter globaux aP0, aDirX, aTrFin
                void HeriteChScale(EpipolaireCoordinate &,REAL aChSacle);
 
                Box2dr ImageOfBox(Box2dr );
@@ -1258,7 +1258,7 @@ class EpipolaireCoordinate : public ElDistortion22_Gen
                   Fonc_Num Pond,   // Binarisee en 0/1 , exprime en coord image
               REAL  aStepGr ,
               Box2dr aBoxIm,
-              REAL   aRatioMin = 0.2 // Ratio pour remplir la grille
+              REAL   aRatioMin = 0.2 // Ratio for remplir la grille
               );
            virtual ~EpipolaireCoordinate();
         protected :
@@ -1268,13 +1268,13 @@ class EpipolaireCoordinate : public ElDistortion22_Gen
                      Pt2dr aDirX,
                      Pt2dr aTrFin
         );
-            RImGrid *  mGridCor; // Pour une eventuelle correction finale avec grille
+            RImGrid *  mGridCor; // for une eventuelle correction finale with grille
     private :
 
 
-        // Pour les "vrai" systemes epipolaire, la transformation
+        // for les "vrai" systemes epipolaire, la transformation
         // epiplaire ne change pas le X, cependant afin de pouvoir
-        // utilise dans les correlateur des mappigng quelconques
+        // utilise in les correlateur des mappigng quelconques
         // on redefinit ToYEpipol en ToCoordEpipole
 
          virtual Pt2dr ToCoordEpipol(Pt2dr aPInit) const = 0;
@@ -1393,7 +1393,7 @@ class CpleEpipolaireCoord
 
             static CpleEpipolaireCoord * PolynomialFromHomologue
                                         (
-                                                bool  UseL1,  // Si aSolApprox nulle alors utilise-t-on L1 ?
+                                                bool  UseL1,  // if aSolApprox nulle then utilise-t-on L1 ?
                                                 const ElPackHomologue &,
                                                 INT   aDegre,
                                                 Pt2dr aDir1,
@@ -1413,8 +1413,8 @@ class CpleEpipolaireCoord
 
             static CpleEpipolaireCoord * PolynomialFromHomologue
                                         (
-                                                bool  UseL1,  // Si aSolApprox nulle alors utilise-t-on L1 ?
-                                                CpleEpipolaireCoord  *  aSolApprox, // Solution pour calcul de residu
+                                                bool  UseL1,  // if aSolApprox nulle then utilise-t-on L1 ?
+                                                CpleEpipolaireCoord  *  aSolApprox, // Solution for computation de residu
                                                 REAL  aResiduMin,
                                                 const ElPackHomologue &,
                                                 INT   aDegre,
@@ -1426,7 +1426,7 @@ class CpleEpipolaireCoord
 
              static CpleEpipolaireCoord * MappingEpipolaire(ElDistortion22_Gen *,bool ToDel);
 
-            // Il ne s'agit pas d'un vrai systeme epipolaire, l'hoomographie ets
+            // Il ne s'agit pas d'un vrai system epipolaire, l'hoomographie ets
             // utilisee comme un mapping qcq, fait  appel a MappingEpipolaire
              static CpleEpipolaireCoord * MappEpiFromHomographie(cElHomographie);
              static CpleEpipolaireCoord * MappEpiFromHomographieAndDist
@@ -1473,7 +1473,7 @@ class CpleEpipolaireCoord
             CpleEpipolaireCoord * MapingChScale(REAL aChSacle) const;
 
             void SelfSwap(); // Intervertit les  2
-            CpleEpipolaireCoord * Swap();  // renvoie une nouvelle avec Intervertion
+            CpleEpipolaireCoord * Swap();  // renvoie une nouvelle with Intervertion
             void AdjustTr2Boxes(Box2dr aBox1,Box2dr aBox2);
 
             bool IsMappingEpi1() const;
@@ -1511,7 +1511,7 @@ class cCorrRefracAPost
          Pt2dr CorrC2M(const Pt2dr &) const;
          cCorrRefracAPost(const cCorrectionRefractionAPosteriori &);
 
-         // Le coefficient est le ratio du coeef de refrac du milieu d'entree sur le milieu de sortie
+         // Le coefficient est le ratio du coeef de refrac du milieu d'entree on le milieu de sortie
          Pt3dr CorrectRefrac(const Pt3dr &,double aCoef) const;
 
           const cCorrectionRefractionAPosteriori & ToXML() const;
@@ -1560,10 +1560,10 @@ class cBasicGeomCap3D
 
   // Optical center 
       virtual bool     HasOpticalCenterOfPixel() const; // 1 - They are not alway defined
-// When they are, they may vary, as with push-broom, Def fatal erreur (=> Ortho cam)
+// When they are, they may vary, as with push-broom, Def fatal error (=> Ortho cam)
       virtual Pt3dr    OpticalCenterOfPixel(const Pt2dr & aP) const ; 
-   // Coincide avec le centre optique pour les camera stenope et RPC, est la position
-   // du centre origine pour les camera ortho (utilise pour la geom faisceau)
+   // Coincide with le centre optique for les camera stenope and RPC, est la position
+   // du centre origine for les camera ortho (utilise for la geom faisceau)
       virtual Pt3dr    OrigineProf() const ;  // Par defau OpticalCenterOfPixel(Milieu)
 
       virtual Pt3dr    ImEtProf2Terrain(const Pt2dr & aP,double aZ) const;
@@ -1643,11 +1643,11 @@ class cBasicGeomCap3D
     protected :
 
          // Ces deux similitudes permettent d'implanter le crop-scale-rotate
-         // peut-etre a remplacer un jour par une ElAffin2D; sans changer
+         // peut-etre a remplacer un jour par une ElAffin2D; without changer
          // l'interface
          //
  
-         // A PRIORI INUTILISE DANS cBasicGeomCap3D
+         // A PRIORI INUTILISE in cBasicGeomCap3D
          tOrIntIma                      mScanOrImaC2M;
          tOrIntIma                      mIntrOrImaC2M;
          tOrIntIma                      mGlobOrImaC2M;
@@ -1655,7 +1655,7 @@ class cBasicGeomCap3D
          tOrIntIma                      mScanOrImaM2C;
          tOrIntIma                      mIntrOrImaM2C;
          tOrIntIma                      mGlobOrImaM2C;
-         double               mScaleAfnt;  // Echelle de l'affinite !!
+         double               mScaleAfnt;  // scale de l'affinite !!
 };
 
 
@@ -1671,8 +1671,8 @@ cBasicGeomCap3D * DeformCameraAffine
 
 
 
-//  Classe qui permet de manipuler de manière via une interface uniforme une image,
-// ou un nuage de point
+//  class qui permet de manipuler de manière via une interface uniforme une image,
+// or un nuage de point
 
 class cCapture3D : public cBasicGeomCap3D
 {
@@ -1720,7 +1720,7 @@ class ElCamera : public cCapture3D
          void TestCam(const std::string & aMes);
          const double & GetTime() const;
          void   SetTime(const double &);
-     // ProfIsZ si true, ZProf est l'altisol habituel, sinon c'est une profondeur de champ
+     // ProfIsZ if true, ZProf est l'altisol habituel, else c'est une profondeur de champ
          cOrientationConique ExportCalibGlob(Pt2di aSzIm,double AltiSol,double Prof,int AddVerif,bool ModMatr,const char * aNameAux,const Pt3di * aNbVeridDet=0) const;
 
          cCalibrationInternConique ExportCalibInterne2XmlStruct(Pt2di aSzIm) const;
@@ -1744,8 +1744,8 @@ class ElCamera : public cCapture3D
                             bool AtGroundLevel
                      );
 
-          // Pour compatibilite stricte avec ce qui etait fait avant
-         // dans cDistStdFromCam::Diff
+          // for compatibilite stricte with ce qui etait fait before
+         // in cDistStdFromCam::Diff
           virtual double SzDiffFinie() const = 0;
           Pt3dr DirVisee() const;
           double ProfondeurDeChamps(const Pt3dr & aP) const;
@@ -1774,8 +1774,8 @@ class ElCamera : public cCapture3D
          double   SomEcartAngulaire(const ElPackHomologue &, const ElCamera & CamB, double & aSomP) const;
          double   EcartAngulaire(const Appar23 &) const;
          double   SomEcartAngulaire(const std::vector<Appar23> & aVApp) const;
-    // L'identifiant ou le nom d'un camera, est qq chose d'optionnel , rajoute a posteriori
-    // pour la debugage-tracabilite
+    // L'identifiant or le nom d'un camera, est qq chose d'optionnel , rajoute a posteriori
+    // for la debugage-tracabilite
 
          const std::string &  IdentCam() const;
          void SetIdentCam(const std::string & aName);
@@ -1793,7 +1793,7 @@ class ElCamera : public cCapture3D
           void MultiToRotation(const ElMatrix<double> & aOffsetR);
 
           Pt3dr  PseudoInter(Pt2dr aPF2A,const ElCamera & CamB,Pt2dr aPF2B,double * aD=0) const;
-          // Idem PseudoInter mais la precision est celle de reprojection
+          // Idem PseudoInter but la precision est celle de reprojection
           Pt3dr  PseudoInterPixPrec(Pt2dr aPF2A,const ElCamera & CamB,Pt2dr aPF2B,double & aD) const;
           Pt3dr  CdgPseudoInter(const ElPackHomologue &,const ElCamera & CamB,double & aD) const;
 
@@ -1805,10 +1805,10 @@ class ElCamera : public cCapture3D
           double  ScaleCamNorm() const;
           Pt2dr   TrCamNorm() const;
 
-        //   R3 : "reel" coordonnee initiale
-        //   L3 : "Locale", apres rotation
-        //   C2 :  camera, avant distortion
-        //   F2 : finale apres Distortion
+        //   R3 : "real" coordonnee initiale
+        //   L3 : "Locale", after rotation
+        //   C2 :  camera, before distortion
+        //   F2 : finale after Distortion
         //
         //       Orientation      Projection      Distortion
         //   R3 -------------> L3------------>C2------------->F2
@@ -1853,8 +1853,8 @@ class ElCamera : public cCapture3D
          Appar23   F2toPtDirRayonL3(const Appar23 &);
      std::list<Appar23>  F2toPtDirRayonL3(const std::list<Appar23>&);
 
-          // Renvoie la somme des ecarts entre la projection des points
-          // 3D et les points 2D
+          // Renvoie la somme des ecarts between la projection des points
+          // 3D and les points 2D
 
           bool Devant(const Pt3dr &) const;
           bool TousDevant(const std::list<Pt3dr> &) const;
@@ -1882,7 +1882,7 @@ class ElCamera : public cCapture3D
       Pt2dr DistInverseSsComplem(Pt2dr aP) const;
 
 
-       // Les tailles representent des capteurs avant Clip et Reech
+       // Les tailles representent des capteurs before Clip and Reech
       const  Pt2di & Sz() const;
           Pt2dr  SzPixel() const;
           Pt2dr  SzPixelBasik() const;
@@ -1892,7 +1892,7 @@ class ElCamera : public cCapture3D
           bool SzIsInit() const;
 
          void SetParamGrid(const cParamForGrid &);
-              // AVANT REECH etc... , sz soit etre connu
+              // before REECH etc... , sz soit etre connu
       void  SetRayonUtile(double aRay,int aNbDisc);
 
         // La Box utile tient compte d'une eventuelle  affinite
@@ -1920,8 +1920,8 @@ class ElCamera : public cCapture3D
       const std::vector<bool> & DistComplIsDir() const;
 
 
-          // Ajoute une transfo finale pour aller vers la
-          // camera, typiquement pour un crop/scale
+          // Ajoute une transfo finale for aller vers la
+          // camera, typiquement for un crop/scale
 
 
 
@@ -1935,7 +1935,7 @@ class ElCamera : public cCapture3D
           bool     GetZoneUtilInPixel() const;
 
           double  RayonUtile() const;
-     // A priori lie a HasRayonUtile, mais eventuellement
+     // A priori lie a HasRayonUtile, but eventuellement
      // autre chose
           bool    HasDomaineSpecial() const;
 
@@ -1947,8 +1947,8 @@ class ElCamera : public cCapture3D
 
          virtual bool IsGrid() const;
          virtual ~ElCamera();
-   // Coincide avec le centre optique pour les camera stenope, est la position
-   // du centre origine pour les camera ortho (utilise pour la geom faisceau)
+   // Coincide with le centre optique for les camera stenope, est la position
+   // du centre origine for les camera ortho (utilise for la geom faisceau)
          virtual Pt3dr OrigineProf() const;
          virtual bool  HasOrigineProf() const;
          const cElPolygone &  EmpriseSol() const;
@@ -1968,7 +1968,7 @@ class ElCamera : public cCapture3D
 
 
 
-  // Translation et scale de Normalisation
+  // translation and scale de Normalisation
          Pt2dr                          mTrN;
          double                         mScN;
 
@@ -1987,9 +1987,9 @@ class ElCamera : public cCapture3D
 
 
 
-     // Une distorsion de "pre-conditionnement" est une fonction "simple"
-     // qui approxime la partie non lineaire de la distorsion, si !=0 elle
-     // est exprimee dans le sens M->C , 0 signifie identite
+     // Une distorsion de "pre-conditionnement" est une function "simple"
+     // qui approxime la partie non lineaire de la distorsion, if !=0 elle
+     // est exprimee in le sens M->C , 0 signifie identite
      //
      // Elle est utilisee notamment parce que les distorsions "compliquees"
      // peuvent etre exprimees comme la composition d'une distorsion
@@ -2045,14 +2045,14 @@ class ElCamera : public cCapture3D
 
 // Represente les cameras a projection parallele (focale infinie),
 //
-//  La focale et le point principal sont indissociables de la translation,
-//  ce sont des parametres extrinseques representes dans la translation
+//  La focale and le point principal sont indissociables de la translation,
+//  ce sont des parameters extrinseques representes in la translation
 //  (via le R3toL3/L3toR3)
 
 class cCameraOrtho : public ElCamera
 {
     public :
-       // Pour appeler methode virtuelle dans cstrteur ...
+       // for appeler method virtuelle in cstrteur ...
        static cCameraOrtho * Alloc(const Pt2di & aSz);
          Pt3dr OrigineProf() const;
          bool  HasOrigineProf() const;
@@ -2075,10 +2075,10 @@ class cCameraOrtho : public ElCamera
      Pt3dr ImEtProf2Terrain(const Pt2dr & aP,double aZ) const;
      Pt3dr NoDistImEtProf2Terrain(const Pt2dr & aP,double aZ) const;
 
-         // La notion d'origine n'a pas reellement de sens pour un projection ortho (au mieux elle
-         // situee n'importe ou sur le rayon partant du centre de l'image), pourtant il en faut bien une
-         // meme completement arbitraire  pour  des fonctions telle que image et profondeur 2 Terrains
-         // quand on correle en faisceau
+         // La notion d'origine n'a pas reellement de sens for un projection ortho (au mieux elle
+         // situee n'importe or on le rayon partant du centre de l'image), pourtant il en faut bien une
+         // meme completement arbitraire  for  des fonctions telle que image and profondeur 2 Terrains
+         // when on correle en faisceau
          Pt3dr mCentre;
 };
 
@@ -2107,7 +2107,7 @@ class cDistPrecondRadial : public ElDistortion22_Gen
 };
 
 
-// Modele pour fish eye lineaire
+// Modele for fish eye lineaire
 
 class cDistPrecondAtgt : public cDistPrecondRadial
 {
@@ -2120,7 +2120,7 @@ class cDistPrecondAtgt : public cDistPrecondRadial
         int     Mode() const ;
 };
 
-// Modele pour fish eye equisolid
+// Modele for fish eye equisolid
 
 class cDistPrecond2SinAtgtS2 : public cDistPrecondRadial
 {
@@ -2179,7 +2179,7 @@ Pt3dr IntersectionRayonPerspectif
       A FAIRE
 */
 
-// Camera a Stenope
+// camera a Stenope
 
 
 class CamStenope : public ElCamera
@@ -2198,7 +2198,7 @@ class CamStenope : public ElCamera
          void StdNormalise(bool doScale,bool  doTr);
          void StdNormalise(bool doScale,bool  doTr,double aS,Pt2dr  aTr);
          void UnNormalize();
-         // .xml ou .ori
+         // .xml or .ori
          static CamStenope * StdCamFromFile(bool UseGr,const std::string &,cInterfChantierNameManipulateur * anICNM);
 
          virtual const cCamStenopeDistRadPol * Debug_CSDRP() const;
@@ -2208,12 +2208,12 @@ class CamStenope : public ElCamera
           // renvoit la distance de p1 a la projection de la droite
           // Inhibee car non testee
 
-          // La methode a ete definie dans la mere, il n'y a aucun interet
+          // La method a ete definie in la mere, il n'y a aucun interet
           // apparement a la specialiser
 
           // REAL EcartProj(Pt2dr aPF2A,const ElCamera & CamB,Pt2dr aPF2B);
 
-         // Helas, le SzIm n'est pas integre dans mes CamStenope ...
+         // Helas, le SzIm n'est pas integre in mes CamStenope ...
 
 
 
@@ -2222,7 +2222,7 @@ class CamStenope : public ElCamera
          CamStenope(bool isDistC2M,REAL Focale,Pt2dr centre,const std::vector<double>  & AFocalParam);
          CamStenope(const CamStenope &,const ElRotation3D &);
 
-         // Par defaut true, mais peut redefini, par exemple pour
+         // Par defaut true, but peut redefini, par exemple for
          // un fish-eye
          virtual bool CanExportDistAsGrid() const;
 
@@ -2244,8 +2244,8 @@ class CamStenope : public ElCamera
                  const ElSTDNS list<Appar23> & P32
               );
 
-        // Si  NbSol ==  0 et resultat vide => Erreur
-        // Sinon *NbSol Contient  le nombre de solution
+        // if  NbSol ==  0 and result vide => error
+        // else *NbSol Contient  le number de solution
 
          ElRotation3D  OrientFromPtsAppui
               (
@@ -2305,7 +2305,7 @@ class CamStenope : public ElCamera
                );
 
 
-         // Orientations avec "GPS", i.e. avec centre fixe
+         // Orientations with "GPS", i.e. with centre fixe
 
          void Set_GPS_Orientation_From_Appuis
                       (
@@ -2314,15 +2314,15 @@ class CamStenope : public ElCamera
                            int  aNbRansac
                       );
 
-         // Pour compatibilite temporaire avec la proj carto d'orilib
+         // for compatibilite temporaire with la proj carto d'orilib
          virtual Ori3D_Std * CastOliLib();  // OO  Def return 0
-         Ori3D_Std * NN_CastOliLib();  //OO   Erreur si 0
+         Ori3D_Std * NN_CastOliLib();  //OO   error if 0
          double ResolutionPDVVerticale();  //OO   OriLib::resolution, assume implicitement une
                                            // PDV sub verticale
          double ResolutionAngulaire() const;  // OO
          double ResolutionSol() const ;
          double ResolutionSol(const Pt3dr &) const ;
-         // Pour l'instant bovin, passe par le xml
+         // for l'instant bovin, passe par le xml
          virtual CamStenope * Dupl() const;   // OO
 
 
@@ -2350,13 +2350,13 @@ class CamStenope : public ElCamera
      double ProfInDir(const Pt3dr & aP,const Pt3dr &) const; // OO
 
 
-         // Sert pour un clonage, par defaut null
+         // Sert for un clonage, par defaut null
          virtual ElProj32             &  Proj();
          virtual const ElProj32       &  Proj() const;
          virtual ElDistortion22_Gen   &  Dist();
          virtual const ElDistortion22_Gen   &  Dist() const;
 
-// Def  : erreur fatale
+// Def  : error fatale
          virtual cParamIntrinsequeFormel * AllocParamInc(bool isDC2M,cSetEqFormelles &);
 
 
@@ -2392,13 +2392,13 @@ class CamStenope : public ElCamera
 
 
 //
-// Soit une camera et l'application D du plan dans le
-// plan telle que pour un point P=(U,V) camera,
+// Soit une camera and l'application D du plan in le
+// plan telle que for un point P=(U,V) camera,
 //  R=(D(U),D(V),1.0) soit la direction issu de P,
 //  cDistStdFromCam permet de representer cette application
-//  sous forme d'une ElDistortion22_Gen, ce qui peut etre utile
-//  par exemple pour generer des grilles;
-//  l'Inversion n'est pas tres rapide car elle calcule des
+//  under forme d'une ElDistortion22_Gen, ce qui peut etre utile
+//  par exemple for generer des grilles;
+//  l'Inversion n'est pas tres rapide car elle compute des
 //  derivees par differences finies.
 
 class cDistStdFromCam : public ElDistortion22_Gen
@@ -2414,7 +2414,7 @@ class cDistStdFromCam : public ElDistortion22_Gen
 
 
 
-// Classe pour presenter une image Orilib comme une
+// class for presenter une image Orilib comme une
 // camera Elise
 
 class cDistorsionOrilib;
@@ -2432,7 +2432,7 @@ class cCamera_Orilib : public CamStenope
 };
 
 
-// Camera a Stenope Ideale
+// camera a Stenope Ideale
 
 class CamStenopeIdeale : public CamStenope
 {
@@ -2448,8 +2448,8 @@ class CamStenopeIdeale : public CamStenope
 };
 
 
-//  Permet de dupliquer une camera, sans copier les distorsion
-//  sans connaitre son origine
+//  Permet de dupliquer une camera, without copier les distorsion
+//  without connaitre son origine
 
 class cCamStenopeGen : public CamStenope
 {
@@ -2489,9 +2489,9 @@ class cCamStenopeDistRadPol : public CamStenope
     private :
         ElDistRadiale_PolynImpair & mDist;
         ElDistRadiale_PolynImpair mDistInterne;
-        // Non implemente , pb sur la copie de _dist
+        // Non implemente , pb on la copie de _dist
         // (reference mal initialisee)
-        //   Surtout avec mDist != mDistInterne
+        //   Surtout with mDist != mDistInterne
         cCamStenopeDistRadPol(const cCamStenopeDistRadPol &);
 
             virtual ElDistortion22_Gen   &  Dist();
@@ -2501,8 +2501,8 @@ class cCamStenopeDistRadPol : public CamStenope
 
 
 
-// Classe pour modeliser ma distortion telle que
-// decrite dans Fraser, ISPRS 97, Vol 52, 149-159
+// class for modeliser ma distortion telle que
+// decrite in Fraser, ISPRS 97, Vol 52, 149-159
 //
 
 
@@ -2514,7 +2514,7 @@ class cDistModStdPhpgr : public ElDistRadiale_PolynImpair
 
                 Pt2dr Direct(Pt2dr) const ;
                 void  Diff(ElMatrix<REAL> &,Pt2dr) const;
-                virtual bool OwnInverse(Pt2dr &) const ;    //  Pour "casser" la valeur radiale
+                virtual bool OwnInverse(Pt2dr &) const ;    //  for "casser" la value radiale
                 virtual Pt2dr GuessInv(const Pt2dr & aP) const ;
 
                 REAL & P1();
@@ -2563,8 +2563,8 @@ class cCamStenopeModStdPhpgr : public cCamStenopeDistRadPol
        const cDistModStdPhpgr & DModPhgrStd() const;
         // [1]  DistIsC2M:
         // En point de liaison les equation sont faite C->M, compte
-        // tenu de l'absence d'inversion triviale pour le Modele Std,
-        // on a interet a toujours raisonner dans ce sens
+        // tenu de l'absence d'inversion triviale for le Modele Std,
+        // on a interet a toujours raisonner in ce sens
            virtual ElDistortion22_Gen   &  Dist() override;
            virtual const ElDistortion22_Gen   &  Dist() const override;
             virtual cParamIntrinsequeFormel * AllocParamInc(bool isDC2M,cSetEqFormelles &) override;
@@ -2614,7 +2614,7 @@ class cDistCamStenopeGrid : public ElDistortion22_Gen
        Pt2dr Direct(Pt2dr) const;
        virtual bool OwnInverse(Pt2dr &) const ;    //  return true
 
-       // Si RayonInv <=0 pas utilise
+       // if RayonInv <=0 pas utilise
        static cDistCamStenopeGrid * Alloc(bool P0P1IsBoxDirect,double aRayInv,const CamStenope &,Pt2dr aStepGr,bool doDir=true,bool doInv=true);
 
        cDistCamStenopeGrid
@@ -2669,10 +2669,10 @@ class CalcPtsInteret
 
 
             static Fonc_Num CritereFonc(Fonc_Num);  // Typiquement une genre Harris
-            static Pt2di GetOnePtsInteret(Flux_Pts,Fonc_Num aFonc); // aFonc -> Avant appli de critere
+            static Pt2di GetOnePtsInteret(Flux_Pts,Fonc_Num aFonc); // aFonc -> before appli de critere
 
 
-            // Dans cette version, on specifie la taille des carres
+            // in cette version, on specifie la taille des carres
             // de recherche de 1 Pts Interet
 
             static tContainerPtsInt GetEnsPtsInteret_Size
@@ -2714,14 +2714,14 @@ class CalcPtsInteret
 class cElFaisceauDr2D
 {
     public :
-          // Calcul un point projectif correspond a un point de
+          // computation un point projectif correspond a un point de
           // convergence commun du faisceau de droite,
-          // suppose une valeur initiale approche en teta,phi
+          // suppose une value initiale approche en teta,phi
 
        void PtsConvergence(REAL  & teta0,REAL & phi0, bool OptimPhi);
 
-         // Itere, s'arrete apres NbStep Etape ou si le
-         // de residu < Epsilon, ou si le delta residu < DeltaRes
+         // Itere, s'arrete after NbStep Etape or if le
+         // de residu < Epsilon, or if le delta residu < DeltaRes
        void PtsConvergenceItere
                 (
                    REAL  & teta0,REAL & phi0,INT NbStep,
@@ -2736,9 +2736,9 @@ class cElFaisceauDr2D
 
 
 
-       // Si tout les faisceau ont approximativement la meme
+       // if tout les faisceau ont approximativement la meme
        // direction renvoie une estimation de cette direction,
-       // ne necessite pas de valeur initiale
+       // ne necessite pas de value initiale
        REAL TetaDirectionInf();
 
 
@@ -2800,20 +2800,20 @@ class cElemMepRelCoplan
              void TestPack(const ElPackHomologue &) const;
 
 
-         // Normale au plan dans le repere cam1
+         // Normale au plan in le repere cam1
              Pt3dr          Norm() const;
-         //  Distance entre le centre optique et l'image "reciproque"
-         //  du centre camera 1 sur le plan, permet de normalisee
+         //  Distance between le centre optique and l'image "reciproque"
+         //  du centre camera 1 on le plan, permet de normalisee
          //  les bases
          REAL DPlan() const;
 
 
-             // "Vraie" distance min entre le plan et
+             // "Vraie" distance min between le plan and
          double DistanceEuclid() const;
 
          // Idem camera2
          REAL DPlan2() ;
-                // Point du plan, ayant P1 comme image  par cam1
+                // point du plan, ayant P1 comme image  par cam1
                 // (en coord camera 1)
              Pt3dr ImCam1(Pt2dr aP1);
              // Homographie envoyant un (u,v,1) en (X,Y,0)
@@ -2830,7 +2830,7 @@ class cElemMepRelCoplan
 
         private :
 
-                // Point du plan, ayant P2 comme image  par cam2
+                // point du plan, ayant P2 comme image  par cam2
                 // (en coord camera 1)
              Pt3dr ImCam2(Pt2dr aP2);
 
@@ -2841,10 +2841,10 @@ class cElemMepRelCoplan
              cElHomographie mHomI;
              ElRotation3D   mRot;
 
-             // tous les points 3D sont en coordonnees Cam1
+             // tous les points 3D sont en coordinates Cam1
 
          // mP0,mP1,mP2  trois point (coord Cam1) du plan
-         // mNorm un vecteur unitaire  de la normale au plan
+         // mNorm un vector unitaire  de la normale au plan
              Pt3dr          mP0;
              Pt3dr          mP1;
              Pt3dr          mP2;
@@ -2940,12 +2940,12 @@ class cMirePolygonEtal
 };
 
 
-// La classe cCibleCalib est la nouvelle "classe" pour representer les
-// cibles, elle est plus complete (normale ...) et admet une lecture
-// ecriture standard par xml. Pour des raisons de compatibilite on
+// La class cCibleCalib est la nouvelle "class" for representer les
+// cibles, elle est plus complete (normale ...) and admet une lecture
+// ecriture standard par xml. for des raisons de compatibilite on
 // conserve cCiblePolygoneEtal qui contient un cCibleCalib *. C'est
-// un peu batard mais correspond au moyen le + econome de gerer
-//  cette classe qui n'a pas vocation a generer de grand developpement
+// un peu batard but correspond au moyen le + econome de gerer
+//  cette class qui n'a pas vocation a generer de grand developpement
 
 
 class cCibleCalib;
@@ -3046,7 +3046,7 @@ class cSetPointes1Im
           (
               const cPolygoneEtal &,
           const std::string &,
-          bool  SVP = false  // Si true et fichier inexistant cree set vide
+          bool  SVP = false  // if true and file inexistant cree set vide
           );
       typedef std::list<cPointeEtalonage> tCont;
       tCont  & Pointes() ;
@@ -3066,7 +3066,7 @@ class cSetNImSetPointes
           (
               const cPolygoneEtal &,
           const std::string &,
-          bool  SVP = false  // Si true et fichier inexistant cree set vide
+          bool  SVP = false  // if true and file inexistant cree set vide
           );
       typedef std::list<cSetPointes1Im> tCont;
       tCont  & Pointes() ;
@@ -3080,10 +3080,10 @@ class cDbleGrid : public ElDistortion22_Gen
 {
      public :
 
-         // Dans le cas ou il s'agit d'une grille photogram
+         // in le cas or il s'agit d'une grille photogram
          // le PP est l'image reciproque de (0,0),
          // la Focale est calculee par differnce finie,
-         // en X, avec un pas de 1 Pixel
+         // en X, with un pas de 1 Pixel
      REAL Focale();
      Pt2dr PP() ;
          const Pt2dr & P0_Dir() const;
@@ -3120,8 +3120,8 @@ class cDbleGrid : public ElDistortion22_Gen
     PtImGrid & GrDir() ;
     PtImGrid & GrInv() ;
 
-        // Applique un chgt d'echelle sur les image direct
-        // typiquement si ChScale=Focale() Tr= PP() ; alors
+        // Applique un chgt d'scale on les image direct
+        // typiquement if ChScale=Focale() Tr= PP() ; then
         // on une correction de distorsion assez classique
         void SetTrChScaleDir(REAL aChScale,Pt2dr aTr);
         void SetTrChScaleInv(REAL aChScale,Pt2dr aTr);
@@ -3143,7 +3143,7 @@ class cDbleGrid : public ElDistortion22_Gen
              );
        bool StepAdapted() const;
 
-       // Nouveau format avec Image incluse
+       // Nouveau format with image incluse
        void SaveXML(const std::string &);
 
 
@@ -3188,7 +3188,7 @@ class cEqTrianguApparImage
 
      private :
           INT  mCapa;
-          INT  mN;     // Nombre de point
+          INT  mN;     // number de point
           REAL mSI1;   // Moyenne/Somme de l'image I
           REAL mSI2;   // Moyenne/Somme du carre l'image I
           REAL   mSigmaI;
@@ -3223,9 +3223,9 @@ class cAnalyseZoneLiaison
         void Reset();
 
         //  2 - 1 correpond a l'inertie du petit axe
-        //  1 -1  correpond a la moyenne des val abs (dans le ptit axe)
-        //  2 -0   correpond a l'inertie du petit axe avec une ponderation
-        //         normalisee independante du nombre de points
+        //  1 -1  correpond a la moyenne des val abs (in le ptit axe)
+        //  2 -0   correpond a l'inertie du petit axe with une ponderation
+        //         normalisee independante du number de points
         double Score(double ExposantDist,double ExposantPds);
         const std::vector<Pt2dr> & VPts() const;
     private  :
@@ -3239,7 +3239,7 @@ class   cCS_MapIm2PlanProj : public ElDistortion22_Gen
 {
         public :
           cCS_MapIm2PlanProj(CamStenope * pCam) ;
-// Directe Image -> Direction de rayon
+// Directe image -> Direction de rayon
 
           Pt2dr Direct(Pt2dr aP) const;
         private :
@@ -3278,7 +3278,7 @@ class cCpleEpip
 
          std::string Dir();
 
-         bool IsIm1(const std::string & aNameIm);  // Erreur si ni Im1 ni Im2
+         bool IsIm1(const std::string & aNameIm);  // error if ni Im1 ni Im2
 
 
          std::string LocDirMatch(const std::string & Im);
@@ -3352,7 +3352,7 @@ cCpleEpip * StdCpleEpip
 
 
 
-// Pour assurer la compatibilite avec les format 2003 ....
+// for assurer la compatibilite with les format 2003 ....
 CamStenope * CamCompatible_doublegrid(const std::string & aNameFile);
 
 
@@ -3367,7 +3367,7 @@ class cTxtCam
        std::string          mNameIm;
        std::string          mNameOri;
        CamStenope *         mCam;
-       CamStenope *         mRefCam;// En cas de reference exacte pour faire du reverse engenering
+       CamStenope *         mRefCam;// En cas de reference exacte for faire du reverse engenering
        cOrientationConique  * mOC;
        double               mPrio;
        bool                 mSelC;
@@ -3428,9 +3428,9 @@ class cDistorBilin :   public ElDistortion22_Gen
           Pt2dr FromCoordGrid(const Pt2dr &) const;
           // Renvoie le meilleur interval [X0, X0+1[ contenat aCoordGr, valide qqsoit aCoordGr
           void GetDebInterval(int & aX0,const int & aSzGrd,const double & aCoordGr) const;
-          //  tel que aCoordGr soit le barry de (aX0,aX0+1) avec (aPdsX0,1-aPdsX0)  et 0<= aX0 < aSzGr, aX0 entier
+          //  tel que aCoordGr soit le barry de (aX0,aX0+1) with (aPdsX0,1-aPdsX0)  and 0<= aX0 < aSzGr, aX0 integer
           void GetDebIntervalAndPds(int & aX0,double & aPdsX0,const int & aSzGrd,const double & aCoordGr) const;
-          //  A partir d'un points en coordonnees grille retourne le coin bas-gauche et le poids
+          //  A partir d'un points en coordinates grille retourne le coin bas-gauche and le poids
           void GetParamCorner(Pt2di & aCornerBG,Pt2dr & aPdsBG,const Pt2dr & aCoorGr) const;
           void InitEtatFromCorner(const Pt2dr & aCoorGr) const;
 

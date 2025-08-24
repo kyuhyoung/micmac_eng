@@ -118,10 +118,10 @@ class cLoadedIm
   
        int ValeurPC(const Pt2di &) const;
        Im2D_U_INT1  ImPCBrute();
-       Fonc_Num     FoncInc();  // Fonction d'incidence
+       Fonc_Num     FoncInc();  // function d'incidence
        int Ind() const;
        cOneImOrhto *   CurOrtho();
-       // Dec entre le loaded et l'origine de la sous ortho
+       // Dec between le loaded and l'origine de la under ortho
        const Pt2di&  DecLoc() const;
        std::vector<double> Vals(const Pt2di &) const;
        double ValCorrel(const Pt2di & aP) const;
@@ -137,9 +137,9 @@ class cLoadedIm
        cAppli_Ortho &  mAppli;
        cOneImOrhto *          mCurOrtho;
        int                     mInd;
-       Im2D_REAL4              mImIncH;  // +ou- image du nadir
-       Im2D_U_INT1             mImPCBrute;  //  Partie cachee (ou simple Masque ?)
-       Im2D_U_INT1             mImPC;  //  Partie cachee (ou simple Masque ?)
+       Im2D_REAL4              mImIncH;  // +or- image du nadir
+       Im2D_U_INT1             mImPCBrute;  //  Partie cachee (or simple Masque ?)
+       Im2D_U_INT1             mImPC;  //  Partie cachee (or simple Masque ?)
        TIm2D<U_INT1,INT>       mTImPC;
        std::vector<Im2DGen *>  mIms;
        int                     mChCor;
@@ -150,7 +150,7 @@ class cLoadedIm
        double                  mFactRed;
        double                  mIncMoy;
        Pt2di                   mRedDecLoc;
-       Pt2dr                   mPR_RDL; // Partie Reel Reduite Decalage loc
+       Pt2dr                   mPR_RDL; // Partie real Reduite Decalage loc
        
 };
 

@@ -117,7 +117,7 @@ class cElCompiledFonc
 
          std::string & NameAlloc();
           static cElCompiledFonc * AllocFromName(const std::string &);
-         // Renvoie 0 si pas un des champs de la structure
+         // Renvoie 0 if pas un des champs de la structure
 	 
          virtual double * AdrVarLocFromString(const std::string &) =0;
          double * RequireAdrVarLocFromString(const std::string &);
@@ -128,7 +128,7 @@ class cElCompiledFonc
 
          void ComputeValAndSetIVC();
 
-// Debug, aucune verif sur init !! Dangereux hors debug
+// Debug, aucune verif on init !! Dangereux hors debug
          REAL ValBrute(INT aD)         const;
 
          REAL Val(INT aD)         const;
@@ -200,7 +200,7 @@ class cElCompiledFonc
 
          static cElCompiledFonc * DynamicAlloc(const cIncListInterv &  aListInterv,Fonc_Num);
 
-	 // Pour des foncteur dynamique de type Xk=Cste
+	 // for des foncteur dynamique de type Xk=Cste
          static cElCompiledFonc * FoncSetVar(cSetEqFormelles *,INT Ind,bool GenCode=false);
 	 static cElCompiledFonc *FoncSetValsEq
 		                 (cSetEqFormelles *,INT Ind1,INT Ind2,bool GenCode=false);
@@ -208,7 +208,7 @@ class cElCompiledFonc
          static const std::string NameFoncSetVar;
          double * FoncSetVarAdr();
 	 
-	 // Pour des foncteur dynamique de type Sigma(ak,Xk)=Cste
+	 // for des foncteur dynamique de type Sigma(ak,Xk)=Cste
          static const  std::string &  NameKthAffineVar(int aNB);
          static cElCompiledFonc * FoncRappelAffine(cSetEqFormelles *,INT Ind0,INT NbInd);
          double * FoncAffAdrCste();
@@ -278,7 +278,7 @@ class cElCompiledFonc
           //  INT                     mVarMaxReal;
 
       // Je pense que le mode mAlwaysIndexed devrait etre le mode
-      // systematique, mais par compatibilite ...
+      // systematique, but par compatibilite ...
           bool                    mAlwaysIndexed;
 
           std::vector<double>     mCompCoord;
@@ -287,14 +287,14 @@ class cElCompiledFonc
 	  std::vector<std::vector<double> >    mCompDer;
 	  // std::vector<std::vector<std::vector<double> > >   mCompHessian;
 
-	  // Utile pour AddSys
+	  // Utile for AddSys
 	  // std::vector<std::vector<double> >    mRealDer;
           // std::vector<INT>        mMapReal2Comp;
 
           // std::vector<INT>       mListIndComp;
           // std::vector<INT>       mListIndReal;
 
-          // Pour assurer la suppression progressive de mListIndComp & co
+          // for assurer la suppression progressive de mListIndComp & co
           inline int LIC(const int &) const;
 
 	  std::vector<double>    mVal;
@@ -340,8 +340,8 @@ class cElCompileFN
                             const std::string           &   aNameCl,
 			    std::vector<Fonc_Num>           aVar,
                             const cIncListInterv &          aList,
-                           // si true il y a d'abord les fonction pour la valeur ensuite
-                           // celle pour les derivee
+                           // if true il y a d'abord les function for la value ensuite
+                           // celle for les derivee
                             bool  SpecFnumCoorUseCsteVal = false
 
                          );

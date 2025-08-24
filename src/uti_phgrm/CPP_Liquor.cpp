@@ -51,7 +51,7 @@ class cIntervLiquor;
 // ffmpeg -i MVI_0001.MOV  -ss 30 -t 20 Im%5d_Ok.png
 
 // Im*_Ok => OK
-// Im*_Nl => Image Nulle (eliminee)
+// Im*_Nl => image Nulle (eliminee)
 
 
 void BanniereLiquor()
@@ -104,10 +104,10 @@ class cIntervLiquor
          int             mNum;
          cIntervLiquor * mF1;
          cIntervLiquor * mF2;
-         std::string     mNameLOF; //  Name liste of file
-         std::string     mPatLOF; //  Name liste of file
-         std::string     mNameOri; //  Name liste of file
-         std::string     mNameMerge; //  Name liste of file
+         std::string     mNameLOF; //  Name list of file
+         std::string     mPatLOF; //  Name list of file
+         std::string     mNameOri; //  Name list of file
+         std::string     mNameMerge; //  Name list of file
          bool            mDone;
 };
 
@@ -142,8 +142,8 @@ class cAppliLiquor : public cAppli_Tapas_Campari
         int                              mNbIm;
         int                              mSzLim;
         int                              mOverlapMin;  // Il faut un peu de redondance
-        Pt2di                            mIntervOverlap;  // Si redondance trop grande, risque de divergence au raccord
-        double                           mOverlapProp; // entre les 2, il peut sembler logique d'avoir  une raccord prop
+        Pt2di                            mIntervOverlap;  // if redondance trop grande, risque de divergence au raccord
+        double                           mOverlapProp; // between les 2, il peut sembler logique d'avoir  une raccord prop
         int                              mExe;
         std::string                      mSH;
         std::string                      mSHTapas;
@@ -433,7 +433,7 @@ cIntervLiquor * cAppliLiquor::SplitRecInterv(int aDeb,int aEnd,int aProf)
          }
    }
 
-   // Incremente la liste des 
+   // Incremente la list des 
    for (int aP = (int)mInterv.size() ; aP<=aProf ; aP++)
    {
       std::list<cIntervLiquor*> aL;
@@ -489,7 +489,7 @@ int Liquor_main(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -505,17 +505,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

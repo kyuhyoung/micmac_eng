@@ -482,7 +482,7 @@ void ElDistortion22_Gen::SaveAsGrid
              const Pt2dr& aStep
      )
 {
-    cDbleGrid aDistGr(true, // PAS TRES SUR, maintien de l'existant
+    cDbleGrid aDistGr(true, // PAS TRES on, maintien de l'existant
                       true,aP0,aP1,aStep,*this);
     aDistGr.SaveXML(aName);
 }
@@ -1051,7 +1051,7 @@ void ElDistRadiale_PolynImpair::V_SetScalingTranslate
 
 
 
-// Rayon max a l'interieur duquel la fonction de
+// Rayon max a l'interieur duquel la function de
 // distortion est bijective croissante
 
 ElPolynome<REAL> ElDistRadiale_PolynImpair::PolynOfR()
@@ -1650,7 +1650,7 @@ Pt2dr cDistCorrPC::Direct(Pt2dr aP) const
       if (aR>mRayInv)
       {
          double aEps=1e-3;
-         //PC = projection sur le cercle
+         //PC = projection on le cercle
          Pt2dr aPC = mMil + vunit(aMP) * mRayInv;
          Pt2dr aDPC = DirSsRay(aPC);
          Pt2dr aDx =( DirSsRay(aPC+Pt2dr(aEps,0))-aDPC) /aEps;

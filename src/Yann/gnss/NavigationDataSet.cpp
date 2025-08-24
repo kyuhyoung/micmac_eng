@@ -1,7 +1,7 @@
 #include "NavigationDataSet.h"
 
 // -------------------------------------------------------------------------------
-// Test générique pour savoir si le jeu de données contient un satellite prn
+// Test gnrique for savoir if le jeu de donnes contient un satellite prn
 // -------------------------------------------------------------------------------
 bool NavigationDataSet::hasEphemeris(std::string prn, GPSTime time){
 
@@ -28,7 +28,7 @@ bool NavigationDataSet::hasEphemeris(std::string prn, GPSTime time){
 }
 
 // -------------------------------------------------------------------------------
-// Calcul générique de l'erreur d'horloge (en s) du satellite prn
+// computation gnrique de l'error d'horloge (en s) du satellite prn
 // -------------------------------------------------------------------------------
 double NavigationDataSet::computeSatelliteClockError(std::string prn_code, GPSTime time, double pseudorange){
 
@@ -79,14 +79,14 @@ double NavigationDataSet::computeSatelliteClockError(std::string prn_code, GPSTi
 
 
 // -------------------------------------------------------------------------------
-// Calcul générique de l'erreur d'horloge (en s) du satellite prn
+// computation gnrique de l'error d'horloge (en s) du satellite prn
 // -------------------------------------------------------------------------------
 double NavigationDataSet::computeSatelliteClockError(std::string prn_code, GPSTime time){
 	return computeSatelliteClockError(prn_code, time, 0);
 }
 
 // -------------------------------------------------------------------------------
-//  Calcul générique de la position ECEF du satellite prn
+//  computation gnrique de la position ECEF du satellite prn
 // -------------------------------------------------------------------------------
 ECEFCoords NavigationDataSet::computeSatellitePos(std::string prn_code, GPSTime time, double pseudorange){
 
@@ -138,7 +138,7 @@ ECEFCoords NavigationDataSet::computeSatellitePos(std::string prn_code, GPSTime 
 }
 
 // -------------------------------------------------------------------------------
-//  Calcul générique de la position ECEF du satellite prn
+//  computation gnrique de la position ECEF du satellite prn
 // -------------------------------------------------------------------------------
 ECEFCoords NavigationDataSet::computeSatellitePos(std::string prn, GPSTime time){
 	return this->computeSatellitePos(prn, time, 0);

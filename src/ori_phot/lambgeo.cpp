@@ -68,7 +68,7 @@ typedef struct tagPof  {
  Lambert I  :      Alat>=53.5 Gr            (Parallele origine:55 Gr)
  Lambert II :    50.5 Gr<=Alat<=53.5 Gr     (Parallele origine:52 Gr)
  Lambert III: Alat<=50.5 Gr et Alon<=6.2 Gr (Parallele origine:49 Gr)
- Lambert IV : Alat<=48 Gr et Alon>=6.4 Gr (Parallele origine:46,85 Gr) */
+ Lambert IV : Alat<=48 Gr and Alon>=6.4 Gr (Parallele origine:46,85 Gr) */
 /*******************************************************/
 
 void Lamb_geo (double xx, 
@@ -125,7 +125,7 @@ void Lamb_geo (double xx,
   A = ( ( 1.38E-7 * S2 - 1.5707E-5 ) * S2 + 3.425046E-3 ) * S ; 
   *Alat = atan( (A + T) / (1 + A * T ) ) * 127.32395447 ; 
   
-  /* Le calcul est fait en grades : en degres en sortie */
+  /* Le computation est fait en grades : en degres en sortie */
   *Alon = *Alon * 0.9 ;
   *Alat = *Alat * 0.9 ;
 }
@@ -148,7 +148,7 @@ void Lamb_geo (double xx,
   Lambert I  :      Alat>=53.5 Gr            (Parallele origine:55 Gr)
   Lambert II :    50.5 Gr<=Alat<=53.5 Gr     (Parallele origine:52 Gr)
   Lambert III: Alat<=50.5 Gr et Alon<=6.2 Gr (Parallele origine:49 Gr)
-  Lambert IV : Alat<=48 Gr et Alon>=6.4 Gr (Parallele origine:46,85 Gr) */
+  Lambert IV : Alat<=48 Gr and Alon>=6.4 Gr (Parallele origine:46,85 Gr) */
 
 /******************************************************************/
 

@@ -49,7 +49,7 @@ int ZBufferRaster_main(int argc,char ** argv)
     cInterfChantierNameManipulateur * aICNM = cInterfChantierNameManipulateur::BasicAlloc(aDir);
     vector<string>  vImg = *(aICNM->Get(aPatIm));
 
-    //===========Modifier ou chercher l'image si l'image ne sont pas tif============//
+    //===========Modifier or chercher l'image if l'image ne sont pas tif============//
     std::size_t found = aParam.mPatFIm.find_last_of(".");
     string ext = aParam.mPatFIm.substr(found+1);
     cout<<"Ext : "<<ext<<endl;

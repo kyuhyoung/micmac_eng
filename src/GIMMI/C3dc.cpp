@@ -466,7 +466,7 @@ void C3dc::mm3d(){
 
 
 //************************************************************************************************************************************
-// CODE POUR ENVOYER UN LE CONTENU DU COMPTE RENDU  TRAITEMENT IMAGE
+// CODE for ENVOYER UN LE CONTENU DU COMPTE RENDU  TRAITEMENT image
 
 QString C3dc::getTxt(){
 
@@ -480,7 +480,7 @@ QString C3dc::getTxt(){
 
 
 //************************************************************************************************************************************
-// CODE POUR ENVOYER UNE BOX APRES TRAITEMENT IMAGE FINI
+// CODE for ENVOYER UNE BOX after TRAITEMENT image FINI
 void C3dc::msg(){
     qDi.setWindowTitle("C3DC state");
 

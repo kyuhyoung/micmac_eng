@@ -206,7 +206,7 @@ void Bench_0000_String(cParamExeBench & aParam)
 
 
     if (! aParam.NewBench("StringOperation")) return;
-    // Bench elem sur la fonction SplitString
+    // Bench elem on la function SplitString
     // std::vector<std::string> aSplit;
     // SplitString(aSplit,"@  @AA  BB@CC DD   @  "," @");
 
@@ -275,7 +275,7 @@ void Bench_0000_Memory(cParamExeBench & aParam)
     if (aParam.GenerateBug("Debord_P6"))  aPtr[aNb+6] =9;
     if (aParam.GenerateBug("Debord_P0"))  aPtr[aNb] =9;
     if (aParam.GenerateBug("Debord_P1"))  aPtr[aNb+1] =9;
-    // Plante si on teste avant liberation
+    // Plante if on teste before liberation
     if (aParam.GenerateBug("Restore"))  cMemManager::CheckRestoration(aSt);
     cMemManager::Free(aPtr);
     cMemManager::CheckRestoration(aSt);
@@ -441,7 +441,7 @@ int  cAppli_MMVII_Bench::ExecuteBench(cParamExeBench & aParam)
 {
    //  On teste les macro d'assertion
    MMVII_INTERNAL_ASSERT_bench((1+1)==2,"Theoreme fondamental de l'arithmetique");
-   // La on a verifie que des assertion fausses génère une erreur
+   // La on a verifie que des assertion fausses génère une error
    {
        MMVII_SetErrorHandler(ErrHanldOneAndOne);
        MMVII_INTERNAL_ASSERT_bench((1+1)==3,MesUneAndUne); // Theoreme  pas tres fondamental de l'arithmetique
@@ -546,7 +546,7 @@ int  cAppli_MMVII_Bench::ExecuteBench(cParamExeBench & aParam)
         //  ====== message that may be informative
 
         // Inspect cube is funcion that do no bench, maybe usefull for inspect symbol der
-        // with a simple cubic fonction
+        // with a simple cubic function
         if (aParam.NewBench("InspectCube",true))
         {
            InspectCube();

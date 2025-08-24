@@ -9,7 +9,7 @@
 #include <vector>
 
 // ---------------------------------------------------------------
-// Classe contenant des données de navigation au format SP3
+// class contenant des données de navigation au format SP3
 // ---------------------------------------------------------------
 class SP3NavigationData {
 

@@ -77,7 +77,7 @@ void cAppliCorrPont::InitFiles
     Init(aDir+aFile2,mIm2,aDec);
 }
 
-// Un peu bovin comme rab, mais dans cette appli minimaliste,
+// Un peu bovin comme rab, but in cette appli minimaliste,
 // on veut pas etre embeter ...
 
 bool cAppliCorrPont::Inside(const Pt2dr & aP) const

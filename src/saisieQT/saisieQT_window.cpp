@@ -309,7 +309,7 @@ void SaisieQtWindow::addFiles(const QStringList& filenames, bool setGLData)
 
         _Engine->setFilenames(filenames);
 
-        QString suffix = QFileInfo(filenames[0]).suffix();  //TODO: separer la stringlist si differents types de fichiers
+        QString suffix = QFileInfo(filenames[0]).suffix();  //TODO: separer la stringlist if differents types de fichiers
 
         if (suffix == "ply")
         {
@@ -337,14 +337,14 @@ void SaisieQtWindow::addFiles(const QStringList& filenames, bool setGLData)
                 _appMode = MASK3D;
             }
         }
-        else // LOAD IMAGE
+        else // LOAD image
         {
             if ((_appMode <= MASK3D) && (currentWidget()->hasDataLoaded()))
                 closeAll();
 
             currentWidget()->getHistoryManager()->reset();
 
-            initData(); //TODO: ne pas detruire les polygones dans le closeAll
+            initData(); //TODO: ne pas detruire les polygones in le closeAll
 
             if ((filenames.size() == 1) && (_appMode == MASK3D)) _appMode = MASK2D;
 
@@ -404,7 +404,7 @@ void SaisieQtWindow::on_actionFullScreen_toggled(bool state)
 
     _params->setFullScreen(state);
     _params->setPosition(pos());
-    _params->setSzFen(size()); //ambiguité entre size() et screen.size() => scale factor quand fullScreen
+    _params->setSzFen(size()); //ambiguité between size() and screen.size() => scale factor when fullScreen
 }
 
 void SaisieQtWindow::on_actionShow_ball_toggled(bool state)
@@ -1415,7 +1415,7 @@ void SaisieQtWindow::setUI()
         _tdLayout->setContentsMargins(2,2,2,2);
         _ui->frame_preview3D->setLayout(_tdLayout);
         _ui->frame_preview3D->setContentsMargins(0,0,0,0);
-        //TEMP: undo ne marche pas du coté Elise (a voir avec Marc)
+        //TEMP: undo ne marche pas du coté Elise (a voir with Marc)
         hideAction(_ui->menuSelection->menuAction(), false);
         hideAction(_ui->actionUndo, false);
         hideAction(_ui->actionRedo, false);
@@ -1743,7 +1743,7 @@ void SaisieQtWindow::changeCurrentWidget(void *cuWid)
 
 void SaisieQtWindow::updateMask(bool reloadMask)
 {
-    // TODO seg fault dans le undo � cause de la destruction des images...
+    // TODO seg fault in le undo � cause de la destruction des images...
 
     if (currentWidget()->getHistoryManager()->size())
     {

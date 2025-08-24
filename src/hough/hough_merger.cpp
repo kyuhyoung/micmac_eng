@@ -79,7 +79,7 @@ void ElSegMerge
      if (VecInits.size() ==0) 
          return;
 
-     // ElSTDNS vector<SegComp> VC(VecInits.begin(),VecInits.end()); Error sur Sun-Fronte
+     // ElSTDNS vector<SegComp> VC(VecInits.begin(),VecInits.end()); Error on Sun-Fronte
      ElSTDNS vector<SegComp> VC;
      for 
      ( 

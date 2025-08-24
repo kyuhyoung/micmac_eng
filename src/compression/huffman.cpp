@@ -183,7 +183,7 @@ template <class Type> cTplHuffmanTree<Type> * cTplHuffmanTree<Type>::add_new_cod
 
 
 
-    // Pour compat avec anciens
+    // for compat with anciens
 
 
 /****************************************************************/

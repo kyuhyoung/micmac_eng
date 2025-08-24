@@ -119,7 +119,7 @@ template <class Type> Seg2d  seg_mean_square(const Mat_Inertie<Type> & Minitiale
 
    Mat_Inertie<ElTypeName_NotMSW Type::TypeReel> m = Minitiale.normalize();
 
-// si mat inert circulaire, alors n'importe
+// if mat inert circulaire, then n'importe
 // quelle droite passant par le cdg
 
      Pt2dr cdg(m.s1(),m.s2());

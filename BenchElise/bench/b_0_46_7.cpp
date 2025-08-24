@@ -143,7 +143,7 @@ void cTestDistFraser::TestInv(REAL aStep,REAL Exag)
 }
 
 
-// Test sur une distortion "concrete", on verifie l'inversion
+// Test on une distortion "concrete", on verifie l'inversion
 /*
 void TestDistFraserNonForm
      (

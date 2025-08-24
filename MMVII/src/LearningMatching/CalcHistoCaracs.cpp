@@ -61,7 +61,7 @@ cCollecSpecArg2007 & cAppliCalcHistoCarac::ArgOpt(cCollecSpecArg2007 & anArgOpt)
           << AOpt2007(mNb2Select,"Nb2S","Number of point to select, def=all in masq")
           << AOpt2007(mSaveImFilter,"SIF","Save Image Filter",{eTA2007::HDV,eTA2007::Tuning})
           << AOpt2007(mFlagRand,"FlagRand","Images to randomizes, bit of flag [0-3]",{eTA2007::HDV,eTA2007::Tuning})
-          // << AOpt2007(mSaveImFilter,"SIF","Save Image Filter",{eTA2007::HDV})
+          // << AOpt2007(mSaveImFilter,"SIF","Save image Filter",{eTA2007::HDV})
 */
    ;
 }

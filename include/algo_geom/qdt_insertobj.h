@@ -39,7 +39,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #ifndef __QDT_INSERTOBJ__
 #define __QDT_INSERTOBJ__
 
-/** Fonction dans fichiers a part pour windows **/
+/** function in fichiers a part for windows **/
 
 #include <set>
 
@@ -48,7 +48,7 @@ template <class Obj> void InsertObj(std::set<Obj> & aSet,const Obj & anObj)
 	aSet.insert(anObj);
 }
 
-// POUR WINDOWS
+// for WINDOWS
 #define MACRO_INSERT_OBJECT(Obj)\
 template <> void InsertObj(std::set<Obj> & aSet,const Obj & anObj)\
 {\

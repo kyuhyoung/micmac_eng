@@ -42,8 +42,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 //
-//   Ce fichier contient des fonctionnalites pour la recherche de
-//   cibles dans le cas "caprice des dieux"
+//   Ce file contient des fonctionnalites for la recherche de
+//   cibles in le cas "caprice des dieux"
 //
 
 /****************************************************/

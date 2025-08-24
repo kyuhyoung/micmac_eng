@@ -44,7 +44,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 /*****************************************************/
-/**************** Fonction special *******************/
+/**************** function special *******************/
 /*****************************************************/
 
 extern bool resoud_syst_lin(int n, REAL*tab);
@@ -147,7 +147,7 @@ extern REAL scor(Facette_3d f, WcorVis W1, Im2D_U_INT1 grad1, WcorVis W2, Im2D_U
 
 
 // eliminer les points ayant un distance moins que le semi fenetre p(x,y)
-// les points n'ont pas le meme poids :  la liste est ordonner en importante incrementee
+// les points n'ont pas le meme poids :  la list est ordonner en importante incrementee
 
 template <class type1, class type2> ElList<Pt2di> nettoyer(ElList<Pt2di> lp, Pt2di p, Im2D<type1, type2> tamp);
 
@@ -156,7 +156,7 @@ ElList<Pt2di> nettoyer(ElList<Pt2di> lp, Pt2di p);
 
 
 
-//filtrage  par le max pour l'image 3D 
+//filtrage  par le max for l'image 3D 
 
 template <class type1, class type2> void cube_max(Im3D<type1, type2> Im, Pt3di p); 
 template <class type1, class type2> void cube_min(Im3D<type1, type2> Im, Pt3di p); 
@@ -171,7 +171,7 @@ template <class type1, class type2> void affich_Im3D( Im3D<type1, type2> im,
                                                       Output w,
                                                       INT color,
                                                       INT n_colone,
-                                                      INT dierect = 1      //1 : x, 2 : y et 3 : z
+                                                      INT dierect = 1      //1 : x, 2 : y and 3 : z
                                                     );
 
 
@@ -190,25 +190,25 @@ extern void       co_aligner(ElFilo<Facette_3d>& filo, REAL precision);
 extern Fonc_Num Hcor(Fonc_Num f1,Fonc_Num f2,Pt2di p);
 
 
-//   correlation avec une contrainte de region de l'image gauche    
+//   correlation with une contrainte de region de l'image gauche    
 
 extern Fonc_Num Hcor(Fonc_Num f1,Fonc_Num f2,Fonc_Num f3,Pt2di p);
 
 
-//   correlation avec une contrainte de contour de l'image gauche    
+//   correlation with une contrainte de contour de l'image gauche    
 
 extern Fonc_Num Hcorcont(Fonc_Num f1,Fonc_Num f2,Fonc_Num f3,Pt2di p);
 
 
 
-//   filtrage moindre carres avec une contrainte de region de l'image gauche    
+//   filtrage moindre carres with une contrainte de region de l'image gauche    
 
 extern Fonc_Num Hmdcar(Fonc_Num f1,Fonc_Num f2,Pt2di p,INT nParam);
 
 
 
 
-//   filtrage moindre carres avec des contraintes :
+//   filtrage moindre carres with des contraintes :
 //      1-region de l'image gauche 
 //      2-poid de coef de cor   
 

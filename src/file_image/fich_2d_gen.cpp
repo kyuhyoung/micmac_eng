@@ -439,8 +439,8 @@ std::cout << "Fich_Im2d::read_write_buf " << pack->y()
                        2) padder avec des zero
             */
 
-            // Rustine pour gerer le cas ou on ecrit, par ex, en little-indian sur un fichier
-        // cree en big-indian  (cas courrant en calcul distribue).  Pour faire simple tou
+            // Rustine for gerer le cas or on ecrit, par ex, en little-indian on un file
+        // cree en big-indian  (cas courrant en computation distribue).  for faire simple tou
         // en garantissant de ne pas modifier la donnee, on fait deux inversion
             if (_byte_inversed)
             {
@@ -661,18 +661,18 @@ template <class Type> const Pack_Of_Pts *
     // effectue  un unstrip (par ex, convertion d'un U_INT1* = RVBRVB
     // a un INT ** = RRRR.. VVV.. BBB..
     //
-    // si _spec_transf est defini, fait un appel a _spec_tranf
-    // par ex, TGA : convertion ad hoc pour les 16 ou 32 bits
+    // if _spec_transf est defini, fait un appel a _spec_tranf
+    // par ex, TGA : convertion ad hoc for les 16 or 32 bits
 
     _f2d->input_transfere(this->_pack_out);
 
-    // par defaut ne fait rien; il s'agit d'un post-traitement sur la
+    // par defaut ne fait rien; il s'agit d'un post-traitement on la
     // representation normalisee (au sens ELISE) du signal.
     //
-    //  TGA : repasse du BGR au RGB pour le true color; reatalone entre
-    //  0 et 255 pour le noir et blanc.
+    //  TGA : repasse du BGR au RGB for le true color; reatalone between
+    //  0 and 255 for le noir and blanc.
     //
-    //  BMP : repasse du BGR au RGB pour le 24 bits.
+    //  BMP : repasse du BGR au RGB for le 24 bits.
     //
     //  TIFF : (par exemple, non fait) remet des convention standard / au TAG
     //  blakc_is_0
@@ -833,7 +833,7 @@ Output_Computed * out_std_f2d
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -849,17 +849,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

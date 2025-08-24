@@ -299,7 +299,7 @@ class cProjPointCloud
          std::vector<tREAL4>    mSumRad;    ///< accumulate sum of radiometry
 	 // --------- Computed at each run of "ProcessOneProj"  ------------------
          std::vector<cPt3dr>    mVPtsProj;  ///< memorize projections 
-         std::vector<cPt2di>    mVPtImages; ///< Projection in image of given 3D Point
+         std::vector<cPt2di>    mVPtImages; ///< Projection in image of given 3D point
          cTplBoxOfPts<int,2>    mBoxInd;    ///< Compute for of mVPtImages
 					    
 	 cPt2di                  mSzIm;

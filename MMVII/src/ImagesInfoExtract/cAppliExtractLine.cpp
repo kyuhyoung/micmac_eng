@@ -518,7 +518,7 @@ void cAppliExtractLine::MakeVisu(const std::string & aNameIm)
          aVisAccum.ToJpgFileDeZoom(mPhProj.DirVisuAppli() + "Accum_" + aNameTif,1);
          aDAccum.ToFile(mPhProj.DirVisuAppli() + "RawAccum_" + aNameTif);
     }
-    // [4]  Visu of Image +  Lines
+    // [4]  Visu of image +  Lines
     if (mGenVisu>=1)
     {
          cRGBImage  aVisIm =  cRGBImage::FromFile(mNameCurIm,mZoomImL); // Initialize with image

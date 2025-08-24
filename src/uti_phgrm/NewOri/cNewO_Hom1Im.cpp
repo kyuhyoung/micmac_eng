@@ -110,7 +110,7 @@ class cOrHom_AttrSom
         Pt3dr & GPS() {return    mGPS;}
         const cElHomographie  & CurHom() {return mCurHom;}
 
-        // Homographie courante avec une variation Epsilon du parametre K
+        // Homographie courante with une variation Epsilon du parameter K
         cElHomographie HomogPerturb(int aKParam,double aEpsil);
 
         Pt3dr TestSol(tArcGT & anArc);
@@ -127,7 +127,7 @@ class cOrHom_AttrSom
         int                      mNbPtsMax;
         double                   mDistPMax;
         std::vector<cOneSolSim>  mVSol;
-        //  Zone de param pour homographie
+        //  Zone de param for homographie
         // L'homographie inconnue est t.q.  Hom(I,I) = (X,Y) I,J "pixel", X,Y Terrain
         int                       mNum;
         int                       mN0Hom;
@@ -144,9 +144,9 @@ class cOrHom_AttrArcSym
         const cXml_Ori2Im & Xml() const {return mXmlO;}
         cElHomographie Hom(bool Dir);
 
-        const double & PdsFin() const {return mPdsFin;}  // Module pour que Somme = NbSom
+        const double & PdsFin() const {return mPdsFin;}  // Module for que Somme = NbSom
         const double & PdsRes() const {return mPdsRes;}  // Module par les residus
-        const double & PdsNb() const {return mPdsNb;}    // Poids qui tient compte du nombre
+        const double & PdsNb() const {return mPdsNb;}    // Poids qui tient compte du number
         const double & ResH() const {return mResH;}
 
         void SetStdPds(double aRStd);
@@ -228,7 +228,7 @@ class cAppli_Hom1Im : public cCommonMartiniAppli
         Pt2dr                          mGpsMax;
         double                         mScaleW;
         Pt2dr                          mSzW;
-        double                         mMulRab;  // Pour mode visuel uniquement
+        double                         mMulRab;  // for mode visuel uniquement
         int                            mNbEtape;
         bool                           mModeVert;
 #if (ELISE_X11)
@@ -580,7 +580,7 @@ void cOrHom_AttrSom::AddEqH12(tArcGT & anArc, double aPdsGlob,bool ModeAff,bool 
          return;
      }
 
-     // Si ce n'est pas un mode lineaire, on aborde une linearisation par 
+     // if ce n'est pas un mode lineaire, on aborde une linearisation par 
      // differences finies
 
      ELISE_ASSERT(CoordLoc,"No Coord loc in homogr mod");
@@ -590,9 +590,9 @@ void cOrHom_AttrSom::AddEqH12(tArcGT & anArc, double aPdsGlob,bool ModeAff,bool 
      cElHomographie aH1To2Init =  aS2.CurHom().Inverse() *  aS1.CurHom();
      cElHomographie aH2To1Init =  aS1.CurHom().Inverse() *  aS2.CurHom();
      std::vector<int> aVInd;
-     std::vector<cElHomographie> aVH1To2;  // H1 to 2 en fonction des 16 perturbation possibles de parametre
+     std::vector<cElHomographie> aVH1To2;  // H1 to 2 en function des 16 perturbation possibles de parameter
      std::vector<cElHomographie> aVH2To1;
-     // 16 parametres : 8 pour chaque homographie
+     // 16 parameters : 8 for chaque homographie
      for (int aKPTot=0 ; aKPTot<16 ; aKPTot++)
      {
          //   H1_0 H1_1 ... H1_7   H2_0 H2_1 ... H2_7
@@ -1016,7 +1016,7 @@ std::cout << "BBbbb\n";
 
 
 
-       //  Calcul d'une solution initiale Affine
+       //  computation d'une solution initiale Affine
        for (int aKEtape=0 ; aKEtape<mNbEtape ; aKEtape++)
        {
            double aPdsGround = 1e-2;
@@ -1030,7 +1030,7 @@ std::cout << "BBbbb\n";
 
 
            mSys->SetPhaseEquation(nullptr);
-           // Poids sur les gps et contrainte affine
+           // Poids on les gps and contrainte affine
            for (int aKS=0 ; aKS<int(mVecS.size()) ; aKS++)
            {
                tSomGT & aSom = *(mVecS[aKS]);
@@ -1151,7 +1151,7 @@ int  TestNewOriGpsSim_main(int argc,char ** argv)
 Ce logiciel est un programme informatique servant a  la mise en
 correspondances d'images pour la reconstruction du relief.
 
-Ce logiciel est regi par la licence CeCILL-B soumise au droit français et
+Ce logiciel est regi par la licence CeCILL-B soumise au droit franais et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
 de la licence CeCILL-B telle que diffusee par le CEA, le CNRS et l'INRIA
@@ -1159,7 +1159,7 @@ sur le site "http://www.cecill.info".
 
 En contrepartie de l'accessibilite au code source et des droits de copie,
 de modification et de redistribution accordes par cette licence, il n'est
-offert aux utilisateurs qu'une garantie limitee.  Pour les mêmes raisons,
+offert aux utilisateurs qu'une garantie limitee.  Pour les mmes raisons,
 seule une responsabilite restreinte pese sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concedants successifs.
 
@@ -1172,9 +1172,9 @@ avertis possedant  des  connaissances  informatiques approfondies.  Les
 utilisateurs sont donc invites a  charger  et  tester  l'adequation  du
 logiciel a  leurs besoins dans des conditions permettant d'assurer la
 securite de leurs systemes et ou de leurs donnees et, plus generalement,
-a  l'utiliser et l'exploiter dans les mêmes conditions de securite.
+a  l'utiliser et l'exploiter dans les mmes conditions de securite.
 
-Le fait que vous puissiez acceder a  cet en-tête signifie que vous avez
+Le fait que vous puissiez acceder a  cet en-tte signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepte les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

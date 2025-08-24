@@ -159,8 +159,8 @@ Im1D_REAL8  GaussianKernelFromResidu(double aSigma,double aResidu,int aSurEch)
    return GaussianKernel(aSigma,NbElemForGausKern( aSigma,aResidu),aSurEch);
 }
 
-// Methode pour avoir la "meilleure" approximation entiere d'une image reelle
-// avec somme imposee. Tres sous optimal, mais a priori utilise uniquement sur de
+// method for avoir la "meilleure" approximation entiere d'une image reelle
+// with somme imposee. Tres under optimal, but a priori utilise uniquement on de
 // toute petites images
 
 Im1D_INT4 ToIntegerKernel(Im1D_REAL8 aRK,int aMul,bool aForceSym)
@@ -240,7 +240,7 @@ Im1D_REAL8 ToRealKernel(Im1D_REAL8 aRK)
 }
 
 
-   // Permt de shifter les entiers (+ rapide que la div) sans rien faire pour
+   // Permt de shifter les entiers (+ rapide que la div) without rien faire for
    // les flottants
 inline double ShiftDr(const double & aD,const int &) { return aD; }
 inline double ShiftG(const double & aD,const int &) { return aD; }
@@ -254,8 +254,8 @@ inline int InitFromDiv(int aDiv,int *) { return aDiv/2; }
 
 /*
 
-   // Pour utiliser un filtre sur les bord, clip les intervalle
-   // pour ne pas deborder et renvoie la somme partielle
+   // for utiliser un filtre on les bord, clip les intervalle
+   // for ne pas deborder and renvoie la somme partielle
 template <class tBase> tBase ClipForConvol(int aSz,int aKXY,tBase * aData,int & aDeb,int & aFin)
 {
     ElSetMax(aDeb,-aKXY);
@@ -265,8 +265,8 @@ template <class tBase> tBase ClipForConvol(int aSz,int aKXY,tBase * aData,int & 
 
 
 
-   // Pour utiliser un filtre sur les bord, clip les intervalle
-   // pour ne pas deborder et renvoie la somme partielle
+   // for utiliser un filtre on les bord, clip les intervalle
+   // for ne pas deborder and renvoie la somme partielle
 template <class tBase> tBase ClipForConvol(int aSz,int aKXY,tBase * aData,int & aDeb,int & aFin)
 {
     ElSetMax(aDeb,-aKXY);
@@ -281,8 +281,8 @@ template <class tBase> tBase ClipForConvol(int aSz,int aKXY,tBase * aData,int & 
 
 
 
-   // Produit scalaire basique d'un filtre lineaire avec une ligne
-   // et une colonne image
+   // Produit scalaire basique d'un filtre lineaire with une line
+   // and une colonne image
 template <class Type,class tBase> 
 inline tBase CorrelLine(tBase aSom,const Type * aData1,const tBase *  aData2,const int & aDeb,const int & aFin)
 {
@@ -464,7 +464,7 @@ void cTplImInMem<Type>::SetConvolSepXY
     aSzKer /= 2;
 
     tBase * aData = aKerXY.data() + aSzKer;
-    // Parfois il y a "betement" des 0 en fin de ligne ...
+    // Parfois il y a "betement" des 0 en fin de line ...
     while (aSzKer && (aData[aSzKer]==0) && (aData[-aSzKer]==0))
           aSzKer--;
 
@@ -630,7 +630,7 @@ void cTplImInMem<Type>::ReduceGaussienne()
     }
     Resize(mOrigOct->Sz());
 
-    // Valeur a priori du sigma en delta / au prec
+    // value a priori du sigma en delta / au prec
 
     double aSigTot = mResolOctaveBase;;
     int aNbCTot = NbElemForGausKern(aSigTot,aPG.EpsilonGauss().Val()/10) +1 ;
@@ -670,7 +670,7 @@ void cTplImInMem<Type>::ReduceGaussienne()
     int aNbCD= NbElemForGausKern(aSigmD,anEpsilon);
     Im1D_REAL8 aKerD =  DeConvol(aNbCD,mTMere->mKernelTot,aKerTot);
 
-    // Bug ou incoherence dans la deconvol, donne pb
+    // Bug or incoherence in la deconvol, donne pb
     aKerD = GaussianKernelFromResidu(aSigmD,anEpsilon,aSurEch);
 // Im1D_REAL8  GaussianKernelFromResidu(double aSigma,double aResidu,int aSurEch)
 

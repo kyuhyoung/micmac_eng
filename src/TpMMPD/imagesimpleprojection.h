@@ -19,7 +19,7 @@
 
 // List  of classes
 
-// Class to store the application of Image Simple Rectification
+// Class to store the application of image Simple Rectification
 class cISR_Appli;
 // Contains the information about each image : Geometry (radiometric is handled by cISR_ColorImg)
 class cISR_Ima;

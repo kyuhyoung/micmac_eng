@@ -227,7 +227,7 @@ template <class Type,const int Dim> class  cDataMappedBoundedSet : public cDataB
 */
 
 
-/**   Mother base classe for defining a mapping  R^k => R^n with k=DimIn and n=DimOut
+/**   Mother base class for defining a mapping  R^k => R^n with k=DimIn and n=DimOut
 
       The virtual methods "Values" and "Value" compute the image of poinst by the mapping.
       The derived classe MUST override  at least "Values" or "Value"
@@ -321,7 +321,7 @@ template <class Type,const int DimIn,const int DimOut> class cDataMapping : publ
       tPtIn     EpsJac() const;
       void SetEpsJac(const tPtIn&);
 
-      /// compute diffenrentiable method , default = erreur
+      /// compute diffenrentiable method , default = error
     protected :
        /// This one can compute jacobian
        cDataMapping();
@@ -396,7 +396,7 @@ template <class Type,const int Dim> class cDataNxNMapping : public cDataMapping<
       /// return bijective differential application , used for ex in BoxInByJacobian
       cBijAffMapElem<Type,Dim>  Linearize(const tPt & aPt) const;
 
-      /// Compute Invert of P2Inv, assuming Map~Translation, 
+      /// Compute Invert of P2Inv, assuming Map~translation, 
       tPt  InvertQuasiTrans(const tPt& aP2Inv,tPt aGuess,Type aMaxErr,int aNbIterMax) const;
 };
 
@@ -753,7 +753,7 @@ template <class Type,const int Dim> class  cComputeMapInverse : public cMemCheck
         const tSet *  mSetIn;   // Definition set of input space
         const tSet &  mSetOut;   // Definition set of Output space
         tMap &        mMap;   // Map to invert
-        tLSQ *        mLSQ;   // systeme to compute the inverse as a linear composition of given base functions (using least square)
+        tLSQ *        mLSQ;   // system to compute the inverse as a linear composition of given base functions (using least square)
           // Created members
         tBoxR         mBoxByJac; ///< Box computed assuming that Map is equal to its jacobian in PSeed
         tBoxR         mBoxMaj;  ///< Majoration of box, taking into account possible  unstability and jacobian threshold

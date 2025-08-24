@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 // Histoire de tagger ts les cast qui degradent le contenu des images
-// float ou double
+// float or double
 #define CAST2INT(val) ((INT) (val))
 
 

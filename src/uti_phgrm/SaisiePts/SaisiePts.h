@@ -92,7 +92,7 @@ class cSP_PointGlob
      public:
           bool Has3DValue() const;
           bool HasStrong3DValue() const;
-          Pt3dr Best3dEstim() const ; // Erreur si pas de Has3DValue
+          Pt3dr Best3dEstim() const ; // error if pas de Has3DValue
           // void ReestimVisibilite();
 
           cSP_PointGlob(cAppli_SaisiePts &,cPointGlob * aPG);
@@ -169,7 +169,7 @@ class cImage
            std::string                               mName;
            mutable Tiff_Im *                         mTif;
            cBasicGeomCap3D *                         mCapt3d;
-           // mCapt3d est l'un ou l'autre
+           // mCapt3d est l'un or l'autre
            ElCamera *                                mCaptElCam;
            cElNuage3DMaille *                        mCaptNuage;
            cSaisiePointeIm *                         mSPIm;
@@ -333,7 +333,7 @@ class cVirtualInterface
 
     virtual void        RedrawAllWindows()=0;
 
-    virtual void        SetInvisRef(bool aVal)=0;         // sert a rendre les points refutes invisibles ou visibles
+    virtual void        SetInvisRef(bool aVal)=0;         // sert a rendre les points refutes invisibles or visibles
     bool                RefInvis() const    { return mRefInvis; }
 
     void                ChangeFreeNamePoint(const std::string &, bool SetFree);
@@ -478,7 +478,7 @@ public :
 
     void            _DeletePoint(cSP_PointGlob *);
 
-    void            SetInvisRef(bool aVal);         // sert a rendre les points refutes visibles ou non
+    void            SetInvisRef(bool aVal);         // sert a rendre les points refutes visibles or non
 
     void            AddUndo(cOneSaisie * aSom);
 
@@ -557,7 +557,7 @@ class cAppli_SaisiePts
 
 
 
-    // 0 si existe deja
+    // 0 if existe deja
     cSP_PointGlob *     AddPointGlob(cPointGlob aPG, bool OkRessuscite=false, bool Init=false, bool ReturnAlways=false);
     void                AddPGInAllImages(cSP_PointGlob * aSPG);
 
@@ -584,7 +584,7 @@ class cAppli_SaisiePts
     cImage*             imageTot(int aK) { return mImagesTot[aK]; }
     std::vector< cImage * > imagesTot() { return mImagesTot; }
 
-    void                SetImagesVis(std::vector <cImage *> aImgs) ;//  { mImages = aImgs; } A voir si utile,
+    void                SetImagesVis(std::vector <cImage *> aImgs) ;//  { mImages = aImgs; } A voir if utile,
     void                SetImagesTot(std::vector <cImage *> aImgs) ;//  { mImages = aImgs; }
 
     std::vector< cSP_PointGlob * > PG() { return mPG; }
@@ -608,7 +608,7 @@ private :
 
 
          void InitImages();
-         // Deuxieme nom pour assurer la compat avec existant
+         // Deuxieme nom for assurer la compat with existant
          void InitImages(const std::string & aN1,const std::string & aN2,const std::string & aNameS2D);
 
          void InitInPuts();

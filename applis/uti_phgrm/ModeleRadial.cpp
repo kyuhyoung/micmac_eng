@@ -177,7 +177,7 @@ class cModeleRadial
 	 Fonc_Num         mFEc;
 	 Fonc_Num         mFId;
 	 double           mFocaleInit;
-	 Pt2dr            mPPCInit;  // PP et Centre Dist sont confondu
+	 Pt2dr            mPPCInit;  // PP and Centre Dist sont confondu
 	 ElDistRadiale_PolynImpair mDist;
 	 cCamStenopeDistRadPol     mCam;
 	 cSetEqFormelles  mSetEq;
@@ -196,7 +196,7 @@ void cModeleRadial::OneItere()
 
   mSetEq.AddContrainte(mPIF->StdContraintes(),true);
   mSetEq.SetPhaseEquation();
-  //  mSetEq.AddContrainte(); // ?? ROTATION CENTRE FIGE !!
+  //  mSetEq.AddContrainte(); // ?? rotation CENTRE FIGE !!
   Pt2di aP;
   double aS1=0,aSEr=0;
   for (aP.x= 0; aP.x<mSzIm.x ; aP.x++)
@@ -435,7 +435,7 @@ void cModeleRadial::SauvImg( cDbleGrid & aGR)
     std::cout<< aDir+"X_"+aName << "\n";
 
 
-//  X et Y sont les images qui doivent ressembler a image en entree
+//  X and Y sont les images qui doivent ressembler a image en entree
     Tiff_Im::Create8BFromFonc
     (
          aDir+"X_"+aName,

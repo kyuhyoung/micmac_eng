@@ -54,7 +54,7 @@ class Point1 : public Point
 		bool suppr;
 		float coherence;
 		int carre[2];//carre[0] : les bons essais , carre[1] : les mauvais essais
-		std::pair<std::list<Point1*>,std::list<Point1*> > voisins;	//pour la cohérence au voisinage accélérée, pointeurs vers tempLstPt
+		std::pair<std::list<Point1*>,std::list<Point1*> > voisins;	//for la cohérence au voisinage accélérée, pointeurs vers tempLstPt
 
 		list<Point1*>* GetListVoisins(int i);
   		Point1** FindPoint(list<Point1*>::iterator itBegin, list<Point1*>::iterator itEnd);

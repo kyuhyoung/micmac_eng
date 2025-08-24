@@ -94,7 +94,7 @@ REAL             filtrage_morpho(ElFilo<Facette_3d>& f_f, Boite& b_mne, Im2D_U_I
 REAL             filtrage_morpho(ElFilo<Facette_3d>& f_f, Boite& b_cor, INT seuil, INT decal = 0, INT test_stab = 0);
 
 void             filtrage_normale(ElFilo<Hplan>& f_f,      ElFilo<REAL>& poids, REAL angl_min = 25, REAL dist = 1);  //degree
-void             filtrage_normale(ElFilo<Facette_3d>& f_f, ElFilo<REAL>& poids, REAL angl_min = 25, REAL dist = 1);  //degree et metre
+void             filtrage_normale(ElFilo<Facette_3d>& f_f, ElFilo<REAL>& poids, REAL angl_min = 25, REAL dist = 1);  //degree and metre
 
 
 //   Fonctions modifiees par F.Taillandier

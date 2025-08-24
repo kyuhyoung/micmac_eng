@@ -354,7 +354,7 @@ cAppliBasculeCamsInRepCam_main::cAppliBasculeCamsInRepCam_main(int argc,char ** 
    tSomAWSI * aS0 = mDicIm[mCamC];
    // CamStenope * aCS0 = aS0->attr().mIma.mCam;  /// MtoC0
    
-   // La bascule n'a pas d'interet sur push broom, donc on s'embete pas 
+   // La bascule n'a pas d'interet on push broom, donc on s'embete pas 
    ElRotation3D anOri0 = aS0->attr().mIma->CamSNN()->Orient();
    ELISE_ASSERT(aS0!=0,"cAppliBasculeCamsInRepCam_main No CamC");
 
@@ -435,7 +435,7 @@ cAppliEstimLA_main::cAppliEstimLA_main(int argc,char ** argv) :
 	
 	ELISE_ASSERT((vCSO1.size() ==  vCSO2.size()),"The size can't be different");
 	
-	//read Ori1 : Positions et Rotations
+	//read Ori1 : Positions and Rotations
 	//read Ori2 : Positions
 	//construct the system : estimate LA
 	L2SysSurResol aSys(3);
@@ -603,7 +603,7 @@ cAppliCorrecCamFromLA_main::cAppliCorrecCamFromLA_main(int argc,char ** argv) :
  
    for (int aK=0 ; aK<int(mVSoms.size()) ; aK++)
    {
-       // Lever Arm, uniquement pour camera stenope
+       // Lever Arm, uniquement for camera stenope
        CamStenope * aCS = mVSoms[aK]->attr().mIma->CamSNN();
        Pt3dr aCorr2Add = aCS->Orient().IRecVect(mLA);
        aCorr.push_back(aCorr2Add);

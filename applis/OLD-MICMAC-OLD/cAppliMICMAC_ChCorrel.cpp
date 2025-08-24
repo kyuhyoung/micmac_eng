@@ -70,8 +70,8 @@ cPxSelector::~cPxSelector()
 /*                                                  */
 /****************************************************/
 
-// Cette classe va memoriser pour une  paralaxe donnee
-// des information sur l'ensemble des pixels ayant cette
+// Cette class va memoriser for une  paralaxe donnee
+// des information on l'ensemble des pixels ayant cette
 // parallaxe
 
 typedef enum
@@ -154,7 +154,7 @@ typedef cElBoxTab2DResizeableCreux<cStatPointsOfPx> tTabStat;
 /*                                                  */
 /****************************************************/
 
-//   classes utilisees pour le parcour de cNodeAnalysePx
+//   classes utilisees for le parcour de cNodeAnalysePx
 
 
 /*
@@ -270,7 +270,7 @@ class cNodeMakeCalcCorrel
           switch (aSt.StatCalc())
           {
               case eToCalcByPoint :
-                   // Ne fait  rien sera traite dans une passe
+                   // Ne fait  rien sera traite in une passe
                    // finale de parcour / par le terrain
               break;
 
@@ -282,7 +282,7 @@ class cNodeMakeCalcCorrel
               break;
 
               case eToCalcBySplit :
-                   // Ne fait  rien sera traite dans la descendance
+                   // Ne fait  rien sera traite in la descendance
               break;
 
               case eCalculated :
@@ -385,7 +385,7 @@ cNodeAnalysePx::cNodeAnalysePx
        Box2di::QBox aTBox;
        aBoxTer.QSplit(aTBox);
 
-       // Initialise les fils et en induit la taille de
+       // Initialise les fils and en induit la taille de
        // la boite
        Box2di aBoxPx;
        for (int aK=0 ; aK<4 ; aK++)
@@ -402,15 +402,15 @@ cNodeAnalysePx::cNodeAnalysePx
 
       // Aggrege les donnees du fils , a l'issue
       // le noeud a "aggrege", le nb de point,
-      // le rect englob, le cout de calcul de la correl
+      // le rect englob, le cout de computation de la correl
        for (int aK=0 ; aK<4 ; aK++)
        {
            cFusionStatFils aFus(*mTabStat);
            ParseElT2dRC(*(mFils[aK]->mTabStat),aFus);
        }
-       // Decide si le calcul se fait par rect ou par descente
+       // Decide if le computation se fait par rect or par descente
        // suppose que le cout d'heritage est initialise (fait
-       // dans "cFusionStatFils")
+       // in "cFusionStatFils")
        cSetCostCorrelHerited aSCCH(anAppli);
        ParseElT2dRC(*mTabStat,aSCCH);
    }
@@ -419,7 +419,7 @@ cNodeAnalysePx::cNodeAnalysePx
        for (int aK=0 ; aK<4 ; aK++)
           mFils[aK] =0;
 
-       // Initialisation du tableau indexe par
+       // Initialisation du array indexe par
        // les paralaxes
 
        int aPxMin[theDimPxMax] ={0,0};
@@ -429,7 +429,7 @@ cNodeAnalysePx::cNodeAnalysePx
        Pt2di aPMax (aPxMax[0],aPxMax[1]);
        mTabStat = new tTabStat(Box2di(aPMin,aPMax),false);
 
-       // Parcourt les paralaxes utilisees pour initialiser
+       // Parcourt les paralaxes utilisees for initialiser
        // les stat / paralax
        Pt2di aPTer;
        TIm2DBits<1> aMasq (aLT.ImMasqTer());
@@ -451,7 +451,7 @@ cNodeAnalysePx::cNodeAnalysePx
                }
            }
        }
-       // Initialise le cout de calcul et son mode
+       // Initialise le cout de computation and son mode
        cDownSetCostCorrel aDSCC(anAppli);
        ParseElT2dRC(*mTabStat,aDSCC);
    }
@@ -465,8 +465,8 @@ void cNodeAnalysePx::MakeCalc
          cAppliMICMAC & anAppli
      )
 {
-     // Parcourt les paralaxes pour eventuellement
-     // faire le calcul des zones rectangulaires
+     // Parcourt les paralaxes for eventuellement
+     // faire le computation des zones rectangulaires
      cNodeMakeCalcCorrel aNMC(anAppli);
      ParseElT2dRC(*mTabStat,aNMC);
 
@@ -486,7 +486,7 @@ void cNodeAnalysePx::MakeCalc
      }
      else
      {
-        // this est passe comme parametre de selection des
+        // this est passe comme parameter de selection des
         // paralaxes de DoOneBlocInterne
          anAppli.DoOneBlocInterne(*this,mBoxTer);
      }
@@ -540,7 +540,7 @@ void cAppliMICMAC::InitCostCalcCorrel()
   mCostCov = mCostEc *0.5;    // Approximatif
   mCostCorrel2Im = 2* mCostEc  + mCostCov;  // Assez precis
   mCostCorrel3Im = 3* mCostEc  + 3* mCostCov;  // Assez precis
-       // Approx : 2 Passes : normal + Ec entre images
+       // Approx : 2 Passes : normal + Ec between images
   mCostCorrel1ImOnNSsEc =  2 * mCostEc; 
   mCostCorrel1ImOnN = mCostCorrel1ImOnNSsEc + mCostEc; // Assez precis
 

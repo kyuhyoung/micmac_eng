@@ -144,7 +144,7 @@ cAppliTiepRed::cAppliTiepRed(int argc,char **argv,bool CalledFromInside)  :
        // anEASF.Init(mPatImage);
        mFilesIm = anEASF.SetIm();
 
-       // Precaution anti developpement en paral des tif dans les sous process
+       // Precaution anti developpement en paral des tif in les under process
        for (const auto & aN : *mFilesIm)
        {
            // std::cout << aN << "\n";

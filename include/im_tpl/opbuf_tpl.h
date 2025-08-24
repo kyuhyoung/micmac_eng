@@ -181,7 +181,7 @@ class  cTplOpbBufImage
 
 
 
-//  Classe pour utilisation  dans de la correlation par moindres
+//  class for utilisation  in de la correlation par moindres
 // carres .
 
 struct cElemOBICorrelMoindreCarres

@@ -16,7 +16,7 @@ Observation& ObservationSlot::getObservation(std::string sat_name){
 	return i->second;
 }
 
-// Liste des satellites visibles
+// list des satellites visibles
 std::vector<std::string> ObservationSlot::getSatellites(){
     std::vector<std::string> list_of_sats;
     for (auto const& element : this->slot) {
@@ -26,7 +26,7 @@ std::vector<std::string> ObservationSlot::getSatellites(){
     return list_of_sats;
 }
 
-// Liste de satellites d'une constellation
+// list de satellites d'une constellation
 std::vector<std::string> ObservationSlot::getSatellitesConstellation(std::string constellation_name){
 	std::vector<std::string> list_of_sats = this->getSatellites();
 	std::vector<std::string> list_of_sats_const;

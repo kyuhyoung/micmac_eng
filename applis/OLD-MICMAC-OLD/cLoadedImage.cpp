@@ -41,7 +41,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "im_tpl/oper_assoc_exter.h"
 
 
-// Pour des tests
+// for des tests
 #include "cOrientationRTO.h"
 
 double aSeuilComSupInf = 0.99;
@@ -327,9 +327,9 @@ cTplLoadedImage<TypeEl>::cTplLoadedImage
 
    // Gestion du masque 
 
-   // Transfert d'une eventuelle valeur conventionnelle "d'exclusion"
+   // Transfert d'une eventuelle value conventionnelle "d'exclusion"
 
-   // Dilatatation des valeurs exclues en fonction de la taille de
+   // Dilatatation des valeurs exclues en function de la taille de
    // noyau d'interpolation
    ELISE_COPY
    (
@@ -415,7 +415,7 @@ bool cTplLoadedImage<TypeEl>::StatIm1
 
         //
         //    Reechantillonage en geometrie terrain  
-        // + eventuel pre-calcul rapide des stats sur 
+        // + eventuel pre-computation rapide des stats on 
         // 1 image                                  
         //
 
@@ -490,7 +490,7 @@ void cTplLoadedImage<TypeEl>::LoadImInGeomTerr
               mTMasqImTer.oset ( aPRasT,isInMask);
 
               double aV = isInMask ?  mInterpol->GetVal(mDataIm,aPIm) : 0 ;
-	      //std::cout << "Position : "<<aPRasT<<" Valeur : "<<aV<<std::endl; 
+	      //std::cout << "Position : "<<aPRasT<<" value : "<<aV<<std::endl; 
               mTImTer.oset(aPRasT,/*TypeEl(aV)*/aV);
 	      if (IsFirstLoaded)
 	         aTMasqGlob.oset(aPRasT,isInMask);
@@ -566,7 +566,7 @@ void cTplLoadedImage<TypeEl>::PostLoadImInGeomTerr
         }
    }
 
-   // Si algo de base : pre-calcul des moyennes et moy quad
+   // if algo de base : pre-computation des moyennes and moy quad
    if (!mAppli.UseAlgoSpecifCorrelRect())
    {
       PrecalcRect(Box2di(QuickTer2Cor(aBox._p0),QuickTer2Cor(aBox._p1)));
@@ -581,7 +581,7 @@ void cTplLoadedImage<TypeEl>::PostLoadImInGeomTerr
    }
 }
        /**********************************************/
-       /*     Algo pour les fenetres "speciales"     */
+       /*     Algo for les fenetres "speciales"     */
        /**********************************************/
 
 template <class TypeEl>
@@ -657,7 +657,7 @@ void cTplLoadedImage<TypeEl>::FiltrageWRect(const Box2di & aBoxCorrTer,Im2D_REAL
     }
 }
 
-// A REMPLACER PAR  "FilterExp" dans "im_tpl/algo_filter_exp.cpp"
+// A REMPLACER PAR  "FilterExp" in "im_tpl/algo_filter_exp.cpp"
 
 template <class TypeEl>
 void cTplLoadedImage<TypeEl>::FiltrageWExp(const Box2di & aBoxCorrTer,Im2D_REAL8 anIm)
@@ -879,10 +879,10 @@ void   cTplLoadedImage<TypeEl>::CalcFenSpec(const Box2di & aBox,tContPDV& aCont)
 }
 
        /***************************************/
-       /* Algo rapide pour stat a une image   */
+       /* Algo rapide for stat a une image   */
        /***************************************/
 
-// Contient une couple de valeur Masque + Image
+// Contient une couple de value Masque + image
 template <class Type> class cMasqIm
 {
     public :
@@ -891,7 +891,7 @@ template <class Type> class cMasqIm
 };
 
 // Contient le cumul du masque, de la somme de l'image
-// et de la somme des carres de l'image
+// and de la somme des carres de l'image
 
 template <class Type> class cSomMII2
 {
@@ -1046,13 +1046,13 @@ void cTplLoadedImage<TypeEl>::AddToStat
 
 
        /*******************************************/
-       /* Algo "rapide" pour Correl a N images    */
-       /* Je ne suis pas completement sur que ce  */
+       /* Algo "rapide" for Correl a N images    */
+       /* Je ne suis pas completement on que ce  */
        /* soit beaucoup plus rapide que l'algo    */
-       /* standard, c'est plutot pour tester.     */
+       /* standard, c'est plutot for tester.     */
        /*                                         */
        /* Par contre ca pourrait etre une base    */
-       /* interessante pour faire de la multi     */
+       /* interessante for faire de la multi     */
        /* correlation "selective" (par ex ne      */
        /* retenant  que les couples correspondant */
        /* a des points de vues proches)           */
@@ -1289,7 +1289,7 @@ void  cTplLoadedImage<TypeEl>::NCalcCorrelRapide
 
 
        /*******************************************/
-       /* Algo rapide pour Correl a deux images   */
+       /* Algo rapide for Correl a deux images   */
        /*******************************************/
 
 template <class Type> class cMasqImAB
@@ -1302,7 +1302,7 @@ template <class Type> class cMasqImAB
 };
 
 // Contient le cumul du masque, 
-// et des variances et covariances 
+// and des variances and covariances 
 
 template <class Type> class cVCovIaIb
 {
@@ -1444,8 +1444,8 @@ void  cTplLoadedImage<TypeEl>::Instance_CalcCorrelRapide
  bool                      aModeAdd
  )
 {
-	// Correlation Rapide entre deux images (*this) et anI2
-	// le resultat est stocke dans mTCorrel
+	// Correlation Rapide between deux images (*this) and anI2
+	// le result est stocke in mTCorrel
 
    cVCovABRapide<TypeEl> aVR(*this,anI2,aModeAdd);
 
@@ -1841,8 +1841,8 @@ Pt2di cLoadedImage::DiscTerAppli2DiscTerCorr(const Pt2di  &aPt)
    Pt2dr aResR =   mGeomCorrelImTer.R2ToRDisc(mGeomTerAp.DiscToR2(aPt));
    Pt2di aResI = round_ni(aResR);
    double anEr = ElAbs(aResR.x-aResI.x) +  ElAbs(aResR.y-aResI.y);
-   // Apparement, ca marche parce que le resultat est implicitement
-   // entier.
+   // Apparement, ca marche parce que le result est implicitement
+   // integer.
    ELISE_ASSERT(anEr<1e-5,"CcLoadedImage::DiscTerAppli2DiscTerCorr");
    return  aResI;
 }

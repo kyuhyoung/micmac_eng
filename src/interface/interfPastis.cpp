@@ -23,7 +23,7 @@ InterfPastis::InterfPastis( QWidget* parent, Assistant* help, ParamMain* pMain):
 {
 	setWindowModality(Qt::ApplicationModal);
 
-	//liste des calibrations à fournir
+	//list des calibrations à fournir
 	QApplication::setOverrideCursor(Qt::WaitCursor);
 	cout << tr("Used lens search...").toStdString() << endl;
 
@@ -110,7 +110,7 @@ InterfPastis::InterfPastis( QWidget* parent, Assistant* help, ParamMain* pMain):
 			}
 			file.close();
 			file.remove();
-			/*cMetaDataPhoto metaDataPhoto = cMetaDataPhoto::CreateExiv2((dossier+img).toStdString());
+			/*cMetaDataPhoto metaDataPhoto = cMetaDataPhoto::CreateExiv2((folder+img).toStdString());
 			int f = metaDataPhoto.FocMm();*/
 			if (f!=0 && larg!=0 && lgr!=0 && !calibAFournir.contains(f)) {
 				calibAFournir.push_back(f);
@@ -407,7 +407,7 @@ CalibTab::CalibTab(InterfPastis* interfPastis, ParamPastis* parametres, ParamMai
 	//focaleEdit->clear();
 	focaleEdit->setToolTip(tr("Required field"));
 
-	//liste des caméras de la BD
+	//list des caméras de la BD
 	BDCamera bdCamera;
 	QString erreur = bdCamera.lire(imgNames);
 	if (!erreur.isEmpty()) {
@@ -440,7 +440,7 @@ CalibTab::CalibTab(InterfPastis* interfPastis, ParamPastis* parametres, ParamMai
 	//sizeHEdit->setInputMask (QString("D00000"));
 	//sizeHEdit->clear();
 
-			//paramètres de distorsion pour un objectif classique
+			//paramètres de distorsion for un objectif classique
 		QLabel *PPSLabel = new QLabel(tr("Distorsion center"));
 		PPSXEdit = new QLineEdit;
 		PPSYEdit = new QLineEdit;
@@ -455,7 +455,7 @@ CalibTab::CalibTab(InterfPastis* interfPastis, ParamPastis* parametres, ParamMai
 		distorsiondEdit = new QLineEdit;
 		distorsiondEdit->setMinimumWidth(100);
 
-			//paramètres de distorsion pour un objectif fish-eye
+			//paramètres de distorsion for un objectif fish-eye
 		QLabel *rayonLabel = new QLabel(tr("Effective radius"));
 		rayonEdit = new QLineEdit;
 
@@ -640,18 +640,18 @@ void CalibTab::addCalibClicked() {
   	if (fileNames.size()==0)
 		return;
 
-	//on vérifie que le nom du dossier est lisible (à cause des accents)
+	//on vérifie que le nom du folder est lisible (à cause des accents)
 	if (!checkPath(fileNames.at(0).section('/', 0, -2))) {
 		qMessageBox(this, tr("Read error"),conv(tr("Fail to read directory.\nCheck there are no accents in path.")));	
 		return;
 	}
 
-	//lecture et affichage des fichiers
+	//lecture and affichage des fichiers
 	for (QStringList::const_iterator it=fileNames.begin(); it!=fileNames.end(); it++) {
-		//extraction du dossier et du nom du fichier
+		//extraction du folder and du nom du file
 		QString fichier = *it;
 
-		//on vérifie que le nom du fichier est lisible (à cause des accents)
+		//on vérifie que le nom du file est lisible (à cause des accents)
 		if (!checkPath(fichier)) {
 			qMessageBox(this, tr("Read error"),conv(tr("Fail to read file %1.\nCheck there are no accents in path.")).arg(fichier));	
 			return;
@@ -668,7 +668,7 @@ void CalibTab::addCalibClicked() {
 			continue;
 		}
 
-		//on vérifie que c'est bien un fichier de calibration lisible
+		//on vérifie que c'est bien un file de calibration lisible
 		CalibCam calibCam;
 		QString err = FichierCalibCam::lire(dossier, xmlFile, calibCam, focale);
 		if (!err.isEmpty()) {
@@ -676,7 +676,7 @@ void CalibTab::addCalibClicked() {
 			continue;
 		}
 
-		//on vérifie qu'il n'y a pas déjà une calibration de cette focale dans la liste
+		//on vérifie qu'il n'y a pas déjà une calibration de cette focale in la list
 		QString oldfile;
 		int pos = -1;
 		for (int i=0; i<paramPastis->getCalibFiles().count(); i++) {
@@ -698,7 +698,7 @@ void CalibTab::addCalibClicked() {
 				continue;
 		}
 
-		//renommination et copie
+		//renommination and copie
 		QString newFile = dir+xmlFile.section(".",0,-2)+QString(".xml");
 		if (fichier!=newFile && QFile(newFile).exists()) {
 			int rep = Interface::dispMsgBox( conv(tr("File %1 already exists.").arg(newFile)),
@@ -707,10 +707,10 @@ void CalibTab::addCalibClicked() {
 			if (rep==0) QFile(newFile).remove();
 			else continue;
 		}
-		if (dossier!=dir) QFile(fichier).copy(newFile);	//on conserve le fichier de l'utilisateur
+		if (dossier!=dir) QFile(fichier).copy(newFile);	//on conserve le file de l'utilisateur
 		else if (fichier!=newFile) QFile(fichier).rename(newFile);	//c'était pas la bonne extension
 
-		//enregistrement et affichage
+		//enregistrement and affichage
 		paramPastis->modifCalibFiles().push_back( pair<QString, int>(xmlFile.section(".",0,-2)+QString(".xml"), focale) );
 		calibViewSelected->addItem(xmlFile.section(".",0,-2)+QString(".xml"));
 		calibViewSelected->adjustSize();
@@ -755,7 +755,7 @@ void CalibTab::focaleEdited() {
 		}
 	}
 	if (longueur==0) return;
-	taillePxEdited();	//pour relancer le calcul
+	taillePxEdited();	//for relancer le computation
 }
 void CalibTab::taillePxEdited() {
 	disconnect(tailleCapteurEdit, SIGNAL(textChanged(QString)), this, SLOT(tailleCapteurEdited()));
@@ -947,13 +947,13 @@ void CalibTab::saveNewCalibClicked() {
 		}	
 		paramRadial.resize(i);
 
-	//nom du fichier
+	//nom du file
 	QString sfocale = QVariant(focale).toString();
 	while (sfocale.count()<3)
 		sfocale.prepend(QString("0"));
 	QString file = defaultCalibName + sfocale + QString(".xml");
 
-	//on vérifie qu'il n'y a pas déjà une calibration de cette focale dans la liste
+	//on vérifie qu'il n'y a pas déjà une calibration de cette focale in la list
 	QString oldfile;
 	int pos = -1;
 	for (int i=0; i<paramPastis->getCalibFiles().count(); i++) {
@@ -990,7 +990,7 @@ void CalibTab::saveNewCalibClicked() {
 	}
 	paramPastis->modifCalibFiles().push_back( pair<QString,int>(file,focale) );
 
-	//ajout dans la BD MicMac
+	//ajout in la BD MicMac
 	//-- int idxCalib = 0;
 	while (i<calibAFournir.count() && calibAFournir.at(i)!=calibCam.getFocale()) i++;
 	if (i!=calibAFournir.count() && QFile(paramMain->getDossier()+paramMain->getCorrespImgCalib().at(i).getImageRAW()).exists()) {
@@ -1201,10 +1201,10 @@ CoupleTab::~CoupleTab() {
 }
 
 void CoupleTab::initList(QListWidget* listWidget) {
-	//ajoute toutes les images (dont les couples ne sont pas tous dans l'arbre) dans la liste 1
+	//ajoute toutes les images (dont les couples ne sont pas tous in l'arbre) in la list 1
 	listWidget->clear();
 	for (int i=0; i<correspImgCalib->size(); i++) {
-		//recherche du nombre de couples correspondants dans l'arbre
+		//recherche du number de couples correspondants in l'arbre
 		int N = 0;
 		for (int j=0; j<treeWidget->topLevelItemCount(); j++) {
 			if (treeWidget->topLevelItem(j)->text(0)==correspImgCalib->at(i).getImageRAW())
@@ -1222,7 +1222,7 @@ void CoupleTab::initList(QListWidget* listWidget) {
 }
 
 void CoupleTab::list1Selected() {
-	//ajoute toutes les images dans la liste 2 (sauf les couples correspondant à l'image sélectionnée qui sont déjà placés dans l'arbre)
+	//ajoute toutes les images in la list 2 (sauf les couples correspondant à l'image sélectionnée qui sont déjà placés in l'arbre)
 	if (listWidget1->selectedItems().size()>0) {
 		addButton->setEnabled(true);
 		if (listWidget1->selectedItems().size()==1)
@@ -1242,17 +1242,17 @@ void CoupleTab::list1Selected() {
 	if (treeWidgetItem!=0 && treeWidgetItem->childCount()==correspImgCalib->count())	//toutes les images ont déjà été ajoutées
 		return;
 
-	//ajout des img2 dans la liste 2
+	//ajout des img2 in la list 2
 	for (int i=0; i<correspImgCalib->size(); i++) {
 		if (correspImgCalib->at(i).getImageRAW()<=img1)	//on ne met les couples qu'une fois
 			continue;
 		int j=0;
 		if (treeWidgetItem!=0) {
-			//recherche de l'img 2 dans l'arbre
+			//recherche de l'img 2 in l'arbre
 			while (j<treeWidgetItem->childCount() && treeWidgetItem->child(j)->text(0)!=correspImgCalib->at(i).getImageRAW())
 				j++;
 		}
-		//il n'y est pas ou img1 n'y est pas
+		//il n'y est pas or img1 n'y est pas
 		if (treeWidgetItem==0 || j==treeWidgetItem->childCount())
 			listWidget2->addItem( correspImgCalib->at(i).getImageRAW() );
 	}
@@ -1275,7 +1275,7 @@ void CoupleTab::treeWidgetSelected() {
 }
 
 void CoupleTab::addTheseClicked() {
-	//cas 1 : on ajoute tous les couples d'une ou plusieurs images
+	//cas 1 : on ajoute tous les couples d'une or plusieurs images
 	if (listWidget2->selectedItems().size()==0) {
 		QStringList l1;
 		for (int i=0; i<listWidget1->count(); i++) {	//listWidget1->removeItemWidget(item) ne marche pas
@@ -1288,7 +1288,7 @@ void CoupleTab::addTheseClicked() {
 			QString img1 = listWidget1->selectedItems().at(k)->text();
 			
 			//ajout de img1 comme parent
-			bool b = ( listWidget1->row(listWidget1->selectedItems().at(k)) == listWidget1->count()-1 );	//si img1 est la dernière des images dans l'odre alphabétique, elle n'aura pas d'enfant dans l'arbre et il ne faut pas l'ajouter comme parent ; elle est aussi dernière de la liste1. Si elle est dernière de la liste1 mais pas dernière des images, elle existe déjà dans l'arbre comme parent de la dernière des images
+			bool b = ( listWidget1->row(listWidget1->selectedItems().at(k)) == listWidget1->count()-1 );	//if img1 est la dernière des images in l'odre alphabétique, elle n'aura pas d'enfant in l'arbre and il ne faut pas l'ajouter comme parent ; elle est aussi dernière de la liste1. if elle est dernière de la liste1 but pas dernière des images, elle existe déjà in l'arbre comme parent de la dernière des images
 			QList<QTreeWidgetItem *> l = treeWidget->findItems(img1, Qt::MatchExactly);
 			QTreeWidgetItem* treeWidgetItem = (l.size()==0 && b)? 0 : (l.size()==0)? new QTreeWidgetItem(QStringList(img1)) : *(l.begin());
 			if (l.size()==0 && treeWidgetItem!=0)
@@ -1338,7 +1338,7 @@ void CoupleTab::addTheseClicked() {
 			}
 			if (treeWidgetItem!=0) treeWidgetItem->sortChildren(0, Qt::AscendingOrder);
 
-			//vérification dans la liste 1
+			//vérification in la list 1
 			int n = treeWidget->indexOfTopLevelItem(treeWidgetItem);
 			for (int i=0; i<n; i++) {
 				if (treeWidget->topLevelItem(i)->childCount()==correspImgCalib->count()-1-i)
@@ -1347,7 +1347,7 @@ void CoupleTab::addTheseClicked() {
 		}
 		treeWidget->sortItems(0, Qt::AscendingOrder);
 
-		//mise à jour de la liste 1
+		//mise à jour de la list 1
 		listWidget1->clear();
 		for (int i=0; i<l1.size(); i++)
 			listWidget1->addItem(l1.at(i));
@@ -1379,7 +1379,7 @@ void CoupleTab::addTheseClicked() {
 		}
 		treeWidgetItem->sortChildren(0, Qt::AscendingOrder);
 
-		//mise à jour de la liste 2
+		//mise à jour de la list 2
 		listWidget2->clear();
 		if (l2.count()>0) {
 			for (QList<QString>::const_iterator it=l2.begin(); it!=l2.end(); it++) {
@@ -1387,7 +1387,7 @@ void CoupleTab::addTheseClicked() {
 			}
 			l2.clear();
 		} else {
-			//il n'y a plus d'img correspondante, mise à jour de la liste 1
+			//il n'y a plus d'img correspondante, mise à jour de la list 1
 			QList<QString> l1;
 			for (int i=0; i<listWidget1->count(); i++) {	//listWidget1->removeItemWidget(item) ne marche pas
 				if (!listWidget1->item(i)->isSelected())
@@ -1413,7 +1413,7 @@ void CoupleTab::addAllButtonClicked() {
 }
 
 void CoupleTab::addAllClicked() {
-	//ajoute tous les couples dans l'arbre
+	//ajoute tous les couples in l'arbre
 	treeWidget->clear();
 	for (int i=0; i<correspImgCalib->size(); i++) {
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem( QStringList(correspImgCalib->at(i).getImageRAW()) );
@@ -1440,7 +1440,7 @@ void CoupleTab::addAllClicked() {
 }
 
 void CoupleTab::addKNearestClicked() {
-	//on ouvre une boîte de dialogue pour sélectionner K (écart maximal entre les numéros des images pour former les couples d'images voisines)
+	//on ouvre une boîte de dialogue for sélectionner K (écart maximal between les numéros des images for former les couples d'images voisines)
 	bool ok;
 	int K = QInputDialog::getInt(this, tr("Choose the image neighbourhood parameters"),
 					conv(tr("Maximal distance between image index to make a pair :")),
@@ -1449,7 +1449,7 @@ void CoupleTab::addKNearestClicked() {
 	if (!ok) return;
 
 	//on ajoute les couples à l'arbre s'il n'y sont pas déjà
-		//sauvegarde des img de la liste 1
+		//sauvegarde des img de la list 1
 	QStringList l1;
 	for (int i=0; i<listWidget1->count(); i++) {	//listWidget1->removeItemWidget(item) ne marche pas
 		if (!listWidget1->item(i)->isSelected())
@@ -1459,7 +1459,7 @@ void CoupleTab::addKNearestClicked() {
 	for (int i=0; i<correspImgCalib->size(); i++) {	//img1
 		if (i==correspImgCalib->size()-1) continue; //il n'y a pas d'img2
 
-		//ajout/récupération de l'img1 dans l'arbre
+		//ajout/récupération de l'img1 in l'arbre
 		QList<QTreeWidgetItem *> l = treeWidget->findItems(correspImgCalib->at(i).getImageRAW(), Qt::MatchExactly);
 		QTreeWidgetItem* treeWidgetItem = (l.size()==0)? new QTreeWidgetItem(QStringList(correspImgCalib->at(i).getImageRAW())) : *(l.begin());
 		if (l.size()==0) {
@@ -1467,7 +1467,7 @@ void CoupleTab::addKNearestClicked() {
 		}
 		
 		for (int j=i+1; j<min(i+K+1,correspImgCalib->size()); j++) {	//img2 (les K suivantes)
-			//ajout/récupération de l'img2 dans l'arbre
+			//ajout/récupération de l'img2 in l'arbre
 			bool exists = false;
 			for (int n=0; n<treeWidgetItem->childCount(); n++) {
 				if (treeWidgetItem->child(n)->text(0)==correspImgCalib->at(j).getImageRAW()) {
@@ -1484,7 +1484,7 @@ void CoupleTab::addKNearestClicked() {
 
 		if (i<K) {	//i est l'img2 des K dernières images (cas des objets dont on fait le tour complet)
 			for (int j=correspImgCalib->size()-K+i; j<correspImgCalib->size(); j++) {
-				//ajout/récupération de l'img2 dans l'arbre
+				//ajout/récupération de l'img2 in l'arbre
 				bool exists = false;
 				for (int n=0; n<treeWidgetItem->childCount(); n++) {
 					if (treeWidgetItem->child(n)->text(0)==correspImgCalib->at(j).getImageRAW()) {
@@ -1507,7 +1507,7 @@ void CoupleTab::addKNearestClicked() {
 	}
 	treeWidget->sortItems(0, Qt::AscendingOrder);
 	listWidget2->clear();
-	//mise à jour de la liste 1
+	//mise à jour de la list 1
 	listWidget1->clear();
 	for (int i=0; i<l1.size(); i++)
 		listWidget1->addItem(l1.at(i));
@@ -1520,7 +1520,7 @@ void CoupleTab::removeClicked() {
 	if (treeWidget->selectedItems().size()==0)
 		return;
 
-	QStringList l1;	//élément à rajouter à la liste 1 (s'ils n'y étaient pas)
+	QStringList l1;	//élément à rajouter à la list 1 (s'ils n'y étaient pas)
 	QList<pair<QString, QStringList> > lt;
 	/*for (int i=0; i<treeWidget->topLevelItemCount(); i++) {
 		QStringList l;
@@ -1542,7 +1542,7 @@ void CoupleTab::removeClicked() {
 				j--;					
 			}
 		}
-		//cas où l'item parent est sélectionné : on le supprime pour chaque couple (y compris s'il n'y a pas d'enfant correspondant)
+		//cas où l'item parent est sélectionné : on le supprime for chaque couple (y compris s'il n'y a pas d'enfant correspondant)
 		if (treeWidget->topLevelItem(i)->isSelected()) {
 			if (paramPastis->getCouples().count()>0) {
 				for (int i=0; i<paramPastis->getCouples().count(); i++) {
@@ -1553,7 +1553,7 @@ void CoupleTab::removeClicked() {
 				}
 			}
 			if (l1.indexOf(img1)==-1) l1.push_back(img1);
-			//recherche dans chaque item parent de l'item enfant img1 et suppression
+			//recherche in chaque item parent de l'item enfant img1 and suppression
 			for (int j=0; j<treeWidget->topLevelItemCount(); j++) {
 				if (treeWidget->topLevelItem(j)->text(0)>=img1) continue;
 				QString img2 = treeWidget->topLevelItem(j)->text(0);
@@ -1569,7 +1569,7 @@ void CoupleTab::removeClicked() {
 		}	
 	}
 	for (int i=0; i<treeWidget->topLevelItemCount(); i++) {
-		//on sauvegarde tous les items qui restent avec leurs items enfants
+		//on sauvegarde tous les items qui restent with leurs items enfants
 		if ((!treeWidget->topLevelItem(i)->isSelected()) && treeWidget->topLevelItem(i)->childCount()>0) {
 			QList<QString> l2;
 			for (int j=0; j<treeWidget->topLevelItem(i)->childCount(); j++) {
@@ -1591,7 +1591,7 @@ void CoupleTab::removeClicked() {
 	}
 	lt.clear();
 
-	//mise à jour de la liste 1
+	//mise à jour de la list 1
 	for (QStringList::const_iterator it=l1.begin(); it!=l1.end(); it++) {
 		if (listWidget1->findItems(*it, Qt::MatchExactly).count()==0)
 			listWidget1->addItem(*it);
@@ -1673,12 +1673,12 @@ CommunTabP::CommunTabP(InterfPastis* interfPastis, ParamPastis* parametres, int 
 	checkMultiscale->setToolTip (conv(tr("If checked, tie-point search is computed in two steps :\nThe first step is a search in all previously selected images,\nthe second step is done in only image pairs where enough tie-points have been found the first time.")));
 
 	//tailles des images rééchantillonnées
-	largeurMax1Label = new QLabel();	//recherche mono-échelle ou multi-échelle passe 1
+	largeurMax1Label = new QLabel();	//recherche mono-échelle or multi-échelle passe 1
 	largeurMax2Label = new QLabel(conv(tr("Maximum width of rescaled image (second step) :")));	//recherche multi-échelle passe 2
-	largeurMax1Edit = new QLineEdit;	//recherche mono-échelle ou multi-échelle passe 1
+	largeurMax1Edit = new QLineEdit;	//recherche mono-échelle or multi-échelle passe 1
 	largeurMax1Edit->setMaximumWidth (100);
 	int l1 = paramPastis->getLargeurMax();
-	if (paramPastis->getMultiScale() && paramPastis->getTypeChantier()==ParamPastis::Convergent && paramPastis->getCouples().count()<21) l1 = paramPastis->getLargeurMax2();	//cas particulier où c'était un calcul multi-échelle que l'on reprend avec seulement les images conservées
+	if (paramPastis->getMultiScale() && paramPastis->getTypeChantier()==ParamPastis::Convergent && paramPastis->getCouples().count()<21) l1 = paramPastis->getLargeurMax2();	//cas particulier où c'était un computation multi-échelle que l'on reprend with seulement les images conservées
 	if (l1==0 || l1>tailleMax) l1 = 1000;
 	largeurMax1Edit->setText(QVariant(l1).toString());
 	largeurMax1Edit->setToolTip (conv(tr("Tie-point search is done in images that are rescaled at a low resolution.\nWrite -1 for a full size search.")));
@@ -1689,7 +1689,7 @@ CommunTabP::CommunTabP(InterfPastis* interfPastis, ParamPastis* parametres, int 
 	largeurMax2Edit->setText(QVariant(l2).toString());
 	largeurMax2Edit->setToolTip (conv(tr("Tie-point search is done in images that are rescaled at a low resolution.\nWrite -1 for a full size search.")));
 
-	//seuil pour la 2nde passe
+	//seuil for la 2nde passe
 	seuilLabel = new QLabel(conv(tr("Minimum number of tie-points :")));
 	seuilBox = new QSpinBox;
 	seuilBox->setValue(paramPastis->getNbPtMin());
@@ -1716,7 +1716,7 @@ CommunTabP::~CommunTabP() {}
 
 void CommunTabP::updateMultiscale() {
 	parent->relaxSize();
-	if (paramPastis->getTypeChantier()==ParamPastis::Convergent && paramPastis->getCouples().count()<21) {	//chantier convergent avec peu de couples (équivalent all, 5 images), pas de choix => mono-échelle
+	if (paramPastis->getTypeChantier()==ParamPastis::Convergent && paramPastis->getCouples().count()<21) {	//chantier convergent with peu de couples (équivalent all, 5 images), pas de choix => mono-échelle
 		checkMultiscale->hide();
 		checkMultiscale->setChecked(false);
 	} else
@@ -1834,7 +1834,7 @@ int ParamPastis::findFocale(const QString& calibFile) const {
 }
 
 bool ParamPastis::extractFocaleFromName(const QString& calibFile, int& focale) {
-//extrait la focale du nom du fichier de calibration (doit être écrite à la fin du nom hors extension)
+//extrait la focale du nom du file de calibration (doit être écrite à la fin du nom hors extension)
 	QString name = calibFile.section(".",0,-2);
 	int pos = name.count();	//nb de charactères à partir de la fin
 	for (int i=0; i<name.count(); i++) {

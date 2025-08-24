@@ -76,7 +76,7 @@ class cOneRotPowelOptimize
          );
          void InitPts();
 
-         ElRotation3D  Param2Rot(const double * aP);  // Parametre globaux, il faut decaler I0
+         ElRotation3D  Param2Rot(const double * aP);  // parameter globaux, il faut decaler I0
          void AvantEval(const double * aP);
 
          double  Residu();
@@ -276,7 +276,7 @@ void cOneRotPowelOptimize::InitPts()
     {
         std::list<cPoseCam *> aLCam = mAppli->ListCamInitAvecPtCom(itP->Id(),mCam);
     
-    // Pour l'insntant la selec se fait par simple tirage aleatoire
+    // for l'insntant la selec se fait par simple tirage aleatoire
         int aNbPtsTot = 0;
         for (std::list<cPoseCam *>::iterator itC=aLCam.begin();itC!=aLCam.end();itC++)
         {

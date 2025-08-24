@@ -42,7 +42,7 @@ template <const int Nb> void  TplBenchDifJets()
        if (aCpt>100)
        {
            double aProp  = aNbNot0/double(aNbTot);
-           // Verif que les  proportion sont respectees pour que test soit probants
+           // Verif que les  proportion sont respectees for que test soit probants
            MMVII_INTERNAL_ASSERT_bench((aProp>0.25) && (aProp<0.75),"TplBenchDifJets");
        }
        // Verif conversion, 
@@ -88,7 +88,7 @@ template <const int Nb> void  TplBenchDifJets()
         if (aTime%2==0)
         {
            aVE.mVEps.push_back(0.0);
-           aVE.mVInd.push_back(aK+Nb);  // parfois dehors, parfois dedans, pas d'influence si nul
+           aVE.mVInd.push_back(aK+Nb);  // parfois dehors, parfois dedans, pas d'influence if nul
         }
     }
     MMVII_INTERNAL_ASSERT_bench(EpsDifference(aE,aVE)<1e-5,"TplBenchDifJets");
@@ -119,7 +119,7 @@ template <const int Nb> void  TplBenchDifJets()
         if (aTime%2==0)
         {
            aVE.mVEps.push_back(0.0);
-           aVE.mVInd.push_back(aK+Nb);  // parfois dehors, parfois dedans, pas d'influence si nul
+           aVE.mVInd.push_back(aK+Nb);  // parfois dehors, parfois dedans, pas d'influence if nul
         }
     }
     MMVII_INTERNAL_ASSERT_bench(std::abs(aTheoDif-EpsDifference(aE,aVE))<1e-5,"TplBenchDifJets");

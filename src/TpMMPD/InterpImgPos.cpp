@@ -59,7 +59,7 @@ private :
     Pt3dr  ToProj(const Pt3dr & aP) const;
     Pt3dr GpsInc(int aK) const;
 
-    // Remet l'indice dans le bon intervalle
+    // Remet l'indice in le bon intervalle
     const cOneGpsDGF & GpsSafe(int aK) const
     {
         return mDicoGps.OneGpsDGF().at(ElMax(0,ElMin(aK,int(mDicoGps.OneGpsDGF().size()-1))));
@@ -72,7 +72,7 @@ private :
     std::string mTMFile;
 
 
-    // Donne reformatees pour spline
+    // Donne reformatees for spline
     std::vector<double>        mVX;
     std::vector<double>        mVY;
     std::vector<double>        mVZ;
@@ -247,7 +247,7 @@ cIIP_Appli::cIIP_Appli(int argc,char ** argv) :
 
     mNbGps = mDicoGps.OneGpsDGF().size();
 
-    // Etre sur que les dates sont croissante
+    // Etre on que les dates sont croissante
     std::sort(mDicoGps.OneGpsDGF().begin(),mDicoGps.OneGpsDGF().end(),CmpGpsOnTime);
     std::sort(mDicoIm.CpleImgTime().begin(),mDicoIm.CpleImgTime().end(),CmpImOnTime);
 
@@ -264,7 +264,7 @@ cIIP_Appli::cIIP_Appli(int argc,char ** argv) :
         mChgSys = new cChSysCo(cSysCoord::GeoC(),cSysCoord::RTL(mDicoGps.OneGpsDGF().front().Pt()));
     }
 
-    // Formatage pour la Bb spline
+    // Formatage for la Bb spline
     for (auto itG=mDicoGps.OneGpsDGF().begin() ; itG!=mDicoGps.OneGpsDGF().end() ;itG++)
     {
         // itG->TimePt()  = ConvertLocTime(itG->TimePt());
@@ -274,7 +274,7 @@ cIIP_Appli::cIIP_Appli(int argc,char ** argv) :
         mVT.push_back(itG->TimePt());
     }
 
-    // Affichage interval + verif Img inclus ds Gps si pas d'extrapolation
+    // Affichage interval + verif Img inclus ds Gps if pas d'extrapolation
     {
         double aT0Gps = mDicoGps.OneGpsDGF().front().TimePt();
         double aTNGps = mDicoGps.OneGpsDGF().back().TimePt();
@@ -326,7 +326,7 @@ cIIP_Appli::cIIP_Appli(int argc,char ** argv) :
             ELISE_ASSERT(aTNIm<=aTNGps,"Last image TM ends after GPS Traj !");
         }
 
-        // Test epsilon machine sur les grandeur utilisees
+        // Test epsilon machine on les grandeur utilisees
         if (0)
         {
             double aEps = 1.0;
@@ -408,7 +408,7 @@ cIIP_Appli::cIIP_Appli(int argc,char ** argv) :
 
                 Pt3dr aNP = mDicoGps.OneGpsDGF()[aNK1].Pt();
                 Pt3dr aPosParab(0,0,0);
-                // Si on estime la position par trois points par interopation sur parabole
+                // if on estime la position par trois points par interopation on parabole
                 if (1)
                 {
                     std::vector<Pt2dr> aVIntX;

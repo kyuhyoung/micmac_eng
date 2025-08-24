@@ -160,7 +160,7 @@ Interval cAperoVisuGlobRes::CalculBox(double & aVMil,double & aResol,eBoxAVGR aM
     // aSomV /= mNbPts;
     // aSomV2 /= mNbPts;
     // aSomV2 -= ElSquare(aSomV);
-    // Sigma = Larg / srqt(12) pour une distrib uniforme
+    // Sigma = Larg / srqt(12) for une distrib uniforme
     // double Larg =  sqrt(12*aSomV2);
     double aV25 = KthValProp(aVVals,0.25);  
     double aV75 = KthValProp(aVVals,0.75);
@@ -262,7 +262,7 @@ void cAperoVisuGlobRes::DoResidu(const std::string & aDir,int aNbMes)
     }
  
     double aRR; // Inutilise
-    // Pour une gaussienne 68 % compris dans [-Sig,Sig]
+    // for une gaussienne 68 % compris in [-Sig,Sig]
     double aVMilRes;
     Interval  aIntRes = CalculBox(aVMilRes,aRR,eBAVGR_Res,0.16,0.0);
     mSigRes = (aIntRes._v1 - aIntRes._v0) / 2.0;
@@ -656,7 +656,7 @@ void cAccumResidu::AccumInImage(const cInfoAccumRes & anInfo)
         // 
         Pt2dr aSzN = mSz/2.0;
         Pt2dr aN = anInfo.mDir * Pt2dr(0,1);
-        // Pour precision matrice, mieux vaut coordonnees normalisees
+        // for precision matrix, mieux vaut coordinates normalisees
         double  aX = (anInfo.mPt.x-aSzN.x) / aSzN.x;
         double  aY = (anInfo.mPt.y-aSzN.y) / aSzN.y;
 
@@ -934,7 +934,7 @@ void cPoseCam::SetOrInt(const cTplValGesInit<cSetOrientationInterne> & aTplSI)
    else
       mOrIntM2C= anAffM2C;
 
-   //  Si on le fait avec les marques fiduciaires ca ecrase le reste
+   //  if on le fait with les marques fiduciaires ca ecrase le reste
 
    mOrIntC2M = mOrIntM2C.inv();
 }
@@ -1491,7 +1491,7 @@ cPoseCam * cPoseCam::Alloc
 
     if (aPCI.PosesDeRattachement().IsInit())
     {
-        // En fait le tri sur les variables n'avait pas d'effet puisque la fonction est symetrique !!
+        // En fait le tri on les variables n'avait pas d'effet puisque la function est symetrique !!
         AllowUnsortedVarIn_SetMappingCur = true;
         aPRat = anAppli.PoseCSFromNameGen
                 (
@@ -1837,7 +1837,7 @@ else
        if (ELISE_fp::exist_file(aTestNameFile))
        {
             ELISE_ASSERT(false,"Obsolet Init Form repere plan");
-            // Onsolete, pas cohrent avec orient interen
+            // Onsolete, pas cohrent with orient interen
             // aPack = ElPackHomologue::- FromFile(aTestNameFile);
        }
        else 
@@ -1852,8 +1852,8 @@ else
        cResMepRelCoplan aRMRC = aPack.MepRelCoplan(1.0,aPP.L2EstimPlan().Val());
        cElemMepRelCoplan & aSP = aRMRC.RefBestSol();
 
-       // aM1 aM2 aM3 -> coordonnees monde, specifiees par l'utilisateur
-       // aC1 aC2 aC3 -> coordonnees monde
+       // aM1 aM2 aM3 -> coordinates monde, specifiees par l'utilisateur
+       // aC1 aC2 aC3 -> coordinates monde
 
        Pt3dr aM1,aM2,aM3;
        Pt2dr aIm1,aIm2,aIm3;
@@ -2116,10 +2116,10 @@ else
 		  }
 		  else
 		  {
-		       // Sinon il faudra, une fois connu le multiplicateur donne
+		       // else il faudra, une fois connu le multiplicateur donne
 		       // par les autres liaisons mettre a jour le plan
 		       aDZPl = aSP.DPlan() ;
-		       // Et eventuellement initialiser Plan2
+		       // and eventuellement initialiser Plan2
 		       if (! DicBoolFind(aCam2->mDZP,aNZPl))
 		       {
 		           aDZPl2 = aSP.DPlan2();
@@ -2176,7 +2176,7 @@ std::cout << "TEST MEPS STD " << mName  << " L2 " << L2
 	 }
          delete aRAB;
 
-         // Calcul de l'alti et de la prof
+         // computation de l'alti and de la prof
          if (aRPure)
          {
          }
@@ -2845,7 +2845,7 @@ Pt3dr  cPoseCam::AddObsCentre
        double aPdsZ  = aPondAlti.PdsOfError(ElAbs(aResidu.z));
 //std::cout << " cPoseCam::AddObsCentre " << mObsCentre.mIncOnC  << " " <<  aPdsP << " " << aPdsZ  <<  "\n";
        Pt3dr aPInc = mObsCentre.mIncertOnC;
-       // Si il y a une incertitude
+       // if il y a une incertitude
        if (aPInc.x >0)
        {
           aPdsPX *= ElSquare(1/aPInc.x);

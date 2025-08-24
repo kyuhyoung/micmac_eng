@@ -70,7 +70,7 @@ public:
   int mdDegX;
   int mdDegY;
   int mdDegZ;
-  // tableau des coef du polynome mdCoef[z*(mdDegX*mdDegY)+y*(mdDegX)+x] 
+  // array des coef du polynome mdCoef[z*(mdDegX*mdDegY)+y*(mdDegX)+x] 
   std::vector<double> mdCoef;
 
  Polynome():mdDegX(0),mdDegY(0),mdDegZ(0){}

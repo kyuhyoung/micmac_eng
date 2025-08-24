@@ -317,7 +317,7 @@ void MyBisCr::SauvGrille()
         }
     }
 
-    if (1) // Image en geometrie 1
+    if (1) // image en geometrie 1
     {
         Im2D_U_INT1 aI1 = Im2D_U_INT1::FromFileStd(mNameFull1);
         Pt2di aSz = aI1.sz();
@@ -346,7 +346,7 @@ void MyBisCr::SauvGrille()
          cout << "Done Superp\n";
     }
 
-    if (0) // Image en geometrie 2
+    if (0) // image en geometrie 2
     {
         Im2D_U_INT1 aI1 = Im2D_U_INT1::FromFileStd(mNameFull1);
 

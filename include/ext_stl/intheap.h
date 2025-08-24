@@ -128,7 +128,7 @@ template <class Type,INT NB> class ElBornedIntegerHeap
 
 };
 
-//  Idem ElBornedIntegerHeap, mais sort l'element max
+//  Idem ElBornedIntegerHeap, but sort l'element max
 
 template <class Type,INT NB> class ElMaxBornedIntegerHeap  : public ElBornedIntegerHeap<Type,NB>
 {

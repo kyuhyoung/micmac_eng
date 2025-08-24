@@ -109,7 +109,7 @@ template <class tElem> class  cTplImageCorrelateurSubPix
                mP1_I2= aP1;
            }
 
-           // Correlation ou les valeurs sont arrondie en reel
+           // Correlation or les valeurs sont arrondie en real
            REAL icorrel(Pt2dr aPr1,Pt2dr aPr2)
            {
                  Pt2dr aP1 (aPr1);
@@ -133,7 +133,7 @@ template <class tElem> class  cTplImageCorrelateurSubPix
 
            }
 
-           // Correlation ou les valeurs sont arrondie en reel
+           // Correlation or les valeurs sont arrondie en real
            REAL rcorrel(Pt2dr aPr1,Pt2dr aPr2)
            {
 
@@ -190,7 +190,7 @@ template <class tElem> class  cTplImageCorrelateurSubPix
 	   bool               mModeBicub;
 };
 
-// Moments pour la correlation par moinbre carres
+// Moments for la correlation par moinbre carres
 
 struct cBufResMomentCor2DLSQ
 {

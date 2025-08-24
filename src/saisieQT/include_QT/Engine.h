@@ -41,10 +41,10 @@ public:
     //! Current zoom
     float m_zoom;
 
-    //! Point size
+    //! point size
     int m_pointSize;
 
-    //! Rotation and translation speed
+    //! rotation and translation speed
     float m_speed;
 };
 

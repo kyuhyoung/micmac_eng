@@ -65,7 +65,7 @@ cDensityMapPH::cDensityMapPH(int argc,char ** argv)
             // retrieve IdIm
             cCelImTPM * ImTPM=mTPM->CelFromName(NameIm);
             if (ImTPM) {
-                // map container of Camera is indexed by the Id of Image (cSetTiePMul)
+                // map container of camera is indexed by the Id of image (cSetTiePMul)
                 mCams[ImTPM->Id()]=CamOrientGenFromFile(aOri,mICNM);
             } else {
                 std::cout << "No tie points found for image " << NameIm << ".\n";
@@ -203,7 +203,7 @@ void cDensityMapPH::populateDensityMap() {
             Pt2di PosUV = XY2UV(PosXY);
 
             // DEBUG
-            //std::cout << "Camera: " << mCams << "\n";
+            //std::cout << "camera: " << mCams << "\n";
             //std::cout << "Coordinates Pt3dr: " << "x = " << Pt.x << "; y = " << Pt.y << "; z = " << Pt.z << "\n";
             //std::cout << "Coordinates Pt2dr: " << "Pt.x = " << Pt.x << "; Pt.y = " << Pt.y << "\n";
             //std::cout << "Coordinates Pt2di: " << XY2UV(PosXY) << "\n";
@@ -290,7 +290,7 @@ void cManipulate_NF_TP::init()
         mICNM = cInterfChantierNameManipulateur::BasicAlloc(mDir);
         // load list of orientation files from regular expression
         mOriFL = mICNM->StdGetListOfFile(mOriPat);
-        // load the set of Tie Point
+        // load the set of Tie point
         mTPM = new cSetTiePMul(0);
         mTPM->AddFile(mFileSH);
 
@@ -314,7 +314,7 @@ void cManipulate_NF_TP::init()
             // retrieve IdIm
             cCelImTPM * ImTPM=mTPM->CelFromName(NameIm);
             if (ImTPM) {
-                // map container of Camera is indexed by the Id of Image (cSetTiePMul)
+                // map container of camera is indexed by the Id of image (cSetTiePMul)
                 mCams[ImTPM->Id()]=CamOrientGenFromFile(aOri,mICNM);
                 // map container of image RGB indexed by the Id of image
                 if (mWithRadiometry) mIms[ImTPM->Id()]=new cISR_ColorImg(NameIm);
@@ -360,7 +360,7 @@ cAppli_IntersectBundleHomol::cAppli_IntersectBundleHomol(int argc,char ** argv)
             std::cout << std::setprecision(2) << std::fixed;
         }
 
-        // loop on every config of TPM of the set of Tie Point Multiple
+        // loop on every config of TPM of the set of Tie point Multiple
         int id(0);
         for (auto & aCnf : mTPM->VPMul())
         {

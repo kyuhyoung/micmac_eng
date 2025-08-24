@@ -163,7 +163,7 @@ int cImgTieTriFar::DetectInterestPts()
     return aNbPts;
 }
 
-// Peut on definir un mask par convex hull sur le set de reprojection de point 2D ?
+// Peut on definir un mask par convex hull on le set de reprojection de point 2D ?
 void cAppliTiepTriFar::loadMask2D()
 {
     cout<<"Creat Mask 2D..."<<endl;
@@ -222,7 +222,7 @@ void cAppliTiepTriFar::loadMask2D()
             cout<<"Hull not possible"<<endl;
         }
 
-        // Remplit l'image de masque avec les point qui sont dans le polygone du convex Hull
+        // Remplit l'image de masque with les point qui sont in le polygone du convex Hull
         aImg->MasqIm() =  Im2D_Bits<1>(aImg->Tif().sz().x,aImg->Tif().sz().y,0);
         aImg->TMasqIm() = TIm2DBits<1> (aImg->MasqIm());
         ElList<Pt2di>  aLTri;
@@ -388,7 +388,7 @@ int cAppliTiepTriFar::Matching()
     cImgTieTriFar * aIm1 = this->ImgLeastPts();
     cout<<" + Im1 : "<<aIm1->NameIm()<<" - NbPt to match : "<<mPtToCorrel.size()<<endl;
 
-    // Load ZBuffer for Image Least Pts
+    // Load ZBuffer for image Least Pts
     cout<<"  + Load ZBuffer ... ";
     aIm1->ImInit().Resize(aIm1->TifZBuf().sz());
     aIm1->TImInit() = tTImZBuf(aIm1->ImInit());

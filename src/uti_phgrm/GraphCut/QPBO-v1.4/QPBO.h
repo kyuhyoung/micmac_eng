@@ -38,7 +38,7 @@
 
         P. L. Hammer, P. Hansen, and B. Simeone.
         Roof duality, complementation and persistency in quadratic 0-1 optimization.
-        Mathematical Programming, 28:121–155, 1984.
+        Mathematical Programming, 28:121155, 1984.
 
         E. Boros, P. L. Hammer, and X. Sun.
         Network flows and minimization of quadratic pseudo-Boolean functions.
@@ -124,7 +124,7 @@
 
 // REAL: can be int, float, double.
 // Current instantiations are in instances.inc
-// NOTE: WITH FLOATING POINT NUMBERS ERRORS CAN ACCUMULATE.
+// NOTE: WITH FLOATING point NUMBERS ERRORS CAN ACCUMULATE.
 // IT IS STRONGLY ADVISABLE TO USE INTEGERS!!! (IT IS ALSO *MUCH* FASTER).
 template <typename T> class QPBO
 {
@@ -262,7 +262,7 @@ public:
     //
     //         A. Billionnet and B. Jaumard.
     //         A decomposition method for minimizing quadratic pseudoboolean functions.
-    //         Operation Research Letters, 8:161–163, 1989.
+    //         Operation Research Letters, 8:161163, 1989.
     //
     //     For a review see also
     //
@@ -346,7 +346,7 @@ public:
         unsigned int order_seed; // used only if order_array == NULL:
                                  // 0: default order (0,1,...,nodeNum()-1) is used.
                                  // otherwise: random permutation with random seed 'order_seed' is used.
-        int dilation; // determines order of processing nodes (see Rother et al. CVPR'07):
+        int dilation; // determines order of processing nodes (see Rother and al. CVPR'07):
                       // d<0:  one iteration tests all unlabeled nodes (i.e. fixes them to 0 and 1).
                       // d>=0: nodes within distance d from successful nodes are tested in the next iteration.
 
@@ -374,7 +374,7 @@ public:
     //
     // Before calling Probe() you can call SetLabel() to set an input labeling x0.
     // During the procedure this labeling is transformed. The new labeling y0 can
-    // be read via GetLabel() after Probe() (P+I method - see Rother et al, CVPR'07).
+    // be read via GetLabel() after Probe() (P+I method - see Rother and al, CVPR'07).
     void Probe(int* mapping, ProbeOptions& option);
 
     // If Probe() is called two times, then mappings mapping0 and mapping1 produced by the first and

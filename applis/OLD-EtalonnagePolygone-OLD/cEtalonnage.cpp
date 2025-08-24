@@ -960,8 +960,8 @@ void cEtalonnage::CalculModeleRadiale
 	     //  AddFileXML( El2Xml((*iTC)->AppuisInit()),aNameFile);
 	     AddFileXML( El2Xml((*iTC)->AppuisInit(),(*iTC)->IndAppuisInit()),aNameFile);
 
-	     // R est la rotation qui transforme les coordonnees monde en
-	     // coordonnees camera :  aR.IRecAff(Pt3dr(0,0,0))  est un centre optique
+	     // R est la rotation qui transforme les coordinates monde en
+	     // coordinates camera :  aR.IRecAff(Pt3dr(0,0,0))  est un centre optique
 	     
 	     /*
 	     std::cout << "  " << aR.ImAff(Pt3dr(0,0,0)) 

@@ -109,7 +109,7 @@ cDataOneInvRad::cDataOneInvRad(cAppli_ComputeParamIndexBinaire & anAppli,cDataOn
        std::vector<std::string>  aVS0;  //! Get all file corresponding to regular expression
        GetFilesFromDir(aVS0,mAppli.DirCurPC() +  E2Str(mTIR)  ,AllocRegex("Cple.*tif"));
 
-       //  Select a subset with a given proportion (parametre PropF of command)
+       //  Select a subset with a given proportion (parameter PropF of command)
        double aProp = mAppli.PropFile();
        for (int aK=0 ; aK<(int)aVS0.size() ; aK++)
            if (round_ni((aK-1)*aProp) != round_ni(aK*aProp))  //! Mathematicall formula to select a proportion of aProp
@@ -136,7 +136,7 @@ cDataOneInvRad::cDataOneInvRad(cAppli_ComputeParamIndexBinaire & anAppli,cDataOn
         }
         else
         {
-            // Sz.x of patch must be equal for all Image in one invariant
+            // Sz.x of patch must be equal for all image in one invariant
             if ((2*mSzP0Init.x())!= mMDOFIR.back().mDFIm.Sz().x())
             {
                  MMVII_UserError(eTyUEr::eUnClassedError,"Variable size in Invariant rad");

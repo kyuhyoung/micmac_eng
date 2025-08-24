@@ -1841,7 +1841,7 @@ class TAG_TIF_PREDICTOR :  public  TAG_TIF
         }
         bool write_value (DATA_Tiff_Ifd *Di,ELISE_fp fp)
         {
-// certain lecteur ne comprennent pas ce tag, donc quand valeur par
+// certain lecteur ne comprennent pas ce tag, donc when value par
 // defaut, on ne met rien
              if(Di->_predict != Tiff_Im::No_Predic)
              {
@@ -2265,7 +2265,7 @@ cTAG_TIF_TileFileLength  cTAG_TIF_TileFileLength::The_only_one;
 
 /***********************************************************/
 /***                                                     ***/
-/***                    TAGS EXIF ET TIFS                ***/
+/***                    TAGS EXIF and TIFS                ***/
 /***                                                     ***/
 /***********************************************************/
 
@@ -2513,7 +2513,7 @@ cTAG_TIF_ExifTiff_Date  cTAG_TIF_ExifTiff_Date::The_only_one;
 /***********************************************************/
 /***********************************************************/
 /***                                                     ***/
-/***           TABLEAU DE L'ENSEMBLE DES TAGS            ***/
+/***           array DE L'ENSEMBLE DES TAGS            ***/
 /***                                                     ***/
 /***********************************************************/
 /***********************************************************/

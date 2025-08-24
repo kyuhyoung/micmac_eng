@@ -144,7 +144,7 @@ class cOneImSPH
          std::string        mN;
          cBasicGeomCap3D *  mCam;
          cSetPCarac *       mCurSPC;
-         std::vector<cOnePCarac*>  mCurAPC; // Classe par label
+         std::vector<cOnePCarac*>  mCurAPC; // class par label
          std::vector<cOnePCarac*>  mVHom;
          Tiff_Im            mTif;
 };
@@ -187,7 +187,7 @@ void FiltrageNbHighestScale(std::vector<cOnePCarac*> & aVec,int aNb,bool aShow)
         aVStab.push_back(aS);
     }
 
-    // On selectionne ceux qui sont au dessus de l'echelle limite
+    // On selectionne ceux qui sont au dessus de l'scale limite
     double aProp = 1-aNb/(double) aVec.size();
     double aScaleLim = KthValProp(aVStab,aProp);
     if (aShow)
@@ -247,7 +247,7 @@ cOnePCarac * cOneImSPH::Nearest(const Pt2dr& aP0,double &aDMin,double aMinDMin)
     return aRes;
 }
 
-// Ajoute des exemples randomise de point dans la partie SRPC_Rand
+// Ajoute des exemples randomise de point in la partie SRPC_Rand
 void AddRand(cSetRefPCarac & aSRef,const std::vector<cOnePCarac*> aVP, int aNb)
 {
    cRandNParmiQ aRNpQ(aNb,aVP.size());
@@ -300,11 +300,11 @@ void cOneImSPH::TestMatch(cOneImSPH & aI2,eTypePtRemark aLab)
         std::vector<int>  aHistoScale(aDifMax+1,0);
         std::vector<int>  aHistoScaleStab(aDifMax+1,0); 
         double aSeuilDist = 2.0;  // Seuil distance en pixel
-        double aSeuilProp = 0.02; // Seuil proportionnalité sur le fait d'etre le best, sur distance eucl 
+        double aSeuilProp = 0.02; // Seuil proportionnalité on le fait d'etre le best, on distance eucl 
                                   // des curves
         int aNbOk=0;
 
-        const std::vector<cOnePCarac*>  &   aV1 = mCurAPC;  // Par compta avec vieux code
+        const std::vector<cOnePCarac*>  &   aV1 = mCurAPC;  // Par compta with vieux code
         const std::vector<cOnePCarac*>  &   aV2 = aI2.mCurAPC;
 
         std::vector<cOnePCarac>  aVObj1;
@@ -370,8 +370,8 @@ void cOneImSPH::TestMatch(cOneImSPH & aI2,eTypePtRemark aLab)
 
                
                          if (0) // Affichage ScaleStab
-                         // Conclusion, on peut sans doute limiter le nombre de point avec ScaleStab
-                         // pour filtrage a priori => genre les 500 les plus stable
+                         // Conclusion, on peut without doute limiter le number de point with ScaleStab
+                         // for filtrage a priori => genre les 500 les plus stable
                          {
                             double aRatioS = aV1[aK1]->ScaleStab() / aP->ScaleStab();
                             aRatioS = ElAbs(log(aRatioS) / log(2));
@@ -381,7 +381,7 @@ void cOneImSPH::TestMatch(cOneImSPH & aI2,eTypePtRemark aLab)
                          }
                          
                          // aHistoScaleStab.at(ElMin(aDifMax,ElAbs(aV1[aK1]->ScaleStab() - aP->ScaleStab())))++;
-                         // SCore calcule sur les courbes
+                         // SCore compute on les courbes
                          double aPropInv = 1 - ScoreTestMatchInvRad(aVSelObj1,aV1[aK1],aP);
                          
                          
@@ -600,7 +600,7 @@ void cAppliStatPHom::TestHom()
            }
         }
     }
-    //  La, on test la qualite des references , epipolaire et nuages
+    //  La, on test la qualite des references , epipolaire and nuages
     ShowStat("ECAR EPIP pour les points SIFT",20,aVREpi);
     ShowStat("ECAR COMPLET pour les points SIFT",20,aVRComp);
     std::cout << " Perc with hom " << (aVRComp.size() * 100.0) / mPack.size() << "\n";
@@ -746,7 +746,7 @@ int  CPP_StatPHom(int argc,char ** argv)
 /*
 
 extern const std::string NH_DirRefNuage;
-extern const std::string NH_DirRef_PC;  // Point caracteristique
+extern const std::string NH_DirRef_PC;  // point caracteristique
     
 */
 

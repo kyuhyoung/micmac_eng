@@ -278,7 +278,7 @@ Nota: on peut utiliser cette fonction avec "phot-out" = "phot-in".
 */
 
 /************************************************************************
-6.) PHOTOGRAMMETRIE (Coordonnees)				*********/
+6.) PHOTOGRAMMETRIE (coordinates)				*********/
 
 /*===============================*/
  int orcarte_to_terrain ( 		void** 		/*phot*/,
@@ -301,10 +301,10 @@ Nota: on peut utiliser cette fonction avec "phot-out" = "phot-in".
 /*===============================*/
  double orphotos_to_terrain ( 		void** 		/*phot-1*/, 
 /*===============================*/	double* 	/*colonne-1*/, 
-					double* 	/*ligne-1*/,
+					double* 	/*line-1*/,
 				     	void** 		/*phot-2*/, 
 					double*		/*colonne-2*/, 
-					double* 	/*ligne-2*/,
+					double* 	/*line-2*/,
 				     	double* 	/*xterre*/, 
 					double* 	/*yterre*/, 
 					double* 	/*zterre*/ ) ;
@@ -317,7 +317,7 @@ NB : retourne -1.0 si les rayons perpectifs ne se coupent pas
 /*===============================*/
  int orphoto_et_zCarte_to_terrain (	void**	/*phot*/, 
 /*===============================*/		double*	/*colonne*/,
-					double* 	/*ligne*/, 
+					double* 	/*line*/, 
 					double* 	/*zCarte*/,
 					double* 	/*xterre*/,
 					double* 	/*yterre*/,
@@ -641,7 +641,7 @@ Renvoie l'altitude du sol stockee dans le fichier d'orientation
 
 
 /*===============================*/
- int orlit_orientation (const 		char* 		/*fichier*/, 
+ int orlit_orientation (const 		char* 		/*file*/, 
 /*===============================*/	void** 		/*phot*/ ) ;
 
 
@@ -650,7 +650,7 @@ Renvoie l'altitude du sol stockee dans le fichier d'orientation
 /*===============================*/
  int orphoto_et_z_to_terrain (		void** 		/*phot*/, 
 /*===============================*/	const double* 	/*colonne*/, 
-					const double* 	/*ligne*/, 
+					const double* 	/*line*/, 
 					const double* 	/*zterre*/,
 					double* 	/*xterre*/,
 					double* 	/*yterre*/ ) ;
@@ -658,7 +658,7 @@ Renvoie l'altitude du sol stockee dans le fichier d'orientation
 
  int orphoto_et_prof_to_terrain (      void** 		/*phot*/, 
 	                                const double* 	/*colonne*/, 
-					const double* 	/*ligne*/, 
+					const double* 	/*line*/, 
 					const double* 	/*prof*/,
 					double* 	/*xterre*/,
 					double* 	/*zterre*/ ,
@@ -690,7 +690,7 @@ ici zterre est en input, et la fonction ne retourne que (xterre, yterre)
 
 /*===============================*/
  int orecrit_orientation_texte ( 	void** 		/*photo*/, 
-/*===============================*/const	char* 		/*fichier*/ ) ;
+/*===============================*/const	char* 		/*file*/ ) ;
 /*
 Ecrit un fichier d'orientation (.ORI).
 Memes arguments que "Lit"
@@ -699,14 +699,14 @@ Meme chose que le precedent, mais dans un format texte.
 
 /*===============================*/
  int orecrit_orientation ( 		void** 		/*photo*/, 
-/*===============================*/const	char* 		/*fichier*/ ) ;
+/*===============================*/const	char* 		/*file*/ ) ;
 /*
 Ecrit un fichier d'orientation (.ORI).
 Memes arguments que "Lit"
 */
 
 /*===============================*/
- int orlit_orientation_texte ( 	const char* 		/*fichier*/, 
+ int orlit_orientation_texte ( 	const char* 		/*file*/, 
 /*===============================*/	void** 		/*phot*/,
                                     bool QuickGrid) ;
 /*
@@ -723,7 +723,7 @@ Meme chose que le precedent, mais dans un format texte.
 			        const	double* 	/*yterre*/, 
 				const	double* 	/*zterre*/,
 			   		double* 	/*colonne*/, 
-					double* 	/*ligne*/ ) ;
+					double* 	/*line*/ ) ;
 
 
 

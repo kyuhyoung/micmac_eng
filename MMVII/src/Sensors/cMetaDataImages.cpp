@@ -19,7 +19,7 @@ namespace MMVII
 
 //  =========  These class are used to indicate information missing (or wrong) on metadata or other stuff
 
-class cOneTryCAI;                 ///< contains a pair Pattern => Transformation
+class cOneTryCAI;                 ///< contains a pair Pattern => transformation
 class cOneTranslAttrIm;           ///< contains the set of pair for a given type
 class cOneCalculMetaDataProject;  ///< contains all the translation for all type, contained in a single file
 class cGlobCalculMetaDataProject; ///< contains all the files

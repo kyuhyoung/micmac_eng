@@ -214,7 +214,7 @@ Pt3dr cGeoc_WGS4::FromGeoC(const Pt3dr & aP) const
    double h = 0;
 
    int maxiter=500;
-   // MPD modif 1e-10 => 1e-15 ; car influence sur la precision des RPC
+   // MPD modif 1e-10 => 1e-15 ; car influence on la precision des RPC
    double epsilon=1e-15;
    int i=0;
    double delta_lat=1234;
@@ -255,7 +255,7 @@ cCs2Cs::cCs2Cs(const std::string  & aStr) :
 std::vector<Pt3dr> cCs2Cs::Chang(const std::vector<Pt3dr> & aPtsIn) const
 {
 
-   std::string aTmpIn = "Proj4Input"+GetUnikId() +".txt";  // Pour exe en //
+   std::string aTmpIn = "Proj4Input"+GetUnikId() +".txt";  // for exe en //
    FILE * aFPin = FopenNN(aTmpIn,"w","cCs2Cs::Chang");
    for (int aK= 0 ; aK< int(aPtsIn.size()) ; aK++)
    {
@@ -367,7 +367,7 @@ std::vector<Pt3dr> cProj4::FromGeoC(const std::vector<Pt3dr> & aV) const
 std::vector<Pt3dr> cProj4::Chang(const std::vector<Pt3dr> & aPtsIn, bool Sens2GeoC) const
 {
    cGeoc_WGS4 aWD(eUniteAngleDegre);
-   std::string aTmpIn = "Proj4Input"+GetUnikId() +".txt";  // Pour exe en //
+   std::string aTmpIn = "Proj4Input"+GetUnikId() +".txt";  // for exe en //
    FILE * aFPin = FopenNN(aTmpIn,"w","cProj4::Chang");
    for (int aK= 0 ; aK< int(aPtsIn.size()) ; aK++)
    {
@@ -777,8 +777,8 @@ void cOneSenSysPolyn::SetByApr
 
 
 
-// A partir d'un systeme A (eventuellement Ident)  et d'exemples transforamnt A en B,
-// calcule une approcimxtiona polynoimale de B;
+// A partir d'un system A (eventuellement Ident)  and d'exemples transforamnt A en B,
+// compute une approcimxtiona polynoimale de B;
 
 class  cSysCoordPolyn : public cSysCoord
 {
@@ -925,7 +925,7 @@ cSysCoord * cSysCoord::RTL(Pt3d<double> const& aGOri)  // Origine Geocentrique
 {
    cSysCoord * aSW = cSysCoord::WGS84();
 
-   Pt3dr aWOri  = aSW->FromGeoC(aGOri);  // Origine WGS4 pour calculer le plan tanget
+   Pt3dr aWOri  = aSW->FromGeoC(aGOri);  // Origine WGS4 for compute le plan tanget
 
    Pt3dr  aU = WGS84()->OdgEnMetre();
    Pt3dr  aDirX = vunit(aSW->ToGeoC(aWOri+Pt3dr(1/aU.x,0,0))-aGOri);
@@ -1072,8 +1072,8 @@ cSysCoord * cSysCoord::FromXML
         Pt3dr  aDirZ =  vunit(aSRtl->ToGeoC(Pt3dr(aX,aY,aZ+1/aU.z))- anOri);
 
         // std::cout << "SCAL " << scal(aDirX,aDirY) <<  " " << scal(aDirX,aDirZ) <<  " " << scal(aDirZ,aDirY) <<  "\n";
-        // Avec WGS, les vecteurs sont deja Orthog, mais bon ... 
-        // Au cas, ou on conserve le plan "horiz" et le "nord" de ce plan
+        // with WGS, les vecteurs sont deja Orthog, but bon ... 
+        // Au cas, or on conserve le plan "horiz" and le "nord" de ce plan
          aDirZ = vunit(aDirX ^ aDirY);
          aDirX = vunit(aDirY ^aDirZ);
 */
@@ -1562,7 +1562,7 @@ cChSysCo::~cChSysCo()
 /*
 
         Pt3dr Loc2File(const Pt3dr & ) const;
-        Pt3dr Loc2File(const Pt2dr & ) const;  // Valide si ZMoyen
+        Pt3dr Loc2File(const Pt2dr & ) const;  // Valide if ZMoyen
         Pt3dr Loc2GeoC(const Pt3dr & ) const;
         Pt3dr Loc2GeoC(const Pt2dr & ) const;
 */

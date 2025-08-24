@@ -357,7 +357,7 @@ void Data_Elise_PS_Disp::RdefF::put_prim(Data_Elise_PS_Disp * psd,defF * newdefF
 /************************************************************************/
 
 
-// Je ne sais plus du tout d'ou vient cette valeur. 
+// Je ne sais plus du tout d'or vient cette value. 
 // Peut etre d'un vielle mesure ? A affiner eventuellement
 
 const REAL PS_Display::picaPcm = 451.0 / 15.8;

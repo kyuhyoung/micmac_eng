@@ -437,7 +437,7 @@ template <class TypeCompiled>  class cGenOperatorBinaire
          static tFormula   Generate(tFormula aF1,tFormula aF2,const std::string & ="" )
          {
              const std::string & aNameOp  = TypeCompiled::StaticNameOperator();
-             // Extract context (take F1 ou F2, does not matter, they must be the same)
+             // Extract context (take F1 or F2, does not matter, they must be the same)
              tCoordF * aPCont = aF1->CoordF();  
              std::string aNameForm =  aF1.NameFormulaBin(aNameOp,aF2);
 	     if (aPCont!= aF2->CoordF())  // MPD : was not tested before ?

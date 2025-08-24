@@ -268,7 +268,7 @@ void cRanscMinimMatEss::OneTest(int aCpt)
 {
     ShowStatMatCond = false;
 
-    /* Calcul de la matrice essentielle; */
+    /* computation de la matrix essentielle; */
 
     double aDS[9];
     int aKUnused = NRrandom3(13);

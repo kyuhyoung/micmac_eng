@@ -107,7 +107,7 @@ int main(int argc,char ** argv)
 */
 
     
-  // Partie utilisation du relevement dans l'espace
+  // Partie utilisation du relevement in l'espace
   CamStenopeIdeale aCamInc(2128.51,Pt2dr(1298.47,972.67));
 
   REAL aDist;

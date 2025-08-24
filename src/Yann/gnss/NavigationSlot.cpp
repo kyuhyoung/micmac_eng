@@ -89,8 +89,8 @@ void NavigationSlot::print(){
 }
 
 // -------------------------------------------------------------------------------
-// Calcul de l'anomalie excentrique par la méthode :
-// (1) du point fixe ou (2) de Newton-Raphson
+// computation de l'anomalie excentrique par la méthode :
+// (1) du point fixe or (2) de Newton-Raphson
 // -------------------------------------------------------------------------------
 double NavigationSlot::eccentricAnomaly(double meanAnomaly, double eccentricity, int method){
 
@@ -125,27 +125,27 @@ double NavigationSlot::eccentricAnomaly(double meanAnomaly, double eccentricity,
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
+// computation d'une position de satellite à partir d'un slot de données de rinex .nav
 // L'argument pseudorange permet de déduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 ECEFCoords NavigationSlot::computeSatellitePos(GPSTime time, double pseudorange){
 
-	// Calcul de l'écart au temps de référence
+	// computation de l'écart au temps de référence
 	double tk0 = (time.wt_week-this->time.wt_week)*SECONDS_WEEK;
 	tk0 += time.wt_sec-this->toe;
 	tk0 += time.ms/1000.0;
 	tk0 = tk0 - pseudorange/Utils::C;
 
-	// Calcul des paramètres de base
+	// computation des paramètres de base
 	double a = this->sqrt_a*this->sqrt_a;
 	double e = this->ecc;
 	double n = sqrt(Utils::Mue/pow(a, 3)) + this->delta_n;
 	double Mk = this->m0 + n*tk0;
 
-	// Calcul de l'anomalie excentrique
+	// computation de l'anomalie excentrique
 	double Ek = eccentricAnomaly(Mk, e,  NEWTON_RAPHSON);
 
-	// Calcul de la position d'orbite
+	// computation de la position d'orbite
 	double rk = a*(1.0-e*cos(Ek));
 	double vk = atan2(sqrt(1.0-e*e)*sin(Ek), cos(Ek)-e);
 	double pk = vk + this->omega;
@@ -162,17 +162,17 @@ ECEFCoords NavigationSlot::computeSatellitePos(GPSTime time, double pseudorange)
 	rk = rk + this->crs*sin(2.0*pk) + this->crc*cos(2.0*pk);
 	ik = ik + this->cis*sin(2.0*pk) + this->cic*cos(2.0*pk);
 
-	// Coordonnées dans le plan orbital
+	// Coordonnées in le plan orbital
 	double xk = rk*cos(uk);
 	double yk = rk*sin(uk);
 
-	// Rotation dans le repère ECEF
+	// rotation in le repère ECEF
 	ECEFCoords xyz;
 	xyz.X = xk*cos(Omegak) - yk*sin(Omegak)*cos(ik);
 	xyz.Y = xk*sin(Omegak) + yk*cos(Omegak)*cos(ik);
 	xyz.Z =                  yk*sin(ik);
 
-	// Rotation dans l'ECI
+	// rotation in l'ECI
     xyz.shiftECEFRef(pseudorange/Utils::C);
 
 	return xyz;
@@ -180,7 +180,7 @@ ECEFCoords NavigationSlot::computeSatellitePos(GPSTime time, double pseudorange)
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
+// computation d'une position de satellite à partir d'un slot de données de rinex .nav
 // -------------------------------------------------------------------------------
 ECEFCoords NavigationSlot::computeSatellitePos(GPSTime time){
 	return computeSatellitePos(time, 0);
@@ -188,35 +188,35 @@ ECEFCoords NavigationSlot::computeSatellitePos(GPSTime time){
 
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
+// computation de l'error d'horloge d'un satellite
 // L'argument pseudorange permet de déduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 double NavigationSlot::computeSatelliteClockError(GPSTime time, double pseudorange){
 
-    // Calcul de l'écart au temps de référence
+    // computation de l'écart au temps de référence
 	double tk0 = (time.wt_week-this->time.wt_week)*SECONDS_WEEK;
 	tk0 += time.wt_sec-this->toe;
 	tk0 = tk0 - pseudorange/Utils::C;
 
-	// Calcul des paramètres de base
+	// computation des paramètres de base
 	double c = Utils::C;
 	double e = this->ecc;
     double a =  this->sqrt_a*this->sqrt_a;
 	double n = sqrt(Utils::Mue/pow(a, 3)) + this->delta_n;
 	double Mk = this->m0 + n*tk0;
 
-	// Calcul de l'anomalie excentrique
+	// computation de l'anomalie excentrique
 	double Ek = eccentricAnomaly(Mk, e,  NEWTON_RAPHSON);
 
-    // Calcul de l'écart au temps de référence
+    // computation de l'écart au temps de référence
 	tk0 = (time.wt_week-this->time.wt_week)*SECONDS_WEEK;
 	tk0 += time.wt_sec-this->getTime().wt_sec;
 	tk0 = tk0 - pseudorange/c;
 
-	// Calcul de la correction relativiste due à l'excentricité
+	// computation de la correction relativiste due à l'excentricité
     double dtr = -2.0*sqrt(Utils::Mue)/(c*c)*this->sqrt_a*e*sin(Ek);
 
-    // Calcul de la correction totale
+    // computation de la correction totale
     double error = this->sv_clock_bias;
     error += (this->sv_clock_drift + this->sv_clock_drift_rate*tk0)*tk0;
     error += dtr - this->tgd;
@@ -226,7 +226,7 @@ double NavigationSlot::computeSatelliteClockError(GPSTime time, double pseudoran
 
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
+// computation de l'error d'horloge d'un satellite
 // -------------------------------------------------------------------------------
 double NavigationSlot::computeSatelliteClockError(GPSTime time){
     return computeSatelliteClockError(time, 0);

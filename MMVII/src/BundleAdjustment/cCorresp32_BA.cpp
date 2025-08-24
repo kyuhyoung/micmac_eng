@@ -100,7 +100,7 @@ void cCorresp32_BA::OneIteration()
                   aStrSubst.AddFixCurVarTmp(anInd,1.0);
             }
 
-            // "observation" of equation  : PTIm (real obs) + Cur-Rotation (Rot = Axiator*CurRot : to avoid guimbal-lock)
+            // "observation" of equation  : PTIm (real obs) + Cur-rotation (Rot = Axiator*CurRot : to avoid guimbal-lock)
             std::vector<double> aVObs = aCorresp.mP2.ToStdVector(); //  Add X-Im, Y-Im in obs
 
 	    mSensor->PushOwnObsColinearity(aVObs,aCorresp.mP3); // For PC cam dd all matrix coeff og current rot

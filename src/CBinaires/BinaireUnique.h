@@ -215,7 +215,7 @@ int  BinaireUnique
   
 
         #ifdef __TRACE_SYSTEM__
-		// a utiliser avec precautions, genere des problemes a l'utilisation de MpDcraw
+		// a utiliser with precautions, genere des problemes a l'utilisation de MpDcraw
 		//printf("%s calls [%s]\n", argv[0], g_command.data); fflush(stdout);
 	#endif
         fflush(stdout);

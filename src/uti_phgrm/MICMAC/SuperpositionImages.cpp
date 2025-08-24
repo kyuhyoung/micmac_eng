@@ -68,10 +68,10 @@ class cOneImageSup
       void LoadIm(bool First);
       Fonc_Num ColBal(); // Couleur "balancee des blancs"
 
-      // Valeur "vraie", utilise les calcul de MEC
+      // value "vraie", utilise les computation de MEC
       Pt2dr  LocFromRef(Pt2dr aP);
 
-      // Valeur "fausse", utilise la saisie initiale
+      // value "fausse", utilise la saisie initiale
 
     private :
       Pt2dr  FromRef(Pt2dr aP);

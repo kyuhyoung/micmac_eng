@@ -78,8 +78,8 @@ Im1D_REAL8 Convol(Im1D_REAL8 aI1,Im1D_REAL8 aI2)
    return Convol(aI1,aI1.tx()/2,aI2,aI2.tx()/2);
 }
 
-   // Pour utiliser un filtre sur les bord, clip les intervalle
-   // pour ne pas deborder et renvoie la somme partielle
+   // for utiliser un filtre on les bord, clip les intervalle
+   // for ne pas deborder and renvoie la somme partielle
 template <class tBase> tBase ClipForConvol( int aSz, int aKXY, tBase *aData, int & aDeb, int &aFin )
 {
 	ElSetMax(aDeb,-aKXY);
@@ -94,8 +94,8 @@ template <class tBase> tBase ClipForConvol( int aSz, int aKXY, tBase *aData, int
 
 
 
-   // Produit scalaire basique d'un filtre lineaire avec une ligne
-   // et une colonne image
+   // Produit scalaire basique d'un filtre lineaire with une line
+   // and une colonne image
 template <class Type,class tBase> 
 inline tBase CorrelLine(tBase aSom,const Type * aData1,const tBase *  aData2,const int & aDeb,const int & aFin)
 {
@@ -187,7 +187,7 @@ void SetConvolSepX
 		SetConvolBordX( i_srcData, i_width, i_height, i_dstData, anX, aCS->DataCoeff(), aCS->Deb(), aCS->Fin() );
 
 	int aX1 = std::max( i_width-aCS->Fin(), anX );
-	for ( anX=aX1; anX<i_width; anX++ ) // max car aX1 peut être < aX0 voir negatif et faire planter
+	for ( anX=aX1; anX<i_width; anX++ ) // max car aX1 peut être < aX0 voir negatif and faire planter
 		SetConvolBordX( i_srcData, i_width, i_height, i_dstData, anX, aCS->DataCoeff(), aCS->Deb(), aCS->Fin() );
 
 	// const tBase aSom = InitFromDiv(ShiftG(tBase(1),aNbShitX),(tBase*)0);

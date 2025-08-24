@@ -9,7 +9,7 @@ std::string sep2 = "============================================================
 // Rinex files specifications : https://www.ngs.noaa.gov/CORS/RINEX-2.txt
 
 // ---------------------------------------------------------------
-// Fonction de récupération du tag de commentaire de ligne
+// function de rcupration du tag de commentaire de line
 // ---------------------------------------------------------------
 std::string RinexReader::getComment(std::string &line){
 	if (line.length() < 60){
@@ -20,7 +20,7 @@ std::string RinexReader::getComment(std::string &line){
 
 
 // ---------------------------------------------------------------
-// Fonction de lecture d'un fichier de navigation rinex v2 et v3.
+// function de lecture d'un file de navigation rinex v2 and v3.
 // ---------------------------------------------------------------
 NavigationData RinexReader::readNavFile(std::string nav_file_path){
 
@@ -67,7 +67,7 @@ NavigationData RinexReader::readNavFile(std::string nav_file_path){
 
 
 // ---------------------------------------------------------------
-// Fonction de lecture d'un fichier de navigation rinex GPS v2
+// function de lecture d'un file de navigation rinex GPS v2
 // https://www.glonass-iac.ru/en/GLONASS/docs/rinex2.htm
 // ---------------------------------------------------------------
 NavigationData RinexReader::readNavFileV2(std::string nav_file_path){
@@ -197,7 +197,7 @@ NavigationData RinexReader::readNavFileV2(std::string nav_file_path){
 		std::getline(in, line);
 
 		// -----------------------------------------------------
-		// Contrôle de redondance
+		// Contrle de redondance
 		// -----------------------------------------------------
 
 		bool tps_different = true;
@@ -266,7 +266,7 @@ NavigationData RinexReader::readNavFileV2(std::string nav_file_path){
 }
 
 // ---------------------------------------------------------------
-// Fonction de lecture d'un fichier de navigation rinex GNSS v3
+// function de lecture d'un file de navigation rinex GNSS v3
 // ftp://igs.org/pub/data/format/rinex303.pdf
 // ---------------------------------------------------------------
 NavigationData RinexReader::readNavFileV3(std::string nav_file_path){
@@ -367,7 +367,7 @@ NavigationData RinexReader::readNavFileV3(std::string nav_file_path){
 		std::getline(in, line);
 
 		// -----------------------------------------------------
-		// Contrôle de redondance
+		// Contrle de redondance
 		// -----------------------------------------------------
 
 		bool tps_different = true;
@@ -447,7 +447,7 @@ NavigationData RinexReader::readNavFileV3(std::string nav_file_path){
 
 
 // ---------------------------------------------------------------
-// Fonction de lecture d'un fichier de navigation rinex GLONASS
+// function de lecture d'un file de navigation rinex GLONASS
 // https://www.glonass-iac.ru/en/GLONASS/docs/rinex2.htm
 // ---------------------------------------------------------------
 GloNavigationData RinexReader::readGloNavFile(std::string nav_file_path){
@@ -572,7 +572,7 @@ GloNavigationData RinexReader::readGloNavFile(std::string nav_file_path){
 		}
 
         // -----------------------------------------------------
-		// Contrôle de redondance
+		// Contrle de redondance
 		// -----------------------------------------------------
 
 		bool tps_different = true;
@@ -643,7 +643,7 @@ GloNavigationData RinexReader::readGloNavFile(std::string nav_file_path){
 }
 
 // ---------------------------------------------------------------
-// Fonction de lecture d'un fichier d'observations rinex
+// function de lecture d'un file d'observations rinex
 // ---------------------------------------------------------------
 ObservationData RinexReader::readObsFile(std::string obs_file_path){
 

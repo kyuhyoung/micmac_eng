@@ -46,10 +46,10 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 ElSimilitude SimilRobustInit(const ElPackHomologue & aPackFull,double aPropRan,int aNbTir);
 
-class cIndexCodeBinaire; // Permet de retrouver rapidement les element ayant peu de bits differents avec un pt car donne
-class cCdtCplHom; // Stocke une hypothese de deux pts car apparie le Master(M) et le secondaire
+class cIndexCodeBinaire; // Permet de retrouver rapidement les element ayant peu de bits differents with un pt car donne
+class cCdtCplHom; // Stocke une hypothese de deux pts car apparie le Master(M) and le secondaire
 class cSetOPC; // Un ensemble pt car, incluant un index binaire
-class cAFM_Im; // Class maitre  des image , master ou secondaire
+class cAFM_Im; // Class maitre  des image , master or secondaire
 class cAFM_Im_Master; // Specialisation master
 class cAFM_Im_Sec ;   // Specialisation secondaire
 class cAppli_FitsMatch1Im; // class application
@@ -71,7 +71,7 @@ class cIndexCodeBinaire
          std::vector<std::vector<cCompileOPC *> > mVTabIndex;
 };
 
-// Stocke une hypothese de deux pts car apparie le Master(M) et le secondaire
+// Stocke une hypothese de deux pts car apparie le Master(M) and le secondaire
 class cCdtCplHom
 {
     public :
@@ -95,7 +95,7 @@ class cCdtCplHom
        double        mDistS; // Dist / a la predic simil
 };
 
-// Foncteur pour mettre le cCdtCplHom dans un quod tree
+// Foncteur for mettre le cCdtCplHom in un quod tree
 class cPtFromPCC
 {
    public :
@@ -109,7 +109,7 @@ typedef ElQT<cCdtCplHom*,Pt2dr,cPtFromPCC> tQtCC ;
 class cSetOPC
 {
     public :
-       // Initialise avec les 
+       // Initialise with les 
        void InitLabel(const cFitsOneLabel &,const cSeuilFitsParam&,bool DoIndex);
        cIndexCodeBinaire & Ind();
        const cFitsOneLabel &  FOL() const;
@@ -175,7 +175,7 @@ class cAFM_Im
          Pt2di       mSzIm;
          // cSetPCarac                             mSetPC;
          std::vector<cSetOPC*>                  mVSetCC;
-         std::vector<cSetOPC*>                  mSetInd0; // decision rapide sur l'overlap
+         std::vector<cSetOPC*>                  mSetInd0; // decision rapide on l'overlap
          // std::vector<cCompileOPC> &             mVIndex;
 
 };
@@ -261,7 +261,7 @@ class cAppli_FitsMatch1Im
           bool               mSelf;
           bool               mShowDet;
           bool               mCallBack;
-          Pt2di              mNbMaxS0;  // Nb max en presel x=> pour overlap en point a analyser, y=> pour modele 3D, y en point voulu
+          Pt2di              mNbMaxS0;  // Nb max en presel x=> for overlap en point a analyser, y=> for modele 3D, y en point voulu
           eTypePtRemark      mLabInit;
           bool               mDoFiltrageSpatial;
           int                mFlagLabsInit;
@@ -276,13 +276,13 @@ class cAppli_FitsMatch1Im
 // transforme les couples apparies en des points homologues classiques
 ElPackHomologue PackFromVCC(const  std::vector<cCdtCplHom> &aVCpl);
 
-// compare les couples, pour trier par mDistS decroissante
+// compare les couples, for trier par mDistS decroissante
 bool CmpCC(const cCdtCplHom & aC1,const cCdtCplHom & aC2) ;
 
 
 // Filtre les couples  selon un critere de direction globale
-//  1- Evalue cette direction par calcul de l'histogramme (convolue)
-//  2- calcule la direction principale
+//  1- Evalue cette direction par computation de l'histogramme (convolue)
+//  2- compute la direction principale
 //  3- filtre les points loin de cette direction
 
 void FiltrageDirectionnel(std::vector<cCdtCplHom> & aVCpl);

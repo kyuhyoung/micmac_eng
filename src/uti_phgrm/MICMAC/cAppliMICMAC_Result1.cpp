@@ -39,7 +39,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 #include "StdAfx.h"
 #include "../src/uti_phgrm/MICMAC/MICMAC.h"
 #ifdef MAC
-// Modif Greg pour avoir le nom de la machine dans les log
+// Modif Greg for avoir le nom de la machine in les log
 #include <sys/utsname.h>
 #endif
 
@@ -610,7 +610,7 @@ void cAppliMICMAC::MakeDefImMasq(int aDeZoomCible)
 	  //
 
 
-	  //  On ne fait pas confiance aux calcul inverse
+	  //  On ne fait pas confiance aux computation inverse
 	     Pt2di aP0 = Pt2di(0,0);
 	     Pt2di aP1 = aSzClip;
 
@@ -752,7 +752,7 @@ cFileOriMnt cAppliMICMAC::OrientFromParams(int aDz,REAL aStepZ)
    // Je ne comprend pas pourquoi j'avais mis cette verif
    //  Apparament, elle n'a pas gene car c'est surtout Bati3D qui utilisait
    //  les masque terrains, toujours en DimPx 1 (il est vrai que , en
-   //  geom image, le maque terrain peut etre confondu avec le masque im1 !)
+   //  geom image, le maque terrain peut etre confondu with le masque im1 !)
    // ELISE_ASSERT(mDimPx==1,"cAppliMICMAC::OrientFromParams, dim!=1");
 
    cEtapeMecComp & anEt0 = **(mEtapesMecComp.begin());
@@ -775,7 +775,7 @@ cFileOriMnt cAppliMICMAC::OrientFromParams(int aDz,REAL aStepZ)
 
 cFileOriMnt cAppliMICMAC::GetOri(const std::string & aNameOri) const
 {
-   // MODIF MPD , utilisation de la fonction normale,
+   // MODIF MPD , utilisation de la function normale,
    // SVP ne pas modifier en cas de pb (au - ne pas commiter les modifs).
    // venir me voir ....
    return StdGetObjFromFile<cFileOriMnt>
@@ -793,10 +793,10 @@ cFileOriMnt cAppliMICMAC::GetOri(const std::string & aNameOri) const
        aTree.TopVerifMatch(&aTreeSpec,"FileOriMnt");
     }
 
-    // Modif de Greg: si on donne directement la racine
+    // Modif de Greg: if on donne directement la racine
     // le xml_init ne fonctionne pas (il cherche des noeuds a la profondeur 1 au lieu de 2)
     // plutot que modidier le xml_init, on cherche le FileOriMnt
-    // A voir avec MPD
+    // A voir with MPD
     cElXMLTree* brancheFileOriMnt=aTree.Get("FileOriMnt",1);
 
     cFileOriMnt  aOriInit;
@@ -958,8 +958,8 @@ void GenTFW(const ElAffin2D & anAff,const std::string & aNameTFW)
     aFtfw.precision(10);
 
 
-    // Attention 1 Chance / 2 sur les terme croises aAfC2M.I10().y  et  aAfC2M.I01().x
-    // GM: attention pour avoir un tfw valide il faut un champ par ligne
+    // Attention 1 Chance / 2 on les terme croises aAfC2M.I10().y  and  aAfC2M.I01().x
+    // GM: attention for avoir un tfw valide il faut un champ par line
     aFtfw << anAff.I10().x << "\n" << anAff.I10().y << "\n";
     aFtfw << anAff.I01().x << "\n" << anAff.I01().y << "\n";
     aFtfw << anAff.I00().x << "\n" << anAff.I00().y << "\n";
@@ -1190,7 +1190,7 @@ void cAppliMICMAC::TestPointsLiaisons
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1206,17 +1206,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

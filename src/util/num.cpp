@@ -421,7 +421,7 @@ INT set_sub_bit(INT v,INT new_v,INT k0,INT k1)
       INT masq = (1 << (k1-k0)) -1;
 
       return
-                (v & ~(masq << k0))  // efface les bits entre k0 et k1
+                (v & ~(masq << k0))  // efface les bits between k0 and k1
               | ((new_v&masq) << k0);
 }
 
@@ -686,11 +686,11 @@ class cVarSetIntMultiple
        cVarSetIntMultiple();
        void Add(int anInt);
        bool IsIn (int anInt) const;
-       int  NumOrdre(int aI) const;  // Nombre d'Entier < a aI
+       int  NumOrdre(int aI) const;  // number d'integer < a aI
 
        bool operator < (const cVarSetIntMultiple &) const;
     private :
-        Pt2d<INT>  NumSub(const int & anI) const; // x le set, y le I dans le set
+        Pt2d<INT>  NumSub(const int & anI) const; // x le set, y le I in le set
         mutable std::vector<cINT8ImplemSetInt>  mSets;
 };
 */
@@ -922,7 +922,7 @@ Fonc_Num Tg2AsRxS2SRx(Fonc_Num aF)
    return 0;
 }
 
-//  Operateur utile au devt en four des fonction radiale
+//  Operateur utile au devt en four des function radiale
 
 double CosRx(double anX)
 {
@@ -1015,9 +1015,9 @@ double IsBadNum(double aV) {return std_isinf(aV) || std_isnan(aV);}
 
 
         Z = 13 ->    Delta = [-2,2]   // aucune contrainte
-        Z = 18 ->    Delta = [-2,1]   // Pour que ca reste dans I0
-        Z = 25 ->    Delta = [-6,-6]  //  Pour que l'intersection soit non vide avec I0
-        Z = 10 ->    Delta = [-5,-1]  // principe de symetrie, dans l'autre sens                                      // les points [5,9] de I0 devront etre connecte a 10
+        Z = 18 ->    Delta = [-2,1]   // for que ca reste in I0
+        Z = 25 ->    Delta = [-6,-6]  //  for que l'intersection soit non vide with I0
+        Z = 10 ->    Delta = [-5,-1]  // principe de symetrie, in l'autre sens                                      // les points [5,9] de I0 devront etre connecte a 10
 
 */
 
@@ -1041,7 +1041,7 @@ void ComputeIntervaleDelta
       if (aZ != aZ1Max-1)
          ElSetMin(aDzMax,MaxDeltaZ);
 
-       // Si les intervalles sont vides, on relie
+       // if les intervalles sont vides, on relie
        // les bornes des intervalles a tous les points
        if (aDzMin > aDzMax)
        {

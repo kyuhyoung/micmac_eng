@@ -11,7 +11,7 @@
 using namespace std;
 
 
-void multTransposeMatrix(const GLdouble* m) {	//pour Windows
+void multTransposeMatrix(const GLdouble* m) {	//for Windows
 	GLdouble* m2 = new GLdouble[16];
 	for (int i=0; i<4; i++)
 	for (int j=0; j<4; j++)
@@ -47,7 +47,7 @@ GLWidget::GLWidget(VueChantier *parent, GLParams* params, const ParamMain& pMain
 	espace[4] = 1;
 	espace[5] = visibilite*longueurChantier;
         GLdouble em = longueurChantier/(espace.at(5)+espace.at(4));
-	espace[0] = -em;	//pour que le chantier prenne toute la fenêtre à une profondeur moyenne et une focale moyenne
+	espace[0] = -em;	//for que le chantier prenne toute la fenêtre à une profondeur moyenne and une focale moyenne
 	espace[1] = em;
 	espace[2] = -em;
 	espace[3] = em;
@@ -114,14 +114,14 @@ void GLWidget::initializeGL() {
 	glEnable(GL_DEPTH_TEST);
         int f = parametres->getFocale();
         parametres->setFocale(0);
-	modifFocale(f);	//ne modifie rien si focale = le paramètre
+	modifFocale(f);	//ne modifie rien if focale = le paramètre
 	//setupViewport(width(), height());
 }
 
 void GLWidget::doNuages() {
 	//threads
 	if (parametres->getNuaglayers().count()==0 || !parametres->getNuaglayers().contains(true)) return;
-	/*QVector<NuageThread*> nuageThread(6*parametres->getNuages().count(),0);
+	/*QVector<NuageThread*> nuageThread(6*parameters->getNuages().count(),0);
         for (int i=0; i<parametres->getNuages().count(); i++) {
 		for (int j=0; j<6; j++)
 			nuageThread[6*i+j] = new NuageThread(this,i,j);
@@ -146,12 +146,12 @@ void GLWidget::doNuages() {
 
 
 GLuint GLWidget::makeObjectCam() {
-//dessin des emprises et des caméras
+//dessin des emprises and des caméras
 	//GLuint list = glGenLists(1);
 	parametres->incrNbGLLists();
 	GLuint list = parametres->getNbGLLists();
 	glNewList(list, GL_COMPILE);
-	glMatrixMode(GL_MODELVIEW);	//vue 3D des objets : rotations et translation
+	glMatrixMode(GL_MODELVIEW);	//vue 3D des objets : rotations and translation
 
 	//choix des couleurs
 	QList<QColor> couleurs;
@@ -200,7 +200,7 @@ GLuint GLWidget::makeObjectCam() {
 			glVertex3d(P4.x, P4.y, P4.z);
 			glVertex3d(P3.x, P3.y, P3.z);				
 		glEnd();
-		//point quand on est trop éloigné pour voir la cméra
+		//point when on est trop éloigné for voir la cméra
 		glBegin(GL_POINTS);
 			glVertex3d(C.x, C.y, C.z);
 		glEnd();
@@ -225,12 +225,12 @@ GLuint GLWidget::makeObjectCam() {
 }
 
 GLuint GLWidget::makeObjectEmp() {
-//dessin des emprises et des caméras
+//dessin des emprises and des caméras
 	//GLuint list = glGenLists(1);
 	parametres->incrNbGLLists();
 	GLuint list = parametres->getNbGLLists();
 	glNewList(list, GL_COMPILE);
-	glMatrixMode(GL_MODELVIEW);	//vue 3D des objets : rotations et translation
+	glMatrixMode(GL_MODELVIEW);	//vue 3D des objets : rotations and translation
 
 	//choix des couleurs
 	QList<QColor> couleurs;
@@ -293,7 +293,7 @@ GLuint GLWidget::makeObjectApp() {
 				n++;			
 			}
 		}
-//			QList<pair<Pt3dr, QColor> >* l2 = parametres->getPoses().at(infoBulle.second).getPtsAppui2nd();	//on allume aussi les points secondaires
+//			QList<pair<Pt3dr, QColor> >* l2 = parameters->getPoses().at(infoBulle.second).getPtsAppui2nd();	//on allume aussi les points secondaires
 //			for (int j=0; j<l2->count(); j++) {
 //					GLdouble xp = l2->at(j).first.x;
 //					GLdouble yp = l2->at(j).first.y;
@@ -433,7 +433,7 @@ GLuint GLWidget::makeBoule() {
 	glPushMatrix();
                 glCircle3i(1, parametres->modifRot());
 
-		GLdouble * m = new GLdouble[16];	//pb avec glGet
+		GLdouble * m = new GLdouble[16];	//pb with glGet
 		for (int i=0; i<4; i++) {
 		for (int j=0; j<4; j++) {
 			if (j==1) m[i+4*j] = parametres->getRot()[i+4*(j+1)];
@@ -460,8 +460,8 @@ GLuint GLWidget::makeBoule() {
 	return list;
 }
 void GLWidget::glCircle3i(GLint radius, GLdouble * m) {
-	//dessine un cercle de rayon 1 et d'axe z
-	//m : orientation finale du cercle pour dessiner l'arrière-plan en plus foncé
+	//dessine un cercle de rayon 1 and d'axe z
+	//m : orientation finale du cercle for dessiner l'arrière-plan en plus foncé
 		//recherche des angles limites d'arrière-plan
 	int precision = 100;
 	double i1 = 0;
@@ -515,18 +515,18 @@ void GLWidget::addNuages() {
 	for (int i=0; i<parametres->getNuages().count(); i++)
 		calcDezoom(i);
 	//à supprimer
-	/*objectNuag.resize(6*parametres->getNuages().count());
+	/*objectNuag.resize(6*parameters->getNuages().count());
 	for (int i=0; i<parametres->getNuages().count(); i++) {
 		for (int j=0; j<6; j++)
 			objectNuag[6*i+j] = makeObjectNuag(i,j);
 	}*/
 
-	//redimensionnement de la projection pour coller aux nuages
-     /*   GLdouble longueurChantier = max(max(parametres->getZonenuage().at(1)-parametres->getZonenuage().at(0),parametres->getZonenuage().at(3)-parametres->getZonenuage().at(2)),parametres->getZonenuage().at(5)-parametres->getZonenuage().at(4));
+	//redimensionnement de la projection for coller aux nuages
+     /*   GLdouble longueurChantier = max(max(parameters->getZonenuage().at(1)-parameters->getZonenuage().at(0),parameters->getZonenuage().at(3)-parameters->getZonenuage().at(2)),parameters->getZonenuage().at(5)-parameters->getZonenuage().at(4));
 	espace[4] = 1;
 	espace[5] = 1000*longueurChantier;
         GLdouble em = longueurChantier/(espace.at(5)+espace.at(4));
-	espace[0] = -em;	//pour que le chantier prenne toute la fenêtre à une profondeur moyenne et une focale moyenne
+	espace[0] = -em;	//for que le chantier prenne toute la fenêtre à une profondeur moyenne and une focale moyenne
 	espace[1] = em;
 	espace[2] = -em;
 	espace[3] = em;*///la projection sera redimensionnée par vueChantier->exec => resiezGL => setupViewport	
@@ -566,13 +566,13 @@ void GLWidget::paintEvent(QPaintEvent*) {
 	glCallList(boule);
 	glPopMatrix();
 
-	//dessin du chantier centré (par rapport au viewport et à l'espace)
-	//glTranslated(-(zoneChantierEtCam[0]+zoneChantierEtCam[1])/2.0, -(zoneChantierEtCam[2]+zoneChantierEtCam[3])/2.0, -(zoneChantierEtCam[4]+zoneChantierEtCam[5])/2.0-(espace[5]+espace[4])/2.0-abs(zoneChantierEtCam[5]-zoneChantierEtCam[4])/2.0);	//-(zoneChantierEtCam[5]-zoneChantierEtCam[4])/2.0 : le chantier est centré par rapport à son |z|min (sinon on voit pas tout)
+	//dessin du chantier centré (par rapport au viewport and à l'espace)
+	//glTranslated(-(zoneChantierEtCam[0]+zoneChantierEtCam[1])/2.0, -(zoneChantierEtCam[2]+zoneChantierEtCam[3])/2.0, -(zoneChantierEtCam[4]+zoneChantierEtCam[5])/2.0-(espace[5]+espace[4])/2.0-abs(zoneChantierEtCam[5]-zoneChantierEtCam[4])/2.0);	//-(zoneChantierEtCam[5]-zoneChantierEtCam[4])/2.0 : le chantier est centré par rapport à son |z|min (else on voit pas tout)
         glTranslated(0, 0, -(espace.at(5)+espace.at(4))/2.0);
-					//- + - : rotation de 180° autour de Y : X et Z négatifs => le chantier tourne autour de la caméra maîtresse
+					//- + - : rotation de 180° autour de Y : X and Z négatifs => le chantier tourne autour de la caméra maîtresse
 	glScaled(parametres->getScale(),parametres->getScale(),parametres->getScale());
 	glMultMatrixd(parametres->getRot());
-	glTranslated(parametres->getTrans().at(0), parametres->getTrans().at(1), parametres->getTrans().at(2));	// les transfo sont appliquées à l'envers : M'=MoR puis M'=MoT (dans le réf observateur)
+	glTranslated(parametres->getTrans().at(0), parametres->getTrans().at(1), parametres->getTrans().at(2));	// les transfo sont appliquées à l'envers : M'=MoR puis M'=MoT (in le réf observateur)
         if (parametres->getCamlayers().at(0)) glCallList(objectCam);
         if (parametres->getCamlayers().at(2)) glCallList(objectEmp);
         if (parametres->getCamlayers().at(1)) glCallList(objectApp);
@@ -633,7 +633,7 @@ void GLWidget::paintEvent(QPaintEvent*) {
 }
 
 bool GLWidget::calcDezoom(int num) {
-	//recherche la bonne résolution pour le nuage, renvoie true si elle a changé
+	//recherche la bonne résolution for le nuage, renvoie true if elle a changé
         if (parametres->getNuages().count()==0) return false;
 
 	//points extrêmes du nuage
@@ -650,11 +650,11 @@ bool GLWidget::calcDezoom(int num) {
 	//paramètres du nuage
         double f = double(parametres->getNuages().at(num).getFocale());	//en pixels
         const Pose* pose = &(parametres->getNuages().at(num).getPose());
-    //-- const cElNuage3DMaille* nuage = parametres->getNuages().at(num).getPoints().at(0);
+    //-- const cElNuage3DMaille* nuage = parameters->getNuages().at(num).getPoints().at(0);
 	//-- Pt2dr Pt = nuage->Plani2Index(Pt2dr(pose->width()/2,pose->height()/2));
-	//double profondeurMoy = nuage->ProfEnPixel(Pt2di(Pt.x,Pt.y));	//peut aussi être la plus petite distance entre S et les ptsExtremes (au cas où l'objet ne serait pas centré)
+	//double profondeurMoy = nuage->ProfEnPixel(Pt2di(Pt.x,Pt.y));	//peut aussi être la plus petite distance between S and les ptsExtremes (au cas où l'object ne serait pas centré)
 
-	//distance des points au sommet pour avoir la profondeur réelle du nuage
+	//distance des points au sommet for avoir la profondeur réelle du nuage
 	double profondeurMoy = numeric_limits<REAL>::max();
 	Pt3dr C = pose->centre();
 	QVector<REAL> C2;
@@ -667,13 +667,13 @@ bool GLWidget::calcDezoom(int num) {
 		if (abs(profondeurMoy)>abs(dist)) profondeurMoy = dist;
 	}
 
-	//calcul de la profondeur des points extrêmes nuage à l'écran
+	//computation de la profondeur des points extrêmes nuage à l'écran
 	REAL Tz = -numeric_limits<REAL>::max();
 	for (int k=0; k<6; k++) {
 		REAL Tzecran = 0;
 		QVector<REAL> P(ptsExtremes[k]);
 		P.push_back(1);	
-		GLdouble * m = new GLdouble[16];	//matrice terrain -> opengl (T0 s R T)
+		GLdouble * m = new GLdouble[16];	//matrix terrain -> opengl (T0 s R T)
 		glPushMatrix();
 		glLoadIdentity();
 		glTranslated(0, 0, -(espace.at(5)+espace.at(4))/2.0);
@@ -695,9 +695,9 @@ bool GLWidget::calcDezoom(int num) {
 	}
 
 	//dézoom (pow2 de 1 à 32)
-	double dezoom = abs(Tz) * f * 2.0 / winZ / abs(profondeurMoy) / parametres->getScale();	// / (parametres->getFocale()/500.0) : compris dans winZ
+	double dezoom = abs(Tz) * f * 2.0 / winZ / abs(profondeurMoy) / parametres->getScale();	// / (parameters->getFocale()/500.0) : compris in winZ
 	int newDezoom = floor(5.0 - log(max(0.0,dezoom))/log(2.0)) + 1;
-	//int newDezoom = ceil(5.0 - log(max(0.0,dezoom))/log(2.0));	//pour avoir 1 pt/px de l'écran
+	//int newDezoom = ceil(5.0 - log(max(0.0,dezoom))/log(2.0));	//for avoir 1 pt/px de l'écran
 	newDezoom = max (min (5, newDezoom), 0);
 	newDezoom = min(newDezoom,parametres->getNuages().at(num).getZoomMax());
 
@@ -736,7 +736,7 @@ void GLWidget::setRotation(GLdouble* R) {
 void GLWidget::setTranslation(const QVector<GLdouble>& T) {
         if (T.at(0)==parametres->getTrans().at(0) && T.at(1)==parametres->getTrans().at(1) && T.at(2)==parametres->getTrans().at(2)) return;
 
-	//si la translation est > à la moitié de la fenêtre + la moitié de l'objet, ça ne sert à rien
+	//if la translation est > à la moitié de la fenêtre + la moitié de l'object, ça ne sert à rien
         QVector<GLdouble> Tverif(3);
 	glPushMatrix();
 	glLoadIdentity();
@@ -822,34 +822,34 @@ void GLWidget::translate(int direction) {	//1 à 6
 	if (dir!=2) {
 		double Tz = 0;
 		for (int i=0; i<3; i++)
-			Tz += parametres->getRot()[4*2+i] * parametres->getTrans().at(i);	//profondeur actuelle dans l'espace
+			Tz += parametres->getRot()[4*2+i] * parametres->getTrans().at(i);	//profondeur actuelle in l'espace
                 double dist = (espace.at(2*dir+1)-espace.at(2*dir)) / espace.at(4) * abs(Tz -(espace.at(5)+espace.at(4))/2.0);//largeur de l'espace à cette profondeur
-		diffT = pow(double(-1),direction) * 0.05 * dist;// * 1.0/parametres->getScale() * parametres->getMaxScale()/focale
+		diffT = pow(double(-1),direction) * 0.05 * dist;// * 1.0/parameters->getScale() * parameters->getMaxScale()/focale
 	} else
-                diffT = pow(double(-1),direction) * 0.05 * (espace.at(5)-espace.at(1)) * parametres->getFocale()/parametres->getMaxScale();	//20 iterations pour parcourir l'espace
-	convertTranslation(dir, diffT);// * 1.0/parametres->getScale() * parametres->getMaxScale()/focale
+                diffT = pow(double(-1),direction) * 0.05 * (espace.at(5)-espace.at(1)) * parametres->getFocale()/parametres->getMaxScale();	//20 iterations for parcourir l'espace
+	convertTranslation(dir, diffT);// * 1.0/parameters->getScale() * parameters->getMaxScale()/focale
 }
 
-void GLWidget::rescale(int direction) {	//1 ou 2
+void GLWidget::rescale(int direction) {	//1 or 2
 	multScale(2*direction-3);
 }
 
 void GLWidget::modifFocale(int value) {	//0 à 1000
 	double val = min( max(10.0,double(value)) ,parametres->getMaxScale()-1);
         if (val==parametres->getFocale()) return;
-	//espace[4] = val/parametres->getMaxScale();
+	//espace[4] = val/parameters->getMaxScale();
 	GLdouble longueurChantier;
-    //    if (parametres->getNuages().count()==0)
+    //    if (parameters->getNuages().count()==0)
                 longueurChantier = max(max(parametres->getZoneChantierEtCam().at(1)-parametres->getZoneChantierEtCam().at(0),parametres->getZoneChantierEtCam().at(3)-parametres->getZoneChantierEtCam().at(2)),parametres->getZoneChantierEtCam().at(5)-parametres->getZoneChantierEtCam().at(4));
 	//else
-      //          longueurChantier = max(max(parametres->getZonenuage().at(1)-parametres->getZonenuage().at(0),parametres->getZonenuage().at(3)-parametres->getZonenuage().at(2)),parametres->getZonenuage().at(5)-parametres->getZonenuage().at(4));
+      //          longueurChantier = max(max(parameters->getZonenuage().at(1)-parameters->getZonenuage().at(0),parameters->getZonenuage().at(3)-parameters->getZonenuage().at(2)),parameters->getZonenuage().at(5)-parameters->getZonenuage().at(4));
 	
         GLdouble em = longueurChantier/(espace.at(5)+espace.at(4));
 	for (int i=0; i<4; i++)
 		espace[i] = parametres->getMaxScale()/val * -pow(double(-1),i)*em;
 	setupViewport(width(), height());
 	
-	//modification de la profondeur pour que le chantier reste de même taille apparente
+	//modification de la profondeur for que le chantier reste de même taille apparente
 		//récupération de la profondeur
 	/*GLdouble Tz = 0;
 	for (int i=0; i<3; i++)
@@ -892,7 +892,7 @@ void GLWidget::setColor(const GLParams::Couleur& couleur) {
         parametres->setColor(couleur);
 	objectApp = makeObjectApp();
         if (parametres->getNuages().count()>0) {
-                /*for (int i=0; i<parametres->getNuages().count(); i++)
+                /*for (int i=0; i<parameters->getNuages().count(); i++)
                         objectNuag[6*i + currentDezoom.at(i)] = makeObjectNuag(i, currentDezoom.at(i));*/
 		doNuages();
 	}
@@ -993,8 +993,8 @@ void GLWidget::keyPressEvent(QKeyEvent *event) {
 
 //récupération des signaux de la souris/////////////////////////////////////////
 pair<QVector<double>,QVector<double> > GLWidget::getMouseDirection (const QPoint& P, GLdouble * matrice) const {
-	//récupère la direction et le point d'origine d'un clic souris P en coordonnées chantier (selon matrice)
-		//vecteur clic en coordonnées observateur
+	//récupère la direction and le point d'origine d'un clic souris P en coordonnées chantier (selon matrix)
+		//vector clic en coordonnées observateur
 	GLint * view = new GLint[4];
 	glGetIntegerv(GL_VIEWPORT, view);
 	double taille = min(view[2], view[3]);
@@ -1029,7 +1029,7 @@ pair<QVector<double>,QVector<double> > GLWidget::getMouseDirection (const QPoint
 }
 
 QVector<double> GLWidget::getSpherePoint(const QPoint& mouse) const {
-	//point sur la sphère pointé par la souris (ref de la sphère)
+	//point on la sphère pointé par la souris (ref de la sphère)
 		//direction du pointeur
 	GLdouble * m = new GLdouble[16];
         GLdouble sc = min(espace.at(1)-espace.at(0),espace.at(3)-espace.at(2))/espace.at(4)*(espace.at(5)+espace.at(4))/8.0;
@@ -1043,7 +1043,7 @@ QVector<double> GLWidget::getSpherePoint(const QPoint& mouse) const {
         pair<QVector<double>,QVector<double> > pa = getMouseDirection (mouse, m);
         QVector<double> P = pa.first;
         QVector<double> V = pa.second;
-		//point sur la sphère
+		//point on la sphère
         QVector<double> C(3,0);
         QVector<double> diff(3);
 	for (int i=0; i<3; i++)
@@ -1124,9 +1124,9 @@ void GLWidget::addCam() {
 }
 
 void GLWidget::mousePressEvent(QMouseEvent *event) {
-	//cas 1 : acceptation d'une image de référence ou d'une image pour la corrélation (refBox)
+	//cas 1 : acceptation d'une image de référence or d'une image for la corrélation (refBox)
 	if (ref && (event->buttons() & Qt::RightButton) && infoBulle.second!=-1) {
-		//menu ajouter à la liste
+		//menu ajouter à la list
 		QMenu menu(this);
 		menu.addAction(addCamAct);
 		menu.exec(event->globalPos());		
@@ -1139,11 +1139,11 @@ void GLWidget::mousePressEvent(QMouseEvent *event) {
 
 	//cas 2b : rotation de la sphère
 	//récupération de la rotation à effectuer
-		//récupération du point sur la sphère
+		//récupération du point on la sphère
         QVector<double> C(3,0);
         QVector<double> M = getSpherePoint(event->pos());
 
-		//cercle le plus proche et angle initial
+		//cercle le plus proche and angle initial
 	int cercle = 0;
         double dist = abs(M.at(0)-C.at(0));
 	for (int i=1; i<3; i++) {
@@ -1165,7 +1165,7 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event) {
 	if (event->x()<0 || event->y()<0 || event->x()>width() || event->y()>height())
 		return;
 	if (event->buttons() & Qt::LeftButton) {
-                //point sur la sphère
+                //point on la sphère
                 QVector<double> C(3,0);
                 QVector<double> M = getSpherePoint(event->pos());
                 if (M.count()==0) return;
@@ -1201,9 +1201,9 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event) {
  /*	GLdouble * m = new GLdouble[16];
 	glPushMatrix();
 	glLoadIdentity();
-//	glTranslated(-parametres->getTrans().at(0), -parametres->getTrans().at(1), -parametres->getTrans().at(2));
-//	multTransposeMatrix(parametres->getRot());
-//	glScaled(1.0/parametres->getScale(),1.0/parametres->getScale(),1.0/parametres->getScale());
+//	glTranslated(-parameters->getTrans().at(0), -parameters->getTrans().at(1), -parameters->getTrans().at(2));
+//	multTransposeMatrix(parameters->getRot());
+//	glScaled(1.0/parameters->getScale(),1.0/parameters->getScale(),1.0/parameters->getScale());
         glTranslated(0, 0, +(espace.at(5)+espace.at(4))/2.0);
 	glGetDoublev(GL_MODELVIEW_MATRIX, m);
 	glPopMatrix();
@@ -1217,9 +1217,9 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event) {
 	GLdouble Zmax = -numeric_limits<double>::max();	//les Z sont négatifs
 	GLdouble Dmin = numeric_limits<double>::max();
 	for (int i=0; i<parametres->getPoses().count(); i++) {
-		//if (profondeur(parametres->getPoses().at(i).centre())<Zmax)
+		//if (profondeur(parameters->getPoses().at(i).centre())<Zmax)
 		//	continue;
-		//calcul de la distance au rayon
+		//computation de la distance au rayon
                 QVector<double> M(3);
                         M[0] = parametres->getPoses().at(i).centre().x - ray_pnt2.at(0);
                         M[1] = parametres->getPoses().at(i).centre().y - ray_pnt2.at(1);
@@ -1245,7 +1245,7 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event) {
 		}
 	}*/
 
-	//2e méthode : projection des caméras sur l'écran, calcul de la distance à l'utilisateur et sélection de la caméra la + proche du clic (et si incertitude, de l'utilisateur)GLdouble * m = new GLdouble[16];
+	//2e méthode : projection des caméras on l'écran, computation de la distance à l'utilisateur and sélection de la caméra la + proche du clic (and if incertitude, de l'utilisateur)GLdouble * m = new GLdouble[16];
  	GLdouble * m = new GLdouble[16];
 	glPushMatrix();
 		glLoadIdentity();
@@ -1258,7 +1258,7 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event) {
 
 	GLint * view = new GLint[4];
 	glGetIntegerv(GL_VIEWPORT, view);
-	double taille = min(view[2], view[3]);	//taille réelle de la fenêtre de visibilité sur l"espace 3D
+	double taille = min(view[2], view[3]);	//taille réelle de la fenêtre de visibilité on l"espace 3D
 
 	QVector<QVector<GLdouble> > coordPlanes(parametres->getPoses().count(), QVector<GLdouble>(2,0) );	//x,y écran
 	QVector<double> distances(parametres->getPoses().count());	//distance à l'utilisateur
@@ -1269,11 +1269,11 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event) {
                         M[2] = parametres->getPoses().at(i).centre().z;
                         M[3] = 1.0;
 
-		//coordonnées dans l'espace utilisateur
+		//coordonnées in l'espace utilisateur
                 QVector<double> M2(4,0.0);
 		for (int j=0; j<4; j++) {
 			for (int k=0; k<4; k++)
-		                M2[j] += m[k*4+j] * M.at(k);	//M2=m*M, avec m selon les colonnes
+		                M2[j] += m[k*4+j] * M.at(k);	//M2=m*M, with m selon les colonnes
 		}
 
 		double X = M2[0] / M2[3];
@@ -1326,7 +1326,7 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event) {
 	}
 
 	//affichage du nom
-	infoBulle = QPair<QPoint,int>(event->pos(), N);	//si N==-1, suppression de la couleur
+	infoBulle = QPair<QPoint,int>(event->pos(), N);	//if N==-1, suppression de la couleur
 	objectCam = makeObjectCam();
 	objectApp = makeObjectApp();
 	update();
@@ -1422,8 +1422,8 @@ VueChantier::VueChantier(const ParamMain* pMain, QWidget* parent, Assistant* hel
 
 	aperoLayers = new Layers;
 	QVector<QString> noms;
-	if (paramMain->isFrench()) noms.append(QApplication::translate("Dialog", "Cameras", 0, QApplication::CodecForTr));	//pb affichage avec conv(tr())
-	else noms.append(QString("Cameras"));	//pb affichage avec conv(tr())
+	if (paramMain->isFrench()) noms.append(QApplication::translate("Dialog", "Cameras", 0, QApplication::CodecForTr));	//pb affichage with conv(tr())
+	else noms.append(QString("Cameras"));	//pb affichage with conv(tr())
 	noms.append(tr("3D tie-points"));
 	noms.append(tr("Image bounding box"));
 	aperoLayers->create(tr("Display"), noms);
@@ -1515,7 +1515,7 @@ QSize VueChantier::minimumSizeHint () { return QApplication::desktop()->availabl
 QSize VueChantier::maximumSizeHint () { return QApplication::desktop()->availableGeometry().size(); }
 
 bool VueChantier::getParamPoses () {
-//récupère les paramètres de chaque caméra dans les fichiers Ori-F, les points homologues 3D et les paramètres du chantier
+//récupère les paramètres de chaque caméra in les fichiers Ori-F, les points homologues 3D and les paramètres du chantier
 	glparams.setDossier(paramMain->getDossier());
 
 	//lecture des caméras
@@ -1627,7 +1627,7 @@ bool VueChantier::getParamPoses () {
 }
 
 QString VueChantier::getHomol3D (const QString& nomPose, const QString& dossier, QList<pair<Pt3dr, QColor> >& listPt3D) {
-//utilisé par drawMask (attention, les fichiers sont vides si l'option "calculer les points 3D" a été désactivée dans Apero)
+//utilisé par drawMask (attention, les fichiers sont vides if l'option "compute les points 3D" a été désactivée in Apero)
 	QFile file(dossier + QString("Ori-F/") + QString("3D/") + nomPose.section(".",0,-2) + QString(".txt"));
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
 		return conv(tr("Fail to open 3D point file %1.")).arg(file.fileName());
@@ -1678,7 +1678,7 @@ void VueChantier::show(const SelectCamBox::Mode& refMode, const QString& refImg,
 	QDialog::show();
 	refBox->create(refMode, refImg, precCam);
 }
-void VueChantier::showEvent(QShowEvent*) {	//qglwidget se bloque à chaque réduction de fenêtre et les paramètres opengl ne sont plus définis
+void VueChantier::showEvent(QShowEvent*) {	//qglwidget se bloque à chaque réduction de fenêtre and les paramètres opengl ne sont plus définis
 	if (!hidden) return;
 	mainLayout->removeWidget(toolBar1);
 	mainLayout->removeWidget(toolBar2);
@@ -1690,7 +1690,7 @@ void VueChantier::showEvent(QShowEvent*) {	//qglwidget se bloque à chaque rédu
 }
 
 void VueChantier::resizeEvent(QResizeEvent*) {
-//pour les ordinateur à petit écran, pb d'affichage du bas de la barre d'outil -> on déplace la moitié à droite
+//for les ordinateur à petit écran, pb d'affichage du bas de la barre d'outil -> on déplace la moitié à droite
 	if (height()<translationBox->height()+zoomBox->height()+focaleBox->height()+rotationBox->height()+aperoLayers->height()+nuagesLayers->height()+refBox->height()+helpButton->height()+3*10) {
 		mainLayout->removeWidget(toolBar1);
 		mainLayout->removeWidget(toolBar2);
@@ -1797,8 +1797,8 @@ void VueChantier::helpClicked() {
 }
 
 QString VueChantier::convert (const ParamMain* pMain, QVector<Pose>& cameras, int N) {
-//lecture des paramètres des caméra dans les fichiers Ori-F
-//si N!=-1, ne lit que la Nième caméra (utilisé pour le masque automatique)
+//lecture des paramètres des caméra in les fichiers Ori-F
+//if N!=-1, ne lit que la Nième caméra (utilisé for le masque automatique)
 	int i0 = (N==-1)? 0 : N;
 	int i1 = (N==-1)? pMain->getParamApero().getImgToOri().count() : N+1;
 
@@ -1818,12 +1818,12 @@ QString VueChantier::convert (const ParamMain* pMain, QVector<Pose>& cameras, in
 	}
 
 	for (int i=i0; i<i1; i++) {
-		//param initiaux + nom du fichier
+		//param initiaux + nom du file
 		cameras[i].setNomImg(pMain->getParamApero().getImgToOri().at(i));
 	
-		//nom du fichier
+		//nom du file
 		QString file = pMain->getDossier() + QString("Ori-F/") + QString("OrFinale-") + pMain->getParamApero().getImgToOri().at(i).section(".",0,-2) + QString(".xml");
-		//conversion du fichier (pb de ,)
+		//conversion du file (pb de ,)
 			//récupération des fichiers appelés (calibrations...)
 		QFile oldFile(file);
 		if (!oldFile.open(QFile::ReadOnly | QFile::Text))
@@ -1835,7 +1835,7 @@ QString VueChantier::convert (const ParamMain* pMain, QVector<Pose>& cameras, in
 		if (!xmlReader.atEnd())
 			calibXml = xmlReader.readElementText();
 
-			//conversion du fichier de calibration
+			//conversion du file de calibration
 		if (!calibXml.isEmpty()) {
 			calibXml2 = calibXml.section(".",0,-2) + QString("2.xml");
 			if (!QFile(calibXml2).exists()) {
@@ -1857,7 +1857,7 @@ QString VueChantier::convert (const ParamMain* pMain, QVector<Pose>& cameras, in
 			}
 		}
 
-			//conversion du fichier des poses
+			//conversion du file des poses
 		QString orient = file.section(".",0,-2) + QString("2.xml");
 		if (!QFile(orient).exists()) {
 			QFile oldFile(file);
@@ -2318,7 +2318,7 @@ SelectCamBox::~SelectCamBox() {
 	clearContent();
 }
 
-void SelectCamBox::create(const Mode& mode, const QString& refImg, const QStringList& precCam) {	//Hide ou RefImage
+void SelectCamBox::create(const Mode& mode, const QString& refImg, const QStringList& precCam) {	//Hide or RefImage
 	if (refButton!=0) refButton->setChecked(false);
 	if (okButton!=0) okButton->setEnabled(false);
 	if (camEdit!=0) camEdit->clear();
@@ -2447,7 +2447,7 @@ void SelectCamBox::contextMenuEvent(QContextMenuEvent *event) {
 	}
 }
 void SelectCamBox::cut() {
-	//supprime la caméra sélectionnée de la liste
+	//supprime la caméra sélectionnée de la list
 	for (int i=0; i<camList->count(); i++) {
 		if (camList->item(i)->isSelected()) {
 			QListWidgetItem* lwi = camList->takeItem(i);

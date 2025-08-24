@@ -38,7 +38,7 @@ void MakeStdIm8BIts(const cIm2D<tREAL4> &aImIn,const std::string& aName);
 
 
 
-//FIXME CM->MPD: Mail MPD fichier xmmlV1.cpp Must replace cMMV1_Conv::ImToMMV1
+//FIXME CM->MPD: Mail MPD file xmmlV1.cpp Must replace cMMV1_Conv::ImToMMV1
 template <class Type> class cMMV1_Conv
 {
     public :

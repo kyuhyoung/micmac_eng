@@ -39,12 +39,12 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 #include "NewRechPH.h"
 
-class cCompileOPC;    // Un TieP avec acces rapide aux data
-class cPairOPC;       // Paire de TieP , memorise le score de nombre de bits egaux
-class cSetPairOPC;    // Un ensemble de paire, peut etre le Truth ou Random
-class cCalcOB;        // Un pds de calc binaire + la memo des resultats dont deux vecteur de bit
+class cCompileOPC;    // Un TieP with acces rapide aux data
+class cPairOPC;       // Paire de TieP , memorise le score de number de bits egaux
+class cSetPairOPC;    // Un ensemble de paire, peut etre le Truth or Random
+class cCalcOB;        // Un pds de calc binaire + la memo des resultats dont deux vector de bit
 class cCombCalcOB;    // Une combinaison de cCalcOB
-class cAppli_NH_ApprentBinaire;    // la classe mere
+class cAppli_NH_ApprentBinaire;    // la class mere
 
 
 class cPairOPC
@@ -1068,7 +1068,7 @@ void cSetPairOPC::Reset()
 
 void cSetPairOPC::Finish()
 {
-  // Calcul de l'histo
+  // computation de l'histo
   for (auto & aH : mHisto)
       aH = 0;
   for (auto & aP : mVP)
@@ -1126,7 +1126,7 @@ class cAppli_NH_ApprentBinaire
             cScoreOPC Score(const cCombCalcOB &,int aLev); // 0 Smal, 1 Moy, 2 Glob
             bool  ScoreIfMax(cScoreOPC & aScMax,cCalcOB * aCOBMax,const cCombCalcOB &,const cCalcOB * aCOB); // 0 Smal, 1 Moy, 2 Glob
             double ComputeInH(const cCombCalcOB &);
-            // Score base sur le fait que les histo vrai et faux sont different
+            // Score base on le fait que les histo vrai and faux sont different
             Pt2dr ComputeScoreHistoBinaire(const cCombCalcOB &); // DifMoy / Dif truth-Rand
             void OptimCombin(const std::string &);
             void OptimLocal(const std::string & aIn,const std::string & aOut);
@@ -1134,7 +1134,7 @@ class cAppli_NH_ApprentBinaire
 
             void StatTruthTRand(eTypePtRemark aType);
       private :
-            // Si aNumInv<0 => Random
+            // if aNumInv<0 => Random
             // aModeRand 0 => rand X, 1=> rand Y , 2 => all
             cCompCBOneBit RandomCOB_OneInv(int aModeRand,int aNumInv,int aNbCoef);
             // aProp => Proportion de la perturbation / aux coeffs
@@ -1600,7 +1600,7 @@ cScoreOPC cAppli_NH_ApprentBinaire::Score(const cCombCalcOB & aComb,int aLev)
    if (euclid(mPdHistBin) != 0.0)
    {
         aRes.mDistH = ComputeScoreHistoBinaire(aComb);
-        //  return  Pt2dr(aDifM,aDifH);  on penalise inhom sur la verite, on favorise disntance entre verite et rand
+        //  return  Pt2dr(aDifM,aDifH);  on penalise inhom on la verite, on favorise disntance between verite and rand
         aRes.mScore += - aRes.mDistH.x * mPdHistBin.x + aRes.mDistH.y * mPdHistBin.y;
    }
    return aRes;
@@ -1649,21 +1649,21 @@ std::vector<cCalcOB> cAppli_NH_ApprentBinaire::SelectGermes()
     std::vector<cCalcOB> aVGlobC;
     for (int aMode=0 ; aMode<3 ; aMode++)
     {
-       // Mode 0  : tous sur le meme invariant
-       // Mode 1  : tous sur le meme rayon
+       // Mode 0  : tous on le meme invariant
+       // Mode 1  : tous on le meme rayon
        // Mode 2  : distribue
        int aNbIR = NbOfMode(aMode);
       
        for (int aKIR=0 ; aKIR<aNbIR ; aKIR++)
        {
-           // On recheche une liste de aNbInOneLine  calcul de bit simple qui soit le meilleur possible
+           // On recheche une list de aNbInOneLine  computation de bit simple qui soit le meilleur possible
            // en respectant le mode
            cCombCalcOB aVC;
            for (int aKNb=0 ; aKNb<aNbInOneLine; aKNb++)
            {
                cScoreOPC aScMax(-1e10,0,0,0);
                cCalcOB aCOBMax =  COB(RandomCOB_OneInv(aMode,aKIR,aNbCoef));
-               // On fait 100 tirage pour trouver celui qui ameliore le plus la solution courante
+               // On fait 100 tirage for trouver celui qui ameliore le plus la solution courante
                for (int aNbT=0 ; aNbT<100 ; aNbT++)
                {
                    cCalcOB aCOB =  COB(RandomCOB_OneInv(aMode,aKIR,aNbCoef));
@@ -1673,7 +1673,7 @@ std::vector<cCalcOB> cAppli_NH_ApprentBinaire::SelectGermes()
                    ScoreIfMax(aScMax,&aCOBMax,aVCur,&aCOB);
                }
 
-               // On fait aNbTests tirage pour ameliorer localement 
+               // On fait aNbTests tirage for ameliorer localement 
                for (int aKT=0 ; aKT<aNbTests ; aKT++)
                {
                    cCalcOB aCOB =  COB(RandomCOB_PerturbCoeff(aCOBMax.COB(),1/(1+aKT*0.3)));
@@ -1753,7 +1753,7 @@ void cAppli_NH_ApprentBinaire::OptimLocal(const std::string & aIn,const std::str
                 aVCOB.push_back(RandomCOB_OneInv(aMode,NRrandom3(MaxInd),3));
             }
         }
-        if (1) // Voie lente mais "safe" ?
+        if (1) // Voie lente but "safe" ?
         {
              cCombCalcOB aNew = aCMax.Modif(aVI,aVCOB,*mVTruthCur,*mVRandCur);
              bool aSup =  ScoreIfMax(aSMax,nullptr,aNew,nullptr); 

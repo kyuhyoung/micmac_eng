@@ -351,7 +351,7 @@ vector<double> Vignette_Solve(PtsHom aPtsHomol)
     }
 
 
-    //Erreur moyenne
+    //error moyenne
 
     vector<double> erreur;
     for(int i=0;i<int(aPtsHomol[0].size());i++){
@@ -557,7 +557,7 @@ int  Vignette_main(int argc,char ** argv)
             for(int i=0;i<(int)aVectGrpVodka.size();i++)
             {
                     GrpVodka & aGrp = aVectGrpVodka[i];
-                    if (aGrp.aListIm.size() <= 1 && !aGrp.isComputed)  // Modif MPD, core dump (legitime ...) avec grp a 1 image et pas de vignette correspondante en InCal
+                    if (aGrp.aListIm.size() <= 1 && !aGrp.isComputed)  // Modif MPD, core dump (legitime ...) with grp a 1 image and pas de vignette correspondante en InCal
                     {
                         //Warn if a group is too small for computing a value
                         std::cout<< endl << "WARNING : A vignette can't be computed with only one image from the group with Foc = "<< aGrp.foc << " and Diaph = " << aGrp.diaph << endl << endl;
@@ -572,10 +572,10 @@ int  Vignette_main(int argc,char ** argv)
                                                       <<" images with Diaph="<<aVectGrpVodka[i].diaph
                                                       <<" and Foc="<<aVectGrpVodka[i].foc<<endl<<endl;
 
-                            //Avec Points homol
+                            //with Points homol
                             PtsHom aPtsHomol=ReadPtsHom(aDir, aVectGrpVodka[i], Extension);
 
-                            // cas où pour un même groupe il n'y a pas de points homologues (les images ne se recouvrent pas par exemple)
+                            // cas o for un mme groupe il n'y a pas de points homologues (les images ne se recouvrent pas par exemple)
                             if(aPtsHomol.size() == 0)
                             {
 								std::cout<< endl << "WARNING : A vignette can't be computed with 0 tie points from the group with Foc = "<< aGrp.foc << " and Diaph = " << aGrp.diaph << endl << endl;
@@ -613,7 +613,7 @@ int  Vignette_main(int argc,char ** argv)
                         
                         if (DoCor && aVectGrpVodka[i].isComputed==1)
                         {
-							//Correction des images avec les params calculés
+							//Correction des images with les params calculs
                             cout<<"Correcting the images"<<endl;
                             Vignette_correct(aDir, aVectGrpVodka[i], aDirOut, CalibFolder);
                         }
@@ -625,34 +625,34 @@ int  Vignette_main(int argc,char ** argv)
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant à la mise en
+Ce logiciel est un programme informatique servant  la mise en
 correspondances d'images pour la reconstruction du relief.
 
-Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
+Ce logiciel est rgi par la licence CeCILL-B soumise au droit franais et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
-de la licence CeCILL-B telle que diffusée par le CEA, le CNRS et l'INRIA
+de la licence CeCILL-B telle que diffuse par le CEA, le CNRS et l'INRIA
 sur le site "http://www.cecill.info".
 
-En contrepartie de l'accessibilité au code source et des droits de copie,
-de modification et de redistribution accordés par cette licence, il n'est
-offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
-seule une responsabilité restreinte pèse sur l'auteur du programme,  le
-titulaire des droits patrimoniaux et les concédants successifs.
+En contrepartie de l'accessibilit au code source et des droits de copie,
+de modification et de redistribution accords par cette licence, il n'est
+offert aux utilisateurs qu'une garantie limite.  Pour les mmes raisons,
+seule une responsabilit restreinte pse sur l'auteur du programme,  le
+titulaire des droits patrimoniaux et les concdants successifs.
 
-A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  à l'utilisation,  à la modification et/ou au
-développement et à la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe à
-manipuler et qui le réserve donc à des développeurs et des professionnels
-avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
-logiciel à leurs besoins dans des conditions permettant d'assurer la
-sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+A cet gard  l'attention de l'utilisateur est attire sur les risques
+associs au chargement,   l'utilisation,   la modification et/ou au
+dveloppement et  la reproduction du logiciel par l'utilisateur tant
+donn sa spcificit de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le rserve donc  des dveloppeurs et des professionnels
+avertis possdant  des  connaissances  informatiques approfondies.  Les
+utilisateurs sont donc invits  charger  et  tester  l'adquation  du
+logiciel  leurs besoins dans des conditions permettant d'assurer la
+scurit de leurs systmes et ou de leurs donnes et, plus gnralement,
+ l'utiliser et l'exploiter dans les mmes conditions de scurit.
 
-Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
-pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
+Le fait que vous puissiez accder  cet en-tte signifie que vous avez
+pris connaissance de la licence CeCILL-B, et que vous en avez accept les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/
 

@@ -15,22 +15,22 @@ struct  buffer
 
 ///
 /// \brief The st_line struct
-/// Structure pour le parcourt d'une ligne
+/// Structure for le parcourt d'une line
 struct st_line
 {
 	///
 	/// \brief lenght
-	/// Dimmension de la ligne
+	/// Dimmension de la line
     uint lenght;
 	///
 	/// \brief id
-	/// Curseur de position dans la ligne
+	/// Curseur de position in la line
     uint id;
 
 	__device__ inline
 	///
 	/// \brief LOver
-	/// \return La longueur entre la position actuelle et la fin de la ligne
+	/// \return La longueur between la position actuelle and la fin de la line
 	///
 	uint LOver()
     {
@@ -40,24 +40,24 @@ struct st_line
 
 ///
 /// \brief The p_ReadLine struct
-/// Structure de paramètres pour la programmation dynamique en CUDA
+/// Structure de paramtres for la programmation dynamique en CUDA
 struct p_ReadLine
 {
 	///
 	/// \brief ID_Bf_Icost
-	///	Curseur de position dans le buffer des couts intrinsèques
+	///	Curseur de position in le buffer des couts intrinsques
     ushort          ID_Bf_Icost;
 	///
 	/// \brief line
-	///	Structure pour pacourir la ligne
+	///	Structure for pacourir la line
     st_line         line;
 	///
 	/// \brief seg
-	/// structure pour parcourir le segment courant de la ligne
+	/// structure for parcourir le segment courant de la line
     st_line         seg;
 	///
 	/// \brief Id_Buf
-	/// Identifiant du buffer courrant en mémoire partagée
+	/// Identifiant du buffer courrant en mmoire partage
     bool            Id_Buf;
 	///
 	/// \brief tid
@@ -69,11 +69,11 @@ struct p_ReadLine
     const ushort    itid;
 	///
 	/// \brief prev_Dz
-	/// Delta Z de la nappe de la position précédente
+	/// Delta Z de la nappe de la position prcdente
     short2          prev_Dz;
 	///
 	/// \brief prevDefCor
-	/// Cout min de la cellule defCor précédente
+	/// Cout min de la cellule defCor prcdente
     ushort          prevDefCor;
 	///
 	/// \brief pente
@@ -81,12 +81,12 @@ struct p_ReadLine
     ushort          pente;
 	///
 	/// \brief ZRegul
-	/// Paramètre Z Régulation
+	/// Paramtre Z Rgulation
     float           ZRegul;
 
 	///
 	/// \brief ZRegul_Quad
-	/// Paramètre Z Régulation
+	/// Paramtre Z Rgulation
     float           ZRegul_Quad;
 	///
 	/// \brief costDefMask
@@ -94,7 +94,7 @@ struct p_ReadLine
     const ushort    costDefMask;
 	///
 	/// \brief costTransDefMask
-	/// Cout de transition en sortant et en entrant de la cellule DefCor
+	/// Cout de transition en sortant and en entrant de la cellule DefCor
     const ushort    costTransDefMask;
 	///
 	/// \brief hasMaskauto
@@ -102,7 +102,7 @@ struct p_ReadLine
     const bool      hasMaskauto;
 	///
 	/// \brief sizeBuffer
-	/// Taille des buffers en mémoire partagée
+	/// Taille des buffers en mmoire partage
     const ushort    sizeBuffer;
 
 	///
@@ -137,7 +137,7 @@ struct p_ReadLine
 	__device__ inline
 	///
 	/// \brief swBuf
-	/// Changer de buffer en mémoire partagée
+	/// Changer de buffer en mmoire partage
 	void swBuf()
     {
         Id_Buf = !Id_Buf;
@@ -161,7 +161,7 @@ struct p_ReadLine
 	__device__ inline
 	///
 	/// \brief ouput
-	/// Sortie console pour le debogage
+	/// Sortie console for le debogage
 	void ouput()
     {
         if(!tid)
@@ -177,7 +177,7 @@ struct p_ReadLine
 
 	__device__ inline
 	///
-	/// \brief reverse Retourner le sens de parcours en fin de ligne
+	/// \brief reverse Retourner le sens de parcours en fin de line
 	/// \param buffindex Buffer des index de Z
 	/// \param sizeBuff Taille des buffer
 	void reverse(short3 *buffindex,ushort sizeBuff)
@@ -225,7 +225,7 @@ ushort p_ReadLine::stid<false>()
 template<template<class T> class U, uint NBUFFER = 1 >
 ///
 /// \brief The Data2Optimiz struct
-/// Structure de données pour la régularisation en gpgpu
+/// Structure de donnes for la rgularisation en gpgpu
 struct Data2Optimiz
 {
 public:
@@ -246,7 +246,7 @@ public:
     void ReallocParam(uint size);
 
 	///
-	/// \brief SetParamLine Définir les paramètres de la ligne
+	/// \brief SetParamLine Dfinir les paramtres de la line
 	/// \param id
 	/// \param pStr
 	/// \param pIdStr
@@ -256,21 +256,21 @@ public:
     void SetParamLine(uint id, uint pStr,uint pIdStr, uint lLine, uint idbuf = 0);
 
 	///
-	/// \brief ReallocIf Réallocation de la mémoire sous condition
+	/// \brief ReallocIf Rallocation de la mmoire under condition
 	/// \param pStr
 	/// \param pIdStr
 	///
     void ReallocIf(uint pStr,uint pIdStr);
 
 	///
-	/// \brief ReallocInputIf Réallocation de la mémoire sous condition
+	/// \brief ReallocInputIf Rallocation de la mmoire under condition
 	/// \param pStr
 	/// \param pIdStr
 	///
     void ReallocInputIf(uint pStr,uint pIdStr);
 
 	///
-	/// \brief ReallocOutputIf Réallocation de la mémoire sous condition
+	/// \brief ReallocOutputIf Rallocation de la mmoire under condition
 	/// \param pStr
 	/// \param pIdStr
 	/// \param idbuf
@@ -278,32 +278,32 @@ public:
     void ReallocOutputIf(uint pStr, uint pIdStr,uint idbuf = 0);
 
 	///
-	/// \brief ReallocIf Réallocation de la mémoire sous condition
+	/// \brief ReallocIf Rallocation de la mmoire under condition
 	/// \param d2o
 	///
     void ReallocIf(Data2Optimiz<CuHostData3D,2> &d2o);
 
 	///
-	/// \brief ReallocInputIf Réallocation de la mémoire sous condition
+	/// \brief ReallocInputIf Rallocation de la mmoire under condition
 	/// \param d2o
 	///
     void ReallocInputIf(Data2Optimiz<CuHostData3D,2> &d2o);
 
 	///
-	/// \brief ReallocOutputIf Réallocation de la mémoire sous condition
+	/// \brief ReallocOutputIf Rallocation de la mmoire under condition
 	/// \param d2o
 	/// \param idbuf
 	///
     void ReallocOutputIf(Data2Optimiz<CuHostData3D,2> &d2o, uint idbuf = 0);
 
 	///
-	/// \brief SetNbLine Définir le nombre de ligne
+	/// \brief SetNbLine Dfinir le number de line
 	/// \param nbl
 	///
     void SetNbLine(uint nbl);
 
 	///
-	/// \brief CopyHostToDevice Copie des données du host vers le device
+	/// \brief CopyHostToDevice Copie des donnes du host vers le device
 	/// \param d2o
 	/// \param idbuf
 	///
@@ -311,7 +311,7 @@ public:
 
 
 	///
-	/// \brief CopyDevicetoHost Copie des données du device vers le host
+	/// \brief CopyDevicetoHost Copie des donnes du device vers le host
 	/// \param d2o
 	/// \param idbuf
 	///
@@ -319,7 +319,7 @@ public:
 
 	///
 	/// \brief NBlines
-	/// \return Le nombre de lignes
+	/// \return Le number de lignes
 	///
     uint NBlines(){return _nbLines;}
 

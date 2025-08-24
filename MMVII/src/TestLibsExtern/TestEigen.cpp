@@ -43,7 +43,7 @@ class cAppli_MMVII_TestEigen : public cMMVII_Appli
         cCollecSpecArg2007 & ArgOpt(cCollecSpecArg2007 & anArgOpt) override;// override {return anArgOpt;}
 
         void T1(); ///< Un test de la doc
-        void TestRawData(); ///< Test sur l'import des raw data
+        void TestRawData(); ///< Test on l'import des raw data
         void TCho();
         void BenchCho();
         void TestInv();
@@ -181,7 +181,7 @@ void cAppli_MMVII_TestEigen::TCho()
     {
         // for (int aY=aX ; aY<mNbCho ; aY++)
         // for (int aY=0 ; aY<mNbCho ; aY++)
-        for (int aY=0 ; aY<=aX ; aY++)  // !!!  => les algo sur les sparse matrix doivent faire des supoistion triang sup ou inf
+        for (int aY=0 ; aY<=aX ; aY++)  // !!!  => les algo on les sparse matrix doivent faire des supoistion triang sup or inf
         {
             if (m(aX,aY) != 0.0)
                aVT.push_back(Triplet<double>(aX,aY,m(aX,aY)));

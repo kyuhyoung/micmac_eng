@@ -56,7 +56,7 @@ cAppli_Traj_AJ::cAppli_Traj_AJ(cResultSubstAndStdGetFile<cParam_Traj_AJ> aP2) :
 
 // TEST COMMIT
 
-     //  =============== EXPORT PROJ IMAGE =================
+     //  =============== EXPORT PROJ image =================
 
 void cAppli_Traj_AJ::TxtExportProjImage()
 {

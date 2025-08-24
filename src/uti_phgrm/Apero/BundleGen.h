@@ -77,7 +77,7 @@ class cBGC3_Modif2D  : public cBasicGeomCap3D
 
   // Optical center 
            virtual bool     HasOpticalCenterOfPixel() const; // 1 - They are not alway defined
-  // When they are, they may vary, as with push-broom, Def fatal erreur (=> Ortho cam)
+  // When they are, they may vary, as with push-broom, Def fatal error (=> Ortho cam)
            virtual Pt3dr    OpticalCenterOfPixel(const Pt2dr & aP) const ;
 
            virtual inline Pt2dr CamInit2CurIm(const Pt2dr & aP) const{return aP+DeltaCamInit2CurIm(aP);}
@@ -144,7 +144,7 @@ class cPolynomial_BGC3M2D  : public cBGC3_Modif2D
            std::string NameSave(const std::string & aDirLoc,const std::string & aPref) const;
 
            cXml_CamGenPolBundle ToXml() const;
-           // WithAffine recupere eventuellement la deformation affine, si vaut 0 et def existe => erreur
+           // WithAffine recupere eventuellement la deformation affine, if vaut 0 and def existe => error
            static  cPolynomial_BGC3M2D * NewFromFile(const std::string &,cBasicGeomCap3D **  WithAffine= 0);
       private : 
            void SetMonom(const cMonomXY & aMon,std::vector<double> &);

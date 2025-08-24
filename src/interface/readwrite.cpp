@@ -57,7 +57,7 @@ QString XmlTree::lire(bool all) {
 		while (!xmlReader.atEnd() && !xmlReader.isStartElement() && !xmlReader.isEndElement())
 			xmlReader.readNext();
 		if (xmlReader.isStartElement()) {
-			//nom et parent
+			//nom and parent
 			if (currentTag==0 && mainTag.getNom().isEmpty()) {
 				mainTag.setNom(xmlReader.name().toString());
 				currentTag = &mainTag;
@@ -97,7 +97,7 @@ bool XmlTree::ecrire() {
 	QFile file(fichier);
 	if (!file.open(QFile::WriteOnly | QFile::Text | QIODevice::Truncate)) return false;
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	QList<XmlTag> l = otherTags;
 	l.push_front(mainTag);
@@ -199,10 +199,10 @@ const QString& XmlTag::getAttribut(const char* attName, bool* ok) const { return
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx//
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//enregistrement du calcul en cours
+//enregistrement du computation en cours
 
 bool ParamCalcul::ecrire(const ParamMain& paramMain, const QString& fichier) {
-//écriture des différents paramètres de l'interface et des fichiers utilisés dans les calculs
+//écriture des différents paramètres de l'interface and des fichiers utilisés in les calculs
 	QFile oldFile(fichier);
 	if (oldFile.exists()) {
 		oldFile.remove();
@@ -212,7 +212,7 @@ bool ParamCalcul::ecrire(const ParamMain& paramMain, const QString& fichier) {
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("Calcul"));
 
@@ -228,7 +228,7 @@ bool ParamCalcul::ecrire(const ParamMain& paramMain, const QString& fichier) {
 		xmlWriter.writeTextElement(QString("Repertoire"), QDir(repertoire).relativeFilePath(paramMain.getDossier()));
 
 		if (paramMain.getCurrentMode()!=ParamMain::ImageMode) {
-			//params chantier et Pastis
+			//params chantier and Pastis
 			xmlWriter.writeStartElement(QString("Chantier"));
 
 				ParamPastis::TypeChantier typChan = paramMain.getParamPastis().getTypeChantier();
@@ -305,7 +305,7 @@ bool ParamCalcul::ecrire(const ParamMain& paramMain, const QString& fichier) {
 									l2 += paramMain.getParamApero().getUserOrientation().getRotationAbs().at(i+3*k)+ (QString(" "));
 								xmlWriter.writeTextElement(QString("L%1").arg(k+1), l2);
 							}
-							xmlWriter.writeEndElement();	//Rotation
+							xmlWriter.writeEndElement();	//rotation
 						}
 					}
 					if ((paramMain.getParamApero().getUserOrientation().getOrientMethode()==1 && paramMain.getParamApero().getUserOrientation().getFixEchelle())
@@ -374,7 +374,7 @@ bool ParamCalcul::ecrire(const ParamMain& paramMain, const QString& fichier) {
 			}
 		}
 
-		//écriture des images et des fichiers de calibration
+		//écriture des images and des fichiers de calibration
 		const QVector<ParamImage>* correspImgCalib = &(paramMain.getCorrespImgCalib());
 		xmlWriter.writeStartElement(QString("Images"));
 		for (int i=0; i<correspImgCalib->size(); i++) {
@@ -388,7 +388,7 @@ bool ParamCalcul::ecrire(const ParamMain& paramMain, const QString& fichier) {
 						xmlWriter.writeTextElement(QString("Orientable"), QString("non"));
 					}
 				}
-			xmlWriter.writeEndElement();	//Image
+			xmlWriter.writeEndElement();	//image
 		}
 		xmlWriter.writeEndElement();	//Images
 		if (paramMain.getCurrentMode()!=ParamMain::ImageMode) {
@@ -402,7 +402,7 @@ bool ParamCalcul::ecrire(const ParamMain& paramMain, const QString& fichier) {
 			xmlWriter.writeEndElement();	//Calibrations
 		}
 	}
-	xmlWriter.writeEndElement();	//Calcul
+	xmlWriter.writeEndElement();	//computation
 
 	xmlWriter.writeEndDocument();
 	return true;
@@ -564,7 +564,7 @@ QString ParamCalcul::lire(ParamMain& paramMain, const QString& fichier) {
 						tag = orientation->getEnfant("ImgMasquePlan",&ok);
 						bool ok2;
 						orientation->getEnfant("ImagesEchelle",&ok2);
-						if (!ok && !ok2) return sbase+conv(QObject::tr("No parameters found for user orientation (either an horizontal plan or images for rescaling)."));	//plan+dir ou échelle ou les 2
+						if (!ok && !ok2) return sbase+conv(QObject::tr("No parameters found for user orientation (either an horizontal plan or images for rescaling)."));	//plan+dir or échelle or les 2
 						//plan
 						if (ok) {
 							paramMain.modifParamApero().modifUserOrientation().setBascOnPlan(true);
@@ -604,7 +604,7 @@ QString ParamCalcul::lire(ParamMain& paramMain, const QString& fichier) {
 					else if (orientMethode==QString("ImageGeoref")) {
 						paramMain.modifParamApero().modifUserOrientation() .setOrientMethode(2);
 
-						//Image
+						//image
 						tag = orientation->getEnfant("Image",&ok);
 						if (!ok) return sbase+conv(QObject::tr("Fail to find the image of known georeferencing."));
 						paramMain.modifParamApero().modifUserOrientation().setImageGeoref(tag.getContenu());
@@ -645,8 +645,8 @@ QString ParamCalcul::lire(ParamMain& paramMain, const QString& fichier) {
 					if (om==1 || om==2) {
 						tag = orientation->getEnfant("ImagesEchelle",&ok);
 						if (!ok && (om!=1 || !paramMain.modifParamApero().modifUserOrientation().getBascOnPlan()))
-							return sbase+conv(QObject::tr("Images for rescaling (absolute orientation) not found."));	//échelle obligatoire si orient par img ou si orient manu sans plan+dir
-						if (ok) {	//partie pas obligatoire si orient manuelle avec déjà plan+dir
+							return sbase+conv(QObject::tr("Images for rescaling (absolute orientation) not found."));	//échelle obligatoire if orient par img or if orient manu without plan+dir
+						if (ok) {	//partie pas obligatoire if orient manuelle with déjà plan+dir
 							text = tag.getContenu();
 							paramMain.modifParamApero().modifUserOrientation().setFixEchelle(true);
 							if (!text.isEmpty()) {
@@ -721,7 +721,7 @@ QString ParamCalcul::lire(ParamMain& paramMain, const QString& fichier) {
 					const XmlTag* carteTag  = &(xmlTree.getMainTag().getEnfant("Cartes_Profondeur",&ok));
 					if (!ok) return sbase+conv(QObject::tr("Depth map parameters not found."));
 
-					//liste des cartes
+					//list des cartes
 					QVector<CarteDeProfondeur> listMasques;
 					QList<const XmlTag*> listeCartes = carteTag->getEnfants("Carte",&ok);
 					if (!ok) return sbase+conv(QObject::tr("No depth maps found."));
@@ -778,7 +778,7 @@ QString ParamCalcul::lire(ParamMain& paramMain, const QString& fichier) {
 							carte.setEchelleOrtho(ech);
 						}
 
-						//fichier de référencement du masque
+						//file de référencement du masque
 						/*QString masqImg;
 						QString err = FichierMasque::lire(paramMain.getDossier()+carte.getReferencementMasque(),masqImg);
 						if (!err.isEmpty())
@@ -894,7 +894,7 @@ cout << paramMain.getCorrespImgCalib().last().getImageTif().toStdString() << end
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
-//liste des caméras utilisées
+//list des caméras utilisées
 BDCamera::BDCamera() { BDfile = applicationPath() + QString("/../interface/xml/BDCamera.xml"); }
 
 QString BDCamera::lire (QList<pair<QString,double> >& imgNames) {
@@ -935,7 +935,7 @@ bool BDCamera::ecrire (const QList<pair<QString,double> >& imgNames) {
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("BDCamera"));
 	if (imgNames.count()>0) {
@@ -955,7 +955,7 @@ bool BDCamera::ecrire (const QList<pair<QString,double> >& imgNames) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
-//liste des caméras utilisées par Micmac
+//list des caméras utilisées par Micmac
 DicoCameraMM::DicoCameraMM(const ParamMain* pMain) : paramMain(pMain) { dicoFile = paramMain->getMicmacDir() + QString("/include/XML_MicMac/DicoCamera.xml"); }
 
 QString DicoCameraMM::ecrire (const CalibCam& calibCam, const QString& img) {
@@ -972,7 +972,7 @@ QString DicoCameraMM::ecrire (const CalibCam& calibCam, const QString& img) {
 	if (metaDataRaw.focale==0 || metaDataRaw.imgSize.width()==0 || metaDataRaw.imgSize.height()==0) return sbase+conv(QObject::tr("The metadata extracted from image %1 are unvalid")).arg(img);
 	QPointF taille(calibCam.getTaillePx()*metaDataRaw.imgSize.width()/1000.0 , calibCam.getTaillePx()*metaDataRaw.imgSize.height()/1000.0);	//on suppose que le pixel est carré
 
-	//si ce nom existe déjà, rien à faire
+	//if ce nom existe déjà, rien à faire
 	const QList<const XmlTag*> l = xmlTree.getMainTag().getEnfants("CameraEntry");
 	for (QList<const XmlTag*>::const_iterator it=l.begin(); it!=l.end(); it++) {
 		if ((*it)->getEnfant("Name").getContenu()==metaDataRaw.camera ||(*it)->getEnfant("ShortName").getContenu()==metaDataRaw.camera)
@@ -1007,7 +1007,7 @@ bool FichierCalibCam::ecrire (const QString& dossier, const CalibCam& calibCam) 
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("ExportAPERO"));
 	xmlWriter.writeStartElement(QString("CalibrationInternConique"));
@@ -1159,7 +1159,7 @@ QString FichierCalibCam::lire(const QString& dossier, const QString& fichier, Ca
 FichierParamImage::FichierParamImage() {}
 
 bool FichierParamImage::ecrire(const QString& fichier, const QVector<ParamImage>& lstImg) {
-//écriture de la liste des images
+//écriture de la list des images
 	QFile oldFile(fichier);
 	if (oldFile.exists()) {
 		oldFile.remove();
@@ -1169,7 +1169,7 @@ bool FichierParamImage::ecrire(const QString& fichier, const QVector<ParamImage>
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("KeyedSetsOfNames"));
 	xmlWriter.writeStartElement(QString("Sets"));
@@ -1232,7 +1232,7 @@ QString FichierParamImage::lire(const QString& fichier, QVector<ParamImage>& lst
 FichierCouples::FichierCouples() {}
 
 bool FichierCouples::ecrire (const QString& fichier, const QList<pair<QString, QString> >& couples, const QVector<ParamImage>& rawToTif) {
-//écriture des couples dans fichier ; si rawToTif!=0, convertit les noms en tif
+//écriture des couples in file ; if rawToTif!=0, convertit les noms en tif
 	QFile oldFile(fichier);
 	if (oldFile.exists()) {
 		oldFile.remove();
@@ -1243,7 +1243,7 @@ bool FichierCouples::ecrire (const QString& fichier, const QList<pair<QString, Q
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("KeyedSetsORels"));
 	xmlWriter.writeStartElement(QString("Sets"));
@@ -1268,10 +1268,10 @@ bool FichierCouples::ecrire (const QString& fichier, const QList<pair<QString, Q
 }
 
 QString FichierCouples::convertir(const QString& fichier, const QVector<ParamImage>& rawToTif) {
-//réécrit les couples d'images avec les nouveaux noms
+//réécrit les couples d'images with les nouveaux noms
 	QList<pair<QString, QString> > couples;
 	QString tempoFile("tempofile");
-	QString err = lire (fichier, couples, rawToTif, false);	//lecture sans traduction
+	QString err = lire (fichier, couples, rawToTif, false);	//lecture without traduction
 	if (!err.isEmpty())
 		return err;
 	bool res = ecrire (tempoFile, couples, rawToTif);	//écriture en tif
@@ -1283,7 +1283,7 @@ QString FichierCouples::convertir(const QString& fichier, const QVector<ParamIma
 }
 
 QString FichierCouples::traduire(const QString& image, const QVector<ParamImage>& rawToTif, bool toTif) {
-//convertit un nom d'image en tif si toTif (et teste pour toutes ses formes), en raw sinon (la forme initiale)
+//convertit un nom d'image en tif if toTif (and teste for toutes ses formes), en raw else (la forme initiale)
 	for (int i=0; i<rawToTif.count(); i++) {
 		if (toTif && (image==rawToTif.at(i).getImageRAW() || image==rawToTif.at(i).getImageTif()))
 			return rawToTif.at(i).getImageTif();
@@ -1294,7 +1294,7 @@ QString FichierCouples::traduire(const QString& image, const QVector<ParamImage>
 }
 
 QString FichierCouples::lire (const QString& fichier, QList<pair<QString, QString> >& couples, const QVector<ParamImage>& tifToRaw, bool raw) {
-//lit les couples d'images dans fichier et donne leur forme raw (forme initiale) si raw
+//lit les couples d'images in file and donne leur forme raw (forme initiale) if raw
 	QString sbase = conv(QObject::tr("Image pair file %1 reading : ")).arg(fichier);
 
 	XmlTree xmlTree(fichier);
@@ -1351,7 +1351,7 @@ bool FichierAssocCalib::ecrire (const QString& fichier, const QVector<ParamImage
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("KeyedNamesAssociations"));
 
@@ -1433,7 +1433,7 @@ bool FichierFiltrage::ecrire (QString fichier, QString dossier, QSize imgSize) {
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("ParamFusionSift"));
 		xmlWriter.writeTextElement(QString("dossierImg"), QString());
@@ -1479,7 +1479,7 @@ bool FichierMaitresse::ecrire (QString fichier, QString maitresse, QString calib
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeTextElement(QString("PatternName"), maitresse);
 	bool ok = false;
@@ -1524,7 +1524,7 @@ bool FichierExportPly::ecrire (QString fichier) {
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("ExportNuage"));
 		xmlWriter.writeTextElement(QString("NameOut"), QString("Cameras.ply"));
@@ -1565,7 +1565,7 @@ bool FichierImgToOri::ecrire (const QString& fichier, const QStringList& imgOri,
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	for (int k=0; k<calibFiles.count(); k++) {
 		//vérification de la présence d'images à orienter correspondant à cette calibration
@@ -1587,7 +1587,7 @@ bool FichierImgToOri::ecrire (const QString& fichier, const QStringList& imgOri,
 		if (calibFiles.count()>1) {
 			for (int i=0; i<assoc.size(); i++) {
 				if (imgOri.indexOf(assoc.at(i).getImageTif())==-1) continue;	//img non orientable (pas de points de liaison)
-				if (assoc.at(i).getImageTif()==maitresse && (monoechelle || etape1==0)) continue;	//l'image maîtresse n'est pas orientée, sauf dans l'étape2 multi-f (l'image maîtresse a une focale courte) et dans l'étape 3
+				if (assoc.at(i).getImageTif()==maitresse && (monoechelle || etape1==0)) continue;	//l'image maîtresse n'est pas orientée, sauf in l'étape2 multi-f (l'image maîtresse a une focale courte) and in l'étape 3
 				if (assoc.at(i).getCalibration()!=calibFiles.at(k).first) continue;	//ordonnées par calibration
 				l.push_back(assoc.at(i).getImageTif());
 			}
@@ -1601,7 +1601,7 @@ bool FichierImgToOri::ecrire (const QString& fichier, const QStringList& imgOri,
 			xmlWriter.writeTextElement(QString("AutoRefutDupl"), QVariant(true).toString());	//supprime les duplicatats
 
 			if (etape1!=2 && (monoechelle || etape1==0 || !posesFigees.contains(calibFiles.at(k).second)))
-				xmlWriter.writeTextElement(QString("InitNow"), QString("false"));	//les focales courtes ont une valeur initiale à l'étape 2 du multi-échelle
+				xmlWriter.writeTextElement(QString("InitNow"), QString("false"));	//les focales courtes ont une value initiale à l'étape 2 du multi-échelle
 
 			QString f = QVariant(calibFiles.at(k).second).toString();
 			while (f.count()<3)
@@ -1611,7 +1611,7 @@ bool FichierImgToOri::ecrire (const QString& fichier, const QStringList& imgOri,
 			if (withGPSSummit)
 				xmlWriter.writeTextElement(QString("IdBDCentre"), QString("Id-Centre"));
 
-			if (etape1!=2 && (monoechelle || etape1==0 || posesFigees.contains(calibFiles.at(k).second)))	//pour les focales courtes
+			if (etape1!=2 && (monoechelle || etape1==0 || posesFigees.contains(calibFiles.at(k).second)))	//for les focales courtes
 				xmlWriter.writeTextElement(QString("PosesDeRattachement"), QString("0"));
 
 			if (etape1!=2 && (monoechelle || etape1==0 || !posesFigees.contains(calibFiles.at(k).second))) {
@@ -1630,7 +1630,7 @@ bool FichierImgToOri::ecrire (const QString& fichier, const QStringList& imgOri,
 					xmlWriter.writeEndElement();	//PoseFromLiaisons
 				xmlWriter.writeEndElement();	//PosValueInit
 			} else {
-				xmlWriter.writeStartElement(QString("PosValueInit"));	//init des foc courtes par les résult de l'étape 1 (multi-éch), et de toutes les imgs pour l'étape 3 par les résult de l'étape 2
+				xmlWriter.writeStartElement(QString("PosValueInit"));	//init des foc courtes par les résult de l'étape 1 (multi-éch), and de toutes les imgs for l'étape 3 par les résult de l'étape 2
 					xmlWriter.writeTextElement(QString("PosFromBDOrient"), QString("Key-Ori-Init"));
 				xmlWriter.writeEndElement();	//PosValueInit
 			}
@@ -1699,7 +1699,7 @@ bool FichierDefCalibration::ecrire (const QString& fichier, const QList<std::pai
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	for (int i=0; i<calibFiles.count(); i++) {
 		if (!monoechelle && etape==0 && !calibFigees.contains(calibFiles.at(i).second)) continue;	//pas de f lges à l'étape1 (multi-foc)
@@ -1715,15 +1715,15 @@ bool FichierDefCalibration::ecrire (const QString& fichier, const QList<std::pai
 						while (f.count()<3)
 							f = QVariant(0).toString() + f;
 						if (etape==2)
-							xmlWriter.writeTextElement(QString("NameFile"), QString("Ori-F/F")+f+QString("_AutoCalFinale.xml"));	//fichier résultat de l'étape 2 pr toutes les imgs
+							xmlWriter.writeTextElement(QString("NameFile"), QString("Ori-F/F")+f+QString("_AutoCalFinale.xml"));	//file résultat de l'étape 2 pr toutes les imgs
 						else
-							xmlWriter.writeTextElement(QString("NameFile"), QString("Orient/F")+f+QString("_AutoCalInit.xml"));	//fichier résultat de l'étape 1 pour les foc courtes
+							xmlWriter.writeTextElement(QString("NameFile"), QString("Orient/F")+f+QString("_AutoCalInit.xml"));	//file résultat de l'étape 1 for les foc courtes
 					} else
-						xmlWriter.writeTextElement(QString("NameFile"), calibFiles.at(i).first);	//fichier utilisateur
+						xmlWriter.writeTextElement(QString("NameFile"), calibFiles.at(i).first);	//file utilisateur
 					xmlWriter.writeTextElement(QString("NameTag"), QString("CalibrationInternConique"));
 				xmlWriter.writeEndElement();	//CalFromFileExtern
 			xmlWriter.writeEndElement();	//CalValueInit
-			if (!monoechelle && etape==2 && !(calibFigees.contains(calibFiles.at(i).second))) {	//dissociation des calib pour l'étape 3
+			if (!monoechelle && etape==2 && !(calibFigees.contains(calibFiles.at(i).second))) {	//dissociation des calib for l'étape 3
 				xmlWriter.writeStartElement(QString("CalibPerPose"));
 					xmlWriter.writeTextElement(QString("KeyPose2Cal"), QString("Key-Assoc-Cal-Var"));
 				xmlWriter.writeEndElement();	//CalibPerPose
@@ -1748,7 +1748,7 @@ bool FichierDefCalibration::ecrire (const QString& fichier, const QList<std::pai
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//orientation suivant un plan et une axe saisis par l'utilisateur
+//orientation suivant un plan and une axe saisis par l'utilisateur
 FichierBasculOri::FichierBasculOri() {}
 
 bool FichierBasculOri::ecrire (const QString& fichier, const UserOrientation& param, const QStringList& images) {
@@ -1767,7 +1767,7 @@ bool FichierBasculOri::ecrire (const QString& fichier, const UserOrientation& pa
 	}
 
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	//basculement (plan)
 	if (param.getOrientMethode()==1 && param.getBascOnPlan() && param.getMasque()!=QString()) {
@@ -1793,7 +1793,7 @@ bool FichierBasculOri::ecrire (const QString& fichier, const UserOrientation& pa
 		xmlWriter.writeEndElement();	//BasculeOrientation
 	}
 
-	//orientation dans le plan
+	//orientation in le plan
 	if (param.getOrientMethode()==1 && param.getBascOnPlan() && !param.getImage1().isEmpty() && !param.getImage2().isEmpty() && param.getPoint1()!=QPoint(-1,-1) && param.getPoint2()!=QPoint(-1,-1)) {
 		xmlWriter.writeStartElement(QString("FixeOrientPlane"));
 			xmlWriter.writeStartElement(QString("ModeFOP"));
@@ -2042,13 +2042,13 @@ QString FichierBasculOri::lire (const QString& fichier, UserOrientation& param, 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier de points d'appui terrain
-//le fichier texte doit contenir les coordonnées comme suit :
+//file de points d'appui terrain
+//le file texte doit contenir les coordonnées comme suit :
 //	nomPoint X Y Z dx dy dz (tout en mètres)
 FichierAppuiGPS::FichierAppuiGPS() {}
 
 bool FichierAppuiGPS::convert (const QString& fichierold, const QString& fichiernew) {
-	//convert le fichier du format texte au format xml s'il y a lieu
+	//convert le file du format texte au format xml s'il y a lieu
 	if (QFile(fichiernew).exists()) QFile(fichiernew).remove();
 	bool texte = true;
 	if (!format(fichierold,texte)) return false;
@@ -2072,7 +2072,7 @@ bool FichierAppuiGPS::convert (const QString& fichierold, const QString& fichier
 	if (!newFile.open(QFile::WriteOnly | QFile::Text | QIODevice::Truncate))
 		return false;
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("DicoAppuisFlottant"));
 	for (int i=0; i<points.count(); i++) {		
@@ -2090,7 +2090,7 @@ bool FichierAppuiGPS::convert (const QString& fichierold, const QString& fichier
 }
 
 bool FichierAppuiGPS::format(const QString& fichier, bool& texte) {
-	//vérifie si le fichier à convertir est au format texte (true) ou déjà au format xml (false)
+	//vérifie if le file à convertir est au format texte (true) or déjà au format xml (false)
 	QFile file(fichier);
 	if (!file.open(QFile::ReadOnly | QFile::Text))
 		return false;
@@ -2189,13 +2189,13 @@ QString FichierAppuiGPS::lireFichierTexte(QFile& fichier, QList<QString>& points
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier de points d'appui avec leurs coordonnées dans les images
-//le fichier texte doit contenir les coordonnées comme suit :
-//	nomImage colonne ligne nomPointTerrain (en pixels)
+//file de points d'appui with leurs coordonnées in les images
+//le file texte doit contenir les coordonnées comme suit :
+//	nomImage colonne line nomPointTerrain (en pixels)
 FichierAppuiImage::FichierAppuiImage() {}
 
 bool FichierAppuiImage::convert (const QString& fichierold, const QString& fichiernew) {
-	//convert le fichier du format texte au format xml s'il y a lieu
+	//convert le file du format texte au format xml s'il y a lieu
 	if (QFile(fichiernew).exists()) QFile(fichiernew).remove();
 	bool texte = true;
 	if (!format(fichierold,texte)) return false;
@@ -2212,7 +2212,7 @@ bool FichierAppuiImage::convert (const QString& fichierold, const QString& fichi
 
 	QString v,p;
 	systemeNumerique(v,p);
-	QList<pair<QString, QList<pair<QString,QPoint> > > > donnees;	//image , liste <station,coord>
+	QList<pair<QString, QList<pair<QString,QPoint> > > > donnees;	//image , list <station,coord>
 
 	while (!textReader.atEnd()) {
 		QString mesure = textReader.readLine().trimmed().simplified();
@@ -2251,7 +2251,7 @@ bool FichierAppuiImage::convert (const QString& fichierold, const QString& fichi
 	if (!newFile.open(QFile::WriteOnly | QFile::Text | QIODevice::Truncate))
 		return false;
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("SetOfMesureAppuisFlottants"));
 
@@ -2276,7 +2276,7 @@ bool FichierAppuiImage::convert (const QString& fichierold, const QString& fichi
 }
 
 bool FichierAppuiImage::format(const QString& fichier, bool& texte) {
-	//vérifie si le fichier à convertir est au format texte (true) ou déjà au format xml (false)
+	//vérifie if le file à convertir est au format texte (true) or déjà au format xml (false)
 	QFile file(fichier);
 	if (!file.open(QFile::ReadOnly | QFile::Text))
 		return false;
@@ -2392,7 +2392,7 @@ bool FichierAppuiImage::ecrire(const QString& fichier, const ParamMain* paramMai
 	QFile file(fichier);
 	if (!file.open(QFile::WriteOnly | QFile::Text | QIODevice::Truncate)) return false;
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("SetOfMesureAppuisFlottants"));
 	for (int i=0; i<points.count(); i++) {	
@@ -2416,7 +2416,7 @@ bool FichierAppuiImage::ecrire(const QString& fichier, const ParamMain* paramMai
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier pointant vers le fichier des mesures image des points GPS
+//file pointant vers le file des mesures image des points GPS
 FichierObsGPS::FichierObsGPS() {}
 
 bool FichierObsGPS::ecrire (const QString& fichier, const UserOrientation& param) {
@@ -2424,7 +2424,7 @@ bool FichierObsGPS::ecrire (const QString& fichier, const UserOrientation& param
 	if (!file.open(QFile::WriteOnly | QFile::Text | QIODevice::Truncate))
 		return false;
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	if (param.getOrientMethode()==3) {
 		xmlWriter.writeStartElement(QString("BDD_ObsAppuisFlottant"));
@@ -2447,7 +2447,7 @@ bool FichierObsGPS::ecrire (const QString& fichier, const UserOrientation& param
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier pointant vers le fichier des points GPS
+//file pointant vers le file des points GPS
 FichierIncGPS::FichierIncGPS() {}
 
 bool FichierIncGPS::ecrire (const QString& fichier, const UserOrientation& param) {
@@ -2455,7 +2455,7 @@ bool FichierIncGPS::ecrire (const QString& fichier, const UserOrientation& param
 	if (!file.open(QFile::WriteOnly | QFile::Text | QIODevice::Truncate))
 		return false;
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("PointFlottantInc"));
 		xmlWriter.writeTextElement(QString("Id"), QString("Id-Appui"));
@@ -2470,7 +2470,7 @@ bool FichierIncGPS::ecrire (const QString& fichier, const UserOrientation& param
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier pour la pondération des points GPS
+//file for la pondération des points GPS
 FichierPondGPS::FichierPondGPS() {}
 
 bool FichierPondGPS::ecrire (const QString& fichier, int orientMethode) {
@@ -2478,7 +2478,7 @@ bool FichierPondGPS::ecrire (const QString& fichier, int orientMethode) {
 	if (!file.open(QFile::WriteOnly | QFile::Text | QIODevice::Truncate))
 		return false;
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	if (orientMethode==3) {
 		xmlWriter.writeStartElement(QString("ObsAppuisFlottant"));	
@@ -2515,13 +2515,13 @@ bool FichierPondGPS::ecrire (const QString& fichier, int orientMethode) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier de coordonnées GPS de sommets
-//le fichier texte doit contenir les coordonnées comme suit :
+//file de coordonnées GPS de sommets
+//le file texte doit contenir les coordonnées comme suit :
 //	nomImage X Y Z
 FichierSommetsGPS::FichierSommetsGPS() {}
 
 bool FichierSommetsGPS::convert (const QString& fichierold, const ParamMain& paramMain, QString& resultDir, QStringList& images) {
-	//convert le fichier fichierold du format texte en un dossier resultDir au format xml s'il y a lieu ; images est la liste des images à basculer
+	//convert le file fichierold du format texte en un folder resultDir au format xml s'il y a lieu ; images est la list des images à basculer
 	if (QDir(fichierold).exists()) {
 		resultDir = fichierold;	
 		//images
@@ -2546,7 +2546,7 @@ bool FichierSommetsGPS::convert (const QString& fichierold, const ParamMain& par
 		QString v,p;
 		systemeNumerique(v,p);
 
-		//nouveau dossier
+		//nouveau folder
 		resultDir = paramMain.getDossier()+QString("Ori-BDDC/");
 		if (QDir(resultDir).exists()) {
 			int i = 0;
@@ -2626,7 +2626,7 @@ bool FichierSommetsGPS::convert (const QString& fichierold, const ParamMain& par
 				return false;
 			}
 			QXmlStreamWriter xmlWriter(&newFile);
-			xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+			xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 			xmlWriter.writeTextElement(QString("Centre"), QString("%1 %2 %3").arg(x).arg(y).arg(z));
 			if (doRot) {
 				xmlWriter.writeStartElement(QString("ParamRotation"));
@@ -2647,7 +2647,7 @@ bool FichierSommetsGPS::convert (const QString& fichierold, const ParamMain& par
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier pointant vers les orientations initiales
+//file pointant vers les orientations initiales
 FichierOriInit::FichierOriInit() {}
 
 bool FichierOriInit::ecrire (const QString& fichier) {
@@ -2657,7 +2657,7 @@ bool FichierOriInit::ecrire (const QString& fichier) {
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("BDD_Orient"));
 		xmlWriter.writeTextElement(QString("Id"), QString("Key-Ori-Initiale"));
@@ -2686,7 +2686,7 @@ bool FichierCleCalib::ecrire (const QString& fichier, const QList<int>& calib) {
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 	if (calib.count()>0) {
 		QString s = (calib.count()==1)? QString() : QString("( ");
 		for (int i=0; i<calib.count(); i++) {
@@ -2720,7 +2720,7 @@ bool FichierContraintes::ecrire (const QString& fichier, bool classique, bool fi
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 		xmlWriter.writeStartElement(QString("ContraintesCamerasInc"));
 		if (classique) {
@@ -2756,7 +2756,7 @@ bool FichierPosesFigees::ecrire (const QString& fichier, const QList<int>& calib
 	}
 	if (calibFigees.count()==0) return true;
 	QXmlStreamWriter xmlWriter(&newFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	for (int i=0; i<imgs.count(); i++) {
 		if (maitresse==imgs.at(i).getImageTif()) continue;	//pas l'image maîtresse
@@ -2797,7 +2797,7 @@ bool FichierPosesFigees::ecrire (const QString& fichier, const QVector<bool>& ca
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//liste des images utilisées pour créer les cartes de profondeur
+//list des images utilisées for créer les cartes de profondeur
 FichierCartes::FichierCartes () {}
 
 bool FichierCartes::ecrire(const QString& fichier, const CarteDeProfondeur& carte) {
@@ -2808,7 +2808,7 @@ bool FichierCartes::ecrire(const QString& fichier, const CarteDeProfondeur& cart
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("Images"));
 		xmlWriter.writeTextElement(QString("Im1"), carte.getImageDeReference());
@@ -2849,7 +2849,7 @@ QString FichierCartes::lire(const QString& fichier, CarteDeProfondeur& carte) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier xml de référencement du masque saisi pour MicMac
+//file xml de référencement du masque saisi for MicMac
 FichierMasque::FichierMasque () {}
 
 bool FichierMasque::ecrire(const QString& fichier, const ParamMasqueXml& paramMasqueXml) {
@@ -2860,7 +2860,7 @@ bool FichierMasque::ecrire(const QString& fichier, const ParamMasqueXml& paramMa
 	QFile masqueFile(fichier);
 	if (!masqueFile.open(QFile::WriteOnly | QFile::Text | QIODevice::Truncate)) return false;
 	QXmlStreamWriter xmlWriter(&masqueFile);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 	//xmlWriter.writeCharacters(QString("<?xml version=\"1.0\" ?>"));
 
 	xmlWriter.writeStartElement(QString("FileOriMnt"));
@@ -2893,7 +2893,7 @@ bool FichierMasque::ecrire(const QString& fichier, const ParamMasqueXml& paramMa
 	masqueFile.close();
 	newFile.close();
 	masqueFile.remove();
-	newFile.rename(fichier);	*/
+	newFile.rename(file);	*/
 	return true;
 }
 
@@ -2967,7 +2967,7 @@ QString FichierMasque::lire(const QString& fichier, ParamMasqueXml& paramMasqueX
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier xml de référencement du masque saisi pour MicMac
+//file xml de référencement du masque saisi for MicMac
 FichierDefMasque::FichierDefMasque () {}
 
 bool FichierDefMasque::ecrire(QString dossier, QString fichier, QString masque, QString ref) {
@@ -2976,7 +2976,7 @@ bool FichierDefMasque::ecrire(QString dossier, QString fichier, QString masque, 
 			return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("Planimetrie"));
 		xmlWriter.writeStartElement(QString("MasqueTerrain"));
@@ -2990,7 +2990,7 @@ bool FichierDefMasque::ecrire(QString dossier, QString fichier, QString masque, 
 }
 
 QString FichierDefMasque::lire(QString dossier, QString fichier, QString & masque, QString & refmasque) {
-/*	QString sbase = conv(QObject::tr("Lecture du fichier de définition du masque %1 :\n")).arg(fichier);
+/*	QString sbase = conv(QObject::tr("Lecture du file de définition du masque %1 :\n")).arg(file);
 	XmlTree xmlTree(fichier);
 	QString err = xmlTree.lire();
 	if (!err.isEmpty()) return err;
@@ -3011,7 +3011,7 @@ QString FichierDefMasque::lire(QString dossier, QString fichier, QString & masqu
 	refmasque = tag.getContenu().section("/",-1,-1);
 
 	QString image;
-	QString lecture = FichierMasque::lire(dossier+refmasque,image);	//image : sans le dossier
+	QString lecture = FichierMasque::lire(dossier+refmasque,image);	//image : without le folder
 	if (!lecture.isEmpty()) return lecture;
 
 	if (image!=masque)	//il faut que les noms des masques soient cohérents
@@ -3030,7 +3030,7 @@ bool FichierRepere::ecrire(const QString& fichier, double profondeur) {
 	QFile file(fichier);
 	if (!file.open(QFile::WriteOnly | QFile::Text | QIODevice::Truncate)) return false;
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("RepereLoc"));
 		xmlWriter.writeStartElement(QString("RepereCartesien"));
@@ -3083,7 +3083,7 @@ QString FichierRepere::lire(const QString& fichier) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
-//intervalle de recherche pour la corrélation
+//intervalle de recherche for la corrélation
 FichierIntervalle::FichierIntervalle() {}
 
 bool FichierIntervalle::ecrire(const QString& fichier, float pmin, float pmax) {
@@ -3092,7 +3092,7 @@ bool FichierIntervalle::ecrire(const QString& fichier, float pmin, float pmax) {
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("IntervSpecialZInv"));
 	xmlWriter.writeTextElement(QString("MulZMin"), QVariant(pmin).toString());
@@ -3106,7 +3106,7 @@ bool FichierIntervalle::ecrire(const QString& fichier, float pmin, float pmax) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
-//filtrage des discontinuités et fortes pentes
+//filtrage des discontinuités and fortes pentes
 FichierDiscontinuites::FichierDiscontinuites() {}
 
 bool FichierDiscontinuites::ecrire(const QString& fichier, float seuil, float coeff) {
@@ -3115,7 +3115,7 @@ bool FichierDiscontinuites::ecrire(const QString& fichier, float seuil, float co
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeTextElement(QString("SeuilAttenZRegul"), QVariant(seuil).toString());
 	xmlWriter.writeTextElement(QString("AttenRelatifSeuilZ"), QVariant(coeff).toString());
@@ -3136,7 +3136,7 @@ bool FichierNomCarte::ecrire(const QString& fichier, const QString& numCarte, bo
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	QString s = (TA)? QString("TA%1/").arg(numCarte) : (!repereImg)? QString("GeoTer%1/").arg(numCarte): QString("GeoI%1/").arg(numCarte);
 	xmlWriter.writeTextElement(QString("TmpMEC"), s);
@@ -3161,7 +3161,7 @@ bool FichierOrtho::ecrire(const QString& fichier, const CarteDeProfondeur& carte
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeStartElement(QString("ImageSelecteur"));
 		xmlWriter.writeTextElement(QString("ModeExclusion"), QString("false"));
@@ -3207,7 +3207,7 @@ bool FichierPorto::ecrire(const QString& fichier, const QString& num) {
 		return false;
 	}
 	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);	//espaces et retour à la ligne
+	xmlWriter.setAutoFormatting(true);	//espaces and retour à la line
 
 	xmlWriter.writeTextElement(QString("FileMNT"), QString("../GeoTer%1/Z_Num7_DeZoom1_Geom-Im-%1.xml").arg(num));
 
@@ -3218,7 +3218,7 @@ bool FichierPorto::ecrire(const QString& fichier, const QString& num) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
-//fichier de géoréférencement des cartes, MNT, TA et orthoimages
+//file de géoréférencement des cartes, MNT, TA and orthoimages
 FichierGeorefMNT::FichierGeorefMNT() {}
 
 QString FichierGeorefMNT::lire(GeorefMNT& georefMNT) {
@@ -3269,7 +3269,7 @@ QString focaleRaw(const QString& image, const ParamMain& paramMain, MetaDataRaw&
 	QTextStream inStream(&file);
 	while (!inStream.atEnd()) {
 		QString text = inStream.readLine();
-		if (text.contains("Camera:"))	//Camera: Canon EOS 350D DIGITAL
+		if (text.contains("Camera:"))	//camera: Canon EOS 350D DIGITAL
 			metaDataRaw.camera = text.trimmed().simplified().section(" ",1,-1);
 		else if (text.contains("Focal length:")) {	//Focal length: 55.0 mm
 			QString str = text.trimmed().simplified().section(" ",2,2);
@@ -3287,7 +3287,7 @@ QString focaleRaw(const QString& image, const ParamMain& paramMain, MetaDataRaw&
 				metaDataRaw.feq35 = 0;
 				continue;
 			}
-		} else if (text.contains("Image size:")) {	//Image size:  3474 x 2314
+		} else if (text.contains("Image size:")) {	//image size:  3474 x 2314
 			QStringList str = text.trimmed().simplified().split(" ",QString::SkipEmptyParts);
 			bool ok = false;
 			metaDataRaw.imgSize.setWidth(str[2].toDouble(&ok));

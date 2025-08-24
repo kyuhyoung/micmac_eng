@@ -199,7 +199,7 @@ INT PackBitsGen<Traits>::Compr
                     cont = false;
                     i--;
                  }
-                 // si run de 2, entre deux run litteraux, on le saute
+                 // if run de 2, between deux run litteraux, on le saute
                  else if
                  (
                          (i+2<lim)
@@ -207,10 +207,10 @@ INT PackBitsGen<Traits>::Compr
                       && EqInd(i+1,i+2)
                  )
                       i+=3;
-                 // si run de 2, juste avant 1 dernier element, on le saute
+                 // if run de 2, juste before 1 dernier element, on le saute
                  else if ( i+2 == lim)
                       i+=2;
-                 // sinon, run de 2= a coder en RLE
+                 // else, run de 2= a coder en RLE
                  else
                  {
                     cont = false;

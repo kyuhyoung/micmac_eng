@@ -4,7 +4,7 @@
 #include "GloNavigationSlot.h"
 
 // -------------------------------------------------------------------------------
-// Ajout d'un slot de navigation aux données
+// Ajout d'un slot de navigation aux donnes
 // -------------------------------------------------------------------------------
 void GloNavigationData::addNavigationSlot(GloNavigationSlot &slot){
 
@@ -17,10 +17,10 @@ void GloNavigationData::addNavigationSlot(GloNavigationSlot &slot){
 }
 
 // -------------------------------------------------------------------------------
-// Test si les éphémérides contiennent une données respectant les 3 conditions :
+// Test if les phmrides contiennent une donnes respectant les 3 conditions :
 //  (1) Le PRN correspond
-//  (2) La date du paquet est < à la date requise
-//  (3) La date du paquet est la plus récente possible
+//  (2) La date du paquet est <  la date requise
+//  (3) La date du paquet est la plus rcente possible
 // -------------------------------------------------------------------------------
 bool GloNavigationData::hasEphemeris(int PRN, GPSTime time){
 
@@ -48,10 +48,10 @@ bool GloNavigationData::hasEphemeris(int PRN, GPSTime time){
 }
 
 // -------------------------------------------------------------------------------
-// Test si les éphémérides contiennent une données respectant les 3 conditions :
+// Test if les phmrides contiennent une donnes respectant les 3 conditions :
 //  (1) Le PRN correspond
-//  (2) La date du paquet est < à la date requise
-//  (3) La date du paquet est la plus récente possible
+//  (2) La date du paquet est <  la date requise
+//  (3) La date du paquet est la plus rcente possible
 // -------------------------------------------------------------------------------
 bool GloNavigationData::hasEphemeris(std::string PRN, GPSTime time){
     if (PRN.substr(0,1) != "R") return false;
@@ -60,10 +60,10 @@ bool GloNavigationData::hasEphemeris(std::string PRN, GPSTime time){
 
 
 // -------------------------------------------------------------------------------
-// Récupération du paquet d'éphéméride respectant les 3 conditions suivantes :
+// Rcupration du paquet d'phmride respectant les 3 conditions suivantes :
 //  (1) Le PRN correspond
-//  (2) La date du paquet est < à la date requise
-//  (3) La date du paquet est la plus récente possible
+//  (2) La date du paquet est <  la date requise
+//  (3) La date du paquet est la plus rcente possible
 // -------------------------------------------------------------------------------
 GloNavigationSlot& GloNavigationData::getNavigationSlot(int PRN, GPSTime time){
 
@@ -96,18 +96,18 @@ GloNavigationSlot& GloNavigationData::getNavigationSlot(int PRN, GPSTime time){
 
 
 // -------------------------------------------------------------------------------
-// Récupération du paquet d'éphéméride respectant les 3 conditions suivantes :
+// Rcupration du paquet d'phmride respectant les 3 conditions suivantes :
 //  (1) Le PRN correspond
-//  (2) La date du paquet est < à la date requise
-//  (3) La date du paquet est la plus récente possible
+//  (2) La date du paquet est <  la date requise
+//  (3) La date du paquet est la plus rcente possible
 // -------------------------------------------------------------------------------
 GloNavigationSlot& GloNavigationData::getNavigationSlot(std::string PRN, GPSTime time){
 	return this->getNavigationSlot(std::stoi(PRN.substr(1,2)), time);
 }
 
 // -------------------------------------------------------------------------------
-// Calcul des positions des satellite à partir d'un slot de données de rinex .nav
-// L'argument pseudorange permet de déduire le temps de propagation du signal
+// computation des positions des satellite  partir d'un slot de donnes de rinex .nav
+// L'argument pseudorange permet de dduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 std::vector<ECEFCoords> GloNavigationData::computeSatellitePos(std::vector<std::string> PRN, GPSTime t, std::vector<double> psr){
     std::vector<ECEFCoords> XYZ;
@@ -118,8 +118,8 @@ std::vector<ECEFCoords> GloNavigationData::computeSatellitePos(std::vector<std::
 }
 
 // -------------------------------------------------------------------------------
-// Calcul des erreur d'horloge de tous les satellites
-// L'argument pseudorange permet de déduire le temps de propagation du signal
+// computation des error d'horloge de tous les satellites
+// L'argument pseudorange permet de dduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 std::vector<double> GloNavigationData::computeSatelliteClockError(std::vector<std::string> PRN, GPSTime t, std::vector<double> psr){
     std::vector<double> T;
@@ -130,8 +130,8 @@ std::vector<double> GloNavigationData::computeSatelliteClockError(std::vector<st
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
-// L'argument pseudorange permet de déduire le temps de propagation du signal
+// computation d'une position de satellite  partir d'un slot de donnes de rinex .nav
+// L'argument pseudorange permet de dduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 ECEFCoords GloNavigationData::computeSatellitePos(int PRN, GPSTime time, double pseudorange){
     GPSTime time2(time.convertToAbsTime()-this->leap_seconds);
@@ -139,30 +139,30 @@ ECEFCoords GloNavigationData::computeSatellitePos(int PRN, GPSTime time, double 
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
-// L'argument pseudorange permet de déduire le temps de propagation du signal
+// computation d'une position de satellite  partir d'un slot de donnes de rinex .nav
+// L'argument pseudorange permet de dduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 ECEFCoords GloNavigationData::computeSatellitePos(std::string PRN, GPSTime time, double pseudorange){
     return this->computeSatellitePos(std::stoi(PRN.substr(1,2)), time, pseudorange);
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
+// computation d'une position de satellite  partir d'un slot de donnes de rinex .nav
 // -------------------------------------------------------------------------------
 ECEFCoords GloNavigationData::computeSatellitePos(int PRN, GPSTime time){
 	return this->computeSatellitePos(PRN, time, 0);
 }
 
 // -------------------------------------------------------------------------------
-// Calcul d'une position de satellite à partir d'un slot de données de rinex .nav
+// computation d'une position de satellite  partir d'un slot de donnes de rinex .nav
 // -------------------------------------------------------------------------------
 ECEFCoords GloNavigationData::computeSatellitePos(std::string PRN, GPSTime time){
 	return this->computeSatellitePos(std::stoi(PRN.substr(1,2)), time);
 }
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
-// L'argument pseudorange permet de déduire le temps de propagation du signal
+// computation de l'error d'horloge d'un satellite
+// L'argument pseudorange permet de dduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 double GloNavigationData::computeSatelliteClockError(int PRN, GPSTime time, double pseudorange){
     GPSTime time2(time.convertToAbsTime()-this->leap_seconds);
@@ -170,15 +170,15 @@ double GloNavigationData::computeSatelliteClockError(int PRN, GPSTime time, doub
 }
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
-// L'argument pseudorange permet de déduire le temps de propagation du signal
+// computation de l'error d'horloge d'un satellite
+// L'argument pseudorange permet de dduire le temps de propagation du signal
 // -------------------------------------------------------------------------------
 double GloNavigationData::computeSatelliteClockError(std::string PRN, GPSTime time, double pseudorange){
     return this->computeSatelliteClockError(std::stoi(PRN.substr(1,2)), time, pseudorange);
 }
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
+// computation de l'error d'horloge d'un satellite
 // -------------------------------------------------------------------------------
 double GloNavigationData::computeSatelliteClockError(int PRN, GPSTime time){
     return this->computeSatelliteClockError(PRN, time, 0);
@@ -186,7 +186,7 @@ double GloNavigationData::computeSatelliteClockError(int PRN, GPSTime time){
 
 
 // -------------------------------------------------------------------------------
-// Calcul de l'erreur d'horloge d'un satellite
+// computation de l'error d'horloge d'un satellite
 // -------------------------------------------------------------------------------
 double GloNavigationData::computeSatelliteClockError(std::string PRN, GPSTime time){
     GPSTime time2(time.convertToAbsTime()-this->leap_seconds);

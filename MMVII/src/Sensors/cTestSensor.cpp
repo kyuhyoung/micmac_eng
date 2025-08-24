@@ -252,7 +252,7 @@ void  cAppliTestSensor::DoOneImage(const std::string & aNameIm)
 
 
      //  Compute a set of synthetic  correspondance 3d-2d
-     mCurWDepth = ! aSI->HasIntervalZ();  // do we use Im&Depth or Image&Z
+     mCurWDepth = ! aSI->HasIntervalZ();  // do we use Im&Depth or image&Z
      mCurIntZD = mDefIntDepth;
      if (mCurWDepth)
      {  // if depth probably doent matter which one is used

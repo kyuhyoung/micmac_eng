@@ -231,7 +231,7 @@ class Parametres_reconstruction_batiment
 
         REAL _angl_min;               //degree
         REAL _dist_min;               //metre
-        REAL _decal_max;              //distance maximale entre un plan et un point de mne
+        REAL _decal_max;              //distance maximale between un plan and un point de mne
         INT  _test_stab;              //taille d'element de fermeture
 
 
@@ -246,26 +246,26 @@ class Parametres_reconstruction_batiment
 
 
 
-                                      //pour calculer les poids a partir de MNE
+                                      //for compute les poids a partir de MNE
 
 
         INT _decal_max_poids_facet_graphe;
         INT _test_stab_poids_facet_graphe;
 
 
-        REAL _alpha;                    //optimisation noyaux et relaxation
+        REAL _alpha;                    //optimisation noyaux and relaxation
         REAL _seuil_sup;                //le poids minimal no risque
         REAL _seuil_inf;                //le poids minimal no risque
-        INT _complexite;                // > 60 temp de calcul est expo
+        INT _complexite;                // > 60 temp de computation est expo
 
-        REAL _beta1;                     //critère geo ( fenet horisntale )
-        REAL _beta2;                     //critère geo ( fenet adaptative )
+        REAL _beta1;                     //critre geo ( fenet horisntale )
+        REAL _beta2;                     //critre geo ( fenet adaptative )
         INT _nb_sol_gardee;              // n premieres solutions ( fenet hor )
         INT _type_correlation;           //type de correlation : 
-                                             //  1 : fenet adap(cent et norm)
-                                             //  2 : fenet adap(no cent et norm)
-                                             //  3 : corr model(cent et norm)
-                                             //  4 : corr model(no cent et norm)
+                                             //  1 : fenet adap(cent and norm)
+                                             //  2 : fenet adap(no cent and norm)
+                                             //  3 : corr model(cent and norm)
+                                             //  4 : corr model(no cent and norm)
         string _prop_file;
         bool _resolution_image;
 };

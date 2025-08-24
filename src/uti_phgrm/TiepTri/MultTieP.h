@@ -126,7 +126,7 @@ class cSetPMul1ConfigTPM
                             std::map<int,std::vector<int>* >&   aPtIdPId,
                             std::vector<Pt3dr>&                 aPt3D,
                             int&                                aPos); //return vectors of tracks + ids, corresponding img idx, and 3D ; fill the structures from the aPos on
-       std::vector<Pt3d<double> > IntersectBundle(std::map<int, CamStenope *> aMCams); //aMCams are Camera indexed by the Id fo Image
+       std::vector<Pt3d<double> > IntersectBundle(std::map<int, CamStenope *> aMCams); //aMCams are camera indexed by the Id fo image
        std::vector<Pt3d<double> > IntersectBundle(std::map<int, CamStenope *> aMCams, std::vector<double> & aVResid); // return reproj error in aVResod
 
     private :
@@ -196,7 +196,7 @@ class cSetTiePMul
 
         cDicoImTPM                       mDicoIm;
         std::vector<cSetPMul1ConfigTPM *>  mPMul;
-        // Utilisee dans la conversion a partir de PHom
+        // Utilisee in la conversion a partir de PHom
         std::map<std::vector<INT>,cSetPMul1ConfigTPM *>  mMapConf;
 
         std::vector<int>        mNumConvCur;
@@ -223,9 +223,9 @@ class cAppliConvertToOldFormatHom
         std::string         mSH;
         std::string         mOut;
         bool                mBin;
-        cElemAppliSetFile   mEASF;      // Gestion de fichier
-        const std::vector<std::string> * mFilesIm;  // vecteur nom d'image
-        bool                             mExpTxt;   // Bin ou Txt export
+        cElemAppliSetFile   mEASF;      // Gestion de file
+        const std::vector<std::string> * mFilesIm;  // vector nom d'image
+        bool                             mExpTxt;   // Bin or Txt export
         bool                             mIs2Way;
 };
 

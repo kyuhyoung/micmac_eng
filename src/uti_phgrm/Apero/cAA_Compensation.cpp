@@ -94,16 +94,16 @@ void cAppliApero::AddObservations
         mFpRT = 0;
    }
 
-//  int aNbIter= MPD MM() ? 1 : 1;  // Completement artificiel, pour tester resultat incertitudes
-int aNbIter= 1 ;  // Completement artificiel, pour tester resultat incertitudes
+//  int aNbIter= MPD MM() ? 1 : 1;  // Completement artificiel, for tester result incertitudes
+int aNbIter= 1 ;  // Completement artificiel, for tester result incertitudes
 for (int aK=0 ; aK<aNbIter; aK++)
 {
    if (aNbIter!=1) std::cout << "ITERRRRRRRR AddObs=" << aK << "\n";
-   // On les mets avant pour que AddLevenbergMarkard sache de manier precise si le centre a
-   // ete fixe sur CETTE iteration
+   // On les mets before for que AddLevenbergMarkard sache de manier precise if le centre a
+   // ete fixe on CETTE iteration
    {
        //  MajAddCoeffMatrix();
-       //  if (NumIterDebug())  MessageDebug("Avant Centre");
+       //  if (NumIterDebug())  MessageDebug("before Centre");
        AddObservationsCentres(anSO.ObsCentrePDV(),IsLastIter,aSO);
    }
 
@@ -120,18 +120,18 @@ for (int aK=0 ; aK<aNbIter; aK++)
 
    {
       // MajAddCoeffMatrix();
-      // if (NumIterDebug())  MessageDebug("Avant LVM");
+      // if (NumIterDebug())  MessageDebug("before LVM");
 
       AddLevenbergMarkard(aSO);
 
-      // if (NumIterDebug())  MessageDebug("Apres LVM");
+      // if (NumIterDebug())  MessageDebug("after LVM");
    }
 
 
 
    {
        //  MajAddCoeffMatrix();
-       //  if (NumIterDebug())  MessageDebug("Avant ApF");
+       //  if (NumIterDebug())  MessageDebug("before ApF");
 
        AddObservationsAppuisFlottants(anSO.ObsAppuisFlottant(),IsLastIter,aSO);
    }
@@ -140,14 +140,14 @@ for (int aK=0 ; aK<aNbIter; aK++)
 
    {
        //  MajAddCoeffMatrix();
-       //  if (NumIterDebug())  MessageDebug("Avant Appuis");
+       //  if (NumIterDebug())  MessageDebug("before Appuis");
 
        AddObservationsAppuis(anSO.ObsAppuis(),IsLastIter,aSO);
    }
 
    {
        //  MajAddCoeffMatrix();
-       //  if (NumIterDebug())  MessageDebug("Avant Tie-P");
+       //  if (NumIterDebug())  MessageDebug("before Tie-P");
 
        AddObservationsLiaisons(anSO.ObsLiaisons(),IsLastIter,aSO);
    }
@@ -163,7 +163,7 @@ for (int aK=0 ; aK<aNbIter; aK++)
 
    {
        //  MajAddCoeffMatrix();
-       //  if (NumIterDebug())  MessageDebug("Avant RigGrp");
+       //  if (NumIterDebug())  MessageDebug("before RigGrp");
 
        AddObservationsRigidGrp(anSO.ObsRigidGrpImage(),IsLastIter,aSO);
    }
@@ -271,7 +271,7 @@ void cAppliApero::AddObservationsRigidGrp
 
 void cAppliApero::AddObservationsAppuis(const std::list<cObsAppuis> & aL,bool IsLastIter,cStatObs & aSO)
 {
-   // La templatisation complique le passage a la "sous-traitance", donc on
+   // La templatisation complique le passage a la "under-traitance", donc on
    // gere a la main les iterations
    for (std::list<cObsAppuis>::const_iterator itOA= aL.begin(); itOA!=aL.end() ; itOA++)
    {
@@ -457,13 +457,13 @@ void cAppliApero::AddEcPtsFlot(const Pt3dr & anEc)
 
 void cAppliApero::ActiveContraintes(bool Stricte)
 {
-    // Contraintes sur les calibrations
+    // Contraintes on les calibrations
     for (tDiCal::iterator itD=mDicoCalib.begin() ; itD!=mDicoCalib.end(); itD++)
     {
         itD->second->ActiveContrainte(Stricte);
     }
 
-    // Contraintes sur les poses
+    // Contraintes on les poses
     for (tDiPo::iterator itD=mDicoPose.begin() ; itD!=mDicoPose.end(); itD++)
     {
         itD->second->ActiveContrainte(Stricte);
@@ -1112,7 +1112,7 @@ void  cAppliApero::MAJContraintes(const cSectionContraintes & aSC)
     // ----------------------------------
 
 
-    // Contraintes sur les calibrations
+    // Contraintes on les calibrations
     {
        const tLCCI aLC=aSC.ContraintesCamerasInc();
        for (tLCCI::const_iterator anIC=aLC.begin(); anIC!=aLC.end() ; anIC++)
@@ -1120,7 +1120,7 @@ void  cAppliApero::MAJContraintes(const cSectionContraintes & aSC)
             MAJContrainteCamera(*anIC);
        }
     }
-    // Contraintes sur les poses
+    // Contraintes on les poses
     {
        const tLCCP aLCP=aSC.ContraintesPoses();
        for (tLCCP::const_iterator anICP=aLCP.begin(); anICP!=aLCP.end() ; anICP++)
@@ -1232,7 +1232,7 @@ void cAppliApero::DoOneContraintesAndCompens
            }
        }
       ELISE_ASSERT(got,"No Cam found in SetRayMaxUtileCalib");
-  //ELISE_ASSERT(false,"FAIRE MODIF RMAX UTIL POUR CALIB / POSE ");
+  //ELISE_ASSERT(false,"FAIRE MODIF RMAX UTIL for CALIB / POSE ");
        // CalibFromName(itS->Name())->SetRMaxU(itS->Ray());
    }
 

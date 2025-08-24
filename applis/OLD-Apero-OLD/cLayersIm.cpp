@@ -153,7 +153,7 @@ cOneImageOfLayer::cOneImageOfLayer
     const cLayerTerrain * aLT = aLIP.LayerTerrain().PtrVal();
     if (aLT)
     {
-       if (mLayerTer) // On dans une image en train de se "brancher" vers le terrain
+       if (mLayerTer) // On in une image en train de se "brancher" vers le terrain
        {
             mLabMin = mLayerTer->mLabMin;
             mLabMax = mLayerTer->mLabMax;
@@ -181,7 +181,7 @@ cOneImageOfLayer::cOneImageOfLayer
     if (LoadFileRed(aNameRed))
        return;
 
-    // ON LOADE l'IMAGE REDUITE ,  INITIALISE les tailles, ALLOUE la memoire
+    // ON LOADE l'image REDUITE ,  INITIALISE les tailles, ALLOUE la memoire
 
     for (int aK=0 ; aK<int(aLIP.EtiqPrio().size()); aK++) 
     {
@@ -295,7 +295,7 @@ bool cLayerImage::IsTerrain() const
 
 std::string cLayerImage::NamePose2NameLayer(const std::string & aNP)
 {
-    // En geometrie terrain chaque image genere une entree, pour avoir son orientation
+    // En geometrie terrain chaque image genere une entree, for avoir son orientation
     return   IsTerrain()                                               ?
              aNP                                                       :
              mAppli.ICNM()->Assoc1To1(mLI2P.KeyCalculImage(),aNP,true) ;

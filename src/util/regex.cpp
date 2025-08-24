@@ -289,7 +289,7 @@ bool  cElRegex::Replace(const std::string & aMotifInit)
 
 	     //  $+234+1 -> ajoute 234 a $1
 	     //  $-456-A -> enleve 456 a $A
-	     //  $%5+234+6 -> ajoute 234 a $6 et ecrit le resultat sur 5 chiffres
+	     //  $%5+234+6 -> ajoute 234 a $6 and ecrit le result on 5 chiffres
 	     if ((*aC=='+') || (*aC=='-') || (*aC=='/') || (*aC=='%'))
 	     {
                   aCAritm = *aC;

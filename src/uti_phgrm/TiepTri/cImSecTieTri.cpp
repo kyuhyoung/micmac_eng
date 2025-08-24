@@ -302,7 +302,7 @@ cResulRechCorrel cImSecTieTri::RechHomPtsInteretEntier(bool Interact,const cIntT
     */
 
     cResulRechCorrel aCRCMax;
-    double aCorMax = -2; // Uniquement pour affichage
+    double aCorMax = -2; // Uniquement for affichage
     for (int aKH=0 ; aKH<int(aVH.size()) ; aKH++)
     {
         Pt2di aPV = aP0+aVH[aKH];
@@ -328,7 +328,7 @@ cResulRechCorrel cImSecTieTri::RechHomPtsInteretEntier(bool Interact,const cIntT
                    && (euclid(Pt2di(aCRCLoc.mPt) - aPV) < mAppli.mTT_SEUIl_DIST_Extrema_Entier)
               )
            {
-               //  Toujours correlation entiere, mais tt les pixels
+               //  Toujours correlation entiere, but tt les pixels
                aCRCLoc = TT_RechMaxCorrelLocale(mMaster->mTImInit,aP0,mTImReech,Pt2di(aCRCLoc.mPt),TT_DemiFenetreCorrel,1,aSzRech);   
                    
                if (euclid(Pt2di(aCRCLoc.mPt) - aPV) < mAppli.mTT_SEUIl_DIST_Extrema_Entier)
@@ -436,7 +436,7 @@ cResulRechCorrel cImSecTieTri::RechHomPtsInteretEntierAndRefine(bool Interact,co
 }
 */
 
-// On passe des coordonnees master au coordonnees secondaire
+// On passe des coordinates master au coordinates secondaire
 
 cResulRechCorrel cImSecTieTri::RechHomPtsDense(bool Interact,const cResulMultiImRechCorrel &aRMIC,int aKIm)
 {
@@ -482,7 +482,7 @@ cResulRechCorrel cImSecTieTri::RechHomPtsDense(bool Interact,const cResulMultiIm
                                        );
     if (!  mAppli.mDoRaffImInit)
     {
-       // If we do refine on Im rech geometry (DRInit = false) => re-calcul matched point on 2nd image's global coordinate
+       // If we do refine on Im rech geometry (DRInit = false) => re-computation matched point on 2nd image's global coordinate
        aRes2.mPt = mAffMas2Sec(aRes2.mPt);
     }
 
@@ -524,7 +524,7 @@ cResulRechCorrel cImSecTieTri::RechHomPtsDense(bool Interact,const cResulMultiIm
                       AffGeom,
                       AffRadiom
                   );                                        // Update affine transformation
-            Pt2dr aCurSol = aMatchM2S.Af1To2()(Pt2dr(aP0)); // Calcul solution current with updated affine transformation
+            Pt2dr aCurSol = aMatchM2S.Af1To2()(Pt2dr(aP0)); // computation solution current with updated affine transformation
             double aDVar = euclid(aCurSol-aLastSol);
             if (aOk  && Interact)
             {

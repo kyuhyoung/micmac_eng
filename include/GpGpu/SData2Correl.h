@@ -51,7 +51,7 @@ public:
     ~SData2Correl();
 
 	///
-	/// \brief SetImages Initialise les images sur GPU
+	/// \brief SetImages Initialise les images on GPU
 	/// \param dataImage
 	/// \param dimImage
 	/// \param nbLayer
@@ -59,14 +59,14 @@ public:
     void    SetImages( float* dataImage, uint2 dimImage, int nbLayer );
 
 	///
-	/// \brief SetGlobalMask Initialise les masques sur GPU
+	/// \brief SetGlobalMask Initialise les masques on GPU
 	/// \param dataMask
 	/// \param dimMask
 	///
     void    SetGlobalMask( pixel* dataMask, uint2 dimMask );
 
 	///
-	/// \brief MemsetHostVolumeProj Initialise la memoire des projections par une valeur iDef
+	/// \brief MemsetHostVolumeProj Initialise la memoire des projections par une value iDef
 	/// \param iDef
 	///
     void    MemsetHostVolumeProj(int iDef);
@@ -74,7 +74,7 @@ public:
 	///
 	/// \brief HostVolumeCost
 	/// \param id
-	/// \return le pointeur host du volume de corrélation
+	/// \return le pointeur host du volume de corrlation
 	///
     float*  HostVolumeCost(uint id);
 
@@ -100,7 +100,7 @@ public:
 	///
 	/// \brief DeviVolumeCache
 	/// \param s
-	/// \return le pointeur device du cache des vecteurs centrés
+	/// \return le pointeur device du cache des vecteurs centrs
 	///
     float*  DeviVolumeCache(uint s);
 
@@ -118,44 +118,44 @@ public:
 	uint2*	DeviRect();
 
 	///
-	/// \brief copyHostToDevice Copie les données vers le device
+	/// \brief copyHostToDevice Copie les donnes vers le device
 	/// \param param
 	/// \param s
 	///
     void    copyHostToDevice(pCorGpu param, uint s = 0);
 
 	///
-	/// \brief CopyDevicetoHost Copie les données vers le host
+	/// \brief CopyDevicetoHost Copie les donnes vers le host
 	/// \param idBuf
 	/// \param s
 	///
     void    CopyDevicetoHost(uint idBuf, uint s = 0);
 
 	///
-	/// \brief UnBindTextureProj relacher les textures sur le device
+	/// \brief UnBindTextureProj relacher les textures on le device
 	/// \param s
 	///
     void    UnBindTextureProj(uint s = 0);
 
 	///
-	/// \brief DeallocHostData Desalloue la mémoire host
+	/// \brief DeallocHostData Desalloue la mmoire host
 	///
     void    DeallocHostData();
 
 	///
-	/// \brief DeallocDeviceData Désalloue la mémoire device
+	/// \brief DeallocDeviceData Dsalloue la mmoire device
 	///
     void    DeallocDeviceData();
 
 	///
-	/// \brief ReallocHostData réalloue la mémoire host
+	/// \brief ReallocHostData ralloue la mmoire host
 	/// \param zInter
 	/// \param param
 	///
     void    ReallocHostData(uint zInter, pCorGpu param);
 
 	///
-	/// \brief ReallocHostData réalloue la mémoire host
+	/// \brief ReallocHostData ralloue la mmoire host
 	/// \param zInter
 	/// \param param
 	/// \param idBuff
@@ -163,30 +163,30 @@ public:
     void    ReallocHostData(uint zInter, pCorGpu param, uint idBuff);
 
 	///
-	/// \brief ReallocDeviceData réalloue la mémoire device
+	/// \brief ReallocDeviceData ralloue la mmoire device
 	/// \param param
 	///
     void    ReallocDeviceData(pCorGpu &param);   
 
 	///
 	/// \brief HostClassEqui
-	/// \return Le pointeur des classes d'équivalence
+	/// \return Le pointeur des classes d'quivalence
 	///
     ushort2 *HostClassEqui();
 
 	///
-	/// \brief ReallocConstData Réallocation des données constantes
+	/// \brief ReallocConstData Rallocation des donnes constantes
 	/// \param nbImages
 	///
 	void    ReallocConstData(uint nbImages);
 
 	///
-	/// \brief SyncConstData Synchronise les données constantes sur le device
+	/// \brief SyncConstData Synchronise les donnes constantes on le device
 	///
 	void    SyncConstData();
 
 	///
-	/// \brief SetZoneImage Définir les dimensions des images
+	/// \brief SetZoneImage Dfinir les dimensions des images
 	/// \param idImage
 	/// \param sizeImage
 	/// \param r
@@ -195,12 +195,12 @@ public:
 
 	///
 	/// \brief DeviClassEqui
-	/// \return Le pointeur device des classes d'équivalence
+	/// \return Le pointeur device des classes d'quivalence
 	///
     ushort2 *DeviClassEqui();
 
 	///
-	/// \brief SetMaskImages Transfert les masques sur le device
+	/// \brief SetMaskImages Transfert les masques on le device
 	/// \param dataMaskImages
 	/// \param dimMaskImage
 	/// \param nbLayer
@@ -242,8 +242,8 @@ private:
 
 
     CuDeviceData3D<float>       _d_volumeCost[NSTREAM];	// volume des couts
-    CuDeviceData3D<float>       _d_volumeCach[NSTREAM];	// volume des calculs intermédiaires
-    CuDeviceData3D<uint>        _d_volumeNIOk[NSTREAM];	// nombre d'image correct pour une vignette
+    CuDeviceData3D<float>       _d_volumeCach[NSTREAM];	// volume des calculs intermdiaires
+    CuDeviceData3D<uint>        _d_volumeNIOk[NSTREAM];	// number d'image correct for une vignette
 
     ImageGpGpu<pixel,cudaContext>           _dt_GlobalMask;
     ImageLayeredGpGpu<float,cudaContext>    _dt_LayeredImages;

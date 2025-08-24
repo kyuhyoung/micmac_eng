@@ -319,7 +319,7 @@ class cAppliCalcHistoNDim : public cAppliLearningMatch
          bool                    mAddPrefixSeq;
          bool                    mInitialProcess; // Post Processing
          bool                    mCloseH;
-         bool                    mGenerateVisu; // Do we generate visual (Image for 2d, later ply for 3d)
+         bool                    mGenerateVisu; // Do we generate visual (image for 2d, later ply for 3d)
          bool                    mGenVis2DInit; // Do we generate visual init (w/o equal)
 	 bool                    mOkDuplicata;  // Do accept duplicata in sequence,
              //  std::string       mPatShowSep;

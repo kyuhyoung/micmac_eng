@@ -143,7 +143,7 @@ template <class Type,class TypeBase>
     Fonc_Num fv1 =  FX%78;
     Fonc_Num fv2 =  (FX + 1009/(FX+10) + Square(FX)) % 34;
 
-   //  test avec select
+   //  test with select
     ELISE_COPY(b1.all_pts(),fv1,b1.out());
     ELISE_COPY(select(b1.all_pts(),fsel),fv2,b1.out());
 
@@ -164,7 +164,7 @@ template <class Type,class TypeBase>
        }
 
 
-   //  test avec select + clip
+   //  test with select + clip
 
     ELISE_COPY(b1.all_pts(),fv1,b1.out());
     ELISE_COPY(select(rectangle(-1000,tx+2000),fsel),fv2,b1.oclip());
@@ -204,7 +204,7 @@ template <class Type,class TypeBase>
     Fonc_Num fsel = FX%2;
     Fonc_Num fval =  (FX + 1009/(FX+10) + Square(FX)) % 34;
 
-   //  test avec select
+   //  test with select
     ELISE_COPY(b1.all_pts(),fval,b1.out());
 
     ELISE_COPY(select(b1.all_pts(),fsel!=0),b1.in(),b2.out());

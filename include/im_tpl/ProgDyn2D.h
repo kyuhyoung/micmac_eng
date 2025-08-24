@@ -65,15 +65,15 @@ typedef enum
 // template <class TArg> class cProg2DOptimiser
 
 
-//   une cTplCelOptProgDyn contient ce l'info necessaire pour faire les calcul
+//   une cTplCelOptProgDyn contient ce l'info necessaire for faire les computation
 //  d'optimisation selon une direction
 // 
-//    une cTplCelNapPrgDyn contient juste l'info pour memoriser le cout agrege et
+//    une cTplCelNapPrgDyn contient juste l'info for memoriser le cout agrege and
 // le cout initial
 
 // cProg2DOptimiser
-//   Contient une tableau 3D de cTplCelNapPrgDyn
-//   Contient une tableau 2D de cTplCelNapPrgDyn
+//   Contient une array 3D de cTplCelNapPrgDyn
+//   Contient une array 2D de cTplCelNapPrgDyn
 
 
 
@@ -88,8 +88,8 @@ template <class TargAux> class cTplCelOptProgDyn
              mCostSommet = aCost;
         }
 
-        // Initialisation des couts, fonction differente pour le premier sommet du
-        // balayage et les autre
+        // Initialisation des couts, function differente for le premier sommet du
+        // balayage and les autre
         void InitCumulPremierSommet(ePrgSens aSens)
         {
              mCostCum[aSens] = mCostSommet;
@@ -160,7 +160,7 @@ template <class TargAux> class cTplCelNapPrgDyn
             tCostPrgD  mOwnCost;
 };
 
-///  CONVENTIONS "Standard" sur les intervalles de nappes
+///  CONVENTIONS "Standard" on les intervalles de nappes
 ///       aImZMin  <=    Z  < aImZMax
 
 template <class TArg> class cProg2DOptimiser
@@ -200,7 +200,7 @@ template <class TArg> class cProg2DOptimiser
              void DoOptim ( int aNbDir);
              double DMoyDir() const {return mDMoyDir;};
              void SetTeta0(double aTeta0){mTeta0=aTeta0;}
-             // Pour recupere les donnees en sorties
+             // for recupere les donnees en sorties
              void TranfereSol(INT2**);
              const Pt2di  & Dir() const {return mDir;}
      private :
@@ -239,7 +239,7 @@ template <class TArg> class cProg2DOptimiser
             cLineMapRect                                  mLMR;
             int                                           mNbDir;
             Pt2di                                         mDir;
-            double                                        mDMoyDir;  // Dist moy entre deux point selon la direction
+            double                                        mDMoyDir;  // Dist moy between deux point selon la direction
             int                                           mNbLine;
             std::vector<INT2>                             mLineZMin;
             std::vector<INT2>                             mLineZMax;
@@ -415,7 +415,7 @@ class cOptimLabelBinaire
 {
     public :
 
-        // Les couts sont entre 0 et 1
+        // Les couts sont between 0 and 1
         cOptimLabelBinaire(Pt2di aSz,double aDefCost,double aRegul);
 
         static cOptimLabelBinaire * CoxRoy(Pt2di aSz,double aDefCost,double aRegul);
@@ -432,8 +432,8 @@ class cOptimLabelBinaire
         static U_INT1 ToCost(double aCost);
 
         Pt2di              mSz;
-        Im2D_U_INT1        mCost;  // Memorise les couts entre 0 et 1
-        TIm2D<U_INT1,INT>  mTCost;  // Memorise les couts entre 0 et 1
+        Im2D_U_INT1        mCost;  // Memorise les couts between 0 and 1
+        TIm2D<U_INT1,INT>  mTCost;  // Memorise les couts between 0 and 1
         double             mRegul;
 
 

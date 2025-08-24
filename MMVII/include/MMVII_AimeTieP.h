@@ -40,7 +40,7 @@ template <class Type> class cProtoAimeTieP : public cMemCheck
         
 
         tGPI *               mGPI;
-        bool                 mChgMaj;  ///< Image changed to major, tuning
+        bool                 mChgMaj;  ///< image changed to major, tuning
         cPt2di               mPImInit;      ///<  in image octave coordinate (comes from extrema detection)
         cPt2dr               mPRImRefined;      ///<  Real point 
         cPt2dr               mPFileInit;    ///< idem, but global file coordinate

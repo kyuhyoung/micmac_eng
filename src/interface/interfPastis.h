@@ -52,7 +52,7 @@ class CalibCam
 	private :
 		void copie(const CalibCam& calibCam);
 
-		QString 		file;	//sans le dossier
+		QString 		file;	//without le folder
 		int 			type; //0 : classique, 1 : fish-eye
 		double 			focale;	//en mm
 		double 			taillePx;	//en microns
@@ -131,9 +131,9 @@ class CalibTab : public QWidget
 		const QList<QSize>	formatCalibAFournir;
 		const QList<int> 	refImgCalibAFournir;
 		//bool noCam;
-		QList<std::pair<QString,double> > imgNames;	//taille de pixel des caméras (BDCamera) -> ne pas modifier (modification dans Assistant.cpp)
+		QList<std::pair<QString,double> > imgNames;	//taille de pixel des caméras (BDCamera) -> ne pas modifier (modification in Assistant.cpp)
 		static CalibCam 				  defaultCalib;
-		static QString 					  defaultCalibName;	//préfix par défaut des fichier.xml de calibrations internes créés
+		static QString 					  defaultCalibName;	//préfix par défaut des file.xml de calibrations internes créés
 		int 							  longueur;
 };
 
@@ -214,7 +214,7 @@ class CommunTabP : public QWidget
 		CommunTabP(InterfPastis* interfPastis, ParamPastis* parametres, int largeurMax);
 		~CommunTabP();
 	
-		bool getLargeurMaxText(int passe) const;	//1 ou 2
+		bool getLargeurMaxText(int passe) const;	//1 or 2
 
 	public slots:
 		void updateMultiscale();
@@ -278,11 +278,11 @@ class ParamPastis
 		static QVector<std::pair<TypeChantier,QString> > tradTypChanInternational;
 
 		TypeChantier 						typeChantier;
-		QList<CalibCam> 					calibs;		//sans le dossier : toutes les calibrations (pour Apero)
-		QList<std::pair<QString, int> > 	calibFiles;	//sans le dossier : toutes les calibrations
+		QList<CalibCam> 					calibs;		//without le folder : toutes les calibrations (for Apero)
+		QList<std::pair<QString, int> > 	calibFiles;	//without le folder : toutes les calibrations
 		int									largeurMax;
 		QList<std::pair<QString, QString> > couples;
-		bool 								multiscale;	//true si recherche multi-échelle
+		bool 								multiscale;	//true if recherche multi-échelle
 		int 								largeurMax2;
 		int 								nbPtMin;
 };

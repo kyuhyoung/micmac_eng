@@ -26,8 +26,8 @@
 
 using namespace std;
 
-// Methode pour avoir la "meilleure" approximation entiere d'une image reelle
-// avec somme imposee. Tres sous optimal, mais a priori utilise uniquement sur de
+// method for avoir la "meilleure" approximation entiere d'une image reelle
+// with somme imposee. Tres under optimal, but a priori utilise uniquement on de
 // toute petites images
 
 void normalize( REAL *aArray, size_t aSize )

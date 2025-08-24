@@ -106,7 +106,7 @@ class cSensorImage  :   public cObj2DelAtEnd,
 	  cHomogCpleIm RandomVisibleCple(const cSensorImage &,int aNbTestMax=10000,bool * OK =nullptr ) const;
 
 
-	 // =================   Image <-->  Ground  mappings  ===========================
+	 // =================   image <-->  Ground  mappings  ===========================
 	 
          /*  The most fundamental method, theoretically should be sufficient, when meaning full (ie non orthocentric) 
             orientation must go from sensor to the scene */
@@ -118,7 +118,7 @@ class cSensorImage  :   public cObj2DelAtEnd,
 	 ///  Coordinate system, default is undef "LocalNONE"
          // virtual std::string  CoordinateSystem() const;
 
-	 /// Can we manipulate  Image & Depth -> 3d, default false, true for Central Persp
+	 /// Can we manipulate  image & Depth -> 3d, default false, true for Central Persp
 	 virtual bool  HasImageAndDepth() const;
 	 ///  add the the depth (to see if have a default with bundle+Gr2Ima), default error
          virtual cPt3dr Ground2ImageAndDepth(const cPt3dr &) const ;
@@ -149,7 +149,7 @@ class cSensorImage  :   public cObj2DelAtEnd,
 
 	         //  -------------------  Jacobian ---------------------------------
 		 
-	  /**  Compute the gradient of the projection function  R3->R2  Ground->Image, 
+	  /**  Compute the gradient of the projection function  R3->R2  Ground->image, 
 	   * def use finite diff;  result component I and J of differential */
 	  virtual tProjImAndGrad  DiffGround2Im(const cPt3dr &) const;
 
@@ -517,8 +517,8 @@ class cPhotogrammetricProject
           void SaveCamPC(const cSensorCamPC &) const; ///< Save camera using OutPut-orientation
 	  void SaveCalibPC(const  cPerspCamIntrCalib & aCalib) const;  ///< Save calibration using  OutPut-orientation
 
-	  cSensorCamPC * ReadCamPC(const std::string &,bool ToDeleteAutom,bool SVP=false) const; ///< Create Camera using Input orientation
-	  cSensorCamPC * ReadCamPC(const cDirsPhProj&,const std::string &,bool ToDeleteAutom,bool SVP=false) const; ///< Create Camera using Input orientation
+	  cSensorCamPC * ReadCamPC(const std::string &,bool ToDeleteAutom,bool SVP=false) const; ///< Create camera using Input orientation
+	  cSensorCamPC * ReadCamPC(const cDirsPhProj&,const std::string &,bool ToDeleteAutom,bool SVP=false) const; ///< Create camera using Input orientation
 
 
 	  /// Load a sensor, try different type (will add RPC , and others ?) use autom delete (dont need to delete it)
@@ -664,7 +664,7 @@ class cPhotogrammetricProject
           cPerspCamIntrCalib * GetCalibInit(const std::string& aName,eProjPC aTypeProj,const cPt3di & aDeg,
                                             cPt2dr   aPP=cPt2dr(0.5,0.5), bool SVP=false,bool IsFraser=true);
 
-          ///  Extract Camera specif from data base, given name of camera
+          ///  Extract camera specif from data base, given name of camera
           const cElemCamDataBase * GetCamFromNameCam(const std::string& aNameCam,bool SVP=false) const;
 
 
@@ -785,7 +785,7 @@ class cPhotogrammetricProject
 	         // TOPO
      std::vector<std::string> ReadTopoMes() const;
      void   SaveTopoMes(const cBA_Topo & aBATopo) const;
-         //==================   Camera Data Base     =========================
+         //==================   camera Data Base     =========================
 
          void MakeCamDataBase();
          bool OneTestMakeCamDataBase(const std::string & aDir,cCamDataBase &,bool ForceNew);

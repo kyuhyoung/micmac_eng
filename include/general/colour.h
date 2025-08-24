@@ -264,8 +264,8 @@ class  P8COL
 };
 
 
-// PNCOL : faite pour etre comptaible avec P8COL, succeptible
-// d'evoluer par adjonction de nouvelle couleur (d'ou N indetermine)
+// PNCOL : faite for etre comptaible with P8COL, succeptible
+// d'evoluer par adjonction de nouvelle couleur (d'or N indetermine)
 
 class  PNCOL  
 {

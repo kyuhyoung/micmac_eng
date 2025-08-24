@@ -232,7 +232,7 @@ cFullParamCB RandomFullParamCB(const cOnePCarac & aPC,const std::vector<int> & a
 {
    // int aNbTirage = 10;
    cFullParamCB aRes;
-   // Uniquement pour connaitre le nombre de vect
+   // Uniquement for connaitre le number de vect
    Im2D_INT1 aImR = aPC.InvR().ImRad();
    int aNbV = aImR.ty();
    int aIndBit=0;
@@ -246,7 +246,7 @@ cFullParamCB RandomFullParamCB(const cOnePCarac & aPC,const std::vector<int> & a
       int aNBB = aNbBitsByVect.at(aIV);
       int aNbInVect = aImR.tx();
 
-      std::vector<double> aPdsInd(aNbInVect,0.5); // On biaise les stats pour privilegier la repartition des coeffs
+      std::vector<double> aPdsInd(aNbInVect,0.5); // On biaise les stats for privilegier la repartition des coeffs
 
       for (int aBit=0 ; aBit<aNBB ; aBit++)
       {
@@ -274,7 +274,7 @@ double  ValCB(const cCBOneBit & aCB,const INT1 * aVD)
 }
 
 
-void FlagCB(const cCBOneVect & aCBV,const INT1 * aVD,tCodBin aCodB) // Si IsRel part de 0
+void FlagCB(const cCBOneVect & aCBV,const INT1 * aVD,tCodBin aCodB) // if IsRel part de 0
 {
    U_INT2 * aData = aCodB.data_lin();
    for (const auto & aCB : aCBV.CBOneBit())

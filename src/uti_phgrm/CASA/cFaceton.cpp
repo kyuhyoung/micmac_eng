@@ -94,7 +94,7 @@ bool cFaceton::IsFaceExterne(const cInterfSurfaceAnalytique & anISA) const
    double aEps = 1e-6;
    Pt3dr aP0 = anISA.E2UVL(mCentre); 
    Pt3dr aP1 = anISA.E2UVL(mCentre + mNormale * aEps); 
-   // On est une face externe si le rayon rentre dans la surface, donc z decroit
+   // On est une face externe if le rayon rentre in la surface, donc z decroit
    return aP1.z < aP0.z;
 }
 
@@ -178,9 +178,9 @@ cFaceton   cAccumFaceton::CompileF(const cElNuage3DMaille & aNuage)
   int i1 = aVInd[1];
   int i2 = aVInd[2];
 
-  // ELISE_ASSERT(0<=aValP(i0,i0), "Erreur in jacobi");
-  // ELISE_ASSERT(aValP(i0,i0) <= aValP(i1,i1), "Erreur in jacobi");
-  // ELISE_ASSERT(aValP(i1,i1) <= aValP(i2,i2), "Erreur in jacobi");
+  // ELISE_ASSERT(0<=aValP(i0,i0), "error in jacobi");
+  // ELISE_ASSERT(aValP(i0,i0) <= aValP(i1,i1), "error in jacobi");
+  // ELISE_ASSERT(aValP(i1,i1) <= aValP(i2,i2), "error in jacobi");
 
   if (   (aValP(i0,i0) <0) || (aValP(i0,i0) > aValP(i1,i1)) || (aValP(i1,i1) > aValP(i2,i2)))
   {

@@ -275,7 +275,7 @@ Fonc_Num  BoxedConc(Fonc_Num f,Pt2di SzBox,bool V8,ParamConcOpb * param,INT per_
 class ElImplemDequantifier
 {
      public :
-         // Anncienne interface, anEquid est un parametre idiot !
+         // Anncienne interface, anEquid est un parameter idiot !
          // void Dequant(Pt2di aSzIm,Fonc_Num f2Deq,INT anEquid);
 
 
@@ -346,12 +346,12 @@ class ElImplemDequantifier
 
 };
 
-// Projette sur un ensemble au sens de la distance 32
+// Projette on un ensemble au sens de la distance 32
 class cResProj32
 {
     public :
-        // La distance est "cadeau" au sens ou de toute facon
-        // il est necessaire de la calculer
+        // La distance est "cadeau" au sens or de toute facon
+        // il est necessaire de la compute
 
         cResProj32(Im2D_U_INT2 aD,Im2D_U_INT2 aPX,Im2D_U_INT2 aPY,bool aIsInit,bool aIsFull);
 

@@ -49,9 +49,9 @@ Header-MicMac-eLiSe-25/06/2007*/
 
 
 //  Permet de gerer une variable d'etat :
-//     - un nom pour la generation de code
-//     - une fonc num pour l'expression formelle
-//     - une adresse pour faire le "binding"
+//     - un nom for la generation de code
+//     - une fonc num for l'expression formelle
+//     - une adresse for faire le "binding"
 
 class cVarEtat_PhgrF
 {
@@ -137,20 +137,20 @@ class   cMatr_Etat_PhgrF
 
 
 
-//      Classe utilisee pour la comparaison de deux calibration
+//      class utilisee for la comparaison de deux calibration
 //      J'essaye de la commenter a fond afin que cela puisse servir
-//   de "reference" sur l'ajout d'une nouvelle equation d'observation
-//   formelle (c'est pour ca que j'ai decide de passer par ce mecanisme
-//   general alors, qu'en l'occurrence il aurait ete plus simple de tout faire
+//   de "reference" on l'ajout d'une nouvelle equation d'observation
+//   formelle (c'est for ca que j'ai decide de passer par ce mecanisme
+//   general then, qu'en l'occurrence il aurait ete plus simple de tout faire
 //   "a la main").
 // 
 //   Les inconnues sont : une rotation vectorielle R
 //   Les observation sont de la forme 
-//             R N1 = N2  , ou N1 et N2 sont des vecteurs de norme 1
+//             R N1 = N2  , or N1 and N2 sont des vecteurs de norme 1
 //   
-//    La classe herite de :
-//           cNameSpaceEqF  :      pour l'espace de noms
-//           cObjFormel2Destroy  : pour automatiser la destruction
+//    La class herite de :
+//           cNameSpaceEqF  :      for l'espace de noms
+//           cObjFormel2Destroy  : for automatiser la destruction
 //   
 //    Comme toute les classes de ce type, elle a un double role 
 //          -  generation du code formel
@@ -161,12 +161,12 @@ class   cMatr_Etat_PhgrF
 //          ajouter :
 //
 //             AddEntry("cEqObsRotVect_CodGen",cEqObsRotVect_CodGen::Alloc);
-//             (dans phgr_or_code_gen00.cpp) pour creer le lien nom -allocateur
+//             (in phgr_or_code_gen00.cpp) for creer le lien nom -allocateur
 //             qui permettra AllocFromName
 //
 //
-//   Voir aussi cL2EqObsBascult exemple_basculement.h pour l'utilisation
-//   de variables et intervalles multiples
+//   Voir aussi cL2EqObsBascult exemple_basculement.h for l'utilisation
+//   de variables and intervalles multiples
 //
 
 class cEqObsRotVect : public cNameSpaceEqF,
@@ -178,7 +178,7 @@ class cEqObsRotVect : public cNameSpaceEqF,
             virtual ~cEqObsRotVect();
 	    // WithD2 = Derivee seconde
             void    AddObservation(Pt3dr aDir1,Pt3dr aDir2,double aPds=1.0,bool WithD2=false);
-            // Idem prec, mais les param sont convertis en (x,y,1) pour en faire de Pt3d
+            // Idem prec, but les param sont convertis en (x,y,1) for en faire de Pt3d
             void    AddObservation(Pt2dr aDir1,Pt2dr aDir2,double aPds=1.0,bool WithD2=false);
         private :
             friend class cSetEqFormelles;
@@ -188,44 +188,44 @@ class cEqObsRotVect : public cNameSpaceEqF,
             cEqObsRotVect
             (
                  cSetEqFormelles &   aSet,
-                 cRotationFormelle * aRot, // Si vaut 0, se l'alloue
+                 cRotationFormelle * aRot, // if vaut 0, se l'alloue
                  bool                Cod2Gen
             );
 
-            // Rotation utilisee pour le calcul
+            // rotation utilisee for le computation
             cSetEqFormelles &   mSet;
             cRotationFormelle *  mRotCalc;
             cRotationFormelle *  mRot2Destr;
            
 
-//     Dans  l'equation  R N1 = N2  
+//     in  l'equation  R N1 = N2  
 //           mN1 represente N1, mN2 N2 
-//           et mRotCalc->mFMatr le R
+//           and mRotCalc->mFMatr le R
 //           mResidu represent R N1 - N2
 
             cP3d_Etat_PhgrF    mN1;
             cP3d_Etat_PhgrF    mN2;
             Pt3d<Fonc_Num>      mResidu;
 
-       // Sert a definir le nom de la classe contenant les code
-       // generes pour le calcul des derivees 
+       // Sert a definir le nom de la class contenant les code
+       // generes for le computation des derivees 
             std::string           mNameType;
-       // Permet de faire le lien entre les numeros d'inconnues
-       // de rotation et les valeur compactees 0,1,2 utilisees
+       // Permet de faire le lien between les numeros d'inconnues
+       // de rotation and les value compactees 0,1,2 utilisees
        // en locale
           cIncListInterv        mLInterv;
-       // Sert a calculer effectivement les valeurs et derivees
+       // Sert a compute effectivement les valeurs and derivees
             cElCompiledFonc *     mFoncEqResidu;
 
 };
 
 
 
-//  Classe assez voisine de la precedente, mais + generale, utilise pour
+//  class assez voisine de la precedente, but + generale, utilise for
 //  faire de la "calibration-croisse". Les inconnues sont une 
-//  Rotation R et un calibration intrineque. Les observations sont
-//  des couple P1 - N2 ou P1 est un point image de la camera a
-//  calibration inconnue et N2 est une direction de rayon de la camera
+//  rotation R and un calibration intrineque. Les observations sont
+//  des couple P1 - N2 or P1 est un point image de la camera a
+//  calibration inconnue and N2 est une direction de rayon de la camera
 //  connu venant d'un point homologue a P1.L'equation a resoudre  est :
 //  
 //        C.CamToMonde(P1)  ~  R N2
@@ -240,7 +240,7 @@ class cEqCalibCroisee : public cNameSpaceEqF,
 	    cParamIntrinsequeFormel & PIF();
             virtual ~cEqCalibCroisee();
 	    // WithD2 = Derivee seconde, quasi obsolete (plus de derivee seconde calculee
-	    // aujourd'hui dans les codes formels
+	    // aujourd'hui in les codes formels
             const std::vector<REAL> &     AddObservation
 	         (Pt2dr aPIm1,Pt3dr aDir2,double aPds=1.0,bool WithD2=false);
         private :
@@ -250,17 +250,17 @@ class cEqCalibCroisee : public cNameSpaceEqF,
 
             cEqCalibCroisee
             (
-	    // Le sens C2M est le seul manipule par eLiSe, cela dit cette classe pouvant etre
-	    // utilisee pour faire des conversion, notamment vers les autres conventions, on 
+	    // Le sens C2M est le seul manipule par eLiSe, cela dit cette class pouvant etre
+	    // utilisee for faire des conversion, notamment vers les autres conventions, on 
 	    // conserve la possibilite d'un M2C
 	         bool SensC2M,
-		 // Pas alloue car classe virtuelle, peut etre radiale, polyn etc...
+		 // Pas alloue car class virtuelle, peut etre radiale, polyn etc...
 		 cParamIntrinsequeFormel & aPIF,
-                 cRotationFormelle * aRot, // Si vaut 0, se l'alloue
+                 cRotationFormelle * aRot, // if vaut 0, se l'alloue
                  bool                Cod2Gen
             );
 
-            // Rotation utilisee pour le calcul
+            // rotation utilisee for le computation
             cSetEqFormelles &   mSet;
 	    cParamIntrinsequeFormel & mPIF;
             cRotationFormelle *  mRotCalc;
@@ -270,24 +270,24 @@ class cEqCalibCroisee : public cNameSpaceEqF,
             cP3d_Etat_PhgrF    mN2;
             Pt3d<Fonc_Num>      mResidu;
 
-       // Sert a definir le nom de la classe contenant les code
-       // generes pour le calcul des derivees 
+       // Sert a definir le nom de la class contenant les code
+       // generes for le computation des derivees 
             std::string           mNameType;
-       // Permet de faire le lien entre les numeros d'inconnues
-       // de rotation et les valeur compactees 0,1,2 utilisees
+       // Permet de faire le lien between les numeros d'inconnues
+       // de rotation and les value compactees 0,1,2 utilisees
        // en locale
           cIncListInterv        mLInterv;
-       // Sert a calculer effectivement les valeurs et derivees
+       // Sert a compute effectivement les valeurs and derivees
            cElCompiledFonc *     mFoncEqResidu;
 
 };
 
 
 //  !!!!  WAARRNING  !!!
-//  C'etait une idee assez mauvaise de repasser par cParamIntrinsequeFormel pour
+//  C'etait une idee assez mauvaise de repasser par cParamIntrinsequeFormel for
 //  implemanter cEqDirecteDistorsion
 //
-//  En fait la formule utilisee n'a pas grand chose a voir avec l'utilisation
+//  En fait la formule utilisee n'a pas grand chose a voir with l'utilisation
 //  habituelle de la photogrametrie :
 //
 //      (aPIF.DistC2M(aP2) ) + (aP2-aPIF.FPP()).mul(aPIF.FFoc())
@@ -297,12 +297,12 @@ class cEqCalibCroisee : public cNameSpaceEqF,
 
 
 //
-//   Classe utilisee pour calculer directement  les parametres de distortion
-//   a partir de relation entre couples de points. Pas tres utile en 
-//   photogrametrie, mais permet des convertion a partir de grille,
-//   eventuellement utilisable pour d'autre ajustement ?
+//   class utilisee for compute directement  les parameters de distortion
+//   a partir de relation between couples de points. Pas tres utile en 
+//   photogrametrie, but permet des convertion a partir de grille,
+//   eventuellement utilisable for d'autre ajustement ?
 //
-//   Sera utilise pour ajuster un modele sur les appariement de Bayer
+//   Sera utilise for ajuster un modele on les appariement de Bayer
 
 
 class cEqDirecteDistorsion : public cNameSpaceEqF,
@@ -316,7 +316,7 @@ class cEqDirecteDistorsion : public cNameSpaceEqF,
 	    cParamIntrinsequeFormel & PIF();
             virtual ~cEqDirecteDistorsion();
 	    // WithD2 = Derivee seconde, quasi obsolete (plus de derivee seconde calculee
-	    // aujourd'hui dans les codes formels
+	    // aujourd'hui in les codes formels
             const std::vector<REAL> &     AddObservation
 	         (Pt2dr aPIm1,Pt2dr aDir2,double aPds=1.0,bool WithD2=false);
         private :
@@ -326,13 +326,13 @@ class cEqDirecteDistorsion : public cNameSpaceEqF,
 
             cEqDirecteDistorsion
             (
-		 // Pas alloue car classe virtuelle, peut etre radiale, polyn etc...
+		 // Pas alloue car class virtuelle, peut etre radiale, polyn etc...
 		 cParamIntrinsequeFormel & aPIF,
 		 eTypeEqDisDirecre                Usage,
                  bool                Cod2Gen
             );
 
-            // Rotation utilisee pour le calcul
+            // rotation utilisee for le computation
 	    eTypeEqDisDirecre   mUsage;
             cSetEqFormelles &   mSet;
 	    cParamIntrinsequeFormel & mPIF;
@@ -341,14 +341,14 @@ class cEqDirecteDistorsion : public cNameSpaceEqF,
             cP2d_Etat_PhgrF    mP2;
             Pt2d<Fonc_Num>      mResidu;
 
-       // Sert a definir le nom de la classe contenant les code
-       // generes pour le calcul des derivees 
+       // Sert a definir le nom de la class contenant les code
+       // generes for le computation des derivees 
             std::string           mNameType;
-       // Permet de faire le lien entre les numeros d'inconnues
-       // de rotation et les valeur compactees 0,1,2 utilisees
+       // Permet de faire le lien between les numeros d'inconnues
+       // de rotation and les value compactees 0,1,2 utilisees
        // en locale
           cIncListInterv        mLInterv;
-       // Sert a calculer effectivement les valeurs et derivees
+       // Sert a compute effectivement les valeurs and derivees
            cElCompiledFonc *     mFoncEqResidu;
 
 };
@@ -356,30 +356,30 @@ class cEqDirecteDistorsion : public cNameSpaceEqF,
 
 /**************************************************************/
 /*                                                            */
-/*    Gestion d'un plan inconnu, pour rattacher un point      */
+/*    Gestion d'un plan inconnu, for rattacher un point      */
 /*  a un plan                                                 */
 /*                                                            */
 /**************************************************************/
 
 // Une cSurfInconnueFormelle
-// c'est a la fois des inconnues (les parametres) et une equation
+// c'est a la fois des inconnues (les parameters) and une equation
 // (equation de la surface)
 //
 class cSurfInconnueFormelle  : public cNameSpaceEqF,
                                public cObjFormel2Destroy
 {
      public :
-     // La liste de intervalles contenant les parametres definissant la surface
+     // La list de intervalles contenant les parameters definissant la surface
           virtual cIncListInterv & IntervSomInc() = 0;
 
-     // Renvoie +ou- la distance signee a la surface apres avoir
-     // ajouter cette contrainte au syst formel avec le poids (si Pds > 0)
-     // Pour l'instant on ne passe pas le point car les seuls 
+     // Renvoie +or- la distance signee a la surface after avoir
+     // ajouter cette contrainte au syst formel with le poids (if Pds > 0)
+     // for l'instant on ne passe pas le point car les seuls 
      // utilisations semblent necessite que le point tempo ait deja ete
      // initialise
 	  virtual double DoResiduPInc(double aPds) = 0;
 
-      // Probablement on changera avec des surface plus compliquees
+      // Probablement on changera with des surface plus compliquees
 	  virtual Pt3dr InterSurfCur(const ElSeg3D &) const = 0;
      protected :
           cSurfInconnueFormelle(cSetEqFormelles & aSet);
@@ -543,7 +543,7 @@ class cBufSubstIncTmp
                   const int                     aNbBloc,
                   // const std::vector<int> & aVIndTmp,
                   // const std::vector<int> & aVIndNonTmp,
-                  bool  Raz=true, // False pour des test de temps, histoire de relancer +sieur fois
+                  bool  Raz=true, // False for des test de temps, histoire de relancer +sieur fois
                   double LimCond=-1 
 	      );
 
@@ -559,7 +559,7 @@ class cBufSubstIncTmp
           cSetEqFormelles *  mSet ;
           int mNbX;  // Tmp
           int mNbY;  // Non Tmp
-	  // Les noms des matrices sont ceux utilis\'es dans
+	  // Les noms des matrices sont ceux utilis\'es in
 	  // la doc micmac
 	  ElMatrix<tSysCho>   mA;
 	  ElMatrix<tSysCho>   mB;
@@ -602,18 +602,18 @@ class cSubstitueBlocIncTmp
 //
 //  Etapes initiales :
 //       - allouer mP3Inc
-//       - initialiser mSubst avec les intervales
+//       - initialiser mSubst with les intervales
 //       - "closer" 
 //
 //  Etapes courantes :
-//       - calculer le point initial;
+//       - compute le point initial;
 //       - utiliser les fcteur
 //       - faire la substitution
 
 
 struct  cResiduP3Inc
 {
-    static const  double TheDefBSurH;  // B Sur H pas toujours calcule
+    static const  double TheDefBSurH;  // B on H pas toujours compute
 
     std::vector<Pt2dr> mEcIm;
     double             mEcSurf;
@@ -626,10 +626,10 @@ struct  cResiduP3Inc
 
 
 
-// Classe permettant de parametrer l'equation d'observation standard (projection
+// class permettant de parametrer l'equation d'observation standard (projection
 // terrain->image) a partir d'un point "projectif" , c.a.d. se trouvant "proche
-// de l'infini" dans la direction du faisceau; devrait permettre de resoudre les
-// probleme de conditionnemment de matrice lorsque les faisceaux sont quasi paralleles
+// de l'infini" in la direction du faisceau; devrait permettre de resoudre les
+// probleme de conditionnemment de matrix lorsque les faisceaux sont quasi paralleles
 
 class cParamPtProj
 {
@@ -648,15 +648,15 @@ class cParamPtProj
        double mSeuilBsHRefut;
        bool   mProjIsInit;
 
-       // Ratio de distance acceptable pour les cameras stenopes
+       // Ratio de distance acceptable for les cameras stenopes
        double mRatioMaxDistCS;
 
        // Le point terrain d'intersection de faisceau
        Pt3dr mTer;
  
-// En projectif , les coordonnees (a,b,c) correspondent au point
+// En projectif , les coordinates (a,b,c) correspondent au point
 // euclidien   mP0 + a mI + b mJ + mK/c 
-// la valeur initiale est (0,0,m1sC)
+// la value initiale est (0,0,m1sC)
 
        Pt3dr  mP0;
        Pt3dr  mI;
@@ -671,7 +671,7 @@ class cParamPtProj
        void SetBasePPP(const double &);
   private :
   // Attention ces deux valeurs, privees ne sont pas forcement calculees,
-  // ajouter verif si on veut y donner acces !!
+  // ajouter verif if on veut y donner acces !!
        double mBasePPP;
        bool   mInitBasePPP;
        double mHautPPP;
@@ -683,7 +683,7 @@ class cRapOnZ
     public :
        cRapOnZ(double aZ,double aIncertCompens,double aIncertEstim,const std::string & aLayerIm,const std::string & aKeyGrpApply);
 
-        Pt3dr PZ() const ; // X ET Y ARBRITRAIREMENT A 0
+        Pt3dr PZ() const ; // X and Y ARBRITRAIREMENT A 0
         double Z() const;
         double IncEstim() const;
         double IncComp() const;
@@ -741,7 +741,7 @@ class cManipPt3TerInc
 			          double aPdsPl, // Poids de rattach a l'eventuelle surf
                                   const cNupletPtsHomologues & aNuple,
                                   std::vector<double> & aVPds,
-                                  bool   AdEq , // Si false calcule les residu met ne modifie pas le syst
+                                  bool   AdEq , // if false compute les residu met ne modifie pas le syst
                                   const cRapOnZ *      aRAZ = 0
 			     );
 
@@ -753,7 +753,7 @@ class cManipPt3TerInc
 			          double aPdsPl,
                                   const cNupletPtsHomologues & aNuple,
                                   std::vector<double> & aVPds,
-                                  bool   AdEq , // Si false calcule les residu met ne modifie pas le syst
+                                  bool   AdEq , // if false compute les residu met ne modifie pas le syst
 				  const Pt3dr  & aPtApuis,
 				  const Pt3dr  & anIncertApuis,
 				  bool           aUseAppAsInit
@@ -783,7 +783,7 @@ class cManipPt3TerInc
 			          double aPdsPl,
                                   const cNupletPtsHomologues & aNuple,
                                   std::vector<double> & aVPds,
-                                  bool   AdEq , // Si false calcule les residu met ne modifie pas le syst
+                                  bool   AdEq , // if false compute les residu met ne modifie pas le syst
 				  const Pt3dr  * aPtApuis,
 				  const Pt3dr  * anIncertApuis,
 				  bool           aUseAppAsInit,
@@ -865,7 +865,7 @@ class cEqOffsetGPS  : public cNameSpaceEqF,
          cRotationFormelle *  mRot;
          cBaseGPS          *  mBase;
          cP3d_Etat_PhgrF      mGPS;
-// Definit le nom des fichier ou sera genere le code (et les classe generee)
+// Definit le nom des file or sera genere le code (and les class generee)
          std::string          mNameType;
          Pt3d<Fonc_Num>       mResidu;   // Residu formel de Eq1
          cIncListInterv       mLInterv;
@@ -944,7 +944,7 @@ class cScalEEF : public cElemEqFormelle,
 
 /****************************************************/
 /*                                                  */
-/*   Paquet de classe utilisees pour effectuer      */
+/*   Paquet de class utilisees for effectuer      */
 /*   l'amelioration de l'orientation relative.      */
 /*                                                  */
 /****************************************************/
@@ -1080,7 +1080,7 @@ template <class TypeArc>  class cComMergeTieP
        typedef TypeArc                    tArc;
         bool IsOk() const {return mOk;}
         void SetNoOk() {mOk=false;}
-        void SetOkForDelete() {mOk=true;}  // A n'utiliser que dans cFixedMergeStruct::delete
+        void SetOkForDelete() {mOk=true;}  // A n'utiliser que in cFixedMergeStruct::delete
         int  NbArc() const {return mNbArc;}
         void IncrArc() { mNbArc++;}
         void MemoCnx(int aK1,int aK2,const TypeArc& );
@@ -1188,7 +1188,7 @@ template <class Type> class cStructMergeTieP
         typedef  DefcTpl_GT<tVal,tMerge> tMapMerge;
         typedef typename tMapMerge::GT_tIter         tItMM;
 
-        // Pas de delete implicite dans le ~X(),  car exporte l'allocation dans
+        // Pas de delete implicite in le ~X(),  car exporte l'allocation in
         void Delete();
         void DoExport();
         const std::list<tMerge *> & ListMerged() const;

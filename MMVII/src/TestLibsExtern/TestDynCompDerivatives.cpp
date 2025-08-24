@@ -293,8 +293,8 @@ template <const int NbParamD> class cCountDist
         {
             static std::vector<std::string> TheVObs
             {
-                "oR00","oR01","oR02","oR10","oR11","oR12","oR20","oR21","oR22", // Rotation
-                "oXIm","oYIm"  // Image point
+                "oR00","oR01","oR02","oR10","oR11","oR12","oR20","oR21","oR22", // rotation
+                "oXIm","oYIm"  // image point
             };
             return TheVObs;
         };
@@ -302,7 +302,7 @@ template <const int NbParamD> class cCountDist
         {
             static std::vector<std::string> TheVUk
             {
-              "XGround","YGround","ZGround",        // Unknown 3D Point
+              "XGround","YGround","ZGround",        // Unknown 3D point
               "XCam","YCam","ZCam", "Wx","Wy","Wz", // External Parameters
               "ppX","ppY","ppZ"                     // Internal : principal point + focal
             };

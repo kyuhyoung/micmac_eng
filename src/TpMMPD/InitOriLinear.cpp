@@ -270,10 +270,10 @@ Pt3dr CalVecAvancementInit (vector<string> PoseRef, string aOriRef)
     double xAcc = 0, yAcc = 0, zAcc = 0;
     vector<string> aSetRefImages = PoseRef;
     for (unsigned int i=0;i<aSetRefImages.size();i++)
-    {   //tout les poses references dans camera
+    {   //tout les poses references in camera
         std::cout<<"  - "<<aSetRefImages[i]<<" ";
         std::string aOriRefImage="Ori-"+aOriRef+"/Orientation-"+aSetRefImages[i]+".xml";
-        cOrientationConique aOriConique=StdGetFromPCP(aOriRefImage,OrientationConique); //prendre orientation Conique partie a partir de XML fichier
+        cOrientationConique aOriConique=StdGetFromPCP(aOriRefImage,OrientationConique); //prendre orientation Conique partie a partir de XML file
         std::cout<<aOriConique.Externe().Centre()<<"\n";
         if (i==0)
         {   //1st pose as reference
@@ -478,7 +478,7 @@ int InitOriLinear_main(int argc,char ** argv)
             for (unsigned int k=0;k<aSetRefImages.size();k++)
                 std::cout<<" - "<<aSetRefImages[k]<<"\n";
             
-            ELISE_ASSERT(aSetRefImages.size()>1,"Number of reference image must be > 1");   //pour chaque camera, il fault au moins 2 images pour caculer vector de deplacement
+            ELISE_ASSERT(aSetRefImages.size()>1,"Number of reference image must be > 1");   //for chaque camera, il fault au moins 2 images for caculer vector de deplacement
 
             //Read orientation initial (first image in series)
             string aOriRefImage="Ori-"+aOriRef+"/Orientation-"+aSetRefImages.back()+".xml";
@@ -495,7 +495,7 @@ int InitOriLinear_main(int argc,char ** argv)
             if (ii==0) //1st camera as reference
             {
                 std::string aOriRefImage="Ori-"+aOriRef+"/Orientation-"+aSetRefImages.back()+".xml";
-                aOriConique = StdGetFromPCP(aOriRefImage,OrientationConique); //prendre orientation Conique partie a partir de XML fichier
+                aOriConique = StdGetFromPCP(aOriRefImage,OrientationConique); //prendre orientation Conique partie a partir de XML file
                 aRefOriList.push_back(aOriConique);
                 std::cout<<aOriConique.Externe().Centre()<<"\n";
                 if (aVecPoseTurn.size() > 0)
@@ -647,7 +647,7 @@ int InitOriLinear_main(int argc,char ** argv)
         aICNM=cInterfChantierNameManipulateur::BasicAlloc(aDirRefImages);
         const std::vector<std::string> aSetRefImages = *(aICNM->Get(aPatRefImages));
 
-        ELISE_ASSERT(aSetRefImages.size()>1,"Number of reference image must be > 1");   //pour chaque camera, il fault au moins 2 images pour caculer vector de deplacement
+        ELISE_ASSERT(aSetRefImages.size()>1,"Number of reference image must be > 1");   //for chaque camera, il fault au moins 2 images for caculer vector de deplacement
 
         std::cout<<"\nRef images:\n";
         //Read orientation initial (first image in series)
@@ -663,10 +663,10 @@ int InitOriLinear_main(int argc,char ** argv)
             double xBefore=0, yBefore=0, zBefore=0;
             double xAcc = 0, yAcc = 0, zAcc = 0;
             for (unsigned int i=0;i<aSetRefImages.size();i++)
-            {   //tout les poses references dans camera
+            {   //tout les poses references in camera
                 std::cout<<"  - "<<aSetRefImages[i]<<" ";
                 std::string aOriRefImage="Ori-"+aOriRef+"/Orientation-"+aSetRefImages[i]+".xml";
-                cOrientationConique aOriConique=StdGetFromPCP(aOriRefImage,OrientationConique); //prendre orientation Conique partie a partir de XML fichier
+                cOrientationConique aOriConique=StdGetFromPCP(aOriRefImage,OrientationConique); //prendre orientation Conique partie a partir de XML file
                 aRefOriList.push_back(aOriConique);
                 std::cout<<aOriConique.Externe().Centre()<<"\n";
                 if (i==0)

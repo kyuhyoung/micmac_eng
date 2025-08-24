@@ -438,7 +438,7 @@ tResEstimPosRel  cBlocOfCamera::EstimatePoseRel1Cple(size_t aKB1,size_t aKB2,cMM
          anAppli->AddOneReportCSV(anIdReport,{"SyncId","x","y","z","w","p","k"});
     }
 
-    // ============= [1]  Compute, for all relative orientation, average of Translation and rotation
+    // ============= [1]  Compute, for all relative orientation, average of translation and rotation
 
     cPt3dr aAvgTr = cPt3dr::PCste(0.0);//  => accumulate som of translatio,
     cDenseMatrix<tREAL8> aAvgMat(3,3,eModeInitImage::eMIA_Null); // => accumulate sum of translation matrixes

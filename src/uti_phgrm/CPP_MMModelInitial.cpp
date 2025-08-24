@@ -51,7 +51,7 @@ Header-MicMac-eLiSe-25/06/2007*/
 /*                                                                        */
 /**************************************************************************/
 
-// cMMByImNM  :  MicMac By Image Name Manipulator
+// cMMByImNM  :  MicMac By image Name Manipulator
 
 
 void MakeListofName(const std::string & aFile,const cInterfChantierNameManipulateur::tSet  *aSet)
@@ -417,7 +417,7 @@ void FiltreMasqMultiResolMMI(Im2D_REAL4 aImDepth,Im2D_U_INT1 anImInit)
     double aCostTrans = 10.0;
 
     //    Un filtrage basique qui supprime recursivement (par CC) les points obtenus a une resol
-    //  non max et voisin du vide
+    //  non max and voisin du vide
     {
          Im2D_U_INT1 anImEtiq(aSz.x,aSz.y);
          ELISE_COPY(anImInit.all_pts(),Min(2,anImInit.in()),anImEtiq.out());
@@ -468,7 +468,7 @@ void FiltreMasqMultiResolMMI(Im2D_REAL4 aImDepth,Im2D_U_INT1 anImInit)
         TIm2D<U_INT1,INT> aTMasq(aImMasq);
         FiltrageCardCC(false,aTMasq,2,0,100);
 
-        //  supprime toute les CC de 1 (= avec fortes variation) voisine de 0
+        //  supprime toute les CC de 1 (= with fortes variation) voisine de 0
         Neighbourhood aNV4=Neighbourhood::v4();
         Neigh_Rel     aNrV4 (aNV4);
 
@@ -724,7 +724,7 @@ cAppli_Enveloppe_Main::cAppli_Enveloppe_Main(int argc,char ** argv) :
    FiltreMasqMultiResolMMI(aDepthMerg,aMasqMerge);
    SaveResultR1(aXMLParam,eTMIN_Depth,aDepthMerg,aMasqMerge);
 
-   // A revoir mais pour l'instant si non Glob ca se marche sur le pied
+   // A revoir but for l'instant if non Glob ca se marche on le pied
    if ((mScaleNuage!=1.0) && mGlob)
    {
       DownScaleNuage(eTMIN_Max);
@@ -838,7 +838,7 @@ int MMInitialModel_main(int argc,char ** argv)
     if (! EAMIsInit(&ImSec))
        ImSec = AeroIn;
 
-    // Genere les pryramides pour que le paral ne s'ecrase pas les 1 les autres
+    // Genere les pryramides for que le paral ne s'ecrase pas les 1 les autres
     if (aDoPyram)
     {
          std::string aComPyr =  MM3dBinFile("MMPyram")

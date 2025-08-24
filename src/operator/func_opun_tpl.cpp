@@ -1322,7 +1322,7 @@ tOperFuncUnaire  OperFuncUnaireFromName(const std::string & aName)
    if (aName=="u-") return operator -;
    if (aName=="~") return operator ~;
    if (aName=="!") return operator !;
-   if (aName=="signed_frac") return signed_frac; // Partie fractionnaire entre -0.5 et 0.5
+   if (aName=="signed_frac") return signed_frac; // Partie fractionnaire between -0.5 and 0.5
    if (aName=="ecart_frac") return ecart_frac;
 
    if (aName=="cos")     return cos;

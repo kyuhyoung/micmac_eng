@@ -234,7 +234,7 @@ void cAppli_Vino::ExeClikGeom(Clik aCl)
 }
 
 
-/**************** A mettre dans un autre fichier Show/Inspect-Vect ******/
+/**************** A mettre in un autre file Show/Inspect-Vect ******/
 
 void cAppli_Vino::ShowVect()
 {

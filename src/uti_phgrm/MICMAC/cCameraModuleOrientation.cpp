@@ -62,7 +62,7 @@ double cCameraModuleOrientation::ResolutionSol(const Pt3dr &) const
 Pt3dr cCameraModuleOrientation::L3toR3(Pt3dr aP) const
 {
     //std::cout << "L3toR3"<<std::endl;
-    // TODO verifier le sens et verifier s'il faut iterer?
+    // TODO verifier le sens and verifier s'il faut iterer?
     Pt3dr ptOut;
     // Prise en compte de l'affinite
     Pt2dr ptIm(aP.x,aP.y);
@@ -80,7 +80,7 @@ Pt3dr cCameraModuleOrientation::L3toR3(Pt3dr aP) const
 Pt3dr cCameraModuleOrientation::R3toL3(Pt3dr aP) const
 {
     //std::cout << "R3toL3"<<std::endl;
-    // TODO verifier le sens et verifier s'il faut iterer?
+    // TODO verifier le sens and verifier s'il faut iterer?
     Pt3dr ptOut;
     Pt2dr ptIm;
     //mOri->Objet2ImageInit(aP.x,aP.y,&aP.z,ptOut.x,ptOut.y);
@@ -125,7 +125,7 @@ Pt3dr cCameraModuleOrientation::NoDistImEtProf2Terrain(const Pt2dr & aP,double a
 
 Pt3dr cCameraModuleOrientation::ImEtProf2Terrain(const Pt2dr & aP,double aZ) const
 {
-    // TODO verifier le sens et verifier s'il faut iterer?
+    // TODO verifier le sens and verifier s'il faut iterer?
     Pt3dr ptOut;
     // Prise en compte de l'affinite
     Pt2dr ptIm(aP.x,aP.y);

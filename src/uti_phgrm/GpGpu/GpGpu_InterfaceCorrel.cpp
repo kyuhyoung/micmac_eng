@@ -48,7 +48,7 @@ uint GpGpuInterfaceCorrel::InitCorrelJob(int Zmin, int Zmax)
     return interZ;
 }
 
-/// \brief Initialisation des parametres constants
+/// \brief Initialisation des parameters constants
 void GpGpuInterfaceCorrel::SetParameter(int nbLayer , ushort2 dRVig , uint2 dimImg, float mAhEpsilon, uint samplingZ, int uvINTDef, ushort nClass )
 {
 
@@ -64,7 +64,7 @@ void GpGpuInterfaceCorrel::SetParameter(int nbLayer , ushort2 dRVig , uint2 dimI
 void GpGpuInterfaceCorrel::BasicCorrelation()
 {
 
-    // Re-allocation les structures de données si elles ont été modifiées
+    // Re-allocation les structures de donnes if elles ont t modifies
 
     Data().ReallocDeviceData(Param(GetIdBuf()));
 
@@ -72,20 +72,20 @@ void GpGpuInterfaceCorrel::BasicCorrelation()
 
     Data().copyHostToDevice(Param(GetIdBuf()));
 
-    // Indique que la copie est terminée pour le thread de calcul des projections
+    // Indique que la copie est termine for le thread de computation des projections
     SetPreComp(true);
 
-    // Lancement du calcul de correlation
+    // Lancement du computation de correlation
     CorrelationGpGpu(GetIdBuf());
 
     // relacher la texture de projection
 
     Data().UnBindTextureProj();
 
-    // Lancement du calcul de multi-correlation
+    // Lancement du computation de multi-correlation
     MultiCorrelationGpGpu(GetIdBuf());
 
-    // Copier les resultats de calcul des couts du device vers le host!
+    // Copier les resultats de computation des couts du device vers le host!
 
     Data().CopyDevicetoHost(GetIdBuf());
 

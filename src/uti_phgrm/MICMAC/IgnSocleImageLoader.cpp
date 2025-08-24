@@ -121,7 +121,7 @@ template <class Type,class TyBase> Im2D<Type,TyBase>::~Im2D()
 		
 		
 		// Debug Greg
-		// On exporte la pyramide d'image pour controler les sous ech
+		// On exporte la pyramide d'image for controler les under ech
 		/*
 		for(int aDZ=4;aDZ<=32;aDZ*=2)
 		{

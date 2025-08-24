@@ -179,8 +179,8 @@ class Tiff_Im : public ElGenFileIm
              CMYK          = 5,
              YCbCr         = 6,
              CIELab        = 8,
-         PtDeLiaison   = 10531, // Une valeur peu susceptible de telescopage
-         // PtDAppuisDense : il y 4 canaux,Pds, xy et z superposables aux images
+         PtDeLiaison   = 10531, // Une value peu susceptible de telescopage
+         // PtDAppuisDense : il y 4 canaux,Pds, xy and z superposables aux images
          PtDAppuisDense  = 10532
         }  PH_INTER_TYPE;
 
@@ -299,7 +299,7 @@ class Tiff_Im : public ElGenFileIm
                public : ANoStrip();
           };
 
-      // Pour dallage par fichiers  -1,-1 => Pas de dallage
+      // for dallage par fichiers  -1,-1 => Pas de dallage
       class AFileTiling : public Arg_Tiff
       {
             public : AFileTiling(Pt2di sz_dalle);
@@ -342,7 +342,7 @@ class Tiff_Im : public ElGenFileIm
                     int * BigTiff               = &DefValueBigTif
                  );
 
-      // Cree le fichier si il n'existe pas  ou si  une de
+      // Cree le file if il n'existe pas  or if  une de
       // ses caracteristique est differente de celle passee
           static Tiff_Im CreateIfNeeded
                  (
@@ -404,7 +404,7 @@ class Tiff_Im : public ElGenFileIm
           Fonc_Num in_proj();
           Fonc_Num in(REAL def_out);
 
-          // Renvoie 0 ou 1 + Gray adapt
+          // Renvoie 0 or 1 + Gray adapt
           Fonc_Num in_bool();
           Fonc_Num in_bool_proj();
           Fonc_Num in_bool(Fonc_Num );
@@ -437,14 +437,14 @@ class Tiff_Im : public ElGenFileIm
           static const ElSTDNS string Str_PackBits_Compr;	// PackBits
           static const ElSTDNS string Str_NoBytePackBits_Compr;	// PackBits
 
-      static Tiff_Im  StdConv(const ElSTDNS string & Name); // => remis  pour compat  avec certain binaires (=BasicConvStd)
-      static Tiff_Im  BasicConvStd(const ElSTDNS string & Name);  // Que les tif ou assim
-      static Tiff_Im  UnivConvStd(const ElSTDNS string & Name);   // cree des tifs cache pour les RAW-JPGS (uses StdConvGen)
-          // Convertit (avec NameFileStd) les jpg , raw et tif comprs
+      static Tiff_Im  StdConv(const ElSTDNS string & Name); // => remis  for compat  with certain binaires (=BasicConvStd)
+      static Tiff_Im  BasicConvStd(const ElSTDNS string & Name);  // Que les tif or assim
+      static Tiff_Im  UnivConvStd(const ElSTDNS string & Name);   // cree des tifs cache for les RAW-JPGS (uses StdConvGen)
+          // Convertit (with NameFileStd) les jpg , raw and tif comprs
       static Tiff_Im  StdConvGen(const ElSTDNS string & Name,int aNbChan,bool Cons16B,bool ExigNoCompr = true);
       static Tiff_Im  SpecialFilterSift(const ElSTDNS string & Name);
 
-      // Test dand l'ordre aName + ".tif" et aName
+      // Test dand l'ordre aName + ".tif" and aName
       static std::string GetNameOfFileExist(const std::string & aName);
 
       static COMPR_TYPE mode_compr(const ElSTDNS string &);
@@ -461,7 +461,7 @@ class Tiff_Im : public ElGenFileIm
      static Tiff_Im CreateFromFonc(const std::string &,Pt2di,Fonc_Num,GenIm::type_el);
      static Tiff_Im CreateFromFonc(const std::string &,Pt2di,Fonc_Num,GenIm::type_el,COMPR_TYPE);
 
-           Tiff_Im  Dupl(const std::string&); // Avec meme carac mais nom different
+           Tiff_Im  Dupl(const std::string&); // with meme carac but nom different
 
          static void SetDefTileFile(int);
          static int DefTileFile() ;
@@ -522,7 +522,7 @@ void MakeTiffRed2
           REAL                  aVSpec
       );
 
-// Pour reduire un fichier binaire (resultat en FAX4)
+// for reduire un file binaire (result en FAX4)
 void MakeTiffRed2Binaire
      (
           const std::string &   aNameFul,
@@ -547,7 +547,7 @@ void MakeTiffRed2BinaireWithCaracIdent
 Tiff_Im PastisTif(const std::string &  aName);
 std::string PastisNameFileStd(const std::string & aFullNameOri);
 
-// A priori ExigB8 est redondant avec cons16B, mais ai des doutes et pour assurer la compat ....
+// A priori ExigB8 est redondant with cons16B, but ai des doutes and for assurer la compat ....
 std::string NameFileStd(const std::string & aFullNameOri,int aNbChan,bool cons16B,bool ExigNoCompr = true,bool Create= true,bool ExigB8=false);
 bool IsKnownTifPost(const std::string & aPost);
 bool IsKnownJPGPost(const std::string & aPost);
@@ -564,7 +564,7 @@ extern void test_huff();
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -580,17 +580,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe 
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement,
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

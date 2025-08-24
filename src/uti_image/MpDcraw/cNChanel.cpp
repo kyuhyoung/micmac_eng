@@ -189,7 +189,7 @@ Fonc_Num  cArgMpDCRaw::FlatField(const cMetaDataPhoto & aMDP,const std::string &
 		std::string aNameFF="Foc" + (string)foc + "Diaph" + (string)dia + "-FlatField.tif";
    //std::string aNameFF = DirOfFile(aNameFile)+ "Foc"+ ToString(round_ni(aMDP.FocMm(true))) + "Diaph" + ToString(10*round_ni(aMDP.Diaph(true))) + "-FlatField.tif";
   
-// MPD : si ca ne marche pas avec le flad field specif, on tente un Flat Field basic global
+// MPD : if ca ne marche pas with le flad field specif, on tente un Flat Field basic global
    if (!ELISE_fp::exist_file(aNameFF))
    {
       aNameFF = "FlatField.tif";
@@ -229,12 +229,12 @@ cNChannel cNChannel::Std(const cArgMpDCRaw & anArg,const std::string & aNameFile
 
    bool HasFlF=false;
    Im2D_REAL4 aFlF(1,1);
-   char foc[50],dia[40]; // !!!! SINON DEBORDEMENT 
+   char foc[50],dia[40]; // !!!! else DEBORDEMENT 
    sprintf(foc, "%04d", int(round_ni(10*aMDP.FocMm(true))));
    sprintf(dia, "%03d", int(round_ni(10*aMDP.Diaph(true))));
    std::string aNameFF="Foc" + (string)foc + "Diaph" + (string)dia + "-FlatField.tif";
    //std::string aNameFF = DirOfFile(aNameFile)+ "Foc"+ ToString(round_ni(aMDP.FocMm())) + "Diaph" + ToString(round_ni(10*aMDP.Diaph(true))) + "-FlatField.tif";
-   // Pas de FF en coul pour l'insntnt
+   // Pas de FF en coul for l'insntnt
    if (ELISE_fp::exist_file(aNameFF) &&  (!  anArg.Cons16B()) && anArg.UseFF() )
 
    {

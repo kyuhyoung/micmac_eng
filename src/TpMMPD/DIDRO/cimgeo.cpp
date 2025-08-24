@@ -11,7 +11,7 @@ cImGeo::cImGeo(std::string aName):
    mIm = Tiff_Im::StdConvGen(aName,1,true);
    mSzImPix = mIm.sz();
 
-   // sépare le nom et le directory
+   // sépare le nom and le directory
    SplitDirAndFile(mDir,mName,aName);
 
    // charge les donnée geo
@@ -36,7 +36,7 @@ cImGeo::cImGeo(std::string aName, std::string aNameTFW ):
    mIm = Tiff_Im::StdConvGen(aName,1,true);
    mSzImPix = mIm.sz();
 
-   // sépare le nom et le directory
+   // sépare le nom and le directory
    SplitDirAndFile(mDir,mName,aName);
 
    // charge les donnée geo
@@ -53,7 +53,7 @@ cImGeo::cImGeo(std::string aName, std::string aNameTFW ):
    mCentre=Pt2dr(mXmin+mSzImTer.x/2,mYmin+mSzImTer.y/2);
 }
 
-// si on veux utiliser l'incidence, on doit la charger séparément du constructeur, car on en a pas besoin dans tout les cas
+// if on veux utiliser l'incidence, on doit la charger séparément du constructeur, car on en a pas besoin in tout les cas
 void cImGeo::loadIncid()
 {
     std::string aNameIncid;
@@ -61,7 +61,7 @@ void cImGeo::loadIncid()
     aNameIncid=mDir+"Incid" + mName.substr(3, mName.size());
     if (ELISE_fp::exist_file(aNameIncid))
     {
-       // lecture et resize de l'incidence
+       // lecture and resize de l'incidence
        Tiff_Im aIncid = Tiff_Im::StdConvGen(aNameIncid,1,true);
        // copy to an Im2D
        double aFact(10);
@@ -75,7 +75,7 @@ void cImGeo::loadIncid()
        // apply the mask of nd
        ELISE_COPY(
                    select(mIncid.all_pts(),mIm.in()==0),
-                   3,// valeur elevée d'incidence
+                   3,// value elevée d'incidence
                    mIncid.out()
                    );
 
@@ -85,7 +85,7 @@ void cImGeo::loadIncid()
     }
 }
 
-// sorte de copie d'un objet cImGeo mais avec un autre nom de fichier sinon écrase le fichier existant
+// sorte de copie d'un object cImGeo but with un autre nom de file else écrase le file existant
 cImGeo::cImGeo(cImGeo * imGeoTemplate,std::string aName):  mIm(Tiff_Im(aName.c_str(),
                                                                  imGeoTemplate->Im().sz(),
                                                                  GenIm::real4,
@@ -94,7 +94,7 @@ cImGeo::cImGeo(cImGeo * imGeoTemplate,std::string aName):  mIm(Tiff_Im(aName.c_s
 {
 
     SplitDirAndFile(mDir,mName,aName);
-    // copie l'image avec Elise
+    // copie l'image with Elise
     ELISE_COPY
    (
     mIm.all_pts(),
@@ -121,7 +121,7 @@ std::vector<double> loadTFW(std::string aNameTFW)
 {
     std::vector<double> result;
     double line;
-    // test elise fichier existe ou pas
+    // test elise file existe or pas
     if(ELISE_fp::exist_file(aNameTFW))
     {
 
@@ -153,13 +153,13 @@ std::vector<double> loadTFW(std::string aNameTFW)
  {
    bool intersect(false);
     //if (((mXmax>=aIm2->Xmax() && aIm2->Xmax() >= mXmin) || (mXmax>=aIm2->Xmin() && aIm2->Xmin()>=mXmin)) && ((mYmax>=aIm2->Ymax() && aIm2->Ymax() >= mYmin) || (mYmax>=aIm2->Ymin() && aIm2->Ymin()>=mYmin))) intersect=true;
-   // test im1 est contenue dans im2 ou inversément, pas pris en compte ci-dessus
+   // test im1 est contenue in im2 or inversément, pas pris en compte ci-dessus
     double h1=mYmax-mYmin;
     double w1=mXmax-mXmin;
     double h2=aIm2->mYmax-aIm2->mYmin;
     double w2=aIm2->mXmax-aIm2->mXmin;
 
-    // projeter les bounding-box sur les axes et tester si les segments se recouvrent
+    // projeter les bounding-box on les axes and tester if les segments se recouvrent
     // recouvrement axe horizontal
     bool hoverlap = (mXmin<aIm2->Xmin()+w2) && (aIm2->Xmin()<mXmin+w1);
 
@@ -195,7 +195,7 @@ std::vector<double> loadTFW(std::string aNameTFW)
    double h2=aIm2->mYmax-aIm2->mYmin;
    double w2=aIm2->mXmax-aIm2->mXmin;
 
-   // projeter les bounding-box sur les axes et tester si les segments se recouvrent
+   // projeter les bounding-box on les axes and tester if les segments se recouvrent
    // recouvrement axe horizontal
    bool hoverlap = (mXmin<aIm2->Xmin()+w2) && (aIm2->Xmin()<mXmin+w1);
 
@@ -204,8 +204,8 @@ std::vector<double> loadTFW(std::string aNameTFW)
 
    // recouvrement final
    bool overlap = hoverlap && voverlap;
-   //std::cout << "Calcul overlap entre 2 cimgeo, "<< this->Name() << " and " << aIm2->Name() << ". hoverlap :" << hoverlap << ", voverlap " << voverlap << "\n";
-   //calcule le recouvrement et le compare a aRec
+   //std::cout << "computation overlap between 2 cimgeo, "<< this->Name() << " and " << aIm2->Name() << ". hoverlap :" << hoverlap << ", voverlap " << voverlap << "\n";
+   //compute le recouvrement and le compare a aRec
 
    if (overlap)
    {
@@ -213,7 +213,7 @@ std::vector<double> loadTFW(std::string aNameTFW)
     int hRec = 100*overBox.hauteur()/h1;
     int vRec = 100*overBox.largeur()/w1;
     if (hRec<aRec || vRec<aRec) overlap=0;
-    //std::cout << "overlap  en pourcent v et h :" << vRec << " et " << hRec << "\n";
+    //std::cout << "overlap  en pourcent v and h :" << vRec << " and " << hRec << "\n";
    }
    return overlap;
  }
@@ -263,10 +263,10 @@ Pt2di cImGeo::computeTrans(Pt2dr aPTer) // compte the translation required for t
 
  void cImGeo::applyTrans(Pt2di aTr) // translation en pixel
  {
-     //crée une image dans la ram pour appliquer la translation sans foirer son coup (si on écrit l'image sur elle meme cela bug si ty négatif)
+     //crée une image in la ram for appliquer la translation without foirer son coup (if on écrit l'image on elle meme cela bug if ty négatif)
      Im2D_REAL4 aImTmp=toRAM();
 
-    // applique la translation au fichier tiff sur le disque
+    // applique la translation au file tiff on le disque
      ELISE_COPY
     (
      aImTmp.all_pts(),
@@ -274,7 +274,7 @@ Pt2di cImGeo::computeTrans(Pt2dr aPTer) // compte the translation required for t
      Im().out()
     );
 
-    // applique la translation au fichier tfw
+    // applique la translation au file tfw
      transTFW(aTr);
      writeTFW();
  }
@@ -333,13 +333,13 @@ Im2D_REAL4 cImGeo::clipImTer(Pt2dr aMin,Pt2dr aMax)
     // initialise resulting image
     Im2D_REAL4 im(U,V);
 
-    // inversion min max Y car en geom image l'axe des y pointe dans le sens contraire A FAIRE!! ou supprimer cette fonction
+    // inversion min max Y car en geom image l'axe des y pointe in le sens contraire A FAIRE!! or supprimer cette function
 
     if (containTer(aMin) && containTer(aMax))
     {
      im=clipImPix(XY2UV(aMin),XY2UV(aMax));
 
-     //std::cout << "la box est contenue dans l'image \n";
+     //std::cout << "la box est contenue in l'image \n";
      //std::cout << "aMin 2 UV " <<  XY2UV(aMin) << "\n";
      //std::cout << "aMax 2 UV " <<  XY2UV(aMax) << "\n";
     }
@@ -357,7 +357,7 @@ Im2D_REAL4 cImGeo::clipImTer(Box2dr aBox)
     //if(XY2UV(aPMax)!=apMaxPix) to detect bug of casting double to int. round solve the problem
 
     Im2D_REAL4 im(1,1);
-    // inversion min max Y car en geom image l'axe des y pointe dans le sens contraire
+    // inversion min max Y car en geom image l'axe des y pointe in le sens contraire
     Pt2dr aPMin(aBox._p0.x,aBox._p1.y), aPMax(aBox._p1.x,aBox._p0.y);
     if (containTer(aBox._p0) && containTer(aBox._p1))
     {
@@ -376,7 +376,7 @@ Im2D_REAL4 cImGeo::clipIncidTer(Box2dr aBox)
 {
     // initialise resulting image
     Im2D_REAL4 im(1,1);
-    // inversion min max Y car en geom image l'axe des y pointe dans le sens contraire
+    // inversion min max Y car en geom image l'axe des y pointe in le sens contraire
     Pt2dr aPMin(aBox._p0.x,aBox._p1.y), aPMax(aBox._p1.x,aBox._p0.y);
 
     if (containTer(aBox._p0) && containTer(aBox._p1))
@@ -397,7 +397,7 @@ Im2D_REAL4 cImGeo::clipImPix(Pt2di aMin,Pt2di aMax)
     // initialise l'image retour
     Im2D_REAL4 im(aMax.x-aMin.x,aMax.y-aMin.y);
     //std::cout << " size of clipped Im Pix :" << im.sz() << "\n";
-    // translate l'imageGeo et clip en meme temps
+    // translate l'imageGeo and clip en meme temps
     ELISE_COPY
    (
     Im().all_pts(),
@@ -412,7 +412,7 @@ Im2D_REAL4 cImGeo::clipIncidPix(Pt2di aMin,Pt2di aMax)
 {
     // initialise l'image retour
     Im2D_REAL4 im(aMax.x-aMin.x,aMax.y-aMin.y);
-    // translate l'imageGeo et clip en meme temp
+    // translate l'imageGeo and clip en meme temp
     ELISE_COPY
    (
     Incid()->all_pts(),
@@ -461,7 +461,7 @@ void cImGeo::display()
     std::cout << "GSD  ;" << mGSD << " \n";
 }
 
-// renvoie la box terrain du recouvrement entre image 1 et image 2
+// renvoie la box terrain du recouvrement between image 1 and image 2
 Box2dr cImGeo::overlapBox(cImGeo * aIm2)
 {
     Pt2dr aP1(0,0),aP2(0,0);
@@ -523,7 +523,7 @@ Box2dr cImGeo::boxEnglob(cImGeo * aIm2)
 
 Im2D_REAL4 cImGeo::applyRE(c2DLineModel aMod)
 {
-    // on charge en mémoire RAM l'image in et out pour pouvoir utiliser elise copy sans se faire insulter rle mode machin
+    // on charge en mémoire RAM l'image in and out for pouvoir utiliser elise copy without se faire insulter rle mode machin
     Im2D_REAL4 tmpOut(SzUV().x, SzUV().y);
     Im2D_REAL4 tmpIn(toRAM());
 
@@ -533,7 +533,7 @@ Im2D_REAL4 cImGeo::applyRE(c2DLineModel aMod)
                 tmpOut.out()
                 );
     // les valeurs corrigées sont plus petites que 0; on les note à 0. Les valeurs de 0: on reste à ND
-    // normalement la commande elise ci-dessus est suffisante mais le résultat part en c*** sur les bord, un peu comme si in_proj était appelé
+    // normalement la commande elise ci-dessus est suffisante but le résultat part en c*** on les bord, un peu comme if in_proj était appelé
     ELISE_COPY(
                 select(tmpIn.all_pts(), tmpIn.in()==0 || tmpOut.in()<=0 ),
                 0,

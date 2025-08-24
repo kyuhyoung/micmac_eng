@@ -711,11 +711,11 @@ tSysCho cBlocMCBS::ScalCol(int aCol,const cBlocMCBS &  aBl2,int aCol2) const
 
    // Toute la col, 
    int aNb =  mNbY;
-   // Sauf si c'est un element diag
+   // Sauf if c'est un element diag
    if (mX0==mY0)
    {
         aNb = aCol+1 - mY0;
-        // Si c'est les deux meme colone , on supprime le carre de la diag
+        // if c'est les deux meme colone , on supprime le carre de la diag
         if (aCol==aCol2)
            aNb--;
    }
@@ -800,14 +800,14 @@ tSysCho * cBlocMCBS::DataL()
    return mDataL;
 }
 
-//  Classe pour les matrice creuses symetrique ayant une structure de bloc
+//  class for les matrix creuses symetrique ayant une structure de bloc
 //  "naturelle".
 //
-//  Comme dab : mDataBloc[Y][X], et on doit avoir X>=Y
+//  Comme dab : mDataBloc[Y][X], and on doit avoir X>=Y
 //
-//  Plus tard, si on veut optimiser la mult (hyper majorite de bloc vide)
-//  on pourra faire des liste chainee de blocs, a initialiser avant la mult
-//  (avec un compteur de bloc pour savoir si a jour)
+//  Plus tard, if on veut optimiser la mult (hyper majorite de bloc vide)
+//  on pourra faire des list chainee de blocs, a initialiser before la mult
+//  (with un compteur de bloc for savoir if a jour)
 
 typedef enum
 {
@@ -846,7 +846,7 @@ class cElMatCreuseBlocSym : public cElMatCreuseGen
 
 // Optimise
                tSysCho  ScaleCol(int aCol1,int aCol2);
-// Inefficace, mais pour verif
+// Inefficace, but for verif
                tSysCho  SimpleScaleCol(int aCol1,int aCol2);
 
                tSysCho  SimpleGet(INT aX,INT aY) const ;   // Test basique
@@ -855,7 +855,7 @@ class cElMatCreuseBlocSym : public cElMatCreuseGen
                void ShowStruct(bool Basic); // Remet tous les elements a 0
 
 
-               // Pour tester les inversion partielles utilisees dans SSOR on a besoin 	de multiplie par des ss ensemble
+               // for tester les inversion partielles utilisees in SSOR on a besoin 	de multiplie par des ss ensemble
                void TestMulVect(tSysCho * out,const tSysCho * in,tSysCho aPdsInf,tSysCho aPdsDiag,tSysCho aPdsSup) const;
 
                virtual void  MulVect(tSysCho * out,const tSysCho * in) const;
@@ -877,10 +877,10 @@ class cElMatCreuseBlocSym : public cElMatCreuseGen
                cBlocMCBS **                           mBloc0OfCol;
                eModePreCond                           mModePC;
 
-           //  Matrice de Pre-Cond par Bloc
+           //  matrix de Pre-Cond par Bloc
                cElMatCreuseBlocSym *                  mMatPCB;
 
-           //  Matrice de Cholesky 
+           //  matrix de Cholesky 
                cElMatCreuseBlocSym *                  mMChol;
 
                bool IsOptForSousP3x3() const 
@@ -1167,7 +1167,7 @@ if (MPD_MM())
 //   (D/W + L) D-1 (D/W + tL)   W/(2-W)
 */
 
-// Inverse le systeme triangulaire superiereure (avec diagonale divise par W)
+// Inverse le system triangulaire superiereure (with diagonale divise par W)
 void cElMatCreuseBlocSym::SolveLowerSys(tSysCho * aDOut,const tSysCho * aDIn,tSysCho aW)
 {
    for (int aKBy=0 ; aKBy<mNbBlocs   ; aKBy++)
@@ -1226,7 +1226,7 @@ void cElMatCreuseBlocSym::SolveUperSys(tSysCho * aDOut,const tSysCho * aDIn,tSys
 
 void cElMatCreuseBlocSym::VPCDo(double * aDOut,double * aDIn)
 {
-    // A priori devenu inutile et incompatible avec  tSysCho
+    // A priori devenu inutile and incompatible with  tSysCho
     ELISE_ASSERT(false,"No more cElMatCreuseBlocSym::VPCDo");
 }
 /*
@@ -1269,9 +1269,9 @@ void  cElMatCreuseBlocSym::Indexee_EcrireDansMatrWithQuad
 {
     if (mOptSym)
     {
-       // Le fait de ne remplir que la matrice superieur n'a de sens
-       // que si elle est carre ou de type "ligne par bloc" (auquel cas
-       // c'est sans effet
+       // Le fait de ne remplir que la matrix superieur n'a de sens
+       // que if elle est carre or de type "line par bloc" (auquel cas
+       // c'est without effet
         ELISE_ASSERT
         (
             (aVx.size()==1) || (&aVx==&aVy),
@@ -1302,7 +1302,7 @@ void  cElMatCreuseBlocSym::Indexee_EcrireDansMatrWithQuad
                 cBlocMCBS * aBlocOut = BlocOfKbxKby(aNumBlocIntervX, aNumBlocIntervY);
                 int aI1y = aBlY.I1AbsSolve();
                 // Le cas de la transposition est en pratique tres minoritaire, on ne l'optimise
-                // donc pas (il s'est manifeste la 1ere fois sur le bug piazzabra)
+                // donc pas (il s'est manifeste la 1ere fois on le bug piazzabra)
                 if (toTransp)
                 {
                     int aNbY = aI1y - aI0y;
@@ -1996,7 +1996,7 @@ int NbNN = 0;
     {
        int anY0 = mStrBlocs[aKy]->I0Solve();
        int anY1 = mStrBlocs[aKy]->I1Solve();
-NbNN--;  // POUR la DIAG
+NbNN--;  // for la DIAG
        // CA MARCHE PARCE QUE LES BLOG DIAGONAUX INFERIEUR SONT NUL ....
        for (cBlocMCBS * aBl = mDataBlocs[aKy][aKy];  aBl ; aBl = aBl->XNext())
        {

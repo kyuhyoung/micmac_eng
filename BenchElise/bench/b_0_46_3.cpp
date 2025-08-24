@@ -29,7 +29,7 @@ eLiSe06/05/99*/
 #include "bench.h"
 #include <map>
 
-// cTestMinimForm joue + ou - le role de namespace
+// cTestMinimForm joue + or - le role de namespace
 class cTestMinimForm 
 {
 	public :
@@ -50,9 +50,9 @@ class cTriangMaillage;
 class cSomMaillage : public cTestMinimForm
 {
     public :
-	    // Pour creer un point "rigide"
+	    // for creer un point "rigide"
 	    
-	    // Pour creer un point "mobile"
+	    // for creer un point "mobile"
 	    cSomMaillage(Pt2di aP0,Pt2dr aPInit,bool Rig,AllocateurDInconnues & anAloc) :
 	         mP0    (aP0),
 	         mPRes (aPInit),
@@ -181,15 +181,15 @@ cTestMinimForm::tMatF cTriangMaillage::MatDef() const
 
    tMatF aRes = MatFromCol ( UInc(), VInc());
    //  Maintenant aRes contient l'expression
-   //  formelle qui representent les images de U et V
-   //  dans la base i,j
-   //  Pour en faire une matrice de deformation il
-   //  faut revenir aux images i,j dans la base i,j
+   //  formelle qui representent les images de U and V
+   //  in la base i,j
+   //  for en faire une matrix de deformation il
+   //  faut revenir aux images i,j in la base i,j
 
 
 
 
-   // aMChb = Matrice de changement de base
+   // aMChb = matrix de changement de base
    ElMatrix<REAL> aMChb = MatFromCol
 	               (
 			   mS1.P0()-mS0.P0(),
@@ -202,10 +202,10 @@ cTestMinimForm::tMatF cTriangMaillage::MatDef() const
     return  aRes
             * ToMatForm(aMChb);
 
-    // ToMatForm : transforme une matrice de valeurs reelles
-    // en un matrice dont les elements sont des expressions
+    // ToMatForm : transforme une matrix de valeurs reelles
+    // en un matrix dont les elements sont des expressions
     // formelle, ces expressions formelles sont les 
-    // fonctions contantes correspondant aux elements de la matrice
+    // fonctions contantes correspondant aux elements de la matrix
     // initiales
 }
 

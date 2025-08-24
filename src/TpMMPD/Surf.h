@@ -177,7 +177,7 @@ private:
     unsigned char *_sig_lap;
 };
 
-/** Classe pour le calcul des points SURF */
+/** class for le computation des points SURF */
 class Surf
 {
 public:
@@ -212,7 +212,7 @@ public:
     
     
     
-    /** Calcul de l'image integrale pour SURF */
+    /** computation de l'image integrale for SURF */
     static void computeIntegral(BufferImage<unsigned short> const &imageIn,BufferImage<double> &imageIntegral,int lig_ini=0,int nb_lig=0);
     inline static double integraleBoite(BufferImage<double> const &imageInegrale,int c0,int l0,int nc,int nl, bool verbose=false);
     static void appariement(std::vector<SurfPoint> const &v1, std::vector<SurfPoint> const &v2,std::vector<SurfHomologue> &vApp,float seuil=0.);
@@ -225,7 +225,7 @@ private:
     
     static double modelisationAffine(std::vector<SurfHomologue> const &vApp,std::vector<double> &affine, float seuil=0.);
     
-    // Parametres repris de CST_SURF (Xing)
+    // parameters repris de CST_SURF (Xing)
     int _num_echelles;
     int _octaves;
     int _intervals;

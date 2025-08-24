@@ -321,7 +321,7 @@ void   cAppliRadiom2ImageSameMod::OneIterationGen(int aDegFroze)
          cSetIORSNL_SameTmp<tElSys>  aSetTmp({aAlbedo}); // structure for schur-substitution of albedo
          for (const  auto & aImInd : aVecIndMul)
          {
-              // extract  Image+Sensor Calib, radiom data
+              // extract  image+Sensor Calib, radiom data
              cComputeCalibRadIma * aRIM = mVRadIm.at(aImInd.x());
              cCalibRadiomIma & aCRI = aRIM->CalRadIm();
 	     cCalibRadiomSensor & aCalS = aCRI.CalibSens();
@@ -369,7 +369,7 @@ void   cAppliRadiom2ImageSameMod::OneIterationGen(int aDegFroze)
               const auto & aVecIndMul = mFusIndex.VVIndexes().at(aKPMul);
               for (const  auto & aImInd : aVecIndMul)
               {
-              // extract  Image+Sensor Calib, radiom data
+              // extract  image+Sensor Calib, radiom data
                   cComputeCalibRadIma * aRIM = mVRadIm.at(aImInd.x());
                   cCalibRadiomIma & aCRI = aRIM->CalRadIm();
 	          cCalibRadiomSensor & aCalS = aCRI.CalibSens();

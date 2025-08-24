@@ -158,25 +158,25 @@ void ref_vector_fixed_sizes()
   Index i = internal::random<Index>(0,Rows-1);
   Index j = internal::random<Index>(0,Cols-1);
 
-  // Reference ith row.
+  // reference ith row.
   Ref<RowVectorType, 0, DynamicStride> mr_ri = mr.row(i);
   VERIFY_IS_EQUAL(mr_ri, mr.row(i));
   Ref<RowVectorType, 0, DynamicStride> mc_ri = mc.row(i);
   VERIFY_IS_EQUAL(mc_ri, mc.row(i));
 
-  // Reference jth col.
+  // reference jth col.
   Ref<ColVectorType, 0, DynamicStride> mr_cj = mr.col(j);
   VERIFY_IS_EQUAL(mr_cj, mr.col(j));
   Ref<ColVectorType, 0, DynamicStride> mc_cj = mc.col(j);
   VERIFY_IS_EQUAL(mc_cj, mc.col(j));
 
-  // Reference the transpose of row i.
+  // reference the transpose of row i.
   Ref<RowVectorTransposeType, 0, DynamicStride> mr_rit = mr.row(i);
   VERIFY_IS_EQUAL(mr_rit, mr.row(i).transpose());
   Ref<RowVectorTransposeType, 0, DynamicStride> mc_rit = mc.row(i);
   VERIFY_IS_EQUAL(mc_rit, mc.row(i).transpose());
 
-  // Reference the transpose of col j.
+  // reference the transpose of col j.
   Ref<ColVectorTransposeType, 0, DynamicStride> mr_cjt = mr.col(j);
   VERIFY_IS_EQUAL(mr_cjt, mr.col(j).transpose());
   Ref<ColVectorTransposeType, 0, DynamicStride> mc_cjt = mc.col(j);

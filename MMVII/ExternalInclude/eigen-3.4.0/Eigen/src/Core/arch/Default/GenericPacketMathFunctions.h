@@ -1207,7 +1207,7 @@ struct accurate_log2<double> {
     Packet num_hi, num_lo;
     twoprod(cst_2_log2e_hi, cst_2_log2e_lo, psub(x, one), num_hi, num_lo);
     // TODO(rmlarsen): Investigate if using the division algorithm by
-    // Muller et al. is faster/more accurate.
+    // Muller and al. is faster/more accurate.
     // 1 / (x + 1)
     Packet denom_hi, denom_lo;
     doubleword_reciprocal(padd(x, one), denom_hi, denom_lo);

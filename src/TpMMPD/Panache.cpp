@@ -160,7 +160,7 @@ int Panache_main(int argc,char ** argv)
 	std::cout << "aXi.size() = " << aXi.size() << std::endl;
 	std::cout << "aYi.size() = " << aYi.size() << std::endl;
 	
-	//give to line reel coordinates
+	//give to line real coordinates
 	std::vector<Pt2dr> aVRPts;
 	
 	for (unsigned int Compt=0; Compt < aXi.size(); Compt++)

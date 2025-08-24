@@ -169,7 +169,7 @@ cOneNappePx::cOneNappePx
 void cOneNappePx::ForceConnexions()
 {
 
-   // Modif MPD GM pour forcer aussi les connexions sur le bord
+   // Modif MPD GM for forcer aussi les connexions on le bord
    for (int aClY =0 ; aClY<mSz.y ; aClY++)
    {
       for (int aClX =0 ; aClX<mSz.x ; aClX++)
@@ -202,7 +202,7 @@ void  cOneNappePx::ComplWithProj32(const cResProj32 & aRP32)
    else if (aRP32.IsInit())
    {
    // MODIF MPD 23/05/09 ; ca peut generer des tres gros espace memoire
-   // inutile dans certaines config
+   // inutile in certaines config
 /*
       ELISE_COPY
       (
@@ -571,7 +571,7 @@ cFilePx::cFilePx
    mNameFile       (NameFileGen("")),
    mNameFileRel    (NameFileGen("Rel")),
    mSzFile         (anEtape.SzFile()),
-   // A ce stade, Px1IncCalc n'a pas ete introduit dans DilatAlti,
+   // A ce stade, Px1IncCalc n'a pas ete introduit in DilatAlti,
    // par prudence on tient donc compte de NumEtape
    mGenFile        (anEtape.IsLast() || IsFirtOrNappeIsEpaisse()),
    mGenFileMA      (false),
@@ -583,7 +583,7 @@ cFilePx::cFilePx
 
 void cFilePx::CreateMNTInit()
 {
-     // Si c'est le fichier 000, correspondant a aucune etape,
+     // if c'est le file 000, correspondant a aucune etape,
      // on l'initialise a 0 (a modifier lorsque prise en compte
      // d'un MNT
      if (mIsPseudoFirst && (mAppli.ModeAlloc()==eAllocAM_STD))
@@ -806,16 +806,16 @@ void cFilePx::LoadNappeEstim
 
     // Adaptation des tailles de nappes
     Pt2di aSz = aBoxIn.sz();
-    // On va calculer l'extrapolation dans une 
-    // l'image de resultat
+    // On va compute l'extrapolation in une 
+    // l'image de result
 
     cGeomDiscFPx & aGeomPrec = mPredCalc->mEtape.GeomTer();
     cGeomDiscFPx & aGeom = mEtape.GeomTer();
     aGeomPrec.SetClip(aP0Prec,aP1Prec);
     for (int anX=0 ; anX<aSz.x ; anX++)
     {
-        // On evite de refaire le calcul en utilisant le fait qu'on
-        // sait que les transfo sont lineaire et separable, le long
+        // On evite de refaire le computation en utilisant le fait qu'on
+        // sait que les transfo sont lineaire and separable, le long
         // d'une colone il suffit donc de propager un dY
         Pt2dr aPRed = aGeomPrec.R2ToRDisc(aGeom.DiscToR2(Pt2di(anX,0)));
         Pt2dr aPRed1 = aGeomPrec.R2ToRDisc(aGeom.DiscToR2(Pt2di(anX,1)));
@@ -845,9 +845,9 @@ void cFilePx::LoadNappeEstim
 
 
 
-    // Dilatation en Alti et plani; afin que les zones hors du masque
-    // n'aient pas d'influence on leur donne une valeur + ou - "infini"
-    // avant la dilatatation
+    // Dilatation en Alti and plani; afin que les zones hors du masque
+    // n'aient pas d'influence on leur donne une value + or - "infini"
+    // before la dilatatation
 
     Fonc_Num aFMasq = aIMasq.in(0);
     Pt2di aSzM = aIMasq.sz();
@@ -865,7 +865,7 @@ void cFilePx::LoadNappeEstim
        ELISE_ASSERT(aRadDPlMoins>=0,"RabZDilatPlaniMoins <0");
     }
 
-    // Sinon Bug laisse des valeurs infinies sur les bords
+    // else Bug laisse des valeurs infinies on les bords
     if (mDilatPlani==0) 
        aFMasq = aFMasq || (!inside(Pt2di(1,1),aSzM-Pt2di(1,1)));
 
@@ -937,8 +937,8 @@ void cFilePx::LoadNappeEstim
     }
     else
     {
-          // Si est a la premiere etape, le "ComplWithProj32" a pour effet de bord de mettre
-          // a 0 les bord du masque, hors 0 peut etre tres loin de la valeur moyenne de 
+          // if est a la premiere etape, le "ComplWithProj32" a for effet de bord de mettre
+          // a 0 les bord du masque, hors 0 peut etre tres loin de la value moyenne de 
           // paralaxe lorsque  en geom faiscea
            ELISE_COPY
            (
@@ -957,7 +957,7 @@ void cFilePx::LoadNappeEstim
     if ( NappeIsEpaisse())
        aNappe.ForceConnexions();
 
-    // On initialise le resultat sur la valeur init, comme ca les
+    // On initialise le result on la value init, comme ca les
     // algo peuvent eventuellement ignorer une des 2 Px 
 
 /*
@@ -1078,8 +1078,8 @@ std::cout << "SUUUUUUUUUUUPPPPRESS\n";
 // std::cout << " IFX " << isForCont << "WWwwwXX " << aNappe.FromDiscPx(0) << " " << aNappe.FromDiscPx(1) << " " << mRatioStepPrec << "\n"; getchar();
            for (int anX=0 ; anX<aSz.x ; anX++)
            {
-           // On evite de refaire le calcul en utilisant le fait qu'on
-           // sait que les transfo sont lineaire et separable, le long
+           // On evite de refaire le computation en utilisant le fait qu'on
+           // sait que les transfo sont lineaire and separable, le long
            // d'une colone il suffit donc de propager un dY
                Pt2dr aPRed = aGeomPrec.R2ToRDisc(aGeom.DiscToR2(Pt2di(anX,0)));
                Pt2dr aPRed1 = aGeomPrec.R2ToRDisc(aGeom.DiscToR2(Pt2di(anX,1)));
@@ -1185,7 +1185,7 @@ std::cout << "SUUUUUUUUUUUPPPPRESS\n";
     }
 
     // MODIF 5-2-2012 PASSE DESCENDU ICI
-    // On initialise le resultat sur la valeur init, comme ca les
+    // On initialise le result on la value init, comme ca les
     // algo peuvent eventuellement ignorer une des 2 Px 
     ELISE_COPY
     (
@@ -1247,7 +1247,7 @@ void  cFilePx::SauvResulPxRel
 
 /*Footer-MicMac-eLiSe-25/06/2007
 
-Ce logiciel est un programme informatique servant �  la mise en
+Ce logiciel est un programme informatique servant   la mise en
 correspondances d'images pour la reconstruction du relief.
 
 Ce logiciel est régi par la licence CeCILL-B soumise au droit français et
@@ -1263,17 +1263,17 @@ seule une responsabilité restreinte pèse sur l'auteur du programme,  le
 titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
-associés au chargement,  �  l'utilisation,  �  la modification et/ou au
-développement et �  la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe �  
-manipuler et qui le réserve donc �  des développeurs et des professionnels
+associés au chargement,    l'utilisation,    la modification et/ou au
+développement et   la reproduction du logiciel par l'utilisateur étant 
+donné sa spécificité de logiciel libre, qui peut le rendre complexe   
+manipuler et qui le réserve donc   des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
-utilisateurs sont donc invités �  charger  et  tester  l'adéquation  du
-logiciel �  leurs besoins dans des conditions permettant d'assurer la
+utilisateurs sont donc invités   charger  et  tester  l'adéquation  du
+logiciel   leurs besoins dans des conditions permettant d'assurer la
 sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-�  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+  l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
 
-Le fait que vous puissiez accéder �  cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder   cet en-tête signifie que vous avez 
 pris connaissance de la licence CeCILL-B, et que vous en avez accepté les
 termes.
 Footer-MicMac-eLiSe-25/06/2007*/

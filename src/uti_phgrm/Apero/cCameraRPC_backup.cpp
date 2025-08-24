@@ -48,7 +48,7 @@ extern Pt2di PT_BugZBB;
 /*                           CameraRPC                                 */
 /***********************************************************************/
 
-/* Image coordinates order: [Line, Sample] = [row, col] =  [y, x]*/
+/* image coordinates order: [Line, Sample] = [row, col] =  [y, x]*/
 
 //this is an outdated constructor -- will be soon removed 
 CameraRPC::CameraRPC(const std::string &aNameFile, 

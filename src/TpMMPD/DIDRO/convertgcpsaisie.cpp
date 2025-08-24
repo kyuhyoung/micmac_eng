@@ -46,7 +46,7 @@ int GCP2DMeasureConvert_main(int argc,char ** argv)
 
     int ARGC0 = argc;
 
-    //  APRES AVOIR SAUVEGARDER L'ARGUMENT DE TYPE ON LE SUPPRIME
+    //  after AVOIR SAUVEGARDER L'ARGUMENT DE TYPE ON LE SUPPRIME
     if (argc>=2)
     {
         argv[1] = argv[0];
@@ -183,7 +183,7 @@ int convertGCPSaisie_Pix4D2MM(int argc,char ** argv)
                         FromString(U,aU);
                         FromString(V,aV);
 
-                        // std::cout << "Image name : " << aImLab << " GCP label " << aGCPLab << " U,V: " << U << "," << V << std::endl;
+                        // std::cout << "image name : " << aImLab << " GCP label " << aGCPLab << " U,V: " << U << "," << V << std::endl;
 
                         // add these to the result
                         cMesureAppuiFlottant1Im aMark;
@@ -458,7 +458,7 @@ cAppuis2Homol::cAppuis2Homol(int argc, char** argv):
            // in addition image name have to be different
            if ((Name1!=Name2) && (it1 != aSetIm.end()) && (it2 != aSetIm.end())){
 
-           // initialiser le pack de points homologues pour cette paire d'image
+           // initialiser le pack de points homologues for cette paire d'image
             ElPackHomologue  aPackHom;
             int count(0);
 

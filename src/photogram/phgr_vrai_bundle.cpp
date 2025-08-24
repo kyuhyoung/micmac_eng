@@ -152,7 +152,7 @@ class cEqBundleBase  : public cNameSpaceEqF,
     public :
        cEqBundleBase(bool DoGenCode,int aNbCamSup,double aFoc,bool UseAccelCoordCste = false);  // Nb de cam en plus des 2 minim
 
-//  InitNewRot = InitNewR2 , mais interface commune pour 2 image
+//  InitNewRot = InitNewR2 , but interface commune for 2 image
        void    InitNewRot(const ElRotation3D & aRot);
        void    InitNewR2R3(const ElRotation3D & aR2,const ElRotation3D & aR3);
 
@@ -194,7 +194,7 @@ class cEqBundleBase  : public cNameSpaceEqF,
 
 
        cSetEqFormelles * mSetEq;
-       cSetEqFormelles * mSetEq2;  // Galere pour gere la connexist des intervalle en mode GenCode
+       cSetEqFormelles * mSetEq2;  // Galere for gere la connexist des intervalle en mode GenCode
        cPt3dEEF *        mW2;
        cP3d_Etat_PhgrF   mB2;
        Pt3dr             mB2Cur;
@@ -410,7 +410,7 @@ cEqBundleBase::cEqBundleBase(bool DoGenCode,int aNbCamSup,double aFoc,bool UAC) 
        }
   }
 
-  // Maintenant, sinon recouvrt avec Tmp
+  // Maintenant, else recouvrt with Tmp
 
   mVFEsResid.push_back(cElCompiledFonc::AllocFromName(mNameEq1));
   ELISE_ASSERT( mVFEsResid.back() !=0,"Cannot allocate cGlobEqLineraiseAngle");
@@ -449,7 +449,7 @@ cEqBundleBase::cEqBundleBase(bool DoGenCode,int aNbCamSup,double aFoc,bool UAC) 
 
 const std::string & cEqBundleBase::NameEq1() const {return mNameEq1;}
 
-     // =========================== GESTION ROTATION =================
+     // =========================== GESTION rotation =================
 
 
 void  cEqBundleBase::InitNewR2(const ElRotation3D & aRot)
@@ -780,7 +780,7 @@ class cBundle3Image
         cEqBundleBase*     mEqBB;
         std::vector<Pt2dr> mBufPts;
         std::vector<bool>  mBufSel;
-  //  "Sur ponderation" des triplets
+  //  "on ponderation" des triplets
         double               mPds3;
 };
 
@@ -1085,7 +1085,7 @@ bool SolveBundle3Image
                anEr2 = aDefError;
            }
     }
-    //  Il doit y avoir plus propre mais je n'ai pas le courage d'intervenir dans le noyau
+    //  Il doit y avoir plus propre but je n'ai pas le courage d'intervenir in le noyau
     for (int aK=0; aK<int(aB3.mXI.size()) ; aK++)
     {
        if (! (IsOkData(aB3.mXI[aK]) && IsOkData(aB3.mYI[aK]) && IsOkData(aB3.mZI[aK])))

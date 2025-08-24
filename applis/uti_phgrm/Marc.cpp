@@ -130,7 +130,7 @@ cAppliMarc::cAppliMarc(int argc,char ** argv) :
    (
         argc,argv,
         4,   // Trois argument obligatoires
-	1,   // 1 Argument est un fichier
+	1,   // 1 Argument est un file
 	"Micmac-FUSION"
    ),
    mIncInit (50.0)

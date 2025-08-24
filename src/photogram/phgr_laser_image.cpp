@@ -54,8 +54,8 @@ Header-MicMac-eLiSe-25/06/2007*/
 /*                                      */
 /****************************************/
 
-// aRotPts Si non nulle, il faut multiplier les points par aRotPts
-//  pour les avoir en "vrai terrain"
+// aRotPts if non nulle, il faut multiplier les points par aRotPts
+//  for les avoir en "vrai terrain"
 
 
 cEqVueLaserImage::cEqVueLaserImage

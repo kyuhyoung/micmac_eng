@@ -187,10 +187,10 @@ int TD_Exo1(int argc,char ** argv)
                     << EAM(aRatioRBdV,"RBdV",true,"Experimental ratios R/V and R/B")
     );
 
-    // Lecture de la matrice de Bayer
+    // Lecture de la matrix de Bayer
     cTD_Im aIm = cTD_Im::FromString(aNameIm);
 
-    // calcul de la taille des 4 matrice R,V1,V2,B
+    // computation de la taille des 4 matrix R,V1,V2,B
 
     int aSzRedX = aIm.Sz().x/2 ;
     int aSzRedY = aIm.Sz().y/2 ;
@@ -206,13 +206,13 @@ int TD_Exo1(int argc,char ** argv)
     cTD_Im aImBdV(aSzRedX,aSzRedY);
     cTD_Im aImVdV(aSzRedX,aSzRedY);
 
-    // Boucle pour remplir les valeur
+    // Boucle for remplir les value
     for (int aX=0 ; aX<aSzRedX ; aX++)
     {
         for (int aY=0 ; aY<aSzRedY ; aY++)
         {
-            // les pixels rouges correspondent aux coordonnees
-            // paires en x et y
+            // les pixels rouges correspondent aux coordinates
+            // paires en x and y
             double aV1  = aIm.GetVal(2*aX  ,2*aY  );
             double aV2  = aIm.GetVal(2*aX+1,2*aY+1  );
             double aR   = aIm.GetVal(2*aX+1,2*aY  ) / aRatioRBdV.x;
@@ -250,7 +250,7 @@ int TD_Exo1(int argc,char ** argv)
 		}
 	}
 
-    // Sauvegarde dans 4 fichiers separes
+    // Sauvegarde in 4 fichiers separes
     aImR.Save("ROUGE-"+aNameIm+".tif");
     aImV.Save("VERT1-"+aNameIm+".tif");
     aImW.Save("VERT2-"+aNameIm+".tif");
@@ -518,12 +518,12 @@ int TD_Exo3(int argc,char ** argv)
 /*                                                  */
 /****************************************************/
 
-// Calcul l'image produit de deuc images
+// computation l'image produit de deuc images
 
 cTD_Im MulImage(const cTD_Im & anI1,const cTD_Im & anI2)
 {
    Pt2di aSz1 = anI1.Sz();
-   // On ne veut pas gerer le cas ou les images auraient une taille differente
+   // On ne veut pas gerer le cas or les images auraient une taille differente
    ELISE_ASSERT(aSz1==anI2.Sz(),"Dif size in MulImage");
 
    cTD_Im aRes(aSz1.x,aSz1.y);
@@ -548,13 +548,13 @@ class cTD_QuickCorEpip : public  cTD_CorrelEpip
     public :
        cTD_QuickCorEpip(const cTD_Im & anI1n,const cTD_Im & anI2,int aSzW,int aNbIter=1);
        
-       void  DoAllPx(int aPax);  // Fait le calcul sur toute les paralaxe
+       void  DoAllPx(int aPax);  // Fait le computation on toute les paralaxe
        cTD_Im & ImPx() {return mImPx;}
        cTD_Im & ImCor() {return mImCor;}
 
     private :
 
-       void DoOnePx(int aPax);  // Effectue le calcul pour une paralaxe donnee
+       void DoOnePx(int aPax);  // Effectue le computation for une paralaxe donnee
 
        int     mSzW;
        int     mNbIter;
@@ -604,7 +604,7 @@ void  cTD_QuickCorEpip::DoAllPx(int aPaxMax)
 
 void cTD_QuickCorEpip::DoOnePx(int aPax)
 {
-   // Calcul de I1 * Trans(I2) 
+   // computation de I1 * Trans(I2) 
    Pt2di aP;
    for (aP.y=0 ; aP.y<mSz1.y ; aP.y++)
    {
@@ -617,7 +617,7 @@ void cTD_QuickCorEpip::DoOnePx(int aPax)
                mI12.SetVal(aP.x,aP.y,0);
        }
    }
-   // Calcul de la moyenne mI12 dans mM12
+   // computation de la moyenne mI12 in mM12
    mM12 = mI12.ImageMoy(mSzW,mNbIter);
 
 
@@ -628,7 +628,7 @@ void cTD_QuickCorEpip::DoOnePx(int aPax)
            int aX2 = aP.x + aPax;
            if (mI2.Ok(aX2,aP.y))
            {
-               // Calcul du coefficient de correlation selon la formule habituelle
+               // computation du coefficient de correlation selon la formule habituelle
                float aS1  = mM1.GetVal(aP.x,aP.y);
                float aS2  = mM2.GetVal(aX2,aP.y);
                float aS11 = mM11.GetVal(aP.x,aP.y)- aS1*aS1;
@@ -637,7 +637,7 @@ void cTD_QuickCorEpip::DoOnePx(int aPax)
 
                double  aCor = 1-aS12 / sqrt(ElMax(1e-5,double(aS11*aS22)));
 
-               // Si meilleure que la valeur courant, on met a jour
+               // if meilleure que la value courant, on met a jour
                if (aCor < mImCor.GetVal(aP.x,aP.y))
                {
                    mImCor.SetVal(aP.x,aP.y,aCor);

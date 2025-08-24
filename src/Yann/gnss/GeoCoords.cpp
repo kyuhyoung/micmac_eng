@@ -27,7 +27,7 @@ ECEFCoords GeoCoords::toECEFCoords(){
 }
 
 // -----------------------------------------------------------------
-// Distance à un autre point de coordonnées géographiques
+// Distance  un autre point de coordonnes gographiques
 // -----------------------------------------------------------------
 double GeoCoords::distanceTo(GeoCoords pt){
 	
@@ -36,8 +36,8 @@ double GeoCoords::distanceTo(GeoCoords pt){
 }
 
 // -----------------------------------------------------------------
-// Conversion d'une liste de coordonnées géographiques
-// en une chaîne de caractères WKT
+// Conversion d'une list de coordonnes gographiques
+// en une chane de caractres WKT
 // -----------------------------------------------------------------
 std::string GeoCoords::makeWKT(std::vector<GeoCoords> trajectory){
 

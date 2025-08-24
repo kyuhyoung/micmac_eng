@@ -459,7 +459,7 @@ template <class Type> Pt3d<Type>::Pt3d(const Pt3d<Type> & p)
 
 template <> Pt3d<int>::Pt3d(const Pt3d<REAL> & p)
 {
-    // A Prioi j'aurai dit round_ni, mais cas marche comme ca ....
+    // A Prioi j'aurai dit round_ni, but cas marche comme ca ....
     x = (int) p.x;
     y = (int) p.y;
     z = (int) p.z;
@@ -467,7 +467,7 @@ template <> Pt3d<int>::Pt3d(const Pt3d<REAL> & p)
 
 template <> Pt3d<double>::Pt3d(const Pt3d<int> & p)
 {
-    // A Prioi j'aurai dit round_ni, mais cas marche comme ca ....
+    // A Prioi j'aurai dit round_ni, but cas marche comme ca ....
     x =  p.x;
     y =  p.y;
     z =  p.z;

@@ -73,7 +73,7 @@ cFNuAttrSom::cFNuAttrSom
 
    /******************************************/
    /*                                        */
-   /*      Calcul de la liste reduite        */
+   /*      computation de la list reduite        */
    /*                                        */
    /******************************************/
 

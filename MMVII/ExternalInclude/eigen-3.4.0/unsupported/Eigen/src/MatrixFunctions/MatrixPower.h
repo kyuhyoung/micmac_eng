@@ -384,7 +384,7 @@ class MatrixPower : internal::noncopyable
     typedef Matrix<ComplexScalar, Dynamic, Dynamic, 0,
               MatrixType::RowsAtCompileTime, MatrixType::ColsAtCompileTime> ComplexMatrix;
 
-    /** \brief Reference to the base of matrix power. */
+    /** \brief reference to the base of matrix power. */
     typename MatrixType::Nested m_A;
 
     /** \brief Temporary storage. */

@@ -201,7 +201,7 @@ void cPushB_PhysMod::PostInitLinesPB()
     double aTeta = 2 * asin((aDist/2.0) / mMoyRay);
     mDureeAcq = mPeriod * (aTeta/ (2*PI));
 
-    // Tentative de correction de la rotation de la terre pour retrouber une trajectoire plane
+    // Tentative de correction de la rotation de la terre for retrouber une trajectoire plane
     for (int aK=0 ; aK< int(mLinesPB.size()) ; aK++)
     {
         Pt3dr aC = mLinesPB[aK]->Center();
@@ -211,7 +211,7 @@ void cPushB_PhysMod::PostInitLinesPB()
         mLinesPB[aK]->CUnRot() = aC;
     }
 
-    //   Stat sur les indicateurs
+    //   Stat on les indicateurs
     mMoyRes = 0;
     mMaxRes = 0;
     mMoyPlan = 0;
@@ -227,7 +227,7 @@ void cPushB_PhysMod::PostInitLinesPB()
     }
 
 
-    // Calcul de la calibration 
+    // computation de la calibration 
     mCalib = mLinesPB[0]->Calib();
     int aNbC = (int)mCalib.size();
     for (int aKL=1 ; aKL< int(mLinesPB.size()) ; aKL++)
@@ -281,10 +281,10 @@ void cPushB_PhysMod::ShowLinesPB(bool Det)
     {
         // Pourquoi les redisu ZPU restent forts, explications :
         //
-        //   * force de Coriolis ??? => a priori non car le UnRot remet dans un ref galileen ?
+        //   * force de Coriolis ??? => a priori non car le UnRot remet in un ref galileen ?
         //   * centre de masse terre != origine du repere GeoC
         //   * influence Lune/Soleil ; assimilabe à un déplacement du centre de masse ?? 
-        //   * correlation entre position et attitude + legere approx des RPC 
+        //   * correlation between position and attitude + legere approx des RPC 
 
         
 

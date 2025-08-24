@@ -5,7 +5,7 @@
 #include "ObservationData.h"
 
 // -------------------------------------------------------------------------------
-// Fonction de recherche d'une époque dans un fichier d'observations
+// function de recherche d'une époque in un file d'observations
 // Retourne l'époque la plus proche de celle demandée
 // -------------------------------------------------------------------------------
 ObservationSlot& ObservationData::lookForEpoch(GPSTime time){
@@ -133,7 +133,7 @@ ECEFCoords ObservationData::getApproxAntennaPosition(){
 }
 
 // -------------------------------------------------------------------------------
-// Fonction d'écriture d'un fichier rinex (format 2.11)
+// function d'écriture d'un file rinex (format 2.11)
 // -------------------------------------------------------------------------------
 void ObservationData::printRinexFile(std::string rinex_file_path){
 

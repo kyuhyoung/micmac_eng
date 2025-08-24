@@ -127,7 +127,7 @@ void cAppliTiepGraphByCamDist::ImportMicMacOriFolder(string & aFolderName)
 
 void cAppliTiepGraphByCamDist::ComputeImagePair(double aD)
 {
-    // parcour tout images dans la list, calcul distance avec tout les autres.
+    // parcour tout images in la list, computation distance with tout les autres.
     std::map<string, cOneImg*>::iterator it_MapFind;
     it_MapFind = mMap_NameIm_NavInfo.end();
     for (uint aKIm = 0; aKIm < mVNameIm.size(); aKIm++)

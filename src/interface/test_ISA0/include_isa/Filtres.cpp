@@ -73,7 +73,7 @@ void Filtre::LimitesRecouvrement (REAL d){
 
 template <class ClPt, class TIterator> ClPt* Filtre::FindPoint(TIterator itBegin, TIterator itEnd, const Point& P) {
    for (TIterator itP=itBegin; itP!=itEnd; itP++){
-	 // if (Point(P).GetCoord()==Point(*itP).GetCoord() && *(P.begin())==*((*itP).begin())) {
+	 // if (point(P).GetCoord()==point(*itP).GetCoord() && *(P.begin())==*((*itP).begin())) {
 	  if (P==(*itP)) {
 		return &(*itP);
 	  }
@@ -88,11 +88,11 @@ template Point1* Filtre::FindPoint(list<Point1>::iterator itBegin, list<Point1>:
 void Filtre::CoherenceVoisins(list<Point1>::iterator itP, float seuilCoherence, int aNb1, int aNb2, double aDistInit, double aFact, int aNbMax){
 	list<Point> S1, S2;
 
-	//recherche des plus proches voisins sur l'image 1
+	//recherche des plus proches voisins on l'image 1
 	Pt2dr pt1=(*itP).GetPt2dr();
 	(*bench).KPPVois(pt1,S1,aNb1,aDistInit,aFact,aNbMax);
 
-	//recherche des plus proches voisins sur l'image 2
+	//recherche des plus proches voisins on l'image 2
 	S2.clear();
 	Pt2dr pt2=(*itP).GetPt2drHomol();
 	(*bench2).KPPVois(pt2,S2,aNb2,aDistInit,aFact,aNbMax);
@@ -103,7 +103,7 @@ void Filtre::CoherenceVoisins(list<Point1>::iterator itP, float seuilCoherence, 
 		if(FindPoint<Point,list<Point>::iterator>(S2.begin(), S2.end(), (*it))!=0) nbCoh++;
 	}
 
-	(*itP).SetCoherence(float(nbCoh)/(float(S1.size()-1)));//S1 et S2 contiennent *itP
+	(*itP).SetCoherence(float(nbCoh)/(float(S1.size()-1)));//S1 and S2 contiennent *itP
 }
 
 void Filtre::DistanceAuVoisinage (float seuilCoherence, int aNb1, int aNb2, double aDistInit, double aFact, int aNbMax, bool rapide){		
@@ -140,14 +140,14 @@ void Filtre::DistanceAuVoisinageRapide (float seuilCoherence, int aNb1, int aNb2
 
 		list<PtrPt> S1, S2;
 
-		//recherche des plus proches voisins sur l'image 1
+		//recherche des plus proches voisins on l'image 1
 		Pt2dr pt1=(*itP).GetPt2dr();
 		(*bench3).KPPVois(pt1,S1,aNb1,aDistInit,aFact,aNbMax);
 		for (list<PtrPt>::const_iterator it1=S1.begin(); it1!=S1.end(); it1++) {
 			(*itP).AddVoisin((*it1).pointeur,1);
 		}
 
-		//recherche des plus proches voisins sur l'image 2
+		//recherche des plus proches voisins on l'image 2
 		Pt2dr pt2=(*(*itP).begin()).GetPt2dr();
 		(*bench4).KPPVois(pt2,S2,aNb2,aDistInit,aFact,aNbMax);	
 		for (list<PtrPt>::const_iterator it2=S2.begin(); it2!=S2.end(); it2++) {
@@ -183,19 +183,19 @@ void Filtre::DistanceAuVoisinageRapide (float seuilCoherence, int aNb1, int aNb2
 
 
 DetSign Filtre::Det(Pt2dr pt1,Pt2dr pt2,Pt2dr pt3) {
-	//renvoie le signe du sinus entre pt2 et pt3 (origine pt1) ->(pt1pt2)^(pt1pt2)
+	//renvoie le signe du sinus between pt2 and pt3 (origine pt1) ->(pt1pt2)^(pt1pt2)
 	REAL D=(pt2.x-pt1.x)*(pt3.y-pt1.y)-(pt2.y-pt1.y)*(pt3.x-pt1.x);
 	if (abs(D)<pow(double(10),-19)) return nul;
 	return (D>0) ? pos : neg;
 }
 bool Filtre::CompDet(Point1* pt1, Point1* pt2, Point1* pt3) {
-	//renvoie true si l'ordre des points est conservé
+	//renvoie true if l'ordre des points est conservé
 	DetSign D1=Det((*pt1).GetPt2dr(), (*pt2).GetPt2dr(), (*pt3).GetPt2dr());
 	DetSign D2=Det((*(*pt1).begin()).GetPt2dr(), (*(*pt2).begin()).GetPt2dr(), (*(*pt3).begin()).GetPt2dr());
 	return (D1==D2);
 }
 void Filtre::InscrCoh(ptrpt* tabpt, bool coherents) {
-	//incrémente le nombre d'essais
+	//incrémente le number d'essais
 	ptrpt point=*tabpt;
 	for (int i=0; i <4; i++) {
 		(*point).IncrCarre(coherents);
@@ -266,7 +266,7 @@ void Filtre::CoherenceDesCarres (float seuilCoherence, int aNb, double aDistInit
 			(*bench).remove(*itP);
 			(*bench2).remove(*itP);
 			n++;
-			//cout << "pt faux carre : " << Point(*itP).GetCoord().GetX() << "\n";
+			//cout << "pt faux carre : " << point(*itP).GetCoord().GetX() << "\n";
 		}
 	}
 	cout << "nb pts faux carre : " << n << "\n";		

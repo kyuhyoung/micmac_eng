@@ -221,7 +221,7 @@ cAppli_MMVII_TestCpp11::cAppli_MMVII_TestCpp11 (const std::vector<std::string> &
 }
 
 
-// Voir override et  final, pour verifier que le surcharge virtuelle est conforme a nos attentes
+// Voir override and  final, for verifier que le surcharge virtuelle est conforme a nos attentes
 
 // Stong enum 
 enum class Cpp11Color { red, blue };   // scoped and strongly typed enum
@@ -234,7 +234,7 @@ void PrintSzVectI(const std::vector<int> &V)
 {
 }
 
-// Constructeur appellant un constructeur pour eviter duplication
+// Constructeur appellant un constructeur for eviter duplication
 // de code
 class cCtsrCallCstr
 {
@@ -244,8 +244,8 @@ class cCtsrCallCstr
        int mV;
 };
 
-// initialisation d'un membre avec une valeur par defaut,
-// mais qui peut etre override 
+// initialisation d'un membre with une value par defaut,
+// but qui peut etre override 
 class cWithMembGlobInit
 {
     public :
@@ -257,11 +257,11 @@ class cWithMembGlobInit
 static_assert(1+1==2,"theorme fondamental");
 // static_assert(1+1==3,"theorme pas trop utile");
 
-// voir les variadic template, pas sur avoir rencontre le besoin
+// voir les variadic template, pas on avoir rencontre le besoin
 // 	template<typename Head, typename... Tail>
 
 
-// auto + -> pour resoudre le probleme du scope dans la valeur de retour
+// auto + -> for resoudre le probleme du scope in la value de retour
 template <class T1,class T2> auto Mul(const T1 & aV1,const T2 & aV2) -> decltype(aV1*aV2) {return aV1*aV2;}
 
 struct sTab3
@@ -314,7 +314,7 @@ int cAppli_MMVII_TestCpp11::Exe()
    cPt2dr aP{1,2};
    std::vector<cPt2dr> aVP{{1,2},{3,1},{1,1}};  // Uniform initialization synta
 
-   // Lambda expression fonctionne, mais g++ pas cool sur les erreurs !!!
+   // Lambda expression fonctionne, but g++ pas cool on les erreurs !!!
    
    std::sort(aVP.begin(),aVP.end(), [](const cPt2dr &aP1,const cPt2dr &aP2){return (aP1.x()+aP1.y()) <  (aP2.x()+aP2.y());});
    std::sort(aVP.begin(),aVP.end(), fCmpPt);
@@ -328,7 +328,7 @@ int cAppli_MMVII_TestCpp11::Exe()
 
 
    std::string s = R"(\w\\\w)"; // Raw string , \ is \ !!
-   std::string s2 = R"**(\w"()"\\\w)**"; // Raw string  avec "()" etc dedans ... 
+   std::string s2 = R"**(\w"()"\\\w)**"; // Raw string  with "()" etc dedans ... 
    StdOut() << "TEST RAW STRING " << s  << "###"  << s2 << std::endl;
 
    auto aTuple = std::make_tuple(1,2.0,"3+2=5");
@@ -341,8 +341,8 @@ int cAppli_MMVII_TestCpp11::Exe()
 
    cCtsrCallCstr aT;
    StdOut() << "cCtsrCallCstr => " << aT.mV << std::endl;
-   // PrintSzVect({1,2}); => Pb avec template et initializer , pas sur pb moo ou g++ ?
-   PrintSzVectI({1,2});  // Ok sans template
+   // PrintSzVect({1,2}); => Pb with template and initializer , pas on pb moo or g++ ?
+   PrintSzVectI({1,2});  // Ok without template
    // Les const expression sont garanties evaluables a la compile
    constexpr auto i = 3+4;
    typedef decltype (1/2.0) tDouble;  // declaration de type a partir d'une expression
@@ -385,7 +385,7 @@ int cAppli_MMVII_TestCpp11::Exe()
    StdOut() << " SZUM " << sizeof(aUMap) <<  std::endl;
 
 
-   // Pas sur supporte par g++ ??? 
+   // Pas on supporte par g++ ??? 
    auto Div2 = std::bind(Div,std::placeholders::_1,2.0);
    StdOut() <<  " 5/2.0= " << Div2(5.0) << std::endl;
    // auto Div2 = std::bind(Div,std::_1,2.0);
@@ -395,7 +395,7 @@ int cAppli_MMVII_TestCpp11::Exe()
 
 
    //  revoir les function object, pas trop compris ....
-   // voir unique_ptr  (+ ou - comme auto_ptr ?) pour les ptr temporaires a un bloc d'execution
+   // voir unique_ptr  (+ or - comme auto_ptr ?) for les ptr temporaires a un bloc d'execution
 
    TestSharedPointer();
    return EXIT_SUCCESS;

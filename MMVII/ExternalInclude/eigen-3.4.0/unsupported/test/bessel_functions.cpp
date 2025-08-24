@@ -27,7 +27,7 @@ void verify_component_wise(const X& x, const Y& y)
 
 template<typename ArrayType> void array_bessel_functions() 
 {
-  // Test Bessel function i0. Reference results obtained with SciPy.
+  // Test Bessel function i0. reference results obtained with SciPy.
   {
     ArrayType x(21);
     ArrayType expected(21);
@@ -47,7 +47,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function i0e. Reference results obtained with SciPy.
+  // Test Bessel function i0e. reference results obtained with SciPy.
   {
     ArrayType x(21);
     ArrayType expected(21);
@@ -67,7 +67,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function i1. Reference results obtained with SciPy.
+  // Test Bessel function i1. reference results obtained with SciPy.
   {
     ArrayType x(21);
     ArrayType expected(21);
@@ -87,7 +87,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function i1e. Reference results obtained with SciPy.
+  // Test Bessel function i1e. reference results obtained with SciPy.
   {
     ArrayType x(21);
     ArrayType expected(21);
@@ -107,7 +107,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function j0. Reference results obtained with SciPy.
+  // Test Bessel function j0. reference results obtained with SciPy.
   {
     ArrayType x(77);
     ArrayType expected(77);
@@ -143,7 +143,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function j1. Reference results obtained with SciPy.
+  // Test Bessel function j1. reference results obtained with SciPy.
   {
     ArrayType x(81);
     ArrayType expected(81);
@@ -179,7 +179,7 @@ template<typename ArrayType> void array_bessel_functions()
     CALL_SUBTEST(res = bessel_j1(x);
                  verify_component_wise(res, expected););
   }
-  // Test Bessel function k0e. Reference results obtained with SciPy.
+  // Test Bessel function k0e. reference results obtained with SciPy.
   {
     ArrayType x(42);
     ArrayType expected(42);
@@ -204,7 +204,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function k0. Reference results obtained with SciPy.
+  // Test Bessel function k0. reference results obtained with SciPy.
   {
     ArrayType x(42);
     ArrayType expected(42);
@@ -231,7 +231,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function k0e. Reference results obtained with SciPy.
+  // Test Bessel function k0e. reference results obtained with SciPy.
   {
     ArrayType x(42);
     ArrayType expected(42);
@@ -258,7 +258,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function k1. Reference results obtained with SciPy.
+  // Test Bessel function k1. reference results obtained with SciPy.
   {
     ArrayType x(42);
     ArrayType expected(42);
@@ -285,7 +285,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function k1e. Reference results obtained with SciPy.
+  // Test Bessel function k1e. reference results obtained with SciPy.
   {
     ArrayType x(42);
     ArrayType expected(42);
@@ -312,7 +312,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function y0. Reference results obtained with SciPy.
+  // Test Bessel function y0. reference results obtained with SciPy.
   {
     ArrayType x(42);
     ArrayType expected(42);
@@ -337,7 +337,7 @@ template<typename ArrayType> void array_bessel_functions()
                  verify_component_wise(res, expected););
   }
 
-  // Test Bessel function y1. Reference results obtained with SciPy.
+  // Test Bessel function y1. reference results obtained with SciPy.
   {
     ArrayType x(42);
     ArrayType expected(42);

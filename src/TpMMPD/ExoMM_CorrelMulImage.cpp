@@ -57,7 +57,7 @@ class cMCI_Ima
        void TestManipImage();
 
        Pt2dr ClikIn();
-       // Renvoie le saut de prof pour avoir un pixel
+       // Renvoie le saut de prof for avoir un pixel
        void EstimateStep(cMCI_Ima *);
 
        void  DrawFaisceaucReproj(cMCI_Ima & aMas,const Pt2dr & aP);
@@ -320,7 +320,7 @@ void cMCI_Ima::CalculImOrthoOfProf(double aProf,cMCI_Ima * aMaster)
     int aSsEch = 10;
     Pt2di aSzR = aMaster->mSz/ aSsEch;
 
-    // Store the mappind grid  Phi : Master -> Image a given depth,
+    // Store the mappind grid  Phi : Master -> image a given depth,
     //  Phi(u,v) =  (aImX(u,v),aImY(u,v))
     TIm2D<float,double> aImX(aSzR);
     TIm2D<float,double> aImY(aSzR);
@@ -804,10 +804,10 @@ int  ExoCorrelEpip_main(int argc,char ** argv)
     Pt2di aSz2 = aI2.sz();
     // Tempory images
 
-    // Image of best score, initialized to "infinity" value
+    // image of best score, initialized to "infinity" value
     Im2D_REAL4  aIScoreMin(aSz1.x,aSz1.y,1e10);
-    Im2D_REAL4  aIScore(aSz1.x,aSz1.y);   // Image of current score
-    Im2D_INT2   aIPaxOpt(aSz1.x,aSz1.y);  // Image giving the best paralax
+    Im2D_REAL4  aIScore(aSz1.x,aSz1.y);   // image of current score
+    Im2D_INT2   aIPaxOpt(aSz1.x,aSz1.y);  // image giving the best paralax
 
     // Create object("wraper") for "safe" manipulation of each pixels
     TIm2D<U_INT1,INT> aTI1(aI1);

@@ -101,7 +101,7 @@ int main(int argc,char ** argv)
           
      Fonc_Num fSom = Virgule(Rconv(Pond),Fonc,ElSquare(Fonc));
      for (INT k=0; k< NbIter ; k++)
-          fSom = rect_som(fSom,NbVois)/ElSquare(1.0+2.0*NbVois);  // Pour Eviter les divergences
+          fSom = rect_som(fSom,NbVois)/ElSquare(1.0+2.0*NbVois);  // for Eviter les divergences
      Symb_FNum  S012 (fSom);
           
      Symb_FNum s0 (Rconv(S012.v0()));

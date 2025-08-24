@@ -75,7 +75,7 @@ void SaisieBasc(int argc, char ** argv,
         cInterfChantierNameManipulateur * aCINM = cInterfChantierNameManipulateur::BasicAlloc(aDir);
         const cInterfChantierNameManipulateur::tSet  *  aSet = aCINM->Get(aName);
 
-        //std::cout << "Nb Image =" << aSet->size() << "\n";
+        //std::cout << "Nb image =" << aSet->size() << "\n";
         ELISE_ASSERT(aSet->size()!=0,"No image found");
 
         if (aNbFen.x<0)

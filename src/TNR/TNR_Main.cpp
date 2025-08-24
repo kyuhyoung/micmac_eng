@@ -94,7 +94,7 @@ void cAppli_TNR_Main::OnError()
     exit(EXIT_SUCCESS);
 } 
 
-//Error fonction
+//Error function
 void cAppli_TNR_Main::Error(const std::string & aMes)
 {
     std::cout << aMes << "\n";
@@ -163,7 +163,7 @@ cXmlTNR_TestFileReport cAppli_TNR_Main::TestExistFile(const cXmlTNR_TestExistFil
     }
     if(ExeFileSize!=RefFileSize)
     {
-		//If file are different display size of Reference and New
+		//If file are different display size of reference and New
 		std::cout<<"WARNING : Files are DIFFERENT : Exe file size "<<ELISE_fp::file_length(mCurDirExe+aFile.NameFile())<<"o Ref file size "<<ELISE_fp::file_length(mCurDirRef+aFile.NameFile())<<"o"<<endl;
 		aFileReport.TestFileDiff() = false;
 	}
@@ -213,7 +213,7 @@ cXmlTNR_TestDirReport cAppli_TNR_Main::TestExistDir(const cXmlTNR_TestExistDir &
 				int CmpFile = ELISE_fp::CmpFiles(mCurDirExe+tmpstr,mCurDirRef+tmpstr);
 				if((CmpFile==1)|(CmpFile==-1))
 				{
-					//If file are different display size of Reference and New
+					//If file are different display size of reference and New
 					std::cout<<"WARNING : Files are DIFFERENT : Exe file size "<<ELISE_fp::file_length(mCurDirExe+tmpstr)<<"o Ref file size "<<ELISE_fp::file_length(mCurDirRef+tmpstr)<<"o"<<"\n\n";
 					cFileDiff tmpFile;
 					tmpFile.Name() = tmpstr;

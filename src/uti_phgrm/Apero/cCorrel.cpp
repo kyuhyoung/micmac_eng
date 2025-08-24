@@ -51,7 +51,7 @@ cRecorrel::cRecorrel
 (
     const cOneVisuPMul & aVPM,
     cPoseCam *          aPose,
-    double aSzV,  // 1 Pour 3x3
+    double aSzV,  // 1 for 3x3
     double aStep  
 ) :
    Optim2DParam ( 0.1, -1e5, 1e-6, true),
@@ -94,7 +94,7 @@ cRecorrel::cRecorrel
    mBox._p1 = mBox._p1+aPSzK;
 
 
-   // Utile pour le decalage de base
+   // Utile for le decalage de base
    mIsInit = SetValDec(Pt2dr(0,0));
 
 

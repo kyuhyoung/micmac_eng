@@ -269,7 +269,7 @@ void  cAppliSimulCodeTarget::IncrustTarget(cGeomSimDCT & aGSD)
 	 aDImT.SetV(aPix,aVal);
     }
 
-    // [3] -- Compute mapping  ImageTarget  <--> Simul Image
+    // [3] -- Compute mapping  ImageTarget  <--> Simul image
 
 
     tAffMap aMap0 =  tAffMap::Translation(-aC0);                           // Set center in 0,0
@@ -278,7 +278,7 @@ void  cAppliSimulCodeTarget::IncrustTarget(cGeomSimDCT & aGSD)
     tAffMap aMap3 =  tAffMap::Rotation(M_PI*RandUnif_C());                 //  Apply a rotation again
     tAffMap aMap4 =  tAffMap::Translation(aGSD.mC);                        // set 0,0 to center
 
-    tAffMap aMapT2Im =  aMap4 * aMap3 * aMap2 * aMap1 * aMap0;             // compute composition, get TargetCoord -> Image Coord
+    tAffMap aMapT2Im =  aMap4 * aMap3 * aMap2 * aMap1 * aMap0;             // compute composition, get TargetCoord -> image Coord
     tAffMap aMapIm2T =  aMapT2Im.MapInverse();                             // need inverse for resample
 
 

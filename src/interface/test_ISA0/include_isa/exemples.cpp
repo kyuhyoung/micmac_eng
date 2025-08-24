@@ -9,7 +9,7 @@ list<Point1> exemple1 (int numImg1, int numImg2) {
 			point.AddHom(coord2);
 			tempLstPt.push_back(point);
 	}}
-	//point en dehors de la zone sur l'image 1
+	//point en dehors de la zone on l'image 1
 	Coord coord1(19,19,numImg1);
 	Coord coord2(2.5,2.5,numImg2);
 	Point1 point1(coord1);
@@ -42,8 +42,8 @@ list<Point1> exemple2 (int numImg1, int numImg2) {
 			Point1 point(coord1);
 			point.AddHom(coord2);
 			tempLstPt.push_back(point);
-	}}//9803 ou 2500
-	//point en dehors de la zone sur l'image 1
+	}}//9803 or 2500
+	//point en dehors de la zone on l'image 1
 	for (int i=1; i<11; i++) {
 		for (int j=1; j<11; j++) {
 			float x1=float(rand())/float(RAND_MAX)*float(200);

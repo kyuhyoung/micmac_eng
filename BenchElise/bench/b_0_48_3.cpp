@@ -316,7 +316,7 @@ void bench_cLineMapRect()
                          {
                              y0 = ElMin(y0,y);
                              y1 = ElMax(y1,y);
-                             // Prouve que les points sont Freeman chaine
+                             // Prouve que les points sont Freeman string
                              BENCH_ASSERT(dist8(aPi-aPrec)==1);
                          }
                          Som[0] -= 1;
