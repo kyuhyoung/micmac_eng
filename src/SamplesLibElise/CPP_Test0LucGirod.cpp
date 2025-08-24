@@ -184,7 +184,7 @@ void RotateImage(double alpha, Pt2di aSzOut, vector<Pt2dr> Pts , string aNameDir
     system_call(aCom.c_str());
     #endif
     #if (ELISE_windows)
-        string aCom=MMDir() + "binaire-aux/convert ephemeral:" + aNameDir + "Croped_images/" + aNameIm + ".tif " + aNameDir + "Croped_images/" + aNameIm;
+        string aCom=MMDir() + "auxiliary-binaries/convert ephemeral:" + aNameDir + "Croped_images/" + aNameIm + ".tif " + aNameDir + "Croped_images/" + aNameIm;
         system_call(aCom.c_str());
     #endif
 

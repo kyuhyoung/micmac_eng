@@ -68,7 +68,7 @@ Source: "..\..\bin\*.exe"; DestDir: "{app}\bin"; Flags: ignoreversion
 Source: "..\..\bin\*.dll"; DestDir: "{app}\bin"; Flags: ignoreversion
 Source: "..\..\bin\platforms\*.dll"; DestDir: "{app}\bin\platforms"; Flags: ignoreversion
 Source: "..\..\bin\imageformats\*.dll"; DestDir: "{app}\bin\imageformats"; Flags: ignoreversion
-Source: "..\..\binaire-aux\windows\*"; DestDir: "{app}\binaire-aux\windows"; Flags: ignoreversion recursesubdirs
+Source: "..\..\auxiliary-binaries\windows\*"; DestDir: "{app}\auxiliary-binaries\windows"; Flags: ignoreversion recursesubdirs
 Source: "..\..\data\*"; DestDir: "{app}\data"; Flags: ignoreversion
 Source: "..\..\data\Tabul\*"; DestDir: "{app}\data\Tabul"; Flags: ignoreversion
 Source: "..\..\include\XML_MicMac\*"; DestDir: "{app}\include\XML_MicMac"; Flags: ignoreversion

@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Digeo.dir/Digeo.c.o -o Digeo 

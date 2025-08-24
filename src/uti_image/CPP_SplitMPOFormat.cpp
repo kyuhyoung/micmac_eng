@@ -89,7 +89,7 @@ int SplitMPO_main(int argc,char ** argv)
 						aCom = "exiftool ";
 			#endif
 			#if (ELISE_windows)
-						aCom = MMDir() + "binaire-aux/exiftool ";
+						aCom = MMDir() + "auxiliary-binaries/exiftool ";
 			#endif
 
             

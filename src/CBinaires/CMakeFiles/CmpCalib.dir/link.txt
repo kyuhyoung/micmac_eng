@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/CmpCalib.dir/CmpCalib.c.o -o CmpCalib 

@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Pastis.dir/Pastis.c.o -o Pastis 

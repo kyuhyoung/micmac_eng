@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/SBGlobBascule.dir/SBGlobBascule.c.o -o SBGlobBascule 

@@ -35,14 +35,14 @@ rm -fr $OUT_MICMAC_DIR/src/interface
 mkdir $OUT_MICMAC_DIR/Documentation
 cp Documentation/DocMicMac.pdf $OUT_MICMAC_DIR/Documentation 
 
-mkdir $OUT_MICMAC_DIR/binaire-aux
-cp -r binaire-aux/BIN_AUX_WIN32 $OUT_MICMAC_DIR/binaire-aux
-cp binaire-aux/ann_mec_filtre.LINUX $OUT_MICMAC_DIR/binaire-aux
-cp binaire-aux/siftpp_tgi.LINUX $OUT_MICMAC_DIR/binaire-aux
-cp binaire-aux/ann_samplekey200filtre.OSX $OUT_MICMAC_DIR/binaire-aux
-cp binaire-aux/siftpp_tgi.OSX $OUT_MICMAC_DIR/binaire-aux
-cp binaire-aux/siftpp_tgi.exe $OUT_MICMAC_DIR/binaire-aux
-cp binaire-aux/ann_samplekeyfiltre.exe $OUT_MICMAC_DIR/binaire-aux
+mkdir $OUT_MICMAC_DIR/auxiliary-binaries
+cp -r auxiliary-binaries/BIN_AUX_WIN32 $OUT_MICMAC_DIR/auxiliary-binaries
+cp auxiliary-binaries/ann_mec_filtre.LINUX $OUT_MICMAC_DIR/auxiliary-binaries
+cp auxiliary-binaries/siftpp_tgi.LINUX $OUT_MICMAC_DIR/auxiliary-binaries
+cp auxiliary-binaries/ann_samplekey200filtre.OSX $OUT_MICMAC_DIR/auxiliary-binaries
+cp auxiliary-binaries/siftpp_tgi.OSX $OUT_MICMAC_DIR/auxiliary-binaries
+cp auxiliary-binaries/siftpp_tgi.exe $OUT_MICMAC_DIR/auxiliary-binaries
+cp auxiliary-binaries/ann_samplekeyfiltre.exe $OUT_MICMAC_DIR/auxiliary-binaries
 
 tar czf $ARCHIVE_NAME.tar.gz $OUT_MICMAC_DIR
 rm -fr $OUT_MICMAC_DIR

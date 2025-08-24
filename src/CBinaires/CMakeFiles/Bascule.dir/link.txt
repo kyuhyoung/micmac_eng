@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Bascule.dir/Bascule.c.o -o Bascule 

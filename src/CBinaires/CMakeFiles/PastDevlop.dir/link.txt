@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/PastDevlop.dir/PastDevlop.c.o -o PastDevlop 

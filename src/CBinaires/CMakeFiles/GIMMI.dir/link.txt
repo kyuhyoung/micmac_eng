@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/GIMMI.dir/GIMMI.c.o -o GIMMI 

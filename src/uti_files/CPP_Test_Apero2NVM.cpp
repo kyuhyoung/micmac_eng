@@ -1045,7 +1045,7 @@ void UndistortIM(string aNameDir, string aPattern, string aOri, string DirOut, b
 			cmdDel = "rm " + aNameDir + DirOut + aFullName + ".tif ";
         #endif
         #if (ELISE_windows)
-            cmdConv=MMDir() + "binaire-aux/windows/convert.exe " + aNameDir + DirOut + aFullName + ".tif " + aNameDir + DirOut + aFullName + ".jpg";
+            cmdConv=MMDir() + "auxiliary-binaries/windows/convert.exe " + aNameDir + DirOut + aFullName + ".tif " + aNameDir + DirOut + aFullName + ".jpg";
 			cmdDel = "del " + aNameDir + DirOut + aFullName + ".tif ";
         #endif
         ListConvert.push_back(cmdConv);
@@ -1291,7 +1291,7 @@ void TransfORI_andWFile(string aNameDir, string aPattern, string aOri, string Di
 				cmdDel = "rm " + aNameDir + aFullName + ".tif";
        	#endif
        	#if (ELISE_windows)
-           	cmdConv=MMDir() + "binaire-aux/windows/convert.exe ephemeral:" + aNameDir + aFullName + ".tif " + aNameDir + DirOut + aFullName + ".jpg";
+           	cmdConv=MMDir() + "auxiliary-binaries/windows/convert.exe ephemeral:" + aNameDir + aFullName + ".tif " + aNameDir + DirOut + aFullName + ".jpg";
 			cmdDel = "del " + aNameDir + aFullName + ".tif";
         #endif
        	ListConvert.push_back(cmdConv);	

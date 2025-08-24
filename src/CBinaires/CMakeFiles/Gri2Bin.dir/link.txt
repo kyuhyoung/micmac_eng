@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Gri2Bin.dir/Gri2Bin.c.o -o Gri2Bin 

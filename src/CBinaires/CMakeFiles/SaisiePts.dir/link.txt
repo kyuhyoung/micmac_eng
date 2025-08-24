@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/SaisiePts.dir/SaisiePts.c.o -o SaisiePts 

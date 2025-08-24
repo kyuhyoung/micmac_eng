@@ -948,7 +948,7 @@ bool process_pastis_tool_string( string &io_tool, string &o_args )
 cAppliPastis::cAppliPastis(int argc,char ** argv,bool FBD) :
    cAppliBatch(argc,argv,4,2,"Pastis","",FBD),
    mBinDir           (MMBin()),
-   mBinDirAux        (MMDir()+"binaire-aux"+ELISE_CAR_DIR),
+   mBinDirAux        (MMDir()+"auxiliary-binaries"+ELISE_CAR_DIR),
    mNbMaxMatch       (100),
    mKeyGeom1         ("DefKey"),
    mKeyGeom2         ("DefKey"),

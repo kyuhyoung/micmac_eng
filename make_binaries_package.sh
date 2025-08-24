@@ -38,13 +38,13 @@ then
 	# copie les outils tiers
 	if [ $OS = "Linux" ]
 	then
-		mkdir $BIN_DIR/binaire-aux
-		cp ../binaire-aux/siftpp_tgi.LINUX $BIN_DIR/binaire-aux
-		cp ../binaire-aux/ann_mec_filtre.LINUX $BIN_DIR/binaire-aux
+		mkdir $BIN_DIR/auxiliary-binaries
+		cp ../auxiliary-binaries/siftpp_tgi.LINUX $BIN_DIR/auxiliary-binaries
+		cp ../auxiliary-binaries/ann_mec_filtre.LINUX $BIN_DIR/auxiliary-binaries
 	else
-		mkdir $BIN_DIR/binaire-aux
-		cp ../binaire-aux/ann_samplekey200filtre.OSX $BIN_DIR/binaire-aux
-		cp ../binaire-aux/siftpp_tgi.OSX $BIN_DIR/binaire-aux
+		mkdir $BIN_DIR/auxiliary-binaries
+		cp ../auxiliary-binaries/ann_samplekey200filtre.OSX $BIN_DIR/auxiliary-binaries
+		cp ../auxiliary-binaries/siftpp_tgi.OSX $BIN_DIR/auxiliary-binaries
 	fi
 
 	# créer l'archive

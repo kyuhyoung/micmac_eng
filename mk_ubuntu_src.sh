@@ -24,8 +24,8 @@ mkdir $MICMAC_BASE_DIR
 mkdir $MICMAC_BASE_DIR/bin
 cp bin/* $MICMAC_BASE_DIR/bin
 
-mkdir $MICMAC_BASE_DIR/binaire-aux
-cp -r binaire-aux/linux $MICMAC_BASE_DIR/binaire-aux/linux
+mkdir $MICMAC_BASE_DIR/auxiliary-binaries
+cp -r auxiliary-binaries/linux $MICMAC_BASE_DIR/auxiliary-binaries/linux
 
 mkdir $MICMAC_BASE_DIR/Documentation
 cp Documentation/DocMicMac.pdf $MICMAC_BASE_DIR/Documentation

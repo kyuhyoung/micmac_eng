@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Porto.dir/Porto.c.o -o Porto 

@@ -34,7 +34,7 @@ build_script:
   
 
 after_build:
-  - 7z a micmac_win.zip bin\ binaire-aux\ include\XML_MicMac\ include\XML_GEN\ include\qt
+  - 7z a micmac_win.zip bin\ auxiliary-binaries\ include\XML_MicMac\ include\XML_GEN\ include\qt
   
 artifacts:
   path: micmac_win.zip

@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Malt.dir/Malt.c.o -o Malt 

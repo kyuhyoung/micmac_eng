@@ -189,7 +189,7 @@ endif()
 ######################################
 ## 	Trouver les EXES et Libs	##
 ######################################
-set(BIN_AUX_FULL_PATH ${PROJECT_SOURCE_DIR}/binaire-aux/${BIN_AUX_SUBDIR})
+set(BIN_AUX_FULL_PATH ${PROJECT_SOURCE_DIR}/auxiliary-binaries/${BIN_AUX_SUBDIR})
 
 # DEFINITIION : des chemins binaires sous UNIX
 set(UnixBinPath

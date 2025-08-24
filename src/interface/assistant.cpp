@@ -239,8 +239,8 @@ QStringList Options::checkBinaries(const QString& micmacDossier) {	//micmacDossi
 					l.push_back( conv(QObject::tr("Binary %1bin/%2 not found.")).arg(micmacDossier).arg(b.at(i)+OSextension) );
 			}
 			for (int i=0; i<b2.count(); i++) {
-				if (!QFile(micmacDossier+QString("binaire-aux/")+b2.at(i)+OSextension).exists())
-					l.push_back( conv(QObject::tr("Binary %1binaire-aux/%2 not found.")).arg(micmacDossier).arg(b2.at(i)+OSextension) );
+				if (!QFile(micmacDossier+QString("auxiliary-binaries/")+b2.at(i)+OSextension).exists())
+					l.push_back( conv(QObject::tr("Binary %1auxiliary-binaries/%2 not found.")).arg(micmacDossier).arg(b2.at(i)+OSextension) );
 			}
 		}
 	}

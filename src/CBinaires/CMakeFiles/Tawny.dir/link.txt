@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Tawny.dir/Tawny.c.o -o Tawny 

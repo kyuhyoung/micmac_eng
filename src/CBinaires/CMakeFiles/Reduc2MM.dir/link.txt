@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Reduc2MM.dir/Reduc2MM.c.o -o Reduc2MM 

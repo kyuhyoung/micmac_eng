@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Tarama.dir/Tarama.c.o -o Tarama 

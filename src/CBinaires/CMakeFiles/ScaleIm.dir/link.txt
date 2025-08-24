@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/ScaleIm.dir/ScaleIm.c.o -o ScaleIm 

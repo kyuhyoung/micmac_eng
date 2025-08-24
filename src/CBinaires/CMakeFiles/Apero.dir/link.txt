@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Apero.dir/Apero.c.o -o Apero 

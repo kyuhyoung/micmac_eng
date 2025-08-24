@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Vino.dir/Vino.c.o -o Vino 

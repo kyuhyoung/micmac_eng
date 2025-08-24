@@ -1,4 +1,4 @@
-#define EXTERNAL_TOOLS_SUBDIRECTORY "binaire-aux"
+#define EXTERNAL_TOOLS_SUBDIRECTORY "auxiliary-binaries"
 #define INTERNAL_TOOLS_SUBDIRECTORY "bin"
 
 typedef enum {

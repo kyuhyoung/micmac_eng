@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/to8Bits.dir/to8Bits.c.o -o to8Bits 

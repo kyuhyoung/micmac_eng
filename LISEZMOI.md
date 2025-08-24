@@ -13,7 +13,7 @@ Vous pouvez vérifier que Micmac trouve correctement les programmes ci-dessus gr
 `bin/mm3d CheckDependencies` (si vous vous trouvez dans le répertoire de Micmac)
 
 La mention *NOT FOUND* indique que l’exécutable correspondant n'est pas présent ou qu'il n'a pu être trouvé. Dans ce cas, vérifiez que les chemins d’accès sont bien inclus dans la variable d'environnement *PATH*.
-Il convient de noter que quelle que soit la valeur de la variable *PATH*, le répertoire *binaire-aux* est examiné lors de la recherche des outils externes, mais qu'un outil trouvé ailleurs aura la prépondérance.
+Il convient de noter que quelle que soit la valeur de la variable *PATH*, le répertoire *auxiliary-binaries* est examiné lors de la recherche des outils externes, mais qu'un outil trouvé ailleurs aura la prépondérance.
 
 ## Sous Windows
 
@@ -66,7 +66,7 @@ Il s'agit du même exemple Boudha que dans la documentation. Éditez les fichier
 
 # Notes diverses
 
-Si vous souhaitez utiliser les commandes de Micmac à partir de n'importe quel répertoire sans avoir a spécifier son chemin, il faut ajouter le chemin du répertoire `bin` dans la variable d'environnement `PATH`. Il n'est pas nécessaire d'y ajouter le chemin du répertoire `binaire-aux`.
+Si vous souhaitez utiliser les commandes de Micmac à partir de n'importe quel répertoire sans avoir a spécifier son chemin, il faut ajouter le chemin du répertoire `bin` dans la variable d'environnement `PATH`. Il n'est pas nécessaire d'y ajouter le chemin du répertoire `auxiliary-binaries`.
 
 Sous Linux / MacOS, pour utiliser les outils Qt, ajoutez le chemin du répertoire `lib` dans `LD_LIBRARY_PATH`, dans le fichier `.bashrc` comme suit : `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/micmac/lib/`
 

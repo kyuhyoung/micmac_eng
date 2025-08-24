@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/MpDcraw.dir/MpDcraw.c.o -o MpDcraw 

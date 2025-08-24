@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DRELEASE -DNDEBUG -funroll-loops -ffast-math -w -fopenmp CMakeFiles/SurfaceTrimmer.dir/src/SurfaceTrimmer.cpp.o -o SurfaceTrimmer  libpoisson.a -lgomp 

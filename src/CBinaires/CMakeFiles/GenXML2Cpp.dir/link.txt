@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/GenXML2Cpp.dir/GenXML2Cpp.c.o -o GenXML2Cpp 

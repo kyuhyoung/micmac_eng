@@ -86,7 +86,7 @@ int Prep4masq_main(int argc,char ** argv)
 				cmdconv="convert -colorspace gray +compress " + aVectIm[i] + " " + aNameMasq;
 			#endif
 			#if (ELISE_windows)
-				cmdconv=MMDir() + "binaire-aux/windows/convert -colorspace gray +compress " + aVectIm[i] + " " + aNameMasq;
+				cmdconv=MMDir() + "auxiliary-binaries/windows/convert -colorspace gray +compress " + aVectIm[i] + " " + aNameMasq;
 			#endif
 		            
             ListConvert.push_back(cmdconv);

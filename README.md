@@ -215,7 +215,7 @@ To use Qt GUIs, you need to adapt the **cmake** command as follows:
 		```
 
 ### PATH and pre-compiled binaries 
-You can append the full path of the `bin` directory to `PATH` environment variable to call **MicMac** commands from anywhere. However, it is not necessary to add the `binaire-aux` directory to the `PATH` variable.
+You can append the full path of the `bin` directory to `PATH` environment variable to call **MicMac** commands from anywhere. However, it is not necessary to add the `auxiliary-binaries` directory to the `PATH` variable.
 
 ### MicMac via a Docker image
 A precompiled docker image is available and ready to use:

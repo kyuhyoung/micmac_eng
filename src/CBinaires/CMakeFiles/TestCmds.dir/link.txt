@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/TestCmds.dir/TestCmds.c.o -o TestCmds 

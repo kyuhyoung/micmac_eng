@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/GrShade.dir/GrShade.c.o -o GrShade 

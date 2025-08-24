@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Tapas.dir/Tapas.c.o -o Tapas 

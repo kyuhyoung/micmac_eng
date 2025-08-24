@@ -208,7 +208,7 @@ ExternalToolItem & ExternalToolHandler::addTool( const std::string &i_tool )
 		// PATH directories prevails upon INTERNAL_TOOLS_SUBDIRECTORY and EXTERNAL_TOOLS_SUBDIRECTORY
 		// except for excluded directories (in m_excludedDirectories) which are ignored
 
-		// we do not use PATH under windows because all dependencies are provided in binaire-aux/windows
+		// we do not use PATH under windows because all dependencies are provided in auxiliary-binaries/windows
 
 		if (checkPathDirectories(exeName))
 		{
@@ -219,7 +219,7 @@ ExternalToolItem & ExternalToolHandler::addTool( const std::string &i_tool )
 
     if (status == EXT_TOOL_UNDEF)
     {
-        // check old binaire-aux
+        // check old auxiliary-binaries
         testName = MMDir() + EXTERNAL_TOOLS_SUBDIRECTORY + ELISE_CAR_DIR + exeName;
         __OUT("testName = [" << testName << ']');
         if (ELISE_fp::exist_file(testName))

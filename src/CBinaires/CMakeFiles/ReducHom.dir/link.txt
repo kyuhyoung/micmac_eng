@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/ReducHom.dir/ReducHom.c.o -o ReducHom 

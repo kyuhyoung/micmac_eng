@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/mmxv.dir/mmxv.c.o -o mmxv 

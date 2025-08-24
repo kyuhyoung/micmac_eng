@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/SaisieAppuisInit.dir/SaisieAppuisInit.c.o -o SaisieAppuisInit 

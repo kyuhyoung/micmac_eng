@@ -36,10 +36,10 @@ rm -fr $(find $FRAMEWORKS_PATH -maxdepth 4 | grep Headers)
 
 echo "copy binaries"
 cp -R $MM_PATH/bin $PACKAGE_PATH
-mkdir $PACKAGE_PATH/binaire-aux
-cp $MM_PATH/binaire-aux/*.OSX $PACKAGE_PATH/binaire-aux/
-cp $MM_PATH/binaire-aux/PoissonRecon $PACKAGE_PATH/binaire-aux/
-cp $MM_PATH/binaire-aux/SurfaceTrimmer $PACKAGE_PATH/binaire-aux/
+mkdir $PACKAGE_PATH/auxiliary-binaries
+cp $MM_PATH/auxiliary-binaries/*.OSX $PACKAGE_PATH/auxiliary-binaries/
+cp $MM_PATH/auxiliary-binaries/PoissonRecon $PACKAGE_PATH/auxiliary-binaries/
+cp $MM_PATH/auxiliary-binaries/SurfaceTrimmer $PACKAGE_PATH/auxiliary-binaries/
 
 echo "copy XML parameters file"
 mkdir $PACKAGE_PATH/include

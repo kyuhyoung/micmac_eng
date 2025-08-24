@@ -61,7 +61,7 @@ jobs:
         ls -lrt bin
 
     - name: Create Zip
-      run: 7z a micmac_windows.zip bin\ binaire-aux\ include\XML_MicMac\ include\XML_GEN\ include\qt
+      run: 7z a micmac_windows.zip bin\ auxiliary-binaries\ include\XML_MicMac\ include\XML_GEN\ include\qt
  
     - name: Upload binaries to release
       uses: softprops/action-gh-release@v1

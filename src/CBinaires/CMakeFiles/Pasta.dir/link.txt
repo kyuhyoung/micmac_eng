@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC CMakeFiles/Pasta.dir/Pasta.c.o -o Pasta 
