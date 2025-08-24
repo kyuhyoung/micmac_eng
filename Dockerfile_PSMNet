@@ -32,9 +32,7 @@ RUN apt-get update && apt-get install -y \
 			
 
 
-#MicMac clone
-RUN git clone https://github.com/micmacIGN/micmac.git
-
+# Use the English version of MicMac from the current directory
 ADD ./ ${foo}/micmac
 
 #MicMac build & compile
@@ -50,6 +48,11 @@ RUN cd micmac/MMVII/bin && \
     cd .. && \ 
     cd src/DenseMatch && \
     /bin/bash install.sh
+
+# Additional tools installation
+RUN apt-get update && apt-get install -y \
+    curl \
+    ca-certificates
 
 #MicMac add environmental variable to executables
 ENV PATH=${foo}micmac/bin:${foo}micmac/MMVII/bin:${PATH}
