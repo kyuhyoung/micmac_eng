@@ -3,7 +3,7 @@
 #MAINTAINER Ewelina Rupnik <ewelina.rupnik@ign.fr>
 
 # CUDA refer to https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/supported-tags.md
-FROM nvidia/cuda:11.4.0-runtime-ubuntu20.04
+FROM ubuntu:20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
